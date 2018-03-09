@@ -1,4 +1,6 @@
 
+![有帮助的截图]({{ site.url }}/assets/img/pexels/wall_e.jpeg)
+
 ## 感谢
 - GitHub   提供免费空间
 - Jekyll  提供优秀的静态页面构建工具
