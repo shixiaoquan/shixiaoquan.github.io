@@ -2,9 +2,9 @@
 layout: post
 title: react-navigation重复点击多次跳转的解决方案
 date: 2017/12/13 20:46:25
-feature-img: "assets/img/pexels/desk-messy.jpeg"
-thumbnail: "assets/img/thumbnails/desk-messy.jpeg"
-categories: [ReactNative]
+feature-img: "assets/img/pexels/machinekeyboard.jpeg"
+thumbnail: "assets/img/thumbnails/machinekeyboard.jpeg"
+categories: [React Native]
 tags: [react-native, react-navigation, 快速点击, 重复加载]
 ---
 ## 废话
