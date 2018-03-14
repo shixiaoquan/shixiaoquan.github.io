@@ -1,5 +1,6 @@
 .site-header {
     padding-top: $padding-x-small / 3;
+    padding-bottom: $padding-x-small / 9;
     padding-left: $padding-x-small;
     padding-right: $padding-x-small;
     background: $brand-color;
@@ -44,11 +45,16 @@
         li {
             display: inline;
             float: left;
-            margin-right: 1.3em;
+            padding: 3px 10px;
+            margin: 0px 2px;
+            &:hover {
+                background: $link-color;
+                border-radius: 0.2em;
+            }
         }
         a {
             &:hover {
-                color: $link-color;
+                //color: $link-color;
             }
             &#pull {
                 i {
@@ -62,6 +68,10 @@
     }
 }
 
+.selectedli {
+    background: $link-color;
+    border-radius: 0.2em;
+}
 
 // To clear things when we float the element inisde nav and ul
 .clear {

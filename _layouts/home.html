@@ -22,20 +22,23 @@ layout: default
       {% endif %}
       <span>
           <header>
-            <h1>
+            <h3>
               <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
                 {{ post.title }}
               </a>
-            </h1>
+            </h3>
             <p class="meta">
               {{ post.date | date: "%B %-d, %Y" }}
             </p>
           </header>
           <div class="excerpt">
-            {{ post.content | strip_html | truncate: "200" }}
-            <a class="button" href="{{ post.url | prepend: site.baseurl }}">
-              {{ site.theme_settings.str_continue_reading }}
-            </a>
+            {{ post.content | strip_html | truncate: "250" }}
+              <!-- 
+              注释掉 简介最后的那个 阅读全文的按钮
+              <a class="button" href="{{ post.url | prepend: site.baseurl }}">
+                {{ site.theme_settings.str_continue_reading }}
+              </a> 
+              -->
           </div>
       </span>
     </div>
