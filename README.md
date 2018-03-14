@@ -27,7 +27,7 @@
 ## 感谢
 - [GitHubPage](https://pages.github.com/) 提供免费空间
 - [Jekyll](https://jekyllrb.com/) 提供优秀的静态页面构建工具（[中文站](https://www.jekyll.com.cn/)）
-- [Type on Strap](https://github.com/Sylhare/Type-on-Strap) 感谢作者（[Sylhare](https://github.com/Sylhare)）提供优秀的模版
+- [Type on Strap](https://github.com/Sylhare/Type-on-Strap) 的作者（[Sylhare](https://github.com/Sylhare)）提供优秀的模版
 
 ## License
 
