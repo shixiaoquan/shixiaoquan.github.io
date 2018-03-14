@@ -11,6 +11,7 @@ tags: [react-native, react-navigation, 快速点击, 重复加载]
 - 在react-native@0.44版本之后，官方废弃了之前的导航Navigator，用react-navigation 替代
 - react-natvigation于2017年1月份开源，在3个月时间内，GitHub上star数达4000+，备受推崇，由于其性能体验堪比原生，而且使用方便，最后被FB钦点为“御用导航”
 - 但是在使用过程中还是发现了一个问题：在触发页面跳转的View上 重复、快速点击时，即将被加载的页面会多次被加载（*感谢测试小姐姐丧心病狂的操作*），症状如下图
+
 ![01.gif](http://upload-images.jianshu.io/upload_images/3161942-a0fc426d042f7fb1.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 <!--more-->
 
