@@ -1,9 +1,9 @@
 ---
 layout: post
 title: PanResponder的使用总结
-date: 2018/03/14 13:31:11
-feature-img: "assets/img/pexels/awesome-picture-3915112.jpg"
-thumbnail: "assets/img/thumbnails/awesome-picture-3915112.jpg"
+date: 2018/04/01 10:09:01
+feature-img: "assets/img/pexels/react-native-touch.jpeg"
+thumbnail: "assets/img/thumbnails/react-native-touch.jpeg"
 categories: [React Native]
 tags: [react-native, PanResponder]
 ---
