@@ -28,11 +28,14 @@ layout: default
               </a>
             </h3>
             <p class="meta">
-              {{ post.date | date: "%B %-d, %Y" }}
+              {% if post.date %}{{ post.date | date: "%Y/%m/%-d %T" }} {% endif %}
+              {% if post.author %} - {{ post.author }}{% endif %}
             </p>
           </header>
           <div class="excerpt">
-            {{ post.content | strip_html | truncate: "250" }}
+            <a href="{{ post.url | prepend: site.baseurl }}">
+              {{ post.content | strip_html | truncate: "250" }}
+            </a>
               <!-- 
               注释掉 简介最后的那个 阅读全文的按钮
               <a class="button" href="{{ post.url | prepend: site.baseurl }}">
