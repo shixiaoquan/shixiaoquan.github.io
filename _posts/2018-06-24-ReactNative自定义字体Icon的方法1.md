@@ -40,16 +40,28 @@ icoMoon 和 Fontello 分别有网站提供字体文件制作。分别是 http:/
 将制作好的字体文件（xxx.ttf）导入到 Android 和 iOS 的原生项目中，这一步是最关键的，稍有不慎，容易出错
 
 我已经得到 icomoon 的字体文件，结构如下：
-
+![IconMoon]({{ site.url }}/assets/img/postpics/icomoon.png)
 
 ### Android
+在 Android 原生项目中导入字体文件
 
+![Android]({{ site.url }}/assets/img/postpics/loadttf_android.png)
 
 ### iOS
+在 iOS 原生项目中导入字体文件
+稍微麻烦一点儿 需要4步
+#### 在根目录的 Resource 目录下导入字体文件
+![iOS]({{ site.url }}/assets/img/postpics/loadttf_ios1.png)
+#### 查看导入成功
+![iOS]({{ site.url }}/assets/img/postpics/loadttf_ios2.png)
+#### 在 Build Phases 中会多出 icomoon.ttf，表示导入成功
+![iOS]({{ site.url }}/assets/img/postpics/loadttf_ios3.png)
+#### 在 Info.plist 中添加 icomoon.ttf 这一项
+![iOS]({{ site.url }}/assets/img/postpics/loadttf_ios4.png)
 
-
-
-
+### 查看使用结果
+![Android]({{ site.url }}/assets/img/postpics/customicon_android.png)
+![iOS]({{ site.url }}/assets/img/postpics/customicon_ios.png)
 ## 本文结束，欢迎大家加群共同学习
 
 |![QQ群：672509442]({{ site.url }}/assets/img/postpics/QQGroupQR.png)|
