@@ -1,96 +1,56 @@
 <header class="site-header">
-
+    
     <!-- Logo and title -->
 	<div class="branding">
-		<a href="{{ site.baseurl }}/">
-			<img class="avatar" src="{{ site.baseurl }}/{{ site.theme_settings.avatar }}" alt=""/>
+		<a href="{{ '/' | relative_url }}">
+			<img alt="logo img" class="avatar" src="{{ site.theme_settings.avatar | relative_url }}" />
 		</a>
 
 		<h1 class="site-title">
-			<a href="{{ site.baseurl }}/">{{ site.theme_settings.title }}</a>
+			<a aria-label="{{ site.theme_settings.title }}" href="{{ '/' | relative_url }}">
+        {{ site.theme_settings.title }}
+      </a>
 		</h1>
 	</div>
-
-    <!-- Toggle menu -->
-    <nav class="clear" id="nav">
-        <a id="pull" class="toggle" href="#">
-            <i class="fa fa-bars fa-lg"></i>
-        </a>
-        <!-- Menu -->
-        <ul>
-            {% if site.theme_settings.search %}
+    
+  <!-- Toggle menu -->
+  <nav class="clear">
+    <a aria-label="pull" id="pull" class="toggle" href="#">
+      <i class="fa fa-bars fa-lg"></i>
+    </a>
+    
+    <!-- Menu -->
+    <ul class="hide">
+      <!-- Auto Generation of NORMAL pages in the navbar -->
+      {% assign name_page = "" %}
+      
+      {% for page in site.pages %}
+        {% if page.title and page.hide != true %}
+          {% if name_page contains page.title %}
+          {% else %}
+            <li class="separator"> | </li>
             <li>
-                <a class="clear" href="{{ site.url }}{{ site.baseurl }}/search">
-                    <i class="fa fa-search" aria-hidden="true"></i>
+                <a class="clear" aria-label="{{ page.title }}" href="{{ page.url | relative_url }}">
+                    {{ page.title }}
                 </a>
             </li>
-            {% endif %}
-            {% if site.theme_settings.reactnative %}
-                <li>
-                    <a class="clear" href="{{ site.url }}{{ site.baseurl }}/reactnative">
-                        React Native
-                    </a>
-                </li>
-            {% endif %}
-            {% if site.theme_settings.react %}
-                <li>
-                    <a class="clear" href="{{ site.url }}{{ site.baseurl }}/react">
-                        React
-                    </a>
-                </li>
-            {% endif %}
-            {% if site.theme_settings.android %}
-                <li>
-                    <a class="clear" href="{{ site.url }}{{ site.baseurl }}/android">
-                        Android
-                    </a>
-                </li>
-            {% endif %}
-            {% if site.theme_settings.javascript %}
-                <li>
-                    <a class="clear" href="{{ site.url }}{{ site.baseurl }}/javascript">
-                        JavaScript
-                    </a>
-                </li>
-            {% endif %}
-            {% if site.theme_settings.git %}
-                <li>
-                    <a class="clear" href="{{ site.url }}{{ site.baseurl }}/git">
-                        Git
-                    </a>
-                </li>
-            {% endif %}
-            {% if site.theme_settings.life %}
-                <li>
-                    <a class="clear" href="{{ site.url }}{{ site.baseurl }}/life">
-                        程序人生
-                    </a>
-                </li>
-            {% endif %}
-            {% if site.theme_settings.portfolio %}
-                <li>
-                    <a class="clear" href="{{ site.url }}{{ site.baseurl }}/portfolio">
-                        作品
-                    </a>
-                </li>
-            {% endif %}
-            {% for page in site.pages %}
-                {% if page.title and page.hide != true %}
-                <li>
-                    <a class="clear" href="{{ page.url | relative_url }}">
-                        {{ page.title }}
-                    </a>
-                </li>
-                {% endif %}
-            {% endfor %}
-            {% if site.theme_settings.tags %}
-            <li>
-                <a class="clear" href="{{ site.url }}{{ site.baseurl }}/tags">
-                    <i class="fa fa-tags" aria-hidden="true"></i>
-                </a>
-            </li>
-            {% endif %}
-
-        </ul>
+          {% endif %}
+          {% assign name_page = page.title | append: name_page %}
+        {% endif %}
+      {% endfor %}
+      
+      <!-- Auto Generation of SPECIAL pages in the navbar -->
+      {% for item in site.theme_settings.special_page %}
+        {% if item[1].enabled %}
+          <li class="separator"> | </li>
+          <li>
+            <a class="clear" href="{{ item[0] | relative_url }}" aria-label="{{ item[0] }}">
+              <i class="fa fa-{{ item[1].icon }}" aria-hidden="true"></i>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+        
 	</nav>
 </header>

@@ -16,6 +16,16 @@
     }
 }
 
+%padding-medium {
+    padding: $padding-medium $padding-large;
+    @media (max-width: 1000px) {
+        padding: $padding-medium * 1.5 $padding-large / 1.6;
+    }
+    @media (max-width: 576px) {
+        padding: $padding-medium;
+    }
+}
+
 .header-txt-shadow {
     text-shadow: 1px 1px 2px $text-shadow;
 }
@@ -25,9 +35,8 @@
     border-radius: 0.3em;
     border: 1px solid;
     display: inline-block;
-    margin: 0.1em 0em;
-    padding: 0.25em 0.75em;
-    text-align: center;
+    margin: 1em 0;
+    padding: 0.5em 0.75em;
 }
 
 a.button {
