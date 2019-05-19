@@ -53,12 +53,11 @@
 	// })
 	// gitalk.render('gitment-container')
 	const gitment = new Gitment({
-			id: 'comments', // optional
-			owner: 'shixiaoquan',
-			repo: 'shixiaoquan.github.io',
+			owner: '{{ site.github_config.owner }}',
+			repo: '{{ site.github_config.repo }}',
 			oauth: {
-				client_id: 'd0c2d2430615ea44215f',
-				client_secret: 'a1258fc7e44e333551ca607f626c47ba79f1936a',
+				client_id: '{{ site.github_config.oauth.client_id }}',
+				client_secret: '{{ site.github_config.oauth.client_secret }}',
 			},
 			// ...
 			// For more available options, check out the documentation below
@@ -66,6 +65,3 @@
 
 		gitment.render('gitment-container')
 </script>
-
-
-<!-- https://api.github.com/repos/shixiaoquan/shixiaoquan/issues?client_id=d0c2d2430615ea44215f&client_secret=f62aaacb5b181d6158d30b02882a0bd47d04692b&labels=Gitalk,test+blog&t=1558156833599 -->
