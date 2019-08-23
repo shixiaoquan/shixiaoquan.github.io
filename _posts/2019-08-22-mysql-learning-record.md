@@ -11,7 +11,7 @@ categories: DB
 mysql -u root -p
 ```
 
-输入默认密码]
+输入默认密码
 
 ## Add User
 
