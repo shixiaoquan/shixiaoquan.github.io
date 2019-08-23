@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Linux Ubuntu Install Java、MySQL"
+title:  "Ubuntu Install Java、MySQL"
 date:   2019-08-23 20:34
 categories: OPS
 ---
