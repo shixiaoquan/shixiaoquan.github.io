@@ -83,4 +83,10 @@ REVOKE privilegexxx ON databasenamexxx.tablenamexxx FROM 'test'@'localhost';
 REVOKE SELECT ON *.* FROM 'test'@'localhost';
 ```
 
+### 查看 MySQL 版本信息
+
+```bash
+mysql -V
+```
+
 ![好图镇楼](/assets/img/nice_draw.jpg)
