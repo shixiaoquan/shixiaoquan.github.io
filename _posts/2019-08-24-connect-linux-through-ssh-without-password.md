@@ -85,3 +85,31 @@ Last login: Sat Aug 24 09:24:24 2019 from 180.107.200.19
 ```
 
 这样就成功了
+
+### 保持长连接, 防止超时断线
+
+在本机 `/etc/ssh/ssh_config` 中加入 `ServerAliveInterval 60`
+
+添加后效果如下:
+
+```bash
+# Host *
+ServerAliveInterval 60
+#   ForwardAgent no
+#   ForwardX11 no
+#   PasswordAuthentication yes
+#   HostbasedAuthentication no
+#   GSSAPIAuthentication no
+#   GSSAPIDelegateCredentials no
+#   BatchMode no
+#   CheckHostIP yes
+#   AddressFamily any
+#   ConnectTimeout 0
+#   StrictHostKeyChecking ask
+#   IdentityFile ~/.ssh/id_rsa
+#   IdentityFile ~/.ssh/id_dsa
+#   IdentityFile ~/.ssh/id_ecdsa
+#   IdentityFile ~/.ssh/id_ed25519
+```
+
+`ServerAliveInterval 60` 的作用是每隔60秒系统会发送一个空数据包,从而保持与服务器的连接, 防止超时断线
