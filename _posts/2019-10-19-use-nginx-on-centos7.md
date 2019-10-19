@@ -106,6 +106,25 @@ firewall-cmd --reload
 
 ![nginx 欢迎页](/assets/img/nginx_welcome_page.png)
 
+### nginx 端口转发
+
+只记一个最实用的例子,将 domain/api/ 转发到 domain:3000
+
+```conf
+server {
+        listen       8080;
+        server_name  localhost;
+        location / {
+            root   html/;
+            index  index.html index.htm;
+    }
+    location ^~/api/ {
+        rewrite ^/api/(.*)$ /$1 break;
+        proxy_pass http://127.0.0.1:3000;
+    }
+}
+```
+
 ### nginx 配置文件和最佳实践
 
 * 通过以上方式安装的 Nginx，所有相关的配置文件都在 /etc/nginx/ 目录中。
