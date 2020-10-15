@@ -2,7 +2,7 @@
 layout: post
 title:  "基于 CentOS，JDK安装"
 date:   2020-010-15 23:41
-categories: DB
+categories: Java
 ---
 
 使用 yum 安装
