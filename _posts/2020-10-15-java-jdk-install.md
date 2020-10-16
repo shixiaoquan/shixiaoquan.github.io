@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "基于 CentOS，JDK安装"
-date:   2020-010-15 23:41
+date:   2020-10-15 23:41
 categories: Java
 ---
 

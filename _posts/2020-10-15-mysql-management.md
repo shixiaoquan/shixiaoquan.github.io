@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "基于 CentOS，MySql 的管理"
-date:   2020-010-15 15:41
+date:   2020-10-15 15:41
 categories: DB
 ---
 

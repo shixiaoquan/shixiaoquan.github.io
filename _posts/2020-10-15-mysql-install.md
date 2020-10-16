@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "基于CentOS，安装MySql"
-date:   2020-010-15 14:41
+date:   2020-10-15 14:41
 categories: DB
 ---
 
