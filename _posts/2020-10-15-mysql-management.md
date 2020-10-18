@@ -192,8 +192,10 @@ mysql> SHOW INDEX FROM runoob_tbl;
 * SHOW TABLE STATUS [FROM db_name] [LIKE 'pattern'] \G:
 该命令将输出Mysql数据库管理系统的性能及统计信息。
 ```
-mysql> SHOW TABLE STATUS  FROM RUNOOB;   # 显示数据库 RUNOOB 中所有表的信息
-
-mysql> SHOW TABLE STATUS from RUNOOB LIKE 'runoob%';     # 表名以runoob开头的表的信息
-mysql> SHOW TABLE STATUS from RUNOOB LIKE 'runoob%'\G;   # 加上 \G，查询结果按列打印
+# 显示数据库 RUNOOB 中所有表的信息
+mysql> SHOW TABLE STATUS  FROM RUNOOB;   
+# 表名以runoob开头的表的信息
+mysql> SHOW TABLE STATUS from RUNOOB LIKE 'runoob%';     
+# 加上 \G，查询结果按列打印
+mysql> SHOW TABLE STATUS from RUNOOB LIKE 'runoob%'\G;   
 ```
