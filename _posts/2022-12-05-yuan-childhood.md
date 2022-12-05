@@ -1,8 +1,8 @@
 ---
-layout:     post
-title:      "CZ"
-date:       2022-12-05 18:41
-categories: DB
+layout: post
+title:  "Welcome to Jekyll!!!!!"
+date:   2022-12-05 19:17:42 +0800
+categories: jekyll update
 ---
 
 ## 成长记录
