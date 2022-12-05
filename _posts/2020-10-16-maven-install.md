@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "基于 CentOS，Maven 安装"
+title:  "基于 CentOS，Maven 安装1"
 date:   2020-10-16 00:41
 categories: Maven
 ---
