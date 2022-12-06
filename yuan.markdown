@@ -19,11 +19,28 @@ layout: page
 
 **❤️今日份小游戏-《传纸杯》**
 ### 班级视频
-<video controls width='100%' src="/assets/video/1344_1669891710.mp4"></video>
 <video controls width='100%' src="/assets/video/1348_1669974020.mp4"></video>
 <video controls width='100%' src="/assets/video/1349_1669974045.mp4"></video>
+
 ## 日期：2022-12-05 
 ### 本周食谱
 ![本周食谱](/assets/img/WechatIMG1357.jpeg)
 ### 班级视频
 <video controls width='100%' src="/assets/video/1359_1670235494.mp4"></video>
+
+## 日期：2022-12-05 
+### 班级视频
+**主题：《和椅子宝宝交朋友》**
+<video controls width='100%' src="/assets/video/1391_1670323833.mp4"></video>
+
+### 兴趣班视频
+**✨今日活动《快乐的小青蛙🐸》**
+**🌼小知识：**
+- 当用捏、压、拉、拍或吹等方式给一些物体施加力量时，这些物体的形状会发生改变;一旦这些动作不再持续，物体便可以恢复原来的形状,我们称这些物体具有弹性。
+- 物体能恢复原来形状的力量称为弹力。
+
+**✍🏻课程目标：**
+- 初步认识物体的弹性，尝试通过捏、压、拉等方式感知物体的弹性
+- 知道弹性物体恢复原来形状的力量称为弹力。
+
+<video controls width='100%' src="/assets/video/27_1670319257.mp4"></video>
