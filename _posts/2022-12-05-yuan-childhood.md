@@ -1,10 +1,8 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!!!!!"
-date:   2022-12-05 19:17:42 +0800
-categories: jekyll update
+title: "园儿日常归档说明"
+date: 2022-12-05 20:00:00 +0800
+categories: 生活
 ---
 
-## 成长记录
-### 日期：2022-12-05 班级视频
-<video controls width='100%' src="/assets/video/1359_1670235494.mp4"></video>
+幼儿园活动与视频已整理至独立页面：[成长记录](/yuan/)。

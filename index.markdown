@@ -1,6 +1,9 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: home
 ---
+
+欢迎来访。
+
+这里记录我的 **技术学习笔记**、**项目实践**，以及部分 **生活与成长** 内容。站点基于 Jekyll 与 Minima 主题构建，文章见下方列表。
+
+如需了解我或查看简历，请访问 [关于](/about/) 与 [简历](/resume/)。
