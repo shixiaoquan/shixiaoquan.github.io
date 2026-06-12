@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全球投资分析大盘</title>
+  <meta name="description" content="全球股市实时行情、个股分析与财经资讯">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="loading-screen" id="loading">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">正在加载市场数据...</div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-content">
+      <div class="nav-brand">
+        <span class="nav-logo">◈</span>
+        <span class="nav-title">全球投资分析大盘</span>
+      </div>
+      <div class="nav-links">
+        <a href="#indices">全球指数</a>
+        <a href="#stocks">个股分析</a>
+        <a href="#news">财经资讯</a>
+      </div>
+      <div class="nav-meta">
+        <span class="data-delay">数据延迟</span>
+        <span class="update-time">
+          <span class="pulse-dot"></span>
+          更新时间: <span id="update-time">--:--:--</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <section class="section" id="indices">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-icon">◈</span> 全球股市走势
+        </h2>
+      </div>
+      <div class="card-grid" id="indices-grid"></div>
+    </section>
+
+    <section class="section" id="stocks">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-icon">◈</span> 个股分析
+        </h2>
+      </div>
+      <div class="card-grid" id="stocks-grid"></div>
+    </section>
+
+    <section class="section" id="news">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-icon">◈</span> 重要资讯
+        </h2>
+      </div>
+      <div class="news-grid" id="news-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-disclaimer">
+        免责声明：本网站提供的数据仅供参考，不构成任何投资建议。数据可能存在延迟，请以官方交易所数据为准。
+      </div>
+      <div class="footer-links">
+        <a href="#">关于我们</a>
+        <a href="#">数据说明</a>
+        <a href="#">隐私政策</a>
+      </div>
+    </div>
+    <div class="simulated-notice">
+      模拟数据仅供展示 | 数据来源为公开市场信息 | 投资有风险，入市需谨慎
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
