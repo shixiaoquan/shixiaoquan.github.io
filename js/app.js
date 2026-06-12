@@ -1,5 +1,7 @@
 const DATA_URL = "data/market.json";
+const POLL_INTERVAL_MS = 5 * 60 * 1000;
 
+let lastUpdatedAt = null;
 let distributionChart;
 let stocksChart;
 
@@ -165,6 +167,51 @@ function renderNews(news) {
     .join("");
 }
 
+function renderRecommendations(reco) {
+  const container = document.getElementById("reco-cards");
+  const strategyEl = document.getElementById("reco-strategy");
+  const disclaimerEl = document.getElementById("reco-disclaimer");
+  if (!container) return;
+
+  if (!reco || !reco.picks || !reco.picks.length) {
+    container.innerHTML = '<p class="empty">当前没有满足策略条件的标的，空仓等待也是一种操作。</p>';
+    if (disclaimerEl && reco?.disclaimer) disclaimerEl.textContent = reco.disclaimer;
+    return;
+  }
+
+  if (strategyEl && reco.strategy) strategyEl.textContent = reco.strategy;
+  if (disclaimerEl && reco.disclaimer) disclaimerEl.textContent = reco.disclaimer;
+
+  container.innerHTML = reco.picks
+    .map(
+      (pick) => `
+        <article class="reco-card reco-card--${pick.signal}">
+          <div class="reco-card__top">
+            <div>
+              <h3>${pick.name}</h3>
+              <p class="stock-card__symbol">${pick.symbol} · ${pick.sector || ""}</p>
+            </div>
+            <div class="reco-card__badge-box">
+              <span class="reco-badge reco-badge--${pick.signal}">${pick.signalLabel}</span>
+              <span class="reco-score">评分 ${pick.score}</span>
+            </div>
+          </div>
+          <p class="stock-card__price">${formatNumber(pick.price)} <span>${pick.currency || ""}</span></p>
+          <ul class="reco-reasons">
+            ${pick.reasons.map((r) => `<li>${r}</li>`).join("")}
+          </ul>
+          <dl class="reco-plan">
+            <div><dt>买入</dt><dd>${pick.plan.entry}</dd></div>
+            <div><dt>止损</dt><dd>${pick.plan.stopLoss}</dd></div>
+            <div><dt>止盈</dt><dd>${pick.plan.target}</dd></div>
+            <div><dt>仓位</dt><dd>${pick.plan.position}</dd></div>
+          </dl>
+        </article>
+      `
+    )
+    .join("");
+}
+
 function normalizeSeries(values) {
   if (!values || values.length < 2) return [];
   const base = values[0] || 1;
@@ -173,7 +220,13 @@ function normalizeSeries(values) {
 
 function renderDistributionChart(summary) {
   const canvas = document.getElementById("distribution-chart");
-  if (distributionChart) distributionChart.destroy();
+  const chartData = [summary.up, summary.down, summary.flat];
+
+  if (distributionChart) {
+    distributionChart.data.datasets[0].data = chartData;
+    distributionChart.update("none");
+    return;
+  }
 
   distributionChart = new Chart(canvas, {
     type: "doughnut",
@@ -181,7 +234,7 @@ function renderDistributionChart(summary) {
       labels: ["上涨", "下跌", "持平"],
       datasets: [
         {
-          data: [summary.up, summary.down, summary.flat],
+          data: chartData,
           backgroundColor: ["#34d399", "#f87171", "#fbbf24"],
           borderWidth: 0,
         },
@@ -202,22 +255,30 @@ function renderDistributionChart(summary) {
 
 function renderStocksChart(stocks) {
   const canvas = document.getElementById("stocks-chart");
-  if (stocksChart) stocksChart.destroy();
-
   const colors = ["#38bdf8", "#34d399", "#f472b6"];
+  const labels = stocks[0]?.sparkline?.map((_, index) => `T-${stocks[0].sparkline.length - index - 1}`) || [];
+  const datasets = stocks.map((stock, index) => ({
+    label: stock.name,
+    data: normalizeSeries(stock.sparkline),
+    borderColor: colors[index % colors.length],
+    backgroundColor: "transparent",
+    tension: 0.3,
+    pointRadius: 0,
+    borderWidth: 2,
+  }));
+
+  if (stocksChart) {
+    stocksChart.data.labels = labels;
+    stocksChart.data.datasets = datasets;
+    stocksChart.update("none");
+    return;
+  }
+
   stocksChart = new Chart(canvas, {
     type: "line",
     data: {
-      labels: stocks[0]?.sparkline?.map((_, index) => `T-${stocks[0].sparkline.length - index - 1}`) || [],
-      datasets: stocks.map((stock, index) => ({
-        label: stock.name,
-        data: normalizeSeries(stock.sparkline),
-        borderColor: colors[index % colors.length],
-        backgroundColor: "transparent",
-        tension: 0.3,
-        pointRadius: 0,
-        borderWidth: 2,
-      })),
+      labels,
+      datasets,
     },
     options: {
       responsive: true,
@@ -249,24 +310,42 @@ function renderStocksChart(stocks) {
   });
 }
 
-async function init() {
-  try {
-    const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+function applyData(data) {
+  document.getElementById("updated-at").textContent = `最近更新：${formatDateTime(data.updatedAt)}`;
+  renderSummary(data.summary);
+  renderIndices(data.indices);
+  renderStocks(data.stocks);
+  renderNews(data.news);
+  renderRecommendations(data.recommendations);
+  renderDistributionChart(data.summary);
+  renderStocksChart(data.stocks);
+  lastUpdatedAt = data.updatedAt;
+}
 
-    document.getElementById("updated-at").textContent = `最近更新：${formatDateTime(data.updatedAt)}`;
-    renderSummary(data.summary);
-    renderIndices(data.indices);
-    renderStocks(data.stocks);
-    renderNews(data.news);
-    renderDistributionChart(data.summary);
-    renderStocksChart(data.stocks);
+async function fetchMarketData() {
+  const response = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: "no-store" });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.json();
+}
+
+async function refreshData() {
+  try {
+    const data = await fetchMarketData();
+    if (data.updatedAt === lastUpdatedAt) return;
+
+    applyData(data);
   } catch (error) {
-    document.getElementById("updated-at").textContent = "数据加载失败，请稍后刷新";
-    document.getElementById("market-mood").textContent = "离线";
+    if (lastUpdatedAt === null) {
+      document.getElementById("updated-at").textContent = "数据加载失败，请稍后重试";
+      document.getElementById("market-mood").textContent = "离线";
+    }
     console.error(error);
   }
+}
+
+async function init() {
+  await refreshData();
+  setInterval(refreshData, POLL_INTERVAL_MS);
 }
 
 document.addEventListener("DOMContentLoaded", init);

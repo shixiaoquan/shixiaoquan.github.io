@@ -294,6 +294,115 @@ a:hover {
   white-space: nowrap;
 }
 
+.reco-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.reco-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reco-card--buy {
+  border-color: rgba(52, 211, 153, 0.4);
+  background: linear-gradient(160deg, rgba(52, 211, 153, 0.08), var(--bg-card) 45%);
+}
+
+.reco-card--watch {
+  border-color: rgba(251, 191, 36, 0.35);
+  background: linear-gradient(160deg, rgba(251, 191, 36, 0.07), var(--bg-card) 45%);
+}
+
+.reco-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.reco-card__top h3 {
+  margin: 0 0 4px;
+  font-size: 1.08rem;
+}
+
+.reco-card__badge-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.reco-badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.reco-badge--buy {
+  background: var(--up-soft);
+  color: var(--up);
+}
+
+.reco-badge--watch {
+  background: rgba(251, 191, 36, 0.16);
+  color: var(--flat);
+}
+
+.reco-score {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.reco-reasons {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.reco-plan {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.reco-plan div {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.reco-plan dt {
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.reco-plan dd {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.reco-disclaimer {
+  margin: 14px 0 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
 .footer {
   margin-top: 28px;
   text-align: center;

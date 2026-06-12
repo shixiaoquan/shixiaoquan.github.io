@@ -2,7 +2,8 @@ name: Update Market Data
 
 on:
   schedule:
-    - cron: "0 1,9,17 * * *"
+    # 每 5 分钟（GitHub Actions cron 最短间隔）
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
