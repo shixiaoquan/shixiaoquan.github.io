@@ -1,1 +1,42 @@
-��`�!�ia�iejx
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全球投资分析大盘</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">全球投资分析大盘</div>
+    <div class="nav-info">
+      <span class="update-time" id="updateTime"></span>
+      <span class="data-note">模拟数据仅供展示</span>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="section">
+      <h2 class="section-title">全球股市走势</h2>
+      <div class="index-grid" id="globalIndices"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">重点个股分析</h2>
+      <div class="stock-grid" id="stockCards"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">重要财经资讯</h2>
+      <div class="news-list" id="newsList"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>数据来源于模拟数据，仅供学习参考，不构成投资建议</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
