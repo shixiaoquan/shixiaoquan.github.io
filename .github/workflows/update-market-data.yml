@@ -2,8 +2,8 @@ name: Update Market Data
 
 on:
   schedule:
-    # 北京时间 10:00、12:00、15:00（GitHub Actions 使用 UTC）
-    - cron: "0 2,4,7 * * *"
+    # 每 5 分钟（GitHub Actions cron 最短间隔）
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
