@@ -23,6 +23,15 @@
       </div>
     </header>
 
+    <section class="panel panel--wide reco-section">
+      <div class="panel__head">
+        <h2>今日荐股</h2>
+        <p id="reco-strategy">趋势跟踪 + 动量评分策略，每 5 分钟自动更新</p>
+      </div>
+      <div class="reco-cards" id="reco-cards"></div>
+      <p class="reco-disclaimer" id="reco-disclaimer"></p>
+    </section>
+
     <section class="summary" id="summary-cards" aria-label="市场概览"></section>
 
     <main class="grid">
@@ -75,15 +84,6 @@
         <div class="chart-box chart-box--tall">
           <canvas id="stocks-chart" aria-label="个股走势对比图"></canvas>
         </div>
-      </section>
-
-      <section class="panel panel--wide">
-        <div class="panel__head">
-          <h2>今日荐股</h2>
-          <p id="reco-strategy">趋势跟踪 + 动量评分策略，每 5 分钟自动更新</p>
-        </div>
-        <div class="reco-cards" id="reco-cards"></div>
-        <p class="reco-disclaimer" id="reco-disclaimer"></p>
       </section>
 
       <section class="panel panel--wide">
