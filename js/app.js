@@ -167,6 +167,51 @@ function renderNews(news) {
     .join("");
 }
 
+function renderRecommendations(reco) {
+  const container = document.getElementById("reco-cards");
+  const strategyEl = document.getElementById("reco-strategy");
+  const disclaimerEl = document.getElementById("reco-disclaimer");
+  if (!container) return;
+
+  if (!reco || !reco.picks || !reco.picks.length) {
+    container.innerHTML = '<p class="empty">当前没有满足策略条件的标的，空仓等待也是一种操作。</p>';
+    if (disclaimerEl && reco?.disclaimer) disclaimerEl.textContent = reco.disclaimer;
+    return;
+  }
+
+  if (strategyEl && reco.strategy) strategyEl.textContent = reco.strategy;
+  if (disclaimerEl && reco.disclaimer) disclaimerEl.textContent = reco.disclaimer;
+
+  container.innerHTML = reco.picks
+    .map(
+      (pick) => `
+        <article class="reco-card reco-card--${pick.signal}">
+          <div class="reco-card__top">
+            <div>
+              <h3>${pick.name}</h3>
+              <p class="stock-card__symbol">${pick.symbol} · ${pick.sector || ""}</p>
+            </div>
+            <div class="reco-card__badge-box">
+              <span class="reco-badge reco-badge--${pick.signal}">${pick.signalLabel}</span>
+              <span class="reco-score">评分 ${pick.score}</span>
+            </div>
+          </div>
+          <p class="stock-card__price">${formatNumber(pick.price)} <span>${pick.currency || ""}</span></p>
+          <ul class="reco-reasons">
+            ${pick.reasons.map((r) => `<li>${r}</li>`).join("")}
+          </ul>
+          <dl class="reco-plan">
+            <div><dt>买入</dt><dd>${pick.plan.entry}</dd></div>
+            <div><dt>止损</dt><dd>${pick.plan.stopLoss}</dd></div>
+            <div><dt>止盈</dt><dd>${pick.plan.target}</dd></div>
+            <div><dt>仓位</dt><dd>${pick.plan.position}</dd></div>
+          </dl>
+        </article>
+      `
+    )
+    .join("");
+}
+
 function normalizeSeries(values) {
   if (!values || values.length < 2) return [];
   const base = values[0] || 1;
@@ -271,6 +316,7 @@ function applyData(data) {
   renderIndices(data.indices);
   renderStocks(data.stocks);
   renderNews(data.news);
+  renderRecommendations(data.recommendations);
   renderDistributionChart(data.summary);
   renderStocksChart(data.stocks);
   lastUpdatedAt = data.updatedAt;
