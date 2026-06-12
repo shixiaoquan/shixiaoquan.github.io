@@ -1,24 +1,25 @@
-# 投资分析大盘
+# 全球投资分析大盘
 
-GitHub Pages 静态投资看板，展示全球主要指数、重点个股与财经资讯。
+个人投资分析网站，基于 GitHub Pages 发布。
+
+- 线上地址：<https://shixiaoquan.win>
 
 ## 功能
 
-- 全球主要指数每日走势（标普 500、道琼斯、纳斯达克、恒生、日经、上证）
-- 重点个股分析：小米集团、泡泡玛特、SK 海力士
-- 重要财经资讯聚合
-- GitHub Actions 每日自动更新数据
+- 全球主要股指实时走势（8大指数）
+- 重点个股分析（小米集团、泡泡玛特、SK海力士）
+- 重要财经资讯展示
+
+## 技术栈
+
+- 纯静态 HTML/CSS/JS
+- Chart.js 图表
+- GitHub Pages 托管
 
 ## 本地开发
 
-```bash
-pip install -r scripts/requirements.txt
-python scripts/fetch_data.py
-python3 -m http.server 8080
-```
+直接用浏览器打开 `index.html` 即可预览。
 
-浏览器访问 `http://localhost:8080`。
+## 说明
 
-## 原站点
-
-原 Jekyll 个人博客已备份至 `backup/jekyll-personal-site/`。
+当前为模拟数据展示，后续可接入真实行情 API。
