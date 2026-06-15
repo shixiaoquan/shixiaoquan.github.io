@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""策略回测引擎 — 用历史 K 线验证策略期望收益。"""
+"""策略回测 — 离线构建脚本，用历史 K 线验证策略并写入 data/backtest.json。"""
 
 from __future__ import annotations
 
@@ -11,17 +11,19 @@ from pathlib import Path
 import yfinance as yf
 
 from strategy_config import (
+    BACKTEST_COOLDOWN_BARS,
     BACKTEST_HOLD_DAYS,
     BACKTEST_PERIOD,
-    REWARD_RISK_RATIO,
+    PREVIOUS_BASELINE,
+    PREVIOUS_VERSION,
     STRATEGY_VERSION,
 )
+from strategy_scoring import MARKET_BENCHMARKS, compute_atr, score_series
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "backtest.json"
 
-# 每市场 2 只代表股，控制回测耗时
 BACKTEST_UNIVERSE = [
     "600519.SS",
     "601318.SS",
@@ -54,36 +56,32 @@ MARKET_MAP = {
 }
 
 
-def sma(values: list[float], period: int) -> float | None:
-    if len(values) < period:
-        return None
-    return sum(values[-period:]) / period
+def load_benchmark_series(period: str) -> dict[str, dict[str, float]]:
+    """市场基准：日期 -> 收盘价。"""
+    result: dict[str, dict[str, float]] = {}
+    for market, bench_symbol in MARKET_BENCHMARKS.items():
+        try:
+            hist = yf.Ticker(bench_symbol).history(period=period, interval="1d")
+        except Exception:
+            continue
+        if hist.empty:
+            continue
+        result[market] = {d.strftime("%Y-%m-%d"): float(row["Close"]) for d, row in hist.iterrows()}
+    return result
 
 
-def compute_atr(highs: list[float], lows: list[float], closes: list[float], period: int = 14) -> float | None:
-    if len(closes) < period + 1:
-        return None
-    trs = []
-    for i in range(1, len(closes)):
-        tr = max(highs[i] - lows[i], abs(highs[i] - closes[i - 1]), abs(lows[i] - closes[i - 1]))
-        trs.append(tr)
-    return sum(trs[-period:]) / period
+def bench_closes_up_to(
+    bench_by_date: dict[str, float], dates: list[str], idx: int
+) -> list[float]:
+    series: list[float] = []
+    for d in dates[: idx + 1]:
+        if d in bench_by_date:
+            series.append(bench_by_date[d])
+    return series
 
 
-def entry_signal(closes: list[float], idx: int) -> bool:
-    """简化入场：多头排列。"""
-    if idx < 60:
-        return False
-    slice_c = closes[: idx + 1]
-    price = slice_c[-1]
-    s20 = sma(slice_c, 20)
-    s60 = sma(slice_c, 60)
-    if not s20 or not s60:
-        return False
-    return price > s20 > s60
-
-
-def simulate_symbol(symbol: str) -> list[dict]:
+def simulate_symbol(symbol: str, bench_by_date: dict[str, float]) -> list[dict]:
+    market = MARKET_MAP.get(symbol, "美股")
     try:
         hist = yf.Ticker(symbol).history(period=BACKTEST_PERIOD, interval="1d")
     except Exception:
@@ -94,49 +92,61 @@ def simulate_symbol(symbol: str) -> list[dict]:
     closes = [float(v) for v in hist["Close"].tolist()]
     highs = [float(v) for v in hist["High"].tolist()]
     lows = [float(v) for v in hist["Low"].tolist()]
+    volumes = [float(v) for v in hist["Volume"].tolist()]
     dates = [d.strftime("%Y-%m-%d") for d in hist.index]
     trades = []
-    i = 60
+    i = 65
     while i < len(closes) - 1:
-        if not entry_signal(closes, i):
+        bench_slice = bench_closes_up_to(bench_by_date, dates, i)
+        scored = score_series(
+            closes[: i + 1],
+            highs[: i + 1],
+            lows[: i + 1],
+            volumes[: i + 1],
+            bench_slice,
+            market,
+        )
+        if not scored or scored["signal"] != "buy":
             i += 1
             continue
 
         entry = closes[i]
         entry_date = dates[i]
         atr = compute_atr(highs[: i + 1], lows[: i + 1], closes[: i + 1]) or entry * 0.02
-        stop = entry - 2 * atr
-        target = entry + 2 * atr * REWARD_RISK_RATIO
+        atr_mult = scored["atrMult"]
+        stop = scored["stopLossPrice"]
+        target = scored["targetPrice"]
         exit_price = None
         exit_date = None
         reason = None
 
         for j in range(i + 1, min(i + 1 + BACKTEST_HOLD_DAYS, len(closes))):
-            low, high, close = lows[j], highs[j], closes[j]
+            low, high = lows[j], highs[j]
             if low <= stop:
                 exit_price, exit_date, reason = stop, dates[j], "stop"
-                i = j + 1
+                i = j + 1 + BACKTEST_COOLDOWN_BARS
                 break
             if high >= target:
                 exit_price, exit_date, reason = target, dates[j], "target"
-                i = j + 1
+                i = j + 1 + BACKTEST_COOLDOWN_BARS
                 break
         else:
             j = min(i + BACKTEST_HOLD_DAYS, len(closes) - 1)
             exit_price, exit_date, reason = closes[j], dates[j], "expiry"
-            i = j + 1
+            i = j + 1 + BACKTEST_COOLDOWN_BARS
 
         ret = (exit_price - entry) / entry * 100
         trades.append(
             {
                 "symbol": symbol,
-                "market": MARKET_MAP.get(symbol, "未知"),
+                "market": market,
                 "entryDate": entry_date,
                 "exitDate": exit_date,
                 "entryPrice": round(entry, 2),
                 "exitPrice": round(exit_price, 2),
                 "returnPct": round(ret, 2),
                 "reason": reason,
+                "score": scored["score"],
                 "win": ret > 0,
             }
         )
@@ -167,7 +177,6 @@ def compute_metrics(trades: list[dict]) -> dict:
     profit_factor = round(gross_profit / gross_loss, 2) if gross_loss else 999.0
     expectancy = round(win_rate / 100 * avg_win + (1 - win_rate / 100) * avg_loss, 2)
 
-    # 权益曲线与最大回撤
     equity = 100.0
     peak = 100.0
     max_dd = 0.0
@@ -201,14 +210,16 @@ def compute_metrics(trades: list[dict]) -> dict:
 
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    bench_maps = load_benchmark_series(BACKTEST_PERIOD)
     all_trades: list[dict] = []
     by_market: dict[str, list[dict]] = {}
 
     for symbol in BACKTEST_UNIVERSE:
-        trades = simulate_symbol(symbol)
+        market = MARKET_MAP.get(symbol, "美股")
+        bench_by_date = bench_maps.get(market, {})
+        trades = simulate_symbol(symbol, bench_by_date)
         all_trades.extend(trades)
-        m = MARKET_MAP.get(symbol, "未知")
-        by_market.setdefault(m, []).extend(trades)
+        by_market.setdefault(market, []).extend(trades)
 
     metrics = compute_metrics(all_trades)
     market_metrics = {m: compute_metrics(t) for m, t in by_market.items()}
@@ -225,6 +236,16 @@ def main() -> None:
             for m, mm in market_metrics.items()
         },
         "recentTrades": sorted(all_trades, key=lambda x: x["exitDate"] or "", reverse=True)[:30],
+        "compareWith": {
+            "version": PREVIOUS_VERSION,
+            "metrics": PREVIOUS_BASELINE,
+            "delta": {
+                "winRate": round(metrics["winRate"] - PREVIOUS_BASELINE["winRate"], 1),
+                "expectancy": round(metrics["expectancy"] - PREVIOUS_BASELINE["expectancy"], 2),
+                "profitFactor": round(metrics["profitFactor"] - PREVIOUS_BASELINE["profitFactor"], 2),
+                "maxDrawdown": round(metrics["maxDrawdown"] - PREVIOUS_BASELINE["maxDrawdown"], 2),
+            },
+        },
     }
 
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")

@@ -882,6 +882,44 @@ a:hover {
   line-height: 1.5;
 }
 
+.version-compare {
+  margin-bottom: 16px;
+}
+
+.version-compare__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.version-compare__card {
+  padding: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.84rem;
+}
+
+.version-compare__card--muted {
+  opacity: 0.85;
+}
+
+.version-compare__card--delta {
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.version-compare__label {
+  margin: 0 0 6px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.version-compare__card p:last-child {
+  margin: 0;
+  color: var(--text-muted);
+}
+
 .market-metrics {
   margin-top: 16px;
   padding-top: 16px;

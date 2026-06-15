@@ -1,24 +1,43 @@
-"""策略版本与参数配置 — 所有模块共享。"""
+"""策略版本与参数 — 离线构建脚本与前端展示共用。"""
 
-STRATEGY_VERSION = "v1.0.0"
-STRATEGY_NAME = "多因子趋势策略"
+STRATEGY_VERSION = "v1.1.0"
+STRATEGY_NAME = "多因子趋势策略（强化风控）"
 
-# 评分阈值
-BUY_SCORE = 72
-WATCH_SCORE = 58
+# 上一版本基线（实验室对比用）
+PREVIOUS_VERSION = "v1.0.0"
+PREVIOUS_BASELINE = {
+    "winRate": 29.0,
+    "expectancy": -1.36,
+    "profitFactor": 0.59,
+    "maxDrawdown": -37.82,
+}
+
+# 评分阈值（v1.1 提高买入门槛）
+BUY_SCORE = 78
+WATCH_SCORE = 62
+
+# 硬过滤
+REQUIRE_BULL_MARKET = True
+MAX_RSI_ENTRY = 72
+MIN_RELATIVE_STRENGTH = 0.0
+REQUIRE_MACD_POSITIVE = True
 
 # 风控
 RISK_PER_TRADE_PCT = 2.0
-REWARD_RISK_RATIO = 2.5
+REWARD_RISK_RATIO = 2.0
 MAX_POSITION_PCT = 25.0
+ATR_STOP_STRONG = 1.5
+ATR_STOP_NORMAL = 2.0
 
 # 信号生命周期
-SIGNAL_MAX_HOLD_DAYS = 30
+SIGNAL_MAX_HOLD_DAYS = 25
 
-# 模拟账户
+# 模拟账户（仅 buy 信号开仓）
 PAPER_INITIAL_CASH = 1_000_000.0
 PAPER_MAX_POSITIONS = 3
+PAPER_BUY_ONLY = True
 
 # 回测
 BACKTEST_PERIOD = "1y"
-BACKTEST_HOLD_DAYS = 20
+BACKTEST_HOLD_DAYS = 25
+BACKTEST_COOLDOWN_BARS = 10

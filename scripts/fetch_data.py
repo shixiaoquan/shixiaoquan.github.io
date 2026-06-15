@@ -59,26 +59,22 @@ CANDIDATES = {
     "AMD": {"name": "AMD", "sector": "半导体", "currency": "USD", "market": "美股"},
 }
 
-# 各市场基准指数（用于相对强弱与市场环境判断）
-MARKET_BENCHMARKS = {
-    "A股": "000001.SS",
-    "港股": "^HSI",
-    "美股": "^GSPC",
-}
+from strategy_config import (
+    BUY_SCORE,
+    REWARD_RISK_RATIO,
+    RISK_PER_TRADE_PCT,
+    WATCH_SCORE,
+)
+from strategy_scoring import (
+    MARKET_BENCHMARKS,
+    pct_change,
+    price_digits,
+    score_series,
+    sma,
+)
 
-# 策略参数
-RISK_PER_TRADE_PCT = 2.0
-REWARD_RISK_RATIO = 2.5
-BUY_SCORE = 72
-WATCH_SCORE = 58
 MAX_PICKS_PER_MARKET = 1
 MARKETS = ("A股", "港股", "美股")
-
-
-def pct_change(current: float, previous: float) -> float | None:
-    if previous in (0, None) or current is None:
-        return None
-    return round((current - previous) / previous * 100, 2)
 
 
 def fetch_quote(symbol: str, meta: dict) -> dict:
@@ -204,69 +200,6 @@ def fetch_news() -> list[dict]:
     return articles[:20]
 
 
-def compute_rsi(closes: list[float], period: int = 14) -> float | None:
-    """Wilder 平滑 RSI。"""
-    if len(closes) < period + 1:
-        return None
-    gains, losses = [], []
-    for i in range(1, len(closes)):
-        diff = closes[i] - closes[i - 1]
-        gains.append(max(diff, 0.0))
-        losses.append(max(-diff, 0.0))
-    avg_gain = sum(gains[:period]) / period
-    avg_loss = sum(losses[:period]) / period
-    for i in range(period, len(gains)):
-        avg_gain = (avg_gain * (period - 1) + gains[i]) / period
-        avg_loss = (avg_loss * (period - 1) + losses[i]) / period
-    if avg_loss == 0:
-        return 100.0
-    rs = avg_gain / avg_loss
-    return round(100 - 100 / (1 + rs), 1)
-
-
-def compute_atr(highs: list[float], lows: list[float], closes: list[float], period: int = 14) -> float | None:
-    """平均真实波幅，用于设定止损宽度。"""
-    if len(closes) < period + 1:
-        return None
-    trs = []
-    for i in range(1, len(closes)):
-        tr = max(
-            highs[i] - lows[i],
-            abs(highs[i] - closes[i - 1]),
-            abs(lows[i] - closes[i - 1]),
-        )
-        trs.append(tr)
-    return round(sum(trs[-period:]) / period, 4)
-
-
-def sma(values: list[float], period: int) -> float | None:
-    if len(values) < period:
-        return None
-    return sum(values[-period:]) / period
-
-
-def ema(values: list[float], period: int) -> list[float]:
-    if not values:
-        return []
-    k = 2 / (period + 1)
-    result = [values[0]]
-    for v in values[1:]:
-        result.append(v * k + result[-1] * (1 - k))
-    return result
-
-
-def compute_macd(closes: list[float]) -> tuple[float | None, float | None, float | None]:
-    """返回 (MACD线, 信号线, 柱状图) 最新值。"""
-    if len(closes) < 35:
-        return None, None, None
-    ema12 = ema(closes, 12)
-    ema26 = ema(closes, 26)
-    macd_line = [a - b for a, b in zip(ema12, ema26)]
-    signal = ema(macd_line, 9)
-    hist = macd_line[-1] - signal[-1]
-    return round(macd_line[-1], 4), round(signal[-1], 4), round(hist, 4)
-
-
 def fetch_benchmark_closes() -> dict[str, list[float]]:
     cache: dict[str, list[float]] = {}
     for market, symbol in MARKET_BENCHMARKS.items():
@@ -279,32 +212,8 @@ def fetch_benchmark_closes() -> dict[str, list[float]]:
     return cache
 
 
-def benchmark_return(closes: list[float], days: int) -> float | None:
-    if len(closes) < days + 1:
-        return None
-    return pct_change(closes[-1], closes[-days - 1])
-
-
-def price_digits(price: float) -> int:
-    if price >= 1000:
-        return 2
-    if price >= 10:
-        return 2
-    return 3
-
-
 def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]]) -> dict | None:
-    """多因子趋势策略（满分 100），覆盖 A 股 / 港股 / 美股。
-
-  评分维度：
-  - 趋势结构（25）：均线多头排列 + 价格结构
-  - 动量（20）：1 月 / 3 月涨幅
-  - 相对强弱（15）：跑赢所属市场基准指数
-  - RSI（15）：趋势健康区，避免超买追高
-  - MACD（10）：金叉或柱状图转正
-  - 量能（10）：资金流入确认
-  - 市场环境（5）：所属市场指数处于多头
-  """
+    """多因子趋势策略，评分逻辑与 strategy_scoring 模块一致。"""
     market = meta.get("market", "美股")
     try:
         hist = yf.Ticker(symbol).history(period="6mo", interval="1d")
@@ -317,131 +226,22 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
     highs = [float(v) for v in hist["High"].dropna().tolist()]
     lows = [float(v) for v in hist["Low"].dropna().tolist()]
     volumes = [float(v) for v in hist["Volume"].dropna().tolist()]
-    if len(closes) < 65:
+    bench = benchmarks.get(market, [])
+
+    scored = score_series(closes, highs, lows, volumes, bench, market)
+    if not scored:
         return None
 
     price = closes[-1]
-    sma10 = sma(closes, 10)
     sma20 = sma(closes, 20)
-    sma60 = sma(closes, 60)
-    rsi = compute_rsi(closes)
-    atr = compute_atr(highs, lows, closes)
-    macd, macd_signal, macd_hist = compute_macd(closes)
-    month_chg = pct_change(price, closes[-22]) if len(closes) >= 22 else None
-    quarter_chg = pct_change(price, closes[-63]) if len(closes) >= 63 else pct_change(price, closes[0])
-
-    bench = benchmarks.get(market, [])
-    bench_month = benchmark_return(bench, 22) if bench else None
-    rel_strength = round(month_chg - bench_month, 2) if month_chg is not None and bench_month is not None else None
-
-    if not all(v is not None for v in (sma20, sma60, rsi, atr, month_chg, quarter_chg, macd, macd_signal, macd_hist)):
-        return None
-
-    score = 0.0
-    reasons: list[str] = []
-
-    # 趋势结构 25 分
-    if price > sma20:
-        score += 8
-        reasons.append("价格站上 20 日均线")
-    if price > sma60:
-        score += 7
-        reasons.append("价格站上 60 日均线")
-    if sma10 and sma10 > sma20 > sma60:
-        score += 10
-        reasons.append("均线多头排列（10日 > 20日 > 60日）")
-    elif sma20 > sma60:
-        score += 5
-        reasons.append("中期均线多头排列")
-
-    # 动量 20 分
-    if month_chg > 0:
-        score += min(month_chg * 1.2, 10)
-        reasons.append(f"近 1 月上涨 {month_chg:.1f}%")
-    if quarter_chg > 0:
-        score += min(quarter_chg * 0.4, 10)
-        reasons.append(f"近 3 月上涨 {quarter_chg:.1f}%")
-
-    # 相对强弱 15 分（跑赢所属市场才有超额收益潜力）
-    if rel_strength is not None:
-        if rel_strength > 5:
-            score += 15
-            reasons.append(f"近 1 月跑赢{market}基准 {rel_strength:.1f}%")
-        elif rel_strength > 0:
-            score += 10
-            reasons.append(f"近 1 月略强于{market}基准")
-        elif rel_strength > -3:
-            score += 4
-        else:
-            score -= 5
-            reasons.append(f"近 1 月弱于{market}基准 {rel_strength:.1f}%")
-
-    # RSI 15 分
-    if 48 <= rsi <= 62:
-        score += 15
-        reasons.append(f"RSI {rsi} 趋势健康区")
-    elif 40 <= rsi < 48:
-        score += 10
-        reasons.append(f"RSI {rsi} 偏低，关注反弹")
-    elif 62 < rsi <= 70:
-        score += 8
-        reasons.append(f"RSI {rsi} 偏强")
-    elif rsi > 75:
-        score -= 12
-        reasons.append(f"RSI {rsi} 超买，不宜追高")
-    else:
-        score += 3
-
-    # MACD 10 分
-    if macd > macd_signal and macd_hist > 0:
-        score += 10
-        reasons.append("MACD 金叉且柱状图转正")
-    elif macd_hist > 0:
-        score += 6
-        reasons.append("MACD 动能回升")
-    elif macd > macd_signal:
-        score += 4
-
-    # 量能 10 分
-    vol5, vol20 = sma(volumes, 5), sma(volumes, 20)
-    if vol5 and vol20:
-        vol_ratio = vol5 / vol20
-        if vol_ratio > 1.3:
-            score += 10
-            reasons.append("成交量显著放大")
-        elif vol_ratio > 1.05:
-            score += 6
-            reasons.append("成交量温和放大")
-
-    # 市场环境 5 分
-    if bench and len(bench) >= 60:
-        bench_price = bench[-1]
-        bench_sma60 = sma(bench, 60)
-        if bench_sma60 and bench_price > bench_sma60:
-            score += 5
-            reasons.append(f"{market}大盘处于中期上升趋势")
-        elif bench_sma60 and bench_price < bench_sma60:
-            score -= 3
-            reasons.append(f"{market}大盘偏弱，注意系统性风险")
-
-    score = round(max(min(score, 100), 0), 1)
-
-    if score >= BUY_SCORE:
-        signal, signal_label = "buy", "建议买入"
-    elif score >= WATCH_SCORE:
-        signal, signal_label = "watch", "建议观察"
-    else:
-        signal, signal_label = "hold", "暂不参与"
-
-    # 动态止损：趋势强用 1.5 倍 ATR，一般趋势 2 倍 ATR
-    atr_mult = 1.5 if score >= BUY_SCORE and sma10 and sma10 > sma20 > sma60 else 2.0
-    stop_loss = round(price - atr_mult * atr, 2)
-    target = round(price + atr_mult * atr * REWARD_RISK_RATIO, 2)
-    stop_pct = round((price - stop_loss) / price * 100, 1)
+    stop_loss = scored["stopLossPrice"]
+    target = scored["targetPrice"]
+    atr_mult = scored["atrMult"]
+    stop_pct = round((price - stop_loss) / price * 100, 1) if price else 0
     position_pct = round(min(RISK_PER_TRADE_PCT / stop_pct * 100, 25), 1) if stop_pct > 0 else 0
-
     digits = price_digits(price)
-    pullback_zone = round(sma20 * 0.98, digits)
+    pullback_zone = round(sma20 * 0.98, digits) if sma20 else price
+
     plan = {
         "entry": (
             f"现价 {price:.{digits}f} 轻仓试探；回踩 20 日均线 {sma20:.{digits}f} "
@@ -462,13 +262,13 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
         "sector": meta.get("sector"),
         "currency": meta.get("currency", "USD"),
         "price": round(price, 2),
-        "score": score,
-        "signal": signal,
-        "signalLabel": signal_label,
-        "rsi": rsi,
-        "monthChangePct": month_chg,
-        "relativeStrength": rel_strength,
-        "reasons": reasons[:5],
+        "score": scored["score"],
+        "signal": scored["signal"],
+        "signalLabel": scored["signalLabel"],
+        "rsi": scored["rsi"],
+        "monthChangePct": scored["monthChangePct"],
+        "relativeStrength": scored["relativeStrength"],
+        "reasons": scored["reasons"],
         "plan": plan,
         "stopLossPrice": stop_loss,
         "targetPrice": target,

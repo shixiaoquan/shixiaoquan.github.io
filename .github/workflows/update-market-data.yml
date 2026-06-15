@@ -1,5 +1,7 @@
 name: Update Market Data
 
+# 纯静态站数据构建：定时拉取行情并写入 data/*.json，无在线后端 API
+
 on:
   schedule:
     # 每 5 分钟（GitHub Actions cron 最短间隔）
