@@ -2,6 +2,7 @@ const DATA_URL = "data/market.json";
 const HISTORY_URL = "data/reco_history.json";
 const WENCAI_URL = "data/wencai.json";
 const BACKTEST_URL = "data/backtest.json";
+const SIGNALS_URL = "data/signals.json";
 const PAPER_URL = "data/paper_account.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
 const PARAM_SWEEP_URL = "data/param_sweep.json";
@@ -1410,9 +1411,14 @@ function applyLabExtras(payload) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
-  if (!response.ok) return null;
-  return response.json();
+  try {
+    const response = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (error) {
+    console.error(`fetch failed: ${url}`, error);
+    return null;
+  }
 }
 
 function tradingDataStamp(signals, backtest, paper, diagnostics) {
@@ -1437,7 +1443,7 @@ async function refreshTradingData() {
     lastTradingUpdatedAt = stamp;
   } catch (error) {
     console.error("trading data load failed", error);
-    if (activeTab === "paper") renderPaperPanel(null);
+    if (activeTab === "paper" && !paperData) renderPaperPanel(null);
   }
 }
 
