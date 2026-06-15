@@ -80,7 +80,12 @@ def bench_closes_up_to(
     return series
 
 
-def simulate_symbol(symbol: str, bench_by_date: dict[str, float]) -> list[dict]:
+def simulate_symbol(
+    symbol: str,
+    bench_by_date: dict[str, float],
+    buy_score: float | None = None,
+    watch_score: float | None = None,
+) -> list[dict]:
     market = MARKET_MAP.get(symbol, "美股")
     try:
         hist = yf.Ticker(symbol).history(period=BACKTEST_PERIOD, interval="1d")
@@ -105,6 +110,8 @@ def simulate_symbol(symbol: str, bench_by_date: dict[str, float]) -> list[dict]:
             volumes[: i + 1],
             bench_slice,
             market,
+            buy_score=buy_score,
+            watch_score=watch_score,
         )
         if not scored or scored["signal"] != "buy":
             i += 1
@@ -208,8 +215,11 @@ def compute_metrics(trades: list[dict]) -> dict:
     }
 
 
-def main() -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
+def run_backtest(
+    buy_score: float | None = None,
+    watch_score: float | None = None,
+) -> tuple[list[dict], dict, dict[str, dict]]:
+    """运行回测，返回 (全部交易, 汇总指标, 分市场指标)。"""
     bench_maps = load_benchmark_series(BACKTEST_PERIOD)
     all_trades: list[dict] = []
     by_market: dict[str, list[dict]] = {}
@@ -217,12 +227,18 @@ def main() -> None:
     for symbol in BACKTEST_UNIVERSE:
         market = MARKET_MAP.get(symbol, "美股")
         bench_by_date = bench_maps.get(market, {})
-        trades = simulate_symbol(symbol, bench_by_date)
+        trades = simulate_symbol(symbol, bench_by_date, buy_score, watch_score)
         all_trades.extend(trades)
         by_market.setdefault(market, []).extend(trades)
 
     metrics = compute_metrics(all_trades)
     market_metrics = {m: compute_metrics(t) for m, t in by_market.items()}
+    return all_trades, metrics, market_metrics
+
+
+def main() -> None:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    all_trades, metrics, market_metrics = run_backtest()
 
     payload = {
         "updatedAt": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"),

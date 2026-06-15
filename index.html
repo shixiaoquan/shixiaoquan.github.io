@@ -168,7 +168,20 @@
 
     <!-- 复盘 -->
     <section id="panel-review" class="tab-panel" role="tabpanel" hidden>
-      <section class="review-stats" id="review-stats"></section>
+      <section class="panel panel--inline">
+        <div class="panel__head">
+          <h2>信号复盘</h2>
+          <p id="review-signal-summary">跟踪荐股信号从开仓到平仓的胜率与收益</p>
+        </div>
+        <div class="review-stats" id="review-signal-stats"></div>
+      </section>
+      <section class="panel panel--inline">
+        <div class="panel__head">
+          <h2>荐股存档统计</h2>
+          <p id="review-reco-hint">历史荐股快照与现价对比</p>
+        </div>
+        <section class="review-stats" id="review-stats"></section>
+      </section>
       <section class="panel panel--wide">
         <div class="panel__head">
           <h2>信号生命周期</h2>
@@ -233,6 +246,36 @@
           <div id="lab-by-market"></div>
         </section>
       </div>
+      <section class="panel panel--wide">
+        <div class="panel__head">
+          <h2>参数网格搜索</h2>
+          <p id="param-sweep-summary">每周自动扫描 BUY / WATCH 评分阈值</p>
+        </div>
+        <p class="param-sweep__recommendation" id="param-sweep-recommendation" hidden></p>
+        <div class="table-wrap">
+          <table class="data-table param-sweep-table" id="param-sweep-table">
+            <thead>
+              <tr>
+                <th>BUY</th>
+                <th>WATCH</th>
+                <th>交易数</th>
+                <th>胜率</th>
+                <th>期望值</th>
+                <th>盈亏比</th>
+                <th>最大回撤</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel panel--wide">
+        <div class="panel__head">
+          <h2>策略版本档案</h2>
+          <p id="strategy-versions-summary">历次参数变更记录</p>
+        </div>
+        <div class="strategy-versions" id="strategy-versions-list"></div>
+      </section>
       <section class="panel panel--wide">
         <div class="panel__head">
           <h2>回测交易记录</h2>

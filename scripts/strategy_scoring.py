@@ -108,6 +108,8 @@ def score_series(
     volumes: list[float],
     bench_closes: list[float],
     market: str = "美股",
+    buy_score: float | None = None,
+    watch_score: float | None = None,
 ) -> dict | None:
     """对截至最新一根 K 线的序列打分，与实盘荐股逻辑一致。"""
     if len(closes) < 65:
@@ -212,14 +214,17 @@ def score_series(
     if not (sma10 and sma10 > sma20 > sma60):
         hard_ok = False
 
-    if score >= BUY_SCORE and hard_ok:
+    buy_threshold = buy_score if buy_score is not None else BUY_SCORE
+    watch_threshold = watch_score if watch_score is not None else WATCH_SCORE
+
+    if score >= buy_threshold and hard_ok:
         signal, signal_label = "buy", "建议买入"
-    elif score >= WATCH_SCORE:
+    elif score >= watch_threshold:
         signal, signal_label = "watch", "建议观察"
     else:
         signal, signal_label = "hold", "暂不参与"
 
-    strong_trend = bool(sma10 and sma10 > sma20 > sma60 and score >= BUY_SCORE)
+    strong_trend = bool(sma10 and sma10 > sma20 > sma60 and score >= buy_threshold)
     atr_mult = ATR_STOP_STRONG if strong_trend else ATR_STOP_NORMAL
     stop_loss = round(price - atr_mult * atr, 2)
     target = round(price + atr_mult * atr * REWARD_RISK_RATIO, 2)

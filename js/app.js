@@ -4,6 +4,8 @@ const WENCAI_URL = "data/wencai.json";
 const BACKTEST_URL = "data/backtest.json";
 const PAPER_URL = "data/paper_account.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
+const PARAM_SWEEP_URL = "data/param_sweep.json";
+const STRATEGY_VERSIONS_URL = "data/strategy_versions.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
 
 let lastUpdatedAt = null;
@@ -15,6 +17,8 @@ let signalsData = null;
 let backtestData = null;
 let paperData = null;
 let wencaiData = null;
+let paramSweepData = null;
+let strategyVersionsData = null;
 let lastWencaiUpdatedAt = null;
 let yahooNews = [];
 let newsFilter = "all";
@@ -494,6 +498,50 @@ function buildReviewStats(history, prices) {
   };
 }
 
+function renderReviewSignalStats(diag) {
+  const el = document.getElementById("review-signal-stats");
+  const summaryEl = document.getElementById("review-signal-summary");
+  if (!el) return;
+
+  const summary = diag?.summary || {};
+  const closed = summary.closedSignals ?? 0;
+  const hasStats = closed > 0 && summary.winRate !== null && summary.winRate !== undefined;
+
+  if (summaryEl) {
+    summaryEl.textContent = closed
+      ? `已平仓 ${closed} 笔 · 持仓 ${summary.openSignals ?? 0} 笔 · 策略 ${diag?.strategyVersion || "--"}`
+      : "信号积累中，平仓后将统计胜率与平均收益";
+  }
+
+  renderStatCards("review-signal-stats", [
+    {
+      label: "信号胜率",
+      value: hasStats ? `${summary.winRate}%` : "--",
+      hint: closed ? `已平仓 ${closed} 笔` : "暂无平仓信号",
+    },
+    {
+      label: "平均收益",
+      value: hasStats ? formatPct(summary.avgReturn) : "--",
+      valueClass: hasStats ? changeClass(summary.avgReturn) : "",
+      hint: "单笔信号收益率",
+    },
+    {
+      label: "模拟盘收益",
+      value: formatPct(summary.paperReturn),
+      valueClass: changeClass(summary.paperReturn),
+      hint: "虚拟账户总回报",
+    },
+    {
+      label: "回测期望值",
+      value: summary.backtestExpectancy !== undefined && summary.backtestExpectancy !== null
+        ? `${formatNumber(summary.backtestExpectancy)}%`
+        : "--",
+      valueClass: changeClass(summary.backtestExpectancy),
+      hint: "历史 K 线验证",
+    },
+  ]);
+}
+
 function renderReviewStats(stats) {
   const el = document.getElementById("review-stats");
   if (!el) return;
@@ -915,6 +963,94 @@ function renderPaperPanel(paper) {
   requestAnimationFrame(() => renderPaperChart(paper.equityCurve, true));
 }
 
+function renderParamSweep(data) {
+  const summaryEl = document.getElementById("param-sweep-summary");
+  const recEl = document.getElementById("param-sweep-recommendation");
+  const tbody = document.querySelector("#param-sweep-table tbody");
+  if (!tbody) return;
+
+  if (!data?.results?.length) {
+    if (summaryEl) summaryEl.textContent = "参数扫描数据尚未生成，每周日自动运行";
+    if (recEl) recEl.hidden = true;
+    tbody.innerHTML = '<tr><td colspan="7" class="empty">暂无扫描结果</td></tr>';
+    return;
+  }
+
+  const current = data.current;
+  const best = data.best;
+  if (summaryEl) {
+    summaryEl.textContent = `回测 ${data.period || "1y"} · ${data.results.length} 组组合 · 最少 ${data.minTrades ?? 8} 笔交易`;
+  }
+  if (recEl && data.recommendation) {
+    recEl.textContent = data.recommendation;
+    recEl.hidden = false;
+  }
+
+  const isCurrent = (row) =>
+    current && row.buyScore === current.buyScore && row.watchScore === current.watchScore;
+  const isBest = (row) =>
+    best && row.buyScore === best.buyScore && row.watchScore === best.watchScore;
+
+  tbody.innerHTML = data.results
+    .slice(0, 15)
+    .map((row) => {
+      const tags = [];
+      if (isCurrent(row)) tags.push('<span class="param-tag param-tag--current">当前</span>');
+      if (isBest(row)) tags.push('<span class="param-tag param-tag--best">最优</span>');
+      return `
+      <tr class="${isBest(row) ? "param-sweep-row--best" : ""}">
+        <td>${row.buyScore}${tags.length ? ` ${tags.join(" ")}` : ""}</td>
+        <td>${row.watchScore}</td>
+        <td>${row.totalTrades}</td>
+        <td>${row.winRate}%</td>
+        <td class="change ${changeClass(row.expectancy)}">${formatNumber(row.expectancy)}%</td>
+        <td>${row.profitFactor}</td>
+        <td>${row.maxDrawdown}%</td>
+      </tr>
+    `;
+    })
+    .join("");
+}
+
+function renderStrategyVersions(data) {
+  const el = document.getElementById("strategy-versions-list");
+  const summaryEl = document.getElementById("strategy-versions-summary");
+  if (!el) return;
+
+  const versions = data?.versions || [];
+  if (summaryEl) {
+    summaryEl.textContent = versions.length
+      ? `当前 ${data.current || "--"} · 共 ${versions.length} 个版本`
+      : "暂无版本记录";
+  }
+  if (!versions.length) {
+    el.innerHTML = '<p class="empty">暂无策略版本档案</p>';
+    return;
+  }
+
+  el.innerHTML = [...versions]
+    .reverse()
+    .map((v) => {
+      const params = v.params || {};
+      const paramStr = Object.entries(params)
+        .map(([k, val]) => `${k}=${val}`)
+        .join(" · ");
+      const isCurrent = v.version === data.current;
+      return `
+      <article class="strategy-version ${isCurrent ? "strategy-version--current" : ""}">
+        <div class="strategy-version__head">
+          <strong>${v.version}</strong>
+          ${isCurrent ? '<span class="param-tag param-tag--current">当前</span>' : ""}
+          <span class="strategy-version__date">${formatDateTime(v.createdAt).slice(0, 10)}</span>
+        </div>
+        <p class="strategy-version__name">${v.name || ""}</p>
+        <p class="strategy-version__params">${paramStr}</p>
+      </article>
+    `;
+    })
+    .join("");
+}
+
 function renderLabVersionCompare(backtest) {
   const el = document.getElementById("lab-version-compare");
   if (!el || !backtest?.compareWith) {
@@ -1256,7 +1392,20 @@ function applyTradingData(payload) {
   if (diagnostics) {
     diagnosticsData = diagnostics;
     renderDiagnostics(diagnostics);
+    renderReviewSignalStats(diagnostics);
     renderCockpitSystem(diagnostics, backtestData);
+  }
+}
+
+function applyLabExtras(payload) {
+  const { paramSweep, strategyVersions } = payload;
+  if (paramSweep) {
+    paramSweepData = paramSweep;
+    renderParamSweep(paramSweep);
+  }
+  if (strategyVersions) {
+    strategyVersionsData = strategyVersions;
+    renderStrategyVersions(strategyVersions);
   }
 }
 
@@ -1272,16 +1421,19 @@ function tradingDataStamp(signals, backtest, paper, diagnostics) {
 
 async function refreshTradingData() {
   try {
-    const [signals, backtest, paper, diagnostics] = await Promise.all([
+    const [signals, backtest, paper, diagnostics, paramSweep, strategyVersions] = await Promise.all([
       fetchJson(SIGNALS_URL),
       fetchJson(BACKTEST_URL),
       fetchJson(PAPER_URL),
       fetchJson(DIAGNOSTICS_URL),
+      fetchJson(PARAM_SWEEP_URL),
+      fetchJson(STRATEGY_VERSIONS_URL),
     ]);
     const stamp = tradingDataStamp(signals, backtest, paper, diagnostics);
     const needsPaper = !paperData && paper;
     if (stamp && stamp === lastTradingUpdatedAt && !needsPaper) return;
     applyTradingData({ signals, backtest, paper, diagnostics });
+    applyLabExtras({ paramSweep, strategyVersions });
     lastTradingUpdatedAt = stamp;
   } catch (error) {
     console.error("trading data load failed", error);
