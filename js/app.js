@@ -124,8 +124,8 @@ function switchTab(tabId, options = {}) {
   if (tabId === "lab" && backtestData) {
     renderBacktestChart(backtestData.equityCurve);
   }
-  if (tabId === "paper" && paperData) {
-    renderPaperChart(paperData.equityCurve);
+  if (tabId === "paper") {
+    renderPaperPanel(paperData);
   }
   if (tabId === "market" && wencaiData) {
     renderWencaiPanels(wencaiData);
@@ -809,18 +809,23 @@ function renderLabMetrics(backtest) {
   ]);
 }
 
-function renderEquityChart(canvasId, curve, chartRef, label) {
+function renderEquityChart(canvasId, curve, chartRef, label, forceRecreate = false) {
   const canvas = document.getElementById(canvasId);
-  if (!canvas || !curve?.length) return;
+  if (!canvas || !curve?.length) return chartRef;
 
   const labels = curve.map((p) => (p.date || p.time || "").slice(0, 10));
   const values = curve.map((p) => p.value ?? p.equity);
 
-  if (chartRef) {
+  if (chartRef && !forceRecreate) {
     chartRef.data.labels = labels;
     chartRef.data.datasets[0].data = values;
     chartRef.update("none");
-    return;
+    if (typeof chartRef.resize === "function") chartRef.resize();
+    return chartRef;
+  }
+
+  if (chartRef) {
+    chartRef.destroy();
   }
 
   const chart = new Chart(canvas, {
@@ -853,14 +858,32 @@ function renderEquityChart(canvasId, curve, chartRef, label) {
 
   if (canvasId === "backtest-chart") backtestChart = chart;
   if (canvasId === "paper-chart") paperChart = chart;
+  return chart;
 }
 
 function renderBacktestChart(curve) {
-  renderEquityChart("backtest-chart", curve, backtestChart, "回测净值");
+  backtestChart = renderEquityChart("backtest-chart", curve, backtestChart, "回测净值");
 }
 
-function renderPaperChart(curve) {
-  renderEquityChart("paper-chart", curve, paperChart, "账户净值");
+function renderPaperChart(curve, forceRecreate = false) {
+  paperChart = renderEquityChart("paper-chart", curve, paperChart, "账户净值", forceRecreate);
+}
+
+function renderPaperPanel(paper) {
+  if (!paper) {
+    renderStatCards("paper-stats", [
+      { label: "模拟盘", value: "加载中…", hint: "正在读取 paper_account.json" },
+    ]);
+    const positionsEl = document.getElementById("paper-positions");
+    if (positionsEl) positionsEl.innerHTML = '<p class="empty">数据加载中…</p>';
+    const tbody = document.querySelector("#paper-trades-table tbody");
+    if (tbody) tbody.innerHTML = '<tr><td colspan="7" class="empty">数据加载中…</td></tr>';
+    return;
+  }
+  renderPaperStats(paper);
+  renderPaperPositions(paper.positions);
+  renderPaperTrades(paper.trades);
+  requestAnimationFrame(() => renderPaperChart(paper.equityCurve, true));
 }
 
 function renderLabVersionCompare(backtest) {
@@ -1199,23 +1222,23 @@ function applyTradingData(payload) {
   }
   if (paper) {
     paperData = paper;
-    renderPaperStats(paper);
-    renderPaperPositions(paper.positions);
-    renderPaperTrades(paper.trades);
-    if (activeTab === "paper") renderPaperChart(paper.equityCurve);
+    renderPaperPanel(paper);
   }
   if (diagnostics) {
     diagnosticsData = diagnostics;
     renderDiagnostics(diagnostics);
     renderCockpitSystem(diagnostics, backtestData);
   }
-  lastTradingUpdatedAt = signals?.updatedAt || backtest?.updatedAt || paper?.updatedAt;
 }
 
 async function fetchJson(url) {
   const response = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
   if (!response.ok) return null;
   return response.json();
+}
+
+function tradingDataStamp(signals, backtest, paper, diagnostics) {
+  return [signals?.updatedAt, backtest?.updatedAt, paper?.updatedAt, diagnostics?.updatedAt].join("|");
 }
 
 async function refreshTradingData() {
@@ -1226,11 +1249,14 @@ async function refreshTradingData() {
       fetchJson(PAPER_URL),
       fetchJson(DIAGNOSTICS_URL),
     ]);
-    const updatedAt = signals?.updatedAt || backtest?.updatedAt;
-    if (updatedAt && updatedAt === lastTradingUpdatedAt) return;
+    const stamp = tradingDataStamp(signals, backtest, paper, diagnostics);
+    const needsPaper = !paperData && paper;
+    if (stamp && stamp === lastTradingUpdatedAt && !needsPaper) return;
     applyTradingData({ signals, backtest, paper, diagnostics });
+    lastTradingUpdatedAt = stamp;
   } catch (error) {
     console.error("trading data load failed", error);
+    if (activeTab === "paper") renderPaperPanel(null);
   }
 }
 
@@ -1286,6 +1312,7 @@ function applyData(data) {
 
   if (recoHistory) renderRecoHistory(recoHistory);
   if (paperData) renderPaperPositions(paperData.positions);
+  if (activeTab === "paper") renderPaperPanel(paperData);
   lastUpdatedAt = data.updatedAt;
 }
 
@@ -1320,6 +1347,15 @@ async function init() {
   suppressTabRoute = false;
 
   await Promise.all([refreshData(), refreshHistory(), refreshTradingData(), refreshWencaiData()]);
+
+  if (!paperData) {
+    lastTradingUpdatedAt = null;
+    await refreshTradingData();
+  }
+  if (activeTab === "paper") {
+    renderPaperPanel(paperData);
+  }
+
   setInterval(refreshData, POLL_INTERVAL_MS);
   setInterval(refreshHistory, POLL_INTERVAL_MS);
   setInterval(refreshTradingData, POLL_INTERVAL_MS);
