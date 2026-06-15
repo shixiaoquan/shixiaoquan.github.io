@@ -757,6 +757,33 @@ function renderSignalsTable(data) {
     .join("");
 }
 
+function renderCockpitPaper(paper) {
+  const hintEl = document.getElementById("cockpit-paper-hint");
+  if (!paper) {
+    renderStatCards("cockpit-paper", [
+      { label: "模拟盘", value: "加载中…" },
+    ]);
+    if (hintEl) hintEl.textContent = "虚拟账户按信号自动交易";
+    return;
+  }
+  const positions = paper.positions || [];
+  if (hintEl) {
+    hintEl.textContent = positions.length
+      ? `${positions.length} 只持仓 · 更新 ${formatDateTime(paper.updatedAt).slice(11)}`
+      : "当前空仓";
+  }
+  renderStatCards("cockpit-paper", [
+    { label: "账户净值", value: formatNumber(paper.equity) },
+    {
+      label: "总收益率",
+      value: formatPct(paper.returnPct),
+      valueClass: changeClass(paper.returnPct),
+    },
+    { label: "可用现金", value: formatNumber(paper.cash) },
+    { label: "持仓市值", value: formatNumber((paper.equity || 0) - (paper.cash || 0)) },
+  ]);
+}
+
 function renderCockpitSystem(diag, backtest) {
   const el = document.getElementById("cockpit-system");
   if (!el) return;
@@ -874,6 +901,7 @@ function renderPaperPanel(paper) {
     renderStatCards("paper-stats", [
       { label: "模拟盘", value: "加载中…", hint: "正在读取 paper_account.json" },
     ]);
+    renderCockpitPaper(null);
     const positionsEl = document.getElementById("paper-positions");
     if (positionsEl) positionsEl.innerHTML = '<p class="empty">数据加载中…</p>';
     const tbody = document.querySelector("#paper-trades-table tbody");
@@ -883,6 +911,7 @@ function renderPaperPanel(paper) {
   renderPaperStats(paper);
   renderPaperPositions(paper.positions);
   renderPaperTrades(paper.trades);
+  renderCockpitPaper(paper);
   requestAnimationFrame(() => renderPaperChart(paper.equityCurve, true));
 }
 

@@ -1,20 +1,24 @@
-name: Update Market Data
+name: Update Wencai Data
 
-# 纯静态站数据构建：每 5 分钟更新行情、信号与模拟盘（问财见 update-wencai-data）
+# 问财拉取较慢，单独每小时运行；行情与模拟盘仍每 5 分钟更新
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "15 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  wencai:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
       - uses: actions/setup-python@v5
         with:
@@ -23,20 +27,19 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
-      - name: Fetch market data
-        run: python scripts/fetch_data.py
-
-      - name: Run trading engine
-        run: python scripts/trading_engine.py
+      - name: Fetch wencai data
+        env:
+          WENCAI_COOKIE: ${{ secrets.WENCAI_COOKIE }}
+        run: python scripts/fetch_wencai.py
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/wencai.json
           if git diff --staged --quiet; then
-            echo "No data changes."
+            echo "No wencai changes."
           else
-            git commit -m "chore: update market data"
+            git commit -m "chore: update wencai data"
             git push
           fi
