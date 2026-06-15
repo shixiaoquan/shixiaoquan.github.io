@@ -1,6 +1,6 @@
 const DATA_URL = "data/market.json";
 const HISTORY_URL = "data/reco_history.json";
-const SIGNALS_URL = "data/signals.json";
+const WENCAI_URL = "data/wencai.json";
 const BACKTEST_URL = "data/backtest.json";
 const PAPER_URL = "data/paper_account.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
@@ -14,7 +14,8 @@ let marketData = null;
 let signalsData = null;
 let backtestData = null;
 let paperData = null;
-let diagnosticsData = null;
+let wencaiData = null;
+let lastWencaiUpdatedAt = null;
 let quoteMap = {};
 let activeTab = "cockpit";
 let distributionChart;
@@ -797,6 +798,135 @@ function renderLabVersionCompare(backtest) {
   `;
 }
 
+function formatFlow(value) {
+  if (value === null || value === undefined) return "--";
+  const abs = Math.abs(value);
+  if (abs >= 1e8) return `${(value / 1e8).toFixed(2)}亿`;
+  if (abs >= 1e4) return `${(value / 1e4).toFixed(0)}万`;
+  return String(value);
+}
+
+function renderWencaiBanner(data, containerId = "cockpit-wencai") {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  if (!data || data.status === "error") {
+    el.innerHTML = data?.message
+      ? `<p class="wencai-hint">${data.message}</p>`
+      : "";
+    return;
+  }
+
+  const s = data.sentiment || {};
+  const up = s.limitUp != null ? `${s.limitUp}${s.limitUpNote ? "+" : ""}` : "--";
+  const down = s.limitDown != null ? `${s.limitDown}${s.limitDownNote ? "+" : ""}` : "--";
+  const moodClass = s.mood === "偏多" ? "up" : s.mood === "偏空" ? "down" : "flat";
+
+  el.innerHTML = `
+    <div class="wencai-banner__inner">
+      <div class="wencai-banner__brand">
+        <span class="wencai-badge">问财</span>
+        <span class="wencai-banner__title">A股情绪 · ${s.mood || "—"}</span>
+      </div>
+      <div class="wencai-banner__stats">
+        <span>涨停 <strong class="change change--up">${up}</strong></span>
+        <span>跌停 <strong class="change change--down">${down}</strong></span>
+        <span class="wencai-banner__time">${formatDateTime(data.updatedAt)}</span>
+      </div>
+      <button type="button" class="link-btn" data-goto-tab="market">详情 →</button>
+    </div>
+  `;
+}
+
+function renderWencaiPanels(data, containerId = "market-wencai") {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  if (!data || (data.status !== "ok" && data.status !== "empty")) {
+    el.innerHTML = `<p class="empty">${data?.message || "问财数据加载中…"}</p>`;
+    return;
+  }
+
+  const screens = data.screens || [];
+  if (!screens.length) {
+    el.innerHTML = '<p class="empty">暂无问财数据</p>';
+    return;
+  }
+
+  el.innerHTML = `
+    <div class="panel__head">
+      <h2>问财 A股洞察</h2>
+      <p>同花顺问财自然语言筛选 · ${formatDateTime(data.updatedAt)}</p>
+    </div>
+    <div class="wencai-grid">
+      ${screens
+        .map((screen) => {
+          const countHtml =
+            screen.count != null
+              ? `<span class="wencai-screen__count">共 ${screen.count}${screen.countNote ? "+" : ""} 只</span>`
+              : "";
+          const rows =
+            screen.items?.length > 0
+              ? screen.items
+                  .map(
+                    (item) => `
+              <tr>
+                <td><strong>${item.name}</strong><br><span class="stock-card__symbol">${item.code}</span></td>
+                <td>${formatNumber(item.price)}</td>
+                <td class="change ${changeClass(item.changePct)}">${formatPct(item.changePct)}</td>
+                <td>${item.rank || (item.flow != null ? formatFlow(item.flow) : "--")}</td>
+              </tr>
+            `
+                  )
+                  .join("")
+              : '<tr><td colspan="4" class="empty">暂无结果</td></tr>';
+          return `
+          <article class="wencai-screen">
+            <header class="wencai-screen__head">
+              <h3>${screen.title}</h3>
+              ${countHtml}
+              <span class="wencai-screen__query">${screen.query}</span>
+            </header>
+            <div class="table-wrap">
+              <table class="data-table data-table--compact">
+                <thead>
+                  <tr>
+                    <th>标的</th>
+                    <th>现价</th>
+                    <th>涨跌</th>
+                    <th>${screen.id === "main_flow" ? "主力流向" : "排名/流向"}</th>
+                  </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+          </article>
+        `;
+        })
+        .join("")}
+    </div>
+  `;
+}
+
+function applyWencaiData(data) {
+  if (!data) return;
+  wencaiData = data;
+  renderWencaiBanner(data);
+  renderWencaiPanels(data);
+  lastWencaiUpdatedAt = data.updatedAt;
+}
+
+async function refreshWencaiData() {
+  try {
+    const data = await fetchJson(WENCAI_URL);
+    if (!data) return;
+    if (data.updatedAt && data.updatedAt === lastWencaiUpdatedAt) return;
+    applyWencaiData(data);
+  } catch (error) {
+    console.error("wencai load failed", error);
+  }
+}
+
 function renderDiagnostics(diag) {
   const list = document.getElementById("diagnostics-suggestions");
   if (!list) return;
@@ -1068,10 +1198,11 @@ async function refreshData() {
 async function init() {
   setupTabs();
   setupHistoryFilters();
-  await Promise.all([refreshData(), refreshHistory(), refreshTradingData()]);
+  await Promise.all([refreshData(), refreshHistory(), refreshTradingData(), refreshWencaiData()]);
   setInterval(refreshData, POLL_INTERVAL_MS);
   setInterval(refreshHistory, POLL_INTERVAL_MS);
   setInterval(refreshTradingData, POLL_INTERVAL_MS);
+  setInterval(refreshWencaiData, POLL_INTERVAL_MS);
 }
 
 document.addEventListener("DOMContentLoaded", init);
