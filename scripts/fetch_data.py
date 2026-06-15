@@ -31,7 +31,7 @@ STOCKS = {
     "000660.KS": {"name": "SK 海力士", "sector": "半导体", "currency": "KRW"},
 }
 
-NEWS_TICKERS = ["^GSPC", "1810.HK", "9992.HK", "000660.KS"]
+NEWS_TICKERS = ["^GSPC", "^IXIC", "^HSI", "000001.SS", "1810.HK", "600519.SS", "AAPL", "NVDA"]
 
 # 荐股候选池：按市场分组，覆盖 A 股 / 港股 / 美股
 CANDIDATES = {
@@ -134,6 +134,55 @@ def fetch_quote(symbol: str, meta: dict) -> dict:
     }
 
 
+
+def normalize_news_item(item: dict, symbol: str) -> dict | None:
+    """兼容 Yahoo Finance 新旧两种 news 返回格式。"""
+    content = item.get("content") if isinstance(item.get("content"), dict) else item
+
+    title = (content.get("title") or item.get("title") or "").strip()
+    if not title:
+        return None
+
+    link = ""
+    for key in ("clickThroughUrl", "canonicalUrl"):
+        url_obj = content.get(key) or item.get(key)
+        if isinstance(url_obj, dict) and url_obj.get("url"):
+            link = url_obj["url"]
+            break
+    if not link:
+        link = content.get("link") or content.get("url") or item.get("link") or item.get("url") or ""
+
+    publisher = "Yahoo Finance"
+    provider = content.get("provider") or item.get("publisher")
+    if isinstance(provider, dict):
+        publisher = provider.get("displayName") or publisher
+    elif isinstance(provider, str):
+        publisher = provider
+
+    published_iso = None
+    pub_date = content.get("pubDate") or content.get("displayTime")
+    if pub_date:
+        try:
+            published_iso = datetime.fromisoformat(pub_date.replace("Z", "+00:00")).isoformat()
+        except ValueError:
+            published_iso = pub_date
+    else:
+        published = item.get("providerPublishTime")
+        if published:
+            published_iso = datetime.fromtimestamp(published, tz=timezone.utc).isoformat()
+
+    summary = (content.get("summary") or content.get("description") or "").strip()
+
+    return {
+        "title": title,
+        "link": link,
+        "publisher": publisher,
+        "related": symbol,
+        "publishedAt": published_iso,
+        "summary": summary[:200] if summary else "",
+    }
+
+
 def fetch_news() -> list[dict]:
     seen: set[str] = set()
     articles: list[dict] = []
@@ -144,28 +193,15 @@ def fetch_news() -> list[dict]:
         except Exception:
             items = []
 
-        for item in items[:6]:
-            title = item.get("title", "").strip()
-            link = item.get("link") or item.get("url") or ""
-            if not title or title in seen:
+        for item in items[:8]:
+            article = normalize_news_item(item, symbol)
+            if not article or article["title"] in seen:
                 continue
-            seen.add(title)
-            published = item.get("providerPublishTime")
-            published_iso = None
-            if published:
-                published_iso = datetime.fromtimestamp(published, tz=timezone.utc).isoformat()
-            articles.append(
-                {
-                    "title": title,
-                    "link": link,
-                    "publisher": item.get("publisher", "Yahoo Finance"),
-                    "related": symbol,
-                    "publishedAt": published_iso,
-                }
-            )
+            seen.add(article["title"])
+            articles.append(article)
 
     articles.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
-    return articles[:18]
+    return articles[:20]
 
 
 def compute_rsi(closes: list[float], period: int = 14) -> float | None:
