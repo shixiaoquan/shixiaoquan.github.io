@@ -1,18 +1,18 @@
-name: Update Market Data
+name: Weekly Backtest
 
-# 纯静态站数据构建：定时拉取行情并写入 data/*.json，无在线后端 API
+# 策略回测每周运行一次；行情与信号仍由 update-market-data 每 5 分钟更新
 
 on:
   schedule:
-    # 每 5 分钟（GitHub Actions cron 最短间隔）
-    - cron: "*/5 * * * *"
+    # 每周日 02:00 UTC
+    - cron: "0 2 * * 0"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  backtest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,20 +24,17 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
-      - name: Fetch market data
-        run: python scripts/fetch_data.py
-
-      - name: Run trading engine
-        run: python scripts/trading_engine.py
+      - name: Run backtest
+        run: python scripts/backtest.py
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/backtest.json
           if git diff --staged --quiet; then
-            echo "No data changes."
+            echo "No backtest changes."
           else
-            git commit -m "chore: update market data"
+            git commit -m "chore: weekly backtest update"
             git push
           fi
