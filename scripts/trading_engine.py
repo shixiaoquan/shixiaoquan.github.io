@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""交易系统引擎：信号生命周期、模拟账户、策略版本、自我诊断。"""
+"""信号跟踪与模拟盘 — 离线构建脚本，写入 data/*.json（非在线服务）。"""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from strategy_config import (
+    PAPER_BUY_ONLY,
     PAPER_INITIAL_CASH,
     PAPER_MAX_POSITIONS,
     SIGNAL_MAX_HOLD_DAYS,
@@ -61,10 +62,12 @@ def ensure_strategy_version() -> dict:
                 "name": STRATEGY_NAME,
                 "createdAt": datetime.now(timezone.utc).isoformat(),
                 "params": {
-                    "buyScore": 72,
-                    "watchScore": 58,
-                    "rewardRiskRatio": 2.5,
+                    "buyScore": 78,
+                    "watchScore": 62,
+                    "rewardRiskRatio": 2.0,
                     "maxHoldDays": SIGNAL_MAX_HOLD_DAYS,
+                    "requireBullMarket": True,
+                    "paperBuyOnly": PAPER_BUY_ONLY,
                 },
             }
         )
@@ -194,7 +197,9 @@ def run_paper_trading(signals_data: dict, quote_map: dict[str, float], now: date
             break
         if sig["symbol"] in positions:
             continue
-        if sig.get("signal") not in ("buy", "watch"):
+        if PAPER_BUY_ONLY and sig.get("signal") != "buy":
+            continue
+        if not PAPER_BUY_ONLY and sig.get("signal") not in ("buy", "watch"):
             continue
 
         price = quote_map.get(sig["symbol"]) or sig["entryPrice"]

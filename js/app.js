@@ -764,6 +764,39 @@ function renderPaperChart(curve) {
   renderEquityChart("paper-chart", curve, paperChart, "账户净值");
 }
 
+function renderLabVersionCompare(backtest) {
+  const el = document.getElementById("lab-version-compare");
+  if (!el || !backtest?.compareWith) {
+    if (el) el.innerHTML = "";
+    return;
+  }
+  const prev = backtest.compareWith;
+  const cur = backtest.metrics || {};
+  const delta = prev.delta || {};
+  const fmtDelta = (v, suffix = "") => {
+    if (v === null || v === undefined) return "--";
+    const prefix = v > 0 ? "+" : "";
+    return `${prefix}${v}${suffix}`;
+  };
+  el.innerHTML = `
+    <div class="version-compare__grid">
+      <article class="version-compare__card">
+        <p class="version-compare__label">${backtest.strategyVersion || "当前"}</p>
+        <p>胜率 ${cur.winRate ?? "--"}% · 期望 ${cur.expectancy ?? "--"}%</p>
+      </article>
+      <article class="version-compare__card version-compare__card--muted">
+        <p class="version-compare__label">${prev.version}</p>
+        <p>胜率 ${prev.metrics?.winRate ?? "--"}% · 期望 ${prev.metrics?.expectancy ?? "--"}%</p>
+      </article>
+      <article class="version-compare__card version-compare__card--delta">
+        <p class="version-compare__label">变化</p>
+        <p class="change ${changeClass(delta.expectancy)}">期望 ${fmtDelta(delta.expectancy, "%")}</p>
+        <p>胜率 ${fmtDelta(delta.winRate, "pp")}</p>
+      </article>
+    </div>
+  `;
+}
+
 function renderDiagnostics(diag) {
   const list = document.getElementById("diagnostics-suggestions");
   if (!list) return;
@@ -916,6 +949,7 @@ function applyTradingData(payload) {
   if (backtest) {
     backtestData = backtest;
     renderLabMetrics(backtest);
+    renderLabVersionCompare(backtest);
     renderLabByMarket(backtest);
     renderBacktestTrades(backtest.recentTrades);
     if (activeTab === "lab") renderBacktestChart(backtest.equityCurve);
