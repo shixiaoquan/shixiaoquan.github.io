@@ -8,6 +8,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from strategy_config import (
+    BUY_SCORE,
     PAPER_BUY_ONLY,
     PAPER_INITIAL_CASH,
     PAPER_MAX_POSITIONS,
@@ -171,8 +172,25 @@ def sync_signals(quote_map: dict[str, float], now: datetime) -> dict:
 
 def position_size_pct(score: float, signal_type: str) -> float:
     if signal_type == "buy":
-        return min(20.0 + (score - 72) * 0.5, 25.0)
+        return min(20.0 + (score - BUY_SCORE) * 0.5, 25.0)
     return 10.0
+
+
+def append_equity_point(curve: list[dict], now: datetime, equity: float) -> list[dict]:
+    """净值曲线去重：净值未变且距上一点不足 5 分钟则不追加。"""
+    point = {"time": now.isoformat(timespec="seconds"), "equity": equity}
+    if not curve:
+        return [point]
+    last = curve[-1]
+    if last.get("equity") == equity:
+        try:
+            last_dt = parse_dt(last["time"])
+            if (now - last_dt).total_seconds() < 300:
+                return curve
+        except (KeyError, ValueError):
+            pass
+    curve.append(point)
+    return curve[-500:]
 
 
 def run_paper_trading(signals_data: dict, quote_map: dict[str, float], now: datetime) -> dict:
@@ -275,8 +293,7 @@ def run_paper_trading(signals_data: dict, quote_map: dict[str, float], now: date
     account["trades"] = trades[-200:]
 
     curve = account.get("equityCurve", [])
-    curve.append({"time": now.isoformat(timespec="seconds"), "equity": account["equity"]})
-    account["equityCurve"] = curve[-500:]
+    account["equityCurve"] = append_equity_point(curve, now, account["equity"])
     account["updatedAt"] = now.isoformat(timespec="seconds")
     save_json(PAPER_FILE, account)
     print(f"Wrote {PAPER_FILE} (equity {account['equity']})")
