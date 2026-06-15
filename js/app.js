@@ -200,9 +200,10 @@ function renderCockpitNews(news) {
       (item) => `
       <li class="news-item news-item--compact">
         <p class="news-item__title">
-          <a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>
+          ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}
         </p>
-        <span class="news-item__time">${formatDateTime(item.publishedAt)}</span>
+        ${item.summary ? `<p class="news-item__summary">${item.summary}</p>` : ""}
+        <span class="news-item__time">${item.publisher || ""} · ${formatDateTime(item.publishedAt)}</span>
       </li>
     `
     )
@@ -316,8 +317,9 @@ function renderNews(news) {
       <li class="news-item">
         <div>
           <p class="news-item__title">
-            <a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>
+            ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}
           </p>
+          ${item.summary ? `<p class="news-item__summary">${item.summary}</p>` : ""}
           <p class="news-item__meta">${item.publisher} · 关联 ${item.related}</p>
         </div>
         <span class="news-item__time">${formatDateTime(item.publishedAt)}</span>
