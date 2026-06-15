@@ -18,6 +18,11 @@ let wencaiData = null;
 let lastWencaiUpdatedAt = null;
 let quoteMap = {};
 let activeTab = "cockpit";
+let suppressTabRoute = false;
+
+const VALID_TABS = new Set(["cockpit", "market", "reco", "review", "lab", "paper", "news"]);
+const DEFAULT_TAB = "cockpit";
+
 let distributionChart;
 let stocksChart;
 let backtestChart;
@@ -66,7 +71,34 @@ function calcReturn(recoPrice, currentPrice) {
   return Number((((currentPrice - recoPrice) / recoPrice) * 100).toFixed(2));
 }
 
-function switchTab(tabId) {
+function tabFromLocation() {
+  const fromHash = window.location.hash.replace(/^#\/?/, "").trim();
+  if (VALID_TABS.has(fromHash)) return fromHash;
+  const fromState = history.state?.tab;
+  if (fromState && VALID_TABS.has(fromState)) return fromState;
+  return DEFAULT_TAB;
+}
+
+function tabHash(tabId) {
+  return `#${tabId}`;
+}
+
+function syncTabRoute(tabId, replace = false) {
+  const hash = tabId === DEFAULT_TAB ? "" : tabHash(tabId);
+  const url = `${window.location.pathname}${window.location.search}${hash}`;
+  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  if (current === url) return;
+  if (replace) {
+    history.replaceState({ tab: tabId }, "", url);
+  } else {
+    history.pushState({ tab: tabId }, "", url);
+  }
+}
+
+function switchTab(tabId, options = {}) {
+  const { updateRoute = true, replaceRoute = false } = options;
+  if (!VALID_TABS.has(tabId)) tabId = DEFAULT_TAB;
+
   activeTab = tabId;
   document.querySelectorAll(".tabs__btn").forEach((btn) => {
     const active = btn.dataset.tab === tabId;
@@ -78,6 +110,11 @@ function switchTab(tabId) {
     panel.classList.toggle("tab-panel--active", show);
     panel.hidden = !show;
   });
+
+  if (updateRoute && !suppressTabRoute) {
+    syncTabRoute(tabId, replaceRoute);
+  }
+
   if (tabId === "market" && marketData) {
     renderDistributionChart(marketData.summary);
     renderStocksChart(marketData.stocks);
@@ -87,6 +124,9 @@ function switchTab(tabId) {
   }
   if (tabId === "paper" && paperData) {
     renderPaperChart(paperData.equityCurve);
+  }
+  if (tabId === "market" && wencaiData) {
+    renderWencaiPanels(wencaiData);
   }
 }
 
@@ -120,6 +160,22 @@ function setupTabs() {
   });
   document.querySelectorAll("[data-goto-tab]").forEach((el) => {
     el.addEventListener("click", () => switchTab(el.dataset.gotoTab));
+  });
+
+  window.addEventListener("popstate", () => {
+    suppressTabRoute = true;
+    switchTab(tabFromLocation(), { updateRoute: false });
+    suppressTabRoute = false;
+  });
+
+  window.addEventListener("hashchange", () => {
+    if (suppressTabRoute) return;
+    const tab = tabFromLocation();
+    if (tab !== activeTab) {
+      suppressTabRoute = true;
+      switchTab(tab, { updateRoute: false });
+      suppressTabRoute = false;
+    }
   });
 }
 
@@ -1198,6 +1254,12 @@ async function refreshData() {
 async function init() {
   setupTabs();
   setupHistoryFilters();
+
+  const initialTab = tabFromLocation();
+  suppressTabRoute = true;
+  switchTab(initialTab, { updateRoute: false });
+  suppressTabRoute = false;
+
   await Promise.all([refreshData(), refreshHistory(), refreshTradingData(), refreshWencaiData()]);
   setInterval(refreshData, POLL_INTERVAL_MS);
   setInterval(refreshHistory, POLL_INTERVAL_MS);
