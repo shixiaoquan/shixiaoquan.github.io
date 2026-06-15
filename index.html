@@ -20,7 +20,7 @@
       <div class="header__brand">
         <p class="eyebrow">Investment Workbench</p>
         <h1>投资决策工作台</h1>
-        <p class="subtitle">三市场研判 · 量化荐股 · 历史复盘</p>
+        <p class="subtitle">三市场研判 · 量化荐股 · 策略进化</p>
       </div>
       <div class="header__meta">
         <span class="badge" id="market-mood">加载中</span>
@@ -33,6 +33,8 @@
       <button type="button" class="tabs__btn" data-tab="market" role="tab" aria-selected="false">大盘</button>
       <button type="button" class="tabs__btn" data-tab="reco" role="tab" aria-selected="false">荐股</button>
       <button type="button" class="tabs__btn" data-tab="review" role="tab" aria-selected="false">复盘</button>
+      <button type="button" class="tabs__btn" data-tab="lab" role="tab" aria-selected="false">实验室</button>
+      <button type="button" class="tabs__btn" data-tab="paper" role="tab" aria-selected="false">模拟盘</button>
       <button type="button" class="tabs__btn" data-tab="news" role="tab" aria-selected="false">资讯</button>
     </nav>
 
@@ -55,6 +57,16 @@
       </section>
 
       <div class="cockpit-grid">
+        <section class="panel">
+          <div class="panel__head panel__head--row">
+            <div>
+              <h2>系统状态</h2>
+              <p id="cockpit-system-hint">策略运行与进化指标</p>
+            </div>
+            <button type="button" class="link-btn" data-goto-tab="lab">实验室 →</button>
+          </div>
+          <div class="review-stats review-stats--compact" id="cockpit-system"></div>
+        </section>
         <section class="panel">
           <div class="panel__head">
             <h2>指数速览</h2>
@@ -144,6 +156,30 @@
     <!-- 复盘 -->
     <section id="panel-review" class="tab-panel" role="tabpanel" hidden>
       <section class="review-stats" id="review-stats"></section>
+      <section class="panel panel--wide">
+        <div class="panel__head">
+          <h2>信号生命周期</h2>
+          <p id="signals-summary">跟踪每条荐股从开仓到平仓的全过程</p>
+        </div>
+        <div class="signals-table-wrap">
+          <table class="data-table" id="signals-table">
+            <thead>
+              <tr>
+                <th>标的</th>
+                <th>市场</th>
+                <th>状态</th>
+                <th>开仓价</th>
+                <th>现价</th>
+                <th>收益</th>
+                <th>最大浮盈</th>
+                <th>最大回撤</th>
+                <th>持有</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
       <section class="panel panel--wide history-section">
         <div class="panel__head history-section__head">
           <div>
@@ -158,6 +194,95 @@
           </div>
         </div>
         <div class="history-timeline" id="history-timeline"></div>
+      </section>
+    </section>
+
+    <!-- 策略实验室 -->
+    <section id="panel-lab" class="tab-panel" role="tabpanel" hidden>
+      <section class="review-stats" id="lab-metrics"></section>
+      <div class="lab-grid">
+        <section class="panel">
+          <div class="panel__head">
+            <h2>回测净值曲线</h2>
+            <p id="lab-backtest-period">历史 K 线模拟交易</p>
+          </div>
+          <div class="chart-box">
+            <canvas id="backtest-chart" aria-label="回测净值曲线"></canvas>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panel__head">
+            <h2>策略体检</h2>
+            <p id="lab-strategy-version">当前策略版本</p>
+          </div>
+          <ul class="diagnostics-list" id="diagnostics-suggestions"></ul>
+          <div id="lab-by-market"></div>
+        </section>
+      </div>
+      <section class="panel panel--wide">
+        <div class="panel__head">
+          <h2>回测交易记录</h2>
+          <p>近 30 笔模拟交易</p>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="backtest-trades-table">
+            <thead>
+              <tr>
+                <th>标的</th>
+                <th>市场</th>
+                <th>买入</th>
+                <th>卖出</th>
+                <th>收益</th>
+                <th>原因</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <!-- 模拟盘 -->
+    <section id="panel-paper" class="tab-panel" role="tabpanel" hidden>
+      <section class="review-stats" id="paper-stats"></section>
+      <div class="lab-grid">
+        <section class="panel">
+          <div class="panel__head">
+            <h2>模拟账户净值</h2>
+            <p>虚拟资金按荐股信号自动交易</p>
+          </div>
+          <div class="chart-box">
+            <canvas id="paper-chart" aria-label="模拟账户净值曲线"></canvas>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panel__head">
+            <h2>当前持仓</h2>
+            <p id="paper-positions-hint">按信号开仓</p>
+          </div>
+          <div id="paper-positions"></div>
+        </section>
+      </div>
+      <section class="panel panel--wide">
+        <div class="panel__head">
+          <h2>模拟交易记录</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="paper-trades-table">
+            <thead>
+              <tr>
+                <th>类型</th>
+                <th>标的</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th>金额</th>
+                <th>盈亏</th>
+                <th>时间</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </section>
     </section>
 

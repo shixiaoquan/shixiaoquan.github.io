@@ -1,15 +1,26 @@
 const DATA_URL = "data/market.json";
 const HISTORY_URL = "data/reco_history.json";
+const SIGNALS_URL = "data/signals.json";
+const BACKTEST_URL = "data/backtest.json";
+const PAPER_URL = "data/paper_account.json";
+const DIAGNOSTICS_URL = "data/diagnostics.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
 
 let lastUpdatedAt = null;
+let lastTradingUpdatedAt = null;
 let historyFilter = "all";
 let recoHistory = null;
 let marketData = null;
+let signalsData = null;
+let backtestData = null;
+let paperData = null;
+let diagnosticsData = null;
 let quoteMap = {};
 let activeTab = "cockpit";
 let distributionChart;
 let stocksChart;
+let backtestChart;
+let paperChart;
 
 function formatNumber(value, digits = 2) {
   if (value === null || value === undefined || Number.isNaN(value)) return "--";
@@ -70,6 +81,34 @@ function switchTab(tabId) {
     renderDistributionChart(marketData.summary);
     renderStocksChart(marketData.stocks);
   }
+  if (tabId === "lab" && backtestData) {
+    renderBacktestChart(backtestData.equityCurve);
+  }
+  if (tabId === "paper" && paperData) {
+    renderPaperChart(paperData.equityCurve);
+  }
+}
+
+function signalStatusLabel(status) {
+  const map = {
+    open: "持仓中",
+    closed_stop: "止损平仓",
+    closed_target: "止盈平仓",
+    closed_expired: "到期平仓",
+  };
+  return map[status] || status || "--";
+}
+
+function signalStatusClass(status) {
+  if (status === "open") return "signal-status--open";
+  if (status === "closed_target") return "signal-status--win";
+  if (status === "closed_stop") return "signal-status--loss";
+  return "signal-status--neutral";
+}
+
+function reasonLabel(reason) {
+  const map = { stop: "止损", target: "止盈", expiry: "到期" };
+  return map[reason] || reason || "--";
 }
 
 function setupTabs() {
@@ -564,6 +603,360 @@ function renderStocksChart(stocks) {
   });
 }
 
+function renderStatCards(containerId, cards) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = cards
+    .map(
+      (card) => `
+    <article class="stat-card">
+      <p class="stat-card__label">${card.label}</p>
+      <p class="stat-card__value ${card.valueClass || ""}">${card.value}</p>
+      ${card.hint ? `<p class="stat-card__hint">${card.hint}</p>` : ""}
+    </article>
+  `
+    )
+    .join("");
+}
+
+function renderSignalsTable(data) {
+  const tbody = document.querySelector("#signals-table tbody");
+  const summaryEl = document.getElementById("signals-summary");
+  if (!tbody) return;
+
+  const signals = data?.signals || [];
+  if (summaryEl) {
+    summaryEl.textContent = signals.length
+      ? `共 ${signals.length} 条信号 · 持仓 ${data.openCount ?? 0} · 已平仓 ${data.closedCount ?? 0}`
+      : "暂无信号记录，系统将在荐股后自动跟踪";
+  }
+
+  if (!signals.length) {
+    tbody.innerHTML = '<tr><td colspan="9" class="empty">暂无信号数据</td></tr>';
+    return;
+  }
+
+  const sorted = [...signals].sort((a, b) => (b.openedAt || "").localeCompare(a.openedAt || ""));
+  tbody.innerHTML = sorted
+    .map((sig) => {
+      const ret = sig.returnPct;
+      const hold = sig.status === "open" ? `${sig.holdDays ?? 0} 天` : sig.closeReason || "--";
+      return `
+      <tr>
+        <td><strong>${sig.name}</strong><br><span class="stock-card__symbol">${sig.symbol}</span></td>
+        <td><span class="reco-market reco-market--${marketClass(sig.market)}">${sig.market}</span></td>
+        <td><span class="signal-status ${signalStatusClass(sig.status)}">${signalStatusLabel(sig.status)}</span></td>
+        <td>${formatNumber(sig.entryPrice)}</td>
+        <td>${formatNumber(sig.currentPrice)}</td>
+        <td class="change ${changeClass(ret)}">${formatPct(ret)}</td>
+        <td class="change change--up">${formatPct(sig.maxGainPct)}</td>
+        <td class="change change--down">${formatPct(sig.maxDrawdownPct)}</td>
+        <td>${hold}</td>
+      </tr>
+    `;
+    })
+    .join("");
+}
+
+function renderCockpitSystem(diag, backtest) {
+  const el = document.getElementById("cockpit-system");
+  if (!el) return;
+
+  const summary = diag?.summary || {};
+  const bt = backtest?.metrics || {};
+  const cards = [
+    { label: "策略版本", value: diag?.strategyVersion || backtest?.strategyVersion || "--" },
+    {
+      label: "信号胜率",
+      value: summary.winRate !== null && summary.winRate !== undefined ? `${summary.winRate}%` : "--",
+      hint: `已平仓 ${summary.closedSignals ?? 0} 笔`,
+    },
+    {
+      label: "回测期望值",
+      value: bt.expectancy !== undefined ? `${formatNumber(bt.expectancy)}%` : "--",
+      valueClass: changeClass(bt.expectancy),
+      hint: bt.winRate !== undefined ? `胜率 ${bt.winRate}%` : "",
+    },
+    {
+      label: "模拟盘收益",
+      value: formatPct(summary.paperReturn),
+      valueClass: changeClass(summary.paperReturn),
+      hint: summary.openSignals !== undefined ? `持仓信号 ${summary.openSignals}` : "",
+    },
+  ];
+  renderStatCards("cockpit-system", cards);
+}
+
+function renderLabMetrics(backtest) {
+  const m = backtest?.metrics || {};
+  const periodEl = document.getElementById("lab-backtest-period");
+  const versionEl = document.getElementById("lab-strategy-version");
+  if (periodEl) periodEl.textContent = `历史 K 线 ${backtest?.period || "1y"} · ${backtest?.universe?.length || 0} 只标的`;
+  if (versionEl) versionEl.textContent = `策略 ${backtest?.strategyVersion || "--"}`;
+
+  renderStatCards("lab-metrics", [
+    { label: "总交易", value: m.totalTrades ?? "--" },
+    { label: "胜率", value: m.winRate !== undefined ? `${m.winRate}%` : "--" },
+    {
+      label: "期望值",
+      value: m.expectancy !== undefined ? `${formatNumber(m.expectancy)}%` : "--",
+      valueClass: changeClass(m.expectancy),
+    },
+    { label: "夏普比率", value: m.sharpe ?? "--" },
+    { label: "盈亏比", value: m.profitFactor ?? "--" },
+    { label: "最大回撤", value: m.maxDrawdown !== undefined ? `${m.maxDrawdown}%` : "--" },
+    { label: "年化收益", value: formatPct(m.annualReturn) },
+    { label: "均盈/均亏", value: `${formatPct(m.avgWin)} / ${formatPct(m.avgLoss)}` },
+  ]);
+}
+
+function renderEquityChart(canvasId, curve, chartRef, label) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || !curve?.length) return;
+
+  const labels = curve.map((p) => (p.date || p.time || "").slice(0, 10));
+  const values = curve.map((p) => p.value ?? p.equity);
+
+  if (chartRef) {
+    chartRef.data.labels = labels;
+    chartRef.data.datasets[0].data = values;
+    chartRef.update("none");
+    return;
+  }
+
+  const chart = new Chart(canvas, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        {
+          label,
+          data: values,
+          borderColor: "#38bdf8",
+          backgroundColor: "rgba(56, 189, 248, 0.08)",
+          fill: true,
+          tension: 0.25,
+          pointRadius: 0,
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { ticks: { color: "#94a3b8", maxTicksLimit: 6 }, grid: { color: "rgba(148,163,184,0.08)" } },
+        y: { ticks: { color: "#94a3b8" }, grid: { color: "rgba(148,163,184,0.08)" } },
+      },
+      plugins: { legend: { labels: { color: "#cbd5e1" } } },
+    },
+  });
+
+  if (canvasId === "backtest-chart") backtestChart = chart;
+  if (canvasId === "paper-chart") paperChart = chart;
+}
+
+function renderBacktestChart(curve) {
+  renderEquityChart("backtest-chart", curve, backtestChart, "回测净值");
+}
+
+function renderPaperChart(curve) {
+  renderEquityChart("paper-chart", curve, paperChart, "账户净值");
+}
+
+function renderDiagnostics(diag) {
+  const list = document.getElementById("diagnostics-suggestions");
+  if (!list) return;
+  const suggestions = diag?.suggestions || [];
+  if (!suggestions.length) {
+    list.innerHTML = '<li class="empty">暂无诊断建议</li>';
+    return;
+  }
+  list.innerHTML = suggestions.map((s) => `<li class="diagnostics-item">${s}</li>`).join("");
+}
+
+function renderLabByMarket(backtest) {
+  const el = document.getElementById("lab-by-market");
+  if (!el) return;
+  const byMarket = backtest?.byMarket || {};
+  const entries = Object.entries(byMarket);
+  if (!entries.length) {
+    el.innerHTML = "";
+    return;
+  }
+  el.innerHTML = `
+    <div class="market-metrics">
+      <p class="market-metrics__title">分市场回测</p>
+      <div class="market-metrics__grid">
+        ${entries
+          .map(
+            ([market, m]) => `
+          <article class="market-metric">
+            <span class="reco-market reco-market--${marketClass(market)}">${market}</span>
+            <p>交易 ${m.totalTrades} · 胜率 ${m.winRate}%</p>
+            <p class="change ${changeClass(m.expectancy)}">期望 ${formatPct(m.expectancy)}</p>
+          </article>
+        `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+}
+
+function renderBacktestTrades(trades) {
+  const tbody = document.querySelector("#backtest-trades-table tbody");
+  if (!tbody) return;
+  if (!trades?.length) {
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">暂无回测交易</td></tr>';
+    return;
+  }
+  tbody.innerHTML = trades
+    .map(
+      (t) => `
+    <tr>
+      <td><strong>${t.symbol}</strong></td>
+      <td><span class="reco-market reco-market--${marketClass(t.market)}">${t.market}</span></td>
+      <td>${t.entryDate}<br>${formatNumber(t.entryPrice)}</td>
+      <td>${t.exitDate}<br>${formatNumber(t.exitPrice)}</td>
+      <td class="change ${changeClass(t.returnPct)}">${formatPct(t.returnPct)}</td>
+      <td>${reasonLabel(t.reason)}</td>
+    </tr>
+  `
+    )
+    .join("");
+}
+
+function renderPaperStats(paper) {
+  const hintEl = document.getElementById("paper-positions-hint");
+  const positions = paper?.positions || [];
+  if (hintEl) hintEl.textContent = positions.length ? `${positions.length} 只持仓` : "当前空仓";
+
+  renderStatCards("paper-stats", [
+    { label: "账户净值", value: formatNumber(paper?.equity) },
+    { label: "可用现金", value: formatNumber(paper?.cash) },
+    {
+      label: "总收益率",
+      value: formatPct(paper?.returnPct),
+      valueClass: changeClass(paper?.returnPct),
+    },
+    { label: "初始资金", value: formatNumber(paper?.initialCash) },
+  ]);
+}
+
+function renderPaperPositions(positions) {
+  const el = document.getElementById("paper-positions");
+  if (!el) return;
+  if (!positions?.length) {
+    el.innerHTML = '<p class="empty">暂无持仓</p>';
+    return;
+  }
+  el.innerHTML = positions
+    .map((pos) => {
+      const current = quoteMap[pos.symbol] || pos.entryPrice;
+      const ret = calcReturn(pos.entryPrice, current);
+      return `
+      <article class="paper-position">
+        <div class="paper-position__head">
+          <div>
+            <strong>${pos.name}</strong>
+            <span class="stock-card__symbol">${pos.symbol}</span>
+          </div>
+          <span class="reco-market reco-market--${marketClass(pos.market)}">${pos.market}</span>
+        </div>
+        <div class="paper-position__meta">
+          <span>成本 ${formatNumber(pos.entryPrice)}</span>
+          <span>现价 ${formatNumber(current)}</span>
+          <span>数量 ${formatNumber(pos.shares, 2)}</span>
+          <span class="change ${changeClass(ret)}">${formatPct(ret)}</span>
+        </div>
+      </article>
+    `;
+    })
+    .join("");
+}
+
+function renderPaperTrades(trades) {
+  const tbody = document.querySelector("#paper-trades-table tbody");
+  if (!tbody) return;
+  if (!trades?.length) {
+    tbody.innerHTML = '<tr><td colspan="7" class="empty">暂无模拟交易</td></tr>';
+    return;
+  }
+  const sorted = [...trades].reverse().slice(0, 50);
+  tbody.innerHTML = sorted
+    .map((t) => {
+      const typeLabel = t.type === "buy" ? "买入" : "卖出";
+      const typeClass = t.type === "buy" ? "trade-type--buy" : "trade-type--sell";
+      const pnlHtml =
+        t.type === "sell"
+          ? `<span class="change ${changeClass(t.pnlPct)}">${formatNumber(t.pnl)} (${formatPct(t.pnlPct)})</span>`
+          : "--";
+      return `
+      <tr>
+        <td><span class="trade-type ${typeClass}">${typeLabel}</span></td>
+        <td><strong>${t.name || t.symbol}</strong><br><span class="stock-card__symbol">${t.symbol}</span></td>
+        <td>${formatNumber(t.price)}</td>
+        <td>${formatNumber(t.shares, 2)}</td>
+        <td>${formatNumber(t.amount)}</td>
+        <td>${pnlHtml}</td>
+        <td>${formatDateTime(t.time)}</td>
+      </tr>
+    `;
+    })
+    .join("");
+}
+
+function applyTradingData(payload) {
+  const { signals, backtest, paper, diagnostics } = payload;
+  if (signals) {
+    signalsData = signals;
+    renderSignalsTable(signals);
+  }
+  if (backtest) {
+    backtestData = backtest;
+    renderLabMetrics(backtest);
+    renderLabByMarket(backtest);
+    renderBacktestTrades(backtest.recentTrades);
+    if (activeTab === "lab") renderBacktestChart(backtest.equityCurve);
+  }
+  if (paper) {
+    paperData = paper;
+    renderPaperStats(paper);
+    renderPaperPositions(paper.positions);
+    renderPaperTrades(paper.trades);
+    if (activeTab === "paper") renderPaperChart(paper.equityCurve);
+  }
+  if (diagnostics) {
+    diagnosticsData = diagnostics;
+    renderDiagnostics(diagnostics);
+    renderCockpitSystem(diagnostics, backtestData);
+  }
+  lastTradingUpdatedAt = signals?.updatedAt || backtest?.updatedAt || paper?.updatedAt;
+}
+
+async function fetchJson(url) {
+  const response = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
+  if (!response.ok) return null;
+  return response.json();
+}
+
+async function refreshTradingData() {
+  try {
+    const [signals, backtest, paper, diagnostics] = await Promise.all([
+      fetchJson(SIGNALS_URL),
+      fetchJson(BACKTEST_URL),
+      fetchJson(PAPER_URL),
+      fetchJson(DIAGNOSTICS_URL),
+    ]);
+    const updatedAt = signals?.updatedAt || backtest?.updatedAt;
+    if (updatedAt && updatedAt === lastTradingUpdatedAt) return;
+    applyTradingData({ signals, backtest, paper, diagnostics });
+  } catch (error) {
+    console.error("trading data load failed", error);
+  }
+}
+
 async function fetchRecoHistory() {
   const response = await fetch(`${HISTORY_URL}?t=${Date.now()}`, { cache: "no-store" });
   if (!response.ok) return null;
@@ -614,6 +1007,7 @@ function applyData(data) {
   }
 
   if (recoHistory) renderRecoHistory(recoHistory);
+  if (paperData) renderPaperPositions(paperData.positions);
   lastUpdatedAt = data.updatedAt;
 }
 
@@ -640,9 +1034,10 @@ async function refreshData() {
 async function init() {
   setupTabs();
   setupHistoryFilters();
-  await Promise.all([refreshData(), refreshHistory()]);
+  await Promise.all([refreshData(), refreshHistory(), refreshTradingData()]);
   setInterval(refreshData, POLL_INTERVAL_MS);
   setInterval(refreshHistory, POLL_INTERVAL_MS);
+  setInterval(refreshTradingData, POLL_INTERVAL_MS);
 }
 
 document.addEventListener("DOMContentLoaded", init);
