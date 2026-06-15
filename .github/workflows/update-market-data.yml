@@ -17,6 +17,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -26,6 +30,11 @@ jobs:
 
       - name: Fetch market data
         run: python scripts/fetch_data.py
+
+      - name: Fetch wencai data
+        env:
+          WENCAI_COOKIE: ${{ secrets.WENCAI_COOKIE }}
+        run: python scripts/fetch_wencai.py
 
       - name: Run trading engine
         run: python scripts/trading_engine.py

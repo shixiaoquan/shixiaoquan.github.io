@@ -882,6 +882,96 @@ a:hover {
   line-height: 1.5;
 }
 
+.wencai-banner {
+  margin-bottom: 20px;
+  padding: 16px 20px;
+}
+
+.wencai-banner__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.wencai-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(248, 113, 113, 0.16);
+  color: #f87171;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.wencai-banner__title {
+  font-weight: 700;
+}
+
+.wencai-banner__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.wencai-banner__time {
+  font-size: 0.8rem;
+}
+
+.wencai-hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.wencai-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.wencai-screen {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.wencai-screen__head {
+  margin-bottom: 10px;
+}
+
+.wencai-screen__head h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.wencai-screen__count {
+  font-size: 0.82rem;
+  color: var(--up);
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.wencai-screen__query {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.data-table--compact th,
+.data-table--compact td {
+  padding: 8px 6px;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 960px) {
+  .wencai-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .version-compare {
   margin-bottom: 16px;
 }
