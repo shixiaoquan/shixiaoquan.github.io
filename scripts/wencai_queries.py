@@ -32,3 +32,23 @@ WENCAI_SCREENS = [
         "perpage": 8,
     },
 ]
+
+# 问财资讯问句（关键词资讯字段含公告/利好链接）
+WENCAI_NEWS_QUERIES = [
+    {
+        "id": "announce",
+        "title": "今日公告",
+        "query": "今日公告",
+        "query_type": "stock",
+        "category": "公告",
+        "perpage": 15,
+    },
+    {
+        "id": "positive",
+        "title": "今日利好",
+        "query": "今日利好",
+        "query_type": "stock",
+        "category": "利好",
+        "perpage": 10,
+    },
+]

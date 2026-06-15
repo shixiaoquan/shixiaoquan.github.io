@@ -73,7 +73,11 @@ df = pywencai.get(
 - 非官方接口，仅供学习研究，商用需自行评估风险
 - 列名带日期后缀（如 `最新涨跌幅`），解析用 `scripts/fetch_wencai.py` 的 `normalize_row`
 
-## 相关文件
+## 问财资讯
+
+在 `wencai_queries.py` 的 `WENCAI_NEWS_QUERIES` 中配置。问句需返回含 `关键词资讯` 字段的结果（如「今日公告」「今日利好」），脚本会解析其中的公告链接与标题。
+
+前端资讯 Tab 支持与 Yahoo 新闻合并展示，可按来源筛选。
 
 | 文件 | 作用 |
 |------|------|

@@ -16,6 +16,8 @@ let backtestData = null;
 let paperData = null;
 let wencaiData = null;
 let lastWencaiUpdatedAt = null;
+let yahooNews = [];
+let newsFilter = "all";
 let quoteMap = {};
 let activeTab = "cockpit";
 let suppressTabRoute = false;
@@ -283,6 +285,40 @@ function renderCockpitIndices(indices) {
     .join("");
 }
 
+function newsSourceLabel(source) {
+  if (source === "wencai") return "问财";
+  if (source === "yahoo") return "Yahoo";
+  return "资讯";
+}
+
+function mergeNews(yahoo = [], wencai = []) {
+  const tagged = [
+    ...yahoo.map((item) => ({ ...item, source: item.source || "yahoo" })),
+    ...wencai.map((item) => ({ ...item, source: item.source || "wencai" })),
+  ];
+  const seen = new Set();
+  const unique = [];
+  tagged.forEach((item) => {
+    const key = item.id || `${item.source}:${item.title}:${item.link || ""}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    unique.push(item);
+  });
+  return unique.sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
+}
+
+function getFilteredNews() {
+  const merged = mergeNews(yahooNews, wencaiData?.news || []);
+  if (newsFilter === "all") return merged;
+  return merged.filter((item) => item.source === newsFilter);
+}
+
+function renderMergedNews() {
+  const news = getFilteredNews();
+  renderCockpitNews(news);
+  renderNews(news);
+}
+
 function renderCockpitNews(news) {
   const el = document.getElementById("cockpit-news");
   if (!el) return;
@@ -299,7 +335,10 @@ function renderCockpitNews(news) {
           ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}
         </p>
         ${item.summary ? `<p class="news-item__summary">${item.summary}</p>` : ""}
-        <span class="news-item__time">${item.publisher || ""} · ${formatDateTime(item.publishedAt)}</span>
+        <span class="news-item__time">
+          <span class="news-source news-source--${item.source || "yahoo"}">${newsSourceLabel(item.source)}</span>
+          ${item.category ? `${item.category} · ` : ""}${formatDateTime(item.publishedAt)}
+        </span>
       </li>
     `
     )
@@ -416,7 +455,10 @@ function renderNews(news) {
             ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}
           </p>
           ${item.summary ? `<p class="news-item__summary">${item.summary}</p>` : ""}
-          <p class="news-item__meta">${item.publisher} · 关联 ${item.related}</p>
+          <p class="news-item__meta">
+            <span class="news-source news-source--${item.source || "yahoo"}">${newsSourceLabel(item.source)}</span>
+            ${item.publisher || ""} · ${item.related || ""}${item.category ? ` · ${item.category}` : ""}
+          </p>
         </div>
         <span class="news-item__time">${formatDateTime(item.publishedAt)}</span>
       </li>
@@ -964,11 +1006,26 @@ function renderWencaiPanels(data, containerId = "market-wencai") {
   `;
 }
 
+function setupNewsFilters() {
+  const filters = document.getElementById("news-filters");
+  if (!filters) return;
+  filters.addEventListener("click", (event) => {
+    const btn = event.target.closest(".news-filter");
+    if (!btn) return;
+    newsFilter = btn.dataset.source || "all";
+    filters.querySelectorAll(".news-filter").forEach((el) => {
+      el.classList.toggle("news-filter--active", el === btn);
+    });
+    renderMergedNews();
+  });
+}
+
 function applyWencaiData(data) {
   if (!data) return;
   wencaiData = data;
   renderWencaiBanner(data);
   renderWencaiPanels(data);
+  renderMergedNews();
   lastWencaiUpdatedAt = data.updatedAt;
 }
 
@@ -1214,12 +1271,13 @@ function applyData(data) {
   renderRecommendations(data.recommendations, "cockpit-picks", true);
   renderRecommendations(data.recommendations, "reco-cards", false);
   renderCockpitIndices(data.indices);
-  renderCockpitNews(data.news);
+
+  yahooNews = data.news || [];
+  renderMergedNews();
 
   renderSummary(data.summary);
   renderIndices(data.indices);
   renderStocks(data.stocks);
-  renderNews(data.news);
 
   if (activeTab === "market") {
     renderDistributionChart(data.summary);
@@ -1254,6 +1312,7 @@ async function refreshData() {
 async function init() {
   setupTabs();
   setupHistoryFilters();
+  setupNewsFilters();
 
   const initialTab = tabFromLocation();
   suppressTabRoute = true;
