@@ -470,6 +470,8 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
         "relativeStrength": rel_strength,
         "reasons": reasons[:5],
         "plan": plan,
+        "stopLossPrice": stop_loss,
+        "targetPrice": target,
     }
 
 
@@ -536,6 +538,8 @@ def compact_pick(pick: dict) -> dict:
         "signalLabel": pick["signalLabel"],
         "rsi": pick.get("rsi"),
         "relativeStrength": pick.get("relativeStrength"),
+        "stopLossPrice": pick.get("stopLossPrice"),
+        "targetPrice": pick.get("targetPrice"),
         "plan": pick.get("plan", {}),
     }
 

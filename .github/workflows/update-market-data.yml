@@ -25,11 +25,17 @@ jobs:
       - name: Fetch market data
         run: python scripts/fetch_data.py
 
+      - name: Run backtest
+        run: python scripts/backtest.py
+
+      - name: Run trading engine
+        run: python scripts/trading_engine.py
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/market.json data/reco_history.json
+          git add data/
           if git diff --staged --quiet; then
             echo "No data changes."
           else
