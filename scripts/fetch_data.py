@@ -483,7 +483,7 @@ def build_recommendations() -> dict:
         "marketScan": " · ".join(market_summary),
         "disclaimer": "量化信号仅供参考，不构成投资建议。请分散配置三市场、严格执行止损。",
         "picks": picks[: len(MARKETS)],
-    }
+    }, {a["symbol"]: a["price"] for a in analyzed if a.get("price")}
 
 
 def compact_pick(pick: dict) -> dict:
@@ -568,6 +568,36 @@ def append_reco_history(recommendations: dict, recorded_at: datetime) -> dict:
     return history
 
 
+def build_market_radar(indices: list[dict]) -> list[dict]:
+    """三市场雷达：从指数涨跌推断各市场当日强弱。"""
+    groups = {
+        "美股": ["^GSPC", "^DJI", "^IXIC"],
+        "港股": ["^HSI"],
+        "A股": ["000001.SS"],
+    }
+    by_symbol = {i["symbol"]: i for i in indices}
+    radar = []
+    for market, symbols in groups.items():
+        valid = [by_symbol[s] for s in symbols if s in by_symbol and by_symbol[s].get("changePct") is not None]
+        if not valid:
+            continue
+        avg = round(sum(v["changePct"] for v in valid) / len(valid), 2)
+        if avg > 0.3:
+            status, label = "strong", "偏强"
+        elif avg < -0.3:
+            status, label = "weak", "偏弱"
+        else:
+            status, label = "neutral", "震荡"
+        radar.append({
+            "market": market,
+            "changePct": avg,
+            "status": status,
+            "label": label,
+            "indices": [by_symbol[s]["name"] for s in symbols if s in by_symbol],
+        })
+    return radar
+
+
 def build_summary(indices: list[dict]) -> dict:
     valid = [i for i in indices if i.get("changePct") is not None]
     up = sum(1 for i in valid if i["changePct"] > 0)
@@ -598,12 +628,14 @@ def main() -> None:
     indices = [fetch_quote(symbol, meta) for symbol, meta in INDICES.items()]
     stocks = [fetch_quote(symbol, meta) for symbol, meta in STOCKS.items()]
     news = fetch_news()
-    recommendations = build_recommendations()
+    recommendations, quote_map = build_recommendations()
     now = datetime.now(timezone.utc).astimezone()
 
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
         "summary": build_summary(indices),
+        "marketRadar": build_market_radar(indices),
+        "quoteMap": quote_map,
         "indices": indices,
         "stocks": stocks,
         "news": news,
