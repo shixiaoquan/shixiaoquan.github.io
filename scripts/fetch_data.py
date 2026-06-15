@@ -30,30 +30,46 @@ STOCKS = {
 
 NEWS_TICKERS = ["^GSPC", "1810.HK", "9992.HK", "000660.KS"]
 
-# 荐股候选池：流动性好的大盘股，覆盖美股科技与港股核心资产
+# 荐股候选池：按市场分组，覆盖 A 股 / 港股 / 美股
 CANDIDATES = {
-    "AAPL": {"name": "苹果", "sector": "消费电子", "currency": "USD"},
-    "MSFT": {"name": "微软", "sector": "软件云计算", "currency": "USD"},
-    "NVDA": {"name": "英伟达", "sector": "半导体", "currency": "USD"},
-    "GOOGL": {"name": "谷歌", "sector": "互联网", "currency": "USD"},
-    "AMZN": {"name": "亚马逊", "sector": "电商云计算", "currency": "USD"},
-    "META": {"name": "Meta", "sector": "社交广告", "currency": "USD"},
-    "TSLA": {"name": "特斯拉", "sector": "新能源车", "currency": "USD"},
-    "AMD": {"name": "AMD", "sector": "半导体", "currency": "USD"},
-    "0700.HK": {"name": "腾讯控股", "sector": "互联网", "currency": "HKD"},
-    "9988.HK": {"name": "阿里巴巴", "sector": "电商云计算", "currency": "HKD"},
-    "3690.HK": {"name": "美团", "sector": "本地生活", "currency": "HKD"},
-    "1810.HK": {"name": "小米集团", "sector": "消费电子", "currency": "HKD"},
-    "9992.HK": {"name": "泡泡玛特", "sector": "潮玩零售", "currency": "HKD"},
-    "000660.KS": {"name": "SK 海力士", "sector": "半导体", "currency": "KRW"},
+    # A 股
+    "600519.SS": {"name": "贵州茅台", "sector": "白酒", "currency": "CNY", "market": "A股"},
+    "300750.SZ": {"name": "宁德时代", "sector": "新能源", "currency": "CNY", "market": "A股"},
+    "601318.SS": {"name": "中国平安", "sector": "保险", "currency": "CNY", "market": "A股"},
+    "000858.SZ": {"name": "五粮液", "sector": "白酒", "currency": "CNY", "market": "A股"},
+    "688981.SS": {"name": "中芯国际", "sector": "半导体", "currency": "CNY", "market": "A股"},
+    "600036.SS": {"name": "招商银行", "sector": "银行", "currency": "CNY", "market": "A股"},
+    # 港股
+    "0700.HK": {"name": "腾讯控股", "sector": "互联网", "currency": "HKD", "market": "港股"},
+    "9988.HK": {"name": "阿里巴巴", "sector": "电商云计算", "currency": "HKD", "market": "港股"},
+    "3690.HK": {"name": "美团", "sector": "本地生活", "currency": "HKD", "market": "港股"},
+    "1810.HK": {"name": "小米集团", "sector": "消费电子", "currency": "HKD", "market": "港股"},
+    "9992.HK": {"name": "泡泡玛特", "sector": "潮玩零售", "currency": "HKD", "market": "港股"},
+    "9618.HK": {"name": "京东集团", "sector": "电商", "currency": "HKD", "market": "港股"},
+    # 美股
+    "AAPL": {"name": "苹果", "sector": "消费电子", "currency": "USD", "market": "美股"},
+    "MSFT": {"name": "微软", "sector": "软件云计算", "currency": "USD", "market": "美股"},
+    "NVDA": {"name": "英伟达", "sector": "半导体", "currency": "USD", "market": "美股"},
+    "GOOGL": {"name": "谷歌", "sector": "互联网", "currency": "USD", "market": "美股"},
+    "AMZN": {"name": "亚马逊", "sector": "电商云计算", "currency": "USD", "market": "美股"},
+    "META": {"name": "Meta", "sector": "社交广告", "currency": "USD", "market": "美股"},
+    "AMD": {"name": "AMD", "sector": "半导体", "currency": "USD", "market": "美股"},
+}
+
+# 各市场基准指数（用于相对强弱与市场环境判断）
+MARKET_BENCHMARKS = {
+    "A股": "000001.SS",
+    "港股": "^HSI",
+    "美股": "^GSPC",
 }
 
 # 策略参数
-RISK_PER_TRADE_PCT = 2.0   # 单笔交易最大亏损占总资金比例
-REWARD_RISK_RATIO = 2.0    # 目标盈亏比
-BUY_SCORE = 70             # 达到该分数给出买入信号
-WATCH_SCORE = 55           # 达到该分数列入观察
-MAX_PICKS = 3
+RISK_PER_TRADE_PCT = 2.0
+REWARD_RISK_RATIO = 2.5
+BUY_SCORE = 72
+WATCH_SCORE = 58
+MAX_PICKS_PER_MARKET = 1
+MARKETS = ("A股", "港股", "美股")
 
 
 def pct_change(current: float, previous: float) -> float | None:
@@ -190,15 +206,67 @@ def sma(values: list[float], period: int) -> float | None:
     return sum(values[-period:]) / period
 
 
-def analyze_candidate(symbol: str, meta: dict) -> dict | None:
-    """趋势跟踪 + 动量评分策略。
+def ema(values: list[float], period: int) -> list[float]:
+    if not values:
+        return []
+    k = 2 / (period + 1)
+    result = [values[0]]
+    for v in values[1:]:
+        result.append(v * k + result[-1] * (1 - k))
+    return result
 
-    评分维度（满分 100）：
-    - 趋势（40 分）：价格在 20 日 / 60 日均线上方，且短均线在长均线上方（多头排列）
-    - 动量（30 分）：1 月 / 3 月相对涨幅，奖励持续走强的标的
-    - RSI 健康度（20 分）：45-65 为理想趋势区，>75 视为超买扣分
-    - 量能（10 分）：近 5 日均量高于 20 日均量，代表资金关注
-    """
+
+def compute_macd(closes: list[float]) -> tuple[float | None, float | None, float | None]:
+    """返回 (MACD线, 信号线, 柱状图) 最新值。"""
+    if len(closes) < 35:
+        return None, None, None
+    ema12 = ema(closes, 12)
+    ema26 = ema(closes, 26)
+    macd_line = [a - b for a, b in zip(ema12, ema26)]
+    signal = ema(macd_line, 9)
+    hist = macd_line[-1] - signal[-1]
+    return round(macd_line[-1], 4), round(signal[-1], 4), round(hist, 4)
+
+
+def fetch_benchmark_closes() -> dict[str, list[float]]:
+    cache: dict[str, list[float]] = {}
+    for market, symbol in MARKET_BENCHMARKS.items():
+        try:
+            hist = yf.Ticker(symbol).history(period="6mo", interval="1d")
+            if not hist.empty:
+                cache[market] = [float(v) for v in hist["Close"].dropna().tolist()]
+        except Exception:
+            continue
+    return cache
+
+
+def benchmark_return(closes: list[float], days: int) -> float | None:
+    if len(closes) < days + 1:
+        return None
+    return pct_change(closes[-1], closes[-days - 1])
+
+
+def price_digits(price: float) -> int:
+    if price >= 1000:
+        return 2
+    if price >= 10:
+        return 2
+    return 3
+
+
+def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]]) -> dict | None:
+    """多因子趋势策略（满分 100），覆盖 A 股 / 港股 / 美股。
+
+  评分维度：
+  - 趋势结构（25）：均线多头排列 + 价格结构
+  - 动量（20）：1 月 / 3 月涨幅
+  - 相对强弱（15）：跑赢所属市场基准指数
+  - RSI（15）：趋势健康区，避免超买追高
+  - MACD（10）：金叉或柱状图转正
+  - 量能（10）：资金流入确认
+  - 市场环境（5）：所属市场指数处于多头
+  """
+    market = meta.get("market", "美股")
     try:
         hist = yf.Ticker(symbol).history(period="6mo", interval="1d")
     except Exception:
@@ -214,56 +282,110 @@ def analyze_candidate(symbol: str, meta: dict) -> dict | None:
         return None
 
     price = closes[-1]
+    sma10 = sma(closes, 10)
     sma20 = sma(closes, 20)
     sma60 = sma(closes, 60)
     rsi = compute_rsi(closes)
     atr = compute_atr(highs, lows, closes)
+    macd, macd_signal, macd_hist = compute_macd(closes)
     month_chg = pct_change(price, closes[-22]) if len(closes) >= 22 else None
-    quarter_chg = pct_change(price, closes[0])
+    quarter_chg = pct_change(price, closes[-63]) if len(closes) >= 63 else pct_change(price, closes[0])
 
-    if not all(v is not None for v in (sma20, sma60, rsi, atr, month_chg, quarter_chg)):
+    bench = benchmarks.get(market, [])
+    bench_month = benchmark_return(bench, 22) if bench else None
+    rel_strength = round(month_chg - bench_month, 2) if month_chg is not None and bench_month is not None else None
+
+    if not all(v is not None for v in (sma20, sma60, rsi, atr, month_chg, quarter_chg, macd, macd_signal, macd_hist)):
         return None
 
     score = 0.0
     reasons: list[str] = []
 
-    # 趋势 40 分
+    # 趋势结构 25 分
     if price > sma20:
-        score += 15
+        score += 8
         reasons.append("价格站上 20 日均线")
     if price > sma60:
-        score += 10
+        score += 7
         reasons.append("价格站上 60 日均线")
-    if sma20 > sma60:
-        score += 15
-        reasons.append("均线多头排列（20日 > 60日）")
+    if sma10 and sma10 > sma20 > sma60:
+        score += 10
+        reasons.append("均线多头排列（10日 > 20日 > 60日）")
+    elif sma20 > sma60:
+        score += 5
+        reasons.append("中期均线多头排列")
 
-    # 动量 30 分
+    # 动量 20 分
     if month_chg > 0:
-        score += min(month_chg * 1.5, 15)
+        score += min(month_chg * 1.2, 10)
         reasons.append(f"近 1 月上涨 {month_chg:.1f}%")
     if quarter_chg > 0:
-        score += min(quarter_chg * 0.5, 15)
+        score += min(quarter_chg * 0.4, 10)
         reasons.append(f"近 3 月上涨 {quarter_chg:.1f}%")
 
-    # RSI 健康度 20 分
-    if 45 <= rsi <= 65:
-        score += 20
-        reasons.append(f"RSI {rsi} 处于健康趋势区")
-    elif 35 <= rsi < 45 or 65 < rsi <= 75:
+    # 相对强弱 15 分（跑赢所属市场才有超额收益潜力）
+    if rel_strength is not None:
+        if rel_strength > 5:
+            score += 15
+            reasons.append(f"近 1 月跑赢{market}基准 {rel_strength:.1f}%")
+        elif rel_strength > 0:
+            score += 10
+            reasons.append(f"近 1 月略强于{market}基准")
+        elif rel_strength > -3:
+            score += 4
+        else:
+            score -= 5
+            reasons.append(f"近 1 月弱于{market}基准 {rel_strength:.1f}%")
+
+    # RSI 15 分
+    if 48 <= rsi <= 62:
+        score += 15
+        reasons.append(f"RSI {rsi} 趋势健康区")
+    elif 40 <= rsi < 48:
         score += 10
-        reasons.append(f"RSI {rsi} 中性")
+        reasons.append(f"RSI {rsi} 偏低，关注反弹")
+    elif 62 < rsi <= 70:
+        score += 8
+        reasons.append(f"RSI {rsi} 偏强")
     elif rsi > 75:
-        score -= 10
-        reasons.append(f"RSI {rsi} 超买，注意追高风险")
+        score -= 12
+        reasons.append(f"RSI {rsi} 超买，不宜追高")
+    else:
+        score += 3
+
+    # MACD 10 分
+    if macd > macd_signal and macd_hist > 0:
+        score += 10
+        reasons.append("MACD 金叉且柱状图转正")
+    elif macd_hist > 0:
+        score += 6
+        reasons.append("MACD 动能回升")
+    elif macd > macd_signal:
+        score += 4
 
     # 量能 10 分
     vol5, vol20 = sma(volumes, 5), sma(volumes, 20)
-    if vol5 and vol20 and vol5 > vol20:
-        score += 10
-        reasons.append("近期成交量放大，资金关注度提升")
+    if vol5 and vol20:
+        vol_ratio = vol5 / vol20
+        if vol_ratio > 1.3:
+            score += 10
+            reasons.append("成交量显著放大")
+        elif vol_ratio > 1.05:
+            score += 6
+            reasons.append("成交量温和放大")
 
-    score = round(max(score, 0), 1)
+    # 市场环境 5 分
+    if bench and len(bench) >= 60:
+        bench_price = bench[-1]
+        bench_sma60 = sma(bench, 60)
+        if bench_sma60 and bench_price > bench_sma60:
+            score += 5
+            reasons.append(f"{market}大盘处于中期上升趋势")
+        elif bench_sma60 and bench_price < bench_sma60:
+            score -= 3
+            reasons.append(f"{market}大盘偏弱，注意系统性风险")
+
+    score = round(max(min(score, 100), 0), 1)
 
     if score >= BUY_SCORE:
         signal, signal_label = "buy", "建议买入"
@@ -272,23 +394,32 @@ def analyze_candidate(symbol: str, meta: dict) -> dict | None:
     else:
         signal, signal_label = "hold", "暂不参与"
 
-    # 操作计划：ATR 止损 + 固定盈亏比目标 + 风险敞口决定仓位
-    stop_loss = round(price - 2 * atr, 2)
-    target = round(price + 2 * atr * REWARD_RISK_RATIO, 2)
+    # 动态止损：趋势强用 1.5 倍 ATR，一般趋势 2 倍 ATR
+    atr_mult = 1.5 if score >= BUY_SCORE and sma10 and sma10 > sma20 > sma60 else 2.0
+    stop_loss = round(price - atr_mult * atr, 2)
+    target = round(price + atr_mult * atr * REWARD_RISK_RATIO, 2)
     stop_pct = round((price - stop_loss) / price * 100, 1)
-    position_pct = round(min(RISK_PER_TRADE_PCT / stop_pct * 100, 30), 1) if stop_pct > 0 else 0
+    position_pct = round(min(RISK_PER_TRADE_PCT / stop_pct * 100, 25), 1) if stop_pct > 0 else 0
 
-    digits = 2 if price >= 10 else 3
+    digits = price_digits(price)
+    pullback_zone = round(sma20 * 0.98, digits)
     plan = {
-        "entry": f"现价 {price:.{digits}f} 附近分批买入，或回踩 20 日均线 {sma20:.{digits}f} 时加仓",
-        "stopLoss": f"跌破 {stop_loss:.{digits}f}（约 -{stop_pct}%，2 倍 ATR）坚决止损",
-        "target": f"目标价 {target:.{digits}f}（盈亏比 1:{REWARD_RISK_RATIO:.0f}），到达后可分批止盈",
-        "position": f"建议仓位不超过总资金 {position_pct}%（单笔风险控制在 {RISK_PER_TRADE_PCT}% 以内）",
+        "entry": (
+            f"现价 {price:.{digits}f} 轻仓试探；回踩 20 日均线 {sma20:.{digits}f} "
+            f"或 {pullback_zone:.{digits}f} 附近分批加仓"
+        ),
+        "stopLoss": f"跌破 {stop_loss:.{digits}f}（约 -{stop_pct}%，{atr_mult:.1f} 倍 ATR）坚决止损",
+        "target": f"第一目标 {target:.{digits}f}（盈亏比 1:{REWARD_RISK_RATIO:.1f}），可分批止盈",
+        "position": (
+            f"{market}标的建议仓位 ≤ 总资金 {position_pct}%"
+            f"（单笔风险 {RISK_PER_TRADE_PCT}%）；三市场分散配置"
+        ),
     }
 
     return {
         "symbol": symbol,
         "name": meta["name"],
+        "market": market,
         "sector": meta.get("sector"),
         "currency": meta.get("currency", "USD"),
         "price": round(price, 2),
@@ -297,26 +428,58 @@ def analyze_candidate(symbol: str, meta: dict) -> dict | None:
         "signalLabel": signal_label,
         "rsi": rsi,
         "monthChangePct": month_chg,
-        "reasons": reasons[:4],
+        "relativeStrength": rel_strength,
+        "reasons": reasons[:5],
         "plan": plan,
     }
 
 
 def build_recommendations() -> dict:
+    benchmarks = fetch_benchmark_closes()
     analyzed = []
     for symbol, meta in CANDIDATES.items():
-        result = analyze_candidate(symbol, meta)
+        result = analyze_candidate(symbol, meta, benchmarks)
         if result:
             analyzed.append(result)
 
-    analyzed.sort(key=lambda x: x["score"], reverse=True)
-    picks = [a for a in analyzed if a["signal"] in ("buy", "watch")][:MAX_PICKS]
+    # 每个市场各选评分最高且达观察门槛的 1 只，确保 A 股 / 港股 / 美股全覆盖
+    picks: list[dict] = []
+    for market in MARKETS:
+        market_pool = [a for a in analyzed if a["market"] == market and a["signal"] in ("buy", "watch")]
+        market_pool.sort(key=lambda x: x["score"], reverse=True)
+        if market_pool:
+            picks.append(market_pool[0])
+        else:
+            # 该市场无达标标的时，展示最高分供参考（标记为观察）
+            fallback = sorted(
+                [a for a in analyzed if a["market"] == market],
+                key=lambda x: x["score"],
+                reverse=True,
+            )
+            if fallback and fallback[0]["score"] >= 45:
+                top = fallback[0].copy()
+                top["signal"] = "watch"
+                top["signalLabel"] = "弱信号观察"
+                picks.append(top)
+
+    picks.sort(key=lambda x: (0 if x["signal"] == "buy" else 1, -x["score"]))
+
+    market_summary = []
+    for market in MARKETS:
+        pool = [a for a in analyzed if a["market"] == market]
+        if pool:
+            best = max(pool, key=lambda x: x["score"])
+            market_summary.append(f"{market}最高 {best['name']}({best['score']}分)")
 
     return {
-        "strategy": "趋势跟踪 + 动量评分：均线多头排列（40 分）、1/3 月动量（30 分）、RSI 健康度（20 分）、量能（10 分）；"
-        f"得分 ≥{BUY_SCORE} 给出买入信号，≥{WATCH_SCORE} 列入观察。止损按 2 倍 ATR，目标盈亏比 1:{REWARD_RISK_RATIO:.0f}。",
-        "disclaimer": "量化信号仅供参考，不构成投资建议。股市有风险，请严格执行止损纪律。",
-        "picks": picks,
+        "strategy": (
+            "多因子趋势策略（A股/港股/美股各选1只）：趋势结构25分、动量20分、"
+            f"相对强弱15分、RSI15分、MACD10分、量能10分、市场环境5分；"
+            f"≥{BUY_SCORE}买入，≥{WATCH_SCORE}观察。止损按ATR动态调整，盈亏比1:{REWARD_RISK_RATIO}。"
+        ),
+        "marketScan": " · ".join(market_summary),
+        "disclaimer": "量化信号仅供参考，不构成投资建议。请分散配置三市场、严格执行止损。",
+        "picks": picks[: len(MARKETS)],
     }
 
 

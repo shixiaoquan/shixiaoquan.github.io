@@ -182,12 +182,19 @@ function renderRecommendations(reco) {
   if (strategyEl && reco.strategy) strategyEl.textContent = reco.strategy;
   if (disclaimerEl && reco.disclaimer) disclaimerEl.textContent = reco.disclaimer;
 
-  container.innerHTML = reco.picks
+  const scanHtml = reco.marketScan
+    ? `<p class="reco-scan">${reco.marketScan}</p>`
+    : "";
+
+  container.innerHTML = scanHtml + reco.picks
     .map(
       (pick) => `
         <article class="reco-card reco-card--${pick.signal}">
           <div class="reco-card__top">
             <div>
+              <div class="reco-card__tags">
+                <span class="reco-market reco-market--${pick.market === "A股" ? "cn" : pick.market === "港股" ? "hk" : "us"}">${pick.market || ""}</span>
+              </div>
               <h3>${pick.name}</h3>
               <p class="stock-card__symbol">${pick.symbol} · ${pick.sector || ""}</p>
             </div>
