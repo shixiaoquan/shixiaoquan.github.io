@@ -12,6 +12,9 @@ import yfinance as yf
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "market.json"
+HISTORY_FILE = DATA_DIR / "reco_history.json"
+MAX_HISTORY_RECORDS = 500
+MIN_HISTORY_INTERVAL_MIN = 30  # 推荐不变时，至少间隔 30 分钟记一条
 
 INDICES = {
     "^GSPC": {"name": "标普 500", "region": "美国", "currency": "USD"},
@@ -483,6 +486,88 @@ def build_recommendations() -> dict:
     }
 
 
+def compact_pick(pick: dict) -> dict:
+    """压缩荐股快照，用于历史存储。"""
+    return {
+        "symbol": pick["symbol"],
+        "name": pick["name"],
+        "market": pick["market"],
+        "sector": pick.get("sector"),
+        "currency": pick.get("currency"),
+        "price": pick["price"],
+        "score": pick["score"],
+        "signal": pick["signal"],
+        "signalLabel": pick["signalLabel"],
+        "rsi": pick.get("rsi"),
+        "relativeStrength": pick.get("relativeStrength"),
+        "plan": pick.get("plan", {}),
+    }
+
+
+def picks_fingerprint(picks: list[dict]) -> str:
+    parts = sorted(f"{p['symbol']}:{p['signal']}:{round(p['score'])}" for p in picks)
+    return "|".join(parts)
+
+
+def load_reco_history() -> dict:
+    if HISTORY_FILE.exists():
+        try:
+            data = json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
+            if isinstance(data, dict) and isinstance(data.get("records"), list):
+                return data
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {"version": 1, "records": []}
+
+
+def should_append_history(records: list[dict], picks: list[dict], recorded_at: datetime) -> bool:
+    if not picks:
+        return False
+    if not records:
+        return True
+
+    last = records[-1]
+    if picks_fingerprint(last.get("picks", [])) != picks_fingerprint(picks):
+        return True
+
+    try:
+        last_time = datetime.fromisoformat(last["recordedAt"])
+        if last_time.tzinfo is None:
+            last_time = last_time.replace(tzinfo=timezone.utc)
+        current = recorded_at if recorded_at.tzinfo else recorded_at.replace(tzinfo=timezone.utc)
+        elapsed_min = (current - last_time).total_seconds() / 60
+        return elapsed_min >= MIN_HISTORY_INTERVAL_MIN
+    except (KeyError, ValueError):
+        return True
+
+
+def append_reco_history(recommendations: dict, recorded_at: datetime) -> dict:
+    """将本次荐股快照追加到 reco_history.json。"""
+    picks = recommendations.get("picks") or []
+    history = load_reco_history()
+    records: list[dict] = history.get("records", [])
+
+    if should_append_history(records, picks, recorded_at):
+        records.append(
+            {
+                "id": recorded_at.isoformat(timespec="seconds"),
+                "recordedAt": recorded_at.isoformat(timespec="seconds"),
+                "marketScan": recommendations.get("marketScan", ""),
+                "picks": [compact_pick(p) for p in picks],
+            }
+        )
+        records = records[-MAX_HISTORY_RECORDS:]
+        history["records"] = records
+        history["updatedAt"] = recorded_at.isoformat(timespec="seconds")
+        history["total"] = len(records)
+        HISTORY_FILE.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"Wrote {HISTORY_FILE} ({len(records)} records)")
+    else:
+        print("Reco history unchanged, skip append.")
+
+    return history
+
+
 def build_summary(indices: list[dict]) -> dict:
     valid = [i for i in indices if i.get("changePct") is not None]
     up = sum(1 for i in valid if i["changePct"] > 0)
@@ -514,9 +599,10 @@ def main() -> None:
     stocks = [fetch_quote(symbol, meta) for symbol, meta in STOCKS.items()]
     news = fetch_news()
     recommendations = build_recommendations()
+    now = datetime.now(timezone.utc).astimezone()
 
     payload = {
-        "updatedAt": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"),
+        "updatedAt": now.isoformat(timespec="seconds"),
         "summary": build_summary(indices),
         "indices": indices,
         "stocks": stocks,
@@ -526,6 +612,8 @@ def main() -> None:
 
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {OUTPUT_FILE}")
+
+    append_reco_history(recommendations, now)
 
 
 if __name__ == "__main__":
