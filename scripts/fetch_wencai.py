@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import base64
 import json
 import os
 from datetime import datetime, timezone
@@ -11,7 +12,7 @@ from typing import Any
 
 import pandas as pd
 
-from wencai_queries import WENCAI_SCREENS
+from wencai_queries import WENCAI_NEWS_QUERIES, WENCAI_SCREENS
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -23,6 +24,127 @@ PRICE_KEYS = ("最新价", "现价")
 CHANGE_KEYS = ("最新涨跌幅", "涨跌幅", "涨跌幅:前复权")
 FLOW_KEYS = ("主力资金流向", "陆股通净买入额", "主力净流入")
 RANK_KEYS = ("个股热度排名", "排名")
+NEWS_FIELD_KEYS = ("关键词资讯", "资讯", "新闻")
+
+
+def decode_news_payload(raw: Any) -> list[dict]:
+    if raw is None or (isinstance(raw, float) and pd.isna(raw)):
+        return []
+    text = str(raw).strip()
+    if not text or text.lower() == "nan":
+        return []
+    try:
+        decoded = base64.b64decode(text)
+        data = json.loads(decoded)
+        return data if isinstance(data, list) else []
+    except (json.JSONDecodeError, ValueError, TypeError):
+        return []
+
+
+def pick_news_column(columns: list[str]) -> str | None:
+    for col in columns:
+        for key in NEWS_FIELD_KEYS:
+            if key in col:
+                return col
+    return None
+
+
+def article_to_news_item(
+    article: dict,
+    *,
+    stock_code: str,
+    stock_name: str,
+    category: str,
+) -> dict | None:
+    title = (article.get("PageRawTitle") or article.get("title") or "").strip()
+    if not title:
+        return None
+    link = (article.get("URL") or article.get("url") or "").strip()
+    uid = article.get("UID") or article.get("uid") or title
+    published = article.get("PublishTime") or article.get("publishTime")
+    published_iso = None
+    if published:
+        try:
+            published_iso = datetime.fromtimestamp(int(published), tz=timezone.utc).astimezone().isoformat(
+                timespec="seconds"
+            )
+        except (TypeError, ValueError, OSError):
+            published_iso = None
+
+    related = stock_name or stock_code or "A股"
+    if stock_code and stock_name:
+        related = f"{stock_name} ({stock_code})"
+
+    return {
+        "id": f"wencai:{uid}",
+        "title": title,
+        "link": link,
+        "publisher": "同花顺问财",
+        "related": related,
+        "publishedAt": published_iso,
+        "summary": category,
+        "source": "wencai",
+        "category": category,
+    }
+
+
+def extract_news_from_df(df: pd.DataFrame, category: str, limit: int) -> list[dict]:
+    columns = [str(c) for c in df.columns.tolist()]
+    news_col = pick_news_column(columns)
+    if not news_col:
+        return []
+
+    code_col = pick_column(columns, CODE_KEYS)
+    name_col = pick_column(columns, NAME_KEYS)
+    articles: list[dict] = []
+    seen: set[str] = set()
+
+    for _, row in df.head(limit).iterrows():
+        stock_code = str(row.get(code_col, "")).strip() if code_col else ""
+        stock_name = str(row.get(name_col, "")).strip() if name_col else ""
+        for article in decode_news_payload(row.get(news_col)):
+            item = article_to_news_item(
+                article,
+                stock_code=stock_code,
+                stock_name=stock_name,
+                category=category,
+            )
+            if not item or item["id"] in seen:
+                continue
+            seen.add(item["id"])
+            articles.append(item)
+    return articles
+
+
+def fetch_wencai_news(cookie: str | None) -> list[dict]:
+    import pywencai
+
+    all_news: list[dict] = []
+    seen: set[str] = set()
+
+    for spec in WENCAI_NEWS_QUERIES:
+        kwargs: dict[str, Any] = {
+            "query": spec["query"],
+            "query_type": spec.get("query_type", "stock"),
+            "perpage": min(spec.get("perpage", 10), 100),
+            "no_detail": True,
+        }
+        if cookie:
+            kwargs["cookie"] = cookie
+        try:
+            result = pywencai.get(**kwargs)
+        except Exception:
+            continue
+        if not isinstance(result, pd.DataFrame) or result.empty:
+            continue
+        for item in extract_news_from_df(result, spec.get("category", "资讯"), spec.get("perpage", 10)):
+            if item["id"] in seen:
+                continue
+            seen.add(item["id"])
+            all_news.append(item)
+
+    all_news.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
+    return all_news[:40]
 
 
 def load_existing() -> dict:
@@ -184,15 +306,22 @@ def main() -> None:
             )
 
     ok_count = sum(1 for s in screens if s.get("status") == "ok" and s.get("items"))
-    if ok_count == 0 and errors:
+    news = fetch_wencai_news(cookie)
+
+    if ok_count == 0 and errors and not news:
         status = "error"
         message = "问财拉取失败，请检查 Cookie 或问句。详见 .cursor/skills/wencai/SKILL.md"
-    elif ok_count == 0:
+    elif ok_count == 0 and not news:
         status = "empty"
         message = "问财暂无数据（可能非交易时段）"
     else:
         status = "ok"
-        message = f"已更新 {ok_count} 个问句结果"
+        parts = []
+        if ok_count:
+            parts.append(f"{ok_count} 个市场问句")
+        if news:
+            parts.append(f"{len(news)} 条资讯")
+        message = f"已更新 {' · '.join(parts)}" if parts else "已更新"
 
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
@@ -202,12 +331,13 @@ def main() -> None:
         "cookieUsed": bool(cookie),
         "sentiment": build_sentiment(screens),
         "screens": screens,
+        "news": news,
     }
     if errors:
         payload["errors"] = errors
 
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {OUTPUT_FILE} ({status}, {ok_count} screens with data)")
+    print(f"Wrote {OUTPUT_FILE} ({status}, {ok_count} screens, {len(news)} news)")
 
 
 if __name__ == "__main__":

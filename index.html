@@ -293,9 +293,16 @@
     <!-- 资讯 -->
     <section id="panel-news" class="tab-panel" role="tabpanel" hidden>
       <section class="panel panel--wide">
-        <div class="panel__head">
-          <h2>重要资讯</h2>
-          <p>来自 Yahoo Finance 的实时财经新闻</p>
+        <div class="panel__head history-section__head">
+          <div>
+            <h2>重要资讯</h2>
+            <p>Yahoo Finance 全球财经 · 同花顺问财 A 股公告与利好</p>
+          </div>
+          <div class="history-filters" id="news-filters" role="tablist" aria-label="资讯来源筛选">
+            <button type="button" class="news-filter news-filter--active" data-source="all">全部</button>
+            <button type="button" class="news-filter" data-source="wencai">问财</button>
+            <button type="button" class="news-filter" data-source="yahoo">Yahoo</button>
+          </div>
         </div>
         <ul class="news-list" id="news-list"></ul>
       </section>
