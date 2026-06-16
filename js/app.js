@@ -2,6 +2,7 @@ const DATA_URL = "data/market.json";
 const HISTORY_URL = "data/reco_history.json";
 const WENCAI_URL = "data/wencai.json";
 const BACKTEST_URL = "data/backtest.json";
+const SIGNALS_URL = "data/signals.json";
 const PAPER_URL = "data/paper_account.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
@@ -125,7 +126,12 @@ function switchTab(tabId, options = {}) {
     renderBacktestChart(backtestData.equityCurve);
   }
   if (tabId === "paper") {
-    renderPaperPanel(paperData);
+    if (paperData) {
+      renderPaperPanel(paperData);
+    } else {
+      renderPaperPanel(null);
+      refreshPaperData();
+    }
   }
   if (tabId === "market" && wencaiData) {
     renderWencaiPanels(wencaiData);
@@ -896,10 +902,15 @@ function renderPaperChart(curve, forceRecreate = false) {
   paperChart = renderEquityChart("paper-chart", curve, paperChart, "账户净值", forceRecreate);
 }
 
-function renderPaperPanel(paper) {
+function renderPaperPanel(paper, loadState = "ready") {
   if (!paper) {
+    const isError = loadState === "error";
     renderStatCards("paper-stats", [
-      { label: "模拟盘", value: "加载中…", hint: "正在读取 paper_account.json" },
+      {
+        label: "模拟盘",
+        value: isError ? "加载失败" : "加载中…",
+        hint: isError ? "无法读取 paper_account.json，请刷新重试" : "正在读取 paper_account.json",
+      },
     ]);
     renderCockpitPaper(null);
     const positionsEl = document.getElementById("paper-positions");
@@ -912,7 +923,13 @@ function renderPaperPanel(paper) {
   renderPaperPositions(paper.positions);
   renderPaperTrades(paper.trades);
   renderCockpitPaper(paper);
-  requestAnimationFrame(() => renderPaperChart(paper.equityCurve, true));
+  requestAnimationFrame(() => {
+    try {
+      renderPaperChart(paper.equityCurve, true);
+    } catch (error) {
+      console.error("paper chart render failed", error);
+    }
+  });
 }
 
 function renderLabVersionCompare(backtest) {
@@ -1237,6 +1254,11 @@ function renderPaperTrades(trades) {
 
 function applyTradingData(payload) {
   const { signals, backtest, paper, diagnostics } = payload;
+  // 优先应用模拟盘，避免其他面板渲染异常阻塞 paper 展示
+  if (paper) {
+    paperData = paper;
+    renderPaperPanel(paper);
+  }
   if (signals) {
     signalsData = signals;
     renderSignalsTable(signals);
@@ -1249,10 +1271,6 @@ function applyTradingData(payload) {
     renderBacktestTrades(backtest.recentTrades);
     if (activeTab === "lab") renderBacktestChart(backtest.equityCurve);
   }
-  if (paper) {
-    paperData = paper;
-    renderPaperPanel(paper);
-  }
   if (diagnostics) {
     diagnosticsData = diagnostics;
     renderDiagnostics(diagnostics);
@@ -1260,10 +1278,28 @@ function applyTradingData(payload) {
   }
 }
 
+async function refreshPaperData() {
+  const paper = await fetchJson(PAPER_URL);
+  if (paper) {
+    paperData = paper;
+    renderPaperPanel(paper);
+    return true;
+  }
+  if (activeTab === "paper" && !paperData) {
+    renderPaperPanel(null, "error");
+  }
+  return false;
+}
+
 async function fetchJson(url) {
-  const response = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
-  if (!response.ok) return null;
-  return response.json();
+  try {
+    const response = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (error) {
+    console.error(`fetch failed: ${url}`, error);
+    return null;
+  }
 }
 
 function tradingDataStamp(signals, backtest, paper, diagnostics) {
@@ -1285,7 +1321,7 @@ async function refreshTradingData() {
     lastTradingUpdatedAt = stamp;
   } catch (error) {
     console.error("trading data load failed", error);
-    if (activeTab === "paper") renderPaperPanel(null);
+    if (activeTab === "paper" && !paperData) renderPaperPanel(null);
   }
 }
 
@@ -1375,11 +1411,16 @@ async function init() {
   switchTab(initialTab, { updateRoute: false });
   suppressTabRoute = false;
 
-  await Promise.all([refreshData(), refreshHistory(), refreshTradingData(), refreshWencaiData()]);
+  await Promise.all([
+    refreshData(),
+    refreshHistory(),
+    refreshPaperData(),
+    refreshTradingData(),
+    refreshWencaiData(),
+  ]);
 
   if (!paperData) {
-    lastTradingUpdatedAt = null;
-    await refreshTradingData();
+    await refreshPaperData();
   }
   if (activeTab === "paper") {
     renderPaperPanel(paperData);
@@ -1387,6 +1428,7 @@ async function init() {
 
   setInterval(refreshData, POLL_INTERVAL_MS);
   setInterval(refreshHistory, POLL_INTERVAL_MS);
+  setInterval(refreshPaperData, POLL_INTERVAL_MS);
   setInterval(refreshTradingData, POLL_INTERVAL_MS);
   setInterval(refreshWencaiData, POLL_INTERVAL_MS);
 }
