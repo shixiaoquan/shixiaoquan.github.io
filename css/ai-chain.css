@@ -36,6 +36,41 @@
   font-size: 0.8rem;
 }
 
+.ai-chain-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.ai-chain-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ai-chain-search__label {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.ai-chain-search__input {
+  width: min(240px, 100%);
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 0.86rem;
+}
+
+.ai-chain-search__input:focus {
+  outline: none;
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
 .ai-pipeline {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -129,6 +164,29 @@
   gap: 0;
 }
 
+.ai-segment-group {
+  border-bottom: 1px solid var(--border);
+}
+
+.ai-segment-group:last-child {
+  border-bottom: none;
+}
+
+.ai-segment-group__title {
+  margin: 0;
+  padding: 14px 18px 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  background: rgba(56, 189, 248, 0.04);
+}
+
+.ai-segment-group__list {
+  display: flex;
+  flex-direction: column;
+}
+
 .ai-segment {
   padding: 16px 18px;
   border-bottom: 1px solid var(--border);
@@ -140,6 +198,23 @@
 
 .ai-segment__head {
   margin-bottom: 12px;
+}
+
+.ai-segment__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ai-segment__count {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 600;
 }
 
 .ai-segment__name {
@@ -195,6 +270,20 @@
   font-size: 0.78rem;
 }
 
+.ai-stock__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ai-stock__tag {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-muted);
+  font-size: 0.68rem;
+}
+
 .ai-themes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -235,6 +324,15 @@
 }
 
 @media (max-width: 900px) {
+  .ai-chain-toolbar {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .ai-chain-search__input {
+    width: 100%;
+  }
+
   .ai-pipeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
