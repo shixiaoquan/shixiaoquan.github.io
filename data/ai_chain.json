@@ -1,0 +1,218 @@
+{
+  "title": "AI 完整产业链拆解",
+  "subtitle": "上游算力 · 中游模型 · 下游应用 · 配套生态",
+  "disclaimer": "概念梳理仅供参考，不构成投资建议。标注标的为产业链代表，非完整清单。",
+  "pipeline": [
+    { "id": "upstream", "label": "上游", "hint": "算力与基础设施" },
+    { "id": "midstream", "label": "中游", "hint": "模型与平台" },
+    { "id": "downstream", "label": "下游", "hint": "场景应用" },
+    { "id": "support", "label": "配套", "hint": "数据与工具" }
+  ],
+  "layers": [
+    {
+      "id": "upstream",
+      "name": "上游：算力与基础设施",
+      "summary": "AI 训练与推理的硬件底座，景气度与资本开支高度相关，通常处于产业链价值量最高环节。",
+      "segments": [
+        {
+          "name": "AI 芯片 / GPU / 加速卡",
+          "desc": "训练与推理核心算力，GPU 生态主导，ASIC 在推理侧崛起。",
+          "stocks": [
+            { "name": "英伟达", "symbol": "NVDA", "market": "美股", "role": "GPU 龙头" },
+            { "name": "AMD", "symbol": "AMD", "market": "美股", "role": "GPU / CPU" },
+            { "name": "海光信息", "symbol": "688041.SS", "market": "A股", "role": "国产 x86 / DCU" },
+            { "name": "寒武纪", "symbol": "688256.SS", "market": "A股", "role": "AI 芯片" },
+            { "name": "景嘉微", "symbol": "300474.SZ", "market": "A股", "role": "国产 GPU" }
+          ]
+        },
+        {
+          "name": "存储 / HBM / 先进封装",
+          "desc": "高带宽内存是 AI 服务器瓶颈，先进封装承接算力芯片需求。",
+          "stocks": [
+            { "name": "美光科技", "symbol": "MU", "market": "美股", "role": "HBM / DRAM" },
+            { "name": "江波龙", "symbol": "301308.SZ", "market": "A股", "role": "存储模组" },
+            { "name": "佰维存储", "symbol": "688525.SS", "market": "A股", "role": "存储模组" },
+            { "name": "通富微电", "symbol": "002156.SZ", "market": "A股", "role": "先进封测" },
+            { "name": "长电科技", "symbol": "600584.SS", "market": "A股", "role": "封测龙头" }
+          ]
+        },
+        {
+          "name": "半导体设备 / EDA",
+          "desc": "芯片制造的「卖铲人」，国产替代逻辑长期存在。",
+          "stocks": [
+            { "name": "应用材料", "symbol": "AMAT", "market": "美股", "role": "半导体设备" },
+            { "name": "北方华创", "symbol": "002371.SZ", "market": "A股", "role": "刻蚀 / 薄膜" },
+            { "name": "中微公司", "symbol": "688012.SS", "market": "A股", "role": "刻蚀设备" },
+            { "name": "华大九天", "symbol": "301269.SZ", "market": "A股", "role": "EDA 工具" }
+          ]
+        },
+        {
+          "name": "光模块 / 高速互联",
+          "desc": "数据中心内部 800G / 1.6T 光通信，AI 集群刚需。",
+          "stocks": [
+            { "name": "中际旭创", "symbol": "300308.SZ", "market": "A股", "role": "光模块龙头" },
+            { "name": "新易盛", "symbol": "300502.SZ", "market": "A股", "role": "光模块" },
+            { "name": "天孚通信", "symbol": "300394.SZ", "market": "A股", "role": "光器件" },
+            { "name": "Coherent", "symbol": "COHR", "market": "美股", "role": "光通信" }
+          ]
+        },
+        {
+          "name": "PCB / 散热 / 电源",
+          "desc": "AI 服务器高功耗带来 PCB 层数升级与液冷渗透。",
+          "stocks": [
+            { "name": "沪电股份", "symbol": "002463.SZ", "market": "A股", "role": "服务器 PCB" },
+            { "name": "深南电路", "symbol": "002916.SZ", "market": "A股", "role": "载板 / PCB" },
+            { "name": "英维克", "symbol": "002837.SZ", "market": "A股", "role": "液冷温控" },
+            { "name": "工业富联", "symbol": "601138.SS", "market": "A股", "role": "AI 服务器代工" }
+          ]
+        },
+        {
+          "name": "服务器 / IDC / 算力租赁",
+          "desc": "算力落地载体与运营方，智算中心建设直接受益。",
+          "stocks": [
+            { "name": "超微电脑", "symbol": "SMCI", "market": "美股", "role": "AI 服务器" },
+            { "name": "浪潮信息", "symbol": "000977.SZ", "market": "A股", "role": "AI 服务器" },
+            { "name": "中科曙光", "symbol": "603019.SS", "market": "A股", "role": "智算 / 服务器" },
+            { "name": "奥飞数据", "symbol": "300738.SZ", "market": "A股", "role": "IDC" },
+            { "name": "阿里巴巴", "symbol": "9988.HK", "market": "港股", "role": "云 + 智算" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "midstream",
+      "name": "中游：模型与平台",
+      "summary": "大模型、云计算与 AI 开发平台，连接算力与应用的枢纽层。",
+      "segments": [
+        {
+          "name": "全球大模型 + 云巨头",
+          "desc": "模型研发、推理 API 与生态分发，马太效应显著。",
+          "stocks": [
+            { "name": "微软", "symbol": "MSFT", "market": "美股", "role": "OpenAI / Copilot" },
+            { "name": "谷歌", "symbol": "GOOGL", "market": "美股", "role": "Gemini / TPU" },
+            { "name": "Meta", "symbol": "META", "market": "美股", "role": "Llama 开源生态" },
+            { "name": "亚马逊", "symbol": "AMZN", "market": "美股", "role": "AWS / Bedrock" },
+            { "name": "腾讯", "symbol": "0700.HK", "market": "港股", "role": "混元大模型" },
+            { "name": "百度", "symbol": "9888.HK", "market": "港股", "role": "文心一言" }
+          ]
+        },
+        {
+          "name": "国产大模型 / AI 平台",
+          "desc": "中文语料与行业 Know-how 优势，政企市场渗透加速。",
+          "stocks": [
+            { "name": "科大讯飞", "symbol": "002230.SZ", "market": "A股", "role": "语音 + 大模型" },
+            { "name": "昆仑万维", "symbol": "300418.SZ", "market": "A股", "role": "天工大模型" },
+            { "name": "三六零", "symbol": "601360.SS", "market": "A股", "role": "安全大模型" },
+            { "name": "商汤", "symbol": "0020.HK", "market": "港股", "role": "视觉大模型" },
+            { "name": "第四范式", "symbol": "6682.HK", "market": "港股", "role": "企业 AI 平台" }
+          ]
+        },
+        {
+          "name": "AI 软件 / 办公 / SaaS",
+          "desc": "Copilot 式嵌入工作流，订阅制变现路径清晰。",
+          "stocks": [
+            { "name": "金山办公", "symbol": "688111.SS", "market": "A股", "role": "WPS AI" },
+            { "name": "用友网络", "symbol": "600588.SS", "market": "A股", "role": "企业 ERP + AI" },
+            { "name": "Salesforce", "symbol": "CRM", "market": "美股", "role": "CRM + AI Agent" },
+            { "name": "金蝶国际", "symbol": "0268.HK", "market": "港股", "role": "云 SaaS" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "downstream",
+      "name": "下游：场景应用",
+      "summary": "AI 渗透率提升的最终变现层，需关注真实订单与 ROI。",
+      "segments": [
+        {
+          "name": "AIGC / 内容创作",
+          "desc": "文生图、视频与营销工具，流量与版权是核心变量。",
+          "stocks": [
+            { "name": "Adobe", "symbol": "ADBE", "market": "美股", "role": "创意云 AI" },
+            { "name": "万兴科技", "symbol": "300624.SZ", "market": "A股", "role": "AIGC 工具" },
+            { "name": "昆仑万维", "symbol": "300418.SZ", "market": "A股", "role": "SkyReels 等" },
+            { "name": "腾讯", "symbol": "0700.HK", "market": "港股", "role": "游戏 + 内容生态" }
+          ]
+        },
+        {
+          "name": "智能驾驶 / 机器人",
+          "desc": "端侧 AI 最大落地场景之一，软硬件一体化竞争。",
+          "stocks": [
+            { "name": "特斯拉", "symbol": "TSLA", "market": "美股", "role": "FSD / Optimus" },
+            { "name": "比亚迪", "symbol": "002594.SZ", "market": "A股", "role": "整车 + 智驾" },
+            { "name": "德赛西威", "symbol": "002920.SZ", "market": "A股", "role": "智驾域控" },
+            { "name": "小鹏汽车", "symbol": "9868.HK", "market": "港股", "role": "城市 NOA" },
+            { "name": "地平线", "symbol": "9660.HK", "market": "港股", "role": "智驾芯片" },
+            { "name": "汇川技术", "symbol": "300124.SZ", "market": "A股", "role": "工业机器人" }
+          ]
+        },
+        {
+          "name": "金融 / 安防 / 工业视觉",
+          "desc": "垂直行业数据壁垒高，AI 赋能存量信息化系统。",
+          "stocks": [
+            { "name": "同花顺", "symbol": "300033.SZ", "market": "A股", "role": "金融 AI" },
+            { "name": "恒生电子", "symbol": "600570.SS", "market": "A股", "role": "金融 IT" },
+            { "name": "海康威视", "symbol": "002415.SZ", "market": "A股", "role": "安防 AI" },
+            { "name": "奥普特", "symbol": "688686.SS", "market": "A股", "role": "机器视觉" }
+          ]
+        },
+        {
+          "name": "医疗 AI",
+          "desc": "影像辅助诊断、医院信息化与 AI 器械融合。",
+          "stocks": [
+            { "name": "联影医疗", "symbol": "688271.SS", "market": "A股", "role": "医学影像" },
+            { "name": "卫宁健康", "symbol": "300253.SZ", "market": "A股", "role": "医疗信息化" },
+            { "name": "东软集团", "symbol": "600718.SS", "market": "A股", "role": "医保 / 医疗 IT" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support",
+      "name": "配套：数据与生态",
+      "summary": "语料、标注、安全与 IP，大模型时代的「卖水人」。",
+      "segments": [
+        {
+          "name": "数据标注 / 语料",
+          "desc": "高质量训练数据是模型效果的基础投入。",
+          "stocks": [
+            { "name": "海天瑞声", "symbol": "688787.SS", "market": "A股", "role": "AI 训练数据" },
+            { "name": "中文在线", "symbol": "300364.SZ", "market": "A股", "role": "语料版权" },
+            { "name": "掌阅科技", "symbol": "603533.SS", "market": "A股", "role": "数字阅读语料" }
+          ]
+        },
+        {
+          "name": "网络安全 / AI 合规",
+          "desc": "大模型安全、隐私计算与合规审计需求上升。",
+          "stocks": [
+            { "name": "深信服", "symbol": "300454.SZ", "market": "A股", "role": "安全 + 算力" },
+            { "name": "奇安信", "symbol": "688561.SS", "market": "A股", "role": "政企安全" },
+            { "name": "Palo Alto", "symbol": "PANW", "market": "美股", "role": "网络安全" }
+          ]
+        }
+      ]
+    }
+  ],
+  "themes": [
+    {
+      "name": "算力链",
+      "logic": "大模型训练推理需求爆发，GPU、光模块、服务器率先受益。",
+      "leaders": "NVDA · 中际旭创 · 浪潮信息 · 工业富联"
+    },
+    {
+      "name": "国产替代",
+      "logic": "信创与自主可控，芯片、设备、EDA 长期主题。",
+      "leaders": "海光信息 · 北方华创 · 华大九天"
+    },
+    {
+      "name": "应用落地",
+      "logic": "AI 渗透率提升，办公、智驾、金融等场景兑现收入。",
+      "leaders": "金山办公 · 德赛西威 · 科大讯飞"
+    },
+    {
+      "name": "港股 AI 平台",
+      "logic": "云 + 大模型 + 应用一体化，生态型平台占优。",
+      "leaders": "腾讯 · 阿里 · 百度 · 商汤"
+    }
+  ]
+}

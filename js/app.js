@@ -5,6 +5,7 @@ const BACKTEST_URL = "data/backtest.json";
 const SIGNALS_URL = "data/signals.json";
 const PAPER_URL = "data/paper_account.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
+const AI_CHAIN_URL = "data/ai_chain.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
 
 let lastUpdatedAt = null;
@@ -19,11 +20,13 @@ let wencaiData = null;
 let lastWencaiUpdatedAt = null;
 let yahooNews = [];
 let newsFilter = "all";
+let aiChainData = null;
+let aiChainFilter = "all";
 let quoteMap = {};
 let activeTab = "cockpit";
 let suppressTabRoute = false;
 
-const VALID_TABS = new Set(["cockpit", "market", "reco", "review", "lab", "paper", "news"]);
+const VALID_TABS = new Set(["cockpit", "market", "reco", "review", "lab", "paper", "ai", "news"]);
 const DEFAULT_TAB = "cockpit";
 
 let distributionChart;
@@ -135,6 +138,9 @@ function switchTab(tabId, options = {}) {
   }
   if (tabId === "market" && wencaiData) {
     renderWencaiPanels(wencaiData);
+  }
+  if (tabId === "ai" && aiChainData) {
+    renderAiChain(aiChainData);
   }
 }
 
@@ -1075,6 +1081,158 @@ function renderWencaiPanels(data, containerId = "market-wencai") {
   `;
 }
 
+function filterAiStocks(stocks) {
+  if (!stocks?.length) return [];
+  if (aiChainFilter === "all") return stocks;
+  return stocks.filter((s) => s.market === aiChainFilter);
+}
+
+function renderAiChainIntro(data) {
+  const el = document.getElementById("ai-chain-intro");
+  if (!el) return;
+  el.innerHTML = `
+    <div class="ai-chain-intro__inner">
+      <h2 class="ai-chain-intro__title">${data.title || "AI 产业链"}</h2>
+      <p class="ai-chain-intro__subtitle">${data.subtitle || ""}</p>
+      <p class="ai-chain-intro__disclaimer">${data.disclaimer || ""}</p>
+    </div>
+  `;
+}
+
+function renderAiChainPipeline(data) {
+  const el = document.getElementById("ai-chain-pipeline");
+  if (!el) return;
+  const steps = data.pipeline || [];
+  el.innerHTML = steps
+    .map(
+      (step) => `
+      <article class="ai-pipeline__step">
+        <p class="ai-pipeline__label">${step.label}</p>
+        <p class="ai-pipeline__hint">${step.hint || ""}</p>
+      </article>
+    `
+    )
+    .join("");
+}
+
+function renderAiChainLayers(data) {
+  const el = document.getElementById("ai-chain-layers");
+  const summaryEl = document.getElementById("ai-chain-summary");
+  if (!el) return;
+
+  const layers = data.layers || [];
+  let segmentCount = 0;
+  let stockCount = 0;
+
+  const html = layers
+    .map((layer) => {
+      const segments = (layer.segments || [])
+        .map((seg) => {
+          const stocks = filterAiStocks(seg.stocks);
+          if (!stocks.length) return "";
+          segmentCount += 1;
+          stockCount += stocks.length;
+          return `
+          <article class="ai-segment">
+            <div class="ai-segment__head">
+              <h4 class="ai-segment__name">${seg.name}</h4>
+              <p class="ai-segment__desc">${seg.desc || ""}</p>
+            </div>
+            <div class="ai-stocks">
+              ${stocks
+                .map(
+                  (stock) => `
+                <article class="ai-stock">
+                  <div class="ai-stock__row">
+                    <span class="ai-stock__name">${stock.name}</span>
+                    <span class="reco-market reco-market--${marketClass(stock.market)}">${stock.market}</span>
+                  </div>
+                  <span class="ai-stock__symbol">${stock.symbol}</span>
+                  <p class="ai-stock__role">${stock.role || ""}</p>
+                </article>
+              `
+                )
+                .join("")}
+            </div>
+          </article>
+        `;
+        })
+        .filter(Boolean)
+        .join("");
+
+      if (!segments) return "";
+
+      return `
+      <section class="ai-layer">
+        <header class="ai-layer__head ai-layer__head--${layer.id}">
+          <h3 class="ai-layer__title">${layer.name}</h3>
+          <p class="ai-layer__summary">${layer.summary || ""}</p>
+        </header>
+        <div class="ai-segments">${segments}</div>
+      </section>
+    `;
+    })
+    .filter(Boolean)
+    .join("");
+
+  if (summaryEl) {
+    const filterLabel = aiChainFilter === "all" ? "全市场" : aiChainFilter;
+    summaryEl.textContent = `${filterLabel} · ${segmentCount} 个环节 · ${stockCount} 只概念标的`;
+  }
+
+  el.innerHTML = html || '<p class="ai-chain-empty">当前筛选市场下暂无标的，请切换「全部」查看。</p>';
+}
+
+function renderAiChainThemes(data) {
+  const el = document.getElementById("ai-chain-themes");
+  if (!el) return;
+  const themes = data.themes || [];
+  if (!themes.length) {
+    el.innerHTML = "";
+    return;
+  }
+  el.innerHTML = themes
+    .map(
+      (theme) => `
+      <article class="ai-theme">
+        <h4 class="ai-theme__name">${theme.name}</h4>
+        <p class="ai-theme__logic">${theme.logic || ""}</p>
+        <p class="ai-theme__leaders">代表方向：${theme.leaders || ""}</p>
+      </article>
+    `
+    )
+    .join("");
+}
+
+function renderAiChain(data) {
+  if (!data) return;
+  renderAiChainIntro(data);
+  renderAiChainPipeline(data);
+  renderAiChainLayers(data);
+  renderAiChainThemes(data);
+}
+
+function setupAiChainFilters() {
+  const filters = document.getElementById("ai-chain-filters");
+  if (!filters) return;
+  filters.addEventListener("click", (event) => {
+    const btn = event.target.closest(".history-filter");
+    if (!btn) return;
+    aiChainFilter = btn.dataset.market || "all";
+    filters.querySelectorAll(".history-filter").forEach((el) => {
+      el.classList.toggle("history-filter--active", el === btn);
+    });
+    if (aiChainData) renderAiChain(aiChainData);
+  });
+}
+
+async function loadAiChainData() {
+  const data = await fetchJson(AI_CHAIN_URL);
+  if (!data) return;
+  aiChainData = data;
+  if (activeTab === "ai") renderAiChain(data);
+}
+
 function setupNewsFilters() {
   const filters = document.getElementById("news-filters");
   if (!filters) return;
@@ -1405,6 +1563,7 @@ async function init() {
   setupTabs();
   setupHistoryFilters();
   setupNewsFilters();
+  setupAiChainFilters();
 
   const initialTab = tabFromLocation();
   suppressTabRoute = true;
@@ -1417,6 +1576,7 @@ async function init() {
     refreshPaperData(),
     refreshTradingData(),
     refreshWencaiData(),
+    loadAiChainData(),
   ]);
 
   if (!paperData) {

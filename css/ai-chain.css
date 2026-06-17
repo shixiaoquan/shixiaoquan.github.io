@@ -1,0 +1,263 @@
+/* AI 产业链 Tab */
+
+.ai-cockpit-teaser {
+  margin: 0;
+  padding: 0 4px 4px;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.ai-chain-intro {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(52, 211, 153, 0.06));
+  border-color: rgba(56, 189, 248, 0.22);
+}
+
+.ai-chain-intro__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-chain-intro__title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.ai-chain-intro__subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.ai-chain-intro__disclaimer {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.ai-pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.ai-pipeline__step {
+  position: relative;
+  padding: 14px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.ai-pipeline__step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1rem;
+  z-index: 1;
+}
+
+.ai-pipeline__label {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.ai-pipeline__hint {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.ai-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ai-layer {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.ai-layer__head {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.ai-layer__head--upstream {
+  border-left: 4px solid #38bdf8;
+}
+
+.ai-layer__head--midstream {
+  border-left: 4px solid #a78bfa;
+}
+
+.ai-layer__head--downstream {
+  border-left: 4px solid #34d399;
+}
+
+.ai-layer__head--support {
+  border-left: 4px solid #fbbf24;
+}
+
+.ai-layer__title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.ai-layer__summary {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.ai-segments {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ai-segment {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ai-segment:last-child {
+  border-bottom: none;
+}
+
+.ai-segment__head {
+  margin-bottom: 12px;
+}
+
+.ai-segment__name {
+  margin: 0 0 4px;
+  font-size: 0.96rem;
+  font-weight: 600;
+}
+
+.ai-segment__desc {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.ai-stocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.ai-stock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.ai-stock__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ai-stock__name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.ai-stock__symbol {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-family: ui-monospace, monospace;
+}
+
+.ai-stock__role {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.ai-themes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ai-theme {
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.ai-theme__name {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.ai-theme__logic {
+  margin: 0 0 8px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.ai-theme__leaders {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.ai-chain-empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .ai-pipeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ai-pipeline__step:nth-child(2n)::after {
+    content: none;
+  }
+
+  .ai-themes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .ai-pipeline {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-pipeline__step::after {
+    content: none;
+  }
+
+  .ai-stocks {
+    grid-template-columns: 1fr;
+  }
+}

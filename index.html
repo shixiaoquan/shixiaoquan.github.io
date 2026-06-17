@@ -11,8 +11,9 @@
   <link rel="shortcut icon" href="favicon.ico?v=3">
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" sizes="180x180">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/ai-chain.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="js/app.js?v=4" defer></script>
+  <script src="js/app.js?v=5" defer></script>
 </head>
 <body>
   <div class="app">
@@ -35,6 +36,7 @@
       <button type="button" class="tabs__btn" data-tab="review" role="tab" aria-selected="false">复盘</button>
       <button type="button" class="tabs__btn" data-tab="lab" role="tab" aria-selected="false">实验室</button>
       <button type="button" class="tabs__btn" data-tab="paper" role="tab" aria-selected="false">模拟盘</button>
+      <button type="button" class="tabs__btn" data-tab="ai" role="tab" aria-selected="false">AI产业</button>
       <button type="button" class="tabs__btn" data-tab="news" role="tab" aria-selected="false">资讯</button>
     </nav>
 
@@ -78,6 +80,16 @@
             <button type="button" class="link-btn" data-goto-tab="paper">模拟盘 →</button>
           </div>
           <div class="review-stats review-stats--compact" id="cockpit-paper"></div>
+        </section>
+        <section class="panel">
+          <div class="panel__head panel__head--row">
+            <div>
+              <h2>AI 产业链</h2>
+              <p>算力 · 模型 · 应用全景拆解</p>
+            </div>
+            <button type="button" class="link-btn" data-goto-tab="ai">查看图谱 →</button>
+          </div>
+          <p class="ai-cockpit-teaser">上游 GPU / 光模块 → 中游大模型 → 下游智驾 / AIGC，附 A 股 / 港股 / 美股概念标的。</p>
         </section>
         <section class="panel">
           <div class="panel__head">
@@ -297,6 +309,34 @@
             <tbody></tbody>
           </table>
         </div>
+      </section>
+    </section>
+
+    <!-- AI 产业链 -->
+    <section id="panel-ai" class="tab-panel" role="tabpanel" hidden>
+      <section class="panel panel--wide ai-chain-intro" id="ai-chain-intro"></section>
+      <section class="panel panel--wide">
+        <div class="panel__head history-section__head">
+          <div>
+            <h2>产业链全景</h2>
+            <p id="ai-chain-summary">按环节拆解代表环节与概念标的</p>
+          </div>
+          <div class="history-filters" id="ai-chain-filters" role="tablist" aria-label="市场筛选">
+            <button type="button" class="history-filter history-filter--active" data-market="all">全部</button>
+            <button type="button" class="history-filter" data-market="A股">A股</button>
+            <button type="button" class="history-filter" data-market="港股">港股</button>
+            <button type="button" class="history-filter" data-market="美股">美股</button>
+          </div>
+        </div>
+        <div class="ai-pipeline" id="ai-chain-pipeline"></div>
+        <div class="ai-layers" id="ai-chain-layers"></div>
+      </section>
+      <section class="panel panel--wide">
+        <div class="panel__head">
+          <h2>投资主题速览</h2>
+          <p>常见轮动逻辑与龙头方向</p>
+        </div>
+        <div class="ai-themes" id="ai-chain-themes"></div>
       </section>
     </section>
 
