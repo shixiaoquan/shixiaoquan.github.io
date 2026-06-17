@@ -22,6 +22,7 @@ let yahooNews = [];
 let newsFilter = "all";
 let aiChainData = null;
 let aiChainFilter = "all";
+let aiChainSearch = "";
 let quoteMap = {};
 let activeTab = "cockpit";
 let suppressTabRoute = false;
@@ -1083,8 +1084,71 @@ function renderWencaiPanels(data, containerId = "market-wencai") {
 
 function filterAiStocks(stocks) {
   if (!stocks?.length) return [];
-  if (aiChainFilter === "all") return stocks;
-  return stocks.filter((s) => s.market === aiChainFilter);
+  let result = stocks;
+  if (aiChainFilter !== "all") {
+    result = result.filter((s) => s.market === aiChainFilter);
+  }
+  const query = aiChainSearch.trim().toLowerCase();
+  if (query) {
+    result = result.filter((s) => {
+      const haystack = [s.name, s.symbol, s.role, s.market, ...(s.tags || [])]
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(query);
+    });
+  }
+  return result;
+}
+
+function buildAiSegmentGroups(segments) {
+  const groups = [];
+  const index = new Map();
+  for (const seg of segments || []) {
+    const stocks = filterAiStocks(seg.stocks);
+    if (!stocks.length) continue;
+    const groupName = seg.group || "其他";
+    if (!index.has(groupName)) {
+      const group = { name: groupName, segments: [] };
+      index.set(groupName, group);
+      groups.push(group);
+    }
+    index.get(groupName).segments.push({ ...seg, stocks });
+  }
+  return groups;
+}
+
+function renderAiStockCard(stock) {
+  const tags = (stock.tags || [])
+    .map((tag) => `<span class="ai-stock__tag">${tag}</span>`)
+    .join("");
+  return `
+    <article class="ai-stock">
+      <div class="ai-stock__row">
+        <span class="ai-stock__name">${stock.name}</span>
+        <span class="reco-market reco-market--${marketClass(stock.market)}">${stock.market}</span>
+      </div>
+      <span class="ai-stock__symbol">${stock.symbol}</span>
+      <p class="ai-stock__role">${stock.role || ""}</p>
+      ${tags ? `<div class="ai-stock__tags">${tags}</div>` : ""}
+    </article>
+  `;
+}
+
+function renderAiSegment(seg) {
+  return `
+    <article class="ai-segment">
+      <div class="ai-segment__head">
+        <div class="ai-segment__title-row">
+          <h4 class="ai-segment__name">${seg.name}</h4>
+          <span class="ai-segment__count">${seg.stocks.length} 只</span>
+        </div>
+        <p class="ai-segment__desc">${seg.desc || ""}</p>
+      </div>
+      <div class="ai-stocks">
+        ${seg.stocks.map((stock) => renderAiStockCard(stock)).join("")}
+      </div>
+    </article>
+  `;
 }
 
 function renderAiChainIntro(data) {
@@ -1126,41 +1190,23 @@ function renderAiChainLayers(data) {
 
   const html = layers
     .map((layer) => {
-      const segments = (layer.segments || [])
-        .map((seg) => {
-          const stocks = filterAiStocks(seg.stocks);
-          if (!stocks.length) return "";
-          segmentCount += 1;
-          stockCount += stocks.length;
+      const groups = buildAiSegmentGroups(layer.segments);
+      if (!groups.length) return "";
+
+      const segmentsHtml = groups
+        .map((group) => {
+          segmentCount += group.segments.length;
+          stockCount += group.segments.reduce((sum, seg) => sum + seg.stocks.length, 0);
           return `
-          <article class="ai-segment">
-            <div class="ai-segment__head">
-              <h4 class="ai-segment__name">${seg.name}</h4>
-              <p class="ai-segment__desc">${seg.desc || ""}</p>
+          <section class="ai-segment-group">
+            <h4 class="ai-segment-group__title">${group.name}</h4>
+            <div class="ai-segment-group__list">
+              ${group.segments.map((seg) => renderAiSegment(seg)).join("")}
             </div>
-            <div class="ai-stocks">
-              ${stocks
-                .map(
-                  (stock) => `
-                <article class="ai-stock">
-                  <div class="ai-stock__row">
-                    <span class="ai-stock__name">${stock.name}</span>
-                    <span class="reco-market reco-market--${marketClass(stock.market)}">${stock.market}</span>
-                  </div>
-                  <span class="ai-stock__symbol">${stock.symbol}</span>
-                  <p class="ai-stock__role">${stock.role || ""}</p>
-                </article>
-              `
-                )
-                .join("")}
-            </div>
-          </article>
+          </section>
         `;
         })
-        .filter(Boolean)
         .join("");
-
-      if (!segments) return "";
 
       return `
       <section class="ai-layer">
@@ -1168,7 +1214,7 @@ function renderAiChainLayers(data) {
           <h3 class="ai-layer__title">${layer.name}</h3>
           <p class="ai-layer__summary">${layer.summary || ""}</p>
         </header>
-        <div class="ai-segments">${segments}</div>
+        <div class="ai-segments">${segmentsHtml}</div>
       </section>
     `;
     })
@@ -1177,7 +1223,9 @@ function renderAiChainLayers(data) {
 
   if (summaryEl) {
     const filterLabel = aiChainFilter === "all" ? "全市场" : aiChainFilter;
-    summaryEl.textContent = `${filterLabel} · ${segmentCount} 个环节 · ${stockCount} 只概念标的`;
+    const version = data.version ? ` v${data.version}` : "";
+    const searchHint = aiChainSearch.trim() ? ` · 搜索「${aiChainSearch.trim()}」` : "";
+    summaryEl.textContent = `${filterLabel}${searchHint} · ${segmentCount} 个环节 · ${stockCount} 只标的${version}`;
   }
 
   el.innerHTML = html || '<p class="ai-chain-empty">当前筛选市场下暂无标的，请切换「全部」查看。</p>';
@@ -1214,16 +1262,25 @@ function renderAiChain(data) {
 
 function setupAiChainFilters() {
   const filters = document.getElementById("ai-chain-filters");
-  if (!filters) return;
-  filters.addEventListener("click", (event) => {
-    const btn = event.target.closest(".history-filter");
-    if (!btn) return;
-    aiChainFilter = btn.dataset.market || "all";
-    filters.querySelectorAll(".history-filter").forEach((el) => {
-      el.classList.toggle("history-filter--active", el === btn);
+  if (filters) {
+    filters.addEventListener("click", (event) => {
+      const btn = event.target.closest(".history-filter");
+      if (!btn) return;
+      aiChainFilter = btn.dataset.market || "all";
+      filters.querySelectorAll(".history-filter").forEach((el) => {
+        el.classList.toggle("history-filter--active", el === btn);
+      });
+      if (aiChainData) renderAiChain(aiChainData);
     });
-    if (aiChainData) renderAiChain(aiChainData);
-  });
+  }
+
+  const searchInput = document.getElementById("ai-chain-search");
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      aiChainSearch = searchInput.value || "";
+      if (aiChainData) renderAiChain(aiChainData);
+    });
+  }
 }
 
 async function loadAiChainData() {

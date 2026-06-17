@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/ai-chain.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="js/app.js?v=5" defer></script>
+  <script src="js/app.js?v=6" defer></script>
 </head>
 <body>
   <div class="app">
@@ -89,7 +89,7 @@
             </div>
             <button type="button" class="link-btn" data-goto-tab="ai">查看图谱 →</button>
           </div>
-          <p class="ai-cockpit-teaser">上游 GPU / 光模块 → 中游大模型 → 下游智驾 / AIGC，附 A 股 / 港股 / 美股概念标的。</p>
+          <p class="ai-cockpit-teaser">63 个细分环节 · 377 只概念标的：GPU/HBM/光模块 → 大模型 → 智驾/AIGC，支持搜索与分市场筛选。</p>
         </section>
         <section class="panel">
           <div class="panel__head">
@@ -321,11 +321,17 @@
             <h2>产业链全景</h2>
             <p id="ai-chain-summary">按环节拆解代表环节与概念标的</p>
           </div>
-          <div class="history-filters" id="ai-chain-filters" role="tablist" aria-label="市场筛选">
-            <button type="button" class="history-filter history-filter--active" data-market="all">全部</button>
-            <button type="button" class="history-filter" data-market="A股">A股</button>
-            <button type="button" class="history-filter" data-market="港股">港股</button>
-            <button type="button" class="history-filter" data-market="美股">美股</button>
+          <div class="ai-chain-toolbar">
+            <div class="history-filters" id="ai-chain-filters" role="tablist" aria-label="市场筛选">
+              <button type="button" class="history-filter history-filter--active" data-market="all">全部</button>
+              <button type="button" class="history-filter" data-market="A股">A股</button>
+              <button type="button" class="history-filter" data-market="港股">港股</button>
+              <button type="button" class="history-filter" data-market="美股">美股</button>
+            </div>
+            <label class="ai-chain-search">
+              <span class="ai-chain-search__label">搜索</span>
+              <input type="search" id="ai-chain-search" class="ai-chain-search__input" placeholder="标的名称、代码、环节…" autocomplete="off">
+            </label>
           </div>
         </div>
         <div class="ai-pipeline" id="ai-chain-pipeline"></div>
