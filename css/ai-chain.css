@@ -44,6 +44,131 @@
   gap: 12px;
 }
 
+.ai-view-toggle {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.ai-view-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ai-view-btn--active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.ai-mindmap-wrap {
+  margin-top: 8px;
+}
+
+.ai-mindmap-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.ai-mindmap-container {
+  width: 100%;
+  height: min(72vh, 760px);
+  min-height: 420px;
+  background: #0f172a;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.ai-mindmap-detail {
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  max-height: min(72vh, 760px);
+  overflow-y: auto;
+}
+
+.ai-mindmap-detail__title {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.ai-mindmap-detail__meta {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.ai-mindmap-detail__desc {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.ai-mindmap-detail__seg {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.ai-mindmap-detail__empty {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.ai-mindmap-detail__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-mindmap-detail__list li {
+  padding: 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.ai-mindmap-detail__sym {
+  display: block;
+  color: var(--text-muted);
+  font-family: ui-monospace, monospace;
+  font-size: 0.76rem;
+}
+
+.ai-mindmap-detail__role {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-muted);
+}
+
+.ai-mindmap-hint {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
 .ai-chain-search {
   display: flex;
   align-items: center;
@@ -324,6 +449,14 @@
 }
 
 @media (max-width: 900px) {
+  .ai-mindmap-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-mindmap-detail {
+    max-height: none;
+  }
+
   .ai-chain-toolbar {
     width: 100%;
     justify-content: flex-start;

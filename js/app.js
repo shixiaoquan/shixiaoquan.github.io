@@ -23,6 +23,7 @@ let newsFilter = "all";
 let aiChainData = null;
 let aiChainFilter = "all";
 let aiChainSearch = "";
+let aiChainView = "list";
 let quoteMap = {};
 let activeTab = "cockpit";
 let suppressTabRoute = false;
@@ -142,6 +143,7 @@ function switchTab(tabId, options = {}) {
   }
   if (tabId === "ai" && aiChainData) {
     renderAiChain(aiChainData);
+    if (aiChainView === "mindmap") renderAiMindMap(aiChainData);
   }
 }
 
@@ -1252,15 +1254,53 @@ function renderAiChainThemes(data) {
     .join("");
 }
 
+function setAiChainView(view) {
+  aiChainView = view === "mindmap" ? "mindmap" : "list";
+  const listEl = document.getElementById("ai-chain-list-view");
+  const mindEl = document.getElementById("ai-chain-mindmap-view");
+  const toggle = document.getElementById("ai-chain-view-toggle");
+  if (listEl) listEl.hidden = aiChainView !== "list";
+  if (mindEl) mindEl.hidden = aiChainView !== "mindmap";
+  toggle?.querySelectorAll(".ai-view-btn").forEach((btn) => {
+    btn.classList.toggle("ai-view-btn--active", btn.dataset.view === aiChainView);
+  });
+  if (aiChainView === "mindmap" && aiChainData) {
+    renderAiMindMap(aiChainData);
+  }
+}
+
+function renderAiMindMap(data) {
+  if (!window.AiMindMap?.render) return;
+  const ok = window.AiMindMap.render(data, filterAiStocks);
+  if (!ok) {
+    const detail = document.getElementById("ai-mindmap-detail");
+    if (detail) {
+      detail.innerHTML = '<p class="ai-mindmap-detail__empty">思维导图加载中，请稍后刷新…</p>';
+    }
+  }
+}
+
 function renderAiChain(data) {
   if (!data) return;
   renderAiChainIntro(data);
   renderAiChainPipeline(data);
   renderAiChainLayers(data);
+  if (aiChainView === "mindmap") {
+    renderAiMindMap(data);
+  }
   renderAiChainThemes(data);
 }
 
 function setupAiChainFilters() {
+  const toggle = document.getElementById("ai-chain-view-toggle");
+  if (toggle) {
+    toggle.addEventListener("click", (event) => {
+      const btn = event.target.closest(".ai-view-btn");
+      if (!btn?.dataset.view) return;
+      setAiChainView(btn.dataset.view);
+    });
+  }
+
   const filters = document.getElementById("ai-chain-filters");
   if (filters) {
     filters.addEventListener("click", (event) => {

@@ -12,8 +12,11 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" sizes="180x180">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/ai-chain.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/style/jsmind.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-  <script src="js/app.js?v=6" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
+  <script src="js/ai-mindmap.js" defer></script>
+  <script src="js/app.js?v=7" defer></script>
 </head>
 <body>
   <div class="app">
@@ -89,7 +92,7 @@
             </div>
             <button type="button" class="link-btn" data-goto-tab="ai">查看图谱 →</button>
           </div>
-          <p class="ai-cockpit-teaser">63 个细分环节 · 377 只概念标的：GPU/HBM/光模块 → 大模型 → 智驾/AIGC，支持搜索与分市场筛选。</p>
+          <p class="ai-cockpit-teaser">72 环节 · 422 只标的 · 支持列表与思维导图双视图，可搜索筛选。</p>
         </section>
         <section class="panel">
           <div class="panel__head">
@@ -322,6 +325,10 @@
             <p id="ai-chain-summary">按环节拆解代表环节与概念标的</p>
           </div>
           <div class="ai-chain-toolbar">
+            <div class="ai-view-toggle" id="ai-chain-view-toggle" role="tablist" aria-label="展现形式">
+              <button type="button" class="ai-view-btn ai-view-btn--active" data-view="list">列表视图</button>
+              <button type="button" class="ai-view-btn" data-view="mindmap">思维导图</button>
+            </div>
             <div class="history-filters" id="ai-chain-filters" role="tablist" aria-label="市场筛选">
               <button type="button" class="history-filter history-filter--active" data-market="all">全部</button>
               <button type="button" class="history-filter" data-market="A股">A股</button>
@@ -335,7 +342,18 @@
           </div>
         </div>
         <div class="ai-pipeline" id="ai-chain-pipeline"></div>
-        <div class="ai-layers" id="ai-chain-layers"></div>
+        <div id="ai-chain-list-view">
+          <div class="ai-layers" id="ai-chain-layers"></div>
+        </div>
+        <div id="ai-chain-mindmap-view" class="ai-mindmap-wrap" hidden>
+          <div class="ai-mindmap-layout">
+            <div id="ai-mindmap-container" class="ai-mindmap-container" aria-label="AI产业链思维导图"></div>
+            <aside id="ai-mindmap-detail" class="ai-mindmap-detail">
+              <p class="ai-mindmap-detail__empty">点击节点查看环节说明与标的详情</p>
+            </aside>
+          </div>
+          <p class="ai-mindmap-hint">拖拽移动画布 · 滚轮缩放 · 点击节点展开详情 · 筛选与搜索同步生效</p>
+        </div>
       </section>
       <section class="panel panel--wide">
         <div class="panel__head">
