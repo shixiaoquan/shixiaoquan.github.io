@@ -1,17 +1,28 @@
 {
-  "updatedAt": "2026-06-18T01:17:10+00:00",
+  "updatedAt": "2026-06-18T02:08:57+00:00",
   "strategyVersion": "v1.1.0",
   "summary": {
-    "openSignals": 165,
-    "closedSignals": 0,
-    "winRate": null,
-    "avgReturn": null,
-    "paperReturn": -0.45,
+    "openSignals": 166,
+    "closedSignals": 2,
+    "winRate": 0.0,
+    "avgReturn": -4.12,
+    "paperReturn": -0.75,
     "backtestExpectancy": 0.25
   },
-  "byMarket": [],
-  "closeReasons": {},
+  "byMarket": [
+    {
+      "market": "A股",
+      "trades": 2,
+      "winRate": 0.0,
+      "avgReturn": -4.12
+    }
+  ],
+  "closeReasons": {
+    "触发止损": 2
+  },
   "suggestions": [
-    "模拟账户亏损，建议缩小仓位或暂停弱信号(watch)开仓。"
+    "实盘信号胜率偏低，建议提高 BUY_SCORE 阈值或加强市场环境过滤。",
+    "模拟账户亏损，建议缩小仓位或暂停弱信号(watch)开仓。",
+    "A股市场表现最弱，考虑降低该市场权重。"
   ]
 }
