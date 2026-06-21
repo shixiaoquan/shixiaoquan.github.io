@@ -1,22 +1,112 @@
 {
+  "strategyVersion": "XRPS-X-1.0",
+  "strategyCode": "XRPS-X",
+  "strategyName": "小米滚动仓交易系统",
   "initialCash": 1000000.0,
-  "cash": 1000000.0,
+  "cash": 450000.0,
+  "coreShares": 14239.2189,
+  "rollingShares": 8136.6966,
+  "totalShares": 22375.9155,
+  "avgCost": 23.0561,
+  "rollingAvgCost": 24.58,
   "equity": 1000000.0,
-  "positions": [],
-  "trades": [],
-  "equityCurve": [
-    {
-      "time": "2026-06-21T11:01:12+00:00",
-      "equity": 1000000.0
-    },
-    {
-      "time": "2026-06-21T11:58:39+00:00",
-      "equity": 1000000.0
-    }
-  ],
+  "returnPct": 0.0,
+  "positionPct": 55.0,
+  "coreValue": 350000.0,
+  "rollingValue": 200000.0,
   "focusSymbol": "1810.HK",
   "focusName": "小米集团",
   "focusHkCode": "01810",
-  "updatedAt": "2026-06-21T11:59:48+00:00",
-  "returnPct": 0.0
+  "peakPrice": 33.20000076293945,
+  "triggeredSellLevels": [],
+  "triggeredBuyLevels": [
+    "buy_10",
+    "buy_20"
+  ],
+  "monthlyState": {
+    "consecutiveDownMonths": 8,
+    "lastMonthKey": "2026-06",
+    "lastMonthReturnPct": -9.49,
+    "twoMonthReturnPct": -12.43,
+    "threeMonthReturnPct": -15.39,
+    "processedDownStreak": 8
+  },
+  "trades": [
+    {
+      "type": "buy",
+      "bucket": "core",
+      "symbol": "1810.HK",
+      "name": "小米集团",
+      "price": 24.58,
+      "shares": 4068.3483,
+      "amount": 100000.0,
+      "reason": "首次核心仓建仓",
+      "time": "2026-06-21T12:12:39+00:00"
+    },
+    {
+      "type": "buy",
+      "bucket": "core",
+      "symbol": "1810.HK",
+      "name": "小米集团",
+      "price": 24.58,
+      "shares": 2034.1741,
+      "amount": 50000.0,
+      "reason": "5连阴月加仓核心",
+      "time": "2026-06-21T12:12:39+00:00"
+    },
+    {
+      "type": "buy",
+      "bucket": "core",
+      "symbol": "1810.HK",
+      "name": "小米集团",
+      "price": 24.58,
+      "shares": 3254.6786,
+      "amount": 80000.0,
+      "reason": "6连阴月加仓核心",
+      "time": "2026-06-21T12:12:39+00:00"
+    },
+    {
+      "type": "buy",
+      "bucket": "core",
+      "symbol": "1810.HK",
+      "name": "小米集团",
+      "price": 24.58,
+      "shares": 4882.0179,
+      "amount": 120000.0,
+      "reason": "7连阴月加仓核心",
+      "time": "2026-06-21T12:12:39+00:00"
+    },
+    {
+      "type": "buy",
+      "bucket": "rolling",
+      "symbol": "1810.HK",
+      "name": "小米集团",
+      "price": 24.58,
+      "shares": 4068.3483,
+      "amount": 100000.0,
+      "reason": "回撤10%买回",
+      "time": "2026-06-21T12:12:39+00:00"
+    },
+    {
+      "type": "buy",
+      "bucket": "rolling",
+      "symbol": "1810.HK",
+      "name": "小米集团",
+      "price": 24.58,
+      "shares": 4068.3483,
+      "amount": 100000.0,
+      "reason": "回撤20%买回",
+      "time": "2026-06-21T12:12:39+00:00"
+    }
+  ],
+  "equityCurve": [
+    {
+      "time": "2026-06-21T12:12:39+00:00",
+      "equity": 1000000.0,
+      "shares": 22375.9155
+    }
+  ],
+  "updatedAt": "2026-06-21T12:14:52+00:00",
+  "lastProcessedDate": "2026-06-21",
+  "lastPrice": 24.58
 }

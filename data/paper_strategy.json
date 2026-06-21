@@ -1,158 +1,148 @@
 {
-  "updatedAt": "2026-06-21T11:59:48+00:00",
-  "strategyVersion": "v1.2.0",
-  "strategyName": "港股一波流策略（突破+跟踪止损）",
+  "updatedAt": "2026-06-21T12:14:52+00:00",
+  "strategyVersion": "XRPS-X-1.0",
+  "strategyCode": "XRPS-X",
+  "strategyName": "小米滚动仓交易系统",
   "focusSymbol": "1810.HK",
   "focusName": "小米集团",
   "focusHkCode": "01810",
-  "summary": "专注 小米集团：Regime 过滤 + 平台突破/趋势双入场 + ATR 跟踪止损，适配港股一波流。",
+  "summary": "暴跌买一点，横盘做一点，暴涨卖一点，永远留一点。目标：股数越来越多、成本越来越低、永远保留核心仓。",
   "schedule": "每 5 分钟（GitHub Actions update-market-data）",
   "account": {
     "initialCash": 1000000.0,
-    "maxPositions": 1,
-    "buyOnly": true,
-    "buyOnlyLabel": "仅 buy 信号"
+    "corePct": 40,
+    "rollingPct": 40,
+    "cashPct": 20,
+    "maxPositionPct": 80
   },
   "flow": [
     {
       "step": 1,
-      "title": "Regime 过滤",
-      "desc": "个股与恒指均在 MA200 之上，且恒指站上 MA60，否则禁止做多。"
+      "title": "三仓结构",
+      "desc": "核心仓 40% 永不卖；滚动仓 40% 做T；现金 20% 应对恐慌。"
     },
     {
       "step": 2,
-      "title": "入场信号",
-      "desc": "突破 40 日平台且放量 ≥1.5x；或趋势评分 ≥75 且价 > MA20 > MA60。"
+      "title": "滚动网格",
+      "desc": "上涨分批卖滚动仓，回撤分批买回，锁定波动利润。"
     },
     {
       "step": 3,
-      "title": "自动买入",
-      "desc": "buy 信号开仓，最多 1 仓，按评分分配 20～25% 仓位。"
+      "title": "月线系统",
+      "desc": "5/6/7 连阴加仓核心；单月涨20%或两月涨50%减滚动；三月翻倍仅留核心。"
     },
     {
       "step": 4,
-      "title": "跟踪止损",
-      "desc": "初始止损 2.5×ATR；盈利后 3.0×ATR 跟踪，保本后止损不低于成本。"
+      "title": "风控",
+      "desc": "不融资、不杠杆、不清仓、不满仓补仓、不追涨；仓位长期 ≤80%。"
     },
     {
       "step": 5,
-      "title": "自动卖出",
-      "desc": "触发止损/跟踪止损，或持有满 60 天到期平仓。"
+      "title": "系统目标",
+      "desc": "股数↑ 成本↓ 永远拥有核心仓，而非追求买在最低卖在最高。"
     }
   ],
   "buyRules": [
     {
-      "id": "regime",
-      "label": "Regime",
-      "value": "多头环境",
-      "detail": "小米与恒指均在 MA200 之上"
+      "label": "回撤 10%",
+      "value": "买回 10% 资金",
+      "detail": "使用现金仓，保留最低现金"
     },
     {
-      "id": "breakout",
-      "label": "突破入场",
-      "value": "40 日新高 + 放量",
-      "detail": "评分 ≥ 68，RSI ≤ 75"
+      "label": "回撤 20%",
+      "value": "买回 10% 资金",
+      "detail": "使用现金仓，保留最低现金"
     },
     {
-      "id": "trend",
-      "label": "趋势入场",
-      "value": "评分 ≥ 75",
-      "detail": "价 > MA20 > MA60，相对强度 ≥ 0"
+      "label": "回撤 30%",
+      "value": "买回 10% 资金",
+      "detail": "使用现金仓，保留最低现金"
     },
     {
-      "id": "max_pos",
-      "label": "仓位上限",
-      "value": "最多 1 只",
-      "detail": "专注单标的"
+      "label": "5连阴",
+      "value": "核心仓 +5% 资金",
+      "detail": "月线连阴加仓"
     },
     {
-      "id": "cash",
-      "label": "资金约束",
-      "value": "可用现金充足",
-      "detail": "分配金额超过现金则跳过"
+      "label": "6连阴",
+      "value": "核心仓 +8% 资金",
+      "detail": "月线连阴加仓"
+    },
+    {
+      "label": "7连阴",
+      "value": "核心仓 +12% 资金",
+      "detail": "允许重仓核心"
     }
   ],
   "sellRules": [
     {
-      "id": "stop",
-      "label": "初始止损",
-      "value": "入场 − 2.5×ATR",
-      "detail": "宽止损适应港股波动"
+      "label": "涨幅 +15%",
+      "value": "卖出滚动仓 10%",
+      "detail": "核心仓永不卖出"
     },
     {
-      "id": "trail",
-      "label": "跟踪止损",
-      "value": "最高价 − 3.0×ATR",
-      "detail": "盈利后让利润奔跑，只上移不下移"
+      "label": "涨幅 +25%",
+      "value": "卖出滚动仓 10%",
+      "detail": "核心仓永不卖出"
     },
     {
-      "id": "breakeven",
-      "label": "保本",
-      "value": "盈利 ≥ 1×ATR",
-      "detail": "止损上移至成本价"
+      "label": "涨幅 +40%",
+      "value": "卖出滚动仓 10%",
+      "detail": "核心仓永不卖出"
     },
     {
-      "id": "expiry",
-      "label": "到期平仓",
-      "value": "持有 ≥ 60 天",
-      "detail": "超期按现价强制平仓"
+      "label": "涨幅 +60%",
+      "value": "卖出滚动仓 10%",
+      "detail": "核心仓永不卖出"
+    },
+    {
+      "label": "单月涨20%",
+      "value": "减滚动仓 15%",
+      "detail": "仅卖滚动仓"
+    },
+    {
+      "label": "两月涨50%",
+      "value": "减滚动仓 25%",
+      "detail": "大幅减仓"
+    },
+    {
+      "label": "三月翻倍",
+      "value": "清空滚动仓",
+      "detail": "仅保留核心仓"
     }
   ],
   "positionSizing": {
-    "formula": "buy 信号：min(20 + (评分 − BUY) × 0.5, 25)% × 当前净值",
-    "buyScoreBase": 75,
-    "minPct": 20.0,
-    "maxPct": 25.0,
-    "watchPct": 10.0,
-    "note": "突破入场评分门槛可低至 68 分"
+    "formula": "核心仓长期持有；滚动仓按网格比例买卖；现金仓保留应对极端下跌",
+    "corePct": 40.0,
+    "rollingPct": 40.0,
+    "cashPct": 20.0,
+    "note": "核心仓永不卖出"
   },
   "signalFilters": [
     {
-      "label": "趋势评分门槛",
-      "value": "≥ 75",
+      "label": "核心仓",
+      "value": "只买不卖",
       "enabled": true
     },
     {
-      "label": "突破评分门槛",
-      "value": "≥ 68",
+      "label": "最大仓位",
+      "value": "≤ 80%",
       "enabled": true
     },
     {
-      "label": "个股 MA200",
-      "value": "收盘价在 200 日均线之上",
+      "label": "现金底线",
+      "value": "≥ 10%",
       "enabled": true
     },
     {
-      "label": "恒指 MA200",
-      "value": "恒指在 200 日均线之上",
+      "label": "禁止追涨",
+      "value": "仅回撤/连阴买入",
       "enabled": true
-    },
-    {
-      "label": "恒指 MA60",
-      "value": "大盘多头过滤",
-      "enabled": true
-    },
-    {
-      "label": "RSI 上限",
-      "value": "≤ 75",
-      "enabled": true
-    },
-    {
-      "label": "相对强度",
-      "value": "≥ 0.0%",
-      "enabled": true
-    },
-    {
-      "label": "MACD 柱",
-      "value": "趋势入场时需 > 0",
-      "enabled": false
     }
   ],
   "riskParams": {
-    "riskPerTradePct": 2.0,
-    "rewardRiskRatio": 3.0,
-    "maxHoldDays": 60,
-    "atrStopInitial": 2.5,
-    "atrTrailing": 3.0
+    "maxPositionPct": 80.0,
+    "peakLookbackDays": 60,
+    "motto": "暴跌买一点，横盘做一点，暴涨卖一点，永远留一点。"
   }
 }

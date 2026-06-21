@@ -17,7 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=11" defer></script>
+  <script src="js/app.js?v=12" defer></script>
 </head>
 <body>
   <div class="app">
@@ -79,7 +79,7 @@
           <div class="panel__head panel__head--row">
             <div>
               <h2>模拟盘速览</h2>
-              <p id="cockpit-paper-hint">小米集团 1810.HK 专用模拟</p>
+              <p id="cockpit-paper-hint">XRPS-X 小米滚动仓</p>
             </div>
             <button type="button" class="link-btn" data-goto-tab="paper">模拟盘 →</button>
           </div>
@@ -277,7 +277,7 @@
       <header class="paper-banner">
         <div>
           <h2 class="paper-banner__title">小米集团</h2>
-          <p class="paper-banner__market">港股 · 单标的专注模拟</p>
+          <p class="paper-banner__market">XRPS-X 滚动仓 · 港股小米专用</p>
         </div>
         <div class="paper-banner__meta">
           <span class="paper-banner__code">1810.HK</span>
@@ -295,13 +295,13 @@
         <div class="paper-strategy-card__grid" id="paper-strategy-summary"></div>
       </article>
 
-      <h3 class="paper-section-title">实时模拟（100 万）</h3>
+      <h3 class="paper-section-title">实时模拟（XRPS-X · 100 万）</h3>
       <section class="review-stats" id="paper-stats"></section>
       <div class="paper-live-grid">
         <section class="panel">
           <div class="panel__head">
             <h2>净值曲线</h2>
-            <p id="paper-positions-hint" class="paper-positions-hint">当前持仓 0/1</p>
+            <p id="paper-positions-hint" class="paper-positions-hint">核心仓 + 滚动仓 + 现金</p>
           </div>
           <div class="chart-box">
             <canvas id="paper-chart" aria-label="模拟账户净值曲线"></canvas>
@@ -309,7 +309,7 @@
         </section>
         <section class="panel">
           <div class="panel__head">
-            <h2>当前持仓</h2>
+            <h2>三仓结构</h2>
           </div>
           <div id="paper-positions"></div>
         </section>
@@ -322,6 +322,7 @@
           <table class="data-table" id="paper-trades-table">
             <thead>
               <tr>
+                <th>仓位</th>
                 <th>类型</th>
                 <th>标的</th>
                 <th>价格</th>

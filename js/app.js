@@ -173,8 +173,20 @@ function signalStatusClass(status) {
 }
 
 function reasonLabel(reason) {
+  if (!reason) return "--";
+  if (reason.includes("滚动卖出")) return reason;
+  if (reason.includes("买回") || reason.includes("回撤")) return reason;
+  if (reason.includes("连阴")) return reason;
+  if (reason.includes("减滚动")) return reason;
+  if (reason.includes("翻倍")) return reason;
+  if (reason.includes("核心")) return reason;
   const map = { stop: "止损", trail: "跟踪止损", target: "止盈", expiry: "到期" };
-  return map[reason] || reason || "--";
+  return map[reason] || reason;
+}
+
+function bucketLabel(bucket) {
+  const map = { core: "核心仓", rolling: "滚动仓", cash: "现金" };
+  return map[bucket] || bucket || "--";
 }
 
 function setupTabs() {
@@ -783,18 +795,13 @@ function renderSignalsTable(data) {
 function renderCockpitPaper(paper) {
   const hintEl = document.getElementById("cockpit-paper-hint");
   if (!paper) {
-    renderStatCards("cockpit-paper", [
-      { label: "小米模拟盘", value: "加载中…" },
-    ]);
-    if (hintEl) hintEl.textContent = "小米集团 1810.HK 专用模拟";
+    renderStatCards("cockpit-paper", [{ label: "XRPS-X", value: "加载中…" }]);
+    if (hintEl) hintEl.textContent = "XRPS-X 小米滚动仓";
     return;
   }
-  const positions = paper.positions || [];
   const focusName = paper.focusName || "小米集团";
   if (hintEl) {
-    hintEl.textContent = positions.length
-      ? `${focusName} 持仓中 · 更新 ${formatDateTime(paper.updatedAt).slice(11)}`
-      : `${focusName} · 当前空仓`;
+    hintEl.textContent = `${focusName} · ${formatNumber(paper.totalShares, 0)} 股 · 仓位 ${paper.positionPct ?? "--"}%`;
   }
   renderStatCards("cockpit-paper", [
     { label: "账户净值", value: formatNumber(paper.equity) },
@@ -803,8 +810,8 @@ function renderCockpitPaper(paper) {
       value: formatPct(paper.returnPct),
       valueClass: changeClass(paper.returnPct),
     },
-    { label: "可用现金", value: formatNumber(paper.cash) },
-    { label: "持仓", value: positions.length ? `${positions.length}/1` : "空仓" },
+    { label: "持股数量", value: formatNumber(paper.totalShares, 0) },
+    { label: "持仓成本", value: formatNumber(paper.avgCost) },
   ]);
 }
 
@@ -924,16 +931,16 @@ function renderPaperStrategyCard(data) {
   if (!data) return;
   const versionEl = document.getElementById("paper-card-version");
   const summaryEl = document.getElementById("paper-strategy-summary");
-  if (versionEl) versionEl.textContent = data.strategyVersion || "--";
+  if (versionEl) versionEl.textContent = data.strategyCode || data.strategyVersion || "--";
 
+  const acct = data.account || {};
   const risk = data.riskParams || {};
-  const buyFilter = (data.signalFilters || []).find((f) => f.label === "买入评分门槛");
   if (summaryEl) {
     summaryEl.innerHTML = [
-      { label: "策略名称", value: data.strategyName || "--" },
-      { label: "买入门槛", value: buyFilter?.value || "≥ 78" },
-      { label: "盈亏比", value: `${risk.rewardRiskRatio ?? 2} : 1` },
-      { label: "最长持有", value: `${risk.maxHoldDays ?? 25} 天` },
+      { label: "系统", value: data.strategyName || "XRPS-X" },
+      { label: "核心/滚动/现金", value: `${acct.corePct ?? 40}/${acct.rollingPct ?? 40}/${acct.cashPct ?? 20}%` },
+      { label: "最大仓位", value: `${acct.maxPositionPct ?? 80}%` },
+      { label: "口诀", value: risk.motto ? risk.motto.slice(0, 12) + "…" : "滚动做T" },
     ]
       .map(
         (item) => `
@@ -1070,8 +1077,8 @@ function renderPaperBacktestCards(data) {
           <p class="paper-backtest-card__return change ${changeClass(m.totalReturnPct)}">${formatPct(m.totalReturnPct)}</p>
           <div class="paper-backtest-card__meta">
             <span>期末净值 ${formatNumber(m.finalEquity)}</span>
-            <span>${m.totalTrades ?? 0} 笔 · 胜率 ${m.winRate ?? 0}%</span>
-            ${rangeHint ? `<span>${rangeHint}</span>` : `<span>最大回撤 ${m.maxDrawdown ?? 0}%</span>`}
+            <span>股数 ${formatNumber(m.initialShares, 0)} → ${formatNumber(m.finalShares, 0)}</span>
+            <span>${m.totalTrades ?? 0} 笔 · 股数增长 ${formatPct(m.shareGrowthPct)}</span>
           </div>
           <p class="paper-backtest-card__hint">点击查看交易明细 →</p>
         </article>
@@ -1092,25 +1099,29 @@ function renderPaperBacktestModal(period) {
   const data = paperBacktestData;
   if (!data?.periods?.[period]) return "";
   const block = data.periods[period];
+  const m = block.metrics || {};
   const trades = block.trades || [];
   const rows = trades.length
     ? trades
         .map(
           (t) => `
         <tr>
-          <td>${t.entryDate}<br>${formatNumber(t.entryPrice)}</td>
-          <td>${t.exitDate}<br>${formatNumber(t.exitPrice)}</td>
+          <td>${bucketLabel(t.bucket)}</td>
+          <td>${t.type === "buy" ? "买入" : "卖出"}</td>
+          <td>${formatNumber(t.price)}</td>
           <td>${formatNumber(t.shares, 2)}</td>
           <td>${formatNumber(t.amount)}</td>
-          <td class="change ${changeClass(t.pnlPct)}">${formatNumber(t.pnl)} (${formatPct(t.pnlPct)})</td>
+          <td>${t.type === "sell" ? `<span class="change ${changeClass(t.pnlPct)}">${formatNumber(t.pnl)}</span>` : "--"}</td>
           <td>${reasonLabel(t.reason)}</td>
+          <td>${(t.time || "").slice(0, 10)}</td>
         </tr>
       `
         )
         .join("")
-    : '<tr><td colspan="6" class="empty">该周期暂无交易</td></tr>';
+    : '<tr><td colspan="8" class="empty">该周期暂无交易</td></tr>';
 
   return `
+    <p class="paper-modal-summary">股数 ${formatNumber(m.initialShares, 0)} → ${formatNumber(m.finalShares, 0)} · 成本 ${formatNumber(m.finalAvgCost)} · 回撤 ${m.maxDrawdown ?? 0}%</p>
     <div class="paper-modal__chart">
       <canvas id="paper-modal-chart" aria-label="回测净值曲线"></canvas>
     </div>
@@ -1118,12 +1129,14 @@ function renderPaperBacktestModal(period) {
       <table class="data-table">
         <thead>
           <tr>
-            <th>入场</th>
-            <th>出场</th>
+            <th>仓位</th>
+            <th>类型</th>
+            <th>价格</th>
             <th>数量</th>
-            <th>成本</th>
+            <th>金额</th>
             <th>盈亏</th>
             <th>原因</th>
+            <th>日期</th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -1223,11 +1236,11 @@ function renderPaperPanel(paper, loadState = "ready") {
     const positionsEl = document.getElementById("paper-positions");
     if (positionsEl) positionsEl.innerHTML = '<p class="empty">数据加载中…</p>';
     const tbody = document.querySelector("#paper-trades-table tbody");
-    if (tbody) tbody.innerHTML = '<tr><td colspan="7" class="empty">数据加载中…</td></tr>';
+    if (tbody) tbody.innerHTML = '<tr><td colspan="8" class="empty">数据加载中…</td></tr>';
     return;
   }
   renderPaperStats(paper);
-  renderPaperPositions(paper.positions);
+  renderPaperPositions(paper);
   renderPaperTrades(paper.trades);
   renderCockpitPaper(paper);
   requestAnimationFrame(() => {
@@ -1727,55 +1740,69 @@ function renderBacktestTrades(trades) {
 
 function renderPaperStats(paper) {
   const hintEl = document.getElementById("paper-positions-hint");
-  const positions = paper?.positions || [];
   if (hintEl) {
-    hintEl.textContent = positions.length
-      ? `当前持仓 ${positions.length}/1`
-      : "当前持仓 0/1 · 空仓";
+    hintEl.textContent = `仓位 ${paper?.positionPct ?? 0}% · 成本 ${formatNumber(paper?.avgCost)}`;
   }
 
-  const positionValue = (paper?.equity || 0) - (paper?.cash || 0);
   renderStatCards("paper-stats", [
     { label: "账户净值", value: formatNumber(paper?.equity) },
+    { label: "持股数量", value: formatNumber(paper?.totalShares, 0) },
+    { label: "持仓成本", value: formatNumber(paper?.avgCost) },
     {
       label: "总收益率",
       value: formatPct(paper?.returnPct),
       valueClass: changeClass(paper?.returnPct),
     },
-    { label: "可用现金", value: formatNumber(paper?.cash) },
-    { label: "持仓市值", value: formatNumber(positionValue) },
   ]);
 }
 
-function renderPaperPositions(positions) {
+function renderPaperPositions(paper) {
   const el = document.getElementById("paper-positions");
   if (!el) return;
-  if (!positions?.length) {
-    el.innerHTML = '<p class="empty">暂无持仓 · 等待 buy 信号</p>';
+  if (!paper) {
+    el.innerHTML = '<p class="empty">数据加载中…</p>';
     return;
   }
-  el.innerHTML = positions
-    .map((pos) => {
-      const current = quoteMap[pos.symbol] || pos.entryPrice;
-      const ret = calcReturn(pos.entryPrice, current);
-      return `
-      <article class="paper-position">
-        <div class="paper-position__head">
-          <div>
-            <strong>${pos.name || "小米集团"}</strong>
-            <span class="stock-card__symbol">${pos.symbol}</span>
-          </div>
-          <span class="reco-market reco-market--hk">港股</span>
+  const price = quoteMap[paper.focusSymbol] || paper.lastPrice || 0;
+  const buckets = [
+    {
+      name: "核心仓",
+      className: "paper-bucket--core",
+      shares: paper.coreShares,
+      value: paper.coreValue,
+      note: "永不卖出",
+    },
+    {
+      name: "滚动仓",
+      className: "paper-bucket--rolling",
+      shares: paper.rollingShares,
+      value: paper.rollingValue,
+      note: `成本 ${formatNumber(paper.rollingAvgCost)}`,
+    },
+    {
+      name: "现金仓",
+      className: "paper-bucket--cash",
+      shares: null,
+      value: paper.cash,
+      note: "恐慌备用",
+    },
+  ];
+  el.innerHTML = buckets
+    .map(
+      (b) => `
+      <article class="paper-bucket ${b.className}">
+        <div class="paper-bucket__head">
+          <strong>${b.name}</strong>
+          <span class="paper-bucket__note">${b.note}</span>
         </div>
-        <div class="paper-position__meta">
-          <span>成本 ${formatNumber(pos.entryPrice)}</span>
-          <span>现价 ${formatNumber(current)}</span>
-          <span>数量 ${formatNumber(pos.shares, 2)}</span>
-          <span class="change ${changeClass(ret)}">${formatPct(ret)}</span>
+        <div class="paper-bucket__meta">
+          ${b.shares != null ? `<span>${formatNumber(b.shares, 0)} 股</span>` : ""}
+          <span>${formatNumber(b.value)}</span>
+          ${price && b.shares ? `<span>现价 ${formatNumber(price)}</span>` : ""}
         </div>
       </article>
-    `;
-    })
+    `
+    )
     .join("");
 }
 
@@ -1783,7 +1810,7 @@ function renderPaperTrades(trades) {
   const tbody = document.querySelector("#paper-trades-table tbody");
   if (!tbody) return;
   if (!trades?.length) {
-    tbody.innerHTML = '<tr><td colspan="7" class="empty">暂无模拟交易</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8" class="empty">暂无模拟交易</td></tr>';
     return;
   }
   const sorted = [...trades].reverse().slice(0, 50);
@@ -1797,8 +1824,9 @@ function renderPaperTrades(trades) {
           : "--";
       return `
       <tr>
+        <td>${bucketLabel(t.bucket)}</td>
         <td><span class="trade-type ${typeClass}">${typeLabel}</span></td>
-        <td><strong>${t.name || t.symbol}</strong><br><span class="stock-card__symbol">${t.symbol}</span></td>
+        <td><strong>${t.name || "小米集团"}</strong><br><span class="stock-card__symbol">${t.symbol || "1810.HK"}</span></td>
         <td>${formatNumber(t.price)}</td>
         <td>${formatNumber(t.shares, 2)}</td>
         <td>${formatNumber(t.amount)}</td>
@@ -1960,7 +1988,7 @@ function applyData(data) {
   }
 
   if (recoHistory) renderRecoHistory(recoHistory);
-  if (paperData) renderPaperPositions(paperData.positions);
+  if (paperData) renderPaperPositions(paperData);
   if (activeTab === "paper") renderPaperPanel(paperData);
   lastUpdatedAt = data.updatedAt;
 }

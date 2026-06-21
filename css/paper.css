@@ -192,6 +192,51 @@
   color: var(--text-muted);
 }
 
+.paper-bucket {
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.paper-bucket--core {
+  border-left: 3px solid var(--accent);
+}
+
+.paper-bucket--rolling {
+  border-left: 3px solid var(--up);
+}
+
+.paper-bucket--cash {
+  border-left: 3px solid var(--text-muted);
+}
+
+.paper-bucket__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.paper-bucket__note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.paper-bucket__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.84rem;
+}
+
+.paper-modal-summary {
+  margin: 0 0 12px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
 /* Modal */
 .paper-modal {
   position: fixed;

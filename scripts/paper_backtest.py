@@ -1,239 +1,165 @@
 #!/usr/bin/env python3
-"""小米专用模拟盘回测 — 离线构建脚本，写入 data/paper_backtest.json。"""
+"""XRPS-X 小米滚动仓 — 历史回测，写入 data/paper_backtest.json。"""
 
 from __future__ import annotations
 
+import copy
 import json
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import yfinance as yf
 
-from strategy_config import (
-    BACKTEST_COOLDOWN_BARS,
-    BACKTEST_HOLD_DAYS,
-    BUY_SCORE,
-    PAPER_INITIAL_CASH,
-    PAPER_IPO_DATE,
-    PAPER_SYMBOL,
-    PAPER_SYMBOL_HK_CODE,
-    PAPER_SYMBOL_MARKET,
-    PAPER_SYMBOL_NAME,
-    STRATEGY_VERSION,
+from xrps_config import PAPER_INITIAL_CASH, PAPER_IPO_DATE, PAPER_SYMBOL, PAPER_SYMBOL_HK_CODE, PAPER_SYMBOL_NAME, STRATEGY_VERSION
+from xrps_core import (
+    build_monthly_bars,
+    empty_account,
+    month_state_at_date,
+    peak_price,
+    process_day,
 )
-from strategy_exit import simulate_exit
-from strategy_scoring import MIN_BARS, compute_atr, score_series
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "paper_backtest.json"
-
-BENCHMARK = "^HSI"
-MIN_BARS_LOCAL = MIN_BARS
-
-
-def position_size_pct(score: float) -> float:
-    return min(20.0 + (score - BUY_SCORE) * 0.5, 25.0)
+MIN_BARS = 60
 
 
 def parse_date(value: str) -> date:
     return datetime.strptime(value, "%Y-%m-%d").date()
 
 
-def bench_closes_up_to(bench_by_date: dict[str, float], dates: list[str], idx: int) -> list[float]:
-    series: list[float] = []
-    for d in dates[: idx + 1]:
-        if d in bench_by_date:
-            series.append(bench_by_date[d])
-    return series
-
-
-def load_symbol_history() -> tuple[list[str], list[float], list[float], list[float], list[float]]:
+def load_symbol_history() -> tuple[list[str], list[float]]:
     try:
         hist = yf.Ticker(PAPER_SYMBOL).history(period="max", interval="1d")
     except Exception:
-        hist = None
-    if hist is None or hist.empty:
-        return [], [], [], [], []
+        return [], []
+    if hist.empty:
+        return [], []
     dates = [d.strftime("%Y-%m-%d") for d in hist.index]
     closes = [float(v) for v in hist["Close"].tolist()]
-    highs = [float(v) for v in hist["High"].tolist()]
-    lows = [float(v) for v in hist["Low"].tolist()]
-    volumes = [float(v) for v in hist["Volume"].tolist()]
-    return dates, closes, highs, lows, volumes
-
-
-def load_benchmark_history() -> dict[str, float]:
-    try:
-        hist = yf.Ticker(BENCHMARK).history(period="max", interval="1d")
-    except Exception:
-        return {}
-    if hist.empty:
-        return {}
-    return {d.strftime("%Y-%m-%d"): float(row["Close"]) for d, row in hist.iterrows()}
+    return dates, closes
 
 
 def build_period_specs(today: date) -> tuple[list[tuple[str, str, date, date]], list[str], list[str]]:
-    """生成 (key, label, start, end)、滚动 keys、自然年 keys。"""
     ipo = parse_date(PAPER_IPO_DATE)
-    last_date = today
-    days_listed = (last_date - ipo).days
-    max_roll_years = max(1, min(days_listed // 365, 20))
+    rolling: list[tuple[str, str, date, date]] = [("all", "上市以来", ipo, today)]
+    rolling_keys = ["all"]
+    max_roll = max(1, min((today - ipo).days // 365, 20))
+    for n in range(1, max_roll + 1):
+        start = max(ipo, today - timedelta(days=365 * n))
+        rolling.append((f"{n}y", f"近 {n} 年", start, today))
+        rolling_keys.append(f"{n}y")
 
-    rolling: list[tuple[str, str, date, date]] = []
-    rolling_keys: list[str] = []
-
-    rolling.append(("all", "上市以来", ipo, last_date))
-    rolling_keys.append("all")
-
-    for n in range(1, max_roll_years + 1):
-        start = last_date - timedelta(days=365 * n)
-        if start < ipo:
-            start = ipo
-        key = f"{n}y"
-        rolling.append((key, f"近 {n} 年", start, last_date))
-        rolling_keys.append(key)
-
-    calendar: list[tuple[str, str, date, date]] = []
     calendar_keys: list[str] = []
-    for year in range(ipo.year, last_date.year + 1):
-        start = date(year, 1, 1) if year > ipo.year else ipo
-        end = date(year, 12, 31) if year < last_date.year else last_date
-        if start > end:
-            continue
-        key = str(year)
-        calendar.append((key, f"{year} 年", start, end))
-        calendar_keys.append(key)
-
+    calendar: list[tuple[str, str, date, date]] = []
+    for year in range(ipo.year, today.year + 1):
+        start = ipo if year == ipo.year else date(year, 1, 1)
+        end = today if year == today.year else date(year, 12, 31)
+        if start <= end:
+            calendar.append((str(year), f"{year} 年", start, end))
+            calendar_keys.append(str(year))
     return rolling + calendar, rolling_keys, calendar_keys
 
 
-def simulate_range(
-    dates: list[str],
-    closes: list[float],
-    highs: list[float],
-    lows: list[float],
-    volumes: list[float],
-    bench_by_date: dict[str, float],
+def run_full_simulation(dates: list[str], closes: list[float], months: list[dict]) -> tuple[dict, list[dict]]:
+    account = empty_account(f"{dates[0]}T00:00:00")
+    daily: list[dict] = []
+
+    for idx, (d, price) in enumerate(zip(dates, closes)):
+        mstate = month_state_at_date(months, d)
+        peak = peak_price(closes, idx)
+        account = process_day(account, price, d, f"{d}T16:00:00", mstate, peak)
+        daily.append(
+            {
+                "date": d,
+                "equity": account["equity"],
+                "shares": account["totalShares"],
+                "avgCost": account.get("avgCost", 0),
+                "tradeCount": len(account.get("trades", [])),
+            }
+        )
+    return account, daily
+
+
+def snapshot_on_or_before(daily: list[dict], date_str: str) -> dict | None:
+    best = None
+    for row in daily:
+        if row["date"] <= date_str:
+            best = row
+        else:
+            break
+    return best
+
+
+def metrics_for_period(
+    daily: list[dict],
+    trades: list[dict],
     eval_start: date,
     eval_end: date,
-    initial_cash: float,
     label: str,
 ) -> dict:
-    empty = {
-        "label": label,
-        "startDate": eval_start.isoformat(),
-        "endDate": eval_end.isoformat(),
-        "metrics": {
-            "totalReturnPct": 0.0,
-            "finalEquity": initial_cash,
-            "totalTrades": 0,
-            "winRate": 0.0,
-            "maxDrawdown": 0.0,
-        },
-        "equityCurve": [],
-        "trades": [],
-    }
-    if len(dates) < MIN_BARS_LOCAL:
-        return empty
-
     start_str = eval_start.isoformat()
     end_str = eval_end.isoformat()
 
-    cash = initial_cash
-    equity = initial_cash
-    trades: list[dict] = []
-    equity_curve: list[dict] = []
-    peak = equity
+    start_snap = snapshot_on_or_before(daily, start_str)
+    end_snap = snapshot_on_or_before(daily, end_str)
+
+    if not end_snap:
+        empty_m = {
+            "totalReturnPct": 0.0,
+            "finalEquity": PAPER_INITIAL_CASH,
+            "initialShares": 0.0,
+            "finalShares": 0.0,
+            "shareGrowthPct": 0.0,
+            "finalAvgCost": 0.0,
+            "totalTrades": 0,
+            "winRate": 0.0,
+            "maxDrawdown": 0.0,
+        }
+        return {"label": label, "startDate": start_str, "endDate": end_str, "metrics": empty_m, "equityCurve": [], "trades": []}
+
+    start_eq = start_snap["equity"] if start_snap else PAPER_INITIAL_CASH
+    end_eq = end_snap["equity"]
+    start_shares = start_snap["shares"] if start_snap else 0
+    end_shares = end_snap["shares"]
+
+    ret = round((end_eq - start_eq) / start_eq * 100, 2) if start_eq else 0
+    share_growth = round((end_shares - start_shares) / start_shares * 100, 2) if start_shares else round(end_shares, 2)
+
+    period_trades = [t for t in trades if start_str <= t.get("time", "")[:10] <= end_str]
+    sells = [t for t in period_trades if t.get("type") == "sell"]
+    wins = sum(1 for t in sells if (t.get("pnl") or 0) > 0)
+    win_rate = round(wins / len(sells) * 100, 1) if sells else 0.0
+
+    peak = start_eq
     max_dd = 0.0
-
-    i = MIN_BARS_LOCAL
-    while i < len(closes) - 1:
-        if dates[i] < start_str:
-            i += 1
+    curve = []
+    for row in daily:
+        if row["date"] < start_str or row["date"] > end_str:
             continue
-        if dates[i] > end_str:
-            break
-
-        bench_slice = bench_closes_up_to(bench_by_date, dates, i)
-        scored = score_series(
-            closes[: i + 1],
-            highs[: i + 1],
-            lows[: i + 1],
-            volumes[: i + 1],
-            bench_slice,
-            PAPER_SYMBOL_MARKET,
-        )
-        if not scored or scored["signal"] != "buy":
-            i += 1
-            continue
-
-        entry = closes[i]
-        entry_date = dates[i]
-        atr = scored.get("atr") or compute_atr(highs[: i + 1], lows[: i + 1], closes[: i + 1]) or entry * 0.02
-        alloc_pct = position_size_pct(scored["score"])
-        amount = equity * alloc_pct / 100
-        if amount > cash or entry <= 0:
-            i += 1
-            continue
-
-        shares = round(amount / entry, 4)
-        cost = round(shares * entry, 2)
-        cash = round(cash - cost, 2)
-
-        exit_price, exit_date, reason = simulate_exit(
-            entry, i, dates, closes, highs, lows, atr,
-        )
-        j = dates.index(exit_date) if exit_date in dates else i + 1
-        i = j + 1 + BACKTEST_COOLDOWN_BARS
-
-        proceeds = round(shares * exit_price, 2)
-        pnl = round(proceeds - cost, 2)
-        pnl_pct = round((proceeds - cost) / cost * 100, 2) if cost else 0.0
-        cash = round(cash + proceeds, 2)
-        equity = cash
-        peak = max(peak, equity)
-        dd = (equity - peak) / peak * 100 if peak else 0.0
+        peak = max(peak, row["equity"])
+        dd = (row["equity"] - peak) / peak * 100 if peak else 0
         max_dd = min(max_dd, dd)
-
-        if not equity_curve:
-            equity_curve.append({"date": entry_date, "equity": round(initial_cash, 2)})
-        trades.append(
-            {
-                "entryDate": entry_date,
-                "exitDate": exit_date,
-                "entryPrice": round(entry, 2),
-                "exitPrice": round(exit_price, 2),
-                "shares": shares,
-                "amount": cost,
-                "pnl": pnl,
-                "pnlPct": pnl_pct,
-                "reason": reason,
-                "entryType": scored.get("entryType"),
-                "score": scored["score"],
-                "win": pnl > 0,
-            }
-        )
-        equity_curve.append({"date": exit_date, "equity": round(equity, 2)})
-
-    final_equity = equity
-    total_return = round((final_equity - initial_cash) / initial_cash * 100, 2)
-    wins = sum(1 for t in trades if t["win"])
-    win_rate = round(wins / len(trades) * 100, 1) if trades else 0.0
+        curve.append({"date": row["date"], "equity": row["equity"], "shares": row["shares"]})
 
     return {
         "label": label,
-        "startDate": eval_start.isoformat(),
-        "endDate": eval_end.isoformat(),
+        "startDate": start_str,
+        "endDate": end_str,
         "metrics": {
-            "totalReturnPct": total_return,
-            "finalEquity": round(final_equity, 2),
-            "totalTrades": len(trades),
+            "totalReturnPct": ret,
+            "finalEquity": round(end_eq, 2),
+            "initialShares": round(start_shares, 2),
+            "finalShares": round(end_shares, 2),
+            "shareGrowthPct": share_growth,
+            "finalAvgCost": end_snap.get("avgCost", 0),
+            "totalTrades": len(period_trades),
             "winRate": win_rate,
             "maxDrawdown": round(max_dd, 2),
         },
-        "equityCurve": equity_curve[-200:],
-        "trades": trades,
+        "equityCurve": curve[-200:],
+        "trades": period_trades[-100:],
     }
 
 
@@ -242,41 +168,40 @@ def main() -> None:
     now = datetime.now(timezone.utc).astimezone()
     today = now.date()
 
-    dates, closes, highs, lows, volumes = load_symbol_history()
-    bench_by_date = load_benchmark_history()
-    if not dates:
-        print("No history for", PAPER_SYMBOL)
+    dates, closes = load_symbol_history()
+    if len(dates) < MIN_BARS:
+        print("Insufficient history")
         return
+
+    months = build_monthly_bars(dates, closes)
+    account, daily = run_full_simulation(dates, closes, months)
+    trades = account.get("trades", [])
 
     specs, rolling_keys, calendar_keys = build_period_specs(today)
     periods: dict[str, dict] = {}
     for key, label, start, end in specs:
-        periods[key] = simulate_range(
-            dates, closes, highs, lows, volumes, bench_by_date,
-            start, end, PAPER_INITIAL_CASH, label,
-        )
+        periods[key] = metrics_for_period(daily, trades, start, end, label)
         m = periods[key]["metrics"]
-        print(f"{key} ({label}): {m['totalTrades']} trades, return {m['totalReturnPct']}%")
+        print(
+            f"{key}: return {m['totalReturnPct']}%, shares {m['initialShares']}→{m['finalShares']}, "
+            f"trades {m['totalTrades']}"
+        )
 
-    listed_years = today.year - parse_date(PAPER_IPO_DATE).year + 1
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
         "symbol": PAPER_SYMBOL,
         "name": PAPER_SYMBOL_NAME,
         "hkCode": PAPER_SYMBOL_HK_CODE,
         "ipoDate": PAPER_IPO_DATE,
-        "listedYears": listed_years,
-        "initialCash": PAPER_INITIAL_CASH,
         "strategyVersion": STRATEGY_VERSION,
+        "strategyCode": "XRPS-X",
+        "initialCash": PAPER_INITIAL_CASH,
         "periodOrder": rolling_keys + calendar_keys,
-        "periodGroups": {
-            "rolling": rolling_keys,
-            "calendar": calendar_keys,
-        },
+        "periodGroups": {"rolling": rolling_keys, "calendar": calendar_keys},
         "periods": periods,
     }
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {OUTPUT_FILE} ({len(periods)} periods, IPO {PAPER_IPO_DATE})")
+    print(f"Wrote {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
