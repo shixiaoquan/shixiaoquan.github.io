@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-21T11:25:15+00:00",
-  "strategyVersion": "v1.1.0",
-  "strategyName": "多因子趋势策略（强化风控）",
+  "updatedAt": "2026-06-21T11:59:48+00:00",
+  "strategyVersion": "v1.2.0",
+  "strategyName": "港股一波流策略（突破+跟踪止损）",
   "focusSymbol": "1810.HK",
   "focusName": "小米集团",
   "focusHkCode": "01810",
-  "summary": "专注 小米集团（1810.HK），每 5 分钟自动打分并模拟买卖，无人工干预。",
+  "summary": "专注 小米集团：Regime 过滤 + 平台突破/趋势双入场 + ATR 跟踪止损，适配港股一波流。",
   "schedule": "每 5 分钟（GitHub Actions update-market-data）",
   "account": {
     "initialCash": 1000000.0,
@@ -16,54 +16,54 @@
   "flow": [
     {
       "step": 1,
-      "title": "小米评分",
-      "desc": "对 小米集团（1810.HK）多因子打分，基准 ^HSI。"
+      "title": "Regime 过滤",
+      "desc": "个股与恒指均在 MA200 之上，且恒指站上 MA60，否则禁止做多。"
     },
     {
       "step": 2,
-      "title": "生成信号",
-      "desc": "buy 信号触发开仓，持续跟踪现价与止损/止盈。"
+      "title": "入场信号",
+      "desc": "突破 40 日平台且放量 ≥1.5x；或趋势评分 ≥75 且价 > MA20 > MA60。"
     },
     {
       "step": 3,
       "title": "自动买入",
-      "desc": "对未平仓 buy 信号：最多 1 仓，按评分分配仓位后市价买入。"
+      "desc": "buy 信号开仓，最多 1 仓，按评分分配 20～25% 仓位。"
     },
     {
       "step": 4,
-      "title": "持仓监控",
-      "desc": "每轮检查止损 / 止盈 / 持有 25 天，触发则关闭信号。"
+      "title": "跟踪止损",
+      "desc": "初始止损 2.5×ATR；盈利后 3.0×ATR 跟踪，保本后止损不低于成本。"
     },
     {
       "step": 5,
       "title": "自动卖出",
-      "desc": "信号关闭后，模拟盘按最新价卖出对应持仓，现金回笼。"
+      "desc": "触发止损/跟踪止损，或持有满 60 天到期平仓。"
     }
   ],
   "buyRules": [
     {
-      "id": "signal_buy",
-      "label": "信号类型",
-      "value": "仅 buy 信号",
-      "detail": "评分 ≥ 78 且通过硬过滤才标记为 buy"
+      "id": "regime",
+      "label": "Regime",
+      "value": "多头环境",
+      "detail": "小米与恒指均在 MA200 之上"
     },
     {
-      "id": "signal_open",
-      "label": "信号状态",
-      "value": "open（未平仓）",
-      "detail": "仅对新产生的 open 信号尝试开仓"
+      "id": "breakout",
+      "label": "突破入场",
+      "value": "40 日新高 + 放量",
+      "detail": "评分 ≥ 68，RSI ≤ 75"
+    },
+    {
+      "id": "trend",
+      "label": "趋势入场",
+      "value": "评分 ≥ 75",
+      "detail": "价 > MA20 > MA60，相对强度 ≥ 0"
     },
     {
       "id": "max_pos",
       "label": "仓位上限",
       "value": "最多 1 只",
-      "detail": "专注单标的，最多持有 1 笔"
-    },
-    {
-      "id": "no_dup",
-      "label": "不重复建仓",
-      "value": "同一标的仅持有一笔",
-      "detail": "已持仓则不再买入"
+      "detail": "专注单标的"
     },
     {
       "id": "cash",
@@ -75,77 +75,84 @@
   "sellRules": [
     {
       "id": "stop",
-      "label": "止损平仓",
-      "value": "现价 ≤ 止损价",
-      "detail": "止损价 = 入场价 − ATR × 倍数（强趋势 1.5，否则 2.0）"
+      "label": "初始止损",
+      "value": "入场 − 2.5×ATR",
+      "detail": "宽止损适应港股波动"
     },
     {
-      "id": "target",
-      "label": "止盈平仓",
-      "value": "现价 ≥ 止盈价",
-      "detail": "止盈价 = 入场价 + ATR × 倍数 × 2.0（盈亏比）"
+      "id": "trail",
+      "label": "跟踪止损",
+      "value": "最高价 − 3.0×ATR",
+      "detail": "盈利后让利润奔跑，只上移不下移"
+    },
+    {
+      "id": "breakeven",
+      "label": "保本",
+      "value": "盈利 ≥ 1×ATR",
+      "detail": "止损上移至成本价"
     },
     {
       "id": "expiry",
       "label": "到期平仓",
-      "value": "持有 ≥ 25 天",
-      "detail": "超期按现价强制关闭信号"
-    },
-    {
-      "id": "paper_sync",
-      "label": "模拟盘卖出",
-      "value": "信号关闭即卖",
-      "detail": "引擎检测到 signalId 已关闭，按市价卖出全部份额"
+      "value": "持有 ≥ 60 天",
+      "detail": "超期按现价强制平仓"
     }
   ],
   "positionSizing": {
     "formula": "buy 信号：min(20 + (评分 − BUY) × 0.5, 25)% × 当前净值",
-    "buyScoreBase": 78,
+    "buyScoreBase": 75,
     "minPct": 20.0,
     "maxPct": 25.0,
     "watchPct": 10.0,
-    "note": "watch 信号在 buyOnly 模式下不参与模拟盘开仓"
+    "note": "突破入场评分门槛可低至 68 分"
   },
   "signalFilters": [
     {
-      "label": "买入评分门槛",
-      "value": "≥ 78",
+      "label": "趋势评分门槛",
+      "value": "≥ 75",
       "enabled": true
     },
     {
-      "label": "观察评分门槛",
-      "value": "≥ 62（不触发模拟买入）",
+      "label": "突破评分门槛",
+      "value": "≥ 68",
       "enabled": true
     },
     {
-      "label": "大盘多头",
-      "value": "基准指数站上 60 日均线",
+      "label": "个股 MA200",
+      "value": "收盘价在 200 日均线之上",
+      "enabled": true
+    },
+    {
+      "label": "恒指 MA200",
+      "value": "恒指在 200 日均线之上",
+      "enabled": true
+    },
+    {
+      "label": "恒指 MA60",
+      "value": "大盘多头过滤",
       "enabled": true
     },
     {
       "label": "RSI 上限",
-      "value": "≤ 72",
+      "value": "≤ 75",
       "enabled": true
     },
     {
       "label": "相对强度",
-      "value": "≥ 0.0%（跑赢基准）",
+      "value": "≥ 0.0%",
       "enabled": true
     },
     {
       "label": "MACD 柱",
-      "value": "MACD 柱状图 > 0",
-      "enabled": true
-    },
-    {
-      "label": "均线结构",
-      "value": "10 > 20 > 60 日均线多头排列",
-      "enabled": true
+      "value": "趋势入场时需 > 0",
+      "enabled": false
     }
   ],
   "riskParams": {
     "riskPerTradePct": 2.0,
-    "rewardRiskRatio": 2.0,
-    "maxHoldDays": 25
+    "rewardRiskRatio": 3.0,
+    "maxHoldDays": 60,
+    "atrStopInitial": 2.5,
+    "atrTrailing": 3.0
   }
 }

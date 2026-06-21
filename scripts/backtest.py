@@ -18,7 +18,8 @@ from strategy_config import (
     PREVIOUS_VERSION,
     STRATEGY_VERSION,
 )
-from strategy_scoring import MARKET_BENCHMARKS, compute_atr, score_series
+from strategy_exit import simulate_exit
+from strategy_scoring import MARKET_BENCHMARKS, MIN_BARS, compute_atr, score_series
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -86,7 +87,7 @@ def simulate_symbol(symbol: str, bench_by_date: dict[str, float]) -> list[dict]:
         hist = yf.Ticker(symbol).history(period=BACKTEST_PERIOD, interval="1d")
     except Exception:
         return []
-    if hist.empty or len(hist) < 80:
+    if hist.empty or len(hist) < MIN_BARS:
         return []
 
     closes = [float(v) for v in hist["Close"].tolist()]
@@ -95,7 +96,7 @@ def simulate_symbol(symbol: str, bench_by_date: dict[str, float]) -> list[dict]:
     volumes = [float(v) for v in hist["Volume"].tolist()]
     dates = [d.strftime("%Y-%m-%d") for d in hist.index]
     trades = []
-    i = 65
+    i = MIN_BARS
     while i < len(closes) - 1:
         bench_slice = bench_closes_up_to(bench_by_date, dates, i)
         scored = score_series(
@@ -112,28 +113,12 @@ def simulate_symbol(symbol: str, bench_by_date: dict[str, float]) -> list[dict]:
 
         entry = closes[i]
         entry_date = dates[i]
-        atr = compute_atr(highs[: i + 1], lows[: i + 1], closes[: i + 1]) or entry * 0.02
-        atr_mult = scored["atrMult"]
-        stop = scored["stopLossPrice"]
-        target = scored["targetPrice"]
-        exit_price = None
-        exit_date = None
-        reason = None
-
-        for j in range(i + 1, min(i + 1 + BACKTEST_HOLD_DAYS, len(closes))):
-            low, high = lows[j], highs[j]
-            if low <= stop:
-                exit_price, exit_date, reason = stop, dates[j], "stop"
-                i = j + 1 + BACKTEST_COOLDOWN_BARS
-                break
-            if high >= target:
-                exit_price, exit_date, reason = target, dates[j], "target"
-                i = j + 1 + BACKTEST_COOLDOWN_BARS
-                break
-        else:
-            j = min(i + BACKTEST_HOLD_DAYS, len(closes) - 1)
-            exit_price, exit_date, reason = closes[j], dates[j], "expiry"
-            i = j + 1 + BACKTEST_COOLDOWN_BARS
+        atr = scored.get("atr") or compute_atr(highs[: i + 1], lows[: i + 1], closes[: i + 1]) or entry * 0.02
+        exit_price, exit_date, reason = simulate_exit(
+            entry, i, dates, closes, highs, lows, atr,
+        )
+        j = dates.index(exit_date) if exit_date in dates else i + 1
+        i = j + 1 + BACKTEST_COOLDOWN_BARS
 
         ret = (exit_price - entry) / entry * 100
         trades.append(

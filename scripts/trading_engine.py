@@ -10,6 +10,11 @@ from pathlib import Path
 import yfinance as yf
 
 from strategy_config import (
+    ATR_STOP_INITIAL,
+    ATR_TRAILING,
+    BREAKOUT_LOOKBACK,
+    BREAKOUT_SCORE_MIN,
+    BREAKOUT_VOLUME_RATIO,
     BUY_SCORE,
     MAX_RSI_ENTRY,
     MAX_POSITION_PCT,
@@ -21,6 +26,8 @@ from strategy_config import (
     PAPER_SYMBOL_HK_CODE,
     PAPER_SYMBOL_MARKET,
     PAPER_SYMBOL_NAME,
+    REQUIRE_ABOVE_MA200,
+    REQUIRE_BENCH_ABOVE_MA200,
     REQUIRE_BULL_MARKET,
     REQUIRE_MACD_POSITIVE,
     REWARD_RISK_RATIO,
@@ -28,9 +35,11 @@ from strategy_config import (
     SIGNAL_MAX_HOLD_DAYS,
     STRATEGY_NAME,
     STRATEGY_VERSION,
+    USE_TRAILING_STOP,
     WATCH_SCORE,
 )
-from strategy_scoring import MARKET_BENCHMARKS, score_series
+from strategy_exit import effective_stop, initial_stop_price
+from strategy_scoring import MARKET_BENCHMARKS, MIN_BARS, score_series
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -80,11 +89,12 @@ def ensure_strategy_version() -> dict:
                 "name": STRATEGY_NAME,
                 "createdAt": datetime.now(timezone.utc).isoformat(),
                 "params": {
-                    "buyScore": 78,
-                    "watchScore": 62,
-                    "rewardRiskRatio": 2.0,
+                    "buyScore": BUY_SCORE,
+                    "breakoutScoreMin": BREAKOUT_SCORE_MIN,
+                    "watchScore": WATCH_SCORE,
+                    "rewardRiskRatio": REWARD_RISK_RATIO,
                     "maxHoldDays": SIGNAL_MAX_HOLD_DAYS,
-                    "requireBullMarket": True,
+                    "requireBullMarket": REQUIRE_BULL_MARKET,
                     "paperBuyOnly": PAPER_BUY_ONLY,
                     "focusSymbol": PAPER_SYMBOL,
                 },
@@ -97,13 +107,13 @@ def ensure_strategy_version() -> dict:
 
 
 def score_xiaomi(quote_map: dict[str, float]) -> dict | None:
-    """对小米 1810.HK 打分，优先用 market quoteMap，否则 yfinance 拉日线。"""
+    """对小米 1810.HK 打分（需 ≥200 根 K 线用于 MA200）。"""
     try:
-        hist = yf.Ticker(PAPER_SYMBOL).history(period="6mo", interval="1d")
-        bench_hist = yf.Ticker(MARKET_BENCHMARKS[PAPER_SYMBOL_MARKET]).history(period="6mo", interval="1d")
+        hist = yf.Ticker(PAPER_SYMBOL).history(period="max", interval="1d")
+        bench_hist = yf.Ticker(MARKET_BENCHMARKS[PAPER_SYMBOL_MARKET]).history(period="max", interval="1d")
     except Exception:
         return None
-    if hist.empty or len(hist) < 65:
+    if hist.empty or len(hist) < MIN_BARS:
         return None
 
     closes = [float(v) for v in hist["Close"].tolist()]
@@ -123,8 +133,8 @@ def score_xiaomi(quote_map: dict[str, float]) -> dict | None:
 
 def create_signal_from_score(scored: dict, now: datetime) -> dict:
     price = scored["price"]
-    stop = scored.get("stopLossPrice") or price * 0.92
-    target = scored.get("targetPrice") or price * 1.08
+    atr = scored.get("atr") or price * 0.02
+    stop = scored.get("stopLossPrice") or initial_stop_price(price, atr)
     return {
         "id": XIAOMI_SIGNAL_ID,
         "recordId": "xiaomi-live",
@@ -135,10 +145,13 @@ def create_signal_from_score(scored: dict, now: datetime) -> dict:
         "strategyVersion": STRATEGY_VERSION,
         "signal": scored.get("signal"),
         "signalLabel": scored.get("signalLabel"),
+        "entryType": scored.get("entryType"),
         "score": scored.get("score"),
         "entryPrice": price,
         "stopLossPrice": stop,
-        "targetPrice": target,
+        "targetPrice": scored.get("targetPrice"),
+        "atr": atr,
+        "highestPrice": price,
         "openedAt": now.isoformat(timespec="seconds"),
         "status": "open",
         "currentPrice": price,
@@ -162,16 +175,21 @@ def update_open_signal(signal: dict, price: float, now: datetime) -> None:
     hold_days = (now - opened).days
     signal["holdDays"] = hold_days
 
-    stop = signal.get("stopLossPrice")
-    target = signal.get("targetPrice")
+    atr = signal.get("atr") or entry * 0.02
+    highest = round(max(signal.get("highestPrice", entry), price), 2)
+    signal["highestPrice"] = highest
+    current_stop = signal.get("stopLossPrice", initial_stop_price(entry, atr))
+    signal["stopLossPrice"] = effective_stop(entry, atr, highest, current_stop)
+    stop = signal["stopLossPrice"]
 
     if stop and price <= stop:
-        signal["status"] = "closed_stop"
-        signal["closeReason"] = "触发止损"
-        signal["closedAt"] = now.isoformat(timespec="seconds")
-    elif target and price >= target:
-        signal["status"] = "closed_target"
-        signal["closeReason"] = "触发止盈"
+        init_stop = initial_stop_price(entry, atr)
+        if USE_TRAILING_STOP and stop > init_stop:
+            signal["status"] = "closed_trail"
+            signal["closeReason"] = "触发跟踪止损"
+        else:
+            signal["status"] = "closed_stop"
+            signal["closeReason"] = "触发止损"
         signal["closedAt"] = now.isoformat(timespec="seconds")
     elif hold_days >= SIGNAL_MAX_HOLD_DAYS:
         signal["status"] = "closed_expired"
@@ -196,8 +214,8 @@ def sync_signals(quote_map: dict[str, float], now: datetime) -> dict:
             open_signal["score"] = scored.get("score")
             open_signal["signal"] = scored.get("signal")
             open_signal["signalLabel"] = scored.get("signalLabel")
-            open_signal["stopLossPrice"] = scored.get("stopLossPrice", open_signal.get("stopLossPrice"))
-            open_signal["targetPrice"] = scored.get("targetPrice", open_signal.get("targetPrice"))
+            if scored.get("atr"):
+                open_signal["atr"] = scored["atr"]
 
     data["signals"] = signals[-100:]
     data["focusSymbol"] = PAPER_SYMBOL
@@ -408,7 +426,7 @@ def build_paper_strategy(now: datetime) -> dict:
         "focusSymbol": PAPER_SYMBOL,
         "focusName": PAPER_SYMBOL_NAME,
         "focusHkCode": PAPER_SYMBOL_HK_CODE,
-        "summary": f"专注 {PAPER_SYMBOL_NAME}（{PAPER_SYMBOL}），每 5 分钟自动打分并模拟买卖，无人工干预。",
+        "summary": f"专注 {PAPER_SYMBOL_NAME}：Regime 过滤 + 平台突破/趋势双入场 + ATR 跟踪止损，适配港股一波流。",
         "schedule": "每 5 分钟（GitHub Actions update-market-data）",
         "account": {
             "initialCash": PAPER_INITIAL_CASH,
@@ -417,24 +435,24 @@ def build_paper_strategy(now: datetime) -> dict:
             "buyOnlyLabel": buy_only_label,
         },
         "flow": [
-            {"step": 1, "title": "小米评分", "desc": f"对 {PAPER_SYMBOL_NAME}（{PAPER_SYMBOL}）多因子打分，基准 ^HSI。"},
-            {"step": 2, "title": "生成信号", "desc": "buy 信号触发开仓，持续跟踪现价与止损/止盈。"},
-            {"step": 3, "title": "自动买入", "desc": f"对未平仓 buy 信号：最多 {PAPER_MAX_POSITIONS} 仓，按评分分配仓位后市价买入。"},
-            {"step": 4, "title": "持仓监控", "desc": f"每轮检查止损 / 止盈 / 持有 {SIGNAL_MAX_HOLD_DAYS} 天，触发则关闭信号。"},
-            {"step": 5, "title": "自动卖出", "desc": "信号关闭后，模拟盘按最新价卖出对应持仓，现金回笼。"},
+            {"step": 1, "title": "Regime 过滤", "desc": "个股与恒指均在 MA200 之上，且恒指站上 MA60，否则禁止做多。"},
+            {"step": 2, "title": "入场信号", "desc": f"突破 {BREAKOUT_LOOKBACK} 日平台且放量 ≥{BREAKOUT_VOLUME_RATIO}x；或趋势评分 ≥{BUY_SCORE} 且价 > MA20 > MA60。"},
+            {"step": 3, "title": "自动买入", "desc": f"buy 信号开仓，最多 {PAPER_MAX_POSITIONS} 仓，按评分分配 20～25% 仓位。"},
+            {"step": 4, "title": "跟踪止损", "desc": f"初始止损 {ATR_STOP_INITIAL}×ATR；盈利后 {ATR_TRAILING}×ATR 跟踪，保本后止损不低于成本。"},
+            {"step": 5, "title": "自动卖出", "desc": f"触发止损/跟踪止损，或持有满 {SIGNAL_MAX_HOLD_DAYS} 天到期平仓。"},
         ],
         "buyRules": [
-            {"id": "signal_buy", "label": "信号类型", "value": buy_only_label, "detail": f"评分 ≥ {BUY_SCORE} 且通过硬过滤才标记为 buy"},
-            {"id": "signal_open", "label": "信号状态", "value": "open（未平仓）", "detail": "仅对新产生的 open 信号尝试开仓"},
-            {"id": "max_pos", "label": "仓位上限", "value": f"最多 {PAPER_MAX_POSITIONS} 只", "detail": "专注单标的，最多持有 1 笔"},
-            {"id": "no_dup", "label": "不重复建仓", "value": "同一标的仅持有一笔", "detail": "已持仓则不再买入"},
+            {"id": "regime", "label": "Regime", "value": "多头环境", "detail": "小米与恒指均在 MA200 之上"},
+            {"id": "breakout", "label": "突破入场", "value": f"{BREAKOUT_LOOKBACK} 日新高 + 放量", "detail": f"评分 ≥ {BREAKOUT_SCORE_MIN}，RSI ≤ {MAX_RSI_ENTRY}"},
+            {"id": "trend", "label": "趋势入场", "value": f"评分 ≥ {BUY_SCORE}", "detail": "价 > MA20 > MA60，相对强度 ≥ 0"},
+            {"id": "max_pos", "label": "仓位上限", "value": f"最多 {PAPER_MAX_POSITIONS} 只", "detail": "专注单标的"},
             {"id": "cash", "label": "资金约束", "value": "可用现金充足", "detail": "分配金额超过现金则跳过"},
         ],
         "sellRules": [
-            {"id": "stop", "label": "止损平仓", "value": "现价 ≤ 止损价", "detail": "止损价 = 入场价 − ATR × 倍数（强趋势 1.5，否则 2.0）"},
-            {"id": "target", "label": "止盈平仓", "value": "现价 ≥ 止盈价", "detail": f"止盈价 = 入场价 + ATR × 倍数 × {REWARD_RISK_RATIO}（盈亏比）"},
-            {"id": "expiry", "label": "到期平仓", "value": f"持有 ≥ {SIGNAL_MAX_HOLD_DAYS} 天", "detail": "超期按现价强制关闭信号"},
-            {"id": "paper_sync", "label": "模拟盘卖出", "value": "信号关闭即卖", "detail": "引擎检测到 signalId 已关闭，按市价卖出全部份额"},
+            {"id": "stop", "label": "初始止损", "value": f"入场 − {ATR_STOP_INITIAL}×ATR", "detail": "宽止损适应港股波动"},
+            {"id": "trail", "label": "跟踪止损", "value": f"最高价 − {ATR_TRAILING}×ATR", "detail": "盈利后让利润奔跑，只上移不下移"},
+            {"id": "breakeven", "label": "保本", "value": "盈利 ≥ 1×ATR", "detail": "止损上移至成本价"},
+            {"id": "expiry", "label": "到期平仓", "value": f"持有 ≥ {SIGNAL_MAX_HOLD_DAYS} 天", "detail": "超期按现价强制平仓"},
         ],
         "positionSizing": {
             "formula": "buy 信号：min(20 + (评分 − BUY) × 0.5, 25)% × 当前净值",
@@ -442,21 +460,24 @@ def build_paper_strategy(now: datetime) -> dict:
             "minPct": 20.0,
             "maxPct": MAX_POSITION_PCT,
             "watchPct": 10.0,
-            "note": "watch 信号在 buyOnly 模式下不参与模拟盘开仓",
+            "note": "突破入场评分门槛可低至 68 分",
         },
         "signalFilters": [
-            {"label": "买入评分门槛", "value": f"≥ {BUY_SCORE}", "enabled": True},
-            {"label": "观察评分门槛", "value": f"≥ {WATCH_SCORE}（不触发模拟买入）", "enabled": True},
-            {"label": "大盘多头", "value": "基准指数站上 60 日均线", "enabled": REQUIRE_BULL_MARKET},
+            {"label": "趋势评分门槛", "value": f"≥ {BUY_SCORE}", "enabled": True},
+            {"label": "突破评分门槛", "value": f"≥ {BREAKOUT_SCORE_MIN}", "enabled": True},
+            {"label": "个股 MA200", "value": "收盘价在 200 日均线之上", "enabled": REQUIRE_ABOVE_MA200},
+            {"label": "恒指 MA200", "value": "恒指在 200 日均线之上", "enabled": REQUIRE_BENCH_ABOVE_MA200},
+            {"label": "恒指 MA60", "value": "大盘多头过滤", "enabled": REQUIRE_BULL_MARKET},
             {"label": "RSI 上限", "value": f"≤ {MAX_RSI_ENTRY}", "enabled": True},
-            {"label": "相对强度", "value": f"≥ {MIN_RELATIVE_STRENGTH}%（跑赢基准）", "enabled": True},
-            {"label": "MACD 柱", "value": "MACD 柱状图 > 0", "enabled": REQUIRE_MACD_POSITIVE},
-            {"label": "均线结构", "value": "10 > 20 > 60 日均线多头排列", "enabled": True},
+            {"label": "相对强度", "value": f"≥ {MIN_RELATIVE_STRENGTH}%", "enabled": True},
+            {"label": "MACD 柱", "value": "趋势入场时需 > 0", "enabled": REQUIRE_MACD_POSITIVE},
         ],
         "riskParams": {
             "riskPerTradePct": RISK_PER_TRADE_PCT,
             "rewardRiskRatio": REWARD_RISK_RATIO,
             "maxHoldDays": SIGNAL_MAX_HOLD_DAYS,
+            "atrStopInitial": ATR_STOP_INITIAL,
+            "atrTrailing": ATR_TRAILING,
         },
     }
     save_json(PAPER_STRATEGY_FILE, payload)

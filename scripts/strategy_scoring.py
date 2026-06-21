@@ -1,24 +1,30 @@
-"""多因子评分 — 供 fetch_data / backtest 共用的离线计算逻辑（非在线服务）。"""
+"""多因子评分 — 供 fetch_data / backtest / 模拟盘共用的离线计算逻辑。"""
 
 from __future__ import annotations
 
 from strategy_config import (
-    ATR_STOP_NORMAL,
-    ATR_STOP_STRONG,
+    BREAKOUT_LOOKBACK,
+    BREAKOUT_SCORE_MIN,
+    BREAKOUT_VOLUME_RATIO,
     BUY_SCORE,
     MAX_RSI_ENTRY,
     MIN_RELATIVE_STRENGTH,
+    REQUIRE_ABOVE_MA200,
+    REQUIRE_BENCH_ABOVE_MA200,
     REQUIRE_BULL_MARKET,
     REQUIRE_MACD_POSITIVE,
     REWARD_RISK_RATIO,
     WATCH_SCORE,
 )
+from strategy_config import ATR_STOP_INITIAL, ATR_TRAILING
 
 MARKET_BENCHMARKS = {
     "A股": "000001.SS",
     "港股": "^HSI",
     "美股": "^GSPC",
 }
+
+MIN_BARS = 200
 
 
 def pct_change(current: float, previous: float) -> float | None:
@@ -93,12 +99,64 @@ def benchmark_return(closes: list[float], days: int) -> float | None:
     return pct_change(closes[-1], closes[-days - 1])
 
 
-def price_digits(price: float) -> int:
-    if price >= 1000:
-        return 2
-    if price >= 10:
-        return 2
-    return 3
+def detect_regime(
+    price: float,
+    closes: list[float],
+    bench_closes: list[float],
+) -> dict:
+    """Regime：个股与基准均在 MA200 之上才允许做多。"""
+    sma200 = sma(closes, 200) if len(closes) >= 200 else None
+    bench_sma200 = sma(bench_closes, 200) if bench_closes and len(bench_closes) >= 200 else None
+    bench_price = bench_closes[-1] if bench_closes else None
+
+    stock_ok = True if sma200 is None else price > sma200
+    bench_ok = True
+    bull_market = True
+
+    if bench_closes and len(bench_closes) >= 60:
+        bench_sma60 = sma(bench_closes, 60)
+        if bench_sma60 and bench_price and bench_price < bench_sma60:
+            bull_market = False
+
+    if REQUIRE_ABOVE_MA200 and sma200 is not None:
+        stock_ok = price > sma200
+    if REQUIRE_BENCH_ABOVE_MA200 and bench_sma200 is not None and bench_price is not None:
+        bench_ok = bench_price > bench_sma200
+
+    regime_ok = stock_ok and bench_ok
+    if REQUIRE_BULL_MARKET:
+        regime_ok = regime_ok and bull_market
+
+    return {
+        "regimeOk": regime_ok,
+        "stockAboveMa200": stock_ok,
+        "benchAboveMa200": bench_ok,
+        "bullMarket": bull_market,
+        "sma200": sma200,
+    }
+
+
+def detect_breakout(
+    closes: list[float],
+    highs: list[float],
+    volumes: list[float],
+) -> dict:
+    """平台突破：收盘创 N 日新高且放量。"""
+    lookback = min(BREAKOUT_LOOKBACK, len(highs) - 2)
+    if lookback < 10:
+        return {"breakout": False, "breakoutLevel": None, "volumeRatio": None}
+
+    prior_high = max(highs[-(lookback + 1) : -1])
+    price = closes[-1]
+    vol5, vol20 = sma(volumes, 5), sma(volumes, 20)
+    vol_ratio = round(vol5 / vol20, 2) if vol5 and vol20 else None
+    breakout = price >= prior_high and vol_ratio is not None and vol_ratio >= BREAKOUT_VOLUME_RATIO
+
+    return {
+        "breakout": breakout,
+        "breakoutLevel": round(prior_high, 2),
+        "volumeRatio": vol_ratio,
+    }
 
 
 def score_series(
@@ -108,9 +166,10 @@ def score_series(
     volumes: list[float],
     bench_closes: list[float],
     market: str = "美股",
+    min_bars: int = MIN_BARS,
 ) -> dict | None:
-    """对截至最新一根 K 线的序列打分，与实盘荐股逻辑一致。"""
-    if len(closes) < 65:
+    """对截至最新一根 K 线的序列打分。"""
+    if len(closes) < min_bars:
         return None
 
     price = closes[-1]
@@ -130,6 +189,9 @@ def score_series(
 
     if not all(v is not None for v in (sma20, sma60, rsi, atr, month_chg, quarter_chg, macd, macd_signal, macd_hist)):
         return None
+
+    regime = detect_regime(price, closes, bench_closes)
+    breakout_info = detect_breakout(closes, highs, volumes)
 
     score = 0.0
     reasons: list[str] = []
@@ -187,54 +249,61 @@ def score_series(
         elif vol_ratio > 1.05:
             score += 6
 
-    bull_market = True
-    if bench_closes and len(bench_closes) >= 60:
-        bench_price = bench_closes[-1]
-        bench_sma60 = sma(bench_closes, 60)
-        if bench_sma60 and bench_price > bench_sma60:
-            score += 5
-        elif bench_sma60 and bench_price < bench_sma60:
-            score -= 3
-            bull_market = False
+    if breakout_info["breakout"]:
+        score += 12
+        reasons.insert(0, f"突破 {BREAKOUT_LOOKBACK} 日平台且放量")
+
+    if regime["regimeOk"]:
+        score += 5
+    else:
+        score -= 8
 
     score = round(max(min(score, 100), 0), 1)
 
-    # v1.1 强化过滤：不满足硬条件则降级为 hold
-    hard_ok = True
-    if REQUIRE_BULL_MARKET and not bull_market:
-        hard_ok = False
+    trend_ok = bool(sma20 and price > sma20 > sma60)
+    soft_ok = True
     if rsi > MAX_RSI_ENTRY:
-        hard_ok = False
+        soft_ok = False
     if rel_strength is not None and rel_strength < MIN_RELATIVE_STRENGTH:
-        hard_ok = False
+        soft_ok = False
     if REQUIRE_MACD_POSITIVE and (macd_hist is None or macd_hist <= 0):
-        hard_ok = False
-    if not (sma10 and sma10 > sma20 > sma60):
-        hard_ok = False
+        soft_ok = False
 
-    if score >= BUY_SCORE and hard_ok:
-        signal, signal_label = "buy", "建议买入"
+    entry_type = None
+    if not regime["regimeOk"]:
+        signal, signal_label = "hold", "暂不参与"
+    elif breakout_info["breakout"] and score >= BREAKOUT_SCORE_MIN and rsi <= MAX_RSI_ENTRY:
+        signal, signal_label = "buy", "突破买入"
+        entry_type = "breakout"
+    elif score >= BUY_SCORE and trend_ok and soft_ok:
+        signal, signal_label = "buy", "趋势买入"
+        entry_type = "trend"
     elif score >= WATCH_SCORE:
         signal, signal_label = "watch", "建议观察"
     else:
         signal, signal_label = "hold", "暂不参与"
 
-    strong_trend = bool(sma10 and sma10 > sma20 > sma60 and score >= BUY_SCORE)
-    atr_mult = ATR_STOP_STRONG if strong_trend else ATR_STOP_NORMAL
-    stop_loss = round(price - atr_mult * atr, 2)
-    target = round(price + atr_mult * atr * REWARD_RISK_RATIO, 2)
+    stop_loss = round(price - ATR_STOP_INITIAL * atr, 2)
+    target = round(price + ATR_TRAILING * atr * REWARD_RISK_RATIO, 2)
 
     return {
         "score": score,
         "signal": signal,
         "signalLabel": signal_label,
+        "entryType": entry_type,
         "rsi": rsi,
         "monthChangePct": month_chg,
         "relativeStrength": rel_strength,
         "reasons": reasons[:5],
         "stopLossPrice": stop_loss,
         "targetPrice": target,
-        "atrMult": atr_mult,
-        "bullMarket": bull_market,
-        "hardFiltersPassed": hard_ok,
+        "atr": atr,
+        "atrMult": ATR_STOP_INITIAL,
+        "trailingAtrMult": ATR_TRAILING,
+        "bullMarket": regime["bullMarket"],
+        "regimeOk": regime["regimeOk"],
+        "breakout": breakout_info["breakout"],
+        "breakoutLevel": breakout_info["breakoutLevel"],
+        "volumeRatio": breakout_info["volumeRatio"],
+        "hardFiltersPassed": regime["regimeOk"] and (entry_type is not None),
     }

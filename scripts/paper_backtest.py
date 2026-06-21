@@ -21,14 +21,15 @@ from strategy_config import (
     PAPER_SYMBOL_NAME,
     STRATEGY_VERSION,
 )
-from strategy_scoring import score_series
+from strategy_exit import simulate_exit
+from strategy_scoring import MIN_BARS, compute_atr, score_series
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "paper_backtest.json"
 
 BENCHMARK = "^HSI"
-MIN_BARS = 80
+MIN_BARS_LOCAL = MIN_BARS
 
 
 def position_size_pct(score: float) -> float:
@@ -133,7 +134,7 @@ def simulate_range(
         "equityCurve": [],
         "trades": [],
     }
-    if len(dates) < MIN_BARS:
+    if len(dates) < MIN_BARS_LOCAL:
         return empty
 
     start_str = eval_start.isoformat()
@@ -146,7 +147,7 @@ def simulate_range(
     peak = equity
     max_dd = 0.0
 
-    i = 65
+    i = MIN_BARS_LOCAL
     while i < len(closes) - 1:
         if dates[i] < start_str:
             i += 1
@@ -169,8 +170,7 @@ def simulate_range(
 
         entry = closes[i]
         entry_date = dates[i]
-        stop = scored["stopLossPrice"]
-        target = scored["targetPrice"]
+        atr = scored.get("atr") or compute_atr(highs[: i + 1], lows[: i + 1], closes[: i + 1]) or entry * 0.02
         alloc_pct = position_size_pct(scored["score"])
         amount = equity * alloc_pct / 100
         if amount > cash or entry <= 0:
@@ -181,24 +181,11 @@ def simulate_range(
         cost = round(shares * entry, 2)
         cash = round(cash - cost, 2)
 
-        exit_price = None
-        exit_date = None
-        reason = None
-
-        for j in range(i + 1, min(i + 1 + BACKTEST_HOLD_DAYS, len(closes))):
-            low, high = lows[j], highs[j]
-            if low <= stop:
-                exit_price, exit_date, reason = stop, dates[j], "stop"
-                i = j + 1 + BACKTEST_COOLDOWN_BARS
-                break
-            if high >= target:
-                exit_price, exit_date, reason = target, dates[j], "target"
-                i = j + 1 + BACKTEST_COOLDOWN_BARS
-                break
-        else:
-            j = min(i + BACKTEST_HOLD_DAYS, len(closes) - 1)
-            exit_price, exit_date, reason = closes[j], dates[j], "expiry"
-            i = j + 1 + BACKTEST_COOLDOWN_BARS
+        exit_price, exit_date, reason = simulate_exit(
+            entry, i, dates, closes, highs, lows, atr,
+        )
+        j = dates.index(exit_date) if exit_date in dates else i + 1
+        i = j + 1 + BACKTEST_COOLDOWN_BARS
 
         proceeds = round(shares * exit_price, 2)
         pnl = round(proceeds - cost, 2)
@@ -222,6 +209,7 @@ def simulate_range(
                 "pnl": pnl,
                 "pnlPct": pnl_pct,
                 "reason": reason,
+                "entryType": scored.get("entryType"),
                 "score": scored["score"],
                 "win": pnl > 0,
             }

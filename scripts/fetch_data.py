@@ -204,7 +204,7 @@ def fetch_benchmark_closes() -> dict[str, list[float]]:
     cache: dict[str, list[float]] = {}
     for market, symbol in MARKET_BENCHMARKS.items():
         try:
-            hist = yf.Ticker(symbol).history(period="6mo", interval="1d")
+            hist = yf.Ticker(symbol).history(period="max", interval="1d")
             if not hist.empty:
                 cache[market] = [float(v) for v in hist["Close"].dropna().tolist()]
         except Exception:
@@ -216,7 +216,7 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
     """多因子趋势策略，评分逻辑与 strategy_scoring 模块一致。"""
     market = meta.get("market", "美股")
     try:
-        hist = yf.Ticker(symbol).history(period="6mo", interval="1d")
+        hist = yf.Ticker(symbol).history(period="max", interval="1d")
     except Exception:
         return None
     if hist.empty:
@@ -228,7 +228,7 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
     volumes = [float(v) for v in hist["Volume"].dropna().tolist()]
     bench = benchmarks.get(market, [])
 
-    scored = score_series(closes, highs, lows, volumes, bench, market)
+    scored = score_series(closes, highs, lows, volumes, bench, market, min_bars=65)
     if not scored:
         return None
 

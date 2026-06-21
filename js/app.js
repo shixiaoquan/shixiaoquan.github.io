@@ -158,6 +158,7 @@ function signalStatusLabel(status) {
   const map = {
     open: "持仓中",
     closed_stop: "止损平仓",
+    closed_trail: "跟踪止损",
     closed_target: "止盈平仓",
     closed_expired: "到期平仓",
   };
@@ -166,13 +167,13 @@ function signalStatusLabel(status) {
 
 function signalStatusClass(status) {
   if (status === "open") return "signal-status--open";
-  if (status === "closed_target") return "signal-status--win";
+  if (status === "closed_target" || status === "closed_trail") return "signal-status--win";
   if (status === "closed_stop") return "signal-status--loss";
   return "signal-status--neutral";
 }
 
 function reasonLabel(reason) {
-  const map = { stop: "止损", target: "止盈", expiry: "到期" };
+  const map = { stop: "止损", trail: "跟踪止损", target: "止盈", expiry: "到期" };
   return map[reason] || reason || "--";
 }
 
