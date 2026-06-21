@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-15T06:20:30+00:00",
+  "updatedAt": "2026-06-21T03:10:05+00:00",
   "strategyVersion": "v1.1.0",
   "period": "1y",
   "universe": [
@@ -11,15 +11,15 @@
     "NVDA"
   ],
   "metrics": {
-    "totalTrades": 14,
-    "winRate": 42.9,
-    "profitFactor": 1.1,
-    "expectancy": 0.25,
-    "avgWin": 6.36,
-    "avgLoss": -4.33,
-    "maxDrawdown": -20.6,
-    "sharpe": 0.15,
-    "annualReturn": 1.58
+    "totalTrades": 13,
+    "winRate": 38.5,
+    "profitFactor": 0.95,
+    "expectancy": -0.13,
+    "avgWin": 6.38,
+    "avgLoss": -4.2,
+    "maxDrawdown": -17.18,
+    "sharpe": -0.08,
+    "annualReturn": -3.42
   },
   "equityCurve": [
     {
@@ -51,36 +51,32 @@
       "value": 106.0
     },
     {
-      "date": "2025-10-20",
-      "value": 112.62
+      "date": "2025-10-10",
+      "value": 102.68
     },
     {
       "date": "2025-12-02",
-      "value": 119.37
+      "value": 108.82
     },
     {
       "date": "2026-05-22",
-      "value": 127.93
+      "value": 116.62
     },
     {
-      "date": "2025-09-24",
-      "value": 122.71
-    },
-    {
-      "date": "2025-10-10",
-      "value": 117.36
+      "date": "2025-10-15",
+      "value": 111.59
     },
     {
       "date": "2025-11-06",
-      "value": 111.97
+      "value": 106.46
     },
     {
       "date": "2026-04-30",
-      "value": 107.46
+      "value": 102.17
     },
     {
       "date": "2026-05-26",
-      "value": 101.58
+      "value": 96.58
     }
   ],
   "byMarket": {
@@ -107,15 +103,15 @@
       "annualReturn": -7.61
     },
     "美股": {
-      "totalTrades": 8,
-      "winRate": 37.5,
-      "profitFactor": 0.86,
-      "expectancy": -0.39,
-      "avgWin": 6.47,
-      "avgLoss": -4.51,
-      "maxDrawdown": -20.6,
-      "sharpe": -0.23,
-      "annualReturn": -4.17
+      "totalTrades": 7,
+      "winRate": 28.6,
+      "profitFactor": 0.61,
+      "expectancy": -1.2,
+      "avgWin": 6.58,
+      "avgLoss": -4.31,
+      "maxDrawdown": -17.18,
+      "sharpe": -0.77,
+      "annualReturn": -8.88
     }
   },
   "recentTrades": [
@@ -194,13 +190,13 @@
     {
       "symbol": "AAPL",
       "market": "美股",
-      "entryDate": "2025-11-04",
+      "entryDate": "2025-10-31",
       "exitDate": "2025-12-02",
-      "entryPrice": 269.28,
-      "exitPrice": 285.41,
-      "returnPct": 5.99,
+      "entryPrice": 269.61,
+      "exitPrice": 285.74,
+      "returnPct": 5.98,
       "reason": "target",
-      "score": 79.4,
+      "score": 80.2,
       "win": true
     },
     {
@@ -228,16 +224,16 @@
       "win": false
     },
     {
-      "symbol": "AAPL",
+      "symbol": "NVDA",
       "market": "美股",
-      "entryDate": "2025-09-19",
-      "exitDate": "2025-10-20",
-      "entryPrice": 244.81,
-      "exitPrice": 260.1,
-      "returnPct": 6.25,
-      "reason": "target",
-      "score": 82.8,
-      "win": true
+      "entryDate": "2025-10-01",
+      "exitDate": "2025-10-15",
+      "entryPrice": 187.0,
+      "exitPrice": 178.92,
+      "returnPct": -4.32,
+      "reason": "stop",
+      "score": 80.0,
+      "win": false
     },
     {
       "symbol": "0700.HK",
@@ -252,15 +248,15 @@
       "win": false
     },
     {
-      "symbol": "NVDA",
+      "symbol": "AAPL",
       "market": "美股",
-      "entryDate": "2025-10-09",
+      "entryDate": "2025-09-24",
       "exitDate": "2025-10-10",
-      "entryPrice": 192.32,
-      "exitPrice": 183.94,
-      "returnPct": -4.36,
+      "entryPrice": 251.6,
+      "exitPrice": 243.72,
+      "returnPct": -3.13,
       "reason": "stop",
-      "score": 80.0,
+      "score": 93.0,
       "win": false
     },
     {
@@ -274,18 +270,6 @@
       "reason": "stop",
       "score": 79.0,
       "win": false
-    },
-    {
-      "symbol": "NVDA",
-      "market": "美股",
-      "entryDate": "2025-09-22",
-      "exitDate": "2025-09-24",
-      "entryPrice": 183.38,
-      "exitPrice": 175.89,
-      "returnPct": -4.08,
-      "reason": "stop",
-      "score": 86.6,
-      "win": false
     }
   ],
   "compareWith": {
@@ -297,10 +281,10 @@
       "maxDrawdown": -37.82
     },
     "delta": {
-      "winRate": 13.9,
-      "expectancy": 1.61,
-      "profitFactor": 0.51,
-      "maxDrawdown": 17.22
+      "winRate": 9.5,
+      "expectancy": 1.23,
+      "profitFactor": 0.36,
+      "maxDrawdown": 20.64
     }
   }
 }
