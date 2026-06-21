@@ -1,30 +1,33 @@
 {
-  "updatedAt": "2026-06-21T10:14:53+00:00",
+  "updatedAt": "2026-06-21T11:01:12+00:00",
   "strategyVersion": "v1.1.0",
   "strategyName": "多因子趋势策略（强化风控）",
-  "summary": "每 5 分钟随行情更新自动运行：荐股产生信号 → 模拟盘按规则买卖，无人工干预。",
+  "focusSymbol": "1810.HK",
+  "focusName": "小米集团",
+  "focusHkCode": "01810",
+  "summary": "专注 小米集团（1810.HK），每 5 分钟自动打分并模拟买卖，无人工干预。",
   "schedule": "每 5 分钟（GitHub Actions update-market-data）",
   "account": {
     "initialCash": 1000000.0,
-    "maxPositions": 3,
+    "maxPositions": 1,
     "buyOnly": true,
     "buyOnlyLabel": "仅 buy 信号"
   },
   "flow": [
     {
       "step": 1,
-      "title": "荐股评分",
-      "desc": "fetch_data 对 A股/港股/美股标的多因子打分，写入 reco_history 与 signals。"
+      "title": "小米评分",
+      "desc": "对 小米集团（1810.HK）多因子打分，基准 ^HSI。"
     },
     {
       "step": 2,
       "title": "生成信号",
-      "desc": "最近 3 次荐股快照中每只标的创建一条信号，持续跟踪现价与盈亏。"
+      "desc": "buy 信号触发开仓，持续跟踪现价与止损/止盈。"
     },
     {
       "step": 3,
       "title": "自动买入",
-      "desc": "对未平仓 buy 信号：最多 3 仓，按评分分配仓位后市价买入。"
+      "desc": "对未平仓 buy 信号：最多 1 仓，按评分分配仓位后市价买入。"
     },
     {
       "step": 4,
@@ -53,14 +56,14 @@
     {
       "id": "max_pos",
       "label": "仓位上限",
-      "value": "最多 3 只",
-      "detail": "已达上限则跳过新开仓"
+      "value": "最多 1 只",
+      "detail": "专注单标的，最多持有 1 笔"
     },
     {
       "id": "no_dup",
       "label": "不重复建仓",
       "value": "同一标的仅持有一笔",
-      "detail": "已持仓标的不再买入"
+      "detail": "已持仓则不再买入"
     },
     {
       "id": "cash",

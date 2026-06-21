@@ -5,6 +5,7 @@ const BACKTEST_URL = "data/backtest.json";
 const SIGNALS_URL = "data/signals.json";
 const PAPER_URL = "data/paper_account.json";
 const PAPER_STRATEGY_URL = "data/paper_strategy.json";
+const PAPER_BACKTEST_URL = "data/paper_backtest.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
 const AI_CHAIN_URL = "data/ai_chain.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
@@ -18,6 +19,7 @@ let signalsData = null;
 let backtestData = null;
 let paperData = null;
 let paperStrategyData = null;
+let paperBacktestData = null;
 let wencaiData = null;
 let lastWencaiUpdatedAt = null;
 let yahooNews = [];
@@ -37,6 +39,7 @@ let distributionChart;
 let stocksChart;
 let backtestChart;
 let paperChart;
+let paperModalChart;
 
 function formatNumber(value, digits = 2) {
   if (value === null || value === undefined || Number.isNaN(value)) return "--";
@@ -133,7 +136,8 @@ function switchTab(tabId, options = {}) {
     renderBacktestChart(backtestData.equityCurve);
   }
   if (tabId === "paper") {
-    if (paperStrategyData) renderPaperStrategy(paperStrategyData);
+    if (paperStrategyData) renderPaperStrategyCard(paperStrategyData);
+    if (paperBacktestData) renderPaperBacktestCards(paperBacktestData);
     if (paperData) {
       renderPaperPanel(paperData);
     } else {
@@ -779,16 +783,17 @@ function renderCockpitPaper(paper) {
   const hintEl = document.getElementById("cockpit-paper-hint");
   if (!paper) {
     renderStatCards("cockpit-paper", [
-      { label: "模拟盘", value: "加载中…" },
+      { label: "小米模拟盘", value: "加载中…" },
     ]);
-    if (hintEl) hintEl.textContent = "虚拟账户按信号自动交易";
+    if (hintEl) hintEl.textContent = "小米集团 1810.HK 专用模拟";
     return;
   }
   const positions = paper.positions || [];
+  const focusName = paper.focusName || "小米集团";
   if (hintEl) {
     hintEl.textContent = positions.length
-      ? `${positions.length} 只持仓 · 更新 ${formatDateTime(paper.updatedAt).slice(11)}`
-      : "当前空仓";
+      ? `${focusName} 持仓中 · 更新 ${formatDateTime(paper.updatedAt).slice(11)}`
+      : `${focusName} · 当前空仓`;
   }
   renderStatCards("cockpit-paper", [
     { label: "账户净值", value: formatNumber(paper.equity) },
@@ -798,7 +803,7 @@ function renderCockpitPaper(paper) {
       valueClass: changeClass(paper.returnPct),
     },
     { label: "可用现金", value: formatNumber(paper.cash) },
-    { label: "持仓市值", value: formatNumber((paper.equity || 0) - (paper.cash || 0)) },
+    { label: "持仓", value: positions.length ? `${positions.length}/1` : "空仓" },
   ]);
 }
 
@@ -914,46 +919,38 @@ function renderPaperChart(curve, forceRecreate = false) {
   paperChart = renderEquityChart("paper-chart", curve, paperChart, "账户净值", forceRecreate);
 }
 
-function renderPaperStrategy(data) {
+function renderPaperStrategyCard(data) {
   if (!data) return;
-
-  const versionEl = document.getElementById("paper-strategy-version");
+  const versionEl = document.getElementById("paper-card-version");
   const summaryEl = document.getElementById("paper-strategy-summary");
-  const scheduleEl = document.getElementById("paper-strategy-schedule");
-  const flowEl = document.getElementById("paper-strategy-flow");
-  const buyEl = document.getElementById("paper-strategy-buy");
-  const sellEl = document.getElementById("paper-strategy-sell");
-  const formulaEl = document.getElementById("paper-strategy-formula");
-  const paramsEl = document.getElementById("paper-strategy-params");
-  const filtersEl = document.getElementById("paper-strategy-filters");
-
   if (versionEl) versionEl.textContent = data.strategyVersion || "--";
-  if (summaryEl) {
-    summaryEl.textContent = data.summary
-      ? `${data.strategyName || ""} · ${data.summary}`
-      : data.strategyName || "";
-  }
-  if (scheduleEl) {
-    scheduleEl.textContent = data.schedule ? `执行频率：${data.schedule}` : "";
-  }
 
-  if (flowEl) {
-    flowEl.innerHTML = (data.flow || [])
+  const risk = data.riskParams || {};
+  const buyFilter = (data.signalFilters || []).find((f) => f.label === "买入评分门槛");
+  if (summaryEl) {
+    summaryEl.innerHTML = [
+      { label: "策略名称", value: data.strategyName || "--" },
+      { label: "买入门槛", value: buyFilter?.value || "≥ 78" },
+      { label: "盈亏比", value: `${risk.rewardRiskRatio ?? 2} : 1` },
+      { label: "最长持有", value: `${risk.maxHoldDays ?? 25} 天` },
+    ]
       .map(
-        (step) => `
-        <article class="paper-strategy-flow__step">
-          <span class="paper-strategy-flow__num">${step.step}</span>
-          <p class="paper-strategy-flow__title">${step.title}</p>
-          <p class="paper-strategy-flow__desc">${step.desc || ""}</p>
-        </article>
+        (item) => `
+        <div class="paper-strategy-card__item">
+          <span class="paper-strategy-card__label">${item.label}</span>
+          <span class="paper-strategy-card__value">${item.value}</span>
+        </div>
       `
       )
       .join("");
   }
+}
 
-  const renderRules = (el, rules) => {
-    if (!el) return;
-    el.innerHTML = (rules || [])
+function renderPaperStrategyDetail(data) {
+  if (!data) return "";
+
+  const renderRules = (rules) =>
+    (rules || [])
       .map(
         (rule) => `
         <li>
@@ -964,53 +961,226 @@ function renderPaperStrategy(data) {
       `
       )
       .join("");
-  };
 
-  renderRules(buyEl, data.buyRules);
-  renderRules(sellEl, data.sellRules);
+  const ps = data.positionSizing || {};
+  const risk = data.riskParams || {};
+  const acct = data.account || {};
 
-  if (formulaEl && data.positionSizing) {
-    const ps = data.positionSizing;
-    formulaEl.textContent = ps.formula || "";
-    if (ps.note) {
-      formulaEl.textContent += `\n${ps.note}`;
-    }
-  }
+  const paramsHtml = [
+    { label: "初始资金", value: formatNumber(acct.initialCash) },
+    { label: "最大持仓", value: `${acct.maxPositions ?? 1} 只` },
+    { label: "开仓模式", value: acct.buyOnlyLabel || "--" },
+    { label: "仓位上限", value: `${ps.maxPct ?? 25}%` },
+    { label: "盈亏比", value: `${risk.rewardRiskRatio ?? 2} : 1` },
+    { label: "最长持有", value: `${risk.maxHoldDays ?? 25} 天` },
+  ]
+    .map(
+      (p) => `
+      <div class="paper-strategy-param">
+        <span class="paper-strategy-param__label">${p.label}</span>
+        <span class="paper-strategy-param__value">${p.value}</span>
+      </div>
+    `
+    )
+    .join("");
 
-  if (paramsEl) {
-    const ps = data.positionSizing || {};
-    const risk = data.riskParams || {};
-    const acct = data.account || {};
-    paramsEl.innerHTML = [
-      { label: "初始资金", value: formatNumber(acct.initialCash) },
-      { label: "最大持仓", value: `${acct.maxPositions ?? "--"} 只` },
-      { label: "开仓模式", value: acct.buyOnlyLabel || "--" },
-      { label: "仓位上限", value: `${ps.maxPct ?? "--"}%` },
-      { label: "盈亏比", value: `${risk.rewardRiskRatio ?? "--"} : 1` },
-      { label: "最长持有", value: `${risk.maxHoldDays ?? "--"} 天` },
-    ]
-      .map(
-        (p) => `
-        <div class="paper-strategy-param">
-          <span class="paper-strategy-param__label">${p.label}</span>
-          <span class="paper-strategy-param__value">${p.value}</span>
+  const filtersHtml = (data.signalFilters || [])
+    .map(
+      (f) => `
+      <span class="paper-strategy-filter ${f.enabled ? "" : "paper-strategy-filter--off"}">
+        ${f.label} <strong>${f.value}</strong>
+      </span>
+    `
+    )
+    .join("");
+
+  const flowHtml = (data.flow || [])
+    .map(
+      (step) => `
+      <article class="paper-strategy-flow__step">
+        <span class="paper-strategy-flow__num">${step.step}</span>
+        <p class="paper-strategy-flow__title">${step.title}</p>
+        <p class="paper-strategy-flow__desc">${step.desc || ""}</p>
+      </article>
+    `
+    )
+    .join("");
+
+  return `
+    <section class="paper-strategy">
+      <div class="paper-strategy__head">
+        <p class="paper-strategy__summary">${data.strategyName || ""} · ${data.summary || ""}</p>
+        <p class="paper-strategy__schedule">${data.schedule ? `执行频率：${data.schedule}` : ""}</p>
+      </div>
+      <div class="paper-strategy-flow">${flowHtml}</div>
+      <div class="paper-strategy-grid">
+        <div class="paper-strategy-block paper-strategy-block--buy">
+          <h3 class="paper-strategy-block__title">买入条件</h3>
+          <ul class="paper-strategy-rules">${renderRules(data.buyRules)}</ul>
         </div>
+        <div class="paper-strategy-block paper-strategy-block--sell">
+          <h3 class="paper-strategy-block__title">卖出条件</h3>
+          <ul class="paper-strategy-rules">${renderRules(data.sellRules)}</ul>
+        </div>
+        <div class="paper-strategy-block paper-strategy-block--params">
+          <h3 class="paper-strategy-block__title">仓位计算</h3>
+          <p class="paper-strategy-formula">${ps.formula || ""}${ps.note ? `\n${ps.note}` : ""}</p>
+          <div class="paper-strategy-params">${paramsHtml}</div>
+        </div>
+        <div class="paper-strategy-block paper-strategy-block--params">
+          <h3 class="paper-strategy-block__title">buy 信号硬过滤</h3>
+          <div class="paper-strategy-filters">${filtersHtml}</div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderPaperBacktestCards(data) {
+  const el = document.getElementById("paper-backtest-cards");
+  if (!el) return;
+  if (!data?.periods) {
+    el.innerHTML = '<p class="empty">回测数据加载中…</p>';
+    return;
+  }
+  const order = ["1y", "2y", "3y", "4y"];
+  el.innerHTML = order
+    .filter((p) => data.periods[p])
+    .map((period) => {
+      const block = data.periods[period];
+      const m = block.metrics || {};
+      return `
+        <article class="paper-backtest-card" data-paper-backtest="${period}" role="button" tabindex="0">
+          <p class="paper-backtest-card__period">${block.label || period}</p>
+          <p class="paper-backtest-card__return change ${changeClass(m.totalReturnPct)}">${formatPct(m.totalReturnPct)}</p>
+          <div class="paper-backtest-card__meta">
+            <span>期末净值 ${formatNumber(m.finalEquity)}</span>
+            <span>${m.totalTrades ?? 0} 笔 · 胜率 ${m.winRate ?? 0}%</span>
+            <span>最大回撤 ${m.maxDrawdown ?? 0}%</span>
+          </div>
+          <p class="paper-backtest-card__hint">点击查看交易明细 →</p>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function renderPaperBacktestModal(period) {
+  const data = paperBacktestData;
+  if (!data?.periods?.[period]) return "";
+  const block = data.periods[period];
+  const trades = block.trades || [];
+  const rows = trades.length
+    ? trades
+        .map(
+          (t) => `
+        <tr>
+          <td>${t.entryDate}<br>${formatNumber(t.entryPrice)}</td>
+          <td>${t.exitDate}<br>${formatNumber(t.exitPrice)}</td>
+          <td>${formatNumber(t.shares, 2)}</td>
+          <td>${formatNumber(t.amount)}</td>
+          <td class="change ${changeClass(t.pnlPct)}">${formatNumber(t.pnl)} (${formatPct(t.pnlPct)})</td>
+          <td>${reasonLabel(t.reason)}</td>
+        </tr>
       `
-      )
-      .join("");
+        )
+        .join("")
+    : '<tr><td colspan="6" class="empty">该周期暂无交易</td></tr>';
+
+  return `
+    <div class="paper-modal__chart">
+      <canvas id="paper-modal-chart" aria-label="回测净值曲线"></canvas>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>入场</th>
+            <th>出场</th>
+            <th>数量</th>
+            <th>成本</th>
+            <th>盈亏</th>
+            <th>原因</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+function openPaperModal(type, payload) {
+  const modal = document.getElementById("paper-modal");
+  const titleEl = document.getElementById("paper-modal-title");
+  const bodyEl = document.getElementById("paper-modal-body");
+  if (!modal || !titleEl || !bodyEl) return;
+
+  if (paperModalChart) {
+    paperModalChart.destroy();
+    paperModalChart = null;
   }
 
-  if (filtersEl) {
-    filtersEl.innerHTML = (data.signalFilters || [])
-      .map(
-        (f) => `
-        <span class="paper-strategy-filter ${f.enabled ? "" : "paper-strategy-filter--off"}">
-          ${f.label} <strong>${f.value}</strong>
-        </span>
-      `
-      )
-      .join("");
+  if (type === "strategy") {
+    titleEl.textContent = "策略详情";
+    bodyEl.innerHTML = renderPaperStrategyDetail(paperStrategyData);
+  } else if (type === "backtest-trades") {
+    const period = payload?.period;
+    const label = paperBacktestData?.periods?.[period]?.label || period;
+    titleEl.textContent = `${label} 交易明细`;
+    bodyEl.innerHTML = renderPaperBacktestModal(period);
+    requestAnimationFrame(() => {
+      const curve = paperBacktestData?.periods?.[period]?.equityCurve;
+      if (curve?.length) {
+        paperModalChart = renderEquityChart(
+          "paper-modal-chart",
+          curve,
+          paperModalChart,
+          "回测净值",
+          true
+        );
+      }
+    });
   }
+
+  modal.hidden = false;
+  document.body.classList.add("modal-open");
+}
+
+function closePaperModal() {
+  const modal = document.getElementById("paper-modal");
+  if (!modal) return;
+  modal.hidden = true;
+  document.body.classList.remove("modal-open");
+  if (paperModalChart) {
+    paperModalChart.destroy();
+    paperModalChart = null;
+  }
+}
+
+function setupPaperModal() {
+  const card = document.getElementById("paper-strategy-card");
+  card?.addEventListener("click", () => openPaperModal("strategy"));
+  card?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openPaperModal("strategy");
+    }
+  });
+
+  document.getElementById("paper-backtest-cards")?.addEventListener("click", (e) => {
+    const target = e.target.closest("[data-paper-backtest]");
+    if (target?.dataset.paperBacktest) {
+      openPaperModal("backtest-trades", { period: target.dataset.paperBacktest });
+    }
+  });
+
+  document.querySelectorAll("[data-paper-modal-close]").forEach((el) => {
+    el.addEventListener("click", closePaperModal);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closePaperModal();
+  });
 }
 
 function renderPaperPanel(paper, loadState = "ready") {
@@ -1532,17 +1702,22 @@ function renderBacktestTrades(trades) {
 function renderPaperStats(paper) {
   const hintEl = document.getElementById("paper-positions-hint");
   const positions = paper?.positions || [];
-  if (hintEl) hintEl.textContent = positions.length ? `${positions.length} 只持仓` : "当前空仓";
+  if (hintEl) {
+    hintEl.textContent = positions.length
+      ? `当前持仓 ${positions.length}/1`
+      : "当前持仓 0/1 · 空仓";
+  }
 
+  const positionValue = (paper?.equity || 0) - (paper?.cash || 0);
   renderStatCards("paper-stats", [
     { label: "账户净值", value: formatNumber(paper?.equity) },
-    { label: "可用现金", value: formatNumber(paper?.cash) },
     {
       label: "总收益率",
       value: formatPct(paper?.returnPct),
       valueClass: changeClass(paper?.returnPct),
     },
-    { label: "初始资金", value: formatNumber(paper?.initialCash) },
+    { label: "可用现金", value: formatNumber(paper?.cash) },
+    { label: "持仓市值", value: formatNumber(positionValue) },
   ]);
 }
 
@@ -1550,7 +1725,7 @@ function renderPaperPositions(positions) {
   const el = document.getElementById("paper-positions");
   if (!el) return;
   if (!positions?.length) {
-    el.innerHTML = '<p class="empty">暂无持仓</p>';
+    el.innerHTML = '<p class="empty">暂无持仓 · 等待 buy 信号</p>';
     return;
   }
   el.innerHTML = positions
@@ -1561,10 +1736,10 @@ function renderPaperPositions(positions) {
       <article class="paper-position">
         <div class="paper-position__head">
           <div>
-            <strong>${pos.name}</strong>
+            <strong>${pos.name || "小米集团"}</strong>
             <span class="stock-card__symbol">${pos.symbol}</span>
           </div>
-          <span class="reco-market reco-market--${marketClass(pos.market)}">${pos.market}</span>
+          <span class="reco-market reco-market--hk">港股</span>
         </div>
         <div class="paper-position__meta">
           <span>成本 ${formatNumber(pos.entryPrice)}</span>
@@ -1639,11 +1814,30 @@ async function refreshPaperStrategy() {
   const data = await fetchJson(PAPER_STRATEGY_URL);
   if (!data) return;
   paperStrategyData = data;
-  renderPaperStrategy(data);
+  renderPaperStrategyCard(data);
+}
+
+async function refreshPaperBacktest() {
+  const data = await fetchJson(PAPER_BACKTEST_URL);
+  if (!data) return;
+  paperBacktestData = data;
+  renderPaperBacktestCards(data);
 }
 
 async function refreshPaperData() {
-  const paper = await fetchJson(PAPER_URL);
+  const [paper, strategy, backtest] = await Promise.all([
+    fetchJson(PAPER_URL),
+    fetchJson(PAPER_STRATEGY_URL),
+    fetchJson(PAPER_BACKTEST_URL),
+  ]);
+  if (strategy) {
+    paperStrategyData = strategy;
+    renderPaperStrategyCard(strategy);
+  }
+  if (backtest) {
+    paperBacktestData = backtest;
+    renderPaperBacktestCards(backtest);
+  }
   if (paper) {
     paperData = paper;
     renderPaperPanel(paper);
@@ -1770,6 +1964,7 @@ async function init() {
   setupHistoryFilters();
   setupNewsFilters();
   setupAiChainFilters();
+  setupPaperModal();
 
   const initialTab = tabFromLocation();
   suppressTabRoute = true;
@@ -1780,7 +1975,6 @@ async function init() {
     refreshData(),
     refreshHistory(),
     refreshPaperData(),
-    refreshPaperStrategy(),
     refreshTradingData(),
     refreshWencaiData(),
     loadAiChainData(),

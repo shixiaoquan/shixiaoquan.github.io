@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
+
+import yfinance as yf
 
 from strategy_config import (
     BUY_SCORE,
@@ -15,6 +17,10 @@ from strategy_config import (
     PAPER_BUY_ONLY,
     PAPER_INITIAL_CASH,
     PAPER_MAX_POSITIONS,
+    PAPER_SYMBOL,
+    PAPER_SYMBOL_HK_CODE,
+    PAPER_SYMBOL_MARKET,
+    PAPER_SYMBOL_NAME,
     REQUIRE_BULL_MARKET,
     REQUIRE_MACD_POSITIVE,
     REWARD_RISK_RATIO,
@@ -24,6 +30,7 @@ from strategy_config import (
     STRATEGY_VERSION,
     WATCH_SCORE,
 )
+from strategy_scoring import MARKET_BENCHMARKS, score_series
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -32,8 +39,9 @@ PAPER_FILE = DATA_DIR / "paper_account.json"
 PAPER_STRATEGY_FILE = DATA_DIR / "paper_strategy.json"
 VERSIONS_FILE = DATA_DIR / "strategy_versions.json"
 DIAGNOSTICS_FILE = DATA_DIR / "diagnostics.json"
-HISTORY_FILE = DATA_DIR / "reco_history.json"
 MARKET_FILE = DATA_DIR / "market.json"
+
+XIAOMI_SIGNAL_ID = f"xiaomi:{PAPER_SYMBOL}"
 
 
 def load_json(path: Path, default: dict) -> dict:
@@ -78,6 +86,7 @@ def ensure_strategy_version() -> dict:
                     "maxHoldDays": SIGNAL_MAX_HOLD_DAYS,
                     "requireBullMarket": True,
                     "paperBuyOnly": PAPER_BUY_ONLY,
+                    "focusSymbol": PAPER_SYMBOL,
                 },
             }
         )
@@ -87,27 +96,52 @@ def ensure_strategy_version() -> dict:
     return data
 
 
-def create_signal_from_pick(pick: dict, record_id: str, recorded_at: str) -> dict:
-    entry = pick["price"]
-    stop = pick.get("stopLossPrice") or entry * 0.92
-    target = pick.get("targetPrice") or entry * 1.08
+def score_xiaomi(quote_map: dict[str, float]) -> dict | None:
+    """对小米 1810.HK 打分，优先用 market quoteMap，否则 yfinance 拉日线。"""
+    try:
+        hist = yf.Ticker(PAPER_SYMBOL).history(period="6mo", interval="1d")
+        bench_hist = yf.Ticker(MARKET_BENCHMARKS[PAPER_SYMBOL_MARKET]).history(period="6mo", interval="1d")
+    except Exception:
+        return None
+    if hist.empty or len(hist) < 65:
+        return None
+
+    closes = [float(v) for v in hist["Close"].tolist()]
+    highs = [float(v) for v in hist["High"].tolist()]
+    lows = [float(v) for v in hist["Low"].tolist()]
+    volumes = [float(v) for v in hist["Volume"].tolist()]
+    bench_closes = [float(v) for v in bench_hist["Close"].tolist()] if not bench_hist.empty else []
+
+    scored = score_series(closes, highs, lows, volumes, bench_closes, PAPER_SYMBOL_MARKET)
+    if not scored:
+        return None
+
+    price = quote_map.get(PAPER_SYMBOL) or closes[-1]
+    scored["price"] = price
+    return scored
+
+
+def create_signal_from_score(scored: dict, now: datetime) -> dict:
+    price = scored["price"]
+    stop = scored.get("stopLossPrice") or price * 0.92
+    target = scored.get("targetPrice") or price * 1.08
     return {
-        "id": f"{record_id}:{pick['symbol']}",
-        "recordId": record_id,
-        "symbol": pick["symbol"],
-        "name": pick["name"],
-        "market": pick["market"],
-        "currency": pick.get("currency", "USD"),
+        "id": XIAOMI_SIGNAL_ID,
+        "recordId": "xiaomi-live",
+        "symbol": PAPER_SYMBOL,
+        "name": PAPER_SYMBOL_NAME,
+        "market": PAPER_SYMBOL_MARKET,
+        "currency": "HKD",
         "strategyVersion": STRATEGY_VERSION,
-        "signal": pick.get("signal"),
-        "signalLabel": pick.get("signalLabel"),
-        "score": pick.get("score"),
-        "entryPrice": entry,
+        "signal": scored.get("signal"),
+        "signalLabel": scored.get("signalLabel"),
+        "score": scored.get("score"),
+        "entryPrice": price,
         "stopLossPrice": stop,
         "targetPrice": target,
-        "openedAt": recorded_at,
+        "openedAt": now.isoformat(timespec="seconds"),
         "status": "open",
-        "currentPrice": entry,
+        "currentPrice": price,
         "maxGainPct": 0.0,
         "maxDrawdownPct": 0.0,
         "returnPct": 0.0,
@@ -146,37 +180,48 @@ def update_open_signal(signal: dict, price: float, now: datetime) -> None:
 
 
 def sync_signals(quote_map: dict[str, float], now: datetime) -> dict:
-    history = load_json(HISTORY_FILE, {"records": []})
     data = load_json(SIGNALS_FILE, {"signals": []})
-    signals: list[dict] = data.get("signals", [])
-    existing_ids = {s["id"] for s in signals}
+    signals: list[dict] = [s for s in data.get("signals", []) if s.get("symbol") == PAPER_SYMBOL]
 
-    # 从最新荐股记录创建新信号
-    for record in history.get("records", [])[-3:]:
-        record_id = record.get("id") or record.get("recordedAt", "")
-        recorded_at = record.get("recordedAt", now.isoformat())
-        for pick in record.get("picks", []):
-            sid = f"{record_id}:{pick['symbol']}"
-            if sid in existing_ids:
-                continue
-            signals.append(create_signal_from_pick(pick, record_id, recorded_at))
-            existing_ids.add(sid)
+    scored = score_xiaomi(quote_map)
+    open_signal = next((s for s in signals if s["status"] == "open"), None)
 
-    # 更新所有未平仓信号
-    for signal in signals:
-        if signal["status"] != "open":
-            continue
-        price = quote_map.get(signal["symbol"])
+    if scored and scored.get("signal") == "buy" and open_signal is None:
+        signals.append(create_signal_from_score(scored, now))
+    elif open_signal:
+        price = quote_map.get(PAPER_SYMBOL) or scored.get("price") if scored else open_signal["entryPrice"]
         if price is not None:
-            update_open_signal(signal, price, now)
+            update_open_signal(open_signal, price, now)
+        if scored and open_signal["status"] == "open":
+            open_signal["score"] = scored.get("score")
+            open_signal["signal"] = scored.get("signal")
+            open_signal["signalLabel"] = scored.get("signalLabel")
+            open_signal["stopLossPrice"] = scored.get("stopLossPrice", open_signal.get("stopLossPrice"))
+            open_signal["targetPrice"] = scored.get("targetPrice", open_signal.get("targetPrice"))
 
-    data["signals"] = signals[-500:]
+    data["signals"] = signals[-100:]
+    data["focusSymbol"] = PAPER_SYMBOL
     data["updatedAt"] = now.isoformat(timespec="seconds")
     data["openCount"] = sum(1 for s in signals if s["status"] == "open")
     data["closedCount"] = sum(1 for s in signals if s["status"] != "open")
     save_json(SIGNALS_FILE, data)
     print(f"Wrote {SIGNALS_FILE} ({len(signals)} signals, {data['openCount']} open)")
     return data
+
+
+def reset_paper_account(now: datetime) -> dict:
+    return {
+        "initialCash": PAPER_INITIAL_CASH,
+        "cash": PAPER_INITIAL_CASH,
+        "equity": PAPER_INITIAL_CASH,
+        "positions": [],
+        "trades": [],
+        "equityCurve": [],
+        "focusSymbol": PAPER_SYMBOL,
+        "focusName": PAPER_SYMBOL_NAME,
+        "focusHkCode": PAPER_SYMBOL_HK_CODE,
+        "updatedAt": now.isoformat(timespec="seconds"),
+    }
 
 
 def position_size_pct(score: float, signal_type: str) -> float:
@@ -186,7 +231,6 @@ def position_size_pct(score: float, signal_type: str) -> float:
 
 
 def append_equity_point(curve: list[dict], now: datetime, equity: float) -> list[dict]:
-    """净值曲线去重：净值未变且距上一点不足 5 分钟则不追加。"""
     point = {"time": now.isoformat(timespec="seconds"), "equity": equity}
     if not curve:
         return [point]
@@ -205,31 +249,30 @@ def append_equity_point(curve: list[dict], now: datetime, equity: float) -> list
 def run_paper_trading(signals_data: dict, quote_map: dict[str, float], now: datetime) -> dict:
     account = load_json(
         PAPER_FILE,
-        {
-            "initialCash": PAPER_INITIAL_CASH,
-            "cash": PAPER_INITIAL_CASH,
-            "equity": PAPER_INITIAL_CASH,
-            "positions": [],
-            "trades": [],
-            "equityCurve": [],
-        },
+        reset_paper_account(now),
     )
-    positions = {p["symbol"]: p for p in account.get("positions", [])}
+
+    if account.get("focusSymbol") != PAPER_SYMBOL:
+        print(f"Migrating paper account to {PAPER_SYMBOL} (was {account.get('focusSymbol', 'unknown')})")
+        account = reset_paper_account(now)
+
+    positions = {p["symbol"]: p for p in account.get("positions", []) if p["symbol"] == PAPER_SYMBOL}
+    account["positions"] = list(positions.values())
     trades = account.get("trades", [])
 
-    # 开仓：对新 open 信号且未持仓
-    open_signals = [s for s in signals_data.get("signals", []) if s["status"] == "open"]
+    open_signals = [
+        s for s in signals_data.get("signals", [])
+        if s["status"] == "open" and s["symbol"] == PAPER_SYMBOL
+    ]
     for sig in open_signals:
         if len(positions) >= PAPER_MAX_POSITIONS:
             break
-        if sig["symbol"] in positions:
+        if PAPER_SYMBOL in positions:
             continue
         if PAPER_BUY_ONLY and sig.get("signal") != "buy":
             continue
-        if not PAPER_BUY_ONLY and sig.get("signal") not in ("buy", "watch"):
-            continue
 
-        price = quote_map.get(sig["symbol"]) or sig["entryPrice"]
+        price = quote_map.get(PAPER_SYMBOL) or sig["entryPrice"]
         alloc_pct = position_size_pct(sig.get("score", 60), sig.get("signal", "watch"))
         equity = account.get("equity", account["cash"])
         amount = equity * alloc_pct / 100
@@ -239,10 +282,10 @@ def run_paper_trading(signals_data: dict, quote_map: dict[str, float], now: date
         shares = round(amount / price, 4)
         cost = round(shares * price, 2)
         account["cash"] = round(account["cash"] - cost, 2)
-        positions[sig["symbol"]] = {
-            "symbol": sig["symbol"],
-            "name": sig["name"],
-            "market": sig["market"],
+        positions[PAPER_SYMBOL] = {
+            "symbol": PAPER_SYMBOL,
+            "name": PAPER_SYMBOL_NAME,
+            "market": PAPER_SYMBOL_MARKET,
             "shares": shares,
             "entryPrice": price,
             "cost": cost,
@@ -252,8 +295,8 @@ def run_paper_trading(signals_data: dict, quote_map: dict[str, float], now: date
         trades.append(
             {
                 "type": "buy",
-                "symbol": sig["symbol"],
-                "name": sig["name"],
+                "symbol": PAPER_SYMBOL,
+                "name": PAPER_SYMBOL_NAME,
                 "price": price,
                 "shares": shares,
                 "amount": cost,
@@ -262,11 +305,10 @@ def run_paper_trading(signals_data: dict, quote_map: dict[str, float], now: date
             }
         )
 
-    # 平仓：信号已关闭
     closed_ids = {
         s["id"]
         for s in signals_data.get("signals", [])
-        if s["status"] != "open" and s.get("closedAt")
+        if s["status"] != "open" and s.get("closedAt") and s["symbol"] == PAPER_SYMBOL
     }
     for symbol, pos in list(positions.items()):
         if pos.get("signalId") not in closed_ids:
@@ -292,7 +334,6 @@ def run_paper_trading(signals_data: dict, quote_map: dict[str, float], now: date
         )
         del positions[symbol]
 
-    # 计算净值
     position_value = sum(
         pos["shares"] * (quote_map.get(sym) or pos["entryPrice"]) for sym, pos in positions.items()
     )
@@ -300,6 +341,9 @@ def run_paper_trading(signals_data: dict, quote_map: dict[str, float], now: date
     account["equity"] = round(account["cash"] + position_value, 2)
     account["returnPct"] = pct_change(account["equity"], account["initialCash"])
     account["trades"] = trades[-200:]
+    account["focusSymbol"] = PAPER_SYMBOL
+    account["focusName"] = PAPER_SYMBOL_NAME
+    account["focusHkCode"] = PAPER_SYMBOL_HK_CODE
 
     curve = account.get("equityCurve", [])
     account["equityCurve"] = append_equity_point(curve, now, account["equity"])
@@ -320,47 +364,25 @@ def build_diagnostics(signals_data: dict, backtest: dict | None, paper: dict) ->
         round(sum(s.get("returnPct", 0) for s in closed) / tracked, 2) if tracked else None
     )
 
-    by_market: dict[str, dict] = {}
-    for s in closed:
-        m = s.get("market", "未知")
-        by_market.setdefault(m, {"count": 0, "wins": 0, "sumRet": 0.0})
-        by_market[m]["count"] += 1
-        if (s.get("returnPct") or 0) > 0:
-            by_market[m]["wins"] += 1
-        by_market[m]["sumRet"] += s.get("returnPct", 0)
-
-    market_stats = []
-    for m, st in by_market.items():
-        market_stats.append(
-            {
-                "market": m,
-                "trades": st["count"],
-                "winRate": round(st["wins"] / st["count"] * 100, 1) if st["count"] else 0,
-                "avgReturn": round(st["sumRet"] / st["count"], 2) if st["count"] else 0,
-            }
-        )
-
-    suggestions = []
-    if win_rate is not None and win_rate < 50:
-        suggestions.append("实盘信号胜率偏低，建议提高 BUY_SCORE 阈值或加强市场环境过滤。")
-    if paper.get("returnPct") is not None and paper["returnPct"] < 0:
-        suggestions.append("模拟账户亏损，建议缩小仓位或暂停弱信号(watch)开仓。")
-    if backtest and backtest.get("metrics", {}).get("expectancy", 0) < 0:
-        suggestions.append("回测期望值为负，策略需优化参数后再实盘。")
-    weak_market = min(market_stats, key=lambda x: x["winRate"], default=None)
-    if weak_market and weak_market["winRate"] < 45:
-        suggestions.append(f"{weak_market['market']}市场表现最弱，考虑降低该市场权重。")
-    if not suggestions:
-        suggestions.append("系统运行正常，继续保持纪律性交易与定期回测。")
-
     close_reasons: dict[str, int] = {}
     for s in closed:
         r = s.get("closeReason") or s.get("status", "unknown")
         close_reasons[r] = close_reasons.get(r, 0) + 1
 
+    suggestions = []
+    if win_rate is not None and win_rate < 50:
+        suggestions.append("小米信号胜率偏低，建议提高 BUY_SCORE 阈值或加强市场环境过滤。")
+    if paper.get("returnPct") is not None and paper["returnPct"] < 0:
+        suggestions.append("模拟账户亏损，建议缩小仓位或暂停弱信号开仓。")
+    if backtest and backtest.get("metrics", {}).get("expectancy", 0) < 0:
+        suggestions.append("回测期望值为负，策略需优化参数后再实盘。")
+    if not suggestions:
+        suggestions.append("小米模拟盘运行正常，继续保持纪律性交易与定期回测。")
+
     diag = {
         "updatedAt": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"),
         "strategyVersion": STRATEGY_VERSION,
+        "focusSymbol": PAPER_SYMBOL,
         "summary": {
             "openSignals": len(open_sigs),
             "closedSignals": tracked,
@@ -369,7 +391,6 @@ def build_diagnostics(signals_data: dict, backtest: dict | None, paper: dict) ->
             "paperReturn": paper.get("returnPct"),
             "backtestExpectancy": (backtest or {}).get("metrics", {}).get("expectancy"),
         },
-        "byMarket": market_stats,
         "closeReasons": close_reasons,
         "suggestions": suggestions,
     }
@@ -379,13 +400,15 @@ def build_diagnostics(signals_data: dict, backtest: dict | None, paper: dict) ->
 
 
 def build_paper_strategy(now: datetime) -> dict:
-    """导出模拟盘买卖规则，供前端展示（与 strategy_config / 引擎逻辑同步）。"""
     buy_only_label = "仅 buy 信号" if PAPER_BUY_ONLY else "buy 与 watch 信号"
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
         "strategyVersion": STRATEGY_VERSION,
         "strategyName": STRATEGY_NAME,
-        "summary": "每 5 分钟随行情更新自动运行：荐股产生信号 → 模拟盘按规则买卖，无人工干预。",
+        "focusSymbol": PAPER_SYMBOL,
+        "focusName": PAPER_SYMBOL_NAME,
+        "focusHkCode": PAPER_SYMBOL_HK_CODE,
+        "summary": f"专注 {PAPER_SYMBOL_NAME}（{PAPER_SYMBOL}），每 5 分钟自动打分并模拟买卖，无人工干预。",
         "schedule": "每 5 分钟（GitHub Actions update-market-data）",
         "account": {
             "initialCash": PAPER_INITIAL_CASH,
@@ -394,8 +417,8 @@ def build_paper_strategy(now: datetime) -> dict:
             "buyOnlyLabel": buy_only_label,
         },
         "flow": [
-            {"step": 1, "title": "荐股评分", "desc": "fetch_data 对 A股/港股/美股标的多因子打分，写入 reco_history 与 signals。"},
-            {"step": 2, "title": "生成信号", "desc": "最近 3 次荐股快照中每只标的创建一条信号，持续跟踪现价与盈亏。"},
+            {"step": 1, "title": "小米评分", "desc": f"对 {PAPER_SYMBOL_NAME}（{PAPER_SYMBOL}）多因子打分，基准 ^HSI。"},
+            {"step": 2, "title": "生成信号", "desc": "buy 信号触发开仓，持续跟踪现价与止损/止盈。"},
             {"step": 3, "title": "自动买入", "desc": f"对未平仓 buy 信号：最多 {PAPER_MAX_POSITIONS} 仓，按评分分配仓位后市价买入。"},
             {"step": 4, "title": "持仓监控", "desc": f"每轮检查止损 / 止盈 / 持有 {SIGNAL_MAX_HOLD_DAYS} 天，触发则关闭信号。"},
             {"step": 5, "title": "自动卖出", "desc": "信号关闭后，模拟盘按最新价卖出对应持仓，现金回笼。"},
@@ -403,8 +426,8 @@ def build_paper_strategy(now: datetime) -> dict:
         "buyRules": [
             {"id": "signal_buy", "label": "信号类型", "value": buy_only_label, "detail": f"评分 ≥ {BUY_SCORE} 且通过硬过滤才标记为 buy"},
             {"id": "signal_open", "label": "信号状态", "value": "open（未平仓）", "detail": "仅对新产生的 open 信号尝试开仓"},
-            {"id": "max_pos", "label": "仓位上限", "value": f"最多 {PAPER_MAX_POSITIONS} 只", "detail": "已达上限则跳过新开仓"},
-            {"id": "no_dup", "label": "不重复建仓", "value": "同一标的仅持有一笔", "detail": "已持仓标的不再买入"},
+            {"id": "max_pos", "label": "仓位上限", "value": f"最多 {PAPER_MAX_POSITIONS} 只", "detail": "专注单标的，最多持有 1 笔"},
+            {"id": "no_dup", "label": "不重复建仓", "value": "同一标的仅持有一笔", "detail": "已持仓则不再买入"},
             {"id": "cash", "label": "资金约束", "value": "可用现金充足", "detail": "分配金额超过现金则跳过"},
         ],
         "sellRules": [
