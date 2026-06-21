@@ -1,0 +1,242 @@
+/* 模拟盘交易规则模块 */
+
+.paper-strategy {
+  margin-bottom: 20px;
+}
+
+.paper-strategy__head {
+  margin-bottom: 16px;
+}
+
+.paper-strategy__version {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.paper-strategy__summary {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.paper-strategy__schedule {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.paper-strategy-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.paper-strategy-flow__step {
+  position: relative;
+  padding: 12px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.paper-strategy-flow__step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-weight: 700;
+  z-index: 1;
+}
+
+.paper-strategy-flow__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.paper-strategy-flow__title {
+  margin: 0 0 4px;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.paper-strategy-flow__desc {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.paper-strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.paper-strategy-block {
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.paper-strategy-block--buy {
+  border-left: 3px solid var(--up);
+}
+
+.paper-strategy-block--sell {
+  border-left: 3px solid var(--down);
+}
+
+.paper-strategy-block--params {
+  border-left: 3px solid var(--accent);
+}
+
+.paper-strategy-block__title {
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.paper-strategy-rules {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paper-strategy-rules li {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.paper-strategy-rules li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.paper-strategy-rules__label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.paper-strategy-rules__value {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.paper-strategy-rules__detail {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.paper-strategy-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.paper-strategy-filter {
+  padding: 6px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.78rem;
+}
+
+.paper-strategy-filter--off {
+  opacity: 0.45;
+}
+
+.paper-strategy-filter strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.paper-strategy-formula {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  background: var(--bg-elevated);
+  border-radius: 8px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.paper-strategy-params {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.paper-strategy-param {
+  padding: 8px 10px;
+  background: var(--bg-elevated);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.paper-strategy-param__label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.paper-strategy-param__value {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .paper-strategy-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .paper-strategy-flow__step::after {
+    content: none;
+  }
+
+  .paper-strategy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .paper-strategy-params {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .paper-strategy-params {
+    grid-template-columns: 1fr;
+  }
+}

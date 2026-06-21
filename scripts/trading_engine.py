@@ -9,18 +9,27 @@ from pathlib import Path
 
 from strategy_config import (
     BUY_SCORE,
+    MAX_RSI_ENTRY,
+    MAX_POSITION_PCT,
+    MIN_RELATIVE_STRENGTH,
     PAPER_BUY_ONLY,
     PAPER_INITIAL_CASH,
     PAPER_MAX_POSITIONS,
+    REQUIRE_BULL_MARKET,
+    REQUIRE_MACD_POSITIVE,
+    REWARD_RISK_RATIO,
+    RISK_PER_TRADE_PCT,
     SIGNAL_MAX_HOLD_DAYS,
     STRATEGY_NAME,
     STRATEGY_VERSION,
+    WATCH_SCORE,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 SIGNALS_FILE = DATA_DIR / "signals.json"
 PAPER_FILE = DATA_DIR / "paper_account.json"
+PAPER_STRATEGY_FILE = DATA_DIR / "paper_strategy.json"
 VERSIONS_FILE = DATA_DIR / "strategy_versions.json"
 DIAGNOSTICS_FILE = DATA_DIR / "diagnostics.json"
 HISTORY_FILE = DATA_DIR / "reco_history.json"
@@ -369,6 +378,69 @@ def build_diagnostics(signals_data: dict, backtest: dict | None, paper: dict) ->
     return diag
 
 
+def build_paper_strategy(now: datetime) -> dict:
+    """导出模拟盘买卖规则，供前端展示（与 strategy_config / 引擎逻辑同步）。"""
+    buy_only_label = "仅 buy 信号" if PAPER_BUY_ONLY else "buy 与 watch 信号"
+    payload = {
+        "updatedAt": now.isoformat(timespec="seconds"),
+        "strategyVersion": STRATEGY_VERSION,
+        "strategyName": STRATEGY_NAME,
+        "summary": "每 5 分钟随行情更新自动运行：荐股产生信号 → 模拟盘按规则买卖，无人工干预。",
+        "schedule": "每 5 分钟（GitHub Actions update-market-data）",
+        "account": {
+            "initialCash": PAPER_INITIAL_CASH,
+            "maxPositions": PAPER_MAX_POSITIONS,
+            "buyOnly": PAPER_BUY_ONLY,
+            "buyOnlyLabel": buy_only_label,
+        },
+        "flow": [
+            {"step": 1, "title": "荐股评分", "desc": "fetch_data 对 A股/港股/美股标的多因子打分，写入 reco_history 与 signals。"},
+            {"step": 2, "title": "生成信号", "desc": "最近 3 次荐股快照中每只标的创建一条信号，持续跟踪现价与盈亏。"},
+            {"step": 3, "title": "自动买入", "desc": f"对未平仓 buy 信号：最多 {PAPER_MAX_POSITIONS} 仓，按评分分配仓位后市价买入。"},
+            {"step": 4, "title": "持仓监控", "desc": f"每轮检查止损 / 止盈 / 持有 {SIGNAL_MAX_HOLD_DAYS} 天，触发则关闭信号。"},
+            {"step": 5, "title": "自动卖出", "desc": "信号关闭后，模拟盘按最新价卖出对应持仓，现金回笼。"},
+        ],
+        "buyRules": [
+            {"id": "signal_buy", "label": "信号类型", "value": buy_only_label, "detail": f"评分 ≥ {BUY_SCORE} 且通过硬过滤才标记为 buy"},
+            {"id": "signal_open", "label": "信号状态", "value": "open（未平仓）", "detail": "仅对新产生的 open 信号尝试开仓"},
+            {"id": "max_pos", "label": "仓位上限", "value": f"最多 {PAPER_MAX_POSITIONS} 只", "detail": "已达上限则跳过新开仓"},
+            {"id": "no_dup", "label": "不重复建仓", "value": "同一标的仅持有一笔", "detail": "已持仓标的不再买入"},
+            {"id": "cash", "label": "资金约束", "value": "可用现金充足", "detail": "分配金额超过现金则跳过"},
+        ],
+        "sellRules": [
+            {"id": "stop", "label": "止损平仓", "value": "现价 ≤ 止损价", "detail": "止损价 = 入场价 − ATR × 倍数（强趋势 1.5，否则 2.0）"},
+            {"id": "target", "label": "止盈平仓", "value": "现价 ≥ 止盈价", "detail": f"止盈价 = 入场价 + ATR × 倍数 × {REWARD_RISK_RATIO}（盈亏比）"},
+            {"id": "expiry", "label": "到期平仓", "value": f"持有 ≥ {SIGNAL_MAX_HOLD_DAYS} 天", "detail": "超期按现价强制关闭信号"},
+            {"id": "paper_sync", "label": "模拟盘卖出", "value": "信号关闭即卖", "detail": "引擎检测到 signalId 已关闭，按市价卖出全部份额"},
+        ],
+        "positionSizing": {
+            "formula": "buy 信号：min(20 + (评分 − BUY) × 0.5, 25)% × 当前净值",
+            "buyScoreBase": BUY_SCORE,
+            "minPct": 20.0,
+            "maxPct": MAX_POSITION_PCT,
+            "watchPct": 10.0,
+            "note": "watch 信号在 buyOnly 模式下不参与模拟盘开仓",
+        },
+        "signalFilters": [
+            {"label": "买入评分门槛", "value": f"≥ {BUY_SCORE}", "enabled": True},
+            {"label": "观察评分门槛", "value": f"≥ {WATCH_SCORE}（不触发模拟买入）", "enabled": True},
+            {"label": "大盘多头", "value": "基准指数站上 60 日均线", "enabled": REQUIRE_BULL_MARKET},
+            {"label": "RSI 上限", "value": f"≤ {MAX_RSI_ENTRY}", "enabled": True},
+            {"label": "相对强度", "value": f"≥ {MIN_RELATIVE_STRENGTH}%（跑赢基准）", "enabled": True},
+            {"label": "MACD 柱", "value": "MACD 柱状图 > 0", "enabled": REQUIRE_MACD_POSITIVE},
+            {"label": "均线结构", "value": "10 > 20 > 60 日均线多头排列", "enabled": True},
+        ],
+        "riskParams": {
+            "riskPerTradePct": RISK_PER_TRADE_PCT,
+            "rewardRiskRatio": REWARD_RISK_RATIO,
+            "maxHoldDays": SIGNAL_MAX_HOLD_DAYS,
+        },
+    }
+    save_json(PAPER_STRATEGY_FILE, payload)
+    print(f"Wrote {PAPER_STRATEGY_FILE}")
+    return payload
+
+
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     now = datetime.now(timezone.utc).astimezone()
@@ -377,6 +449,7 @@ def main() -> None:
     quote_map = market.get("quoteMap", {})
 
     ensure_strategy_version()
+    build_paper_strategy(now)
     signals_data = sync_signals(quote_map, now)
     paper = run_paper_trading(signals_data, quote_map, now)
 

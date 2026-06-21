@@ -12,11 +12,12 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" sizes="180x180">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/ai-chain.css">
+  <link rel="stylesheet" href="css/paper-strategy.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/style/jsmind.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=7" defer></script>
+  <script src="js/app.js?v=8" defer></script>
 </head>
 <body>
   <div class="app">
@@ -274,6 +275,35 @@
     <!-- 模拟盘 -->
     <section id="panel-paper" class="tab-panel" role="tabpanel" hidden>
       <section class="review-stats" id="paper-stats"></section>
+      <section class="panel panel--wide paper-strategy" id="paper-strategy-panel">
+        <div class="panel__head paper-strategy__head">
+          <div>
+            <h2>模拟盘交易规则<span class="paper-strategy__version" id="paper-strategy-version">v1.1.0</span></h2>
+            <p class="paper-strategy__summary" id="paper-strategy-summary">加载中…</p>
+            <p class="paper-strategy__schedule" id="paper-strategy-schedule"></p>
+          </div>
+        </div>
+        <div class="paper-strategy-flow" id="paper-strategy-flow"></div>
+        <div class="paper-strategy-grid">
+          <div class="paper-strategy-block paper-strategy-block--buy">
+            <h3 class="paper-strategy-block__title">买入条件</h3>
+            <ul class="paper-strategy-rules" id="paper-strategy-buy"></ul>
+          </div>
+          <div class="paper-strategy-block paper-strategy-block--sell">
+            <h3 class="paper-strategy-block__title">卖出条件</h3>
+            <ul class="paper-strategy-rules" id="paper-strategy-sell"></ul>
+          </div>
+          <div class="paper-strategy-block paper-strategy-block--params">
+            <h3 class="paper-strategy-block__title">仓位计算</h3>
+            <p class="paper-strategy-formula" id="paper-strategy-formula"></p>
+            <div class="paper-strategy-params" id="paper-strategy-params"></div>
+          </div>
+          <div class="paper-strategy-block paper-strategy-block--params">
+            <h3 class="paper-strategy-block__title">buy 信号硬过滤（荐股评分）</h3>
+            <div class="paper-strategy-filters" id="paper-strategy-filters"></div>
+          </div>
+        </div>
+      </section>
       <div class="lab-grid">
         <section class="panel">
           <div class="panel__head">

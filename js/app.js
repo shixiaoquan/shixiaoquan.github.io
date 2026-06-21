@@ -4,6 +4,7 @@ const WENCAI_URL = "data/wencai.json";
 const BACKTEST_URL = "data/backtest.json";
 const SIGNALS_URL = "data/signals.json";
 const PAPER_URL = "data/paper_account.json";
+const PAPER_STRATEGY_URL = "data/paper_strategy.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
 const AI_CHAIN_URL = "data/ai_chain.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
@@ -16,6 +17,7 @@ let marketData = null;
 let signalsData = null;
 let backtestData = null;
 let paperData = null;
+let paperStrategyData = null;
 let wencaiData = null;
 let lastWencaiUpdatedAt = null;
 let yahooNews = [];
@@ -131,6 +133,7 @@ function switchTab(tabId, options = {}) {
     renderBacktestChart(backtestData.equityCurve);
   }
   if (tabId === "paper") {
+    if (paperStrategyData) renderPaperStrategy(paperStrategyData);
     if (paperData) {
       renderPaperPanel(paperData);
     } else {
@@ -911,6 +914,105 @@ function renderPaperChart(curve, forceRecreate = false) {
   paperChart = renderEquityChart("paper-chart", curve, paperChart, "账户净值", forceRecreate);
 }
 
+function renderPaperStrategy(data) {
+  if (!data) return;
+
+  const versionEl = document.getElementById("paper-strategy-version");
+  const summaryEl = document.getElementById("paper-strategy-summary");
+  const scheduleEl = document.getElementById("paper-strategy-schedule");
+  const flowEl = document.getElementById("paper-strategy-flow");
+  const buyEl = document.getElementById("paper-strategy-buy");
+  const sellEl = document.getElementById("paper-strategy-sell");
+  const formulaEl = document.getElementById("paper-strategy-formula");
+  const paramsEl = document.getElementById("paper-strategy-params");
+  const filtersEl = document.getElementById("paper-strategy-filters");
+
+  if (versionEl) versionEl.textContent = data.strategyVersion || "--";
+  if (summaryEl) {
+    summaryEl.textContent = data.summary
+      ? `${data.strategyName || ""} · ${data.summary}`
+      : data.strategyName || "";
+  }
+  if (scheduleEl) {
+    scheduleEl.textContent = data.schedule ? `执行频率：${data.schedule}` : "";
+  }
+
+  if (flowEl) {
+    flowEl.innerHTML = (data.flow || [])
+      .map(
+        (step) => `
+        <article class="paper-strategy-flow__step">
+          <span class="paper-strategy-flow__num">${step.step}</span>
+          <p class="paper-strategy-flow__title">${step.title}</p>
+          <p class="paper-strategy-flow__desc">${step.desc || ""}</p>
+        </article>
+      `
+      )
+      .join("");
+  }
+
+  const renderRules = (el, rules) => {
+    if (!el) return;
+    el.innerHTML = (rules || [])
+      .map(
+        (rule) => `
+        <li>
+          <span class="paper-strategy-rules__label">${rule.label}</span>
+          <span class="paper-strategy-rules__value">${rule.value}</span>
+          ${rule.detail ? `<span class="paper-strategy-rules__detail">${rule.detail}</span>` : ""}
+        </li>
+      `
+      )
+      .join("");
+  };
+
+  renderRules(buyEl, data.buyRules);
+  renderRules(sellEl, data.sellRules);
+
+  if (formulaEl && data.positionSizing) {
+    const ps = data.positionSizing;
+    formulaEl.textContent = ps.formula || "";
+    if (ps.note) {
+      formulaEl.textContent += `\n${ps.note}`;
+    }
+  }
+
+  if (paramsEl) {
+    const ps = data.positionSizing || {};
+    const risk = data.riskParams || {};
+    const acct = data.account || {};
+    paramsEl.innerHTML = [
+      { label: "初始资金", value: formatNumber(acct.initialCash) },
+      { label: "最大持仓", value: `${acct.maxPositions ?? "--"} 只` },
+      { label: "开仓模式", value: acct.buyOnlyLabel || "--" },
+      { label: "仓位上限", value: `${ps.maxPct ?? "--"}%` },
+      { label: "盈亏比", value: `${risk.rewardRiskRatio ?? "--"} : 1` },
+      { label: "最长持有", value: `${risk.maxHoldDays ?? "--"} 天` },
+    ]
+      .map(
+        (p) => `
+        <div class="paper-strategy-param">
+          <span class="paper-strategy-param__label">${p.label}</span>
+          <span class="paper-strategy-param__value">${p.value}</span>
+        </div>
+      `
+      )
+      .join("");
+  }
+
+  if (filtersEl) {
+    filtersEl.innerHTML = (data.signalFilters || [])
+      .map(
+        (f) => `
+        <span class="paper-strategy-filter ${f.enabled ? "" : "paper-strategy-filter--off"}">
+          ${f.label} <strong>${f.value}</strong>
+        </span>
+      `
+      )
+      .join("");
+  }
+}
+
 function renderPaperPanel(paper, loadState = "ready") {
   if (!paper) {
     const isError = loadState === "error";
@@ -1533,6 +1635,13 @@ function applyTradingData(payload) {
   }
 }
 
+async function refreshPaperStrategy() {
+  const data = await fetchJson(PAPER_STRATEGY_URL);
+  if (!data) return;
+  paperStrategyData = data;
+  renderPaperStrategy(data);
+}
+
 async function refreshPaperData() {
   const paper = await fetchJson(PAPER_URL);
   if (paper) {
@@ -1671,6 +1780,7 @@ async function init() {
     refreshData(),
     refreshHistory(),
     refreshPaperData(),
+    refreshPaperStrategy(),
     refreshTradingData(),
     refreshWencaiData(),
     loadAiChainData(),
