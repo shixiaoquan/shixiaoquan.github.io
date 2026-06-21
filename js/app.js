@@ -1037,32 +1037,54 @@ function renderPaperStrategyDetail(data) {
 }
 
 function renderPaperBacktestCards(data) {
-  const el = document.getElementById("paper-backtest-cards");
-  if (!el) return;
+  const rollingEl = document.getElementById("paper-backtest-rolling");
+  const yearsEl = document.getElementById("paper-backtest-years");
+  if (!rollingEl && !yearsEl) return;
+
   if (!data?.periods) {
-    el.innerHTML = '<p class="empty">回测数据加载中…</p>';
+    const loading = '<p class="empty">回测数据加载中…</p>';
+    if (rollingEl) rollingEl.innerHTML = loading;
+    if (yearsEl) yearsEl.innerHTML = loading;
     return;
   }
-  const order = ["1y", "2y", "3y", "4y"];
-  el.innerHTML = order
-    .filter((p) => data.periods[p])
-    .map((period) => {
-      const block = data.periods[period];
-      const m = block.metrics || {};
-      return `
+
+  const renderGroup = (el, keys) => {
+    if (!el) return;
+    if (!keys?.length) {
+      el.innerHTML = '<p class="empty">暂无数据</p>';
+      return;
+    }
+    el.innerHTML = keys
+      .filter((p) => data.periods[p])
+      .map((period) => {
+        const block = data.periods[period];
+        const m = block.metrics || {};
+        const rangeHint =
+          block.startDate && block.endDate
+            ? `${block.startDate} ~ ${block.endDate}`
+            : "";
+        return `
         <article class="paper-backtest-card" data-paper-backtest="${period}" role="button" tabindex="0">
           <p class="paper-backtest-card__period">${block.label || period}</p>
           <p class="paper-backtest-card__return change ${changeClass(m.totalReturnPct)}">${formatPct(m.totalReturnPct)}</p>
           <div class="paper-backtest-card__meta">
             <span>期末净值 ${formatNumber(m.finalEquity)}</span>
             <span>${m.totalTrades ?? 0} 笔 · 胜率 ${m.winRate ?? 0}%</span>
-            <span>最大回撤 ${m.maxDrawdown ?? 0}%</span>
+            ${rangeHint ? `<span>${rangeHint}</span>` : `<span>最大回撤 ${m.maxDrawdown ?? 0}%</span>`}
           </div>
           <p class="paper-backtest-card__hint">点击查看交易明细 →</p>
         </article>
       `;
-    })
-    .join("");
+      })
+      .join("");
+  };
+
+  const groups = data.periodGroups || {};
+  const rollingKeys = groups.rolling || data.periodOrder?.filter((k) => k === "all" || k.endsWith("y")) || [];
+  const calendarKeys = groups.calendar || data.periodOrder?.filter((k) => /^\d{4}$/.test(k)) || [];
+
+  renderGroup(rollingEl, rollingKeys);
+  renderGroup(yearsEl, calendarKeys);
 }
 
 function renderPaperBacktestModal(period) {
@@ -1157,6 +1179,13 @@ function closePaperModal() {
   }
 }
 
+function onPaperBacktestClick(e) {
+  const target = e.target.closest("[data-paper-backtest]");
+  if (target?.dataset.paperBacktest) {
+    openPaperModal("backtest-trades", { period: target.dataset.paperBacktest });
+  }
+}
+
 function setupPaperModal() {
   const card = document.getElementById("paper-strategy-card");
   card?.addEventListener("click", () => openPaperModal("strategy"));
@@ -1167,12 +1196,8 @@ function setupPaperModal() {
     }
   });
 
-  document.getElementById("paper-backtest-cards")?.addEventListener("click", (e) => {
-    const target = e.target.closest("[data-paper-backtest]");
-    if (target?.dataset.paperBacktest) {
-      openPaperModal("backtest-trades", { period: target.dataset.paperBacktest });
-    }
-  });
+  document.getElementById("paper-backtest-rolling")?.addEventListener("click", onPaperBacktestClick);
+  document.getElementById("paper-backtest-years")?.addEventListener("click", onPaperBacktestClick);
 
   document.querySelectorAll("[data-paper-modal-close]").forEach((el) => {
     el.addEventListener("click", closePaperModal);

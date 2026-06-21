@@ -17,7 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=9" defer></script>
+  <script src="js/app.js?v=10" defer></script>
 </head>
 <body>
   <div class="app">
@@ -336,8 +336,11 @@
         </div>
       </section>
 
-      <h3 class="paper-section-title">历史回测（初始 100 万）</h3>
-      <div class="paper-backtest-grid" id="paper-backtest-cards"></div>
+      <h3 class="paper-section-title">历史回测（初始 100 万 · 2018-07-09 上市以来）</h3>
+      <h4 class="paper-subsection-title">滚动周期</h4>
+      <div class="paper-backtest-grid" id="paper-backtest-rolling"></div>
+      <h4 class="paper-subsection-title">自然年</h4>
+      <div class="paper-backtest-grid paper-backtest-grid--years" id="paper-backtest-years"></div>
     </section>
 
     <!-- 模拟盘弹框 -->
