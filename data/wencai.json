@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-23T17:04:30+00:00",
+  "updatedAt": "2026-06-23T17:55:32+00:00",
   "source": "同花顺问财",
   "status": "error",
   "message": "问财拉取失败，请检查 Cookie 或问句。详见 .cursor/skills/wencai/SKILL.md",
@@ -16,15 +16,17 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "empty",
-      "items": []
+      "status": "error",
+      "items": [],
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "empty",
-      "items": []
+      "status": "error",
+      "items": [],
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
@@ -45,6 +47,8 @@
   ],
   "news": [],
   "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
     "hot: 'NoneType' object has no attribute 'get'",
     "main_flow: 'NoneType' object has no attribute 'get'"
   ]
