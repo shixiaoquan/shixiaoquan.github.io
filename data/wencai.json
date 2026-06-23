@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-06-23T22:42:48+00:00",
+  "updatedAt": "2026-06-23T23:37:51+00:00",
   "source": "同花顺问财",
-  "status": "ok",
-  "message": "已更新 1 个市场问句",
+  "status": "error",
+  "message": "问财拉取失败，请检查 Cookie 或问句。详见 .cursor/skills/wencai/SKILL.md",
   "cookieUsed": false,
   "sentiment": {
     "limitUp": null,
@@ -16,9 +16,8 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "error",
-      "items": [],
-      "error": "'NoneType' object has no attribute 'get'"
+      "status": "empty",
+      "items": []
     },
     {
       "id": "limit_down",
@@ -40,70 +39,12 @@
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
-      "items": [
-        {
-          "code": "002475.SZ",
-          "name": "立讯精密",
-          "price": 69.36,
-          "changePct": 1.4,
-          "flow": 1045666000
-        },
-        {
-          "code": "688313.SH",
-          "name": "仕佳光子",
-          "price": 199.98,
-          "changePct": 9.55,
-          "flow": 903157610
-        },
-        {
-          "code": "300604.SZ",
-          "name": "长川科技",
-          "price": 279.4,
-          "changePct": 4.06,
-          "flow": 764322540
-        },
-        {
-          "code": "002008.SZ",
-          "name": "大族激光",
-          "price": 145.11,
-          "changePct": 9.99,
-          "flow": 656146300
-        },
-        {
-          "code": "600176.SH",
-          "name": "中国巨石",
-          "price": 58.93,
-          "changePct": 0.94,
-          "flow": 567568200
-        },
-        {
-          "code": "001309.SZ",
-          "name": "德明利",
-          "price": 755.01,
-          "changePct": 2.43,
-          "flow": 537024600
-        },
-        {
-          "code": "688795.SH",
-          "name": "摩尔线程",
-          "price": 704.03,
-          "changePct": 5.0,
-          "flow": 519633820
-        },
-        {
-          "code": "601398.SH",
-          "name": "工商银行",
-          "price": 7.38,
-          "changePct": 2.5,
-          "flow": 512119240
-        }
-      ]
+      "status": "empty",
+      "items": []
     }
   ],
   "news": [],
   "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
     "limit_down: 'NoneType' object has no attribute 'get'",
     "hot: 'NoneType' object has no attribute 'get'"
   ]
