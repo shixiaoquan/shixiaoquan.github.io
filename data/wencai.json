@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-06-24T16:05:08+00:00",
+  "updatedAt": "2026-06-24T16:58:10+00:00",
   "source": "同花顺问财",
-  "status": "ok",
-  "message": "已更新 1 个市场问句",
+  "status": "error",
+  "message": "问财拉取失败，请检查 Cookie 或问句。详见 .cursor/skills/wencai/SKILL.md",
   "cookieUsed": false,
   "sentiment": {
     "limitUp": null,
@@ -40,71 +40,16 @@
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
-      "items": [
-        {
-          "code": "002475.SZ",
-          "name": "立讯精密",
-          "price": 75.05,
-          "changePct": 8.2,
-          "flow": 5088093400
-        },
-        {
-          "code": "600584.SH",
-          "name": "长电科技",
-          "price": 94.7,
-          "changePct": 10.0,
-          "flow": 3387242300
-        },
-        {
-          "code": "688981.SH",
-          "name": "中芯国际",
-          "price": 151.53,
-          "changePct": 6.94,
-          "flow": 3233541800
-        },
-        {
-          "code": "688797.SH",
-          "name": "臻宝科技",
-          "price": 585.0,
-          "changePct": 1212.84,
-          "flow": 2591484670
-        },
-        {
-          "code": "001309.SZ",
-          "name": "德明利",
-          "price": 810.0,
-          "changePct": 7.28,
-          "flow": 1813567900
-        },
-        {
-          "code": "002156.SZ",
-          "name": "通富微电",
-          "price": 74.64,
-          "changePct": 9.09,
-          "flow": 1645199290
-        },
-        {
-          "code": "300136.SZ",
-          "name": "信维通信",
-          "price": 103.12,
-          "changePct": 8.0,
-          "flow": 1620153500
-        },
-        {
-          "code": "688041.SH",
-          "name": "海光信息",
-          "price": 337.1,
-          "changePct": 6.34,
-          "flow": 1530453400
-        }
-      ]
+      "status": "error",
+      "items": [],
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [],
   "errors": [
     "limit_up: 'NoneType' object has no attribute 'get'",
     "limit_down: 'NoneType' object has no attribute 'get'",
-    "hot: 'NoneType' object has no attribute 'get'"
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'"
   ]
 }
