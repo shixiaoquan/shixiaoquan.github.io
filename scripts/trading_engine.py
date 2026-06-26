@@ -26,7 +26,6 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 PAPER_FILE = DATA_DIR / "paper_account.json"
 PAPER_STRATEGY_FILE = DATA_DIR / "paper_strategy.json"
-SIGNALS_FILE = DATA_DIR / "signals.json"
 DIAGNOSTICS_FILE = DATA_DIR / "diagnostics.json"
 VERSIONS_FILE = DATA_DIR / "strategy_versions.json"
 MARKET_FILE = DATA_DIR / "market.json"
@@ -119,24 +118,6 @@ def run_xrps(account: dict, quote_map: dict[str, float], now: datetime) -> dict:
     return account
 
 
-def build_signals_snapshot(account: dict, now_iso: str) -> dict:
-    return {
-        "updatedAt": now_iso,
-        "strategyVersion": STRATEGY_VERSION,
-        "strategyCode": "XRPS-X",
-        "focusSymbol": PAPER_SYMBOL,
-        "signals": [],
-        "openCount": 0,
-        "closedCount": 0,
-        "xrpsState": {
-            "totalShares": account.get("totalShares"),
-            "avgCost": account.get("avgCost"),
-            "positionPct": account.get("positionPct"),
-            "monthlyState": account.get("monthlyState"),
-        },
-    }
-
-
 def build_diagnostics(account: dict, backtest: dict | None, now_iso: str) -> dict:
     trades = account.get("trades", [])
     sells = [t for t in trades if t.get("type") == "sell"]
@@ -183,9 +164,6 @@ def main() -> None:
     account = run_xrps(account, quote_map, now)
     save_json(PAPER_FILE, account)
     print(f"Wrote {PAPER_FILE} (shares {account.get('totalShares')}, equity {account.get('equity')})")
-
-    save_json(SIGNALS_FILE, build_signals_snapshot(account, now_iso))
-    print(f"Wrote {SIGNALS_FILE}")
 
     backtest = load_json(DATA_DIR / "paper_backtest.json", {}) if (DATA_DIR / "paper_backtest.json").exists() else None
     save_json(DIAGNOSTICS_FILE, build_diagnostics(account, backtest, now_iso))

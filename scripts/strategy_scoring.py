@@ -33,6 +33,19 @@ def pct_change(current: float, previous: float) -> float | None:
     return round((current - previous) / previous * 100, 2)
 
 
+def price_digits(price: float) -> int:
+    """按价格量级决定展示小数位。"""
+    if price is None or price <= 0:
+        return 2
+    if price >= 1000:
+        return 2
+    if price >= 100:
+        return 2
+    if price >= 10:
+        return 2
+    return 3
+
+
 def sma(values: list[float], period: int) -> float | None:
     if len(values) < period:
         return None

@@ -309,8 +309,14 @@ function renderRecommendations(reco, containerId = "reco-cards", compact = false
   }
 
   if (!compact) {
-    if (strategyEl && reco.strategy) strategyEl.textContent = reco.strategy;
-    if (disclaimerEl && reco.disclaimer) disclaimerEl.textContent = reco.disclaimer;
+    if (strategyEl && reco.strategy) {
+      strategyEl.textContent = `${reco.strategy} · 实验策略，非 XRPS 战役持仓`;
+    }
+    if (disclaimerEl) {
+      disclaimerEl.textContent =
+        reco.disclaimer ||
+        "战术荐股为实验室实验策略，仅供观察；小米 XRPS 模拟盘见「战役持仓」。";
+    }
   }
 
   const scanHtml = !compact && reco.marketScan ? `<p class="reco-scan">${reco.marketScan}</p>` : "";
@@ -764,6 +770,55 @@ function renderStatCards(containerId, cards) {
     </article>
   `
     )
+    .join("");
+}
+
+function filterTradesByPeriod(trades, startDate, endDate) {
+  if (!trades?.length || !startDate || !endDate) return [];
+  return trades.filter((t) => {
+    const day = (t.time || "").slice(0, 10);
+    return day >= startDate && day <= endDate;
+  });
+}
+
+function renderTacticalSignals(data) {
+  const tbody = document.querySelector("#tactical-signals-table tbody");
+  const summaryEl = document.getElementById("tactical-signals-summary");
+  if (!tbody) return;
+
+  const signals = data?.signals || [];
+  const summary = data?.summary || {};
+  if (summaryEl) {
+    summaryEl.textContent = signals.length
+      ? `v1.2 实验策略 · 持仓 ${data.openCount ?? 0} · 已平仓 ${data.closedCount ?? 0} · 胜率 ${summary.winRate ?? "--"}%`
+      : "v1.2 实验策略 · 出现 buy 信号后自动跟踪";
+  }
+
+  if (!signals.length) {
+    tbody.innerHTML = '<tr><td colspan="9" class="empty">暂无战术信号，等待荐股出现 buy 信号</td></tr>';
+    return;
+  }
+
+  const sorted = [...signals].sort((a, b) => (b.openedAt || "").localeCompare(a.openedAt || ""));
+  tbody.innerHTML = sorted
+    .map((sig) => {
+      const ret = sig.returnPct;
+      const hold =
+        sig.status === "open" ? `${sig.holdDays ?? 0} 天` : sig.closeReason || reasonLabel(sig.closeReason) || "--";
+      return `
+      <tr>
+        <td><strong>${sig.name}</strong><br><span class="stock-card__symbol">${sig.symbol}</span></td>
+        <td><span class="reco-market reco-market--${marketClass(sig.market)}">${sig.market}</span></td>
+        <td><span class="signal-status ${signalStatusClass(sig.status)}">${signalStatusLabel(sig.status)}</span></td>
+        <td>${formatNumber(sig.entryPrice)}</td>
+        <td>${formatNumber(sig.currentPrice ?? sig.exitPrice)}</td>
+        <td class="change ${changeClass(ret)}">${formatPct(ret)}</td>
+        <td class="change change--up">${formatPct(sig.maxGainPct)}</td>
+        <td class="change change--down">${formatPct(sig.maxDrawdownPct)}</td>
+        <td>${hold}</td>
+      </tr>
+    `;
+    })
     .join("");
 }
 
@@ -1270,14 +1325,14 @@ function renderPaperBacktestCards(data) {
   renderGroup(yearsEl, calendarKeys);
 }
 
-function renderPaperBacktestModal(period) {
+function renderPaperBacktestModal(period, trades, curve) {
   const data = paperBacktestData;
   if (!data?.periods?.[period]) return "";
   const block = data.periods[period];
   const m = block.metrics || {};
-  const trades = block.trades || [];
-  const rows = trades.length
-    ? trades
+  const periodTrades = trades ?? filterTradesByPeriod(data.trades, block.startDate, block.endDate);
+  const rows = periodTrades.length
+    ? periodTrades
         .map(
           (t) => `
         <tr>
@@ -1334,23 +1389,46 @@ function openPaperModal(type, payload) {
   if (type === "strategy") {
     titleEl.textContent = "策略详情";
     bodyEl.innerHTML = renderPaperStrategyDetail(paperStrategyData);
-  } else if (type === "backtest-trades") {
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    return;
+  }
+
+  if (type === "backtest-trades") {
     const period = payload?.period;
     const label = paperBacktestData?.periods?.[period]?.label || period;
+    const block = paperBacktestData?.periods?.[period];
     titleEl.textContent = `${label} 交易明细`;
-    bodyEl.innerHTML = renderPaperBacktestModal(period);
-    requestAnimationFrame(() => {
-      const curve = paperBacktestData?.periods?.[period]?.equityCurve;
-      if (curve?.length) {
-        paperModalChart = renderEquityChart(
-          "paper-modal-chart",
-          curve,
-          paperModalChart,
-          "回测净值",
-          true
-        );
-      }
-    });
+    bodyEl.innerHTML = '<p class="empty">加载交易明细…</p>';
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+
+    const trades = filterTradesByPeriod(paperBacktestData?.trades, block?.startDate, block?.endDate);
+    const curvePath = block?.curveFile ? `data/${block.curveFile}` : null;
+
+    const loadCurve = curvePath
+      ? fetchJson(curvePath).then((file) => file?.equityCurve || [])
+      : Promise.resolve(block?.equityCurve || []);
+
+    loadCurve
+      .then((curve) => {
+        bodyEl.innerHTML = renderPaperBacktestModal(period, trades, curve);
+        requestAnimationFrame(() => {
+          if (curve?.length) {
+            paperModalChart = renderEquityChart(
+              "paper-modal-chart",
+              curve,
+              paperModalChart,
+              "回测净值",
+              true
+            );
+          }
+        });
+      })
+      .catch(() => {
+        bodyEl.innerHTML = renderPaperBacktestModal(period, trades, []);
+      });
+    return;
   }
 
   modal.hidden = false;
@@ -1483,6 +1561,8 @@ function renderWencaiBanner(data, containerId = "cockpit-wencai") {
     return;
   }
 
+  const staleNote = data.newsStale || data.screens?.some((s) => s.stale) ? " · 部分缓存" : "";
+
   const s = data.sentiment || {};
   const up = s.limitUp != null ? `${s.limitUp}${s.limitUpNote ? "+" : ""}` : "--";
   const down = s.limitDown != null ? `${s.limitDown}${s.limitDownNote ? "+" : ""}` : "--";
@@ -1497,7 +1577,7 @@ function renderWencaiBanner(data, containerId = "cockpit-wencai") {
       <div class="wencai-banner__stats">
         <span>涨停 <strong class="change change--up">${up}</strong></span>
         <span>跌停 <strong class="change change--down">${down}</strong></span>
-        <span class="wencai-banner__time">${formatDateTime(data.updatedAt)}</span>
+        <span class="wencai-banner__time">${formatDateTime(data.updatedAt)}${staleNote}</span>
       </div>
       <button type="button" class="link-btn" data-goto-tab="market">详情 →</button>
     </div>
@@ -1519,7 +1599,12 @@ function renderWencaiPanels(data, containerId = "market-wencai") {
     return;
   }
 
+  const staleBanner = data.screens?.some((s) => s.stale)
+    ? '<p class="wencai-hint wencai-hint--stale">部分问句拉取失败，已展示上次成功数据</p>'
+    : "";
+
   el.innerHTML = `
+    ${staleBanner}
     <div class="panel__head">
       <h2>问财 A股洞察</h2>
       <p>同花顺问财自然语言筛选 · ${formatDateTime(data.updatedAt)}</p>
@@ -1531,6 +1616,12 @@ function renderWencaiPanels(data, containerId = "market-wencai") {
             screen.count != null
               ? `<span class="wencai-screen__count">共 ${screen.count}${screen.countNote ? "+" : ""} 只</span>`
               : "";
+          const statusNote =
+            screen.status === "error"
+              ? `<span class="wencai-screen__error">${screen.error || "拉取失败"}</span>`
+              : screen.stale
+                ? `<span class="wencai-screen__stale">${screen.staleMessage || "缓存"}</span>`
+                : "";
           const rows =
             screen.items?.length > 0
               ? screen.items
@@ -1545,12 +1636,15 @@ function renderWencaiPanels(data, containerId = "market-wencai") {
             `
                   )
                   .join("")
-              : '<tr><td colspan="4" class="empty">暂无结果</td></tr>';
+              : screen.status === "error"
+                ? `<tr><td colspan="4" class="empty">${screen.error || "拉取失败"}</td></tr>`
+                : '<tr><td colspan="4" class="empty">暂无结果</td></tr>';
           return `
-          <article class="wencai-screen">
+          <article class="wencai-screen ${screen.stale ? "wencai-screen--stale" : ""}">
             <header class="wencai-screen__head">
               <h3>${screen.title}</h3>
               ${countHtml}
+              ${statusNote}
               <span class="wencai-screen__query">${screen.query}</span>
             </header>
             <div class="table-wrap">
@@ -2018,11 +2112,15 @@ function renderPaperTrades(trades) {
 }
 
 function applyTradingData(payload) {
-  const { backtest, paper, diagnostics } = payload;
+  const { signals, backtest, paper, diagnostics } = payload;
   // 优先应用模拟盘，避免其他面板渲染异常阻塞 paper 展示
   if (paper) {
     paperData = paper;
     renderPaperPanel(paper);
+  }
+  if (signals) {
+    signalsData = signals;
+    renderTacticalSignals(signals);
   }
   if (backtest) {
     backtestData = backtest;

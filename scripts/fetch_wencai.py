@@ -258,24 +258,74 @@ def fetch_screen(screen: dict, cookie: str | None) -> dict:
     return payload
 
 
-def build_sentiment(screens: list[dict]) -> dict:
+def fetch_screen_resilient(screen: dict, cookie: str | None) -> dict:
+    """拉取问句，涨停榜失败时尝试备用问句。"""
+    try:
+        return fetch_screen(screen, cookie)
+    except Exception as primary_exc:
+        if screen.get("id") != "limit_up":
+            raise
+        fallback = {
+            **screen,
+            "query": "非ST今日涨停",
+            "title": screen.get("title", "今日涨停"),
+        }
+        try:
+            payload = fetch_screen(fallback, cookie)
+            payload["fallbackQuery"] = True
+            payload["query"] = f"{screen['query']}（备用：非ST今日涨停）"
+            return payload
+        except Exception:
+            raise primary_exc
+
+
+def merge_screen_result(screen: dict, existing_screens: list[dict]) -> dict:
+    """失败时复用上次成功数据，避免整块空白。"""
+    has_data = screen.get("status") == "ok" and (
+        screen.get("items") or screen.get("count") is not None
+    )
+    if has_data:
+        return screen
+
+    prev = next((s for s in existing_screens if s.get("id") == screen["id"]), None)
+    if not prev or not (prev.get("items") or prev.get("count") is not None):
+        return screen
+
+    merged = dict(prev)
+    merged["status"] = "stale"
+    merged["stale"] = True
+    merged["staleMessage"] = "沿用上次数据"
+    if screen.get("error"):
+        merged["error"] = screen["error"]
+    return merged
+
+
+def build_sentiment(screens: list[dict], existing: dict | None = None) -> dict:
+    existing = existing or {}
     limit_up = next((s for s in screens if s["id"] == "limit_up"), {})
     limit_down = next((s for s in screens if s["id"] == "limit_down"), {})
     up_count = limit_up.get("count")
     down_count = limit_down.get("count")
 
-    mood = "震荡"
+    if up_count is None:
+        up_count = existing.get("limitUp")
+    if down_count is None:
+        down_count = existing.get("limitDown")
+
+    mood = existing.get("mood", "震荡")
     if up_count is not None and down_count is not None:
         if up_count > down_count * 3:
             mood = "偏多"
         elif down_count > up_count * 2:
             mood = "偏空"
+        else:
+            mood = "震荡"
 
     return {
         "limitUp": up_count,
         "limitDown": down_count,
-        "limitUpNote": limit_up.get("countNote"),
-        "limitDownNote": limit_down.get("countNote"),
+        "limitUpNote": limit_up.get("countNote") or existing.get("limitUpNote"),
+        "limitDownNote": limit_down.get("countNote") or existing.get("limitDownNote"),
         "mood": mood,
     }
 
@@ -291,7 +341,7 @@ def main() -> None:
 
     for screen in WENCAI_SCREENS:
         try:
-            screens.append(fetch_screen(screen, cookie))
+            screens.append(fetch_screen_resilient(screen, cookie))
         except Exception as exc:
             errors.append(f"{screen['id']}: {exc}")
             screens.append(
@@ -305,12 +355,23 @@ def main() -> None:
                 }
             )
 
-    ok_count = sum(1 for s in screens if s.get("status") == "ok" and s.get("items"))
+    screens = [merge_screen_result(s, existing.get("screens", [])) for s in screens]
+
+    ok_count = sum(
+        1
+        for s in screens
+        if s.get("status") in ("ok", "stale") and (s.get("items") or s.get("count") is not None)
+    )
     news = fetch_wencai_news(cookie)
+    if not news and existing.get("news"):
+        news = existing["news"]
+        stale_news = True
+    else:
+        stale_news = False
 
     if ok_count == 0 and errors and not news:
         status = "error"
-        message = "问财拉取失败，请检查 Cookie 或问句。详见 .cursor/skills/wencai/SKILL.md"
+        message = "问财拉取失败，部分数据可能为上次缓存"
     elif ok_count == 0 and not news:
         status = "empty"
         message = "问财暂无数据（可能非交易时段）"
@@ -322,6 +383,8 @@ def main() -> None:
         if news:
             parts.append(f"{len(news)} 条资讯")
         message = f"已更新 {' · '.join(parts)}" if parts else "已更新"
+        if any(s.get("stale") for s in screens):
+            message += " · 部分沿用缓存"
 
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
@@ -329,12 +392,14 @@ def main() -> None:
         "status": status,
         "message": message,
         "cookieUsed": bool(cookie),
-        "sentiment": build_sentiment(screens),
+        "sentiment": build_sentiment(screens, existing.get("sentiment")),
         "screens": screens,
         "news": news,
     }
     if errors:
         payload["errors"] = errors
+    if stale_news:
+        payload["newsStale"] = True
 
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {OUTPUT_FILE} ({status}, {ok_count} screens, {len(news)} news)")

@@ -17,7 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=13" defer></script>
+  <script src="js/app.js?v=14" defer></script>
 </head>
 <body>
   <div class="app">
@@ -175,7 +175,7 @@
       <section class="panel panel--wide reco-section">
         <div class="panel__head">
           <h2>今日荐股</h2>
-          <p id="reco-strategy">多因子趋势策略 · A股 / 港股 / 美股 各选 1 只</p>
+          <p id="reco-strategy">战术实验 v1.2 · A股 / 港股 / 美股 各选 1 只</p>
         </div>
         <div class="reco-cards" id="reco-cards"></div>
         <p class="reco-disclaimer" id="reco-disclaimer"></p>
@@ -205,6 +205,33 @@
                 <th>盈亏</th>
                 <th>原因</th>
                 <th>时间</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel panel--wide">
+        <div class="panel__head panel__head--row">
+          <div>
+            <h2>战术信号跟踪</h2>
+            <p id="tactical-signals-summary">v1.2 实验策略 · 仅跟踪 buy 信号</p>
+          </div>
+          <button type="button" class="link-btn" data-goto-tab="lab">实验室 →</button>
+        </div>
+        <div class="signals-table-wrap">
+          <table class="data-table" id="tactical-signals-table">
+            <thead>
+              <tr>
+                <th>标的</th>
+                <th>市场</th>
+                <th>状态</th>
+                <th>开仓价</th>
+                <th>现价</th>
+                <th>收益</th>
+                <th>最大浮盈</th>
+                <th>最大回撤</th>
+                <th>持有</th>
               </tr>
             </thead>
             <tbody></tbody>

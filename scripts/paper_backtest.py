@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""XRPS-X 小米滚动仓 — 历史回测，写入 data/paper_backtest.json。"""
+"""XRPS-X 小米滚动仓 — 历史回测，写入 data/paper_backtest.json + 曲线侧车文件。"""
 
 from __future__ import annotations
 
-import copy
 import json
+import shutil
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import yfinance as yf
 
+from strategy_config import PAPER_BACKTEST_PERIODS
 from xrps_config import PAPER_INITIAL_CASH, PAPER_IPO_DATE, PAPER_SYMBOL, PAPER_SYMBOL_HK_CODE, PAPER_SYMBOL_NAME, STRATEGY_VERSION
 from xrps_core import (
     build_monthly_bars,
@@ -22,7 +23,9 @@ from xrps_core import (
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "paper_backtest.json"
+CURVES_DIR = DATA_DIR / "paper_backtest_curves"
 MIN_BARS = 60
+CURVE_MAX_POINTS = 60
 
 
 def parse_date(value: str) -> date:
@@ -92,6 +95,16 @@ def snapshot_on_or_before(daily: list[dict], date_str: str) -> dict | None:
     return best
 
 
+def downsample_curve(curve: list[dict], max_points: int = CURVE_MAX_POINTS) -> list[dict]:
+    if len(curve) <= max_points:
+        return curve
+    step = max(1, len(curve) // max_points)
+    sampled = curve[::step]
+    if sampled[-1] != curve[-1]:
+        sampled.append(curve[-1])
+    return sampled[-max_points:]
+
+
 def metrics_for_period(
     daily: list[dict],
     trades: list[dict],
@@ -117,7 +130,14 @@ def metrics_for_period(
             "winRate": 0.0,
             "maxDrawdown": 0.0,
         }
-        return {"label": label, "startDate": start_str, "endDate": end_str, "metrics": empty_m, "equityCurve": [], "trades": []}
+        return {
+            "label": label,
+            "startDate": start_str,
+            "endDate": end_str,
+            "metrics": empty_m,
+            "equityCurve": [],
+            "trades": [],
+        }
 
     start_eq = start_snap["equity"] if start_snap else PAPER_INITIAL_CASH
     end_eq = end_snap["equity"]
@@ -158,9 +178,17 @@ def metrics_for_period(
             "winRate": win_rate,
             "maxDrawdown": round(max_dd, 2),
         },
-        "equityCurve": curve[-200:],
-        "trades": period_trades[-100:],
+        "equityCurve": downsample_curve(curve),
+        "trades": period_trades,
     }
+
+
+def write_curve_file(period_key: str, curve: list[dict]) -> str:
+    CURVES_DIR.mkdir(parents=True, exist_ok=True)
+    rel = f"paper_backtest_curves/{period_key}.json"
+    path = DATA_DIR / rel
+    path.write_text(json.dumps({"period": period_key, "equityCurve": curve}, ensure_ascii=False), encoding="utf-8")
+    return rel
 
 
 def main() -> None:
@@ -173,19 +201,33 @@ def main() -> None:
         print("Insufficient history")
         return
 
+    if CURVES_DIR.exists():
+        shutil.rmtree(CURVES_DIR)
+    CURVES_DIR.mkdir(parents=True, exist_ok=True)
+
     months = build_monthly_bars(dates, closes)
     account, daily = run_full_simulation(dates, closes, months)
     trades = account.get("trades", [])
 
     specs, rolling_keys, calendar_keys = build_period_specs(today)
     periods: dict[str, dict] = {}
+
     for key, label, start, end in specs:
-        periods[key] = metrics_for_period(daily, trades, start, end, label)
-        m = periods[key]["metrics"]
+        block = metrics_for_period(daily, trades, start, end, label)
+        curve = block.pop("equityCurve", [])
+        block.pop("trades", None)
+        curve_file = write_curve_file(key, curve) if curve else None
+        if curve_file:
+            block["curveFile"] = curve_file
+        periods[key] = block
+        m = block["metrics"]
         print(
             f"{key}: return {m['totalReturnPct']}%, shares {m['initialShares']}→{m['finalShares']}, "
             f"trades {m['totalTrades']}"
         )
+
+    period_order = rolling_keys + calendar_keys
+    featured = ["all", *list(PAPER_BACKTEST_PERIODS)]
 
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
@@ -196,12 +238,14 @@ def main() -> None:
         "strategyVersion": STRATEGY_VERSION,
         "strategyCode": "XRPS-X",
         "initialCash": PAPER_INITIAL_CASH,
-        "periodOrder": rolling_keys + calendar_keys,
+        "periodOrder": period_order,
         "periodGroups": {"rolling": rolling_keys, "calendar": calendar_keys},
+        "featuredPeriods": featured,
+        "trades": trades,
         "periods": periods,
     }
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {OUTPUT_FILE}")
+    print(f"Wrote {OUTPUT_FILE} ({len(trades)} trades, {len(periods)} periods, curves in {CURVES_DIR})")
 
 
 if __name__ == "__main__":

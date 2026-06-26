@@ -72,6 +72,7 @@ from strategy_scoring import (
     score_series,
     sma,
 )
+from reco_signals import update_reco_signals
 
 MAX_PICKS_PER_MARKET = 1
 MARKETS = ("A股", "港股", "美股")
@@ -381,17 +382,18 @@ def should_append_history(records: list[dict], picks: list[dict], recorded_at: d
         return True
 
 
-def append_reco_history(recommendations: dict, recorded_at: datetime) -> dict:
+def append_reco_history(recommendations: dict, recorded_at: datetime) -> tuple[dict, str | None]:
     """将本次荐股快照追加到 reco_history.json。"""
     picks = recommendations.get("picks") or []
     history = load_reco_history()
     records: list[dict] = history.get("records", [])
 
     if should_append_history(records, picks, recorded_at):
+        record_id = recorded_at.isoformat(timespec="seconds")
         records.append(
             {
-                "id": recorded_at.isoformat(timespec="seconds"),
-                "recordedAt": recorded_at.isoformat(timespec="seconds"),
+                "id": record_id,
+                "recordedAt": record_id,
                 "marketScan": recommendations.get("marketScan", ""),
                 "picks": [compact_pick(p) for p in picks],
             }
@@ -402,10 +404,11 @@ def append_reco_history(recommendations: dict, recorded_at: datetime) -> dict:
         history["total"] = len(records)
         HISTORY_FILE.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"Wrote {HISTORY_FILE} ({len(records)} records)")
+        return history, record_id
     else:
         print("Reco history unchanged, skip append.")
-
-    return history
+        last_id = records[-1]["id"] if records else None
+        return history, last_id
 
 
 def build_market_radar(indices: list[dict]) -> list[dict]:
@@ -485,7 +488,13 @@ def main() -> None:
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {OUTPUT_FILE}")
 
-    append_reco_history(recommendations, now)
+    history, reco_id = append_reco_history(recommendations, now)
+    update_reco_signals(
+        recommendations.get("picks") or [],
+        quote_map,
+        now,
+        reco_record_id=reco_id,
+    )
 
 
 if __name__ == "__main__":
