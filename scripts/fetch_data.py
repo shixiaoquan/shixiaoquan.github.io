@@ -238,13 +238,15 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
         return None
 
     price = closes[-1]
-    sma20 = sma(closes, 20)
     stop_loss = scored["stopLossPrice"]
     target = scored["targetPrice"]
+    dist_stop = round((price - stop_loss) / price * 100, 1) if price and stop_loss else None
+    dist_target = round((target - price) / price * 100, 1) if price and target else None
     atr_mult = scored["atrMult"]
     stop_pct = round((price - stop_loss) / price * 100, 1) if price else 0
     position_pct = round(min(RISK_PER_TRADE_PCT / stop_pct * 100, 25), 1) if stop_pct > 0 else 0
     digits = price_digits(price)
+    sma20 = sma(closes, 20)
     pullback_zone = round(sma20 * 0.98, digits) if sma20 else price
 
     plan = {
@@ -277,6 +279,11 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
         "plan": plan,
         "stopLossPrice": stop_loss,
         "targetPrice": target,
+        "distToStopPct": dist_stop,
+        "distToTargetPct": dist_target,
+        "regimeOk": scored.get("regimeOk"),
+        "breakout": scored.get("breakout"),
+        "breakoutLevel": scored.get("breakoutLevel"),
     }
 
 
@@ -360,6 +367,28 @@ def build_recommendations(now: datetime | None = None) -> dict:
             best = max(pool, key=lambda x: x["score"])
             market_summary.append(f"{market}最高 {best['name']}({best['score']}分)")
 
+    candidate_scan = sorted(
+        [
+            {
+                "symbol": a["symbol"],
+                "name": a["name"],
+                "market": a["market"],
+                "score": a["score"],
+                "signal": a["signal"],
+                "signalLabel": a["signalLabel"],
+                "price": a.get("price"),
+                "rsi": a.get("rsi"),
+                "relativeStrength": a.get("relativeStrength"),
+                "regimeOk": a.get("regimeOk"),
+                "breakout": a.get("breakout"),
+                "distToStopPct": a.get("distToStopPct"),
+                "distToTargetPct": a.get("distToTargetPct"),
+            }
+            for a in analyzed
+        ],
+        key=lambda x: -x["score"],
+    )
+
     return {
         "strategy": (
             f"{STRATEGY_VERSION} 强趋势+突破过滤（各市场 1 只）："
@@ -369,6 +398,7 @@ def build_recommendations(now: datetime | None = None) -> dict:
         "marketScan": " · ".join(market_summary),
         "disclaimer": "战术实验策略，仅供研究；非 XRPS 战役持仓。请分散配置、严格执行止损。",
         "picks": picks[: len(MARKETS)],
+        "candidateScan": candidate_scan,
     }, {a["symbol"]: a["price"] for a in analyzed if a.get("price")}, {
         a["symbol"]: a["monthChangePct"]
         for a in analyzed

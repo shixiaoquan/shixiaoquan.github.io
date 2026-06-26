@@ -13,7 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=17" defer></script>
+  <script src="js/app.js?v=18" defer></script>
 </head>
 <body>
   <div class="app">
@@ -46,6 +46,41 @@
       </div>
 
       <section class="panel panel--wide wencai-banner" id="cockpit-wencai"></section>
+
+      <section class="panel panel--wide decision-panel" id="cockpit-decision">
+        <div class="panel__head">
+          <h2>今日研判</h2>
+          <p id="decision-brief-subtitle">市场脉络 · 战役与战术行动建议</p>
+        </div>
+        <div class="decision-brief__body" id="decision-brief-body">
+          <p class="empty">正在汇总研判…</p>
+        </div>
+        <ul class="action-list" id="action-list" aria-label="行动清单"></ul>
+      </section>
+
+      <section class="panel panel--wide" id="cockpit-tactical-open" hidden>
+        <div class="panel__head panel__head--row">
+          <div>
+            <h2>战术持仓雷达</h2>
+            <p id="cockpit-tactical-open-hint">实验策略 open 信号 · 距止损/目标</p>
+          </div>
+          <button type="button" class="link-btn" data-goto-tab="paper">交易日志 →</button>
+        </div>
+        <div class="signals-table-wrap">
+          <table class="data-table" id="cockpit-tactical-open-table">
+            <thead>
+              <tr>
+                <th>标的</th>
+                <th>收益</th>
+                <th>距止损</th>
+                <th>距目标</th>
+                <th>持有</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
 
       <section class="panel panel--wide">
         <div class="panel__head panel__head--row">
@@ -178,6 +213,28 @@
         <div class="reco-cards" id="reco-cards"></div>
         <p class="reco-disclaimer" id="reco-disclaimer"></p>
       </section>
+      <section class="panel panel--wide">
+        <details class="candidate-scan" id="candidate-scan-wrap">
+          <summary id="candidate-scan-summary">全市场评分扫描</summary>
+          <div class="table-wrap">
+            <table class="data-table" id="candidate-scan-table">
+              <thead>
+                <tr>
+                  <th>标的</th>
+                  <th>市场</th>
+                  <th>评分</th>
+                  <th>信号</th>
+                  <th>RSI</th>
+                  <th>相对强度</th>
+                  <th>突破</th>
+                  <th>止损距离</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </details>
+      </section>
     </section>
 
     <!-- 策略实验室 -->
@@ -254,6 +311,15 @@
       </article>
 
       <section class="paper-stage-banner" id="paper-stage-banner" hidden aria-live="polite"></section>
+
+      <section class="panel panel--wide" id="paper-monthly-dashboard">
+        <div class="panel__head">
+          <h2>XRPS 月线仪表盘</h2>
+          <p>连阴加仓 · 滚动网格 · 股数优先</p>
+        </div>
+        <div class="review-stats review-stats--compact" id="paper-monthly-stats"></div>
+        <ul class="diagnostics-list" id="paper-diagnostics-suggestions"></ul>
+      </section>
 
       <section class="panel panel--wide paper-compare" id="paper-compare" hidden>
         <div class="panel__head">
@@ -352,6 +418,10 @@
                 <th>开仓价</th>
                 <th>现价</th>
                 <th>收益</th>
+                <th>止损位</th>
+                <th>距止损</th>
+                <th>目标位</th>
+                <th>距目标</th>
                 <th>最大浮盈</th>
                 <th>最大回撤</th>
                 <th>持有</th>

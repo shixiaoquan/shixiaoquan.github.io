@@ -293,7 +293,298 @@ function renderCockpitMarkets(radar) {
     .join("");
 }
 
+function pickRiskLine(pick) {
+  if (!pick) return "";
+  const parts = [];
+  if (pick.distToStopPct != null) parts.push(`止损缓冲 ${formatNumber(pick.distToStopPct)}%`);
+  else if (pick.stopLossPrice != null) parts.push(`止损 ${formatNumber(pick.stopLossPrice)}`);
+  if (pick.distToTargetPct != null) parts.push(`目标 +${formatNumber(pick.distToTargetPct)}%`);
+  if (pick.breakout === true) parts.push("已突破");
+  else if (pick.breakout === false) parts.push("待突破");
+  if (pick.regimeOk === false) parts.push("趋势过滤未过");
+  if (pick.relativeStrength != null) parts.push(`RS ${formatPct(pick.relativeStrength)}`);
+  return parts.join(" · ");
+}
+
+function buildActionQueue() {
+  const items = [];
+  const openSymbols = new Set(
+    (signalsData?.signals || []).filter((s) => s.status === "open").map((s) => s.symbol)
+  );
+
+  if (paperData) {
+    const stage = analyzePaperStage(paperData);
+    const triggers = computeNextTriggers(paperData);
+    const plan = diagnosticsData?.xrpsActionPlan;
+    const ms = paperData.monthlyState || plan?.monthly || {};
+
+    items.push({
+      priority: 2,
+      system: "战役",
+      title: stage.title,
+      detail: stage.desc,
+      type: stage.stage === "accumulate" ? "accumulate" : "hold",
+    });
+
+    const nextSell = triggers.sells[0] || plan?.nextSell;
+    if (nextSell?.triggerPrice) {
+      items.push({
+        priority: 3,
+        system: "战役",
+        title: `滚动卖出 · ${nextSell.label}`,
+        detail: `现价 ${formatNumber(triggers.price || plan?.price)} → 触发 ${formatNumber(nextSell.triggerPrice)}（还差 ${formatPct(nextSell.gapPct)}）`,
+        type: "sell-watch",
+      });
+    }
+
+    const nextBuy = triggers.buys[0] || plan?.nextBuy;
+    if (nextBuy?.triggerPrice) {
+      items.push({
+        priority: 3,
+        system: "战役",
+        title: `回撤买回 · ${nextBuy.label}`,
+        detail: `跌至 ${formatNumber(nextBuy.triggerPrice)} 触发网格买回（距现价 ${formatPct(nextBuy.gapPct)}）`,
+        type: "buy-watch",
+      });
+    }
+
+    if ((ms.consecutiveDownMonths || 0) >= 5) {
+      items.push({
+        priority: 2,
+        system: "战役",
+        title: `${ms.consecutiveDownMonths} 连阴月`,
+        detail: `上月 ${formatPct(ms.lastMonthReturnPct)} · 按 XRPS 规则积累核心仓股数，勿因净值波动恐慌减仓`,
+        type: "accumulate",
+      });
+    }
+  }
+
+  (signalsData?.signals || [])
+    .filter((s) => s.status === "open")
+    .forEach((sig) => {
+      const distStop = sig.distToStopPct;
+      const urgent = distStop != null && distStop < 5;
+      items.push({
+        priority: urgent ? 1 : 4,
+        system: "战术",
+        title: `${sig.name} · 持仓跟踪`,
+        detail: `浮盈 ${formatPct(sig.returnPct)} · 距止损 ${distStop != null ? formatNumber(distStop) + "%" : "--"} · 距目标 ${sig.distToTargetPct != null ? "+" + sig.distToTargetPct + "%" : "--"} · ${sig.holdDays ?? 0} 天`,
+        type: urgent ? "alert" : "hold",
+      });
+    });
+
+  (marketData?.recommendations?.picks || []).forEach((pick) => {
+    if (pick.signal !== "buy") return;
+    if (openSymbols.has(pick.symbol)) return;
+    items.push({
+      priority: 5,
+      system: "战术",
+      title: `关注新信号 · ${pick.name}`,
+      detail: `${pick.market} · 评分 ${pick.score} · ${pickRiskLine(pick)}`,
+      type: "buy",
+    });
+  });
+
+  const mood = marketData?.summary?.mood;
+  if (mood === "偏空") {
+    items.push({
+      priority: 6,
+      system: "市场",
+      title: "整体偏空",
+      detail: "战术新开仓宜轻仓或观望；战役仓按网格纪律执行，勿情绪化清仓",
+      type: "caution",
+    });
+  } else if (mood === "偏多") {
+    const weakMarkets = (marketData?.marketRadar || []).filter((r) => r.status === "weak").map((r) => r.market);
+    if (weakMarkets.length) {
+      items.push({
+        priority: 6,
+        system: "市场",
+        title: "结构分化",
+        detail: `${weakMarkets.join("、")}仍偏弱，注意分散配置与止损纪律`,
+        type: "caution",
+      });
+    }
+  }
+
+  if (!items.length) {
+    items.push({
+      priority: 9,
+      system: "系统",
+      title: "空仓等待",
+      detail: "当前无突破买入信号且无紧急触发，观察即是操作",
+      type: "hold",
+    });
+  }
+
+  return items.sort((a, b) => a.priority - b.priority);
+}
+
+function renderActionList(items) {
+  const el = document.getElementById("action-list");
+  if (!el) return;
+  el.innerHTML = items
+    .map(
+      (item) => `
+    <li class="action-item action-item--${item.type}">
+      <span class="action-item__system">${item.system}</span>
+      <div class="action-item__main">
+        <strong>${item.title}</strong>
+        <p>${item.detail}</p>
+      </div>
+    </li>
+  `
+    )
+    .join("");
+}
+
+function renderDecisionBrief() {
+  const body = document.getElementById("decision-brief-body");
+  if (!body) return;
+
+  const parts = [];
+  const mood = marketData?.summary?.mood || "—";
+  const wencaiMood = wencaiData?.sentiment?.mood;
+  const limitUp = wencaiData?.sentiment?.limitUp;
+  parts.push(
+    `全球指数情绪 <strong>${mood}</strong>${wencaiMood ? `，A股问财 <strong>${wencaiMood}</strong>` : ""}${limitUp != null ? `（涨停 ${limitUp} 家）` : ""}。`
+  );
+
+  const radar = marketData?.marketRadar || [];
+  const weak = radar.filter((r) => r.status === "weak").map((r) => r.market);
+  const strong = radar.filter((r) => r.status === "strong").map((r) => r.market);
+  if (strong.length) parts.push(`<strong>${strong.join("、")}</strong> 偏强，可多关注趋势突破。`);
+  if (weak.length) parts.push(`<strong>${weak.join("、")}</strong> 偏弱，战术新开仓需更谨慎。`);
+
+  const scan = marketData?.recommendations?.marketScan;
+  if (scan) parts.push(`扫描：${scan}。`);
+
+  if (paperData) {
+    const stage = analyzePaperStage(paperData);
+    parts.push(`战役仓 <strong>${stage.title}</strong>：${stage.desc}`);
+  }
+
+  const openCount = signalsData?.openCount || 0;
+  const buyPicks = (marketData?.recommendations?.picks || []).filter((p) => p.signal === "buy");
+  if (openCount) {
+    parts.push(`战术实验 <strong>${openCount}</strong> 笔持仓跟踪中，请严守止损。`);
+  } else if (!buyPicks.length) {
+    parts.push(`战术 v1.3 暂无突破买入，<strong>空仓等待</strong> 亦是正确操作。`);
+  }
+
+  body.innerHTML = `<p class="decision-brief__text">${parts.join(" ")}</p>`;
+  renderActionList(buildActionQueue());
+  renderCockpitTacticalOpen(signalsData);
+}
+
+function renderCockpitTacticalOpen(data) {
+  const panel = document.getElementById("cockpit-tactical-open");
+  const tbody = document.querySelector("#cockpit-tactical-open-table tbody");
+  if (!panel || !tbody) return;
+
+  const open = (data?.signals || []).filter((s) => s.status === "open");
+  if (!open.length) {
+    panel.hidden = true;
+    return;
+  }
+
+  panel.hidden = false;
+  const hint = document.getElementById("cockpit-tactical-open-hint");
+  if (hint) hint.textContent = `${open.length} 笔 open 信号 · 实验策略，非战役仓`;
+
+  tbody.innerHTML = open
+    .map((sig) => {
+      const distStop = sig.distToStopPct;
+      const stopClass = distStop != null && distStop < 5 ? "change--down" : "";
+      return `
+      <tr>
+        <td><strong>${sig.name}</strong><br><span class="stock-card__symbol">${sig.symbol}</span></td>
+        <td class="change ${changeClass(sig.returnPct)}">${formatPct(sig.returnPct)}</td>
+        <td class="change ${stopClass}">${distStop != null ? formatNumber(distStop) + "%" : "--"}</td>
+        <td>${sig.distToTargetPct != null ? "+" + sig.distToTargetPct + "%" : "--"}</td>
+        <td>${sig.holdDays ?? 0} 天</td>
+      </tr>
+    `;
+    })
+    .join("");
+}
+
+function renderCandidateScan(scan) {
+  const wrap = document.getElementById("candidate-scan-wrap");
+  const summary = document.getElementById("candidate-scan-summary");
+  const tbody = document.querySelector("#candidate-scan-table tbody");
+  if (!tbody) return;
+
+  const rows = scan || [];
+  if (summary) {
+    summary.textContent = rows.length
+      ? `全市场评分扫描（${rows.length} 只候选，按分数排序）`
+      : "全市场评分扫描";
+  }
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="empty">暂无扫描数据</td></tr>';
+    if (wrap) wrap.hidden = true;
+    return;
+  }
+  if (wrap) wrap.hidden = false;
+
+  tbody.innerHTML = rows
+    .map(
+      (row) => `
+    <tr>
+      <td><strong>${row.name}</strong><br><span class="stock-card__symbol">${row.symbol}</span></td>
+      <td><span class="reco-market reco-market--${marketClass(row.market)}">${row.market}</span></td>
+      <td>${row.score}</td>
+      <td><span class="signal-${row.signal}">${row.signalLabel || row.signal}</span></td>
+      <td>${row.rsi != null ? formatNumber(row.rsi, 1) : "--"}</td>
+      <td>${row.relativeStrength != null ? formatPct(row.relativeStrength) : "--"}</td>
+      <td>${row.breakout ? "是" : row.breakout === false ? "否" : "--"}</td>
+      <td>${row.distToStopPct != null ? formatNumber(row.distToStopPct) + "%" : "--"}</td>
+    </tr>
+  `
+    )
+    .join("");
+}
+
+function renderPaperMonthlyDashboard(paper, diag) {
+  if (!paper) return;
+  const ms = paper.monthlyState || diag?.xrpsActionPlan?.monthly || {};
+  renderStatCards("paper-monthly-stats", [
+    {
+      label: "连阴月数",
+      value: ms.consecutiveDownMonths ?? "--",
+      hint: (ms.consecutiveDownMonths || 0) >= 5 ? "核心仓加仓区间" : "正常跟踪",
+    },
+    {
+      label: "上月涨跌",
+      value: formatPct(ms.lastMonthReturnPct),
+      valueClass: changeClass(ms.lastMonthReturnPct),
+    },
+    {
+      label: "近两月累计",
+      value: formatPct(ms.twoMonthReturnPct),
+      valueClass: changeClass(ms.twoMonthReturnPct),
+    },
+    {
+      label: "近三月累计",
+      value: formatPct(ms.threeMonthReturnPct),
+      valueClass: changeClass(ms.threeMonthReturnPct),
+    },
+  ]);
+
+  const list = document.getElementById("paper-diagnostics-suggestions");
+  if (!list) return;
+  const suggestions = diag?.suggestions || [];
+  list.innerHTML = suggestions.length
+    ? suggestions.map((s) => `<li class="diagnostics-item">${s}</li>`).join("")
+    : '<li class="diagnostics-item">XRPS 运行正常，按网格与月线纪律执行。</li>';
+}
+
 function renderPickCard(pick, compact = false) {
+  const riskLine = pickRiskLine(pick);
+  const riskHtml = riskLine
+    ? `<p class="reco-card__risk${pick.distToStopPct != null && pick.distToStopPct < 8 ? " reco-card__risk--alert" : ""}">${riskLine}</p>`
+    : "";
   const reasons = compact ? "" : `<ul class="reco-reasons">${pick.reasons.map((r) => `<li>${r}</li>`).join("")}</ul>`;
   const plan = compact
     ? ""
@@ -319,6 +610,7 @@ function renderPickCard(pick, compact = false) {
         </div>
       </div>
       <p class="stock-card__price">${formatNumber(pick.price)} <span>${pick.currency || ""}</span></p>
+      ${riskHtml}
       ${reasons}
       ${plan}
     </article>
@@ -334,7 +626,17 @@ function renderRecommendations(reco, containerId = "reco-cards", compact = false
   if (!reco?.picks?.length) {
     container.innerHTML = '<p class="empty">当前没有满足策略条件的标的，空仓等待也是一种操作。</p>';
     if (disclaimerEl && reco?.disclaimer) disclaimerEl.textContent = reco.disclaimer;
+    if (compact) {
+      const hint = document.getElementById("cockpit-reco-hint");
+      if (hint) hint.textContent = reco?.marketScan || "暂无突破买入信号";
+    }
+    if (!compact) renderCandidateScan(reco?.candidateScan);
     return;
+  }
+
+  if (compact) {
+    const hint = document.getElementById("cockpit-reco-hint");
+    if (hint) hint.textContent = reco.marketScan || "A股 / 港股 / 美股 各 1 只";
   }
 
   if (!compact) {
@@ -350,6 +652,7 @@ function renderRecommendations(reco, containerId = "reco-cards", compact = false
 
   const scanHtml = !compact && reco.marketScan ? `<p class="reco-scan">${reco.marketScan}</p>` : "";
   container.innerHTML = scanHtml + reco.picks.map((p) => renderPickCard(p, compact)).join("");
+  if (!compact) renderCandidateScan(reco.candidateScan);
 }
 
 function renderCockpitIndices(indices) {
@@ -826,7 +1129,7 @@ function renderTacticalSignals(data) {
   }
 
   if (!signals.length) {
-    tbody.innerHTML = '<tr><td colspan="9" class="empty">暂无战术信号，等待荐股出现 buy 信号</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="13" class="empty">暂无战术信号，等待荐股出现 buy 信号</td></tr>';
     return;
   }
 
@@ -836,6 +1139,8 @@ function renderTacticalSignals(data) {
       const ret = sig.returnPct;
       const hold =
         sig.status === "open" ? `${sig.holdDays ?? 0} 天` : sig.closeReason || reasonLabel(sig.closeReason) || "--";
+      const distStop = sig.distToStopPct;
+      const stopAlert = distStop != null && distStop < 5 ? "change--down" : "";
       return `
       <tr>
         <td><strong>${sig.name}</strong><br><span class="stock-card__symbol">${sig.symbol}</span></td>
@@ -844,6 +1149,10 @@ function renderTacticalSignals(data) {
         <td>${formatNumber(sig.entryPrice)}</td>
         <td>${formatNumber(sig.currentPrice ?? sig.exitPrice)}</td>
         <td class="change ${changeClass(ret)}">${formatPct(ret)}</td>
+        <td>${formatNumber(sig.stopLossPrice)}</td>
+        <td class="change ${stopAlert}">${distStop != null ? formatNumber(distStop) + "%" : "--"}</td>
+        <td>${formatNumber(sig.targetPrice)}</td>
+        <td>${sig.distToTargetPct != null ? "+" + sig.distToTargetPct + "%" : "--"}</td>
         <td class="change change--up">${formatPct(sig.maxGainPct)}</td>
         <td class="change change--down">${formatPct(sig.maxDrawdownPct)}</td>
         <td>${hold}</td>
@@ -1044,29 +1353,31 @@ function renderXrpsTradesLog(paper) {
 function renderCockpitTactical(backtest) {
   const hintEl = document.getElementById("cockpit-tactical-hint");
   const bt = backtest?.metrics || {};
+  const openCount = signalsData?.openCount || 0;
   if (hintEl) {
-    hintEl.textContent = backtest?.strategyVersion
-      ? `${backtest.strategyVersion} · 近 ${backtest.period || "1y"} · ${backtest.universe?.length || 0} 只标的`
-      : "荐股 v1.3 · 强趋势+突破（实验室回测）";
+    hintEl.textContent = openCount
+      ? `v1.3 实验 · ${openCount} 笔 open 持仓跟踪中`
+      : backtest?.strategyVersion
+        ? `${backtest.strategyVersion} · 近 ${backtest.period || "1y"} · 等待突破信号`
+        : "荐股 v1.3 · 强趋势+突破（实验室回测）";
   }
 
   renderStatCards("cockpit-tactical", [
     { label: "战术策略", value: backtest?.strategyVersion || "v1.3.0" },
     {
+      label: "持仓跟踪",
+      value: openCount || "0",
+      hint: openCount ? "实验策略 open" : "暂无 buy 信号",
+    },
+    {
       label: "回测胜率",
-      value: bt.winRate !== undefined ? `${bt.winRate}%` : "--",
-      hint: bt.totalTrades !== undefined ? `${bt.totalTrades} 笔交易` : "",
+      value: bt.winRate !== undefined && bt.totalTrades ? `${bt.winRate}%` : "--",
+      hint: bt.totalTrades ? `${bt.totalTrades} 笔` : "当前无成交",
     },
     {
-      label: "期望值",
-      value: bt.expectancy !== undefined ? `${formatNumber(bt.expectancy)}%` : "--",
-      valueClass: changeClass(bt.expectancy),
-    },
-    {
-      label: "年化收益",
-      value: formatPct(bt.annualReturn),
-      valueClass: changeClass(bt.annualReturn),
-      hint: "实验策略，非 XRPS",
+      label: "信号胜率",
+      value: signalsData?.summary?.winRate != null ? `${signalsData.summary.winRate}%` : "--",
+      hint: signalsData?.closedCount ? `已平 ${signalsData.closedCount} 笔` : "跟踪中",
     },
   ]);
 }
@@ -1543,6 +1854,7 @@ function renderPaperPanel(paper, loadState = "ready") {
   renderPaperStageBanner(paper);
   renderPaperCompare(paper);
   renderCockpitPaper(paper, diagnosticsData);
+  renderPaperMonthlyDashboard(paper, diagnosticsData);
   renderXrpsTradesLog(paper);
   renderReviewXrpsStats(paper, diagnosticsData);
   renderPaperBucketChart(paper, true);
@@ -2022,6 +2334,7 @@ function applyWencaiData(data) {
   renderMergedNews();
   lastWencaiUpdatedAt = data.updatedAt;
   updateHeaderFreshness();
+  renderDecisionBrief();
 }
 
 async function refreshWencaiData() {
@@ -2317,10 +2630,6 @@ function applyTradingData(payload) {
     paperData = paper;
     renderPaperPanel(paper);
   }
-  if (signals) {
-    signalsData = signals;
-    renderTacticalSignals(signals);
-  }
   if (backtest) {
     backtestData = backtest;
     renderLabMetrics(backtest);
@@ -2330,14 +2639,21 @@ function applyTradingData(payload) {
     renderCockpitTactical(backtest);
     if (activeTab === "lab") renderBacktestChart(backtest.equityCurve);
   }
+  if (signals) {
+    signalsData = signals;
+    renderTacticalSignals(signals);
+    if (backtestData) renderCockpitTactical(backtestData);
+  }
   if (diagnostics) {
     diagnosticsData = diagnostics;
     renderDiagnostics(diagnostics);
     if (paperData) {
       renderCockpitPaper(paperData, diagnostics);
+      renderPaperMonthlyDashboard(paperData, diagnostics);
       renderReviewXrpsStats(paperData, diagnostics);
     }
   }
+  renderDecisionBrief();
   updateHeaderFreshness();
 }
 
@@ -2473,6 +2789,7 @@ function applyData(data) {
     renderPaperBucketChart(paperData);
     renderPaperPanel(paperData);
   }
+  renderDecisionBrief();
   lastUpdatedAt = data.updatedAt;
 }
 

@@ -1302,3 +1302,114 @@ a:hover {
     width: 100%;
   }
 }
+
+/* 投资决策：研判与行动清单 */
+.decision-panel {
+  border-color: rgba(96, 165, 250, 0.35);
+  background: linear-gradient(135deg, rgba(30, 58, 95, 0.45), rgba(15, 23, 42, 0.9));
+}
+
+.decision-brief__body {
+  margin-bottom: 16px;
+}
+
+.decision-brief__text {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.decision-brief__text strong {
+  color: var(--text-primary);
+}
+
+.action-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.action-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.action-item--alert {
+  border-color: rgba(248, 113, 113, 0.55);
+  background: rgba(127, 29, 29, 0.2);
+}
+
+.action-item--buy,
+.action-item--buy-watch {
+  border-color: rgba(52, 211, 153, 0.4);
+}
+
+.action-item--sell-watch {
+  border-color: rgba(251, 191, 36, 0.45);
+}
+
+.action-item__system {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.12);
+  white-space: nowrap;
+}
+
+.action-item__main strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.action-item__main p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.reco-card__risk {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.reco-card__risk--alert {
+  color: #f87171;
+}
+
+.candidate-scan {
+  margin-top: 8px;
+}
+
+.candidate-scan summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 0;
+  color: var(--accent);
+}
+
+.candidate-scan[open] summary {
+  margin-bottom: 12px;
+}
+
+.candidate-scan .signal-buy {
+  color: #34d399;
+}
+
+.candidate-scan .signal-watch {
+  color: #fbbf24;
+}

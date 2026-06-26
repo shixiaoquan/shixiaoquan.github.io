@@ -115,11 +115,16 @@ def _update_open(sig: dict, price: float, now: datetime, now_iso: str) -> None:
     sig["holdDays"] = _hold_days(sig.get("openedAt", now_iso), now)
 
     stop = sig.get("stopLossPrice")
+    target = sig.get("targetPrice")
+    if stop is not None and price:
+        sig["distToStopPct"] = round((price - stop) / price * 100, 1)
+    if target is not None and price:
+        sig["distToTargetPct"] = round((target - price) / price * 100, 1)
+
     if stop is not None and price <= stop:
         _close_signal(sig, price, now_iso, "closed_stop", "止损")
         return
 
-    target = sig.get("targetPrice")
     if target is not None and price >= target:
         _close_signal(sig, price, now_iso, "closed_target", "止盈")
         return
