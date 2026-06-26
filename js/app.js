@@ -9,6 +9,8 @@ const PAPER_BACKTEST_URL = "data/paper_backtest.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
 const AI_CHAIN_URL = "data/ai_chain.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
+const HISTORY_DISPLAY_LIMIT = 40;
+const AI_SEARCH_DEBOUNCE_MS = 250;
 
 /** XRPS-X 网格参数（与 scripts/xrps_config.py 一致） */
 const XRPS_ROLLING_SELL_LEVELS = [
@@ -46,6 +48,10 @@ let quoteMap = {};
 let quoteChangeMap = {};
 let activeTab = "cockpit";
 let suppressTabRoute = false;
+const tabBundles = { paper: false, ai: false };
+let historyDisplayLimit = HISTORY_DISPLAY_LIMIT;
+let lastRecoHistoryStamp = null;
+let aiSearchTimer = null;
 
 const VALID_TABS = new Set(["cockpit", "market", "reco", "lab", "paper", "ai"]);
 const TAB_ALIASES = { review: "paper", news: "cockpit" };
@@ -94,6 +100,25 @@ function formatDateTime(iso) {
     hour: "2-digit",
     minute: "2-digit",
   });
+}
+
+function formatFreshnessTime(iso) {
+  if (!iso) return null;
+  const text = formatDateTime(iso);
+  return text.length > 11 ? text.slice(5) : text;
+}
+
+function updateHeaderFreshness() {
+  const el = document.getElementById("updated-at");
+  if (!el) return;
+  const parts = [];
+  const marketAt = formatFreshnessTime(lastUpdatedAt);
+  const wencaiAt = formatFreshnessTime(lastWencaiUpdatedAt);
+  const paperAt = formatFreshnessTime(paperData?.updatedAt);
+  if (marketAt) parts.push(`行情 ${marketAt}`);
+  if (wencaiAt) parts.push(`问财 ${wencaiAt}`);
+  if (paperAt) parts.push(`模拟盘 ${paperAt}`);
+  el.textContent = parts.length ? parts.join(" · ") : "数据更新中…";
 }
 
 function marketClass(market) {
@@ -160,12 +185,7 @@ function switchTab(tabId, options = {}) {
   if (tabId === "paper") {
     if (paperStrategyData) renderPaperStrategyCard(paperStrategyData);
     if (paperBacktestData) renderPaperBacktestCards(paperBacktestData);
-    if (paperData) {
-      renderPaperPanel(paperData);
-    } else {
-      renderPaperPanel(null);
-      refreshPaperData();
-    }
+    renderPaperPanel(paperData);
   }
   if (tabId === "market" && wencaiData) {
     renderWencaiPanels(wencaiData);
@@ -174,6 +194,7 @@ function switchTab(tabId, options = {}) {
     renderAiChain(aiChainData);
     if (aiChainView === "mindmap") renderAiMindMap(aiChainData);
   }
+  ensureTabData(tabId);
 }
 
 function signalStatusLabel(status) {
@@ -380,8 +401,20 @@ function renderMergedNews() {
   renderNews(getFilteredNews());
 }
 
-function renderCockpitNews() {
-  /* 资讯已并入驾驶舱 news-list，保留空函数兼容旧调用 */
+async function ensureTabData(tabId) {
+  if (tabId === "paper" && !tabBundles.paper) {
+    tabBundles.paper = true;
+    await Promise.all([refreshPaperExtras(), refreshHistory()]);
+    if (activeTab === "paper") {
+      if (paperStrategyData) renderPaperStrategyCard(paperStrategyData);
+      if (paperBacktestData) renderPaperBacktestCards(paperBacktestData);
+      renderPaperPanel(paperData);
+    }
+  }
+  if (tabId === "ai" && !tabBundles.ai) {
+    tabBundles.ai = true;
+    await loadAiChainData();
+  }
 }
 
 function renderSummary(summary) {
@@ -587,7 +620,8 @@ function renderRecoHistory(history) {
         : record.picks.filter((p) => p.market === historyFilter);
       return { ...record, picks };
     })
-    .filter((record) => record.picks.length > 0);
+    .filter((record) => record.picks.length > 0)
+    .slice(0, historyDisplayLimit);
 
   if (!filtered.length) {
     container.innerHTML = '<p class="empty">当前筛选市场下暂无记录。</p>';
@@ -655,6 +689,19 @@ function renderRecoHistory(history) {
     `
     )
     .join("");
+
+  const totalShown = filtered.length;
+  const hasMore = records.length > historyDisplayLimit;
+  if (hasMore) {
+    container.insertAdjacentHTML(
+      "beforeend",
+      `<p class="history-load-more"><button type="button" class="link-btn" id="history-load-more-btn">加载更多（已显示 ${totalShown} / ${records.length} 条）</button></p>`
+    );
+    document.getElementById("history-load-more-btn")?.addEventListener("click", () => {
+      historyDisplayLimit += HISTORY_DISPLAY_LIMIT;
+      renderRecoHistory(history);
+    }, { once: true });
+  }
 }
 
 function setupHistoryFilters() {
@@ -1134,6 +1181,19 @@ function renderEquityChart(canvasId, curve, chartRef, label, forceRecreate = fal
 }
 
 function renderBacktestChart(curve) {
+  const emptyEl = document.getElementById("backtest-chart-empty");
+  const canvas = document.getElementById("backtest-chart");
+  if (!curve?.length) {
+    if (emptyEl) emptyEl.hidden = false;
+    if (canvas) canvas.hidden = true;
+    if (backtestChart) {
+      backtestChart.destroy();
+      backtestChart = null;
+    }
+    return;
+  }
+  if (emptyEl) emptyEl.hidden = true;
+  if (canvas) canvas.hidden = false;
   backtestChart = renderEquityChart("backtest-chart", curve, backtestChart, "回测净值");
 }
 
@@ -1909,15 +1969,34 @@ function setupAiChainFilters() {
   if (searchInput) {
     searchInput.addEventListener("input", () => {
       aiChainSearch = searchInput.value || "";
-      if (aiChainData) renderAiChain(aiChainData);
+      clearTimeout(aiSearchTimer);
+      aiSearchTimer = setTimeout(() => {
+        if (aiChainData) renderAiChain(aiChainData);
+      }, AI_SEARCH_DEBOUNCE_MS);
     });
   }
+}
+
+function renderCockpitAiTeaser(data) {
+  const el = document.getElementById("ai-cockpit-teaser");
+  if (!el) return;
+  if (!data?.layers?.length) {
+    el.textContent = "算力 · 模型 · 应用全景拆解，支持列表与思维导图双视图。";
+    return;
+  }
+  const layers = data.layers.length;
+  const symbols = data.layers.reduce(
+    (sum, layer) => sum + (layer.segments || []).reduce((n, seg) => n + (seg.symbols?.length || 0), 0),
+    0
+  );
+  el.textContent = `${layers} 环节 · ${symbols} 只标的 · 支持列表与思维导图双视图，可搜索筛选。`;
 }
 
 async function loadAiChainData() {
   const data = await fetchJson(AI_CHAIN_URL);
   if (!data) return;
   aiChainData = data;
+  renderCockpitAiTeaser(data);
   if (activeTab === "ai") renderAiChain(data);
 }
 
@@ -1939,9 +2018,10 @@ function applyWencaiData(data) {
   if (!data) return;
   wencaiData = data;
   renderWencaiBanner(data);
-  renderWencaiPanels(data);
+  if (activeTab === "market") renderWencaiPanels(data);
   renderMergedNews();
   lastWencaiUpdatedAt = data.updatedAt;
+  updateHeaderFreshness();
 }
 
 async function refreshWencaiData() {
@@ -2258,46 +2338,37 @@ function applyTradingData(payload) {
       renderReviewXrpsStats(paperData, diagnostics);
     }
   }
+  updateHeaderFreshness();
 }
 
-async function refreshPaperStrategy() {
-  const data = await fetchJson(PAPER_STRATEGY_URL);
-  if (!data) return;
-  paperStrategyData = data;
-  renderPaperStrategyCard(data);
-}
-
-async function refreshPaperBacktest() {
-  const data = await fetchJson(PAPER_BACKTEST_URL);
-  if (!data) return;
-  paperBacktestData = data;
-  renderPaperBacktestCards(data);
-  if (paperData) renderPaperCompare(paperData);
-}
-
-async function refreshPaperData() {
-  const [paper, strategy, backtest] = await Promise.all([
-    fetchJson(PAPER_URL),
+async function refreshPaperExtras() {
+  const [strategy, backtest] = await Promise.all([
     fetchJson(PAPER_STRATEGY_URL),
     fetchJson(PAPER_BACKTEST_URL),
   ]);
   if (strategy) {
     paperStrategyData = strategy;
-    renderPaperStrategyCard(strategy);
+    if (activeTab === "paper") renderPaperStrategyCard(strategy);
   }
   if (backtest) {
     paperBacktestData = backtest;
-    renderPaperBacktestCards(backtest);
+    if (activeTab === "paper") {
+      renderPaperBacktestCards(backtest);
+      if (paperData) renderPaperCompare(paperData);
+    }
   }
-  if (paper) {
-    paperData = paper;
-    renderPaperPanel(paper);
+}
+
+async function refreshPaperData() {
+  await refreshPaperExtras();
+  if (paperData && activeTab === "paper") {
+    renderPaperPanel(paperData);
     return true;
   }
   if (activeTab === "paper" && !paperData) {
     renderPaperPanel(null, "error");
   }
-  return false;
+  return Boolean(paperData);
 }
 
 async function fetchJson(url) {
@@ -2335,15 +2406,24 @@ async function refreshTradingData() {
 }
 
 async function fetchRecoHistory() {
-  const response = await fetch(`${HISTORY_URL}?t=${Date.now()}`, { cache: "no-store" });
-  if (!response.ok) return null;
-  return response.json();
+  try {
+    const response = await fetch(`${HISTORY_URL}?t=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (error) {
+    console.error("fetch reco history failed", error);
+    return null;
+  }
 }
 
 async function refreshHistory() {
   try {
     const history = await fetchRecoHistory();
-    if (history) renderRecoHistory(history);
+    if (!history) return;
+    const stamp = history.updatedAt || String(history.records?.length || 0);
+    if (stamp === lastRecoHistoryStamp && recoHistory) return;
+    lastRecoHistoryStamp = stamp;
+    renderRecoHistory(history);
   } catch (error) {
     console.error("history load failed", error);
   }
@@ -2367,7 +2447,7 @@ function applyData(data) {
   marketData = data;
   quoteMap = buildQuoteMap(data);
 
-  document.getElementById("updated-at").textContent = `最近更新：${formatDateTime(data.updatedAt)}`;
+  updateHeaderFreshness();
 
   renderCockpitMood(data.summary);
   renderCockpitMarkets(data.marketRadar);
@@ -2387,13 +2467,12 @@ function applyData(data) {
     renderStocksChart(data.stocks);
   }
 
-  if (recoHistory) renderRecoHistory(recoHistory);
-  if (paperData) {
+  if (activeTab === "paper" && recoHistory) renderRecoHistory(recoHistory);
+  if (paperData && activeTab === "paper") {
     renderPaperPositions(paperData);
     renderPaperBucketChart(paperData);
+    renderPaperPanel(paperData);
   }
-  if (aiChainData) renderAiChain(aiChainData);
-  if (activeTab === "paper") renderPaperPanel(paperData);
   lastUpdatedAt = data.updatedAt;
 }
 
@@ -2410,8 +2489,11 @@ async function refreshData() {
     applyData(data);
   } catch (error) {
     if (lastUpdatedAt === null) {
-      document.getElementById("updated-at").textContent = "数据加载失败，请稍后重试";
-      document.getElementById("market-mood").textContent = "离线";
+      updateHeaderFreshness();
+      const moodEl = document.getElementById("market-mood");
+      if (moodEl) moodEl.textContent = "离线";
+      const el = document.getElementById("updated-at");
+      if (el) el.textContent = "数据加载失败，请稍后重试";
     }
     console.error(error);
   }
@@ -2431,25 +2513,24 @@ async function init() {
 
   await Promise.all([
     refreshData(),
-    refreshHistory(),
-    refreshPaperData(),
-    refreshTradingData(),
     refreshWencaiData(),
-    loadAiChainData(),
+    refreshTradingData(),
   ]);
 
-  if (!paperData) {
-    await refreshPaperData();
-  }
-  if (activeTab === "paper") {
-    renderPaperPanel(paperData);
-  }
+  await ensureTabData(initialTab);
 
   setInterval(refreshData, POLL_INTERVAL_MS);
-  setInterval(refreshHistory, POLL_INTERVAL_MS);
-  setInterval(refreshPaperData, POLL_INTERVAL_MS);
-  setInterval(refreshTradingData, POLL_INTERVAL_MS);
   setInterval(refreshWencaiData, POLL_INTERVAL_MS);
+  setInterval(refreshTradingData, POLL_INTERVAL_MS);
+  setInterval(() => {
+    if (tabBundles.paper) {
+      refreshPaperExtras();
+      refreshHistory();
+    }
+  }, POLL_INTERVAL_MS);
+
+  const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 2500));
+  scheduleIdle(() => ensureTabData("ai"));
 }
 
 document.addEventListener("DOMContentLoaded", init);

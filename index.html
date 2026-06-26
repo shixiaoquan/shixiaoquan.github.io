@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="三市场投资决策工作台：实时行情、量化荐股、小米 XRPS 模拟盘、交易日志">
   <title>投资分析大盘 | shixiaoquan</title>
-  <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-  <link rel="icon" href="favicon-32.png?v=3" type="image/png" sizes="32x32">
-  <link rel="icon" href="favicon-16.png?v=3" type="image/png" sizes="16x16">
-  <link rel="shortcut icon" href="favicon.ico?v=3">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" sizes="180x180">
+  <link rel="icon" href="favicon.svg?v=4" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/ai-chain.css">
   <link rel="stylesheet" href="css/paper.css">
@@ -17,7 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=16" defer></script>
+  <script src="js/app.js?v=17" defer></script>
 </head>
 <body>
   <div class="app">
@@ -91,7 +87,7 @@
             </div>
             <button type="button" class="link-btn" data-goto-tab="ai">查看图谱 →</button>
           </div>
-          <p class="ai-cockpit-teaser">72 环节 · 422 只标的 · 支持列表与思维导图双视图，可搜索筛选。</p>
+          <p class="ai-cockpit-teaser" id="ai-cockpit-teaser">算力 · 模型 · 应用全景拆解，支持列表与思维导图双视图。</p>
         </section>
         <section class="panel">
           <div class="panel__head">
@@ -197,6 +193,7 @@
             <p id="lab-backtest-period">历史 K 线模拟交易</p>
           </div>
           <div class="chart-box">
+            <p class="empty" id="backtest-chart-empty" hidden>当前策略条件下暂无成交记录，净值曲线将在有交易后生成。</p>
             <canvas id="backtest-chart" aria-label="回测净值曲线"></canvas>
           </div>
         </section>
@@ -450,7 +447,7 @@
     </section>
 
     <footer class="footer">
-      <p>数据来源：Yahoo Finance · 同花顺问财 · 每 5 分钟自动更新 · 仅供参考，不构成投资建议</p>
+      <p>数据来源：Yahoo Finance · 同花顺问财 · 行情每 5 分钟 · 问财每小时 · 回测每周 · 仅供参考，不构成投资建议</p>
     </footer>
   </div>
 </body>

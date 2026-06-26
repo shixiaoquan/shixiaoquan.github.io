@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: data-updates-${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   wencai:
     runs-on: ubuntu-latest

@@ -13,7 +13,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "market.json"
 HISTORY_FILE = DATA_DIR / "reco_history.json"
-MAX_HISTORY_RECORDS = 500
+MAX_HISTORY_RECORDS = 200
+SCORING_HISTORY_PERIOD = "2y"
 
 INDICES = {
     "^GSPC": {"name": "标普 500", "region": "美国", "currency": "USD"},
@@ -208,7 +209,7 @@ def fetch_benchmark_closes() -> dict[str, list[float]]:
     cache: dict[str, list[float]] = {}
     for market, symbol in MARKET_BENCHMARKS.items():
         try:
-            hist = yf.Ticker(symbol).history(period="max", interval="1d")
+            hist = yf.Ticker(symbol).history(period=SCORING_HISTORY_PERIOD, interval="1d")
             if not hist.empty:
                 cache[market] = [float(v) for v in hist["Close"].dropna().tolist()]
         except Exception:
@@ -220,7 +221,7 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
     """多因子趋势策略，评分逻辑与 strategy_scoring 模块一致。"""
     market = meta.get("market", "美股")
     try:
-        hist = yf.Ticker(symbol).history(period="max", interval="1d")
+        hist = yf.Ticker(symbol).history(period=SCORING_HISTORY_PERIOD, interval="1d")
     except Exception:
         return None
     if hist.empty:
