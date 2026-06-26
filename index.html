@@ -17,7 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=14" defer></script>
+  <script src="js/app.js?v=15" defer></script>
 </head>
 <body>
   <div class="app">
@@ -258,6 +258,9 @@
 
     <!-- 策略实验室 -->
     <section id="panel-lab" class="tab-panel" role="tabpanel" hidden>
+      <section class="lab-experimental-banner" aria-label="实验策略说明">
+        <p><strong>战术实验策略</strong> — 本页为 v1.2 多标的波段回测，与「战役持仓」XRPS 小米滚动仓相互独立，仅供研究参考。</p>
+      </section>
       <section class="review-stats" id="lab-metrics"></section>
       <div class="lab-grid">
         <section class="panel">
@@ -327,6 +330,14 @@
 
       <section class="paper-stage-banner" id="paper-stage-banner" hidden aria-live="polite"></section>
 
+      <section class="panel panel--wide paper-compare" id="paper-compare" hidden>
+        <div class="panel__head">
+          <h2>模拟 vs 回测对照</h2>
+          <p id="paper-compare-hint">实时模拟盘与上市以来全周期回测对比</p>
+        </div>
+        <div class="paper-compare-grid" id="paper-compare-grid"></div>
+      </section>
+
       <h3 class="paper-section-title">实时模拟（XRPS-X · 100 万）</h3>
       <section class="review-stats" id="paper-stats"></section>
       <div class="paper-live-grid">
@@ -342,6 +353,10 @@
         <section class="panel">
           <div class="panel__head">
             <h2>三仓结构</h2>
+            <p class="paper-positions-hint">核心 / 滚动 / 现金占比</p>
+          </div>
+          <div class="chart-box chart-box--compact">
+            <canvas id="paper-bucket-chart" aria-label="三仓占比饼图"></canvas>
           </div>
           <div id="paper-positions"></div>
         </section>

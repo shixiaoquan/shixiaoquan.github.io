@@ -322,7 +322,11 @@ def build_recommendations() -> dict:
         "marketScan": " · ".join(market_summary),
         "disclaimer": "量化信号仅供参考，不构成投资建议。请分散配置三市场、严格执行止损。",
         "picks": picks[: len(MARKETS)],
-    }, {a["symbol"]: a["price"] for a in analyzed if a.get("price")}
+    }, {a["symbol"]: a["price"] for a in analyzed if a.get("price")}, {
+        a["symbol"]: a["monthChangePct"]
+        for a in analyzed
+        if a.get("monthChangePct") is not None
+    }
 
 
 def compact_pick(pick: dict) -> dict:
@@ -471,7 +475,10 @@ def main() -> None:
     indices = [fetch_quote(symbol, meta) for symbol, meta in INDICES.items()]
     stocks = [fetch_quote(symbol, meta) for symbol, meta in STOCKS.items()]
     news = fetch_news()
-    recommendations, quote_map = build_recommendations()
+    recommendations, quote_map, change_map = build_recommendations()
+    for item in stocks:
+        if item.get("symbol") and item.get("changePct") is not None:
+            change_map[item["symbol"]] = item["changePct"]
     now = datetime.now(timezone.utc).astimezone()
 
     payload = {
@@ -479,6 +486,7 @@ def main() -> None:
         "summary": build_summary(indices),
         "marketRadar": build_market_radar(indices),
         "quoteMap": quote_map,
+        "changeMap": change_map,
         "indices": indices,
         "stocks": stocks,
         "news": news,
