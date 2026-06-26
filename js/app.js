@@ -43,6 +43,7 @@ let aiChainFilter = "all";
 let aiChainSearch = "";
 let aiChainView = "list";
 let quoteMap = {};
+let quoteChangeMap = {};
 let activeTab = "cockpit";
 let suppressTabRoute = false;
 
@@ -53,6 +54,7 @@ let distributionChart;
 let stocksChart;
 let backtestChart;
 let paperChart;
+let paperBucketChart;
 let paperModalChart;
 
 function formatNumber(value, digits = 2) {
@@ -1079,7 +1081,7 @@ function renderLabMetrics(backtest) {
   const periodEl = document.getElementById("lab-backtest-period");
   const versionEl = document.getElementById("lab-strategy-version");
   if (periodEl) periodEl.textContent = `历史 K 线 ${backtest?.period || "1y"} · ${backtest?.universe?.length || 0} 只标的`;
-  if (versionEl) versionEl.textContent = `策略 ${backtest?.strategyVersion || "--"}`;
+  if (versionEl) versionEl.textContent = `实验策略 ${backtest?.strategyVersion || "--"} · 非 XRPS`;
 
   renderStatCards("lab-metrics", [
     { label: "总交易", value: m.totalTrades ?? "--" },
@@ -1497,9 +1499,11 @@ function renderPaperPanel(paper, loadState = "ready") {
   renderPaperPositions(paper);
   renderPaperTrades(paper.trades);
   renderPaperStageBanner(paper);
+  renderPaperCompare(paper);
   renderCockpitPaper(paper, diagnosticsData);
   renderXrpsTradesLog(paper);
   renderReviewXrpsStats(paper, diagnosticsData);
+  renderPaperBucketChart(paper, true);
   requestAnimationFrame(() => {
     try {
       renderPaperChart(paper.equityCurve, true);
@@ -1668,9 +1672,18 @@ function renderWencaiPanels(data, containerId = "market-wencai") {
   `;
 }
 
+function enrichAiStocksWithQuotes(stocks) {
+  return (stocks || []).map((stock) => {
+    const price = quoteMap[stock.symbol];
+    const changePct = quoteChangeMap[stock.symbol];
+    if (price == null) return stock;
+    return { ...stock, price, changePct };
+  });
+}
+
 function filterAiStocks(stocks) {
   if (!stocks?.length) return [];
-  let result = stocks;
+  let result = enrichAiStocksWithQuotes(stocks);
   if (aiChainFilter !== "all") {
     result = result.filter((s) => s.market === aiChainFilter);
   }
@@ -1707,13 +1720,21 @@ function renderAiStockCard(stock) {
   const tags = (stock.tags || [])
     .map((tag) => `<span class="ai-stock__tag">${tag}</span>`)
     .join("");
+  const price = quoteMap[stock.symbol];
+  const quoteHtml =
+    price != null
+      ? `<span class="ai-stock__quote change ${changeClass(stock.changePct)}">${formatNumber(price)}${stock.changePct != null ? ` (${formatPct(stock.changePct)})` : ""}</span>`
+      : `<span class="ai-stock__quote ai-stock__quote--na">行情未收录</span>`;
   return `
     <article class="ai-stock">
       <div class="ai-stock__row">
         <span class="ai-stock__name">${stock.name}</span>
         <span class="reco-market reco-market--${marketClass(stock.market)}">${stock.market}</span>
       </div>
-      <span class="ai-stock__symbol">${stock.symbol}</span>
+      <div class="ai-stock__row ai-stock__row--quote">
+        <span class="ai-stock__symbol">${stock.symbol}</span>
+        ${quoteHtml}
+      </div>
       <p class="ai-stock__role">${stock.role || ""}</p>
       ${tags ? `<div class="ai-stock__tags">${tags}</div>` : ""}
     </article>
@@ -2011,6 +2032,118 @@ function renderBacktestTrades(trades) {
     .join("");
 }
 
+function renderPaperBucketChart(paper, forceRecreate = false) {
+  const canvas = document.getElementById("paper-bucket-chart");
+  if (!canvas || !paper || typeof Chart === "undefined") return;
+
+  const values = [
+    paper.coreValue || 0,
+    paper.rollingValue || 0,
+    paper.cash || 0,
+  ];
+  const total = values.reduce((a, b) => a + b, 0);
+  if (!total) return;
+
+  if (paperBucketChart && !forceRecreate) {
+    paperBucketChart.data.datasets[0].data = values;
+    paperBucketChart.update();
+    return;
+  }
+
+  if (paperBucketChart) {
+    paperBucketChart.destroy();
+    paperBucketChart = null;
+  }
+
+  paperBucketChart = new Chart(canvas, {
+    type: "doughnut",
+    data: {
+      labels: ["核心仓", "滚动仓", "现金"],
+      datasets: [
+        {
+          data: values,
+          backgroundColor: ["#38bdf8", "#34d399", "#94a3b8"],
+          borderWidth: 0,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      cutout: "62%",
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: { color: "#cbd5e1", boxWidth: 12, padding: 14 },
+        },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const pct = ((ctx.raw / total) * 100).toFixed(1);
+              return ` ${ctx.label}: ${formatNumber(ctx.raw)} (${pct}%)`;
+            },
+          },
+        },
+      },
+    },
+  });
+}
+
+function renderPaperCompare(paper) {
+  const section = document.getElementById("paper-compare");
+  const grid = document.getElementById("paper-compare-grid");
+  const hint = document.getElementById("paper-compare-hint");
+  if (!section || !grid) return;
+
+  const bt = paperBacktestData?.periods?.all?.metrics;
+  if (!paper || !bt) {
+    section.hidden = true;
+    return;
+  }
+
+  section.hidden = false;
+  if (hint) {
+    hint.textContent = `实时模拟（${paper.updatedAt?.slice(0, 10) || "今日"}）vs 上市以来回测（${paperBacktestData.periods.all.startDate} ~ ${paperBacktestData.periods.all.endDate}）`;
+  }
+
+  const rows = [
+    { label: "总收益率", live: formatPct(paper.returnPct), bt: formatPct(bt.totalReturnPct), liveClass: changeClass(paper.returnPct), btClass: changeClass(bt.totalReturnPct) },
+    { label: "持股数量", live: formatNumber(paper.totalShares, 0), bt: formatNumber(bt.finalShares, 0) },
+    { label: "持仓成本", live: formatNumber(paper.avgCost), bt: formatNumber(bt.finalAvgCost) },
+    { label: "股数增长", live: "—", bt: formatPct(bt.shareGrowthPct), btClass: changeClass(bt.shareGrowthPct) },
+    { label: "胜率", live: "—", bt: bt.winRate != null ? `${bt.winRate}%` : "—" },
+    { label: "最大回撤", live: "—", bt: bt.maxDrawdown != null ? `${bt.maxDrawdown}%` : "—", btClass: "change--down" },
+  ];
+
+  grid.innerHTML = `
+    <div class="paper-compare-table-wrap">
+      <table class="data-table paper-compare-table">
+        <thead>
+          <tr>
+            <th>指标</th>
+            <th>实时模拟</th>
+            <th>回测（上市以来）</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows
+            .map(
+              (row) => `
+            <tr>
+              <td>${row.label}</td>
+              <td class="${row.liveClass || ""}">${row.live}</td>
+              <td class="${row.btClass || ""}">${row.bt}</td>
+            </tr>
+          `
+            )
+            .join("")}
+        </tbody>
+      </table>
+    </div>
+    <p class="paper-compare-note">模拟盘刚建仓时收益率接近 0% 属正常；回测验证的是长期「股数↑成本↓」路径。</p>
+  `;
+}
+
 function renderPaperStats(paper) {
   const hintEl = document.getElementById("paper-positions-hint");
   if (hintEl) {
@@ -2153,6 +2286,7 @@ async function refreshPaperBacktest() {
   if (!data) return;
   paperBacktestData = data;
   renderPaperBacktestCards(data);
+  if (paperData) renderPaperCompare(paperData);
 }
 
 async function refreshPaperData() {
@@ -2231,11 +2365,14 @@ async function refreshHistory() {
 
 function buildQuoteMap(data) {
   const map = { ...(data.quoteMap || {}) };
+  quoteChangeMap = { ...(data.changeMap || {}) };
   data.stocks?.forEach((s) => {
     if (s.symbol && s.price) map[s.symbol] = s.price;
+    if (s.symbol && s.changePct != null) quoteChangeMap[s.symbol] = s.changePct;
   });
   data.recommendations?.picks?.forEach((p) => {
     if (p.symbol && p.price) map[p.symbol] = p.price;
+    if (p.symbol && p.monthChangePct != null) quoteChangeMap[p.symbol] = p.monthChangePct;
   });
   return map;
 }
@@ -2265,7 +2402,11 @@ function applyData(data) {
   }
 
   if (recoHistory) renderRecoHistory(recoHistory);
-  if (paperData) renderPaperPositions(paperData);
+  if (paperData) {
+    renderPaperPositions(paperData);
+    renderPaperBucketChart(paperData);
+  }
+  if (aiChainData) renderAiChain(aiChainData);
   if (activeTab === "paper") renderPaperPanel(paperData);
   lastUpdatedAt = data.updatedAt;
 }
