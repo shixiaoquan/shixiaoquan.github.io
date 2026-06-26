@@ -33,6 +33,20 @@ jobs:
           WENCAI_COOKIE: ${{ secrets.WENCAI_COOKIE }}
         run: python scripts/fetch_wencai.py
 
+      - name: Verify wencai output
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open("data/wencai.json", encoding="utf-8"))
+          print("cookieUsed:", d.get("cookieUsed"))
+          print("status:", d.get("status"))
+          print("message:", d.get("message"))
+          for s in d.get("screens", []):
+              print(f"  {s.get('id')}: {s.get('status')}")
+          if not d.get("cookieUsed"):
+              print("WARN: WENCAI_COOKIE 未生效，请检查仓库 Secret 名称与值")
+          PY
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
@@ -42,5 +56,6 @@ jobs:
             echo "No wencai changes."
           else
             git commit -m "chore: update wencai data"
+            git pull --rebase origin master
             git push
           fi
