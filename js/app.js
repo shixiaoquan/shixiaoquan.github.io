@@ -10,6 +10,19 @@ const DIAGNOSTICS_URL = "data/diagnostics.json";
 const AI_CHAIN_URL = "data/ai_chain.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
 
+/** XRPS-X 网格参数（与 scripts/xrps_config.py 一致） */
+const XRPS_ROLLING_SELL_LEVELS = [
+  { key: "sell_15", pct: 0.15, label: "涨 15%" },
+  { key: "sell_25", pct: 0.25, label: "涨 25%" },
+  { key: "sell_40", pct: 0.4, label: "涨 40%" },
+  { key: "sell_60", pct: 0.6, label: "涨 60%" },
+];
+const XRPS_ROLLING_BUY_LEVELS = [
+  { key: "buy_10", pct: -0.1, label: "回撤 10%" },
+  { key: "buy_20", pct: -0.2, label: "回撤 20%" },
+  { key: "buy_30", pct: -0.3, label: "回撤 30%" },
+];
+
 let lastUpdatedAt = null;
 let lastTradingUpdatedAt = null;
 let historyFilter = "all";
@@ -20,6 +33,7 @@ let backtestData = null;
 let paperData = null;
 let paperStrategyData = null;
 let paperBacktestData = null;
+let diagnosticsData = null;
 let wencaiData = null;
 let lastWencaiUpdatedAt = null;
 let yahooNews = [];
@@ -753,95 +767,256 @@ function renderStatCards(containerId, cards) {
     .join("");
 }
 
-function renderSignalsTable(data) {
-  const tbody = document.querySelector("#signals-table tbody");
-  const summaryEl = document.getElementById("signals-summary");
-  if (!tbody) return;
-
-  const signals = data?.signals || [];
-  if (summaryEl) {
-    summaryEl.textContent = signals.length
-      ? `共 ${signals.length} 条信号 · 持仓 ${data.openCount ?? 0} · 已平仓 ${data.closedCount ?? 0}`
-      : "暂无信号记录，系统将在荐股后自动跟踪";
+function analyzePaperStage(paper) {
+  if (!paper) {
+    return { stage: "loading", title: "加载中", desc: "正在读取模拟盘数据…" };
   }
 
-  if (!signals.length) {
-    tbody.innerHTML = '<tr><td colspan="9" class="empty">暂无信号数据</td></tr>';
+  const sells = (paper.trades || []).filter((t) => t.type === "sell");
+  const streak = paper.monthlyState?.consecutiveDownMonths || 0;
+  const positionPct = paper.positionPct || 0;
+
+  if (!paper.coreShares && !paper.rollingShares) {
+    return {
+      stage: "bootstrap",
+      title: "待建仓",
+      desc: "等待首次核心仓建仓信号，目标：股数优先、成本优先。",
+    };
+  }
+
+  if (sells.length === 0 && streak >= 5) {
+    return {
+      stage: "accumulate",
+      title: "建仓积累期",
+      desc: `${streak} 连阴月加仓阶段：侧重积累股数与摊低成本，短期净值波动属正常。`,
+    };
+  }
+
+  if (sells.length > 0 || (paper.rollingShares && paper.triggeredSellLevels?.length)) {
+    return {
+      stage: "rolling",
+      title: "滚动做 T 期",
+      desc: "滚动仓网格已激活，上涨分批卖、回撤分批买，锁定波动利润。",
+    };
+  }
+
+  if (positionPct >= 75) {
+    return {
+      stage: "high-position",
+      title: "高仓位待机",
+      desc: `仓位 ${positionPct}% 接近上限，等待滚动减仓或回撤补仓触发。`,
+    };
+  }
+
+  return {
+    stage: "normal",
+    title: "正常运行",
+    desc: "核心仓保留 + 滚动网格待命，关注下一档买卖触发位。",
+  };
+}
+
+function computeNextTriggers(paper) {
+  if (!paper) return { sells: [], buys: [] };
+
+  const price = quoteMap[paper.focusSymbol] || paper.lastPrice || 0;
+  const peak = paper.peakPrice || price;
+  const rollingCost = paper.rollingAvgCost || paper.avgCost || 0;
+  const triggeredSell = new Set(paper.triggeredSellLevels || []);
+  const triggeredBuy = new Set(paper.triggeredBuyLevels || []);
+
+  const sells = XRPS_ROLLING_SELL_LEVELS.filter((lv) => !triggeredSell.has(lv.key)).map((lv) => {
+    const triggerPrice = rollingCost > 0 ? rollingCost * (1 + lv.pct) : null;
+    const gap =
+      triggerPrice && price
+        ? Number((((triggerPrice - price) / price) * 100).toFixed(1))
+        : null;
+    return { ...lv, triggerPrice, gapPct: gap };
+  });
+
+  const buys = XRPS_ROLLING_BUY_LEVELS.filter((lv) => !triggeredBuy.has(lv.key)).map((lv) => {
+    const triggerPrice = peak > 0 ? peak * (1 + lv.pct) : null;
+    const gap =
+      triggerPrice && price
+        ? Number((((price - triggerPrice) / price) * 100).toFixed(1))
+        : null;
+    return { ...lv, triggerPrice, gapPct: gap };
+  });
+
+  return { sells: sells.slice(0, 2), buys: buys.slice(0, 2), price, peak, rollingCost };
+}
+
+function renderPaperStageBanner(paper) {
+  const el = document.getElementById("paper-stage-banner");
+  if (!el) return;
+
+  if (!paper) {
+    el.hidden = true;
     return;
   }
 
-  const sorted = [...signals].sort((a, b) => (b.openedAt || "").localeCompare(a.openedAt || ""));
+  const stage = analyzePaperStage(paper);
+  const triggers = computeNextTriggers(paper);
+  const nextSell = triggers.sells[0];
+  const nextBuy = triggers.buys[0];
+
+  const triggerHtml = [
+    nextSell?.triggerPrice
+      ? `<span class="paper-stage-banner__trigger">下一卖出 <strong>${formatNumber(nextSell.triggerPrice)}</strong>（${nextSell.label}，${nextSell.gapPct > 0 ? `还需涨 ${nextSell.gapPct}%` : "已到触发区"}）</span>`
+      : "",
+    nextBuy?.triggerPrice
+      ? `<span class="paper-stage-banner__trigger">下一买回 <strong>${formatNumber(nextBuy.triggerPrice)}</strong>（${nextBuy.label}，${nextBuy.gapPct > 0 ? `还需跌 ${nextBuy.gapPct}%` : "已到触发区"}）</span>`
+      : "",
+  ]
+    .filter(Boolean)
+    .join("");
+
+  el.hidden = false;
+  el.innerHTML = `
+    <div class="paper-stage-banner__main">
+      <span class="paper-stage-banner__badge paper-stage-banner__badge--${stage.stage}">${stage.title}</span>
+      <p class="paper-stage-banner__desc">${stage.desc}</p>
+    </div>
+    ${triggerHtml ? `<div class="paper-stage-banner__triggers">${triggerHtml}</div>` : ""}
+  `;
+}
+
+function renderReviewXrpsStats(paper, diagnostics) {
+  const el = document.getElementById("review-xrps-stats");
+  if (!el) return;
+
+  if (!paper) {
+    el.innerHTML = '<article class="stat-card"><p class="stat-card__label">XRPS-X</p><p class="stat-card__value">加载中…</p></article>';
+    return;
+  }
+
+  const summary = diagnostics?.summary || {};
+  const trades = paper.trades || [];
+  const sells = trades.filter((t) => t.type === "sell");
+  const wins = sells.filter((t) => (t.pnl || 0) > 0).length;
+  const rollingWinRate = sells.length ? Number(((wins / sells.length) * 100).toFixed(1)) : null;
+
+  renderStatCards("review-xrps-stats", [
+    { label: "持股数量", value: formatNumber(paper.totalShares, 0) },
+    { label: "持仓成本", value: formatNumber(paper.avgCost) },
+    {
+      label: "模拟收益",
+      value: formatPct(paper.returnPct),
+      valueClass: changeClass(paper.returnPct),
+      hint: `仓位 ${paper.positionPct ?? "--"}%`,
+    },
+    {
+      label: "回测对照",
+      value: formatPct(summary.backtestReturn),
+      valueClass: changeClass(summary.backtestReturn),
+      hint: rollingWinRate !== null ? `滚动胜率 ${rollingWinRate}%` : "尚无滚动卖出",
+    },
+  ]);
+}
+
+function renderXrpsTradesLog(paper) {
+  const tbody = document.querySelector("#xrps-trades-table tbody");
+  const summaryEl = document.getElementById("xrps-trades-summary");
+  if (!tbody) return;
+
+  const trades = paper?.trades || [];
+  if (summaryEl) {
+    summaryEl.textContent = trades.length
+      ? `共 ${trades.length} 笔成交 · 核心仓永不卖 · 滚动仓做 T`
+      : "暂无 XRPS-X 成交记录";
+  }
+
+  if (!trades.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="empty">暂无成交记录</td></tr>';
+    return;
+  }
+
+  const sorted = [...trades].reverse();
   tbody.innerHTML = sorted
-    .map((sig) => {
-      const ret = sig.returnPct;
-      const hold = sig.status === "open" ? `${sig.holdDays ?? 0} 天` : sig.closeReason || "--";
+    .map((t) => {
+      const typeLabel = t.type === "buy" ? "买入" : "卖出";
+      const typeClass = t.type === "buy" ? "trade-type--buy" : "trade-type--sell";
+      const pnlHtml =
+        t.type === "sell"
+          ? `<span class="change ${changeClass(t.pnlPct)}">${formatNumber(t.pnl)} (${formatPct(t.pnlPct)})</span>`
+          : "--";
       return `
       <tr>
-        <td><strong>${sig.name}</strong><br><span class="stock-card__symbol">${sig.symbol}</span></td>
-        <td><span class="reco-market reco-market--${marketClass(sig.market)}">${sig.market}</span></td>
-        <td><span class="signal-status ${signalStatusClass(sig.status)}">${signalStatusLabel(sig.status)}</span></td>
-        <td>${formatNumber(sig.entryPrice)}</td>
-        <td>${formatNumber(sig.currentPrice)}</td>
-        <td class="change ${changeClass(ret)}">${formatPct(ret)}</td>
-        <td class="change change--up">${formatPct(sig.maxGainPct)}</td>
-        <td class="change change--down">${formatPct(sig.maxDrawdownPct)}</td>
-        <td>${hold}</td>
+        <td>${bucketLabel(t.bucket)}</td>
+        <td><span class="trade-type ${typeClass}">${typeLabel}</span></td>
+        <td>${formatNumber(t.price)}</td>
+        <td>${formatNumber(t.shares, 2)}</td>
+        <td>${formatNumber(t.amount)}</td>
+        <td>${pnlHtml}</td>
+        <td>${reasonLabel(t.reason)}</td>
+        <td>${formatDateTime(t.time)}</td>
       </tr>
     `;
     })
     .join("");
 }
 
-function renderCockpitPaper(paper) {
-  const hintEl = document.getElementById("cockpit-paper-hint");
-  if (!paper) {
-    renderStatCards("cockpit-paper", [{ label: "XRPS-X", value: "加载中…" }]);
-    if (hintEl) hintEl.textContent = "XRPS-X 小米滚动仓";
-    return;
-  }
-  const focusName = paper.focusName || "小米集团";
+function renderCockpitTactical(backtest) {
+  const hintEl = document.getElementById("cockpit-tactical-hint");
+  const bt = backtest?.metrics || {};
   if (hintEl) {
-    hintEl.textContent = `${focusName} · ${formatNumber(paper.totalShares, 0)} 股 · 仓位 ${paper.positionPct ?? "--"}%`;
+    hintEl.textContent = backtest?.strategyVersion
+      ? `${backtest.strategyVersion} · 近 ${backtest.period || "1y"} · ${backtest.universe?.length || 0} 只标的`
+      : "荐股 v1.2 · 三市场波段（实验室回测）";
   }
-  renderStatCards("cockpit-paper", [
-    { label: "账户净值", value: formatNumber(paper.equity) },
+
+  renderStatCards("cockpit-tactical", [
+    { label: "战术策略", value: backtest?.strategyVersion || "v1.2.0" },
     {
-      label: "总收益率",
-      value: formatPct(paper.returnPct),
-      valueClass: changeClass(paper.returnPct),
+      label: "回测胜率",
+      value: bt.winRate !== undefined ? `${bt.winRate}%` : "--",
+      hint: bt.totalTrades !== undefined ? `${bt.totalTrades} 笔交易` : "",
     },
-    { label: "持股数量", value: formatNumber(paper.totalShares, 0) },
-    { label: "持仓成本", value: formatNumber(paper.avgCost) },
+    {
+      label: "期望值",
+      value: bt.expectancy !== undefined ? `${formatNumber(bt.expectancy)}%` : "--",
+      valueClass: changeClass(bt.expectancy),
+    },
+    {
+      label: "年化收益",
+      value: formatPct(bt.annualReturn),
+      valueClass: changeClass(bt.annualReturn),
+      hint: "实验策略，非 XRPS",
+    },
   ]);
 }
 
-function renderCockpitSystem(diag, backtest) {
-  const el = document.getElementById("cockpit-system");
-  if (!el) return;
+function renderCockpitPaper(paper, diagnostics) {
+  const hintEl = document.getElementById("cockpit-paper-hint");
+  if (!paper) {
+    renderStatCards("cockpit-paper", [{ label: "战役持仓", value: "加载中…" }]);
+    if (hintEl) hintEl.textContent = "XRPS-X 小米滚动仓";
+    return;
+  }
 
-  const summary = diag?.summary || {};
-  const bt = backtest?.metrics || {};
-  const cards = [
-    { label: "策略版本", value: diag?.strategyVersion || backtest?.strategyVersion || "--" },
+  const stage = analyzePaperStage(paper);
+  const summary = diagnostics?.summary || {};
+  const focusName = paper.focusName || "小米集团";
+
+  if (hintEl) {
+    hintEl.textContent = `${focusName} · ${stage.title} · ${formatNumber(paper.totalShares, 0)} 股`;
+  }
+
+  renderStatCards("cockpit-paper", [
+    { label: "持股数量", value: formatNumber(paper.totalShares, 0) },
+    { label: "持仓成本", value: formatNumber(paper.avgCost) },
     {
-      label: "信号胜率",
-      value: summary.winRate !== null && summary.winRate !== undefined ? `${summary.winRate}%` : "--",
-      hint: `已平仓 ${summary.closedSignals ?? 0} 笔`,
+      label: "模拟收益",
+      value: formatPct(paper.returnPct),
+      valueClass: changeClass(paper.returnPct),
+      hint: `仓位 ${paper.positionPct ?? "--"}%`,
     },
     {
-      label: "回测期望值",
-      value: bt.expectancy !== undefined ? `${formatNumber(bt.expectancy)}%` : "--",
-      valueClass: changeClass(bt.expectancy),
-      hint: bt.winRate !== undefined ? `胜率 ${bt.winRate}%` : "",
+      label: "回测对照",
+      value: formatPct(summary.backtestReturn),
+      valueClass: changeClass(summary.backtestReturn),
+      hint: diagnostics?.strategyVersion || "XRPS-X",
     },
-    {
-      label: "模拟盘收益",
-      value: formatPct(summary.paperReturn),
-      valueClass: changeClass(summary.paperReturn),
-      hint: summary.openSignals !== undefined ? `持仓信号 ${summary.openSignals}` : "",
-    },
-  ];
-  renderStatCards("cockpit-system", cards);
+  ]);
 }
 
 function renderLabMetrics(backtest) {
@@ -1233,6 +1408,7 @@ function renderPaperPanel(paper, loadState = "ready") {
       },
     ]);
     renderCockpitPaper(null);
+    renderPaperStageBanner(null);
     const positionsEl = document.getElementById("paper-positions");
     if (positionsEl) positionsEl.innerHTML = '<p class="empty">数据加载中…</p>';
     const tbody = document.querySelector("#paper-trades-table tbody");
@@ -1242,7 +1418,10 @@ function renderPaperPanel(paper, loadState = "ready") {
   renderPaperStats(paper);
   renderPaperPositions(paper);
   renderPaperTrades(paper.trades);
-  renderCockpitPaper(paper);
+  renderPaperStageBanner(paper);
+  renderCockpitPaper(paper, diagnosticsData);
+  renderXrpsTradesLog(paper);
+  renderReviewXrpsStats(paper, diagnosticsData);
   requestAnimationFrame(() => {
     try {
       renderPaperChart(paper.equityCurve, true);
@@ -1839,15 +2018,11 @@ function renderPaperTrades(trades) {
 }
 
 function applyTradingData(payload) {
-  const { signals, backtest, paper, diagnostics } = payload;
+  const { backtest, paper, diagnostics } = payload;
   // 优先应用模拟盘，避免其他面板渲染异常阻塞 paper 展示
   if (paper) {
     paperData = paper;
     renderPaperPanel(paper);
-  }
-  if (signals) {
-    signalsData = signals;
-    renderSignalsTable(signals);
   }
   if (backtest) {
     backtestData = backtest;
@@ -1855,12 +2030,16 @@ function applyTradingData(payload) {
     renderLabVersionCompare(backtest);
     renderLabByMarket(backtest);
     renderBacktestTrades(backtest.recentTrades);
+    renderCockpitTactical(backtest);
     if (activeTab === "lab") renderBacktestChart(backtest.equityCurve);
   }
   if (diagnostics) {
     diagnosticsData = diagnostics;
     renderDiagnostics(diagnostics);
-    renderCockpitSystem(diagnostics, backtestData);
+    if (paperData) {
+      renderCockpitPaper(paperData, diagnostics);
+      renderReviewXrpsStats(paperData, diagnostics);
+    }
   }
 }
 

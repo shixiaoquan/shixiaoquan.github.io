@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="三市场投资决策工作台：实时行情、量化荐股、历史复盘">
+  <meta name="description" content="三市场投资决策工作台：实时行情、量化荐股、小米 XRPS 模拟盘、交易日志">
   <title>投资分析大盘 | shixiaoquan</title>
   <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png?v=3" type="image/png" sizes="32x32">
@@ -17,7 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=12" defer></script>
+  <script src="js/app.js?v=13" defer></script>
 </head>
 <body>
   <div class="app">
@@ -37,7 +37,7 @@
       <button type="button" class="tabs__btn tabs__btn--active" data-tab="cockpit" role="tab" aria-selected="true">驾驶舱</button>
       <button type="button" class="tabs__btn" data-tab="market" role="tab" aria-selected="false">大盘</button>
       <button type="button" class="tabs__btn" data-tab="reco" role="tab" aria-selected="false">荐股</button>
-      <button type="button" class="tabs__btn" data-tab="review" role="tab" aria-selected="false">复盘</button>
+      <button type="button" class="tabs__btn" data-tab="review" role="tab" aria-selected="false">交易日志</button>
       <button type="button" class="tabs__btn" data-tab="lab" role="tab" aria-selected="false">实验室</button>
       <button type="button" class="tabs__btn" data-tab="paper" role="tab" aria-selected="false">模拟盘</button>
       <button type="button" class="tabs__btn" data-tab="ai" role="tab" aria-selected="false">AI产业</button>
@@ -68,17 +68,17 @@
         <section class="panel">
           <div class="panel__head panel__head--row">
             <div>
-              <h2>系统状态</h2>
-              <p id="cockpit-system-hint">策略运行与进化指标</p>
+              <h2>战术雷达</h2>
+              <p id="cockpit-tactical-hint">荐股 v1.2 · 三市场波段（实验室回测）</p>
             </div>
             <button type="button" class="link-btn" data-goto-tab="lab">实验室 →</button>
           </div>
-          <div class="review-stats review-stats--compact" id="cockpit-system"></div>
+          <div class="review-stats review-stats--compact" id="cockpit-tactical"></div>
         </section>
         <section class="panel">
           <div class="panel__head panel__head--row">
             <div>
-              <h2>模拟盘速览</h2>
+              <h2>战役持仓</h2>
               <p id="cockpit-paper-hint">XRPS-X 小米滚动仓</p>
             </div>
             <button type="button" class="link-btn" data-goto-tab="paper">模拟盘 →</button>
@@ -182,37 +182,40 @@
       </section>
     </section>
 
-    <!-- 复盘 -->
+    <!-- 交易日志 -->
     <section id="panel-review" class="tab-panel" role="tabpanel" hidden>
-      <section class="review-stats" id="review-stats"></section>
+      <section class="review-stats" id="review-xrps-stats"></section>
       <section class="panel panel--wide">
-        <div class="panel__head">
-          <h2>信号生命周期</h2>
-          <p id="signals-summary">跟踪每条荐股从开仓到平仓的全过程</p>
+        <div class="panel__head panel__head--row">
+          <div>
+            <h2>XRPS-X 成交记录</h2>
+            <p id="xrps-trades-summary">小米滚动仓模拟盘全部成交</p>
+          </div>
+          <button type="button" class="link-btn" data-goto-tab="paper">模拟盘 →</button>
         </div>
         <div class="signals-table-wrap">
-          <table class="data-table" id="signals-table">
+          <table class="data-table" id="xrps-trades-table">
             <thead>
               <tr>
-                <th>标的</th>
-                <th>市场</th>
-                <th>状态</th>
-                <th>开仓价</th>
-                <th>现价</th>
-                <th>收益</th>
-                <th>最大浮盈</th>
-                <th>最大回撤</th>
-                <th>持有</th>
+                <th>仓位</th>
+                <th>类型</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th>金额</th>
+                <th>盈亏</th>
+                <th>原因</th>
+                <th>时间</th>
               </tr>
             </thead>
             <tbody></tbody>
           </table>
         </div>
       </section>
+      <section class="review-stats" id="review-stats"></section>
       <section class="panel panel--wide history-section">
         <div class="panel__head history-section__head">
           <div>
-            <h2>历史荐股记录</h2>
+            <h2>荐股历史快照</h2>
             <p id="history-summary">自动存档每次荐股快照</p>
           </div>
           <div class="history-filters" id="history-filters" role="tablist" aria-label="市场筛选">
@@ -288,12 +291,14 @@
       <article class="paper-strategy-card" id="paper-strategy-card" role="button" tabindex="0" aria-label="查看策略详情">
         <div class="paper-strategy-card__head">
           <h3 class="paper-strategy-card__title">
-            当前策略<span class="paper-strategy-card__version" id="paper-card-version">v1.1.0</span>
+            当前策略<span class="paper-strategy-card__version" id="paper-card-version">XRPS-X</span>
           </h3>
           <span class="paper-strategy-card__link">查看详情 →</span>
         </div>
         <div class="paper-strategy-card__grid" id="paper-strategy-summary"></div>
       </article>
+
+      <section class="paper-stage-banner" id="paper-stage-banner" hidden aria-live="polite"></section>
 
       <h3 class="paper-section-title">实时模拟（XRPS-X · 100 万）</h3>
       <section class="review-stats" id="paper-stats"></section>
