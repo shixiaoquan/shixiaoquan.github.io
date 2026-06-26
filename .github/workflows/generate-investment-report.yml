@@ -1,0 +1,63 @@
+name: Generate Investment Report
+
+# 北京时间 09:00 / 12:00 / 16:00 生成投资决策日报
+# UTC: 01:00 / 04:00 / 08:00
+
+on:
+  schedule:
+    - cron: "0 1 * * *"   # 09:00 北京时间 · 晨会纪要
+    - cron: "0 4 * * *"   # 12:00 北京时间 · 午间速递
+    - cron: "0 8 * * *"   # 16:00 北京时间 · 收盘前瞻
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "报告时段"
+        required: true
+        default: auto
+        type: choice
+        options:
+          - auto
+          - morning
+          - noon
+          - afternoon
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-updates-${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Refresh market data
+        run: |
+          python scripts/fetch_data.py
+          python scripts/trading_engine.py
+
+      - name: Generate investment report
+        run: python scripts/generate_report.py --slot "${{ github.event.inputs.slot || 'auto' }}"
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/reports/
+          if git diff --staged --quiet; then
+            echo "No report changes."
+          else
+            git commit -m "chore: update investment report"
+            git pull --rebase origin master
+            git push
+          fi

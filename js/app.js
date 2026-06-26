@@ -8,6 +8,7 @@ const PAPER_STRATEGY_URL = "data/paper_strategy.json";
 const PAPER_BACKTEST_URL = "data/paper_backtest.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
 const AI_CHAIN_URL = "data/ai_chain.json";
+const REPORTS_INDEX_URL = "data/reports/index.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
 const HISTORY_DISPLAY_LIMIT = 40;
 const AI_SEARCH_DEBOUNCE_MS = 250;
@@ -44,16 +45,18 @@ let aiChainData = null;
 let aiChainFilter = "all";
 let aiChainSearch = "";
 let aiChainView = "list";
+let reportsIndex = null;
+let currentReportId = null;
 let quoteMap = {};
 let quoteChangeMap = {};
 let activeTab = "cockpit";
 let suppressTabRoute = false;
-const tabBundles = { paper: false, ai: false };
+const tabBundles = { paper: false, ai: false, reports: false };
 let historyDisplayLimit = HISTORY_DISPLAY_LIMIT;
 let lastRecoHistoryStamp = null;
 let aiSearchTimer = null;
 
-const VALID_TABS = new Set(["cockpit", "market", "reco", "lab", "paper", "ai"]);
+const VALID_TABS = new Set(["cockpit", "reports", "market", "reco", "lab", "paper", "ai"]);
 const TAB_ALIASES = { review: "paper", news: "cockpit" };
 const DEFAULT_TAB = "cockpit";
 
@@ -193,6 +196,9 @@ function switchTab(tabId, options = {}) {
   if (tabId === "ai" && aiChainData) {
     renderAiChain(aiChainData);
     if (aiChainView === "mindmap") renderAiMindMap(aiChainData);
+  }
+  if (tabId === "reports" && reportsIndex) {
+    renderReportsPanel();
   }
   ensureTabData(tabId);
 }
@@ -717,6 +723,10 @@ async function ensureTabData(tabId) {
   if (tabId === "ai" && !tabBundles.ai) {
     tabBundles.ai = true;
     await loadAiChainData();
+  }
+  if (tabId === "reports" && !tabBundles.reports) {
+    tabBundles.reports = true;
+    await loadReportsIndex();
   }
 }
 
@@ -2312,6 +2322,103 @@ async function loadAiChainData() {
   if (activeTab === "ai") renderAiChain(data);
 }
 
+async function loadAiChainData() {
+  const data = await fetchJson(AI_CHAIN_URL);
+  if (!data) return;
+  aiChainData = data;
+  renderCockpitAiTeaser(data);
+  if (activeTab === "ai") renderAiChain(data);
+}
+
+function slotBadgeClass(slot) {
+  if (slot === "morning") return "report-slot--morning";
+  if (slot === "noon") return "report-slot--noon";
+  return "report-slot--afternoon";
+}
+
+async function loadReportsIndex() {
+  const data = await fetchJson(REPORTS_INDEX_URL);
+  if (!data) return;
+  reportsIndex = data;
+  if (!currentReportId && data.latest?.id) {
+    currentReportId = data.latest.id;
+    await loadReportContent(currentReportId);
+  }
+  if (activeTab === "reports") renderReportsPanel();
+}
+
+async function loadReportContent(reportId) {
+  const entry = reportsIndex?.reports?.find((r) => r.id === reportId);
+  if (!entry?.path) return;
+  try {
+    const response = await fetch(`${entry.path}?t=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const markdown = await response.text();
+    currentReportId = reportId;
+    renderReportMarkdown(entry, markdown);
+    renderReportsPanel();
+  } catch (error) {
+    console.error("report load failed", error);
+    const el = document.getElementById("report-markdown");
+    if (el) el.innerHTML = '<p class="empty">报告加载失败，请稍后重试。</p>';
+  }
+}
+
+function renderReportMarkdown(entry, markdown) {
+  const head = document.getElementById("report-body-head");
+  const body = document.getElementById("report-markdown");
+  if (!body) return;
+
+  if (head) {
+    head.innerHTML = `
+      <h3>${entry.title || entry.slotLabel || "投资决策日报"}</h3>
+      <p>${formatDateTime(entry.generatedAt)} · ${entry.subtitle || ""}</p>
+      <p class="report-excerpt">${entry.excerpt || ""}</p>
+    `;
+  }
+
+  if (typeof marked !== "undefined" && marked.parse) {
+    body.innerHTML = marked.parse(markdown, { gfm: true, breaks: false });
+  } else {
+    body.innerHTML = `<pre class="report-fallback">${markdown.replace(/</g, "&lt;")}</pre>`;
+  }
+}
+
+function renderReportsPanel() {
+  const list = document.getElementById("report-list");
+  const subtitle = document.getElementById("report-panel-subtitle");
+  if (!list) return;
+
+  const reports = reportsIndex?.reports || [];
+  if (subtitle) {
+    subtitle.textContent = reportsIndex?.updatedAt
+      ? `最近更新 ${formatDateTime(reportsIndex.updatedAt)} · 每日 09:00 / 12:00 / 16:00`
+      : "每日 09:00 / 12:00 / 16:00（北京时间）自动生成";
+  }
+
+  if (!reports.length) {
+    list.innerHTML = '<li class="empty">暂无研报，等待定时任务生成。</li>';
+    return;
+  }
+
+  list.innerHTML = reports
+    .map(
+      (r) => `
+    <li>
+      <button type="button" class="report-list__btn ${r.id === currentReportId ? "report-list__btn--active" : ""}" data-report-id="${r.id}">
+        <time datetime="${r.generatedAt}">${r.date} ${r.slotLabel}</time>
+        <strong>${r.title}</strong>
+      </button>
+    </li>
+  `
+    )
+    .join("");
+
+  list.querySelectorAll("[data-report-id]").forEach((btn) => {
+    btn.addEventListener("click", () => loadReportContent(btn.dataset.reportId));
+  });
+}
+
 function setupNewsFilters() {
   const filters = document.getElementById("news-filters");
   if (!filters) return;
@@ -2847,7 +2954,10 @@ async function init() {
   }, POLL_INTERVAL_MS);
 
   const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 2500));
-  scheduleIdle(() => ensureTabData("ai"));
+  scheduleIdle(() => {
+    ensureTabData("ai");
+    ensureTabData("reports");
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);

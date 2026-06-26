@@ -10,10 +10,11 @@
   <link rel="stylesheet" href="css/ai-chain.css">
   <link rel="stylesheet" href="css/paper.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/style/jsmind.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=18" defer></script>
+  <script src="js/app.js?v=19" defer></script>
 </head>
 <body>
   <div class="app">
@@ -31,6 +32,7 @@
 
     <nav class="tabs" id="main-tabs" role="tablist" aria-label="主导航">
       <button type="button" class="tabs__btn tabs__btn--active" data-tab="cockpit" role="tab" aria-selected="true">驾驶舱</button>
+      <button type="button" class="tabs__btn" data-tab="reports" role="tab" aria-selected="false">研报</button>
       <button type="button" class="tabs__btn" data-tab="market" role="tab" aria-selected="false">大盘</button>
       <button type="button" class="tabs__btn" data-tab="reco" role="tab" aria-selected="false">荐股</button>
       <button type="button" class="tabs__btn" data-tab="lab" role="tab" aria-selected="false">实验室</button>
@@ -48,9 +50,12 @@
       <section class="panel panel--wide wencai-banner" id="cockpit-wencai"></section>
 
       <section class="panel panel--wide decision-panel" id="cockpit-decision">
-        <div class="panel__head">
-          <h2>今日研判</h2>
-          <p id="decision-brief-subtitle">市场脉络 · 战役与战术行动建议</p>
+        <div class="panel__head panel__head--row">
+          <div>
+            <h2>今日研判</h2>
+            <p id="decision-brief-subtitle">市场脉络 · 战役与战术行动建议</p>
+          </div>
+          <button type="button" class="link-btn" data-goto-tab="reports">完整研报 →</button>
         </div>
         <div class="decision-brief__body" id="decision-brief-body">
           <p class="empty">正在汇总研判…</p>
@@ -146,6 +151,30 @@
           <ul class="news-list" id="news-list"></ul>
         </section>
       </div>
+    </section>
+
+    <!-- 研报 -->
+    <section id="panel-reports" class="tab-panel" role="tabpanel" hidden>
+      <section class="panel panel--wide report-panel">
+        <div class="panel__head panel__head--row">
+          <div>
+            <h2>投资决策日报</h2>
+            <p id="report-panel-subtitle">每日 09:00 / 12:00 / 16:00（北京时间）自动生成</p>
+          </div>
+        </div>
+        <div class="report-layout">
+          <aside class="report-sidebar">
+            <h3 class="report-sidebar__title">历史报告</h3>
+            <ul class="report-list" id="report-list" aria-label="报告列表"></ul>
+          </aside>
+          <article class="report-body">
+            <header class="report-body__head" id="report-body-head"></header>
+            <div class="report-markdown" id="report-markdown">
+              <p class="empty">选择左侧报告，或等待今日首份研报生成。</p>
+            </div>
+          </article>
+        </div>
+      </section>
     </section>
 
     <!-- 大盘 -->
@@ -517,7 +546,7 @@
     </section>
 
     <footer class="footer">
-      <p>数据来源：Yahoo Finance · 同花顺问财 · 行情每 5 分钟 · 问财每小时 · 回测每周 · 仅供参考，不构成投资建议</p>
+      <p>数据来源：Yahoo Finance · 同花顺问财 · 研报每日 9/12/16 点 · 行情每 5 分钟 · 仅供参考，不构成投资建议</p>
     </footer>
   </div>
 </body>
