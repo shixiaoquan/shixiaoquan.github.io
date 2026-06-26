@@ -400,6 +400,8 @@ def main() -> None:
         payload["errors"] = errors
     if stale_news:
         payload["newsStale"] = True
+    if not cookie and errors:
+        payload["cookieHint"] = "可在 GitHub Secrets 配置 WENCAI_COOKIE，详见 .github/WENCAI_SETUP.md"
 
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {OUTPUT_FILE} ({status}, {ok_count} screens, {len(news)} news)")

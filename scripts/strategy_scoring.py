@@ -12,6 +12,7 @@ from strategy_config import (
     REQUIRE_ABOVE_MA200,
     REQUIRE_BENCH_ABOVE_MA200,
     REQUIRE_BULL_MARKET,
+    REQUIRE_BREAKOUT_FOR_BUY,
     REQUIRE_MACD_POSITIVE,
     REWARD_RISK_RATIO,
     WATCH_SCORE,
@@ -285,12 +286,21 @@ def score_series(
     entry_type = None
     if not regime["regimeOk"]:
         signal, signal_label = "hold", "暂不参与"
-    elif breakout_info["breakout"] and score >= BREAKOUT_SCORE_MIN and rsi <= MAX_RSI_ENTRY:
+    elif breakout_info["breakout"] and score >= BREAKOUT_SCORE_MIN and rsi <= MAX_RSI_ENTRY and soft_ok:
         signal, signal_label = "buy", "突破买入"
         entry_type = "breakout"
-    elif score >= BUY_SCORE and trend_ok and soft_ok:
+    elif (
+        not REQUIRE_BREAKOUT_FOR_BUY
+        and score >= BUY_SCORE
+        and trend_ok
+        and soft_ok
+        and regime["bullMarket"]
+    ):
         signal, signal_label = "buy", "趋势买入"
         entry_type = "trend"
+    elif score >= BUY_SCORE and trend_ok and REQUIRE_BREAKOUT_FOR_BUY:
+        signal, signal_label = "watch", "趋势达标待突破"
+        entry_type = None
     elif score >= WATCH_SCORE:
         signal, signal_label = "watch", "建议观察"
     else:

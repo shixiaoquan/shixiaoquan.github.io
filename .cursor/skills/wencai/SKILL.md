@@ -69,7 +69,8 @@ df = pywencai.get(
 
 ## 注意事项
 
-- **低频调用**：每 5 分钟已集成，勿再叠加高频问句
+- **低频调用**：每小时由 `update-wencai-data.yml` 单独运行，勿再叠加高频问句
+- GitHub Cookie 配置见 `.github/WENCAI_SETUP.md`（Secret 名：`WENCAI_COOKIE`）
 - 非官方接口，仅供学习研究，商用需自行评估风险
 - 列名带日期后缀（如 `最新涨跌幅`），解析用 `scripts/fetch_wencai.py` 的 `normalize_row`
 

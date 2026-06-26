@@ -17,7 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=15" defer></script>
+  <script src="js/app.js?v=16" defer></script>
 </head>
 <body>
   <div class="app">
@@ -37,11 +37,9 @@
       <button type="button" class="tabs__btn tabs__btn--active" data-tab="cockpit" role="tab" aria-selected="true">驾驶舱</button>
       <button type="button" class="tabs__btn" data-tab="market" role="tab" aria-selected="false">大盘</button>
       <button type="button" class="tabs__btn" data-tab="reco" role="tab" aria-selected="false">荐股</button>
-      <button type="button" class="tabs__btn" data-tab="review" role="tab" aria-selected="false">交易日志</button>
       <button type="button" class="tabs__btn" data-tab="lab" role="tab" aria-selected="false">实验室</button>
       <button type="button" class="tabs__btn" data-tab="paper" role="tab" aria-selected="false">模拟盘</button>
       <button type="button" class="tabs__btn" data-tab="ai" role="tab" aria-selected="false">AI产业</button>
-      <button type="button" class="tabs__btn" data-tab="news" role="tab" aria-selected="false">资讯</button>
     </nav>
 
     <!-- 驾驶舱 -->
@@ -69,7 +67,7 @@
           <div class="panel__head panel__head--row">
             <div>
               <h2>战术雷达</h2>
-              <p id="cockpit-tactical-hint">荐股 v1.2 · 三市场波段（实验室回测）</p>
+              <p id="cockpit-tactical-hint">荐股 v1.3 · 强趋势+突破（实验室回测）</p>
             </div>
             <button type="button" class="link-btn" data-goto-tab="lab">实验室 →</button>
           </div>
@@ -102,15 +100,19 @@
           </div>
           <div class="index-mini-grid" id="cockpit-indices"></div>
         </section>
-        <section class="panel">
-          <div class="panel__head panel__head--row">
+        <section class="panel panel--wide" id="cockpit-news-panel">
+          <div class="panel__head panel__head--row history-section__head">
             <div>
-              <h2>最新资讯</h2>
-              <p>财经要闻</p>
+              <h2>重要资讯</h2>
+              <p>Yahoo Finance · 同花顺问财</p>
             </div>
-            <button type="button" class="link-btn" data-goto-tab="news">更多 →</button>
+            <div class="history-filters" id="news-filters" role="tablist" aria-label="资讯来源筛选">
+              <button type="button" class="news-filter news-filter--active" data-source="all">全部</button>
+              <button type="button" class="news-filter" data-source="wencai">问财</button>
+              <button type="button" class="news-filter" data-source="yahoo">Yahoo</button>
+            </div>
           </div>
-          <ul class="news-list news-list--compact" id="cockpit-news"></ul>
+          <ul class="news-list" id="news-list"></ul>
         </section>
       </div>
     </section>
@@ -175,91 +177,17 @@
       <section class="panel panel--wide reco-section">
         <div class="panel__head">
           <h2>今日荐股</h2>
-          <p id="reco-strategy">战术实验 v1.2 · A股 / 港股 / 美股 各选 1 只</p>
+          <p id="reco-strategy">战术实验 v1.3 · A股 / 港股 / 美股 各选 1 只</p>
         </div>
         <div class="reco-cards" id="reco-cards"></div>
         <p class="reco-disclaimer" id="reco-disclaimer"></p>
       </section>
     </section>
 
-    <!-- 交易日志 -->
-    <section id="panel-review" class="tab-panel" role="tabpanel" hidden>
-      <section class="review-stats" id="review-xrps-stats"></section>
-      <section class="panel panel--wide">
-        <div class="panel__head panel__head--row">
-          <div>
-            <h2>XRPS-X 成交记录</h2>
-            <p id="xrps-trades-summary">小米滚动仓模拟盘全部成交</p>
-          </div>
-          <button type="button" class="link-btn" data-goto-tab="paper">模拟盘 →</button>
-        </div>
-        <div class="signals-table-wrap">
-          <table class="data-table" id="xrps-trades-table">
-            <thead>
-              <tr>
-                <th>仓位</th>
-                <th>类型</th>
-                <th>价格</th>
-                <th>数量</th>
-                <th>金额</th>
-                <th>盈亏</th>
-                <th>原因</th>
-                <th>时间</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </section>
-      <section class="panel panel--wide">
-        <div class="panel__head panel__head--row">
-          <div>
-            <h2>战术信号跟踪</h2>
-            <p id="tactical-signals-summary">v1.2 实验策略 · 仅跟踪 buy 信号</p>
-          </div>
-          <button type="button" class="link-btn" data-goto-tab="lab">实验室 →</button>
-        </div>
-        <div class="signals-table-wrap">
-          <table class="data-table" id="tactical-signals-table">
-            <thead>
-              <tr>
-                <th>标的</th>
-                <th>市场</th>
-                <th>状态</th>
-                <th>开仓价</th>
-                <th>现价</th>
-                <th>收益</th>
-                <th>最大浮盈</th>
-                <th>最大回撤</th>
-                <th>持有</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </section>
-      <section class="review-stats" id="review-stats"></section>
-      <section class="panel panel--wide history-section">
-        <div class="panel__head history-section__head">
-          <div>
-            <h2>荐股历史快照</h2>
-            <p id="history-summary">自动存档每次荐股快照</p>
-          </div>
-          <div class="history-filters" id="history-filters" role="tablist" aria-label="市场筛选">
-            <button type="button" class="history-filter history-filter--active" data-market="all">全部</button>
-            <button type="button" class="history-filter" data-market="A股">A股</button>
-            <button type="button" class="history-filter" data-market="港股">港股</button>
-            <button type="button" class="history-filter" data-market="美股">美股</button>
-          </div>
-        </div>
-        <div class="history-timeline" id="history-timeline"></div>
-      </section>
-    </section>
-
     <!-- 策略实验室 -->
     <section id="panel-lab" class="tab-panel" role="tabpanel" hidden>
       <section class="lab-experimental-banner" aria-label="实验策略说明">
-        <p><strong>战术实验策略</strong> — 本页为 v1.2 多标的波段回测，与「战役持仓」XRPS 小米滚动仓相互独立，仅供研究参考。</p>
+        <p><strong>战术实验策略</strong> — 本页为 v1.3 多标的波段回测（强趋势+突破过滤），与「战役持仓」XRPS 小米滚动仓相互独立，仅供研究参考。</p>
       </section>
       <section class="review-stats" id="lab-metrics"></section>
       <div class="lab-grid">
@@ -384,6 +312,75 @@
         </div>
       </section>
 
+      <h3 class="paper-section-title">交易日志</h3>
+      <section class="review-stats" id="review-xrps-stats"></section>
+      <section class="panel panel--wide paper-journal">
+        <div class="panel__head">
+          <h2>XRPS-X 成交记录</h2>
+          <p id="xrps-trades-summary">小米滚动仓模拟盘全部成交</p>
+        </div>
+        <div class="signals-table-wrap">
+          <table class="data-table" id="xrps-trades-table">
+            <thead>
+              <tr>
+                <th>仓位</th>
+                <th>类型</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th>金额</th>
+                <th>盈亏</th>
+                <th>原因</th>
+                <th>时间</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel panel--wide paper-journal">
+        <div class="panel__head panel__head--row">
+          <div>
+            <h2>战术信号跟踪</h2>
+            <p id="tactical-signals-summary">v1.3 实验策略 · 仅跟踪 buy 信号</p>
+          </div>
+          <button type="button" class="link-btn" data-goto-tab="lab">实验室 →</button>
+        </div>
+        <div class="signals-table-wrap">
+          <table class="data-table" id="tactical-signals-table">
+            <thead>
+              <tr>
+                <th>标的</th>
+                <th>市场</th>
+                <th>状态</th>
+                <th>开仓价</th>
+                <th>现价</th>
+                <th>收益</th>
+                <th>最大浮盈</th>
+                <th>最大回撤</th>
+                <th>持有</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="review-stats" id="review-stats"></section>
+      <section class="panel panel--wide history-section paper-journal">
+        <div class="panel__head history-section__head">
+          <div>
+            <h2>荐股历史快照</h2>
+            <p id="history-summary">自动存档每次荐股快照</p>
+          </div>
+          <div class="history-filters" id="history-filters" role="tablist" aria-label="市场筛选">
+            <button type="button" class="history-filter history-filter--active" data-market="all">全部</button>
+            <button type="button" class="history-filter" data-market="A股">A股</button>
+            <button type="button" class="history-filter" data-market="港股">港股</button>
+            <button type="button" class="history-filter" data-market="美股">美股</button>
+          </div>
+        </div>
+        <div class="history-timeline" id="history-timeline"></div>
+      </section>
+
       <h3 class="paper-section-title">历史回测（初始 100 万 · 2018-07-09 上市以来）</h3>
       <h4 class="paper-subsection-title">滚动周期</h4>
       <div class="paper-backtest-grid" id="paper-backtest-rolling"></div>
@@ -449,24 +446,6 @@
           <p>常见轮动逻辑与龙头方向</p>
         </div>
         <div class="ai-themes" id="ai-chain-themes"></div>
-      </section>
-    </section>
-
-    <!-- 资讯 -->
-    <section id="panel-news" class="tab-panel" role="tabpanel" hidden>
-      <section class="panel panel--wide">
-        <div class="panel__head history-section__head">
-          <div>
-            <h2>重要资讯</h2>
-            <p>Yahoo Finance 全球财经 · 同花顺问财 A 股公告与利好</p>
-          </div>
-          <div class="history-filters" id="news-filters" role="tablist" aria-label="资讯来源筛选">
-            <button type="button" class="news-filter news-filter--active" data-source="all">全部</button>
-            <button type="button" class="news-filter" data-source="wencai">问财</button>
-            <button type="button" class="news-filter" data-source="yahoo">Yahoo</button>
-          </div>
-        </div>
-        <ul class="news-list" id="news-list"></ul>
       </section>
     </section>
 

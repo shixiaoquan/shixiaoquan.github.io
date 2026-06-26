@@ -6,14 +6,21 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from strategy_config import SIGNAL_MAX_HOLD_DAYS, STRATEGY_VERSION
+from strategy_config import (
+    BUY_SCORE,
+    SIGNAL_MAX_HOLD_DAYS,
+    SIGNAL_MIN_HOLD_DAYS,
+    SIGNAL_REENTRY_COOLDOWN_DAYS,
+    STRATEGY_VERSION,
+    TRAIL_GIVEBACK_PCT,
+    TRAIL_MIN_GAIN_PCT,
+    WATCH_SCORE,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 SIGNALS_FILE = DATA_DIR / "signals.json"
 MAX_SIGNALS = 200
-TRAIL_GIVEBACK_PCT = 50
-TRAIL_MIN_GAIN_PCT = 8.0
 
 OPEN_STATUS = "open"
 CLOSED_STATUSES = frozenset(
@@ -118,7 +125,11 @@ def _update_open(sig: dict, price: float, now: datetime, now_iso: str) -> None:
         return
 
     max_gain = sig.get("maxGainPct", 0)
-    if max_gain >= TRAIL_MIN_GAIN_PCT and ret <= max_gain * (1 - TRAIL_GIVEBACK_PCT / 100):
+    if (
+        sig["holdDays"] >= SIGNAL_MIN_HOLD_DAYS
+        and max_gain >= TRAIL_MIN_GAIN_PCT
+        and ret <= max_gain * (1 - TRAIL_GIVEBACK_PCT / 100)
+    ):
         _close_signal(sig, price, now_iso, "closed_trail", "跟踪止损")
         return
 
@@ -170,13 +181,25 @@ def update_reco_signals(
         _update_open(sig, float(price), now, now_iso)
 
     open_symbols = {s["symbol"] for s in signals if s.get("status") == OPEN_STATUS}
+    closed_recent = {
+        s["symbol"]: s.get("exitAt")
+        for s in signals
+        if s.get("status") in CLOSED_STATUSES and s.get("exitAt")
+    }
+
     for pick in picks:
         if pick.get("signal") != "buy":
             continue
-        if pick["symbol"] in open_symbols:
+        symbol = pick["symbol"]
+        if symbol in open_symbols:
             continue
+        last_exit = closed_recent.get(symbol)
+        if last_exit:
+            days_since = _hold_days(last_exit, now)
+            if days_since < SIGNAL_REENTRY_COOLDOWN_DAYS:
+                continue
         signals.append(_new_signal(pick, now_iso, reco_record_id))
-        open_symbols.add(pick["symbol"])
+        open_symbols.add(symbol)
 
     signals = _trim_signals(signals)
     summary = _build_summary(signals)

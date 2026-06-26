@@ -47,8 +47,15 @@ let quoteChangeMap = {};
 let activeTab = "cockpit";
 let suppressTabRoute = false;
 
-const VALID_TABS = new Set(["cockpit", "market", "reco", "review", "lab", "paper", "ai", "news"]);
+const VALID_TABS = new Set(["cockpit", "market", "reco", "lab", "paper", "ai"]);
+const TAB_ALIASES = { review: "paper", news: "cockpit" };
 const DEFAULT_TAB = "cockpit";
+
+function resolveTabId(tabId) {
+  if (!tabId) return DEFAULT_TAB;
+  if (VALID_TABS.has(tabId)) return tabId;
+  return TAB_ALIASES[tabId] || DEFAULT_TAB;
+}
 
 let distributionChart;
 let stocksChart;
@@ -101,10 +108,9 @@ function calcReturn(recoPrice, currentPrice) {
 }
 
 function tabFromLocation() {
-  const fromHash = window.location.hash.replace(/^#\/?/, "").trim();
-  if (VALID_TABS.has(fromHash)) return fromHash;
-  const fromState = history.state?.tab;
-  if (fromState && VALID_TABS.has(fromState)) return fromState;
+  const raw = window.location.hash.replace(/^#\/?/, "").trim();
+  if (raw) return resolveTabId(raw);
+  if (history.state?.tab) return resolveTabId(history.state.tab);
   return DEFAULT_TAB;
 }
 
@@ -371,35 +377,11 @@ function getFilteredNews() {
 }
 
 function renderMergedNews() {
-  const news = getFilteredNews();
-  renderCockpitNews(news);
-  renderNews(news);
+  renderNews(getFilteredNews());
 }
 
-function renderCockpitNews(news) {
-  const el = document.getElementById("cockpit-news");
-  if (!el) return;
-  if (!news.length) {
-    el.innerHTML = '<li class="empty">暂无资讯</li>';
-    return;
-  }
-  el.innerHTML = news
-    .slice(0, 4)
-    .map(
-      (item) => `
-      <li class="news-item news-item--compact">
-        <p class="news-item__title">
-          ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}
-        </p>
-        ${item.summary ? `<p class="news-item__summary">${item.summary}</p>` : ""}
-        <span class="news-item__time">
-          <span class="news-source news-source--${item.source || "yahoo"}">${newsSourceLabel(item.source)}</span>
-          ${item.category ? `${item.category} · ` : ""}${formatDateTime(item.publishedAt)}
-        </span>
-      </li>
-    `
-    )
-    .join("");
+function renderCockpitNews() {
+  /* 资讯已并入驾驶舱 news-list，保留空函数兼容旧调用 */
 }
 
 function renderSummary(summary) {
@@ -792,8 +774,8 @@ function renderTacticalSignals(data) {
   const summary = data?.summary || {};
   if (summaryEl) {
     summaryEl.textContent = signals.length
-      ? `v1.2 实验策略 · 持仓 ${data.openCount ?? 0} · 已平仓 ${data.closedCount ?? 0} · 胜率 ${summary.winRate ?? "--"}%`
-      : "v1.2 实验策略 · 出现 buy 信号后自动跟踪";
+      ? `v1.3 实验策略 · 持仓 ${data.openCount ?? 0} · 已平仓 ${data.closedCount ?? 0} · 胜率 ${summary.winRate ?? "--"}%`
+      : "v1.3 实验策略 · 出现 buy 信号后自动跟踪";
   }
 
   if (!signals.length) {
@@ -1018,11 +1000,11 @@ function renderCockpitTactical(backtest) {
   if (hintEl) {
     hintEl.textContent = backtest?.strategyVersion
       ? `${backtest.strategyVersion} · 近 ${backtest.period || "1y"} · ${backtest.universe?.length || 0} 只标的`
-      : "荐股 v1.2 · 三市场波段（实验室回测）";
+      : "荐股 v1.3 · 强趋势+突破（实验室回测）";
   }
 
   renderStatCards("cockpit-tactical", [
-    { label: "战术策略", value: backtest?.strategyVersion || "v1.2.0" },
+    { label: "战术策略", value: backtest?.strategyVersion || "v1.3.0" },
     {
       label: "回测胜率",
       value: bt.winRate !== undefined ? `${bt.winRate}%` : "--",
@@ -1566,6 +1548,9 @@ function renderWencaiBanner(data, containerId = "cockpit-wencai") {
   }
 
   const staleNote = data.newsStale || data.screens?.some((s) => s.stale) ? " · 部分缓存" : "";
+  const cookieHint = data.cookieHint && !data.cookieUsed
+    ? `<p class="wencai-hint wencai-hint--stale">${data.cookieHint}</p>`
+    : "";
 
   const s = data.sentiment || {};
   const up = s.limitUp != null ? `${s.limitUp}${s.limitUpNote ? "+" : ""}` : "--";
@@ -1573,6 +1558,7 @@ function renderWencaiBanner(data, containerId = "cockpit-wencai") {
   const moodClass = s.mood === "偏多" ? "up" : s.mood === "偏空" ? "down" : "flat";
 
   el.innerHTML = `
+    ${cookieHint}
     <div class="wencai-banner__inner">
       <div class="wencai-banner__brand">
         <span class="wencai-badge">问财</span>

@@ -1,29 +1,32 @@
 """策略版本与参数 — 离线构建脚本与前端展示共用。"""
 
-STRATEGY_VERSION = "v1.2.0"
-STRATEGY_NAME = "港股一波流策略（突破+跟踪止损）"
+STRATEGY_VERSION = "v1.3.0"
+STRATEGY_NAME = "三市场趋势策略（强趋势+突破过滤）"
 
 # 上一版本基线（实验室对比用）
-PREVIOUS_VERSION = "v1.1.0"
+PREVIOUS_VERSION = "v1.2.0"
 PREVIOUS_BASELINE = {
-    "winRate": 38.5,
-    "expectancy": -0.13,
-    "profitFactor": 0.95,
-    "maxDrawdown": -17.18,
+    "winRate": 50.0,
+    "expectancy": 0.87,
+    "profitFactor": 1.37,
+    "maxDrawdown": -9.36,
 }
 
-# 评分阈值
-BUY_SCORE = 75
-WATCH_SCORE = 62
-BREAKOUT_SCORE_MIN = 68
+# 评分阈值（v1.3 提高门槛，减少噪音信号）
+BUY_SCORE = 78
+WATCH_SCORE = 65
+BREAKOUT_SCORE_MIN = 72
 
-# Regime：个股与恒指均需在长期均线之上才做多
+# Regime：个股与基准均在长期均线之上才做多
 REQUIRE_ABOVE_MA200 = True
 REQUIRE_BENCH_ABOVE_MA200 = True
 REQUIRE_BULL_MARKET = True
-MAX_RSI_ENTRY = 75
-MIN_RELATIVE_STRENGTH = 0.0
-REQUIRE_MACD_POSITIVE = False
+MAX_RSI_ENTRY = 72
+MIN_RELATIVE_STRENGTH = 2.0
+REQUIRE_MACD_POSITIVE = True
+
+# v1.3：仅突破买入，取消纯趋势追涨
+REQUIRE_BREAKOUT_FOR_BUY = True
 
 # 平台突破入场
 BREAKOUT_LOOKBACK = 40
@@ -44,8 +47,16 @@ ATR_STOP_NORMAL = 2.5
 
 # 信号生命周期
 SIGNAL_MAX_HOLD_DAYS = 60
+SIGNAL_MIN_HOLD_DAYS = 3
+SIGNAL_REENTRY_COOLDOWN_DAYS = 5
+TRAIL_MIN_GAIN_PCT = 10.0
+TRAIL_GIVEBACK_PCT = 45
 
-# 模拟账户（仅 buy 信号开仓，专注小米）
+# 荐股换手控制
+RECO_PICK_STICKY_HOURS = 24
+MIN_HISTORY_INTERVAL_MIN = 120
+
+# 模拟账户（XRPS 专用，与战术荐股分离）
 PAPER_SYMBOL = "1810.HK"
 PAPER_SYMBOL_NAME = "小米集团"
 PAPER_SYMBOL_MARKET = "港股"
@@ -59,4 +70,4 @@ PAPER_BACKTEST_PERIODS = ("1y", "2y", "3y", "4y")
 # 回测
 BACKTEST_PERIOD = "1y"
 BACKTEST_HOLD_DAYS = 60
-BACKTEST_COOLDOWN_BARS = 5
+BACKTEST_COOLDOWN_BARS = 15

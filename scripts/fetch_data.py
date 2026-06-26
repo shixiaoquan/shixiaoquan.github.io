@@ -14,7 +14,6 @@ DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "market.json"
 HISTORY_FILE = DATA_DIR / "reco_history.json"
 MAX_HISTORY_RECORDS = 500
-MIN_HISTORY_INTERVAL_MIN = 30  # 推荐不变时，至少间隔 30 分钟记一条
 
 INDICES = {
     "^GSPC": {"name": "标普 500", "region": "美国", "currency": "USD"},
@@ -60,9 +59,13 @@ CANDIDATES = {
 }
 
 from strategy_config import (
+    BREAKOUT_SCORE_MIN,
     BUY_SCORE,
+    MIN_HISTORY_INTERVAL_MIN,
+    RECO_PICK_STICKY_HOURS,
     REWARD_RISK_RATIO,
     RISK_PER_TRADE_PCT,
+    STRATEGY_VERSION,
     WATCH_SCORE,
 )
 from strategy_scoring import (
@@ -276,7 +279,49 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
     }
 
 
-def build_recommendations() -> dict:
+def stabilize_picks(picks: list[dict], analyzed: list[dict], now: datetime) -> list[dict]:
+    """v1.3：24 小时内不因小幅评分波动频繁换标的。"""
+    if not OUTPUT_FILE.exists() or not picks:
+        return picks
+    try:
+        prev = json.loads(OUTPUT_FILE.read_text(encoding="utf-8"))
+        prev_time = datetime.fromisoformat(prev["updatedAt"])
+        if prev_time.tzinfo is None:
+            prev_time = prev_time.replace(tzinfo=timezone.utc)
+        current = now if now.tzinfo else now.replace(tzinfo=timezone.utc)
+        hours = (current - prev_time).total_seconds() / 3600
+        if hours >= RECO_PICK_STICKY_HOURS:
+            return picks
+        prev_picks = prev.get("recommendations", {}).get("picks", [])
+        if not prev_picks:
+            return picks
+    except (json.JSONDecodeError, OSError, KeyError, ValueError):
+        return picks
+
+    by_symbol = {a["symbol"]: a for a in analyzed}
+    stabilized: list[dict] = []
+    for market in MARKETS:
+        new_pick = next((p for p in picks if p["market"] == market), None)
+        if not new_pick:
+            continue
+        old_pick = next((p for p in prev_picks if p.get("market") == market), None)
+        if not old_pick or old_pick.get("symbol") == new_pick.get("symbol"):
+            stabilized.append(new_pick)
+            continue
+        fresh_old = by_symbol.get(old_pick["symbol"])
+        fresh_new = by_symbol.get(new_pick["symbol"])
+        if fresh_new and fresh_new.get("signal") == "buy" and fresh_old and fresh_old.get("signal") != "buy":
+            stabilized.append(new_pick)
+            continue
+        if fresh_old and fresh_old.get("score", 0) >= WATCH_SCORE:
+            stabilized.append(fresh_old)
+        else:
+            stabilized.append(new_pick)
+    stabilized.sort(key=lambda x: (0 if x["signal"] == "buy" else 1, -x["score"]))
+    return stabilized[: len(MARKETS)]
+
+
+def build_recommendations(now: datetime | None = None) -> dict:
     benchmarks = fetch_benchmark_closes()
     analyzed = []
     for symbol, meta in CANDIDATES.items():
@@ -305,6 +350,7 @@ def build_recommendations() -> dict:
                 picks.append(top)
 
     picks.sort(key=lambda x: (0 if x["signal"] == "buy" else 1, -x["score"]))
+    picks = stabilize_picks(picks, analyzed, now or datetime.now(timezone.utc))
 
     market_summary = []
     for market in MARKETS:
@@ -315,12 +361,12 @@ def build_recommendations() -> dict:
 
     return {
         "strategy": (
-            "多因子趋势策略（A股/港股/美股各选1只）：趋势结构25分、动量20分、"
-            f"相对强弱15分、RSI15分、MACD10分、量能10分、市场环境5分；"
-            f"≥{BUY_SCORE}买入，≥{WATCH_SCORE}观察。止损按ATR动态调整，盈亏比1:{REWARD_RISK_RATIO}。"
+            f"{STRATEGY_VERSION} 强趋势+突破过滤（各市场 1 只）："
+            f"Regime 过滤 + 仅突破买入；≥{BREAKOUT_SCORE_MIN} 突破分、≥{WATCH_SCORE} 观察。"
+            f"24h 粘性换仓、止损 ATR、盈亏比 1:{REWARD_RISK_RATIO}。"
         ),
         "marketScan": " · ".join(market_summary),
-        "disclaimer": "量化信号仅供参考，不构成投资建议。请分散配置三市场、严格执行止损。",
+        "disclaimer": "战术实验策略，仅供研究；非 XRPS 战役持仓。请分散配置、严格执行止损。",
         "picks": picks[: len(MARKETS)],
     }, {a["symbol"]: a["price"] for a in analyzed if a.get("price")}, {
         a["symbol"]: a["monthChangePct"]
@@ -475,11 +521,11 @@ def main() -> None:
     indices = [fetch_quote(symbol, meta) for symbol, meta in INDICES.items()]
     stocks = [fetch_quote(symbol, meta) for symbol, meta in STOCKS.items()]
     news = fetch_news()
-    recommendations, quote_map, change_map = build_recommendations()
+    now = datetime.now(timezone.utc).astimezone()
+    recommendations, quote_map, change_map = build_recommendations(now)
     for item in stocks:
         if item.get("symbol") and item.get("changePct") is not None:
             change_map[item["symbol"]] = item["changePct"]
-    now = datetime.now(timezone.utc).astimezone()
 
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
