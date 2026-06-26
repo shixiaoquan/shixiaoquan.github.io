@@ -38,5 +38,6 @@ jobs:
             echo "No data changes."
           else
             git commit -m "chore: update market data"
+            git pull --rebase origin master
             git push
           fi
