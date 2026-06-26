@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-06-26T15:29:56+00:00",
+  "updatedAt": "2026-06-26T17:54:32+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 40 条资讯 · 部分沿用缓存",
-  "cookieUsed": false,
+  "cookieUsed": true,
   "sentiment": {
     "limitUp": 73,
     "limitDown": 44,
@@ -184,7 +184,7 @@
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "001399.SZ",
@@ -256,13 +256,16 @@
           "changePct": -5.21,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "001399.SZ",
@@ -320,7 +323,10 @@
           "changePct": 3.48,
           "flow": 872005100
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -767,6 +773,9 @@
   ],
   "errors": [
     "limit_up: 'NoneType' object has no attribute 'get'",
-    "limit_down: 'NoneType' object has no attribute 'get'"
-  ]
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
