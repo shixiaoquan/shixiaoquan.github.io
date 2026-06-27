@@ -293,6 +293,43 @@ def tactical_section(market: dict | None, signals: dict | None) -> str:
     return "\n\n".join(parts)
 
 
+def master_reco_section(market: dict | None) -> str:
+    data = (market or {}).get("masterRecommendations") or {}
+    masters = data.get("masters") or []
+    if not masters:
+        return "大师风格荐股数据暂缺。"
+
+    parts = [
+        f"基于候选池基本面与价格特征，模拟 **{len(masters)}** 位投资大师选股框架（{data.get('version', 'v1.0')}）。"
+    ]
+    for master in masters:
+        picks = master.get("picks") or []
+        parts.append(f"\n### {master.get('name')} · {master.get('style')}")
+        parts.append(f"*{master.get('philosophy', '')}*")
+        if not picks:
+            parts.append("- 当前无达标标的")
+            continue
+        for p in picks:
+            m = p.get("metrics") or {}
+            metric_bits = []
+            if m.get("pe") is not None:
+                metric_bits.append(f"PE {fmt_num(m['pe'], 1)}")
+            if m.get("peg") is not None:
+                metric_bits.append(f"PEG {fmt_num(m['peg'], 2)}")
+            if m.get("roe") is not None:
+                metric_bits.append(f"ROE {fmt_num(m['roe'], 1)}%")
+            metrics_s = " · ".join(metric_bits) if metric_bits else "—"
+            parts.append(
+                f"- **{p.get('name')}**（{p.get('market')}）| 匹配 {p.get('matchScore')} | "
+                f"{p.get('signalLabel')} | {metrics_s}"
+            )
+            if p.get("reasons"):
+                parts.append(f"  - {'；'.join(p['reasons'][:2])}")
+
+    parts.append(f"\n*{data.get('disclaimer', '')}*")
+    return "\n\n".join(parts)
+
+
 def news_section(market: dict | None, wencai: dict | None) -> str:
     items = []
     for n in (market or {}).get("news") or []:
@@ -548,22 +585,29 @@ def build_report(slot: str, now_bjt: datetime | None = None) -> tuple[str, dict]
 
 ---
 
-## 四、资讯与主题线索
+## 四、投资大师风格荐股
+
+{master_reco_section(market)}
+
+---
+
+## 五、资讯与主题线索
 
 {news_section(market, wencai)}
 
 ---
 
-## 五、风险提示
+## 六、风险提示
 
 1. 本报告基于公开行情与规则化模型，**不构成投资建议**；战术实验与战役 XRPS 为相互独立的两套体系，请勿混仓决策。  
 2. 港股 / 美股存在汇率、流动性及隔夜缺口风险；A股须关注涨跌停制度下的执行偏差。  
 3. 问财等非官方数据源可能延迟或缓存；涨停榜等情绪指标需与实时盘口交叉验证。  
 4. 模拟盘收益不代表未来表现；连阴月加仓逻辑基于历史回测，极端宏观冲击下可能失效。
+5. 大师风格荐股为规则化模拟，非真实人物操作建议；基本面数据可能有延迟或缺失。
 
 ---
 
-## 六、本时段关注清单
+## 七、本时段关注清单
 
 {watchlist(slot, market, paper, signals, diag)}
 

@@ -52,6 +52,7 @@ let macroData = null;
 let quoteMap = {};
 let quoteChangeMap = {};
 let activeTab = "cockpit";
+let recoMode = "tactical";
 let suppressTabRoute = false;
 const tabBundles = { paper: false, ai: false, reports: false };
 let historyDisplayLimit = HISTORY_DISPLAY_LIMIT;
@@ -251,6 +252,11 @@ function setupTabs() {
   });
   document.querySelectorAll("[data-goto-tab]").forEach((el) => {
     el.addEventListener("click", () => switchTab(el.dataset.gotoTab));
+  });
+
+  document.getElementById("reco-mode-tabs")?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".reco-mode-btn");
+    if (btn?.dataset.recoMode) switchRecoMode(btn.dataset.recoMode);
   });
 
   window.addEventListener("popstate", () => {
@@ -840,6 +846,116 @@ function renderPickCard(pick, compact = false) {
       ${plan}
     </article>
   `;
+}
+
+function formatMasterMetric(key, val) {
+  if (val == null || val === "") return null;
+  if (key === "pe" || key === "pb" || key === "peg") return formatNumber(val, 2);
+  if (key === "roe" || key === "profitMargins" || key === "earningsGrowth") return `${formatNumber(val, 1)}%`;
+  if (key === "monthChangePct" || key === "relativeStrength") return formatPct(val);
+  if (key === "rangePosition") return `${Math.round(val * 100)}%`;
+  return String(val);
+}
+
+function renderMasterPickCard(pick) {
+  const metrics = pick.metrics || {};
+  const metricLabels = {
+    pe: "PE",
+    pb: "PB",
+    roe: "ROE",
+    peg: "PEG",
+    earningsGrowth: "盈利增速",
+    profitMargins: "净利率",
+    monthChangePct: "近一月",
+    relativeStrength: "相对强度",
+    rangePosition: "52周区间",
+  };
+  const metricHtml = Object.entries(metricLabels)
+    .map(([key, label]) => {
+      const val = formatMasterMetric(key, metrics[key]);
+      return val != null ? `<span class="master-metric"><em>${label}</em> ${val}</span>` : "";
+    })
+    .filter(Boolean)
+    .join("");
+
+  return `
+    <article class="master-pick reco-card reco-card--${pick.signal}">
+      <div class="reco-card__top">
+        <div>
+          <div class="reco-card__tags">
+            <span class="reco-market reco-market--${marketClass(pick.market)}">${pick.market}</span>
+          </div>
+          <h4>${pick.name}</h4>
+          <p class="stock-card__symbol">${pick.symbol} · ${pick.sector || ""}</p>
+        </div>
+        <div class="reco-card__badge-box">
+          <span class="reco-badge reco-badge--${pick.signal}">${pick.signalLabel}</span>
+          <span class="reco-score">匹配 ${pick.matchScore}</span>
+        </div>
+      </div>
+      <p class="stock-card__price">${formatNumber(pick.price)} <span>${pick.currency || ""}</span></p>
+      ${metricHtml ? `<div class="master-metrics">${metricHtml}</div>` : ""}
+      <ul class="reco-reasons">${(pick.reasons || []).map((r) => `<li>${r}</li>`).join("")}</ul>
+      <dl class="reco-plan reco-plan--master">
+        <div><dt>买入</dt><dd>${pick.plan?.entry || "—"}</dd></div>
+        <div><dt>持有</dt><dd>${pick.plan?.holding || "—"}</dd></div>
+        <div><dt>风控</dt><dd>${pick.plan?.risk || "—"}</dd></div>
+        <div><dt>仓位</dt><dd>${pick.plan?.position || "—"}</dd></div>
+      </dl>
+    </article>
+  `;
+}
+
+function renderMasterRecommendations(data) {
+  const grid = document.getElementById("master-reco-grid");
+  const strategyEl = document.getElementById("master-reco-strategy");
+  const disclaimerEl = document.getElementById("master-reco-disclaimer");
+  if (!grid) return;
+
+  if (!data?.masters?.length) {
+    grid.innerHTML = '<p class="empty">大师风格荐股数据加载中…</p>';
+    return;
+  }
+
+  if (strategyEl && data.strategy) strategyEl.textContent = data.strategy;
+  if (disclaimerEl) disclaimerEl.textContent = data.disclaimer || "";
+
+  grid.innerHTML = data.masters
+    .map((master) => {
+      const picksHtml = master.picks?.length
+        ? master.picks.map((p) => renderMasterPickCard(p)).join("")
+        : '<p class="empty master-empty">当前候选池暂无符合该风格的标的</p>';
+      return `
+        <article class="master-card" id="master-${master.id}">
+          <header class="master-card__head">
+            <div>
+              <p class="master-card__style">${master.style}</p>
+              <h3>${master.name}</h3>
+              <p class="master-card__en">${master.nameEn || ""} · 持有 ${master.holdingHorizon || "—"}</p>
+            </div>
+          </header>
+          <p class="master-card__philosophy">${master.philosophy || ""}</p>
+          <ul class="master-principles">${(master.principles || []).map((p) => `<li>${p}</li>`).join("")}</ul>
+          <div class="master-picks">${picksHtml}</div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function switchRecoMode(mode) {
+  recoMode = mode;
+  document.querySelectorAll(".reco-mode-btn").forEach((btn) => {
+    const active = btn.dataset.recoMode === mode;
+    btn.classList.toggle("reco-mode-btn--active", active);
+    btn.setAttribute("aria-selected", active ? "true" : "false");
+  });
+  const tactical = document.getElementById("reco-tactical-panel");
+  const masters = document.getElementById("reco-masters-panel");
+  const scan = document.getElementById("reco-scan-panel");
+  if (tactical) tactical.hidden = mode !== "tactical";
+  if (masters) masters.hidden = mode !== "masters";
+  if (scan) scan.hidden = mode !== "tactical";
 }
 
 function renderRecommendations(reco, containerId = "reco-cards", compact = false) {
@@ -3095,6 +3211,8 @@ function applyData(data) {
   renderCockpitMarkets(data.marketRadar);
   renderRecommendations(data.recommendations, "cockpit-picks", true);
   renderRecommendations(data.recommendations, "reco-cards", false);
+  renderMasterRecommendations(data.masterRecommendations);
+  switchRecoMode(recoMode);
   renderCockpitIndices(data.indices);
 
   yahooNews = data.news || [];

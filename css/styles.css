@@ -1636,3 +1636,136 @@ a:hover {
 #market-macro .panel__head h2 {
   margin: 0;
 }
+
+/* 荐股模式切换 */
+.reco-mode-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.reco-mode-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.5);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.reco-mode-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.reco-mode-btn--active {
+  color: var(--text);
+  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.12);
+}
+
+/* 投资大师荐股 */
+.master-reco-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.master-card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.master-card__style {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.master-card__head h3 {
+  margin: 4px 0 0;
+  font-size: 1.15rem;
+}
+
+.master-card__en {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.master-card__philosophy {
+  margin: 12px 0 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.master-principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.master-principles li {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  background: rgba(56, 189, 248, 0.1);
+  color: #93c5fd;
+}
+
+.master-picks {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.master-pick h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.master-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 0;
+}
+
+.master-metric {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+}
+
+.master-metric em {
+  font-style: normal;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+
+.reco-plan--master dt {
+  color: #6ee7b7;
+}
+
+.master-empty {
+  margin: 0;
+  padding: 12px;
+  font-size: 0.88rem;
+}
+
+@media (min-width: 960px) {
+  .master-reco-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
