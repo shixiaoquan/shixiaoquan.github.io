@@ -62,11 +62,71 @@ let aiSearchTimer = null;
 const VALID_TABS = new Set(["cockpit", "reports", "market", "reco", "lab", "paper", "ai"]);
 const TAB_ALIASES = { review: "paper", news: "cockpit" };
 const DEFAULT_TAB = "cockpit";
+const VALID_RECO_MODES = new Set(["tactical", "masters"]);
+const DEFAULT_RECO_MODE = "tactical";
 
 function resolveTabId(tabId) {
   if (!tabId) return DEFAULT_TAB;
   if (VALID_TABS.has(tabId)) return tabId;
   return TAB_ALIASES[tabId] || DEFAULT_TAB;
+}
+
+function resolveRecoMode(mode) {
+  if (!mode) return DEFAULT_RECO_MODE;
+  return VALID_RECO_MODES.has(mode) ? mode : DEFAULT_RECO_MODE;
+}
+
+function parseLocationHash() {
+  const raw = window.location.hash.replace(/^#\/?/, "").trim();
+  if (!raw) {
+    return {
+      tab: resolveTabId(history.state?.tab),
+      recoMode: resolveRecoMode(history.state?.recoMode),
+    };
+  }
+
+  const [tabPart, recoPart] = raw.split("/").map((part) => part.trim()).filter(Boolean);
+  const tab = resolveTabId(tabPart);
+  const recoMode = tab === "reco" ? resolveRecoMode(recoPart) : DEFAULT_RECO_MODE;
+  return { tab, recoMode };
+}
+
+function tabFromLocation() {
+  return parseLocationHash().tab;
+}
+
+function buildRouteHash(tabId, mode = DEFAULT_RECO_MODE) {
+  if (tabId === DEFAULT_TAB) return "";
+  if (tabId === "reco" && mode === "masters") return "#reco/masters";
+  return `#${tabId}`;
+}
+
+function syncTabRoute(tabId, replace = false) {
+  const hash = buildRouteHash(tabId, tabId === "reco" ? recoMode : DEFAULT_RECO_MODE);
+  const url = `${window.location.pathname}${window.location.search}${hash}`;
+  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  if (current === url) return;
+  const state = {
+    tab: tabId,
+    recoMode: tabId === "reco" ? recoMode : DEFAULT_RECO_MODE,
+  };
+  if (replace) {
+    history.replaceState(state, "", url);
+  } else {
+    history.pushState(state, "", url);
+  }
+}
+
+function applyLocationFromHash() {
+  const { tab, recoMode: mode } = parseLocationHash();
+  suppressTabRoute = true;
+  if (tab !== activeTab) {
+    switchTab(tab, { updateRoute: false, fromRoute: true });
+  }
+  if (tab === "reco" && mode !== recoMode) {
+    switchRecoMode(mode, { updateRoute: false });
+  }
+  suppressTabRoute = false;
 }
 
 let distributionChart;
@@ -138,31 +198,8 @@ function calcReturn(recoPrice, currentPrice) {
   return Number((((currentPrice - recoPrice) / recoPrice) * 100).toFixed(2));
 }
 
-function tabFromLocation() {
-  const raw = window.location.hash.replace(/^#\/?/, "").trim();
-  if (raw) return resolveTabId(raw);
-  if (history.state?.tab) return resolveTabId(history.state.tab);
-  return DEFAULT_TAB;
-}
-
-function tabHash(tabId) {
-  return `#${tabId}`;
-}
-
-function syncTabRoute(tabId, replace = false) {
-  const hash = tabId === DEFAULT_TAB ? "" : tabHash(tabId);
-  const url = `${window.location.pathname}${window.location.search}${hash}`;
-  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
-  if (current === url) return;
-  if (replace) {
-    history.replaceState({ tab: tabId }, "", url);
-  } else {
-    history.pushState({ tab: tabId }, "", url);
-  }
-}
-
 function switchTab(tabId, options = {}) {
-  const { updateRoute = true, replaceRoute = false } = options;
+  const { updateRoute = true, replaceRoute = false, fromRoute = false } = options;
   if (!VALID_TABS.has(tabId)) tabId = DEFAULT_TAB;
 
   activeTab = tabId;
@@ -176,6 +213,10 @@ function switchTab(tabId, options = {}) {
     panel.classList.toggle("tab-panel--active", show);
     panel.hidden = !show;
   });
+
+  if (tabId === "reco" && !fromRoute) {
+    switchRecoMode(DEFAULT_RECO_MODE, { updateRoute: false });
+  }
 
   if (updateRoute && !suppressTabRoute) {
     syncTabRoute(tabId, replaceRoute);
@@ -260,19 +301,12 @@ function setupTabs() {
   });
 
   window.addEventListener("popstate", () => {
-    suppressTabRoute = true;
-    switchTab(tabFromLocation(), { updateRoute: false });
-    suppressTabRoute = false;
+    applyLocationFromHash();
   });
 
   window.addEventListener("hashchange", () => {
     if (suppressTabRoute) return;
-    const tab = tabFromLocation();
-    if (tab !== activeTab) {
-      suppressTabRoute = true;
-      switchTab(tab, { updateRoute: false });
-      suppressTabRoute = false;
-    }
+    applyLocationFromHash();
   });
 }
 
@@ -948,19 +982,24 @@ function renderMasterRecommendations(data) {
     .join("");
 }
 
-function switchRecoMode(mode) {
-  recoMode = mode;
+function switchRecoMode(mode, options = {}) {
+  const { updateRoute = true } = options;
+  recoMode = resolveRecoMode(mode);
   document.querySelectorAll(".reco-mode-btn").forEach((btn) => {
-    const active = btn.dataset.recoMode === mode;
+    const active = btn.dataset.recoMode === recoMode;
     btn.classList.toggle("reco-mode-btn--active", active);
     btn.setAttribute("aria-selected", active ? "true" : "false");
   });
   const tactical = document.getElementById("reco-tactical-panel");
   const masters = document.getElementById("reco-masters-panel");
   const scan = document.getElementById("reco-scan-panel");
-  if (tactical) tactical.hidden = mode !== "tactical";
-  if (masters) masters.hidden = mode !== "masters";
-  if (scan) scan.hidden = mode !== "tactical";
+  if (tactical) tactical.hidden = recoMode !== "tactical";
+  if (masters) masters.hidden = recoMode !== "masters";
+  if (scan) scan.hidden = recoMode !== "tactical";
+
+  if (updateRoute && !suppressTabRoute && activeTab === "reco") {
+    syncTabRoute("reco", false);
+  }
 }
 
 function renderRecommendations(reco, containerId = "reco-cards", compact = false) {
@@ -3217,7 +3256,9 @@ function applyData(data) {
   renderRecommendations(data.recommendations, "cockpit-picks", true);
   renderRecommendations(data.recommendations, "reco-cards", false);
   renderMasterRecommendations(data.masterRecommendations);
-  switchRecoMode(recoMode);
+  if (activeTab === "reco") {
+    switchRecoMode(recoMode, { updateRoute: false });
+  }
   renderCockpitIndices(data.indices);
 
   yahooNews = data.news || [];
@@ -3272,9 +3313,12 @@ async function init() {
   setupAiChainFilters();
   setupPaperModal();
 
-  const initialTab = tabFromLocation();
+  const initialLocation = parseLocationHash();
   suppressTabRoute = true;
-  switchTab(initialTab, { updateRoute: false });
+  switchTab(initialLocation.tab, { updateRoute: false, fromRoute: true });
+  if (initialLocation.tab === "reco") {
+    switchRecoMode(initialLocation.recoMode, { updateRoute: false });
+  }
   suppressTabRoute = false;
 
   await Promise.all([
@@ -3284,7 +3328,7 @@ async function init() {
     refreshTradingData(),
   ]);
 
-  await ensureTabData(initialTab);
+  await ensureTabData(initialLocation.tab);
 
   setInterval(refreshData, POLL_INTERVAL_MS);
   setInterval(refreshMacroData, POLL_INTERVAL_MS);
