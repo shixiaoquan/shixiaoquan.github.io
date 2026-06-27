@@ -3,13 +3,20 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Callable
 
 import yfinance as yf
 
+from master_strategy_learn import (
+    append_master_history,
+    format_version,
+    get_master_weights,
+    upgrade_master_strategies,
+)
 from strategy_scoring import MARKET_BENCHMARKS, pct_change, sma
 
-MASTER_VERSION = "v1.1.0"
+MASTER_VERSION = "v1.2.0"
 PICKS_PER_MASTER = 2
 MIN_MATCH_SCORE = 48
 
@@ -127,6 +134,18 @@ SERENITY_SECTOR_SCORE: dict[str, float] = {
     "银行": -18,
     "潮玩零售": -12,
 }
+
+
+_ACTIVE_WEIGHTS: dict[str, float] = {}
+
+
+def _w(factor: str, base: float) -> float:
+    return round(base * _ACTIVE_WEIGHTS.get(factor, 1.0), 2)
+
+
+def _track(factors: dict[str, float], factor: str, amount: float) -> None:
+    if amount:
+        factors[factor] = round(factors.get(factor, 0) + amount, 2)
 
 
 def _norm_ratio(val: float | None, as_pct: bool = True) -> float | None:
@@ -251,108 +270,155 @@ def fetch_candidate_context(symbol: str, meta: dict) -> dict | None:
     }
 
 
-def _score_buffett(ctx: dict) -> tuple[float, list[str]]:
+def _score_buffett(ctx: dict) -> tuple[float, list[str], dict[str, float]]:
     score = 50.0
     reasons: list[str] = []
+    factors: dict[str, float] = {}
 
     roe = ctx.get("roe")
     if roe is not None:
         if roe >= 20:
-            score += 18
+            pts = _w("roe", 18)
+            score += pts
+            _track(factors, "roe", pts)
             reasons.append(f"ROE {roe}% — 资本回报优秀，符合巴菲特护城河标准")
         elif roe >= 12:
-            score += 10
+            pts = _w("roe", 10)
+            score += pts
+            _track(factors, "roe", pts)
             reasons.append(f"ROE {roe}% — 盈利能力稳健")
         else:
-            score -= 8
+            pts = _w("roe", -8)
+            score += pts
+            _track(factors, "roe", pts)
 
     pe = ctx.get("pe")
     if pe is not None:
         if pe <= 25:
-            score += 12
+            pts = _w("pe", 12)
+            score += pts
+            _track(factors, "pe", pts)
             reasons.append(f"PE {pe} — 估值在能力圈合理区间")
         elif pe <= 35:
-            score += 4
+            pts = _w("pe", 4)
+            score += pts
+            _track(factors, "pe", pts)
         else:
-            score -= 10
+            pts = _w("pe", -10)
+            score += pts
+            _track(factors, "pe", pts)
             reasons.append(f"PE {pe} 偏高 — 需更大安全边际才符合巴菲特买价")
 
     margins = ctx.get("profitMargins")
     if margins is not None and margins >= 15:
-        score += 8
+        pts = _w("margins", 8)
+        score += pts
+        _track(factors, "margins", pts)
         reasons.append(f"净利率 {margins}% — 业务具备定价权")
 
     debt = ctx.get("debtToEquity")
     if debt is not None:
         if debt < 80:
-            score += 6
+            pts = _w("debt", 6)
+            score += pts
+            _track(factors, "debt", pts)
             reasons.append("负债率可控，财务风险较低")
         elif debt > 150:
-            score -= 8
+            pts = _w("debt", -8)
+            score += pts
+            _track(factors, "debt", pts)
 
     if ctx.get("aboveMa200") is True and ctx.get("rangePosition", 1) < 0.75:
-        score += 8
+        pts = _w("trend", 8)
+        score += pts
+        _track(factors, "trend", pts)
         reasons.append("长期趋势向上且未严重高估 — 可分批建仓")
     elif ctx.get("rangePosition", 1) < 0.35:
-        score += 10
+        pts = _w("trend", 10)
+        score += pts
+        _track(factors, "trend", pts)
         reasons.append("价格接近 52 周低位 — 优质资产回调机会")
 
     mcap = ctx.get("marketCap")
     if mcap and mcap >= 50e9:
-        score += 4
+        pts = _w("mcap", 4)
+        score += pts
+        _track(factors, "mcap", pts)
         reasons.append("龙头体量，业务护城河更易验证")
 
-    return _clamp_score(score), reasons[:4]
+    return _clamp_score(score), reasons[:4], factors
 
 
-def _score_graham(ctx: dict) -> tuple[float, list[str]]:
+def _score_graham(ctx: dict) -> tuple[float, list[str], dict[str, float]]:
     score = 45.0
     reasons: list[str] = []
+    factors: dict[str, float] = {}
 
     pe = ctx.get("pe")
     if pe is not None:
         if pe < 12:
-            score += 22
+            pts = _w("pe", 22)
+            score += pts
+            _track(factors, "pe", pts)
             reasons.append(f"PE {pe} — 深度价值区间，安全边际充足")
         elif pe < 18:
-            score += 12
+            pts = _w("pe", 12)
+            score += pts
+            _track(factors, "pe", pts)
             reasons.append(f"PE {pe} — 低于市场平均，具备安全边际")
         elif pe > 30:
-            score -= 15
+            pts = _w("pe", -15)
+            score += pts
+            _track(factors, "pe", pts)
 
     pb = ctx.get("pb")
     if pb is not None:
         if pb < 1.2:
-            score += 18
+            pts = _w("pb", 18)
+            score += pts
+            _track(factors, "pb", pts)
             reasons.append(f"PB {pb} — 资产折价，经典格雷厄姆信号")
         elif pb < 2:
-            score += 8
+            pts = _w("pb", 8)
+            score += pts
+            _track(factors, "pb", pts)
         elif pb > 5:
-            score -= 8
+            pts = _w("pb", -8)
+            score += pts
+            _track(factors, "pb", pts)
 
     rp = ctx.get("rangePosition")
     if rp is not None and rp < 0.3:
-        score += 12
+        pts = _w("range", 12)
+        score += pts
+        _track(factors, "range", pts)
         reasons.append("价格处于 52 周区间下沿 — 悲观定价带来安全边际")
     elif rp is not None and rp < 0.5:
-        score += 6
+        pts = _w("range", 6)
+        score += pts
+        _track(factors, "range", pts)
 
     div = ctx.get("dividendYield")
     if div is not None and div >= 2:
-        score += 5
+        pts = _w("dividend", 5)
+        score += pts
+        _track(factors, "dividend", pts)
         reasons.append(f"股息率 {div}% — 提供下行保护垫")
 
     debt = ctx.get("debtToEquity")
     if debt is not None and debt > 200:
-        score -= 10
+        pts = _w("debt", -10)
+        score += pts
+        _track(factors, "debt", pts)
         reasons.append("负债过高 — 不符合格雷厄姆防御型标准")
 
-    return _clamp_score(score), reasons[:4]
+    return _clamp_score(score), reasons[:4], factors
 
 
-def _score_lynch(ctx: dict) -> tuple[float, list[str]]:
+def _score_lynch(ctx: dict) -> tuple[float, list[str], dict[str, float]]:
     score = 48.0
     reasons: list[str] = []
+    factors: dict[str, float] = {}
 
     peg = ctx.get("peg")
     earn_g = ctx.get("earningsGrowth")
@@ -361,124 +427,181 @@ def _score_lynch(ctx: dict) -> tuple[float, list[str]]:
 
     if peg is not None:
         if peg < 1:
-            score += 22
+            pts = _w("peg", 22)
+            score += pts
+            _track(factors, "peg", pts)
             reasons.append(f"PEG {peg} — 成长相对估值便宜，林奇「十倍股」潜力")
         elif peg < 1.5:
-            score += 14
+            pts = _w("peg", 14)
+            score += pts
+            _track(factors, "peg", pts)
             reasons.append(f"PEG {peg} — 成长合理价，符合 GARP 框架")
         elif peg > 2.5:
-            score -= 10
+            pts = _w("peg", -10)
+            score += pts
+            _track(factors, "peg", pts)
 
     if earn_g is not None:
         if earn_g >= 20:
-            score += 12
+            pts = _w("earnings", 12)
+            score += pts
+            _track(factors, "earnings", pts)
             reasons.append(f"盈利增速 {earn_g}% — 成长故事可验证")
         elif earn_g >= 10:
-            score += 6
+            pts = _w("earnings", 6)
+            score += pts
+            _track(factors, "earnings", pts)
         elif earn_g < 0:
-            score -= 12
+            pts = _w("earnings", -12)
+            score += pts
+            _track(factors, "earnings", pts)
 
     if rev_g is not None and rev_g >= 10:
-        score += 6
+        pts = _w("revenue", 6)
+        score += pts
+        _track(factors, "revenue", pts)
         reasons.append(f"营收增速 {rev_g}% — 业务扩张持续")
 
     if pe is not None and pe < 35 and earn_g and earn_g > 15:
-        score += 4
+        pts = _w("earnings", 4)
+        score += pts
+        _track(factors, "earnings", pts)
 
     sector = ctx.get("sector") or ""
     if sector in ("半导体", "新能源", "互联网", "软件云计算", "电商云计算"):
-        score += 4
+        pts = _w("sector", 4)
+        score += pts
+        _track(factors, "sector", pts)
         reasons.append(f"{sector} — 林奇偏好的可理解成长行业")
 
-    return _clamp_score(score), reasons[:4]
+    return _clamp_score(score), reasons[:4], factors
 
 
-def _score_munger(ctx: dict) -> tuple[float, list[str]]:
+def _score_munger(ctx: dict) -> tuple[float, list[str], dict[str, float]]:
     score = 50.0
     reasons: list[str] = []
+    factors: dict[str, float] = {}
 
     roe = ctx.get("roe")
     if roe is not None:
         if roe >= 25:
-            score += 20
+            pts = _w("roe", 20)
+            score += pts
+            _track(factors, "roe", pts)
             reasons.append(f"ROE {roe}% — 优质复利机器，芒格会长期持有")
         elif roe >= 18:
-            score += 12
+            pts = _w("roe", 12)
+            score += pts
+            _track(factors, "roe", pts)
         else:
-            score -= 6
+            pts = _w("roe", -6)
+            score += pts
+            _track(factors, "roe", pts)
 
     margins = ctx.get("profitMargins")
     if margins is not None and margins >= 25:
-        score += 14
+        pts = _w("margins", 14)
+        score += pts
+        _track(factors, "margins", pts)
         reasons.append(f"净利率 {margins}% — 轻资产高毛利特征")
     elif margins is not None and margins >= 15:
-        score += 6
+        pts = _w("margins", 6)
+        score += pts
+        _track(factors, "margins", pts)
 
     debt = ctx.get("debtToEquity")
     if debt is not None and debt < 60:
-        score += 8
+        pts = _w("debt", 8)
+        score += pts
+        _track(factors, "debt", pts)
         reasons.append("低杠杆 — 符合芒格「避免愚蠢」原则")
 
     pe = ctx.get("pe")
     if pe is not None and roe and roe >= 20:
         if pe <= 40:
-            score += 8
+            pts = _w("pe", 8)
+            score += pts
+            _track(factors, "pe", pts)
             reasons.append("优质公司合理溢价可接受 — 以合理价格买伟大公司")
         else:
-            score -= 4
+            pts = _w("pe", -4)
+            score += pts
+            _track(factors, "pe", pts)
 
     if ctx.get("aboveMa200") is True:
-        score += 6
+        pts = _w("trend", 6)
+        score += pts
+        _track(factors, "trend", pts)
         reasons.append("长期趋势完好 — 复利故事未被破坏")
 
-    return _clamp_score(score), reasons[:4]
+    return _clamp_score(score), reasons[:4], factors
 
 
-def _score_templeton(ctx: dict) -> tuple[float, list[str]]:
+def _score_templeton(ctx: dict) -> tuple[float, list[str], dict[str, float]]:
     score = 42.0
     reasons: list[str] = []
+    factors: dict[str, float] = {}
 
     month = ctx.get("monthChangePct")
     quarter = ctx.get("quarterChangePct")
     rp = ctx.get("rangePosition")
 
     if month is not None and month < -8:
-        score += 16
+        pts = _w("month", 16)
+        score += pts
+        _track(factors, "month", pts)
         reasons.append(f"近一月 {month}% — 市场悲观，邓普顿式逆向机会")
     elif month is not None and month < -3:
-        score += 8
+        pts = _w("month", 8)
+        score += pts
+        _track(factors, "month", pts)
     elif month is not None and month > 15:
-        score -= 10
+        pts = _w("month", -10)
+        score += pts
+        _track(factors, "month", pts)
 
     if quarter is not None and quarter < -15:
-        score += 10
+        pts = _w("quarter", 10)
+        score += pts
+        _track(factors, "quarter", pts)
         reasons.append(f"近三月 {quarter}% — 深度回调，关注基本面是否错杀")
 
     if rp is not None and rp < 0.25:
-        score += 14
+        pts = _w("range", 14)
+        score += pts
+        _track(factors, "range", pts)
         reasons.append("价格接近 52 周底部 — 「极度悲观时买入」")
     elif rp is not None and rp < 0.4:
-        score += 8
+        pts = _w("range", 8)
+        score += pts
+        _track(factors, "range", pts)
 
     pe = ctx.get("pe")
     if pe is not None and pe < 25:
-        score += 8
+        pts = _w("pe", 8)
+        score += pts
+        _track(factors, "pe", pts)
         reasons.append(f"PE {pe} — 悲观中仍有估值支撑")
     elif pe is not None and pe > 50:
-        score -= 8
+        pts = _w("pe", -8)
+        score += pts
+        _track(factors, "pe", pts)
         reasons.append("估值仍高 — 可能只是成长回落而非错杀")
 
     roe = ctx.get("roe")
     if roe is not None and roe >= 12:
-        score += 6
+        pts = _w("roe", 6)
+        score += pts
+        _track(factors, "roe", pts)
         reasons.append("盈利能力仍在 — 逆向不是接飞刀")
 
-    return _clamp_score(score), reasons[:4]
+    return _clamp_score(score), reasons[:4], factors
 
 
-def _score_soros(ctx: dict) -> tuple[float, list[str]]:
+def _score_soros(ctx: dict) -> tuple[float, list[str], dict[str, float]]:
     score = 45.0
     reasons: list[str] = []
+    factors: dict[str, float] = {}
 
     month = ctx.get("monthChangePct")
     rs = ctx.get("relativeStrength")
@@ -486,49 +609,70 @@ def _score_soros(ctx: dict) -> tuple[float, list[str]]:
 
     if month is not None:
         if month >= 8:
-            score += 16
+            pts = _w("month", 16)
+            score += pts
+            _track(factors, "month", pts)
             reasons.append(f"近一月 +{month}% — 趋势强劲，反身性正反馈")
         elif month >= 3:
-            score += 10
+            pts = _w("month", 10)
+            score += pts
+            _track(factors, "month", pts)
         elif month < -5:
-            score -= 6
+            pts = _w("month", -6)
+            score += pts
+            _track(factors, "month", pts)
 
     if rs is not None:
         if rs >= 5:
-            score += 14
+            pts = _w("rs", 14)
+            score += pts
+            _track(factors, "rs", pts)
             reasons.append(f"相对强度 +{rs}% — 跑赢大盘，宏观共振")
         elif rs >= 2:
-            score += 8
+            pts = _w("rs", 8)
+            score += pts
+            _track(factors, "rs", pts)
         elif rs < -5:
-            score -= 8
+            pts = _w("rs", -8)
+            score += pts
+            _track(factors, "rs", pts)
 
     if ctx.get("aboveMa50") is True and ctx.get("aboveMa200") is True:
-        score += 10
+        pts = _w("trend", 10)
+        score += pts
+        _track(factors, "trend", pts)
         reasons.append("均线多头排列 — 趋势交易确认")
 
     if vol is not None and vol >= 1.3:
-        score += 6
+        pts = _w("volume", 6)
+        score += pts
+        _track(factors, "volume", pts)
         reasons.append(f"量比 {vol} — 资金参与度高")
 
     beta = ctx.get("beta")
     if beta is not None and beta >= 1.1 and month and month > 0:
-        score += 4
+        pts = _w("beta", 4)
+        score += pts
+        _track(factors, "beta", pts)
         reasons.append("高 Beta 放大趋势 — 索罗斯式进攻配置")
 
-    return _clamp_score(score), reasons[:4]
+    return _clamp_score(score), reasons[:4], factors
 
 
-def _score_serenity(ctx: dict) -> tuple[float, list[str]]:
+def _score_serenity(ctx: dict) -> tuple[float, list[str], dict[str, float]]:
     """X @aleabitoreddit — 卡脖子投资法 / Bottleneck Hunter。"""
     score = 38.0
     reasons: list[str] = []
+    factors: dict[str, float] = {}
     symbol = ctx.get("symbol", "")
 
     tag = SERENITY_BOTTLENECK_TAGS.get(symbol)
     sector = ctx.get("sector") or (tag[0] if tag else "")
     sector_bonus = SERENITY_SECTOR_SCORE.get(sector, 0)
     if sector_bonus:
-        score += sector_bonus
+        pts = _w("sector", sector_bonus)
+        score += pts
+        _track(factors, "sector", pts)
         if sector_bonus > 0:
             reasons.append(f"{sector} — AI/机器人供应链瓶颈相关环节")
         else:
@@ -537,73 +681,107 @@ def _score_serenity(ctx: dict) -> tuple[float, list[str]]:
     if tag:
         layer, note = tag
         if "非瓶颈" in note or "降权" in note or "终端龙头" in note:
-            score -= 12
+            pts = _w("tag", -12)
+            score += pts
+            _track(factors, "tag", pts)
             reasons.append(f"{layer}：{note}")
         else:
-            score += 14
+            pts = _w("tag", 14)
+            score += pts
+            _track(factors, "tag", pts)
             reasons.append(f"紫苏叶环节 · {layer} — {note}")
 
     mcap = ctx.get("marketCap")
     if mcap is not None:
         if mcap < 30e9:
-            score += 16
+            pts = _w("mcap", 16)
+            score += pts
+            _track(factors, "mcap", pts)
             reasons.append("小市值 — 机构覆盖不足、重估弹性大")
         elif mcap < 100e9:
-            score += 10
+            pts = _w("mcap", 10)
+            score += pts
+            _track(factors, "mcap", pts)
             reasons.append("中市值 — 仍处价格发现窗口")
         elif mcap < 300e9:
-            score += 2
+            pts = _w("mcap", 2)
+            score += pts
+            _track(factors, "mcap", pts)
         elif mcap > 1e12:
-            score -= 22
+            pts = _w("mcap", -22)
+            score += pts
+            _track(factors, "mcap", pts)
             reasons.append("超大盘龙头 — 「买瓶颈不买品牌」框架下降权")
         elif mcap > 400e9:
-            score -= 14
+            pts = _w("mcap", -14)
+            score += pts
+            _track(factors, "mcap", pts)
             reasons.append("大盘蓝筹 — 非典型卡脖子小盘标的")
 
     earn_g = ctx.get("earningsGrowth")
     rev_g = ctx.get("revenueGrowth")
     if earn_g is not None and earn_g >= 15:
-        score += 10
+        pts = _w("growth", 10)
+        score += pts
+        _track(factors, "growth", pts)
         reasons.append(f"盈利增速 {earn_g}% — 瓶颈环节需求释放")
     elif earn_g is not None and earn_g >= 5:
-        score += 4
+        pts = _w("growth", 4)
+        score += pts
+        _track(factors, "growth", pts)
     if rev_g is not None and rev_g >= 10:
-        score += 6
+        pts = _w("growth", 6)
+        score += pts
+        _track(factors, "growth", pts)
 
     rp = ctx.get("rangePosition")
     if rp is not None and rp < 0.45:
-        score += 10
+        pts = _w("range", 10)
+        score += pts
+        _track(factors, "range", pts)
         reasons.append("52 周区间偏低 — 或在机构大规模覆盖前")
     elif rp is not None and rp > 0.85:
-        score -= 8
+        pts = _w("range", -8)
+        score += pts
+        _track(factors, "range", pts)
         reasons.append("接近日内/年内高位 — 警惕情绪末段追价")
 
     month = ctx.get("monthChangePct")
     if month is not None:
         if 0 < month <= 18:
-            score += 6
+            pts = _w("momentum", 6)
+            score += pts
+            _track(factors, "momentum", pts)
             reasons.append(f"近一月 +{month}% — 重估进行中但未必过热")
         elif month > 35:
-            score -= 10
+            pts = _w("momentum", -10)
+            score += pts
+            _track(factors, "momentum", pts)
             reasons.append("短期涨幅过大 — 社交情绪驱动后慎追")
 
     rs = ctx.get("relativeStrength")
     if rs is not None and rs >= 3:
-        score += 6
+        pts = _w("momentum", 6)
+        score += pts
+        _track(factors, "momentum", pts)
 
     beta = ctx.get("beta")
     if beta is not None and beta >= 1.15:
-        score += 4
+        pts = _w("momentum", 4)
+        score += pts
+        _track(factors, "momentum", pts)
 
     margins = ctx.get("profitMargins")
     if margins is not None and margins >= 20:
-        score += 5
+        pts = _w("growth", 5)
+        score += pts
+        _track(factors, "growth", pts)
         reasons.append(f"净利率 {margins}% — 环节稀缺性/定价权")
 
-    return _clamp_score(score), reasons[:5]
+    return _clamp_score(score), reasons[:5], factors
 
 
-SCORERS: dict[str, Callable[[dict], tuple[float, list[str]]]] = {
+SCORERS: dict[str, Callable[[dict], tuple[float, list[str], dict[str, float]]]] = {
     "buffett": _score_buffett,
     "graham": _score_graham,
     "lynch": _score_lynch,
@@ -667,7 +845,7 @@ def _build_plan(profile: MasterProfile, ctx: dict, score: float) -> dict:
     return {"entry": entry, "holding": holding, "risk": risk, "position": position}
 
 
-def _pick_row(profile: MasterProfile, ctx: dict, score: float, reasons: list[str]) -> dict:
+def _pick_row(profile: MasterProfile, ctx: dict, score: float, reasons: list[str], factors: dict[str, float]) -> dict:
     signal, label = _signal_from_score(score)
     metrics = {
         "pe": ctx.get("pe"),
@@ -699,6 +877,7 @@ def _pick_row(profile: MasterProfile, ctx: dict, score: float, reasons: list[str
         "signal": signal,
         "signalLabel": label,
         "reasons": reasons,
+        "factors": factors,
         "plan": _build_plan(profile, ctx, score),
         "metrics": metrics,
     }
@@ -715,7 +894,18 @@ def _master_extra(profile: MasterProfile) -> dict:
     return {}
 
 
-def build_master_recommendations(candidates: dict) -> dict:
+def build_master_recommendations(
+    candidates: dict,
+    quote_map: dict[str, float] | None = None,
+    market: dict | None = None,
+    macro: dict | None = None,
+    now: datetime | None = None,
+) -> dict:
+    global _ACTIVE_WEIGHTS
+
+    state = upgrade_master_strategies(quote_map or {}, market, macro, now)
+    version = format_version(state)
+
     contexts: list[dict] = []
     for symbol, meta in candidates.items():
         ctx = fetch_candidate_context(symbol, meta)
@@ -723,16 +913,34 @@ def build_master_recommendations(candidates: dict) -> dict:
             contexts.append(ctx)
 
     masters_out = []
+    upgrade_notes = state.get("upgradeNotes") or {}
+    performance = state.get("performance") or {}
+
     for profile in MASTER_PROFILES:
+        _ACTIVE_WEIGHTS = get_master_weights(profile.id, state)
         scorer = SCORERS[profile.id]
-        ranked: list[tuple[float, dict, list[str]]] = []
+        ranked: list[tuple[float, dict, list[str], dict[str, float]]] = []
         for ctx in contexts:
-            score, reasons = scorer(ctx)
+            score, reasons, factors = scorer(ctx)
             if score >= MIN_MATCH_SCORE:
-                ranked.append((score, ctx, reasons))
+                ranked.append((score, ctx, reasons, factors))
         ranked.sort(key=lambda x: (-x[0], x[1]["symbol"]))
 
-        picks = [_pick_row(profile, ctx, score, reasons) for score, ctx, reasons in ranked[:PICKS_PER_MASTER]]
+        picks = [
+            _pick_row(profile, ctx, score, reasons, factors)
+            for score, ctx, reasons, factors in ranked[:PICKS_PER_MASTER]
+        ]
+
+        perf = performance.get(profile.id) or {}
+        learning = {
+            "revision": state.get("revision"),
+            "regime": state.get("regime"),
+            "samples": perf.get("samples"),
+            "winRate": perf.get("winRate"),
+            "avgReturnPct": perf.get("avgReturnPct"),
+            "upgradeNote": upgrade_notes.get(profile.id),
+            "lastUpgrade": state.get("lastUpgrade"),
+        }
 
         masters_out.append(
             {
@@ -744,21 +952,35 @@ def build_master_recommendations(candidates: dict) -> dict:
                 "principles": list(profile.principles),
                 "holdingHorizon": profile.holding,
                 "picks": picks,
+                "learning": learning,
                 **_master_extra(profile),
             }
         )
 
-    return {
-        "version": MASTER_VERSION,
+    result = {
+        "version": version,
         "strategy": (
-            f"{MASTER_VERSION} 投资大师风格荐股："
-            f"基于 Yahoo 基本面与价格特征，模拟 {len(MASTER_PROFILES)} 位大师选股逻辑；"
-            f"每位大师推荐 {PICKS_PER_MASTER} 只，与战术 v1.3 相互独立。"
+            f"{version} 投资大师风格荐股（在线学习）："
+            f"每次数据更新根据历史荐股表现与市场环境微调 {len(MASTER_PROFILES)} 位大师因子权重；"
+            f"当前市场环境 {state.get('regime', 'neutral')}。"
         ),
         "disclaimer": (
             "大师风格荐股为规则化模拟，非真实人物操作建议；"
+            "权重学习基于历史快照与公开行情，样本不足时变化极小；"
             "Serenity 相关内容为对其公开框架的量化近似，勿当作 X 账号买卖信号；"
-            "基本面数据可能有延迟或缺失，仅供研究，不构成投资建议。"
+            "仅供研究，不构成投资建议。"
         ),
+        "learning": {
+            "revision": state.get("revision"),
+            "regime": state.get("regime"),
+            "updatedAt": state.get("updatedAt"),
+            "lastUpgrade": state.get("lastUpgrade"),
+            "notes": upgrade_notes,
+        },
         "masters": masters_out,
     }
+
+    if now:
+        append_master_history(result, now)
+
+    return result

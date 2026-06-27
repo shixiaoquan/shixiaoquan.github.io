@@ -299,9 +299,15 @@ def master_reco_section(market: dict | None) -> str:
     if not masters:
         return "大师风格荐股数据暂缺。"
 
+    learning = data.get("learning") or {}
     parts = [
-        f"基于候选池基本面与价格特征，模拟 **{len(masters)}** 位投资大师选股框架（{data.get('version', 'v1.0')}）。"
+        f"基于候选池基本面与价格特征，模拟 **{len(masters)}** 位投资大师选股框架（{data.get('version', 'v1.2')}）。"
     ]
+    if learning.get("regime"):
+        parts.append(
+            f"*在线学习：市场环境 {learning['regime']} · 修订 r{learning.get('revision', 0)}"
+            f"{(' · ' + learning['notes']['_regime']) if learning.get('notes', {}).get('_regime') else ''}*"
+        )
     for master in masters:
         picks = master.get("picks") or []
         parts.append(f"\n### {master.get('name')} · {master.get('style')}")

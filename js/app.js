@@ -958,11 +958,22 @@ function renderMasterRecommendations(data) {
   if (strategyEl && data.strategy) strategyEl.textContent = data.strategy;
   if (disclaimerEl) disclaimerEl.textContent = data.disclaimer || "";
 
+  const learning = data.learning || {};
+  const learningHint = learning.regime
+    ? `策略版本 ${data.version || "—"} · 市场环境 ${learning.regime}${learning.revision != null ? ` · 修订 r${learning.revision}` : ""}`
+    : "";
+
   grid.innerHTML = data.masters
     .map((master) => {
       const picksHtml = master.picks?.length
         ? master.picks.map((p) => renderMasterPickCard(p)).join("")
         : '<p class="empty master-empty">当前候选池暂无符合该风格的标的</p>';
+      const learn = master.learning || {};
+      const learnHtml = learn.samples
+        ? `<p class="master-learning">学习反馈 · 样本 ${learn.samples} · 胜率 ${learn.winRate ?? "--"}% · 均收益 ${formatPct(learn.avgReturnPct)}${learn.upgradeNote ? ` · ${learn.upgradeNote}` : ""}</p>`
+        : learn.upgradeNote
+          ? `<p class="master-learning">${learn.upgradeNote}</p>`
+          : "";
       return `
         <article class="master-card${master.id === "serenity" ? " master-card--serenity" : ""}" id="master-${master.id}">
           <header class="master-card__head">
@@ -974,12 +985,17 @@ function renderMasterRecommendations(data) {
           </header>
           ${master.sourceNote ? `<p class="master-card__source-note">${master.sourceNote}</p>` : ""}
           <p class="master-card__philosophy">${master.philosophy || ""}</p>
+          ${learnHtml}
           <ul class="master-principles">${(master.principles || []).map((p) => `<li>${p}</li>`).join("")}</ul>
           <div class="master-picks">${picksHtml}</div>
         </article>
       `;
     })
     .join("");
+
+  if (learningHint && strategyEl) {
+    strategyEl.textContent = `${data.strategy || ""} ${learningHint ? `（${learningHint}）` : ""}`.trim();
+  }
 }
 
 function switchRecoMode(mode, options = {}) {
