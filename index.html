@@ -14,7 +14,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=22" defer></script>
+  <script src="js/app.js?v=23" defer></script>
 </head>
 <body>
   <div class="app">
@@ -247,7 +247,11 @@
 
     <!-- 荐股 -->
     <section id="panel-reco" class="tab-panel" role="tabpanel" hidden>
-      <section class="panel panel--wide reco-section">
+      <nav class="reco-mode-tabs" id="reco-mode-tabs" role="tablist" aria-label="荐股模式">
+        <button type="button" class="reco-mode-btn reco-mode-btn--active" data-reco-mode="tactical" role="tab" aria-selected="true">战术 v1.3</button>
+        <button type="button" class="reco-mode-btn" data-reco-mode="masters" role="tab" aria-selected="false">投资大师</button>
+      </nav>
+      <section class="panel panel--wide reco-section" id="reco-tactical-panel">
         <div class="panel__head">
           <h2>今日荐股</h2>
           <p id="reco-strategy">战术实验 v1.3 · A股 / 港股 / 美股 各选 1 只</p>
@@ -255,7 +259,15 @@
         <div class="reco-cards" id="reco-cards"></div>
         <p class="reco-disclaimer" id="reco-disclaimer"></p>
       </section>
-      <section class="panel panel--wide">
+      <section class="panel panel--wide reco-section" id="reco-masters-panel" hidden>
+        <div class="panel__head">
+          <h2>投资大师风格荐股</h2>
+          <p id="master-reco-strategy">学习大师投资框架，按风格匹配候选池标的</p>
+        </div>
+        <div class="master-reco-grid" id="master-reco-grid"></div>
+        <p class="reco-disclaimer" id="master-reco-disclaimer"></p>
+      </section>
+      <section class="panel panel--wide" id="reco-scan-panel">
         <details class="candidate-scan" id="candidate-scan-wrap">
           <summary id="candidate-scan-summary">全市场评分扫描</summary>
           <div class="table-wrap">

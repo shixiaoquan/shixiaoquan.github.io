@@ -77,6 +77,7 @@ from strategy_scoring import (
     sma,
 )
 from reco_signals import update_reco_signals
+from strategy_masters import build_master_recommendations
 
 MAX_PICKS_PER_MARKET = 1
 MARKETS = ("A股", "港股", "美股")
@@ -554,6 +555,7 @@ def main() -> None:
     news = fetch_news()
     now = datetime.now(timezone.utc).astimezone()
     recommendations, quote_map, change_map = build_recommendations(now)
+    master_recommendations = build_master_recommendations(CANDIDATES)
     for item in stocks:
         if item.get("symbol") and item.get("changePct") is not None:
             change_map[item["symbol"]] = item["changePct"]
@@ -568,6 +570,7 @@ def main() -> None:
         "stocks": stocks,
         "news": news,
         "recommendations": recommendations,
+        "masterRecommendations": master_recommendations,
     }
 
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
