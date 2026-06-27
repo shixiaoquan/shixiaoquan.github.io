@@ -42,6 +42,8 @@ CANDIDATES = {
     "000858.SZ": {"name": "五粮液", "sector": "白酒", "currency": "CNY", "market": "A股"},
     "688981.SS": {"name": "中芯国际", "sector": "半导体", "currency": "CNY", "market": "A股"},
     "600036.SS": {"name": "招商银行", "sector": "银行", "currency": "CNY", "market": "A股"},
+    "300308.SZ": {"name": "中际旭创", "sector": "光模块", "currency": "CNY", "market": "A股"},
+    "688017.SS": {"name": "绿的谐波", "sector": "精密减速器", "currency": "CNY", "market": "A股"},
     # 港股
     "0700.HK": {"name": "腾讯控股", "sector": "互联网", "currency": "HKD", "market": "港股"},
     "9988.HK": {"name": "阿里巴巴", "sector": "电商云计算", "currency": "HKD", "market": "港股"},

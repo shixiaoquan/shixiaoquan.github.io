@@ -9,7 +9,7 @@ import yfinance as yf
 
 from strategy_scoring import MARKET_BENCHMARKS, pct_change, sma
 
-MASTER_VERSION = "v1.0.0"
+MASTER_VERSION = "v1.1.0"
 PICKS_PER_MASTER = 2
 MIN_MATCH_SCORE = 48
 
@@ -80,7 +80,53 @@ MASTER_PROFILES: tuple[MasterProfile, ...] = (
         principles=("趋势确认", "相对强度", "宏观共振", "快速止损", "顺势而为"),
         holding="数周–数月",
     ),
+    MasterProfile(
+        id="serenity",
+        name="白毛股神 Serenity",
+        name_en="Serenity (@aleabitoreddit)",
+        style="卡脖子 · 瓶颈猎手",
+        philosophy=(
+            "Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，"
+            "寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。"
+        ),
+        principles=(
+            "瓶颈猎手",
+            "终端需求向上游追溯",
+            "小盘+高壁垒+低覆盖",
+            "机构定价前布局",
+            "证伪点止损",
+        ),
+        holding="6–18 个月",
+    ),
 )
+
+
+# Serenity 产业链瓶颈标签（候选池内），用于加分与展示
+SERENITY_BOTTLENECK_TAGS: dict[str, tuple[str, str]] = {
+    "688981.SS": ("晶圆制造", "AI 算力上游产能瓶颈"),
+    "688017.SS": ("精密减速器", "人形机器人卡脖子环节"),
+    "300308.SZ": ("光模块", "CPO/光互连供应链瓶颈"),
+    "AMD": ("GPU/CPU", "算力供应链关键环节"),
+    "NVDA": ("AI 芯片", "终端龙头 — 非瓶颈主战场"),
+    "300750.SZ": ("动力电池", "数据中心备电/储能环节"),
+    "1810.HK": ("智能硬件", "机器人/IoT 终端生态"),
+    "9992.HK": ("潮玩零售", "非核心瓶颈 — 降权"),
+}
+
+SERENITY_SECTOR_SCORE: dict[str, float] = {
+    "半导体": 22,
+    "光模块": 24,
+    "精密减速器": 24,
+    "新能源": 10,
+    "消费电子": 12,
+    "软件云计算": 6,
+    "电商云计算": 4,
+    "互联网": 2,
+    "白酒": -22,
+    "保险": -20,
+    "银行": -18,
+    "潮玩零售": -12,
+}
 
 
 def _norm_ratio(val: float | None, as_pct: bool = True) -> float | None:
@@ -472,6 +518,91 @@ def _score_soros(ctx: dict) -> tuple[float, list[str]]:
     return _clamp_score(score), reasons[:4]
 
 
+def _score_serenity(ctx: dict) -> tuple[float, list[str]]:
+    """X @aleabitoreddit — 卡脖子投资法 / Bottleneck Hunter。"""
+    score = 38.0
+    reasons: list[str] = []
+    symbol = ctx.get("symbol", "")
+
+    tag = SERENITY_BOTTLENECK_TAGS.get(symbol)
+    sector = ctx.get("sector") or (tag[0] if tag else "")
+    sector_bonus = SERENITY_SECTOR_SCORE.get(sector, 0)
+    if sector_bonus:
+        score += sector_bonus
+        if sector_bonus > 0:
+            reasons.append(f"{sector} — AI/机器人供应链瓶颈相关环节")
+        else:
+            reasons.append(f"{sector} — 非 Serenity 核心瓶颈赛道")
+
+    if tag:
+        layer, note = tag
+        if "非瓶颈" in note or "降权" in note or "终端龙头" in note:
+            score -= 12
+            reasons.append(f"{layer}：{note}")
+        else:
+            score += 14
+            reasons.append(f"紫苏叶环节 · {layer} — {note}")
+
+    mcap = ctx.get("marketCap")
+    if mcap is not None:
+        if mcap < 30e9:
+            score += 16
+            reasons.append("小市值 — 机构覆盖不足、重估弹性大")
+        elif mcap < 100e9:
+            score += 10
+            reasons.append("中市值 — 仍处价格发现窗口")
+        elif mcap < 300e9:
+            score += 2
+        elif mcap > 1e12:
+            score -= 22
+            reasons.append("超大盘龙头 — 「买瓶颈不买品牌」框架下降权")
+        elif mcap > 400e9:
+            score -= 14
+            reasons.append("大盘蓝筹 — 非典型卡脖子小盘标的")
+
+    earn_g = ctx.get("earningsGrowth")
+    rev_g = ctx.get("revenueGrowth")
+    if earn_g is not None and earn_g >= 15:
+        score += 10
+        reasons.append(f"盈利增速 {earn_g}% — 瓶颈环节需求释放")
+    elif earn_g is not None and earn_g >= 5:
+        score += 4
+    if rev_g is not None and rev_g >= 10:
+        score += 6
+
+    rp = ctx.get("rangePosition")
+    if rp is not None and rp < 0.45:
+        score += 10
+        reasons.append("52 周区间偏低 — 或在机构大规模覆盖前")
+    elif rp is not None and rp > 0.85:
+        score -= 8
+        reasons.append("接近日内/年内高位 — 警惕情绪末段追价")
+
+    month = ctx.get("monthChangePct")
+    if month is not None:
+        if 0 < month <= 18:
+            score += 6
+            reasons.append(f"近一月 +{month}% — 重估进行中但未必过热")
+        elif month > 35:
+            score -= 10
+            reasons.append("短期涨幅过大 — 社交情绪驱动后慎追")
+
+    rs = ctx.get("relativeStrength")
+    if rs is not None and rs >= 3:
+        score += 6
+
+    beta = ctx.get("beta")
+    if beta is not None and beta >= 1.15:
+        score += 4
+
+    margins = ctx.get("profitMargins")
+    if margins is not None and margins >= 20:
+        score += 5
+        reasons.append(f"净利率 {margins}% — 环节稀缺性/定价权")
+
+    return _clamp_score(score), reasons[:5]
+
+
 SCORERS: dict[str, Callable[[dict], tuple[float, list[str]]]] = {
     "buffett": _score_buffett,
     "graham": _score_graham,
@@ -479,6 +610,7 @@ SCORERS: dict[str, Callable[[dict], tuple[float, list[str]]]] = {
     "munger": _score_munger,
     "templeton": _score_templeton,
     "soros": _score_soros,
+    "serenity": _score_serenity,
 }
 
 
@@ -513,6 +645,19 @@ def _build_plan(profile: MasterProfile, ctx: dict, score: float) -> dict:
         entry = f"市场极度悲观、价格 {price} 处于低位区间时逆向买入；需确认基本面未实质性恶化。"
         holding = f"等待情绪修复（{profile.holding}）；耐心是关键。"
         risk = "若逆向逻辑被证伪（基本面崩塌），果断止损。"
+    elif profile.id == "serenity":
+        entry = (
+            f"在 {price} {currency} 附近建立 conviction 仓位；"
+            "从终端需求（算力/光互连/机器人）向上游追溯，独立验证瓶颈是否仍不可替代。"
+        )
+        holding = (
+            f"{profile.holding}；等待供应链重估、扩产瓶颈确认或并购催化，"
+            "接受小盘科技股的较大波动。"
+        )
+        risk = (
+            "证伪点：技术路线变更、客户找到替代供应商、瓶颈环节扩产后稀缺性消失；"
+            "不因 X/社交热度末段追高。"
+        )
     else:
         entry = f"趋势确认后于 {price} 附近顺势建仓；宏观与相对强度共振时加仓。"
         holding = f"短中期趋势交易（{profile.holding.strip()}）；趋势破坏即减仓。"
@@ -524,7 +669,26 @@ def _build_plan(profile: MasterProfile, ctx: dict, score: float) -> dict:
 
 def _pick_row(profile: MasterProfile, ctx: dict, score: float, reasons: list[str]) -> dict:
     signal, label = _signal_from_score(score)
-    return {
+    metrics = {
+        "pe": ctx.get("pe"),
+        "pb": ctx.get("pb"),
+        "roe": ctx.get("roe"),
+        "peg": ctx.get("peg"),
+        "earningsGrowth": ctx.get("earningsGrowth"),
+        "profitMargins": ctx.get("profitMargins"),
+        "monthChangePct": ctx.get("monthChangePct"),
+        "relativeStrength": ctx.get("relativeStrength"),
+        "rangePosition": ctx.get("rangePosition"),
+    }
+    if profile.id == "serenity":
+        mcap = ctx.get("marketCap")
+        if mcap is not None:
+            metrics["marketCapB"] = round(mcap / 1e9, 1)
+        tag = SERENITY_BOTTLENECK_TAGS.get(ctx.get("symbol", ""))
+        if tag:
+            metrics["bottleneckLayer"] = tag[0]
+
+    row = {
         "symbol": ctx["symbol"],
         "name": ctx["name"],
         "market": ctx["market"],
@@ -536,18 +700,19 @@ def _pick_row(profile: MasterProfile, ctx: dict, score: float, reasons: list[str
         "signalLabel": label,
         "reasons": reasons,
         "plan": _build_plan(profile, ctx, score),
-        "metrics": {
-            "pe": ctx.get("pe"),
-            "pb": ctx.get("pb"),
-            "roe": ctx.get("roe"),
-            "peg": ctx.get("peg"),
-            "earningsGrowth": ctx.get("earningsGrowth"),
-            "profitMargins": ctx.get("profitMargins"),
-            "monthChangePct": ctx.get("monthChangePct"),
-            "relativeStrength": ctx.get("relativeStrength"),
-            "rangePosition": ctx.get("rangePosition"),
-        },
+        "metrics": metrics,
     }
+    return row
+
+
+def _master_extra(profile: MasterProfile) -> dict:
+    if profile.id == "serenity":
+        return {
+            "xHandle": "@aleabitoreddit",
+            "platform": "X",
+            "sourceNote": "规则化模拟其公开的「卡脖子/紫苏叶」框架，非本人操作建议",
+        }
+    return {}
 
 
 def build_master_recommendations(candidates: dict) -> dict:
@@ -579,6 +744,7 @@ def build_master_recommendations(candidates: dict) -> dict:
                 "principles": list(profile.principles),
                 "holdingHorizon": profile.holding,
                 "picks": picks,
+                **_master_extra(profile),
             }
         )
 
@@ -591,6 +757,7 @@ def build_master_recommendations(candidates: dict) -> dict:
         ),
         "disclaimer": (
             "大师风格荐股为规则化模拟，非真实人物操作建议；"
+            "Serenity 相关内容为对其公开框架的量化近似，勿当作 X 账号买卖信号；"
             "基本面数据可能有延迟或缺失，仅供研究，不构成投资建议。"
         ),
         "masters": masters_out,

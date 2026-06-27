@@ -854,6 +854,8 @@ function formatMasterMetric(key, val) {
   if (key === "roe" || key === "profitMargins" || key === "earningsGrowth") return `${formatNumber(val, 1)}%`;
   if (key === "monthChangePct" || key === "relativeStrength") return formatPct(val);
   if (key === "rangePosition") return `${Math.round(val * 100)}%`;
+  if (key === "marketCapB") return `${formatNumber(val, 1)}B`;
+  if (key === "bottleneckLayer") return String(val);
   return String(val);
 }
 
@@ -869,6 +871,8 @@ function renderMasterPickCard(pick) {
     monthChangePct: "近一月",
     relativeStrength: "相对强度",
     rangePosition: "52周区间",
+    marketCapB: "市值",
+    bottleneckLayer: "瓶颈环节",
   };
   const metricHtml = Object.entries(metricLabels)
     .map(([key, label]) => {
@@ -926,14 +930,15 @@ function renderMasterRecommendations(data) {
         ? master.picks.map((p) => renderMasterPickCard(p)).join("")
         : '<p class="empty master-empty">当前候选池暂无符合该风格的标的</p>';
       return `
-        <article class="master-card" id="master-${master.id}">
+        <article class="master-card${master.id === "serenity" ? " master-card--serenity" : ""}" id="master-${master.id}">
           <header class="master-card__head">
             <div>
               <p class="master-card__style">${master.style}</p>
               <h3>${master.name}</h3>
-              <p class="master-card__en">${master.nameEn || ""} · 持有 ${master.holdingHorizon || "—"}</p>
+              <p class="master-card__en">${master.nameEn || ""} · 持有 ${master.holdingHorizon || "—"}${master.xHandle ? ` · <a href="https://x.com/${master.xHandle.replace("@", "")}" target="_blank" rel="noopener noreferrer">${master.xHandle}</a>` : ""}</p>
             </div>
           </header>
+          ${master.sourceNote ? `<p class="master-card__source-note">${master.sourceNote}</p>` : ""}
           <p class="master-card__philosophy">${master.philosophy || ""}</p>
           <ul class="master-principles">${(master.principles || []).map((p) => `<li>${p}</li>`).join("")}</ul>
           <div class="master-picks">${picksHtml}</div>
