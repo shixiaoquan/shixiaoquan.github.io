@@ -411,6 +411,10 @@ def macro_section(macro: dict | None) -> str:
         lines.append(f"- **VIX** {fmt_num(s['vix'], 1)}（{s.get('vixRegime', '—')}）")
     if s.get("us10yYield") is not None:
         lines.append(f"- **美10Y收益率** {fmt_num(s['us10yYield'], 2)}%")
+    if s.get("yieldSpread10y2y") is not None:
+        spread = s["yieldSpread10y2y"]
+        tag = "倒挂" if spread < 0 else "偏窄" if spread < 0.5 else "正常"
+        lines.append(f"- **10Y-2Y 利差（FRED）** {fmt_num(spread, 2)}%（{tag}）")
     if s.get("usdCnh") is not None:
         chg = fmt_pct(s.get("usdCnhChangePct")) if s.get("usdCnhChangePct") is not None else "—"
         lines.append(f"- **USDCNH** {fmt_num(s['usdCnh'], 4)}（日 {chg}）")
@@ -418,6 +422,35 @@ def macro_section(macro: dict | None) -> str:
         lines.append(
             f"- **美股行业**：{s.get('sectorLeader')} 领涨，{s.get('sectorLaggard')} 靠后"
         )
+
+    fred_rows = macro.get("fred") or []
+    if fred_rows:
+        lines.append("\n**FRED 官方序列**")
+        for row in fred_rows[:6]:
+            chg = fmt_pct(row.get("changePct")) if row.get("changePct") is not None else "—"
+            lines.append(
+                f"- {row.get('name', row.get('seriesId'))}：{row.get('price')}（变动 {chg}，{row.get('observedAt', '—')}）"
+            )
+
+    news = macro.get("finnhubNews") or []
+    if news:
+        lines.append("\n**Finnhub 宏观要闻**")
+        for item in news[:5]:
+            title = item.get("title") or "—"
+            src = item.get("source") or "Finnhub"
+            lines.append(f"- [{title}]({item.get('link') or '#'})（{src}）")
+
+    earnings = macro.get("earningsCalendar") or []
+    if earnings:
+        lines.append("\n**财报日历（关注标的）**")
+        for row in earnings[:6]:
+            eps = row.get("epsEstimate")
+            eps_s = fmt_num(eps, 2) if eps is not None else "—"
+            lines.append(
+                f"- **{row.get('symbol', '—')}** {row.get('date', '—')} "
+                f"{row.get('hour') or ''} · EPS预期 {eps_s}"
+            )
+
     for h in s.get("hints") or []:
         lines.append(f"- {h}")
     src = "、".join(x.get("name", "") for x in macro.get("sources") or [])
@@ -464,7 +497,7 @@ def build_report(slot: str, now_bjt: datetime | None = None) -> tuple[str, dict]
 
 **{now_bjt.strftime('%Y年%m月%d日')} {time_str}（北京时间）** · {meta['subtitle']}
 
-> 数据来源：Yahoo Finance · Frankfurter(ECB) · 同花顺问财 · 量化策略引擎  
+> 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
 > 行情更新：{fmt_dt_bjt(market.get('updatedAt'))} · 宏观：{fmt_dt_bjt(macro.get('updatedAt'))} · 问财：{fmt_dt_bjt(wencai.get('updatedAt'))}
 
 ---

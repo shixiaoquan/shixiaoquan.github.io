@@ -276,6 +276,39 @@ function formatMacroPrice(item) {
   return formatNumber(item.price);
 }
 
+function formatFredValue(item) {
+  if (!item) return "--";
+  const unit = item.unit;
+  if (unit === "pct" || unit === "spread") return `${formatNumber(item.price, item.unit === "spread" ? 2 : 2)}%`;
+  if (unit === "rate") return formatNumber(item.price, 4);
+  return formatNumber(item.price);
+}
+
+function renderMacroNewsList(news) {
+  if (!news?.length) {
+    return '<p class="empty">暂无 Finnhub 宏观资讯（配置 FINNHUB_API_KEY 后自动拉取）</p>';
+  }
+  return `<ul class="news-list news-list--compact">${news
+    .map(
+      (item) => `
+      <li class="news-item news-item--compact">
+        <div>
+          <p class="news-item__title">
+            ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>` : item.title}
+          </p>
+          ${item.summary ? `<p class="news-item__summary">${item.summary}</p>` : ""}
+          <p class="news-item__meta">
+            <span class="news-source news-source--finnhub">${item.source || "Finnhub"}</span>
+            ${item.category ? ` · ${item.category}` : ""}${item.related ? ` · ${item.related}` : ""}
+          </p>
+        </div>
+        <span class="news-item__time">${formatDateTime(item.publishedAt)}</span>
+      </li>
+    `
+    )
+    .join("")}</ul>`;
+}
+
 function renderCockpitMacro(data) {
   const grid = document.getElementById("cockpit-macro-grid");
   const hintsEl = document.getElementById("cockpit-macro-hints");
@@ -292,6 +325,7 @@ function renderCockpitMacro(data) {
     const parts = [];
     if (s.vix != null) parts.push(`VIX ${formatNumber(s.vix, 1)}`);
     if (s.us10yYield != null) parts.push(`10Y ${formatNumber(s.us10yYield, 2)}%`);
+    if (s.yieldSpread10y2y != null) parts.push(`10Y-2Y ${formatNumber(s.yieldSpread10y2y, 2)}%`);
     if (s.usdCnh != null) parts.push(`USDCNH ${formatNumber(s.usdCnh, 4)}`);
     hint.textContent = parts.length ? parts.join(" · ") : "VIX · 利率 · 汇率 · 商品 · 美股行业";
   }
@@ -416,6 +450,27 @@ function renderMarketMacro(data) {
         { label: "价格", render: (r) => formatNumber(r.price) },
         { label: "日涨跌", render: (r) => `<span class="change ${changeClass(r.changePct)}">${formatPct(r.changePct)}</span>` },
         { label: "周涨跌", render: (r) => `<span class="change ${changeClass(r.weekChangePct)}">${formatPct(r.weekChangePct)}</span>` },
+      ])}
+      ${renderMacroTable("FRED 官方宏观", "圣路易斯联储 · 需 FRED_API_KEY", data.fred || [], [
+        { label: "序列", render: (r) => `<strong>${r.name}</strong> <span class="stock-card__symbol">${r.seriesId}</span>` },
+        { label: "最新", render: (r) => formatFredValue(r) },
+        { label: "变动", render: (r) => `<span class="change ${changeClass(r.changePct)}">${formatPct(r.changePct)}</span>` },
+        { label: "观测日", render: (r) => r.observedAt || "—" },
+        { label: "来源", key: "source" },
+      ])}
+      <section class="macro-block">
+        <div class="panel__head">
+          <h3>Finnhub 宏观资讯</h3>
+          <p>全球市场 · 外汇 · 免费层 API</p>
+        </div>
+        ${renderMacroNewsList(data.finnhubNews)}
+      </section>
+      ${renderMacroTable("财报日历（关注标的）", "AAPL · NVDA · 小米 · 腾讯 · 中芯", data.earningsCalendar || [], [
+        { label: "代码", render: (r) => `<strong>${r.symbol || "—"}</strong>` },
+        { label: "日期", render: (r) => r.date || "—" },
+        { label: "时段", render: (r) => r.hour || "—" },
+        { label: "EPS 预期", render: (r) => (r.epsEstimate != null ? formatNumber(r.epsEstimate, 2) : "—") },
+        { label: "营收预期", render: (r) => (r.revenueEstimate != null ? formatNumber(r.revenueEstimate, 0) : "—") },
       ])}
     </div>
   `;

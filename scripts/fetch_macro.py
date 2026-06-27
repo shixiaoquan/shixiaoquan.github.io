@@ -4,9 +4,11 @@
 from __future__ import annotations
 
 import json
+import os
 import urllib.error
+import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import yfinance as yf
@@ -51,6 +53,18 @@ SECTOR_ETFS = {
     "XLRE": "地产",
     "XLC": "通信",
 }
+
+# FRED 宏观序列（需 FRED_API_KEY）
+FRED_SERIES = {
+    "DGS10": {"name": "美10年期国债收益率", "unit": "pct", "digits": 2},
+    "T10Y2Y": {"name": "10Y-2Y 利差", "unit": "spread", "digits": 2},
+    "FEDFUNDS": {"name": "联邦基金利率", "unit": "pct", "digits": 2},
+    "UNRATE": {"name": "美国失业率", "unit": "pct", "digits": 1},
+    "DEXCHUS": {"name": "美元/人民币(官方)", "unit": "rate", "digits": 4},
+    "CPIAUCSL": {"name": "美国CPI指数", "unit": "index", "digits": 1},
+}
+
+FINNHUB_WATCH = ("AAPL", "NVDA", "1810.HK", "0700.HK", "688981.SS")
 
 
 def pct_change(current: float | None, previous: float | None) -> float | None:
@@ -197,6 +211,176 @@ def merge_fx(yahoo_fx: list[dict], static_fx: list[dict]) -> list[dict]:
     return result
 
 
+def http_get_json(url: str, timeout: int = 25) -> dict | list | None:
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return json.loads(resp.read())
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, ValueError):
+        return None
+
+
+def fetch_fred_series(api_key: str, series_id: str, meta: dict) -> dict | None:
+    params = urllib.parse.urlencode(
+        {
+            "series_id": series_id,
+            "api_key": api_key,
+            "file_type": "json",
+            "sort_order": "desc",
+            "limit": 6,
+        }
+    )
+    url = f"https://api.stlouisfed.org/fred/series/observations?{params}"
+    data = http_get_json(url)
+    if not isinstance(data, dict):
+        return None
+
+    obs = [o for o in data.get("observations", []) if o.get("value") not in (".", None, "")]
+    if not obs:
+        return None
+
+    latest = obs[0]
+    prev = obs[1] if len(obs) > 1 else None
+    month_ago = obs[5] if len(obs) > 5 else None
+
+    try:
+        val = float(latest["value"])
+        prev_val = float(prev["value"]) if prev else None
+        month_val = float(month_ago["value"]) if month_ago else None
+    except (TypeError, ValueError):
+        return None
+
+    digits = meta.get("digits", 2)
+    change = pct_change(val, prev_val)
+    if series_id == "CPIAUCSL" and month_val:
+        change = pct_change(val, month_val)
+
+    return {
+        "seriesId": series_id,
+        "name": meta["name"],
+        "unit": meta.get("unit", "index"),
+        "price": round(val, digits),
+        "changePct": change,
+        "observedAt": latest.get("date"),
+        "source": "fred",
+    }
+
+
+def fetch_fred_all(api_key: str | None) -> tuple[list[dict], str]:
+    if not api_key:
+        return [], "missing_key"
+    items = []
+    errors = 0
+    for series_id, meta in FRED_SERIES.items():
+        row = fetch_fred_series(api_key, series_id, meta)
+        if row:
+            items.append(row)
+        else:
+            errors += 1
+    status = "ok" if items else "error"
+    if items and errors:
+        status = "partial"
+    return items, status
+
+
+def fetch_finnhub_news(api_key: str | None, category: str = "general", limit: int = 8) -> list[dict]:
+    if not api_key:
+        return []
+    params = urllib.parse.urlencode({"category": category, "token": api_key})
+    data = http_get_json(f"https://finnhub.io/api/v1/news?{params}")
+    if not isinstance(data, list):
+        return []
+
+    items = []
+    for row in data[:limit]:
+        ts = row.get("datetime")
+        published = None
+        if ts:
+            published = datetime.fromtimestamp(int(ts), tz=timezone.utc).isoformat()
+        items.append(
+            {
+                "id": row.get("id"),
+                "title": row.get("headline") or row.get("title"),
+                "summary": (row.get("summary") or "")[:200],
+                "source": row.get("source") or "Finnhub",
+                "category": category,
+                "link": row.get("url") or "",
+                "publishedAt": published,
+                "related": row.get("related") or "",
+            }
+        )
+    return items
+
+
+def fetch_finnhub_earnings(api_key: str | None, days: int = 7) -> list[dict]:
+    if not api_key:
+        return []
+    today = datetime.now(timezone.utc).date()
+    end = today + timedelta(days=days)
+    params = urllib.parse.urlencode(
+        {
+            "from": today.isoformat(),
+            "to": end.isoformat(),
+            "token": api_key,
+        }
+    )
+    data = http_get_json(f"https://finnhub.io/api/v1/calendar/earnings?{params}")
+    if not isinstance(data, dict):
+        return []
+
+    rows = data.get("earningsCalendar") or []
+    watch = set(FINNHUB_WATCH)
+    items = []
+    for row in rows[:40]:
+        symbol = row.get("symbol") or ""
+        if watch and symbol not in watch:
+            continue
+        items.append(
+            {
+                "symbol": symbol,
+                "date": row.get("date"),
+                "hour": row.get("hour"),
+                "epsEstimate": row.get("epsEstimate"),
+                "revenueEstimate": row.get("revenueEstimate"),
+            }
+        )
+    if not items and rows:
+        items = [
+            {
+                "symbol": row.get("symbol"),
+                "date": row.get("date"),
+                "hour": row.get("hour"),
+                "epsEstimate": row.get("epsEstimate"),
+                "revenueEstimate": row.get("revenueEstimate"),
+            }
+            for row in rows[:10]
+        ]
+    return items[:12]
+
+
+def fetch_finnhub_all(api_key: str | None) -> tuple[dict, str]:
+    if not api_key:
+        return {"news": [], "earnings": []}, "missing_key"
+
+    news = fetch_finnhub_news(api_key, "general", 8)
+    forex_news = fetch_finnhub_news(api_key, "forex", 4)
+    earnings = fetch_finnhub_earnings(api_key)
+
+    seen: set[str] = set()
+    merged_news = []
+    for item in news + forex_news:
+        title = item.get("title") or ""
+        if not title or title in seen:
+            continue
+        seen.add(title)
+        merged_news.append(item)
+        if len(merged_news) >= 10:
+            break
+
+    status = "ok" if merged_news or earnings else "empty"
+    return {"news": merged_news, "earnings": earnings}, status
+
+
 def fetch_sectors() -> list[dict]:
     items = []
     for symbol, sector in SECTOR_ETFS.items():
@@ -220,7 +404,13 @@ def vix_regime(vix: float | None) -> str:
     return "normal"
 
 
-def build_summary(risk: list, fx: list, sectors: list, commodities: list) -> dict:
+def build_summary(
+    risk: list,
+    fx: list,
+    sectors: list,
+    commodities: list,
+    fred: list | None = None,
+) -> dict:
     vix_item = next((r for r in risk if r.get("symbol") == "^VIX"), None)
     tnx_item = next((r for r in risk if r.get("symbol") == "^TNX"), None)
     cnh = next((f for f in fx if "CNH" in f.get("symbol", "") or f.get("quote") == "CNH"), None)
@@ -262,6 +452,17 @@ def build_summary(risk: list, fx: list, sectors: list, commodities: list) -> dic
         elif gold["changePct"] < 0 and oil["changePct"] > 0:
             hints.append("原油强、黄金弱 — 偏再通胀/增长预期。")
 
+    spread = next((f for f in (fred or []) if f.get("seriesId") == "T10Y2Y"), None)
+    if spread and spread.get("price") is not None:
+        if spread["price"] < 0:
+            hints.append("FRED：10Y-2Y 利差为负（收益率曲线倒挂），需关注衰退预期。")
+        elif spread["price"] < 0.5:
+            hints.append("FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。")
+
+    unrate = next((f for f in (fred or []) if f.get("seriesId") == "UNRATE"), None)
+    if unrate and unrate.get("changePct") is not None and unrate["changePct"] > 0.1:
+        hints.append("FRED：失业率边际上升，就业市场边际走弱。")
+
     return {
         "vix": vix_val,
         "vixRegime": regime,
@@ -270,7 +471,8 @@ def build_summary(risk: list, fx: list, sectors: list, commodities: list) -> dic
         "usdCnhChangePct": cnh.get("changePct") if cnh else None,
         "sectorLeader": leader.get("sector") if leader else None,
         "sectorLaggard": laggard.get("sector") if laggard else None,
-        "hints": hints[:4],
+        "yieldSpread10y2y": spread.get("price") if spread else None,
+        "hints": hints[:5],
     }
 
 
@@ -313,7 +515,31 @@ def main() -> None:
     rates = [r for r in risk_rates_indices if r.get("category") == "rates"]
     extra_indices = [r for r in risk_rates_indices if r.get("category") == "index"]
 
-    summary = build_summary(risk + rates, fx, sectors, commodities)
+    fred_key = os.environ.get("FRED_API_KEY") or None
+    finnhub_key = os.environ.get("FINNHUB_API_KEY") or None
+    fred_items, fred_status = fetch_fred_all(fred_key)
+    sources.append(
+        {
+            "id": "fred",
+            "name": "FRED (St. Louis Fed)",
+            "status": fred_status,
+            "items": len(fred_items),
+            "cookieUsed": bool(fred_key),
+        }
+    )
+
+    finnhub_data, fh_status = fetch_finnhub_all(finnhub_key)
+    sources.append(
+        {
+            "id": "finnhub",
+            "name": "Finnhub",
+            "status": fh_status,
+            "items": len(finnhub_data.get("news", [])) + len(finnhub_data.get("earnings", [])),
+            "cookieUsed": bool(finnhub_key),
+        }
+    )
+
+    summary = build_summary(risk + rates, fx, sectors, commodities, fred_items)
 
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
@@ -325,12 +551,16 @@ def main() -> None:
         "commodities": commodities,
         "extraIndices": extra_indices,
         "sectors": sectors,
+        "fred": fred_items,
+        "finnhubNews": finnhub_data.get("news", []),
+        "earningsCalendar": finnhub_data.get("earnings", []),
     }
 
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
         f"Wrote {OUTPUT_FILE} "
-        f"(risk {len(risk)}, fx {len(fx)}, sectors {len(sectors)}, indices {len(extra_indices)})"
+        f"(risk {len(risk)}, fx {len(fx)}, sectors {len(sectors)}, "
+        f"fred {len(fred_items)}, finnhub news {len(finnhub_data.get('news', []))})"
     )
 
 
