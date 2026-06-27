@@ -501,7 +501,7 @@ function renderCockpitTacticalOpen(data) {
   tbody.innerHTML = open
     .map((sig) => {
       const distStop = sig.distToStopPct;
-      const stopClass = distStop != null && distStop < 5 ? "change--down" : "";
+      const stopClass = distStop != null && distStop < 5 ? "change--warn" : "";
       return `
       <tr>
         <td><strong>${sig.name}</strong><br><span class="stock-card__symbol">${sig.symbol}</span></td>
@@ -762,7 +762,7 @@ function drawSparkline(canvas, values) {
   const range = max - min || 1;
   const up = values[values.length - 1] >= values[0];
   ctx.clearRect(0, 0, width, height);
-  ctx.strokeStyle = up ? "#34d399" : "#f87171";
+  ctx.strokeStyle = up ? "#f87171" : "#34d399";
   ctx.lineWidth = 2;
   ctx.beginPath();
   values.forEach((value, index) => {
@@ -1050,7 +1050,7 @@ function renderDistributionChart(summary) {
     type: "doughnut",
     data: {
       labels: ["上涨", "下跌", "持平"],
-      datasets: [{ data: chartData, backgroundColor: ["#34d399", "#f87171", "#fbbf24"], borderWidth: 0 }],
+      datasets: [{ data: chartData, backgroundColor: ["#f87171", "#34d399", "#fbbf24"], borderWidth: 0 }],
     },
     options: {
       responsive: true,
@@ -1150,7 +1150,7 @@ function renderTacticalSignals(data) {
       const hold =
         sig.status === "open" ? `${sig.holdDays ?? 0} 天` : sig.closeReason || reasonLabel(sig.closeReason) || "--";
       const distStop = sig.distToStopPct;
-      const stopAlert = distStop != null && distStop < 5 ? "change--down" : "";
+      const stopAlert = distStop != null && distStop < 5 ? "change--warn" : "";
       return `
       <tr>
         <td><strong>${sig.name}</strong><br><span class="stock-card__symbol">${sig.symbol}</span></td>
