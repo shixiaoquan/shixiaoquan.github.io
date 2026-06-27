@@ -402,6 +402,30 @@ def watchlist(slot: str, market: dict | None, paper: dict | None, signals: dict 
     return "\n".join(f"{i + 1}. {t}" for i, t in enumerate(items[:8]))
 
 
+def macro_section(macro: dict | None) -> str:
+    if not macro:
+        return "宏观跨资产数据暂缺。"
+    s = macro.get("summary") or {}
+    lines = []
+    if s.get("vix") is not None:
+        lines.append(f"- **VIX** {fmt_num(s['vix'], 1)}（{s.get('vixRegime', '—')}）")
+    if s.get("us10yYield") is not None:
+        lines.append(f"- **美10Y收益率** {fmt_num(s['us10yYield'], 2)}%")
+    if s.get("usdCnh") is not None:
+        chg = fmt_pct(s.get("usdCnhChangePct")) if s.get("usdCnhChangePct") is not None else "—"
+        lines.append(f"- **USDCNH** {fmt_num(s['usdCnh'], 4)}（日 {chg}）")
+    if s.get("sectorLeader"):
+        lines.append(
+            f"- **美股行业**：{s.get('sectorLeader')} 领涨，{s.get('sectorLaggard')} 靠后"
+        )
+    for h in s.get("hints") or []:
+        lines.append(f"- {h}")
+    src = "、".join(x.get("name", "") for x in macro.get("sources") or [])
+    if src:
+        lines.append(f"\n*数据源：{src}*")
+    return "\n".join(lines) if lines else "暂无宏观摘要。"
+
+
 def build_report(slot: str, now_bjt: datetime | None = None) -> tuple[str, dict]:
     now_bjt = now_bjt or datetime.now(BJT)
     meta = SLOT_META[slot]
@@ -415,8 +439,10 @@ def build_report(slot: str, now_bjt: datetime | None = None) -> tuple[str, dict]
     signals = load_json(DATA_DIR / "signals.json", {})
     diag = load_json(DATA_DIR / "diagnostics.json", {})
     backtest = load_json(DATA_DIR / "backtest.json", {})
+    macro = load_json(DATA_DIR / "macro.json", {})
 
     exec_sum = executive_summary(slot, market, wencai, paper, signals, diag)
+    macro_text = macro_section(macro)
     radar = radar_narrative(market.get("marketRadar") or [])
     wencai_text = wencai_narrative(wencai)
     idx_text = index_highlights(market.get("indices") or [])
@@ -438,8 +464,8 @@ def build_report(slot: str, now_bjt: datetime | None = None) -> tuple[str, dict]
 
 **{now_bjt.strftime('%Y年%m月%d日')} {time_str}（北京时间）** · {meta['subtitle']}
 
-> 数据来源：Yahoo Finance · 同花顺问财 · 量化策略引擎  
-> 行情更新：{fmt_dt_bjt(market.get('updatedAt'))} · 问财：{fmt_dt_bjt(wencai.get('updatedAt'))}
+> 数据来源：Yahoo Finance · Frankfurter(ECB) · 同花顺问财 · 量化策略引擎  
+> 行情更新：{fmt_dt_bjt(market.get('updatedAt'))} · 宏观：{fmt_dt_bjt(macro.get('updatedAt'))} · 问财：{fmt_dt_bjt(wencai.get('updatedAt'))}
 
 ---
 
@@ -466,7 +492,11 @@ def build_report(slot: str, now_bjt: datetime | None = None) -> tuple[str, dict]
 
 {wencai_text}
 
-### 1.3 本时段研判侧重
+### 1.3 宏观与跨资产
+
+{macro_text}
+
+### 1.4 本时段研判侧重
 
 {meta['focus']}
 

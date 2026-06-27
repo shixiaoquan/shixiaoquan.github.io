@@ -14,7 +14,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
-  <script src="js/app.js?v=20" defer></script>
+  <script src="js/app.js?v=21" defer></script>
 </head>
 <body>
   <div class="app">
@@ -48,6 +48,18 @@
       </div>
 
       <section class="panel panel--wide wencai-banner" id="cockpit-wencai"></section>
+
+      <section class="panel panel--wide" id="cockpit-macro">
+        <div class="panel__head panel__head--row">
+          <div>
+            <h2>宏观与跨资产</h2>
+            <p id="cockpit-macro-hint">VIX · 利率 · 汇率 · 商品 · 美股行业</p>
+          </div>
+          <button type="button" class="link-btn" data-goto-tab="market">详情 →</button>
+        </div>
+        <div class="macro-compact-grid" id="cockpit-macro-grid"></div>
+        <ul class="macro-hints" id="cockpit-macro-hints"></ul>
+      </section>
 
       <section class="panel panel--wide decision-panel" id="cockpit-decision">
         <div class="panel__head panel__head--row">
@@ -180,6 +192,7 @@
     <!-- 大盘 -->
     <section id="panel-market" class="tab-panel" role="tabpanel" hidden>
       <section class="summary" id="summary-cards" aria-label="市场概览"></section>
+      <section class="panel panel--wide" id="market-macro"></section>
       <section class="panel panel--wide" id="market-wencai"></section>
       <main class="grid">
         <section class="panel panel--wide">
@@ -546,7 +559,7 @@
     </section>
 
     <footer class="footer">
-      <p>数据来源：Yahoo Finance · 同花顺问财 · 研报每日 9/12/16 点 · 行情每 5 分钟 · 仅供参考，不构成投资建议</p>
+      <p>数据来源：Yahoo Finance · Frankfurter(ECB) · 同花顺问财 · 研报每日 9/12/16 点 · 仅供参考，不构成投资建议</p>
     </footer>
   </div>
 </body>

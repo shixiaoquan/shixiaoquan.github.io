@@ -9,6 +9,7 @@ const PAPER_BACKTEST_URL = "data/paper_backtest.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
 const AI_CHAIN_URL = "data/ai_chain.json";
 const REPORTS_INDEX_URL = "data/reports/index.json";
+const MACRO_URL = "data/macro.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
 const HISTORY_DISPLAY_LIMIT = 40;
 const AI_SEARCH_DEBOUNCE_MS = 250;
@@ -47,6 +48,7 @@ let aiChainSearch = "";
 let aiChainView = "list";
 let reportsIndex = null;
 let currentReportId = null;
+let macroData = null;
 let quoteMap = {};
 let quoteChangeMap = {};
 let activeTab = "cockpit";
@@ -193,6 +195,9 @@ function switchTab(tabId, options = {}) {
   if (tabId === "market" && wencaiData) {
     renderWencaiPanels(wencaiData);
   }
+  if (tabId === "market" && macroData) {
+    renderMarketMacro(macroData);
+  }
   if (tabId === "ai" && aiChainData) {
     renderAiChain(aiChainData);
     if (aiChainView === "mindmap") renderAiMindMap(aiChainData);
@@ -263,6 +268,165 @@ function setupTabs() {
       suppressTabRoute = false;
     }
   });
+}
+
+function formatMacroPrice(item) {
+  if (!item) return "--";
+  if (item.unit === "yield_pct") return `${formatNumber(item.price, 2)}%`;
+  return formatNumber(item.price);
+}
+
+function renderCockpitMacro(data) {
+  const grid = document.getElementById("cockpit-macro-grid");
+  const hintsEl = document.getElementById("cockpit-macro-hints");
+  const hint = document.getElementById("cockpit-macro-hint");
+  if (!grid) return;
+
+  if (!data) {
+    grid.innerHTML = '<p class="empty">宏观数据加载中…</p>';
+    return;
+  }
+
+  const s = data.summary || {};
+  if (hint) {
+    const parts = [];
+    if (s.vix != null) parts.push(`VIX ${formatNumber(s.vix, 1)}`);
+    if (s.us10yYield != null) parts.push(`10Y ${formatNumber(s.us10yYield, 2)}%`);
+    if (s.usdCnh != null) parts.push(`USDCNH ${formatNumber(s.usdCnh, 4)}`);
+    hint.textContent = parts.length ? parts.join(" · ") : "VIX · 利率 · 汇率 · 商品 · 美股行业";
+  }
+
+  const vix = (data.risk || []).find((r) => r.symbol === "^VIX");
+  const tnx = (data.rates || []).find((r) => r.symbol === "^TNX");
+  const cnh = (data.fx || []).find((f) => f.symbol?.includes("CNH") || f.quote === "CNH");
+  const gold = (data.commodities || []).find((c) => c.symbol === "GC=F");
+  const oil = (data.commodities || []).find((c) => c.symbol === "CL=F");
+  const topSector = (data.sectors || [])[0];
+
+  const cards = [
+    vix && { label: "VIX", value: formatNumber(vix.price, 1), chg: vix.changePct, hint: s.vixRegime === "high" ? "偏高" : s.vixRegime === "low" ? "偏低" : "正常" },
+    tnx && { label: "美10Y", value: `${formatNumber(tnx.price, 2)}%`, chg: tnx.changePct, hint: "国债收益率" },
+    cnh && { label: "USDCNH", value: formatNumber(cnh.price, 4), chg: cnh.changePct, hint: cnh.refSource || "汇率" },
+    gold && { label: "黄金", value: formatMacroPrice(gold), chg: gold.changePct, hint: "GC=F" },
+    oil && { label: "原油", value: formatMacroPrice(oil), chg: oil.changePct, hint: "WTI" },
+    topSector && { label: `美股${topSector.sector}`, value: formatNumber(topSector.price), chg: topSector.changePct, hint: "行业ETF" },
+  ].filter(Boolean);
+
+  grid.innerHTML = cards
+    .map(
+      (c) => `
+    <article class="macro-mini">
+      <p class="macro-mini__label">${c.label}</p>
+      <p class="macro-mini__value">${c.value}</p>
+      <p class="macro-mini__chg change ${changeClass(c.chg)}">${formatPct(c.chg)}</p>
+      <p class="macro-mini__hint">${c.hint}</p>
+    </article>
+  `
+    )
+    .join("");
+
+  if (hintsEl) {
+    const hints = s.hints || [];
+    hintsEl.innerHTML = hints.length
+      ? hints.map((h) => `<li>${h}</li>`).join("")
+      : "";
+    hintsEl.hidden = !hints.length;
+  }
+}
+
+function renderMacroTable(title, subtitle, rows, columns) {
+  if (!rows?.length) return "";
+  const head = columns.map((c) => `<th>${c.label}</th>`).join("");
+  const body = rows
+    .map(
+      (row) => `
+    <tr>
+      ${columns
+        .map((c) => {
+          const val = c.render ? c.render(row) : row[c.key];
+          return `<td${c.class ? ` class="${c.class(row)}"` : ""}>${val ?? "--"}</td>`;
+        })
+        .join("")}
+    </tr>
+  `
+    )
+    .join("");
+  return `
+    <section class="macro-block">
+      <div class="panel__head">
+        <h3>${title}</h3>
+        <p>${subtitle}</p>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table macro-table">
+          <thead><tr>${head}</tr></thead>
+          <tbody>${body}</tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+function renderMarketMacro(data) {
+  const el = document.getElementById("market-macro");
+  if (!el) return;
+  if (!data) {
+    el.innerHTML = '<p class="empty">宏观数据加载中…</p>';
+    return;
+  }
+
+  const sources = (data.sources || []).map((s) => `${s.name}(${s.status})`).join(" · ");
+
+  el.innerHTML = `
+    <div class="panel__head panel__head--row">
+      <div>
+        <h2>宏观与跨资产</h2>
+        <p>更新 ${formatDateTime(data.updatedAt)} · ${sources}</p>
+      </div>
+    </div>
+    <div class="macro-sections">
+      ${renderMacroTable("风险与利率", "VIX · 美债收益率", [...(data.risk || []), ...(data.rates || [])], [
+        { label: "指标", render: (r) => `<strong>${r.name}</strong>` },
+        { label: "最新", render: (r) => formatMacroPrice(r) },
+        { label: "日涨跌", render: (r) => `<span class="change ${changeClass(r.changePct)}">${formatPct(r.changePct)}</span>` },
+        { label: "周涨跌", render: (r) => `<span class="change ${changeClass(r.weekChangePct)}">${formatPct(r.weekChangePct)}</span>` },
+        { label: "来源", key: "source" },
+      ])}
+      ${renderMacroTable("汇率", "Yahoo 涨跌 + ECB/备用参考价", data.fx || [], [
+        { label: "货币对", render: (r) => `<strong>${r.name}</strong>` },
+        { label: "现价", render: (r) => formatNumber(r.price, 4) },
+        { label: "日涨跌", render: (r) => `<span class="change ${changeClass(r.changePct)}">${formatPct(r.changePct)}</span>` },
+        { label: "参考价", render: (r) => (r.refPrice != null ? formatNumber(r.refPrice, 4) : "—") },
+        { label: "来源", render: (r) => r.refSource || r.source || "—" },
+      ])}
+      ${renderMacroTable("商品", "黄金 · 原油 · 铜", data.commodities || [], [
+        { label: "品种", render: (r) => `<strong>${r.name}</strong>` },
+        { label: "最新", render: (r) => formatMacroPrice(r) },
+        { label: "日涨跌", render: (r) => `<span class="change ${changeClass(r.changePct)}">${formatPct(r.changePct)}</span>` },
+        { label: "月涨跌", render: (r) => `<span class="change ${changeClass(r.monthChangePct)}">${formatPct(r.monthChangePct)}</span>` },
+      ])}
+      ${renderMacroTable("A股宽基", "沪深300 · 创业板 · 科创50", data.extraIndices || [], [
+        { label: "指数", render: (r) => `<strong>${r.name}</strong>` },
+        { label: "最新", render: (r) => formatNumber(r.price) },
+        { label: "日涨跌", render: (r) => `<span class="change ${changeClass(r.changePct)}">${formatPct(r.changePct)}</span>` },
+        { label: "月涨跌", render: (r) => `<span class="change ${changeClass(r.monthChangePct)}">${formatPct(r.monthChangePct)}</span>` },
+      ])}
+      ${renderMacroTable("美股行业 ETF", "SPDR 行业轮动（日涨跌排序）", data.sectors || [], [
+        { label: "行业", render: (r) => `<strong>${r.sector}</strong> <span class="stock-card__symbol">${r.symbol}</span>` },
+        { label: "价格", render: (r) => formatNumber(r.price) },
+        { label: "日涨跌", render: (r) => `<span class="change ${changeClass(r.changePct)}">${formatPct(r.changePct)}</span>` },
+        { label: "周涨跌", render: (r) => `<span class="change ${changeClass(r.weekChangePct)}">${formatPct(r.weekChangePct)}</span>` },
+      ])}
+    </div>
+  `;
+}
+
+async function refreshMacroData() {
+  const data = await fetchJson(MACRO_URL);
+  if (!data) return;
+  macroData = data;
+  renderCockpitMacro(data);
+  if (activeTab === "market") renderMarketMacro(data);
 }
 
 function renderCockpitMood(summary) {
@@ -2937,6 +3101,7 @@ async function init() {
 
   await Promise.all([
     refreshData(),
+    refreshMacroData(),
     refreshWencaiData(),
     refreshTradingData(),
   ]);
@@ -2944,6 +3109,7 @@ async function init() {
   await ensureTabData(initialTab);
 
   setInterval(refreshData, POLL_INTERVAL_MS);
+  setInterval(refreshMacroData, POLL_INTERVAL_MS);
   setInterval(refreshWencaiData, POLL_INTERVAL_MS);
   setInterval(refreshTradingData, POLL_INTERVAL_MS);
   setInterval(() => {

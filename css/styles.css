@@ -1561,3 +1561,73 @@ a:hover {
     max-height: 220px;
   }
 }
+
+/* 宏观与跨资产 */
+.macro-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.macro-mini {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.macro-mini__label {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.macro-mini__value {
+  margin: 4px 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.macro-mini__chg {
+  margin: 2px 0 0;
+  font-size: 0.84rem;
+}
+
+.macro-mini__hint {
+  margin: 4px 0 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.macro-hints {
+  margin: 12px 0 0;
+  padding-left: 1.2em;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.macro-hints:empty,
+.macro-hints[hidden] {
+  display: none;
+}
+
+.macro-sections {
+  display: grid;
+  gap: 20px;
+}
+
+.macro-block .panel__head h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.macro-block .panel__head p {
+  margin: 4px 0 0;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+#market-macro .panel__head h2 {
+  margin: 0;
+}

@@ -28,7 +28,9 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       - name: Fetch market data
-        run: python scripts/fetch_data.py
+        run: |
+          python scripts/fetch_data.py
+          python scripts/fetch_macro.py
 
       - name: Run trading engine
         run: python scripts/trading_engine.py

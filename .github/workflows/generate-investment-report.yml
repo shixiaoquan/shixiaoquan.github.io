@@ -44,6 +44,7 @@ jobs:
       - name: Refresh market data
         run: |
           python scripts/fetch_data.py
+          python scripts/fetch_macro.py
           python scripts/trading_engine.py
 
       - name: Generate investment report
