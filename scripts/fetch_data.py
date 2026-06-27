@@ -552,12 +552,27 @@ def build_summary(indices: list[dict]) -> dict:
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
+    now = datetime.now(timezone.utc).astimezone()
     indices = [fetch_quote(symbol, meta) for symbol, meta in INDICES.items()]
     stocks = [fetch_quote(symbol, meta) for symbol, meta in STOCKS.items()]
     news = fetch_news()
-    now = datetime.now(timezone.utc).astimezone()
     recommendations, quote_map, change_map = build_recommendations(now)
-    master_recommendations = build_master_recommendations(CANDIDATES)
+
+    macro = None
+    macro_file = DATA_DIR / "macro.json"
+    if macro_file.exists():
+        try:
+            macro = json.loads(macro_file.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            macro = None
+
+    market_ctx = {
+        "summary": build_summary(indices),
+        "marketRadar": build_market_radar(indices),
+    }
+    master_recommendations = build_master_recommendations(
+        CANDIDATES, quote_map, market_ctx, macro, now
+    )
     for item in stocks:
         if item.get("symbol") and item.get("changePct") is not None:
             change_map[item["symbol"]] = item["changePct"]
