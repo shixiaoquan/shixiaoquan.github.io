@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-27T04:16:33+00:00",
+  "updatedAt": "2026-06-27T04:27:35+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -16,16 +16,16 @@
     {
       "id": "fred",
       "name": "FRED (St. Louis Fed)",
-      "status": "missing_key",
-      "items": 0,
-      "cookieUsed": false
+      "status": "ok",
+      "items": 6,
+      "cookieUsed": true
     },
     {
       "id": "finnhub",
       "name": "Finnhub",
-      "status": "missing_key",
-      "items": 0,
-      "cookieUsed": false
+      "status": "ok",
+      "items": 19,
+      "cookieUsed": true
     }
   ],
   "summary": {
@@ -36,11 +36,12 @@
     "usdCnhChangePct": null,
     "sectorLeader": "健康",
     "sectorLaggard": "科技",
-    "yieldSpread10y2y": null,
+    "yieldSpread10y2y": 0.31,
     "hints": [
       "美债收益率回落，利于风险资产估值修复。",
       "美股行业轮动：健康 领涨（+3.03%），科技 靠后。",
-      "黄金强、原油弱 — 偏避险/衰退交易特征。"
+      "黄金强、原油弱 — 偏避险/衰退交易特征。",
+      "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
   },
   "risk": [
@@ -128,9 +129,9 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.03,
-      "weekChangePct": 0.05,
-      "monthChangePct": 0.09,
+      "changePct": 0.02,
+      "weekChangePct": 0.06,
+      "monthChangePct": 0.1,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
@@ -145,10 +146,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 161.73,
-      "changePct": -0.02,
-      "weekChangePct": 0.27,
-      "monthChangePct": 1.35,
+      "price": 161.68,
+      "changePct": -0.07,
+      "weekChangePct": 0.16,
+      "monthChangePct": 1.52,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
@@ -449,7 +450,224 @@
       "sector": "科技"
     }
   ],
-  "fred": [],
-  "finnhubNews": [],
-  "earningsCalendar": []
+  "fred": [
+    {
+      "seriesId": "DGS10",
+      "name": "美10年期国债收益率",
+      "unit": "pct",
+      "price": 4.4,
+      "changePct": -0.23,
+      "observedAt": "2026-06-25",
+      "source": "fred"
+    },
+    {
+      "seriesId": "T10Y2Y",
+      "name": "10Y-2Y 利差",
+      "unit": "spread",
+      "price": 0.31,
+      "changePct": 0.0,
+      "observedAt": "2026-06-26",
+      "source": "fred"
+    },
+    {
+      "seriesId": "FEDFUNDS",
+      "name": "联邦基金利率",
+      "unit": "pct",
+      "price": 3.63,
+      "changePct": -0.27,
+      "observedAt": "2026-05-01",
+      "source": "fred"
+    },
+    {
+      "seriesId": "UNRATE",
+      "name": "美国失业率",
+      "unit": "pct",
+      "price": 4.3,
+      "changePct": 0.0,
+      "observedAt": "2026-05-01",
+      "source": "fred"
+    },
+    {
+      "seriesId": "DEXCHUS",
+      "name": "美元/人民币(官方)",
+      "unit": "rate",
+      "price": 6.7686,
+      "changePct": 0.16,
+      "observedAt": "2026-06-18",
+      "source": "fred"
+    },
+    {
+      "seriesId": "CPIAUCSL",
+      "name": "美国CPI指数",
+      "unit": "index",
+      "price": 334.0,
+      "changePct": 2.44,
+      "observedAt": "2026-05-01",
+      "source": "fred"
+    }
+  ],
+  "finnhubNews": [
+    {
+      "id": 8127226,
+      "title": "US strikes Iran in response to attack on cargo ship in Strait of Hormuz - Reuters",
+      "summary": "US strikes Iran in response to attack on cargo ship in Strait of Hormuz  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPcFRwZHY1bnhkUUxWazNxYUNVdjlHV2RFN2RBc0ZnS2ZMc1JKQmtSMkRzQ0lIZkN6aXFMeENhTkJ2UURUcnJTNnZRZmdiQWdHcGdHYl9IbmdLa2tmT0VOUDN4Y1dRU0dQWkFNZkNuX2Q4VFVKUE5MUjBEaGpud3czTzdJR2Jrbzl1X2x2VkZsR1lyVjN3dDFnUHhMUXN0M3pmVFdiZnJidUF6ZFViSVpkWXB1V2t1S3d4OGpwQmdhd0ZwODVQN2NF?oc=5",
+      "publishedAt": "2026-06-26T23:45:55+00:00",
+      "related": ""
+    },
+    {
+      "id": 8129367,
+      "title": "Iran's Revolutionary Guards say it targeted US positions in the region in response to attack - Reuters",
+      "summary": "Iran's Revolutionary Guards say it targeted US positions in the region in response to attack  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOVC1oeUhDR095WDJqeFZzTHByY052ZVM3V0NYN3NIbUlpU2pMd05mclEzejVObDZnWkhQWjF6d2dvY2VXT2JiUjkxZW1sVkk2czBCeWlqMjk2T19SdHM4bzFPRlVGZV9UQkZudENpNUNYbGplWDM1NG54RnZ0SXVJdFlLZ1lfRUN4aExqZkxuUFdBcnpydGtoN2RPeXBiLWJxWlBDcDVMMEdZQTJpd0MxcWl2QU5sSkFPemVKVEhQRVpBSmpod1haYjF0Zy0?oc=5",
+      "publishedAt": "2026-06-26T23:03:48+00:00",
+      "related": ""
+    },
+    {
+      "id": 8128862,
+      "title": "Israel, Lebanon sign initial agreement after US-mediated talks - Reuters",
+      "summary": "Israel, Lebanon sign initial agreement after US-mediated talks  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOZEQ1eUt6SFFHdFlGLWZxLVFTVnhHOThrbmpjbmtEMnlydmZYY08wLTI3X3NhSm5adGlBVU5nbmwwOWZENkJnVlU1UUNaUHIxNXdSNXdsT0NpRnpSdTFkc3VnUXVmY3lvX2lpb0xybngxODZya0ZTWFlueU1lSEZvZU5lWmV0M0U3OEp6MXVXaUF6Sm9xUjZoZGJldkFWQU5NV2dGWi13Uzdlci1LVEVQTGZnaEdBV0ZFSktfdTJfUGxXZw?oc=5",
+      "publishedAt": "2026-06-26T21:02:21+00:00",
+      "related": ""
+    },
+    {
+      "id": 8128860,
+      "title": "US military conducted strikes against Iran - Reuters",
+      "summary": "US military conducted strikes against Iran  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOdHdZdU1zam5FTTBKVzlNWDBLU3N0dmxTbFRaMjBrVFNwNHBXQVpnTU16SmhxWUdyRWRNUkE0NXdLWE5kMDNnc25rdFIxMk1jSFd4M05LWkxzTDVlTnRBUkotNW5RaHBQaGZFaXE2RWdlb2psdHVqTHV3MU9odHVVdVZ0M1NJX3pMQ0RHcGFsTWlQTXdIY29rSV9HQXJCWW1uZHVUWnQwOA?oc=5",
+      "publishedAt": "2026-06-26T20:53:09+00:00",
+      "related": ""
+    },
+    {
+      "id": 8128752,
+      "title": "Oracle stock has worst week since 2001 dot-com bust as AI financing concerns escalate",
+      "summary": "Oracle's surging spending, negative free cash flow and $130 billion debt pile are weighing on the stock.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/06/26/oracle-stock-ends-worst-week-since-2001-as-investors-dwell-on-finances.html",
+      "publishedAt": "2026-06-26T20:21:09+00:00",
+      "related": ""
+    },
+    {
+      "id": 8128544,
+      "title": "Walmart heir Lukas Walton buys minority stake in the Chicago Bulls and United Center",
+      "summary": "Lukas Walton is the 39-year-old grandson of Walmart founder Sam Walton. He and Samantha Walton are residents of Chicago.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/06/26/walmart-heir-lukas-walton-chicago-bulls.html",
+      "publishedAt": "2026-06-26T19:19:29+00:00",
+      "related": ""
+    },
+    {
+      "id": 8128442,
+      "title": "Healthcare stocks have caught fire, sending all 3 of our names to record highs",
+      "summary": "Every weekday, the Investing Club releases the Homestretch; an actionable afternoon update just in time for the last hour of trading.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/06/26/healthcare-stocks-have-caught-fire-sending-all-3-of-our-names-to-record-highs.html",
+      "publishedAt": "2026-06-26T18:14:06+00:00",
+      "related": ""
+    },
+    {
+      "id": 8128962,
+      "title": "US diesel refining economics remain firm despite Iran war truce - Reuters",
+      "summary": "US diesel refining economics remain firm despite Iran war truce  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQaktNajNVTlRkTm1nVkRyMHNDc3FBTk5BRjRVVy16cjRNbFdhSFhYWkYtcy1wNlJkMzRjTWhnakNiUmJjZ3V1c2luUG9lNVcyaG1Semg3UkhQOHEtY2tFS1lQbkkwZll4U3MzU2J3QmJuQnRKUzFuVVJPQXpJNzRjNmd2Rzc2aC1XRDMxck1OcXlxd3dNM1pJQnFHb3Z1S2U5VmVMYWtNY190WmdtNmtKd29fQm8zZw?oc=5",
+      "publishedAt": "2026-06-26T17:53:53+00:00",
+      "related": ""
+    },
+    {
+      "id": 8128960,
+      "title": "investingLive Americas FX news wrap 26 Jun: Greenback ends mixed, still higher for week",
+      "summary": "<ul><li><a href=\"https://investinglive.com/stocks/major-stock-indices-close-modestly-lower-with-the-nasdaq-leading-the-way-20260626/\">Major stock indices close modestly lower with the Nasdaq leading t",
+      "source": "Forexlive",
+      "category": "forex",
+      "link": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-26-jun-greenback-ends-mixed-still-higher-for-week-20260626/",
+      "publishedAt": "2026-06-26T21:19:34+00:00",
+      "related": ""
+    }
+  ],
+  "earningsCalendar": [
+    {
+      "symbol": "SBSAA",
+      "date": "2026-07-03",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "BABB",
+      "date": "2026-07-02",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "LNN",
+      "date": "2026-07-02",
+      "hour": "bmo",
+      "epsEstimate": 1.2196,
+      "revenueEstimate": 159382040
+    },
+    {
+      "symbol": "PKE",
+      "date": "2026-07-02",
+      "hour": "",
+      "epsEstimate": 0.1404,
+      "revenueEstimate": 18085060
+    },
+    {
+      "symbol": "BSET",
+      "date": "2026-07-01",
+      "hour": "amc",
+      "epsEstimate": 0.1989,
+      "revenueEstimate": 85072590
+    },
+    {
+      "symbol": "CULP",
+      "date": "2026-07-01",
+      "hour": "amc",
+      "epsEstimate": -0.1122,
+      "revenueEstimate": 51102000
+    },
+    {
+      "symbol": "EACO",
+      "date": "2026-07-01",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "ELLO",
+      "date": "2026-07-01",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "FC",
+      "date": "2026-07-01",
+      "hour": "amc",
+      "epsEstimate": 0.3193,
+      "revenueEstimate": 70384277
+    },
+    {
+      "symbol": "FDS",
+      "date": "2026-07-01",
+      "hour": "bmo",
+      "epsEstimate": 4.4964,
+      "revenueEstimate": 623886554
+    }
+  ]
 }
