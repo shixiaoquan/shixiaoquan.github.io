@@ -28,9 +28,27 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       - name: Fetch market data
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: |
           python scripts/fetch_data.py
           python scripts/fetch_macro.py
+
+      - name: Verify macro output
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open("data/macro.json", encoding="utf-8"))
+          fred_src = next((s for s in d.get("sources", []) if s.get("id") == "fred"), {})
+          fh_src = next((s for s in d.get("sources", []) if s.get("id") == "finnhub"), {})
+          print("fred keyUsed:", fred_src.get("cookieUsed"), "status:", fred_src.get("status"), "items:", fred_src.get("items"))
+          print("finnhub keyUsed:", fh_src.get("cookieUsed"), "status:", fh_src.get("status"), "items:", fh_src.get("items"))
+          if fred_src.get("cookieUsed") and not d.get("fred"):
+              print("WARN: FRED_API_KEY 已配置但未拉取到序列")
+          if fh_src.get("cookieUsed") and not d.get("finnhubNews") and not d.get("earningsCalendar"):
+              print("WARN: FINNHUB_API_KEY 已配置但未拉取到新闻/财报")
+          PY
 
       - name: Run trading engine
         run: python scripts/trading_engine.py
