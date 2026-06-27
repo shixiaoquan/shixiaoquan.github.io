@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-27T05:39:26+00:00",
+  "updatedAt": "2026-06-27T05:48:30+00:00",
   "summary": {
     "tracked": 6,
     "up": 0,
@@ -46,6 +46,8 @@
     "000858.SZ": 73.17,
     "688981.SS": 148.76,
     "600036.SS": 36.0,
+    "300308.SZ": 1253.89,
+    "688017.SS": 369.46,
     "0700.HK": 411.8,
     "9988.HK": 89.5,
     "3690.HK": 64.25,
@@ -67,6 +69,8 @@
     "000858.SZ": -12.78,
     "688981.SS": 1.74,
     "600036.SS": -2.7,
+    "300308.SZ": 12.82,
+    "688017.SS": 15.1,
     "0700.HK": -5.2,
     "9988.HK": -27.92,
     "3690.HK": -17.31,
@@ -764,6 +768,36 @@
         "distToTargetPct": 51.9
       },
       {
+        "symbol": "300308.SZ",
+        "name": "中际旭创",
+        "market": "A股",
+        "score": 67.0,
+        "signal": "hold",
+        "signalLabel": "暂不参与",
+        "price": 1253.89,
+        "rsi": 56.4,
+        "relativeStrength": 15.67,
+        "regimeOk": false,
+        "breakout": false,
+        "distToStopPct": 14.5,
+        "distToTargetPct": 52.3
+      },
+      {
+        "symbol": "688017.SS",
+        "name": "绿的谐波",
+        "market": "A股",
+        "score": 67.0,
+        "signal": "hold",
+        "signalLabel": "暂不参与",
+        "price": 369.46,
+        "rsi": 53.6,
+        "relativeStrength": 17.95,
+        "regimeOk": false,
+        "breakout": false,
+        "distToStopPct": 24.3,
+        "distToTargetPct": 87.3
+      },
+      {
         "symbol": "AAPL",
         "name": "苹果",
         "market": "美股",
@@ -1021,9 +1055,9 @@
     ]
   },
   "masterRecommendations": {
-    "version": "v1.0.0",
-    "strategy": "v1.0.0 投资大师风格荐股：基于 Yahoo 基本面与价格特征，模拟 6 位大师选股逻辑；每位大师推荐 2 只，与战术 v1.3 相互独立。",
-    "disclaimer": "大师风格荐股为规则化模拟，非真实人物操作建议；基本面数据可能有延迟或缺失，仅供研究，不构成投资建议。",
+    "version": "v1.1.0",
+    "strategy": "v1.1.0 投资大师风格荐股：基于 Yahoo 基本面与价格特征，模拟 7 位大师选股逻辑；每位大师推荐 2 只，与战术 v1.3 相互独立。",
+    "disclaimer": "大师风格荐股为规则化模拟，非真实人物操作建议；Serenity 相关内容为对其公开框架的量化近似，勿当作 X 账号买卖信号；基本面数据可能有延迟或缺失，仅供研究，不构成投资建议。",
     "masters": [
       {
         "id": "buffett",
@@ -1466,6 +1500,40 @@
         "holdingHorizon": "数周–数月",
         "picks": [
           {
+            "symbol": "300308.SZ",
+            "name": "中际旭创",
+            "market": "A股",
+            "sector": "光模块",
+            "currency": "CNY",
+            "price": 1253.89,
+            "matchScore": 89.0,
+            "signal": "buy",
+            "signalLabel": "符合风格 · 建议关注",
+            "reasons": [
+              "近一月 +12.82% — 趋势强劲，反身性正反馈",
+              "相对强度 +14.44% — 跑赢大盘，宏观共振",
+              "均线多头排列 — 趋势交易确认",
+              "高 Beta 放大趋势 — 索罗斯式进攻配置"
+            ],
+            "plan": {
+              "entry": "趋势确认后于 1253.89 附近顺势建仓；宏观与相对强度共振时加仓。",
+              "holding": "短中期趋势交易（数周–数月）；趋势破坏即减仓。",
+              "risk": "跌破关键均线或相对强度转负时严格止损；反身性逆转要快。",
+              "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
+            },
+            "metrics": {
+              "pe": 93.43,
+              "pb": 39.15,
+              "roe": 53.93,
+              "peg": 36.08,
+              "earningsGrowth": 2.59,
+              "profitMargins": 29.28,
+              "monthChangePct": 12.82,
+              "relativeStrength": 14.44,
+              "rangePosition": 0.87
+            }
+          },
+          {
             "symbol": "AMD",
             "name": "AMD",
             "market": "美股",
@@ -1498,39 +1566,102 @@
               "relativeStrength": 7.46,
               "rangePosition": 0.9
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "serenity",
+        "name": "白毛股神 Serenity",
+        "nameEn": "Serenity (@aleabitoreddit)",
+        "style": "卡脖子 · 瓶颈猎手",
+        "philosophy": "Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。",
+        "principles": [
+          "瓶颈猎手",
+          "终端需求向上游追溯",
+          "小盘+高壁垒+低覆盖",
+          "机构定价前布局",
+          "证伪点止损"
+        ],
+        "holdingHorizon": "6–18 个月",
+        "picks": [
           {
-            "symbol": "688981.SS",
-            "name": "中芯国际",
+            "symbol": "688017.SS",
+            "name": "绿的谐波",
             "market": "A股",
-            "sector": "半导体",
+            "sector": "精密减速器",
             "currency": "CNY",
-            "price": 148.76,
-            "matchScore": 63.0,
-            "signal": "watch",
-            "signalLabel": "部分符合 · 观察等待",
+            "price": 369.46,
+            "matchScore": 100.0,
+            "signal": "buy",
+            "signalLabel": "符合风格 · 建议关注",
             "reasons": [
-              "均线多头排列 — 趋势交易确认"
+              "精密减速器 — AI/机器人供应链瓶颈相关环节",
+              "紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节",
+              "中市值 — 仍处价格发现窗口",
+              "盈利增速 56.8% — 瓶颈环节需求释放",
+              "近一月 +15.1% — 重估进行中但未必过热"
             ],
             "plan": {
-              "entry": "趋势确认后于 148.76 附近顺势建仓；宏观与相对强度共振时加仓。",
-              "holding": "短中期趋势交易（数周–数月）；趋势破坏即减仓。",
-              "risk": "跌破关键均线或相对强度转负时严格止损；反身性逆转要快。",
+              "entry": "在 369.46 CNY 附近建立 conviction 仓位；从终端需求（算力/光互连/机器人）向上游追溯，独立验证瓶颈是否仍不可替代。",
+              "holding": "6–18 个月；等待供应链重估、扩产瓶颈确认或并购催化，接受小盘科技股的较大波动。",
+              "risk": "证伪点：技术路线变更、客户找到替代供应商、瓶颈环节扩产后稀缺性消失；不因 X/社交热度末段追高。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 243.87,
-              "pb": 8.49,
-              "roe": 2.64,
-              "peg": null,
-              "earningsGrowth": 0.0,
-              "profitMargins": 7.25,
-              "monthChangePct": 1.74,
-              "relativeStrength": 3.36,
-              "rangePosition": 0.86
+              "pe": 499.27,
+              "pb": 18.98,
+              "roe": 3.92,
+              "peg": 8.79,
+              "earningsGrowth": 56.8,
+              "profitMargins": 22.31,
+              "monthChangePct": 15.1,
+              "relativeStrength": 16.72,
+              "rangePosition": 0.76,
+              "marketCapB": 67.7,
+              "bottleneckLayer": "精密减速器"
+            }
+          },
+          {
+            "symbol": "AMD",
+            "name": "AMD",
+            "market": "美股",
+            "sector": "半导体",
+            "currency": "USD",
+            "price": 521.58,
+            "matchScore": 84.0,
+            "signal": "buy",
+            "signalLabel": "符合风格 · 建议关注",
+            "reasons": [
+              "半导体 — AI/机器人供应链瓶颈相关环节",
+              "紫苏叶环节 · GPU/CPU — 算力供应链关键环节",
+              "大盘蓝筹 — 非典型卡脖子小盘标的",
+              "盈利增速 91.2% — 瓶颈环节需求释放",
+              "接近日内/年内高位 — 警惕情绪末段追价"
+            ],
+            "plan": {
+              "entry": "在 521.58 USD 附近建立 conviction 仓位；从终端需求（算力/光互连/机器人）向上游追溯，独立验证瓶颈是否仍不可替代。",
+              "holding": "6–18 个月；等待供应链重估、扩产瓶颈确认或并购催化，接受小盘科技股的较大波动。",
+              "risk": "证伪点：技术路线变更、客户找到替代供应商、瓶颈环节扩产后稀缺性消失；不因 X/社交热度末段追高。",
+              "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
+            },
+            "metrics": {
+              "pe": 172.14,
+              "pb": 13.19,
+              "roe": 8.06,
+              "peg": 1.89,
+              "earningsGrowth": 91.2,
+              "profitMargins": 13.37,
+              "monthChangePct": 5.25,
+              "relativeStrength": 7.46,
+              "rangePosition": 0.9,
+              "marketCapB": 850.5,
+              "bottleneckLayer": "GPU/CPU"
             }
           }
-        ]
+        ],
+        "xHandle": "@aleabitoreddit",
+        "platform": "X",
+        "sourceNote": "规则化模拟其公开的「卡脖子/紫苏叶」框架，非本人操作建议"
       }
     ]
   }
