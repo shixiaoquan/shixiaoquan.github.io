@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-27T23:36:58+00:00",
+  "updatedAt": "2026-06-28T01:23:20+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 40 条资讯 · 部分沿用缓存",
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停（备用：非ST今日涨停）",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000620.SZ",
@@ -92,7 +92,10 @@
         }
       ],
       "count": 60,
-      "fallbackQuery": true
+      "fallbackQuery": true,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
@@ -770,6 +773,8 @@
     }
   ],
   "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
     "hot: 'NoneType' object has no attribute 'get'",
     "main_flow: 'NoneType' object has no attribute 'get'"
   ],
