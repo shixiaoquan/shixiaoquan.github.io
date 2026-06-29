@@ -42,9 +42,10 @@ jobs:
           d = json.load(open("data/trump_truth.json", encoding="utf-8"))
           print("status:", d.get("status"))
           print("credentialUsed:", d.get("credentialUsed"))
+          print("dataSource:", (d.get("source") or {}).get("dataSource"))
           print("posts:", len(d.get("posts") or []))
-          if d.get("credentialUsed") and not d.get("posts"):
-              print("WARN: 凭证已配置但未拉取到帖子，请检查 Token 是否有效")
+          if not d.get("posts"):
+              print("WARN: 未拉取到帖子，请检查 RSS 镜像或 Truth Social 凭证")
           PY
 
       - name: Commit and push if changed
