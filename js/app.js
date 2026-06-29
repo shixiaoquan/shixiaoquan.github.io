@@ -59,7 +59,7 @@ let historyDisplayLimit = HISTORY_DISPLAY_LIMIT;
 let lastRecoHistoryStamp = null;
 let aiSearchTimer = null;
 
-const VALID_TABS = new Set(["cockpit", "reports", "market", "reco", "lab", "paper", "ai"]);
+const VALID_TABS = new Set(["cockpit", "reports", "market", "reco", "lab", "paper", "ai", "truth"]);
 const TAB_ALIASES = { review: "paper", news: "cockpit" };
 const DEFAULT_TAB = "cockpit";
 const VALID_RECO_MODES = new Set(["tactical", "masters"]);
@@ -246,6 +246,9 @@ function switchTab(tabId, options = {}) {
   }
   if (tabId === "reports" && reportsIndex) {
     renderReportsPanel();
+  }
+  if (tabId === "truth" && typeof refreshTruthData === "function") {
+    refreshTruthData();
   }
   ensureTabData(tabId);
 }
@@ -1122,6 +1125,9 @@ async function ensureTabData(tabId) {
   if (tabId === "reports" && !tabBundles.reports) {
     tabBundles.reports = true;
     await loadReportsIndex();
+  }
+  if (tabId === "truth" && typeof refreshTruthData === "function") {
+    await refreshTruthData();
   }
 }
 
@@ -3362,6 +3368,10 @@ async function init() {
     ensureTabData("ai");
     ensureTabData("reports");
   });
+
+  if (typeof initTruthModule === "function") {
+    initTruthModule();
+  }
 }
 
 document.addEventListener("DOMContentLoaded", init);

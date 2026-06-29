@@ -1,0 +1,264 @@
+/* Truth Social 镜像样式 */
+
+.truth-app {
+  --truth-purple: #5448ee;
+  --truth-purple-dark: #3d35b8;
+  --truth-magenta: #e91e8c;
+  --truth-bg: #f4f5f8;
+  --truth-card: #ffffff;
+  --truth-text: #0f1419;
+  --truth-muted: #536471;
+  --truth-border: #e6e8ee;
+  --truth-radius: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.truth-banner {
+  background: linear-gradient(135deg, var(--truth-purple) 0%, var(--truth-magenta) 100%);
+  border-radius: var(--truth-radius);
+  padding: 14px 18px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.truth-banner__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.truth-banner__sub {
+  margin: 6px 0 0;
+  font-size: 0.82rem;
+  opacity: 0.92;
+}
+
+.truth-profile {
+  background: var(--truth-card);
+  border: 1px solid var(--truth-border);
+  border-radius: var(--truth-radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.truth-profile__header {
+  height: 120px;
+  background: linear-gradient(90deg, #1a1a2e, #2d2d5e);
+  background-size: cover;
+  background-position: center;
+}
+
+.truth-profile__body {
+  padding: 0 16px 16px;
+  position: relative;
+}
+
+.truth-profile__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid var(--truth-card);
+  margin-top: -40px;
+  background: #ddd;
+  object-fit: cover;
+}
+
+.truth-profile__name {
+  margin: 8px 0 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--truth-text);
+}
+
+.truth-profile__handle {
+  margin: 2px 0 0;
+  color: var(--truth-muted);
+  font-size: 0.9rem;
+}
+
+.truth-profile__stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: 0.84rem;
+  color: var(--truth-muted);
+}
+
+.truth-profile__stats strong {
+  color: var(--truth-text);
+}
+
+.truth-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.8rem;
+  color: var(--truth-muted);
+}
+
+.truth-meta__status--ok {
+  color: #059669;
+}
+
+.truth-meta__status--stale,
+.truth-meta__status--error,
+.truth-meta__status--missing_credentials {
+  color: #d97706;
+}
+
+.truth-feed {
+  display: grid;
+  gap: 12px;
+}
+
+.truth-post {
+  background: var(--truth-card);
+  border: 1px solid var(--truth-border);
+  border-radius: var(--truth-radius);
+  padding: 16px;
+}
+
+.truth-post__head {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.truth-post__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+.truth-post__who {
+  flex: 1;
+  min-width: 0;
+}
+
+.truth-post__name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--truth-text);
+}
+
+.truth-post__meta {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  color: var(--truth-muted);
+}
+
+.truth-post__body {
+  margin: 12px 0 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--truth-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.truth-post__body--original {
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.truth-post__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--truth-border);
+}
+
+.truth-post__toggle {
+  padding: 6px 14px;
+  border: 1px solid var(--truth-purple);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--truth-purple);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.truth-post__toggle:hover {
+  background: rgba(84, 72, 238, 0.08);
+}
+
+.truth-post__toggle--active {
+  background: var(--truth-purple);
+  color: #fff;
+}
+
+.truth-post__link {
+  font-size: 0.8rem;
+  color: var(--truth-muted);
+  text-decoration: none;
+}
+
+.truth-post__link:hover {
+  color: var(--truth-purple);
+  text-decoration: underline;
+}
+
+.truth-post__stats {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: var(--truth-muted);
+}
+
+.truth-post__media {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.truth-post__media img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--truth-border);
+}
+
+.truth-empty {
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--truth-muted);
+  background: var(--truth-card);
+  border: 1px dashed var(--truth-border);
+  border-radius: var(--truth-radius);
+}
+
+.truth-disclaimer {
+  margin-top: 16px;
+  font-size: 0.78rem;
+  color: var(--truth-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .truth-profile__header {
+    height: 96px;
+  }
+
+  .truth-profile__avatar {
+    width: 64px;
+    height: 64px;
+    margin-top: -32px;
+  }
+}
+
+.tab-panel--truth {
+  padding: 16px 0 32px;
+  background: #eef0f5;
+}
