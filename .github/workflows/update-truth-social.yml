@@ -1,0 +1,61 @@
+name: Update Truth Social
+
+# 每 10 分钟抓取 @realDonaldTrump 帖子并翻译为中文
+# 凭证配置见 .github/TRUTH_SOCIAL_SETUP.md
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-updates-${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  truth:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch Truth Social posts
+        env:
+          TRUTHSOCIAL_TOKEN: ${{ secrets.TRUTHSOCIAL_TOKEN }}
+          TRUTHSOCIAL_USERNAME: ${{ secrets.TRUTHSOCIAL_USERNAME }}
+          TRUTHSOCIAL_PASSWORD: ${{ secrets.TRUTHSOCIAL_PASSWORD }}
+        run: python scripts/fetch_truth.py
+
+      - name: Verify output
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open("data/trump_truth.json", encoding="utf-8"))
+          print("status:", d.get("status"))
+          print("credentialUsed:", d.get("credentialUsed"))
+          print("posts:", len(d.get("posts") or []))
+          if d.get("credentialUsed") and not d.get("posts"):
+              print("WARN: 凭证已配置但未拉取到帖子，请检查 Token 是否有效")
+          PY
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/trump_truth.json
+          if git diff --staged --quiet; then
+            echo "No truth data changes."
+          else
+            git commit -m "chore: update Trump Truth Social posts"
+            git pull --rebase origin master
+            git push
+          fi
