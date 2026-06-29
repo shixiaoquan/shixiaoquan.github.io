@@ -35,10 +35,24 @@ function truthStatusLabel(status) {
     ok: "已同步",
     stale: "缓存数据",
     error: "拉取失败",
-    missing_credentials: "待配置凭证",
+    missing_credentials: "拉取失败",
     empty: "暂无数据",
   };
   return map[status] || status || "—";
+}
+
+function truthLinkLabel(data) {
+  const src = data?.source?.dataSource;
+  if (src === "telegram_mirror") return "在 Telegram 查看";
+  return "在 Truth Social 查看";
+}
+
+function truthBannerSub(data) {
+  const src = data?.source;
+  if (src?.dataSource === "telegram_mirror") {
+    return "非官方阅读副本 · 正文默认中文 · 来源 Telegram 官方频道镜像";
+  }
+  return "非官方阅读副本 · 正文默认中文 · 来源 truthsocial.com";
 }
 
 function renderTruthMedia(media) {
@@ -52,7 +66,7 @@ function renderTruthMedia(media) {
     .join("")}</div>`;
 }
 
-function renderTruthPost(post, account) {
+function renderTruthPost(post, account, linkLabel) {
   const id = escapeHtml(post.id);
   const zh = post.contentZh || post.content || "";
   const original = post.content || "";
@@ -75,7 +89,7 @@ function renderTruthPost(post, account) {
       ${renderTruthMedia(post.media)}
       <div class="truth-post__actions">
         <button type="button" class="truth-post__toggle" data-post-id="${id}" aria-pressed="false">显示原文</button>
-        <a class="truth-post__link" href="${escapeHtml(post.url || "#")}" target="_blank" rel="noopener noreferrer">在 Truth Social 查看</a>
+        <a class="truth-post__link" href="${escapeHtml(post.url || "#")}" target="_blank" rel="noopener noreferrer">${escapeHtml(linkLabel)}</a>
         <div class="truth-post__stats">
           <span>💬 ${post.repliesCount ?? 0}</span>
           <span>🔁 ${post.reblogsCount ?? 0}</span>
@@ -123,6 +137,8 @@ function renderTruthPanel(data) {
   const status = data.status || "empty";
   const updated = data.updatedAt ? formatTruthTime(data.updatedAt) : "—";
 
+  const linkLabel = truthLinkLabel(data);
+
   const emptyHtml =
   posts.length === 0
     ? `<div class="truth-empty"><p>暂无帖子数据。</p>${data.setupHint ? `<p>${escapeHtml(data.setupHint)}</p>` : ""}</div>`
@@ -132,7 +148,7 @@ function renderTruthPanel(data) {
     <div class="truth-app">
       <div class="truth-banner">
         <p class="truth-banner__title">Truth Social 镜像 · @realDonaldTrump</p>
-        <p class="truth-banner__sub">非官方阅读副本 · 正文默认中文 · 来源 truthsocial.com</p>
+        <p class="truth-banner__sub">${truthBannerSub(data)}</p>
       </div>
       <section class="truth-profile">
         <div class="truth-profile__header"${account.header ? ` style="background-image:url('${escapeHtml(account.header)}')"` : ""}></div>
@@ -152,7 +168,7 @@ function renderTruthPanel(data) {
         <span class="truth-meta__status truth-meta__status--${status}">${truthStatusLabel(status)}</span>
       </div>
       <div class="truth-feed" id="truth-feed">
-        ${posts.length ? posts.map((p) => renderTruthPost(p, account)).join("") : emptyHtml}
+        ${posts.length ? posts.map((p) => renderTruthPost(p, account, linkLabel)).join("") : emptyHtml}
       </div>
       <p class="truth-disclaimer">${escapeHtml(data.disclaimer || "")}</p>
     </div>
