@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-01T15:15:22+00:00",
+  "updatedAt": "2026-07-01T16:10:33+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 40 条资讯",
+  "message": "已更新 4 个市场问句 · 40 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 100,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002193.SZ",
@@ -92,13 +92,16 @@
         }
       ],
       "count": 100,
-      "countNote": "100+"
+      "countNote": "100+",
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "600337.SH",
@@ -167,13 +170,16 @@
           "changePct": -10.04
         }
       ],
-      "count": 11
+      "count": 11,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000725.SZ",
@@ -245,13 +251,15 @@
           "changePct": -3.13,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "300059.SZ",
@@ -309,7 +317,10 @@
           "changePct": 4.08,
           "flow": 996157030
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -753,5 +764,11 @@
       "source": "wencai",
       "category": "公告"
     }
-  ]
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
