@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T15:17:27+00:00",
+  "updatedAt": "2026-07-01T16:11:44+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: HTTP Error 520: <none>",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,7 +35,7 @@
     }
   ],
   "summary": {
-    "vix": 16.31,
+    "vix": 16.12,
     "vixRegime": "normal",
     "us10yYield": 4.46,
     "usdCnh": 6.79,
@@ -39,7 +45,7 @@
     "yieldSpread10y2y": 0.3,
     "hints": [
       "美债收益率上行，对高估值成长股形成压力。",
-      "美股行业轮动：通信 领涨（+3.14%），科技 靠后。",
+      "美股行业轮动：通信 领涨（+2.77%），科技 靠后。",
       "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
@@ -52,10 +58,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 16.31,
-      "changePct": -0.85,
-      "weekChangePct": -12.45,
-      "monthChangePct": 1.62,
+      "price": 16.12,
+      "changePct": -2.01,
+      "weekChangePct": -13.47,
+      "monthChangePct": 0.44,
       "source": "yahoo"
     }
   ],
@@ -68,8 +74,8 @@
       "currency": null,
       "region": null,
       "price": 4.46,
-      "changePct": 2.04,
-      "weekChangePct": -1.06,
+      "changePct": 1.99,
+      "weekChangePct": -1.11,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -81,8 +87,8 @@
       "currency": null,
       "region": null,
       "price": 3.72,
-      "changePct": 1.64,
-      "weekChangePct": 1.17,
+      "changePct": 1.56,
+      "weekChangePct": 1.09,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -111,15 +117,15 @@
       "currency": null,
       "region": null,
       "price": 6.78,
-      "changePct": -0.23,
+      "changePct": -0.22,
       "weekChangePct": -0.17,
       "monthChangePct": 0.2,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7945,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-01"
+      "refPrice": 6.7965,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -131,13 +137,13 @@
       "price": 7.84,
       "changePct": 0.04,
       "weekChangePct": 0.04,
-      "monthChangePct": 0.08,
+      "monthChangePct": 0.09,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8439,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-01"
+      "refPrice": 7.8426,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 162.41,
-      "changePct": 0.3,
-      "weekChangePct": 0.5,
-      "monthChangePct": 1.74,
+      "price": 162.37,
+      "changePct": 0.27,
+      "weekChangePct": 0.48,
+      "monthChangePct": 1.71,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 162.71,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-01"
+      "refPrice": 162.4997,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,51 +171,25 @@
       "currency": null,
       "region": null,
       "price": 1.14,
-      "changePct": -0.28,
-      "weekChangePct": 0.09,
-      "monthChangePct": -2.11,
+      "changePct": -0.26,
+      "weekChangePct": 0.11,
+      "monthChangePct": -2.09,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8785,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-01"
+      "refPrice": 0.8766,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7553,
+      "price": 0.7549,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-01"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8112,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-01"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2968,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-01"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,10 +200,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4104.5,
-      "changePct": 2.03,
-      "weekChangePct": 2.86,
-      "monthChangePct": -8.28,
+      "price": 4099.3,
+      "changePct": 1.9,
+      "weekChangePct": 2.73,
+      "monthChangePct": -8.4,
       "source": "yahoo"
     },
     {
@@ -233,10 +213,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 68.29,
-      "changePct": -1.74,
-      "weekChangePct": -2.91,
-      "monthChangePct": -25.9,
+      "price": 68.1,
+      "changePct": -2.01,
+      "weekChangePct": -3.18,
+      "monthChangePct": -26.11,
       "source": "yahoo"
     },
     {
@@ -246,10 +226,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.18,
-      "changePct": -0.13,
-      "weekChangePct": 4.06,
-      "monthChangePct": -5.2,
+      "price": 6.19,
+      "changePct": -0.02,
+      "weekChangePct": 4.18,
+      "monthChangePct": -5.1,
       "source": "yahoo"
     }
   ],
@@ -261,9 +241,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4958.98,
-      "changePct": 1.86,
-      "weekChangePct": -1.99,
+      "price": 4868.22,
+      "changePct": -3.03,
+      "weekChangePct": -1.48,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -302,10 +282,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 110.49,
-      "changePct": 3.14,
-      "weekChangePct": 3.71,
-      "monthChangePct": -4.18,
+      "price": 110.1,
+      "changePct": 2.77,
+      "weekChangePct": 3.34,
+      "monthChangePct": -4.52,
       "source": "yahoo",
       "sector": "通信"
     },
@@ -316,10 +296,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 54.69,
-      "changePct": 2.01,
-      "weekChangePct": 1.8,
-      "monthChangePct": 6.7,
+      "price": 54.99,
+      "changePct": 2.57,
+      "weekChangePct": 2.36,
+      "monthChangePct": 7.3,
       "source": "yahoo",
       "sector": "金融"
     },
@@ -330,10 +310,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 118.78,
-      "changePct": 1.28,
-      "weekChangePct": 3.22,
-      "monthChangePct": 0.7,
+      "price": 118.76,
+      "changePct": 1.27,
+      "weekChangePct": 3.21,
+      "monthChangePct": 0.69,
       "source": "yahoo",
       "sector": "可选消费"
     },
@@ -344,10 +324,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 51.21,
-      "changePct": 0.74,
-      "weekChangePct": 0.09,
-      "monthChangePct": 0.94,
+      "price": 51.37,
+      "changePct": 1.05,
+      "weekChangePct": 0.4,
+      "monthChangePct": 1.25,
       "source": "yahoo",
       "sector": "材料"
     },
@@ -358,10 +338,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 44.25,
-      "changePct": 0.5,
-      "weekChangePct": -0.58,
-      "monthChangePct": 3.16,
+      "price": 44.37,
+      "changePct": 0.77,
+      "weekChangePct": -0.31,
+      "monthChangePct": 3.44,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -372,26 +352,12 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 159.24,
-      "changePct": 0.37,
-      "weekChangePct": 3.84,
-      "monthChangePct": 8.19,
+      "price": 159.65,
+      "changePct": 0.63,
+      "weekChangePct": 4.11,
+      "monthChangePct": 8.47,
       "source": "yahoo",
       "sector": "健康"
-    },
-    {
-      "symbol": "XLP",
-      "name": "必需消费",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 82.96,
-      "changePct": -0.13,
-      "weekChangePct": -1.75,
-      "monthChangePct": 1.84,
-      "source": "yahoo",
-      "sector": "必需消费"
     },
     {
       "symbol": "XLI",
@@ -400,12 +366,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 184.49,
-      "changePct": -0.4,
-      "weekChangePct": 2.38,
-      "monthChangePct": 7.28,
+      "price": 185.55,
+      "changePct": 0.17,
+      "weekChangePct": 2.96,
+      "monthChangePct": 7.89,
       "source": "yahoo",
       "sector": "工业"
+    },
+    {
+      "symbol": "XLP",
+      "name": "必需消费",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 83.11,
+      "changePct": 0.05,
+      "weekChangePct": -1.57,
+      "monthChangePct": 2.03,
+      "source": "yahoo",
+      "sector": "必需消费"
     },
     {
       "symbol": "XLE",
@@ -414,10 +394,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 52.88,
-      "changePct": -0.42,
-      "weekChangePct": -1.28,
-      "monthChangePct": -7.04,
+      "price": 53.01,
+      "changePct": -0.2,
+      "weekChangePct": -1.05,
+      "monthChangePct": -6.83,
       "source": "yahoo",
       "sector": "能源"
     },
@@ -428,10 +408,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 44.85,
-      "changePct": -1.09,
-      "weekChangePct": -1.53,
-      "monthChangePct": 4.71,
+      "price": 44.89,
+      "changePct": -0.99,
+      "weekChangePct": -1.43,
+      "monthChangePct": 4.82,
       "source": "yahoo",
       "sector": "公用事业"
     },
@@ -442,10 +422,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 187.26,
-      "changePct": -1.71,
-      "weekChangePct": 2.3,
-      "monthChangePct": -4.23,
+      "price": 187.06,
+      "changePct": -1.82,
+      "weekChangePct": 2.19,
+      "monthChangePct": -4.33,
       "source": "yahoo",
       "sector": "科技"
     }
@@ -518,16 +498,6 @@
       "related": ""
     },
     {
-      "id": 8148861,
-      "title": "Oil falls as progress in US-Iran talks cools supply concerns - Reuters",
-      "summary": "Oil falls as progress in US-Iran talks cools supply concerns  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOMHJEenFKWkIxQUo3U2hMR2RKY0h3MldHWmhUSlFrbUloR195NWh0cE41c3BGc25aRlk5RlR5bEVVTHN0Qk95d3dfTHZUQnRxdVdmOERFRUlrQzRBYlB5d1dSM3RtdUJsRUV0WkxIVnpGZFg5TnRYQXR3TEVDUV9tUC12dWcyTW94WDVkbUZYUE95Y1ZXRkRRX1ByYXJ0c0xxTmhrTXQwaFM3eXJkMWp1ZVBmRy0tSklWMWc?oc=5",
-      "publishedAt": "2026-07-01T13:34:02+00:00",
-      "related": ""
-    },
-    {
       "id": 8150800,
       "title": "US and Iran enter technical talks to secure peace deal, shipping restart - Reuters",
       "summary": "US and Iran enter technical talks to secure peace deal, shipping restart  Reuters",
@@ -588,13 +558,23 @@
       "related": ""
     },
     {
-      "id": 8151583,
-      "title": "EIA weekly crude oil inventories -3.775 million versus -4.466 million estimate",
-      "summary": "<ul><li>Crude oil inventories -3.775 million versus -4.466 million estimate.</li><li>Gasoline -2.333 million vs -1.021 million estimate.</li><li>Distillates +2.483 million vs -0.513  million estimate.",
+      "id": 8150467,
+      "title": "The next Iran war may come sooner than you think - Reuters",
+      "summary": "The next Iran war may come sooner than you think  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPaGhZVGxYcGxXVFlVSXdiMDkxN0Z1QnJwX1k1Nm1pWTRJX0hBR0c4QW5CUFg2Ukw3dmxJUUstR2EtUDY2TDNuMjBVWmRTNnNNeTR4MkVGU3AwYkV5Wmo4OU9ZYWR1enRRNk9PUlNLcnBpVElzTnNaVTBTOVNkcmtyVE9FSXRVUWpKQ3ZWeDA1QWxVblNaTURUWk92YlR5VF9VRDNJczJTaDhYakQtbk9PVHo5a0R4MldOcW12amV5bVhYRm05VVJOTQ?oc=5",
+      "publishedAt": "2026-07-01T11:01:57+00:00",
+      "related": ""
+    },
+    {
+      "id": 8151590,
+      "title": "USDCAD stalls below triple-top resistance as Canada Day trading thins",
+      "summary": "<p class=\"PDq2pG_selectionAnchorContainer\">The USDCAD is modestly higher on the day, but has surrendered most of its earlier gains during the North American session as Canadian markets remain closed f",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/eia-weekly-crude-oil-inventories-3775-million-versus-4466-million-estimate-20260701/",
-      "publishedAt": "2026-07-01T14:30:11+00:00",
+      "link": "https://investinglive.com/technical-analysis/usdcad-stalls-below-triple-top-resistance-as-canada-day-trading-thins-20260701/",
+      "publishedAt": "2026-07-01T15:20:46+00:00",
       "related": ""
     }
   ],
