@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-02T15:30:58+00:00",
+  "updatedAt": "2026-07-02T18:02:25+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 39 条资讯",
+  "message": "已更新 4 个市场问句 · 39 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 100,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002250.SZ",
@@ -92,13 +92,15 @@
         }
       ],
       "count": 100,
-      "countNote": "100+"
+      "countNote": "100+",
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002491.SZ",
@@ -173,13 +175,15 @@
           "changePct": -10.01
         }
       ],
-      "count": 41
+      "count": 41,
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000725.SZ",
@@ -251,13 +255,16 @@
           "changePct": -10.0,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000725.SZ",
@@ -315,7 +322,10 @@
           "changePct": -3.55,
           "flow": 581565480
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -748,5 +758,10 @@
       "source": "wencai",
       "category": "公告"
     }
-  ]
+  ],
+  "errors": [
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
