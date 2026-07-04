@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-04T11:46:45+00:00",
+  "updatedAt": "2026-07-04T13:58:48+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 36 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 36 条资讯",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 100,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "000004.SZ",
@@ -92,16 +92,13 @@
         }
       ],
       "count": 100,
-      "countNote": "100+",
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "countNote": "100+"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "000592.SZ",
@@ -176,22 +173,19 @@
           "changePct": -10.0
         }
       ],
-      "count": 24,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 24
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
-          "code": "002354.SZ",
-          "name": "天娱数科",
-          "price": 9.37,
-          "changePct": -9.38,
+          "code": "000725.SZ",
+          "name": "京东方A",
+          "price": 8.38,
+          "changePct": -7.91,
           "rank": "1"
         },
         {
@@ -209,64 +203,61 @@
           "rank": "3"
         },
         {
-          "code": "000725.SZ",
-          "name": "京东方A",
-          "price": 8.38,
-          "changePct": -7.91,
+          "code": "600667.SH",
+          "name": "太极实业",
+          "price": 29.96,
+          "changePct": 3.7,
           "rank": "4"
+        },
+        {
+          "code": "002354.SZ",
+          "name": "天娱数科",
+          "price": 9.37,
+          "changePct": -9.38,
+          "rank": "5"
         },
         {
           "code": "002407.SZ",
           "name": "多氟多",
           "price": 49.34,
           "changePct": -10.0,
-          "rank": "5"
-        },
-        {
-          "code": "600667.SH",
-          "name": "太极实业",
-          "price": 29.96,
-          "changePct": 3.7,
           "rank": "6"
-        },
-        {
-          "code": "002050.SZ",
-          "name": "三花智控",
-          "price": 48.99,
-          "changePct": 9.06,
-          "rank": "7"
         },
         {
           "code": "600584.SH",
           "name": "长电科技",
           "price": 90.88,
           "changePct": -5.31,
-          "rank": "8"
+          "rank": "7"
         },
         {
-          "code": "600487.SH",
-          "name": "亨通光电",
-          "price": 89.42,
-          "changePct": -4.71,
-          "rank": "9"
+          "code": "002050.SZ",
+          "name": "三花智控",
+          "price": 48.99,
+          "changePct": 9.06,
+          "rank": "8"
         },
         {
           "code": "000021.SZ",
           "name": "深科技",
           "price": 55.91,
           "changePct": -0.21,
+          "rank": "9"
+        },
+        {
+          "code": "002472.SZ",
+          "name": "双环传动",
+          "price": 47.01,
+          "changePct": 9.99,
           "rank": "10"
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "002050.SZ",
@@ -324,10 +315,7 @@
           "changePct": 4.01,
           "flow": 1071767290
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
     }
   ],
   "news": [
@@ -727,12 +715,6 @@
       "source": "wencai",
       "category": "利好"
     }
-  ],
-  "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
-    "limit_down: 'NoneType' object has no attribute 'get'",
-    "hot: 'NoneType' object has no attribute 'get'",
-    "main_flow: 'NoneType' object has no attribute 'get'"
   ],
   "newsStale": true
 }
