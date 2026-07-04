@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T15:31:43+00:00",
+  "updatedAt": "2026-07-04T17:19:44+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 36 条资讯 · 部分沿用缓存",
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000004.SZ",
@@ -92,7 +92,10 @@
         }
       ],
       "count": 100,
-      "countNote": "100+"
+      "countNote": "100+",
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
@@ -175,7 +178,8 @@
       ],
       "count": 24,
       "stale": true,
-      "staleMessage": "沿用上次数据"
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
@@ -725,6 +729,8 @@
     }
   ],
   "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
     "hot: 'NoneType' object has no attribute 'get'",
     "main_flow: 'NoneType' object has no attribute 'get'"
   ],
