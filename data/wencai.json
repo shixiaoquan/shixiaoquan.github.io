@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-07-07T05:07:35+00:00",
+  "updatedAt": "2026-07-07T08:43:35+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 32 条资讯",
+  "message": "已更新 4 个市场问句 · 35 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
-    "limitUp": 29,
-    "limitDown": 29,
+    "limitUp": 34,
+    "limitDown": 45,
     "limitUpNote": "100+",
     "limitDownNote": null,
     "mood": "震荡"
@@ -19,10 +19,22 @@
       "status": "ok",
       "items": [
         {
+          "code": "001230.SZ",
+          "name": "劲旅环境",
+          "price": 17.42,
+          "changePct": 9.97
+        },
+        {
           "code": "003004.SZ",
           "name": "声迅股份",
           "price": 79.95,
           "changePct": 10.0
+        },
+        {
+          "code": "600360.SH",
+          "name": "华微电子",
+          "price": 15.32,
+          "changePct": 9.98
         },
         {
           "code": "301516.SZ",
@@ -43,6 +55,12 @@
           "changePct": 9.98
         },
         {
+          "code": "000973.SZ",
+          "name": "佛塑科技",
+          "price": 14.58,
+          "changePct": 10.04
+        },
+        {
           "code": "603137.SH",
           "name": "恒尚节能",
           "price": 20.83,
@@ -55,43 +73,25 @@
           "changePct": 9.99
         },
         {
-          "code": "002584.SZ",
-          "name": "西陇科学",
-          "price": 10.3,
-          "changePct": 10.04
-        },
-        {
-          "code": "002951.SZ",
-          "name": "金时科技",
-          "price": 14.84,
+          "code": "603823.SH",
+          "name": "百合花",
+          "price": 72.45,
           "changePct": 10.01
         },
         {
-          "code": "002137.SZ",
-          "name": "实益达",
-          "price": 11.43,
-          "changePct": 10.01
+          "code": "600288.SH",
+          "name": "大恒科技",
+          "price": 15.55,
+          "changePct": 9.97
         },
         {
-          "code": "605118.SH",
-          "name": "力鼎光电",
-          "price": 38.08,
-          "changePct": 9.99
-        },
-        {
-          "code": "605399.SH",
-          "name": "晨光新材",
-          "price": 14.51,
-          "changePct": 10.01
-        },
-        {
-          "code": "600246.SH",
-          "name": "万通发展",
-          "price": 18.6,
-          "changePct": 9.99
+          "code": "000078.SZ",
+          "name": "ST海王",
+          "price": 1.8,
+          "changePct": 9.76
         }
       ],
-      "count": 29
+      "count": 34
     },
     {
       "id": "limit_down",
@@ -106,10 +106,28 @@
           "changePct": -9.98
         },
         {
+          "code": "002789.SZ",
+          "name": "*ST建艺",
+          "price": 10.2,
+          "changePct": -9.97
+        },
+        {
           "code": "603001.SH",
           "name": "奥康国际",
           "price": 9.28,
           "changePct": -9.99
+        },
+        {
+          "code": "603458.SH",
+          "name": "勘设股份",
+          "price": 8.96,
+          "changePct": -9.95
+        },
+        {
+          "code": "002038.SZ",
+          "name": "双鹭药业",
+          "price": 5.83,
+          "changePct": -10.03
         },
         {
           "code": "300716.SZ",
@@ -121,6 +139,12 @@
           "code": "603618.SH",
           "name": "杭电股份",
           "price": 39.69,
+          "changePct": -10.0
+        },
+        {
+          "code": "603678.SH",
+          "name": "火炬电子",
+          "price": 69.24,
           "changePct": -10.0
         },
         {
@@ -136,49 +160,25 @@
           "changePct": -9.95
         },
         {
+          "code": "603020.SH",
+          "name": "爱普股份",
+          "price": 13.22,
+          "changePct": -10.01
+        },
+        {
           "code": "002403.SZ",
           "name": "爱仕达",
           "price": 10.6,
           "changePct": -10.02
-        },
-        {
-          "code": "002667.SZ",
-          "name": "*ST威领",
-          "price": 10.49,
-          "changePct": -9.96
-        },
-        {
-          "code": "600301.SH",
-          "name": "华锡有色",
-          "price": 56.48,
-          "changePct": -10.01
-        },
-        {
-          "code": "002856.SZ",
-          "name": "*ST美芝",
-          "price": 16.39,
-          "changePct": -9.99
-        },
-        {
-          "code": "002731.SZ",
-          "name": "*ST萃华",
-          "price": 3.92,
-          "changePct": -9.89
-        },
-        {
-          "code": "603032.SH",
-          "name": "德新科技",
-          "price": 26.78,
-          "changePct": -9.98
         }
       ],
-      "count": 29
+      "count": 45
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002185.SZ",
@@ -250,7 +250,10 @@
           "changePct": -6.38,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
@@ -259,65 +262,318 @@
       "status": "ok",
       "items": [
         {
-          "code": "002185.SZ",
-          "name": "华天科技",
-          "price": 21.93,
-          "changePct": 9.98,
-          "flow": 1398120409
+          "code": "300308.SZ",
+          "name": "中际旭创",
+          "price": 1121.9,
+          "changePct": 2.09,
+          "flow": 1800142356
+        },
+        {
+          "code": "002384.SZ",
+          "name": "东山精密",
+          "price": 236.87,
+          "changePct": 5.53,
+          "flow": 1522547010
         },
         {
           "code": "600584.SH",
           "name": "长电科技",
-          "price": 99.34,
-          "changePct": 4.5,
-          "flow": 1357924281
+          "price": 100.99,
+          "changePct": 6.2,
+          "flow": 1487193874
         },
         {
-          "code": "300308.SZ",
-          "name": "中际旭创",
-          "price": 1098.3,
-          "changePct": -0.07,
-          "flow": 933978130
-        },
-        {
-          "code": "688256.SH",
-          "name": "寒武纪",
-          "price": 1374.0,
-          "changePct": 0.32,
-          "flow": 818632010
+          "code": "002185.SZ",
+          "name": "华天科技",
+          "price": 21.93,
+          "changePct": 9.98,
+          "flow": 1287808742
         },
         {
           "code": "688802.SH",
           "name": "沐曦股份",
-          "price": 837.01,
-          "changePct": 14.5,
-          "flow": 811961225
+          "price": 833.99,
+          "changePct": 14.09,
+          "flow": 826678795
         },
         {
-          "code": "000977.SZ",
-          "name": "浪潮信息",
-          "price": 70.03,
-          "changePct": 0.47,
-          "flow": 679005468
+          "code": "002371.SZ",
+          "name": "北方华创",
+          "price": 806.39,
+          "changePct": 0.35,
+          "flow": 782428325
         },
         {
-          "code": "688041.SH",
-          "name": "海光信息",
-          "price": 344.2,
-          "changePct": 1.56,
-          "flow": 639137311
+          "code": "688012.SH",
+          "name": "中微公司",
+          "price": 420.04,
+          "changePct": 0.01,
+          "flow": 744224060
         },
         {
-          "code": "688981.SH",
-          "name": "中芯国际",
-          "price": 145.35,
-          "changePct": 0.91,
-          "flow": 593037421
+          "code": "688820.SH",
+          "name": "盛合晶微",
+          "price": 197.59,
+          "changePct": 5.18,
+          "flow": 710123075
         }
       ]
     }
   ],
   "news": [
+    {
+      "id": "wencai:a2596c4419b3df3c",
+      "title": "尖峰集团：尖峰集团2026年第一次临时股东会会议资料",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/600668_20260708_07BF.pdf",
+      "publisher": "同花顺问财",
+      "related": "尖峰集团 (600668.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:bb8ea51680a759c1",
+      "title": "中南文化：关于重大资产重组的进展公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-08/1225412719.PDF",
+      "publisher": "同花顺问财",
+      "related": "中南文化 (002445.SZ)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:a1e50b8423107deb",
+      "title": "中南文化：关于公司独立董事取得独立董事资格证书的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-08/1225412720.PDF",
+      "publisher": "同花顺问财",
+      "related": "中南文化 (002445.SZ)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:3b75037816e03365",
+      "title": "中农立华：中农立华公司章程",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603970_20260708_SKXO.pdf",
+      "publisher": "同花顺问财",
+      "related": "中农立华 (603970.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:efa0b7fde10a400c",
+      "title": "中农立华：中农立华关于完成工商备案登记的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603970_20260708_Y341.pdf",
+      "publisher": "同花顺问财",
+      "related": "中农立华 (603970.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:31d0861bf709f02a",
+      "title": "恒久退：关于公司股票进入退市整理期交易第五次的风险提示公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-08/1225412752.PDF",
+      "publisher": "同花顺问财",
+      "related": "恒久退 (002808.SZ)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:fdf6da96f1b84a81",
+      "title": "金徽股份：金徽股份2026年半年度业绩预增公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603132_20260708_JLYL.pdf",
+      "publisher": "同花顺问财",
+      "related": "金徽股份 (603132.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:6bb479743feb5005",
+      "title": "辽宁成大：辽宁成大股份有限公司关于股东股份质押延期购回及质押的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/600739_20260708_MPAU.pdf",
+      "publisher": "同花顺问财",
+      "related": "辽宁成大 (600739.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:c0a40d921275283c",
+      "title": "辽宁成大：辽宁成大股份有限公司关于2025年度第一期短期融资券到期兑付的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/600739_20260708_YUNS.pdf",
+      "publisher": "同花顺问财",
+      "related": "辽宁成大 (600739.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:8f70a9e9e3b56361",
+      "title": "泛微网络：泛微网络关于董事会换届选举的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603039_20260708_Y1TW.pdf",
+      "publisher": "同花顺问财",
+      "related": "泛微网络 (603039.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:970470d1dd53039c",
+      "title": "泛微网络：泛微网络关于选举第六届职工代表董事的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603039_20260708_TY74.pdf",
+      "publisher": "同花顺问财",
+      "related": "泛微网络 (603039.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:a784761eb4300a98",
+      "title": "泛微网络：泛微网络关于设立分公司的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603039_20260708_SO4L.pdf",
+      "publisher": "同花顺问财",
+      "related": "泛微网络 (603039.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:348d428e758cd251",
+      "title": "至信股份：重庆至信实业股份有限公司关于开立募集资金现金管理产品专用结算账户的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603352_20260708_43C8.pdf",
+      "publisher": "同花顺问财",
+      "related": "至信股份 (603352.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:83efcfa8236ed55",
+      "title": "福达股份：福达股份关于部分高级管理人员增持股份计划公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603166_20260708_HJBY.pdf",
+      "publisher": "同花顺问财",
+      "related": "福达股份 (603166.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:ba53ba17555998b0",
+      "title": "爱玛科技：北京海润天睿律师事务所关于爱玛科技2024年限制性股票激励计划部分限制性股票回购注销实施的法律意见书",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603529_20260708_MOUE.pdf",
+      "publisher": "同花顺问财",
+      "related": "爱玛科技 (603529.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:90f72cf3c7165ded",
+      "title": "爱玛科技：爱玛科技关于2024年限制性股票激励计划部分限制性股票回购注销实施公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603529_20260708_V16L.pdf",
+      "publisher": "同花顺问财",
+      "related": "爱玛科技 (603529.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:e8360015f93e53ea",
+      "title": "*ST瑞和：关于累计诉讼、仲裁情况的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-08/1225412861.PDF",
+      "publisher": "同花顺问财",
+      "related": "*ST瑞和 (002620.SZ)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:a151221e76314d93",
+      "title": "国检集团：中国国际金融股份有限公司关于中国国检测试控股集团股份有限公司使用部分闲置募集资金暂时补充流动资金的核查意见",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603060_20260708_ZEEM.pdf",
+      "publisher": "同花顺问财",
+      "related": "国检集团 (603060.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:6eebeab030664207",
+      "title": "国检集团：国检集团关于使用部分闲置募集资金暂时补充流动资金的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/603060_20260708_DRL5.pdf",
+      "publisher": "同花顺问财",
+      "related": "国检集团 (603060.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:7d68022d606c27c9",
+      "title": "兴业证券：兴业证券关于董事会秘书离任的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/601377_20260708_TALT.pdf",
+      "publisher": "同花顺问财",
+      "related": "兴业证券 (601377.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:fb183f91ff9f75b2",
+      "title": "六国化工：六国化工关于2025年年度报告的信息披露监管问询函的回复公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/600470_20260708_9M68.pdf",
+      "publisher": "同花顺问财",
+      "related": "六国化工 (600470.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:9578d73c8d97b9e0",
+      "title": "六国化工：容诚会计师事务所（特殊普通合伙）关于六国化工2025年年度报告的信息披露监管问询函的回复",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-08/600470_20260708_ZW27.pdf",
+      "publisher": "同花顺问财",
+      "related": "六国化工 (600470.SH)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:87a1b0b8cfba3bc0",
+      "title": "三羊马：关于控股子公司部分银行账户资金解除冻结的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-08/1225412753.PDF",
+      "publisher": "同花顺问财",
+      "related": "三羊马 (001317.SZ)",
+      "publishedAt": "2026-07-07T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
     {
       "id": "wencai:2cda582e5bae1d68",
       "title": "格力电器获得实用新型专利授权：“一种油杯和吸油烟机”",
@@ -363,22 +619,22 @@
       "category": "利好"
     },
     {
-      "id": "wencai:f142557f35bf9d25",
-      "title": "中建环能获得实用新型专利授权：“一种磁介质湿法补加料仓”",
-      "link": "https://stock.stockstar.com/RB2026070700003496.shtml",
+      "id": "wencai:42d0cfe2414fa0d2",
+      "title": "ST太重获得实用新型专利授权：“分区控制的燃气催化红外加热炉装置”",
+      "link": "https://stock.stockstar.com/RB2026070700003493.shtml",
       "publisher": "同花顺问财",
-      "related": "中建环能 (300425.SZ)",
+      "related": "ST太重 (600169.SH)",
       "publishedAt": "2026-07-06T19:24:44+00:00",
       "summary": "利好",
       "source": "wencai",
       "category": "利好"
     },
     {
-      "id": "wencai:42d0cfe2414fa0d2",
-      "title": "ST太重获得实用新型专利授权：“分区控制的燃气催化红外加热炉装置”",
-      "link": "https://stock.stockstar.com/RB2026070700003493.shtml",
+      "id": "wencai:f142557f35bf9d25",
+      "title": "中建环能获得实用新型专利授权：“一种磁介质湿法补加料仓”",
+      "link": "https://stock.stockstar.com/RB2026070700003496.shtml",
       "publisher": "同花顺问财",
-      "related": "ST太重 (600169.SH)",
+      "related": "中建环能 (300425.SZ)",
       "publishedAt": "2026-07-06T19:24:44+00:00",
       "summary": "利好",
       "source": "wencai",
@@ -429,246 +685,29 @@
       "category": "利好"
     },
     {
-      "id": "wencai:6c6be5a3755b1390",
-      "title": "*ST康佳A：关于重大仲裁的进展公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-07/1225410530.PDF",
+      "id": "wencai:8d1807d66eaaa423",
+      "title": "恒久退：关于公司股票进入退市整理期交易第四次的风险提示公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-07/1225410504.PDF",
       "publisher": "同花顺问财",
-      "related": "*ST康佳A (000016.SZ)",
+      "related": "恒久退 (002808.SZ)",
       "publishedAt": "2026-07-06T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:ac1a456bc2e0babe",
-      "title": "中国中免：H股公告-月报表",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/601888_20260707_FZNB.pdf",
+      "id": "wencai:16026e20dc035c3",
+      "title": "辽宁成大：辽宁成大股份有限公司关于股东股份解质押的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/600739_20260707_R82T.pdf",
       "publisher": "同花顺问财",
-      "related": "中国中免 (601888.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:3499684f19505183",
-      "title": "中国中免：中国旅游集团中免股份有限公司2025年年度利润分配实施公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/601888_20260707_QYCR.pdf",
-      "publisher": "同花顺问财",
-      "related": "中国中免 (601888.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:89a6fec9dbf5123",
-      "title": "上海凤凰：上海凤凰关于下属子公司金吉置业股权内部无偿划转完成工商变更的进展公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/600679_20260707_O0RD.pdf",
-      "publisher": "同花顺问财",
-      "related": "上海凤凰 (600679.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:929c18836a9a8c7d",
-      "title": "瑞丰高材：关于取得发明专利证书的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-07/1225411076.PDF",
-      "publisher": "同花顺问财",
-      "related": "瑞丰高材 (300243.SZ)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:746f818e3cdc9219",
-      "title": "顺丰控股：H股公告-翌日披露报表",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-07/1225411835.PDF",
-      "publisher": "同花顺问财",
-      "related": "顺丰控股 (002352.SZ)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:ee21da7ee4367a52",
-      "title": "光迅科技：武汉光迅科技股份有限公司第八届董事会第七次会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-07/1225411867.PDF",
-      "publisher": "同花顺问财",
-      "related": "光迅科技 (002281.SZ)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:dfc45b54727a753a",
-      "title": "光迅科技：武汉光迅科技股份有限公司关于授权公司管理层启动公司境外发行股份（H股）并在香港联合交易所有限公司上市相关筹备工作的提示性公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-07/1225411868.PDF",
-      "publisher": "同花顺问财",
-      "related": "光迅科技 (002281.SZ)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:3ff4b10b4252dfc5",
-      "title": "联瑞新材：联瑞新材关于“联瑞转债”开始转股的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/688300_20260707_7USV.pdf",
-      "publisher": "同花顺问财",
-      "related": "联瑞新材 (688300.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:e56cb2150ec55ba4",
-      "title": "联瑞新材：联瑞新材关于可转债投资者适当性要求的风险提示性公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/688300_20260707_B06Y.pdf",
-      "publisher": "同花顺问财",
-      "related": "联瑞新材 (688300.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:f74e61c5a7129bd9",
-      "title": "柏诚股份：股东减持股份计划公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/601133_20260707_HS3B.pdf",
-      "publisher": "同花顺问财",
-      "related": "柏诚股份 (601133.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:28fc7146eac6bade",
-      "title": "云天化：云天化关于修订公司章程的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/600096_20260707_NL9U.pdf",
-      "publisher": "同花顺问财",
-      "related": "云天化 (600096.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:d2b28492b98d7f9e",
-      "title": "云天化：云天化关于召开2026年第二次临时股东会的通知",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/600096_20260707_G72P.pdf",
-      "publisher": "同花顺问财",
-      "related": "云天化 (600096.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:fe3f135fa0ecb90c",
-      "title": "云天化：云天化关于公司董事、高级管理人员离任及聘任副总经理、财务总监的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/600096_20260707_X3B4.pdf",
-      "publisher": "同花顺问财",
-      "related": "云天化 (600096.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:893851b18e2b9c85",
-      "title": "江特电机：关于控股股东部分股权解除质押的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-07/1225411490.PDF",
-      "publisher": "同花顺问财",
-      "related": "江特电机 (002176.SZ)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:2b81272d0a61db58",
-      "title": "亚香股份：关于2024年限制性股票激励计划首次授予部分限制性股票第二个归属期归属结果暨股份上市公告（定向增发）",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-07/1225412137.PDF",
-      "publisher": "同花顺问财",
-      "related": "亚香股份 (301220.SZ)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:99b2486849d7e5fd",
-      "title": "金海通：2026年第三次临时股东会会议资料",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/603061_20260707_11DS.pdf",
-      "publisher": "同花顺问财",
-      "related": "金海通 (603061.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:15336451f91b2a18",
-      "title": "斯瑞新材：关于2026年股票期权与限制性股票激励计划之股票期权首次授予登记完成的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/688102_20260707_NOGG.pdf",
-      "publisher": "同花顺问财",
-      "related": "斯瑞新材 (688102.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:5ccb80991b99ff27",
-      "title": "中石科技：关于2025年限制性股票激励计划首次授予部分第一个归属期归属结果暨股份上市的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-07/1225411848.PDF",
-      "publisher": "同花顺问财",
-      "related": "中石科技 (300684.SZ)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:6bc195f5fe4ff0f9",
-      "title": "火炬电子：火炬电子关于调整2026年度担保额度的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/603678_20260707_XUY6.pdf",
-      "publisher": "同花顺问财",
-      "related": "火炬电子 (603678.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:a2ca65e588d5a517",
-      "title": "火炬电子：火炬电子第七届董事会第五次会议决议的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/603678_20260707_ADGW.pdf",
-      "publisher": "同花顺问财",
-      "related": "火炬电子 (603678.SH)",
-      "publishedAt": "2026-07-06T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:43e3adfc6331b2d4",
-      "title": "火炬电子：火炬电子2026年第二次临时股东会会议资料",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/603678_20260707_KMFM.pdf",
-      "publisher": "同花顺问财",
-      "related": "火炬电子 (603678.SH)",
+      "related": "辽宁成大 (600739.SH)",
       "publishedAt": "2026-07-06T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     }
+  ],
+  "errors": [
+    "hot: 'NoneType' object has no attribute 'get'"
   ]
 }
