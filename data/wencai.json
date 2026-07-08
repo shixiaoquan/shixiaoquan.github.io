@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-08T09:37:38+00:00",
+  "updatedAt": "2026-07-08T11:57:53+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 37 条资讯",
+  "message": "已更新 4 个市场问句 · 37 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
-    "limitUp": 47,
+    "limitUp": 56,
     "limitDown": 44,
     "limitUpNote": "100+",
     "limitDownNote": null,
@@ -15,68 +15,38 @@
     {
       "id": "limit_up",
       "title": "今日涨停",
-      "query": "今日涨停（备用：非ST今日涨停）",
+      "query": "今日涨停",
       "status": "ok",
       "items": [
         {
-          "code": "000759.SZ",
-          "name": "中百集团",
-          "price": 6.48,
-          "changePct": 10.02
-        },
-        {
-          "code": "000977.SZ",
-          "name": "浪潮信息",
-          "price": 78.17,
-          "changePct": 10.01
-        },
-        {
-          "code": "002396.SZ",
-          "name": "星网锐捷",
-          "price": 29.1,
-          "changePct": 10.02
-        },
-        {
-          "code": "002467.SZ",
-          "name": "二六三",
-          "price": 4.69,
-          "changePct": 10.09
-        },
-        {
-          "code": "002490.SZ",
-          "name": "山东墨龙",
-          "price": 6.97,
-          "changePct": 9.94
-        },
-        {
-          "code": "002546.SZ",
-          "name": "新联电子",
-          "price": 7.34,
-          "changePct": 10.04
-        },
-        {
-          "code": "002674.SZ",
-          "name": "兴业科技",
-          "price": 29.15,
+          "code": "001207.SZ",
+          "name": "联科科技",
+          "price": 16.28,
           "changePct": 10.0
         },
         {
-          "code": "002757.SZ",
-          "name": "南兴股份",
-          "price": 18.41,
-          "changePct": 9.98
+          "code": "300017.SZ",
+          "name": "网宿科技",
+          "price": 14.66,
+          "changePct": 19.97
         },
         {
-          "code": "002677.SZ",
-          "name": "浙江美大",
-          "price": 6.57,
-          "changePct": 10.05
+          "code": "603380.SH",
+          "name": "易德龙",
+          "price": 47.29,
+          "changePct": 10.0
         },
         {
-          "code": "000524.SZ",
-          "name": "岭南控股",
-          "price": 9.85,
-          "changePct": 10.06
+          "code": "603789.SH",
+          "name": "ST星农",
+          "price": 7.03,
+          "changePct": 10.02
+        },
+        {
+          "code": "603137.SH",
+          "name": "恒尚节能",
+          "price": 22.91,
+          "changePct": 9.99
         },
         {
           "code": "000506.SZ",
@@ -85,14 +55,43 @@
           "changePct": 10.0
         },
         {
-          "code": "002841.SZ",
-          "name": "视源股份",
-          "price": 47.39,
-          "changePct": 10.0
+          "code": "600759.SH",
+          "name": "ST洲际",
+          "price": 2.41,
+          "changePct": 10.05
+        },
+        {
+          "code": "002642.SZ",
+          "name": "荣联科技",
+          "price": 6.7,
+          "changePct": 10.02
+        },
+        {
+          "code": "600756.SH",
+          "name": "浪潮软件",
+          "price": 13.23,
+          "changePct": 9.98
+        },
+        {
+          "code": "603313.SH",
+          "name": "梦百合",
+          "price": 7.06,
+          "changePct": 9.97
+        },
+        {
+          "code": "600288.SH",
+          "name": "大恒科技",
+          "price": 17.11,
+          "changePct": 10.03
+        },
+        {
+          "code": "600749.SH",
+          "name": "西藏旅游",
+          "price": 15.33,
+          "changePct": 9.97
         }
       ],
-      "count": 47,
-      "fallbackQuery": true
+      "count": 56
     },
     {
       "id": "limit_down",
@@ -179,7 +178,7 @@
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000725.SZ",
@@ -251,13 +250,16 @@
           "changePct": -2.71,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "300502.SZ",
@@ -315,7 +317,10 @@
           "changePct": 19.97,
           "flow": 811959307
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -726,5 +731,10 @@
       "source": "wencai",
       "category": "公告"
     }
-  ]
+  ],
+  "errors": [
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
