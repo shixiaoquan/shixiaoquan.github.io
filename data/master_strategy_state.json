@@ -1,7 +1,7 @@
 {
   "baseVersion": "v1.2",
-  "revision": 100,
-  "updatedAt": "2026-07-09T14:17:33+00:00",
+  "revision": 101,
+  "updatedAt": "2026-07-09T16:47:21+00:00",
   "weights": {
     "buffett": {
       "roe": 1.541,
@@ -12,11 +12,11 @@
       "mcap": 1.541
     },
     "graham": {
-      "pe": 0.988,
-      "pb": 0.988,
-      "range": 0.988,
-      "dividend": 0.862,
-      "debt": 0.822
+      "pe": 0.938,
+      "pb": 0.938,
+      "range": 0.938,
+      "dividend": 0.81,
+      "debt": 0.773
     },
     "lynch": {
       "peg": 1.55,
@@ -39,11 +39,11 @@
       "roe": 1.55
     },
     "soros": {
-      "month": 0.975,
-      "rs": 0.975,
-      "trend": 0.975,
-      "volume": 0.811,
-      "beta": 0.659
+      "month": 1.053,
+      "rs": 1.053,
+      "trend": 1.053,
+      "volume": 0.863,
+      "beta": 0.699
     },
     "serenity": {
       "sector": 1.55,
@@ -56,44 +56,46 @@
   },
   "performance": {
     "buffett": {
-      "samples": 188,
-      "winRate": 94.1,
-      "avgReturnPct": 10.15
+      "samples": 190,
+      "winRate": 94.7,
+      "avgReturnPct": 11.65
     },
     "graham": {
-      "samples": 188,
-      "winRate": 83.0,
-      "avgReturnPct": 3.23
+      "samples": 190,
+      "winRate": 92.6,
+      "avgReturnPct": 3.86
     },
     "lynch": {
-      "samples": 188,
-      "winRate": 43.1,
-      "avgReturnPct": 1.4
+      "samples": 190,
+      "winRate": 47.9,
+      "avgReturnPct": 1.98
     },
     "munger": {
-      "samples": 188,
-      "winRate": 12.8,
-      "avgReturnPct": -1.6
+      "samples": 190,
+      "winRate": 70.5,
+      "avgReturnPct": 0.37
     },
     "templeton": {
-      "samples": 188,
-      "winRate": 49.5,
-      "avgReturnPct": 3.99
+      "samples": 190,
+      "winRate": 50.0,
+      "avgReturnPct": 5.23
     },
     "soros": {
-      "samples": 188,
-      "winRate": 44.1,
-      "avgReturnPct": 2.45
+      "samples": 190,
+      "winRate": 42.1,
+      "avgReturnPct": -3.55
     },
     "serenity": {
-      "samples": 188,
-      "winRate": 63.3,
-      "avgReturnPct": 1.25
+      "samples": 190,
+      "winRate": 58.9,
+      "avgReturnPct": -0.98
     }
   },
-  "lastUpgrade": "2026-07-09T14:17:33+00:00",
+  "lastUpgrade": "2026-07-09T16:47:21+00:00",
   "upgradeNotes": {
-    "soros": "近期表现反馈：volume↓",
+    "graham": "近期表现反馈：pe↑、pb↑、range↑",
+    "soros": "近期表现反馈：beta↓、volume↓",
+    "serenity": "近期表现反馈：range↓",
     "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
   },
   "regime": "risk_on"
