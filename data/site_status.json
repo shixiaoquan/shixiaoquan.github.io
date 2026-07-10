@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-10T08:44:05+00:00",
+  "updatedAt": "2026-07-10T09:58:10+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -44,7 +44,7 @@
     "shadowReadyForPR": false
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-10T08:44:05+00:00",
+    "updatedAt": "2026-07-10T09:58:10+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -167,8 +167,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T08:43:23+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 74
     },
     {
       "id": "macro",
@@ -176,8 +176,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T08:43:17+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 74
     },
     {
       "id": "truth",
@@ -185,8 +185,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-10T08:39:31+00:00",
-      "status": "ok",
-      "ageMinutes": 4
+      "status": "stale",
+      "ageMinutes": 78
     },
     {
       "id": "wencai",
@@ -195,7 +195,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-10T07:55:15+00:00",
       "status": "ok",
-      "ageMinutes": 48
+      "ageMinutes": 122
     },
     {
       "id": "reports",
@@ -204,7 +204,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-10T15:41:35+08:00",
       "status": "ok",
-      "ageMinutes": 62
+      "ageMinutes": 136
     },
     {
       "id": "backtest",
@@ -213,9 +213,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-05T03:06:16+00:00",
       "status": "ok",
-      "ageMinutes": 7537
+      "ageMinutes": 7611
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "29080689213"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "29084778537"
 }
