@@ -31,9 +31,13 @@ def build_queue() -> dict:
     if cmp_.get("readyForUpgradePR"):
         params = shadow.get("candidateParams") or {}
         dual = (
-            f"影子 T+5 {cmp_.get('shadowWinRateT5')}% vs 生产 {cmp_.get('prodWinRateT5')}%"
-            if cmp_.get("shadowWinRateT5") is not None
-            else cmp_.get("reason")
+            f"配对 T+5 影子 {cmp_.get('pairedShadowWinRate')}% · 边际 {cmp_.get('pairedAvgEdgeT5')}%"
+            if cmp_.get("pairedShadowWinRate") is not None
+            else (
+                f"影子 T+5 {cmp_.get('shadowWinRateT5')}% vs 生产 {cmp_.get('prodWinRateT5')}%"
+                if cmp_.get("shadowWinRateT5") is not None
+                else cmp_.get("reason")
+            )
         )
         tasks.append(
             {

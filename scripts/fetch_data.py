@@ -84,6 +84,7 @@ from reco_signals import update_reco_signals
 from strategy_masters import build_master_recommendations
 from archive_reco_history import write_recent_slice
 from decision_score import enrich_picks, load_context_files
+from market_regime import detect_market_regime
 
 
 def load_tactic_tune() -> dict:
@@ -445,6 +446,7 @@ def compact_pick(pick: dict) -> dict:
         "plan": pick.get("plan", {}),
         "decisionScore": pick.get("decisionScore"),
         "decisionLabel": pick.get("decisionLabel"),
+        "decisionComponents": pick.get("decisionComponents"),
     }
 
 
@@ -485,7 +487,12 @@ def should_append_history(records: list[dict], picks: list[dict], recorded_at: d
         return True
 
 
-def append_reco_history(recommendations: dict, recorded_at: datetime) -> tuple[dict, str | None]:
+def append_reco_history(
+    recommendations: dict,
+    recorded_at: datetime,
+    *,
+    market_context: dict | None = None,
+) -> tuple[dict, str | None]:
     """将本次荐股快照追加到 reco_history.json。"""
     picks = recommendations.get("picks") or []
     history = load_reco_history()
@@ -498,6 +505,7 @@ def append_reco_history(recommendations: dict, recorded_at: datetime) -> tuple[d
                 "id": record_id,
                 "recordedAt": record_id,
                 "marketScan": recommendations.get("marketScan", ""),
+                "marketContext": market_context or {},
                 "picks": [compact_pick(p) for p in picks],
             }
         )
@@ -641,7 +649,15 @@ def main() -> None:
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {CORE_FILE}, {RECO_FILE}, {OUTPUT_FILE}")
 
-    history, reco_id = append_reco_history(recommendations, now)
+    history, reco_id = append_reco_history(
+        recommendations,
+        now,
+        market_context={
+            "mood": payload["summary"].get("mood"),
+            "regime": detect_market_regime(payload["summary"], (macro or {}).get("summary")),
+            "avgChangePct": payload["summary"].get("avgChangePct"),
+        },
+    )
     write_recent_slice(history)
     update_reco_signals(
         recommendations.get("picks") or [],

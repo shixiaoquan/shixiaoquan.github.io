@@ -51,6 +51,17 @@
 
 `js/data-cache.js` 用 sessionStorage 做 stale-while-revalidate，首屏先渲染缓存再后台刷新。
 
+## 二期增强（短期 + 中期）
+
+| 能力 | 脚本 | 说明 |
+|------|------|------|
+| 配对归因 | `paired_attribution.py` | 同日同标的 T+5 影子 vs 生产 |
+| 市场/Regime 分桶 | `reco_attribution` + `tactic_tune` | A股/港股/美股与 risk_on/off 反哺门槛 |
+| 决策快照 | `fetch_data.py` | history 写入 `decisionComponents` + `marketContext` |
+| 进化队列 Issue | `evolution_queue_health.py` | 高优待办自动开 `evolution-queue` Issue |
+| 研报进化章节 | `generate_report.py` | 日报第五节展示影子轨/队列/自适应 |
+| 脚本测试 | `scripts-test.yml` | PR 前 unittest |
+
 ## Cursor 负责什么
 
 当 `data/evolution_queue.json` 出现 **`shadow-upgrade-pr`**（或 `shadow_reco.comparison.readyForUpgradePR`）时：

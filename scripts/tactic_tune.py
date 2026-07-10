@@ -14,6 +14,8 @@ OUTPUT = DATA_DIR / "tactic_tune.json"
 
 MIN_SAMPLES = 8
 MIN_DECISION_SAMPLES = 4
+MIN_MARKET_SAMPLES = 4
+MIN_REGIME_SAMPLES = 4
 LOW_WIN_RATE = 45.0
 HIGH_WIN_RATE = 58.0
 LOW_DECISION_WIN = 40.0
@@ -38,6 +40,8 @@ def run_tune() -> dict:
     summary = attr.get("summary") or {}
     by_signal = summary.get("bySignal") or {}
     by_decision = summary.get("byDecisionLabel") or {}
+    by_market = summary.get("byMarket") or {}
+    by_regime = summary.get("byRegime") or {}
     buy_stats = by_signal.get("buy") or {}
     watch_stats = by_signal.get("watch") or {}
 
@@ -84,11 +88,37 @@ def run_tune() -> dict:
                 adjust += 1
                 notes.append(f"中决策分 T+5 胜率 {mid_win}% 偏低，门槛 +1")
 
-    adjust = _clamp(adjust, -2, 3)
+    market_candidates = [
+        (name, by_market.get(name) or {})
+        for name in ("A股", "港股", "美股")
+        if (by_market.get(name) or {}).get("count", 0) >= MIN_MARKET_SAMPLES
+        and (by_market.get(name) or {}).get("winRate") is not None
+    ]
+    if market_candidates:
+        worst_name, worst = min(market_candidates, key=lambda x: x[1]["winRate"])
+        best_name, best = max(market_candidates, key=lambda x: x[1]["winRate"])
+        if worst["winRate"] < LOW_WIN_RATE:
+            adjust += 1
+            notes.append(f"{worst_name} T+5 胜率 {worst['winRate']}% 拖累，门槛 +1")
+        elif best["winRate"] >= HIGH_WIN_RATE:
+            adjust -= 1
+            notes.append(f"{best_name} T+5 胜率 {best['winRate']}% 领先，门槛 -1")
+
+    risk_off = by_regime.get("risk_off") or {}
+    if (risk_off.get("count") or 0) >= MIN_REGIME_SAMPLES and (risk_off.get("winRate") or 100) < LOW_WIN_RATE:
+        adjust += 1
+        notes.append(f"偏空环境 T+5 胜率 {risk_off['winRate']}% 偏弱，门槛 +1")
+
+    risk_on = by_regime.get("risk_on") or {}
+    if (risk_on.get("count") or 0) >= MIN_REGIME_SAMPLES and (risk_on.get("winRate") or 0) >= HIGH_WIN_RATE:
+        adjust -= 1
+        notes.append(f"偏多环境 T+5 胜率 {risk_on['winRate']}% 良好，门槛 -1")
+
+    adjust = _clamp(adjust, -3, 4)
 
     watch_count = watch_stats.get("count") or 0
     if watch_count >= MIN_SAMPLES * 2 and buy_count < MIN_SAMPLES:
-        notes.append("buy 样本不足，主要依据 watch 池与决策分桶观察")
+        notes.append("buy 样本不足，主要依据 watch 池、市场与决策分桶观察")
 
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
@@ -99,6 +129,8 @@ def run_tune() -> dict:
             "winRateT5": buy_win,
             "avgReturnT5": buy_avg,
             "byDecisionLabel": by_decision,
+            "byMarket": by_market,
+            "byRegime": by_regime,
         },
         "notes": notes,
         "active": adjust != 0,

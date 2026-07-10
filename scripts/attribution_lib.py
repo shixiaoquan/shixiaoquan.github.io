@@ -130,6 +130,8 @@ def run_track_attribution(
                 "score": pick.get("score"),
                 "decisionScore": pick.get("decisionScore"),
                 "decisionLabel": decision_label(pick),
+                "marketRegime": (record.get("marketContext") or {}).get("regime"),
+                "marketMood": (record.get("marketContext") or {}).get("mood"),
                 "returns": horizons,
             }
             new_count += 1
@@ -171,15 +173,18 @@ def summarize_items(items: dict) -> dict:
     by_signal: dict[str, list[float]] = {}
     by_market: dict[str, list[float]] = {}
     by_decision: dict[str, list[float]] = {}
+    by_regime: dict[str, list[float]] = {}
 
     for item in matured:
         ret = item["returns"]["t5"]
         sig = item.get("signal") or "unknown"
         mkt = item.get("market") or "unknown"
         dec = item.get("decisionLabel") or "未知"
+        regime = item.get("marketRegime") or "unknown"
         by_signal.setdefault(sig, []).append(ret)
         by_market.setdefault(mkt, []).append(ret)
         by_decision.setdefault(dec, []).append(ret)
+        by_regime.setdefault(regime, []).append(ret)
 
     def _avg(vals: list[float]) -> float | None:
         return round(sum(vals) / len(vals), 2) if vals else None
@@ -203,4 +208,5 @@ def summarize_items(items: dict) -> dict:
         "bySignal": {k: _bucket(v) for k, v in by_signal.items()},
         "byMarket": {k: _bucket(v) for k, v in by_market.items()},
         "byDecisionLabel": {k: _bucket(v) for k, v in by_decision.items()},
+        "byRegime": {k: _bucket(v) for k, v in by_regime.items()},
     }

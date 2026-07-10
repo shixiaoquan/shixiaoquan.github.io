@@ -1,0 +1,26 @@
+name: Scripts Test
+
+on:
+  pull_request:
+    paths:
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/scripts-test.yml"
+  push:
+    branches: [master]
+    paths:
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/scripts-test.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: ./.github/actions/setup-python-deps
+
+      - name: Run script unit tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
