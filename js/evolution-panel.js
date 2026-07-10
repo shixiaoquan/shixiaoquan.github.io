@@ -29,7 +29,10 @@ function renderEvolutionPanel(data) {
     hintEl.textContent = `GitHub Actions · ${sum.pipelinesHealthy ?? 0}/${sum.pipelinesTotal ?? 0} 条活跃${staleNote} · Cursor PR 审阅策略升级`;
   }
 
-  const attrT5 = ev.recoWinRateT5 != null ? `T+5 胜率 ${ev.recoWinRateT5}%` : null;
+  const attrT5 =
+    ev.recoWinRateT5 != null
+      ? `生产 ${ev.recoWinRateT5}%${ev.shadowWinRateT5 != null ? ` · 影子 ${ev.shadowWinRateT5}%` : ""}`
+      : null;
   const upgradeNote = ev.strategyUpgradePending ? "待 Cursor 审阅升级" : null;
   const tuneNote =
     typeof window.marketData?.tacticTune?.buyScoreAdjust === "number" &&

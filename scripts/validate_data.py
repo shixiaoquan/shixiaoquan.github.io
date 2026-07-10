@@ -85,6 +85,11 @@ def check_shadow() -> None:
         return
     if not data.get("candidateParams"):
         ERRORS.append("shadow_reco 缺少 candidateParams")
+    records = (data.get("history") or {}).get("records") or []
+    if len(records) >= 4:
+        attr = _load(DATA_DIR / "shadow_attribution.json")
+        if not attr:
+            WARNINGS.append("影子轨有历史但 shadow_attribution.json 未生成")
 
 
 def check_evolution_queue() -> None:

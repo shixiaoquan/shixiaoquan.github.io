@@ -15,6 +15,7 @@
 | 荐股 T+5 归因 | `reco_attribution.py` | 每周 |
 | 战术参数候选 | `strategy_param_sweep.py` | 每周 |
 | **影子荐股轨** | `shadow_reco.py` | 行情更新后 / 周回测后 |
+| **影子轨 T+5 归因** | `shadow_attribution.py` | 周回测后 / followup |
 | **决策质量分** | `decision_score.py` | 随 `fetch_data.py` |
 | **进化指令队列** | `build_evolution_queue.py` | 每次数据更新后 |
 | **数据契约校验** | `validate_data.py` | CI 提交前 |
@@ -27,11 +28,11 @@
 
 ### 1. 影子荐股轨（Shadow Track）
 
-探索参数优于当前时，**不再**直接 `recommendUpgrade=true` 升生产。候选写入 `data/shadow_reco.json`，与 `reco_history` 并行记账满 4 周后，`comparison.readyForUpgradePR` 为真才可开 PR。
+探索参数优于当前时，**不再**直接 `recommendUpgrade=true` 升生产。候选写入 `data/shadow_reco.json`，与 `reco_history` 并行记账满 4 周后，由 `shadow_attribution.json` 与生产 `reco_attribution.json` 双轨 T+5 对比，`comparison.readyForUpgradePR` 为真才可开 PR。
 
-### 2. 决策质量分（Decision Score）
+### 2. 决策质量分（Decision Score）+ 分桶反哺
 
-`decision_score.py` 对每只荐股计算宏观 / 问财 / 大师共识 / Truth 舆情四维加权分，写入 picks 与 `reco_history_recent.json`，前端显示「决策 XX」徽章。
+`decision_score.py` 对每只荐股计算宏观 / 问财 / 大师共识 / Truth 舆情四维加权分。`reco_attribution.py` 按高/中/低分桶汇总 T+5 胜率，`tactic_tune.py` 据此微调 `buyScoreAdjust`（高决策分表现好则降门槛，低决策分拖累则升门槛）。
 
 ### 3. 事件驱动 Actions + 交易日历
 

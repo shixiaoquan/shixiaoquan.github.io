@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""荐股 T+N 收益归因 — 用已有 reco_history + yfinance，无额外 API。"""
+"""影子荐股轨 T+N 归因 — 独立于生产轨的 forward 验证。"""
 
 from __future__ import annotations
 
@@ -13,12 +13,12 @@ from evolution_log import append_event
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
-HISTORY_FILE = DATA_DIR / "reco_history.json"
-OUTPUT_FILE = DATA_DIR / "reco_attribution.json"
+SHADOW_FILE = DATA_DIR / "shadow_reco.json"
+OUTPUT_FILE = DATA_DIR / "shadow_attribution.json"
+KEY_PREFIX = "shadow:"
 
 
 def _retro_score_pick(pick: dict) -> dict:
-    """历史荐股无 decisionScore 时，用当前宏观上下文近似回填。"""
     ctx = load_context_files()
     market = load_json(DATA_DIR / "market_core.json", {}) or load_json(DATA_DIR / "market.json", {}) or {}
     masters = load_json(DATA_DIR / "market_reco.json", {}) or market
@@ -33,21 +33,26 @@ def _retro_score_pick(pick: dict) -> dict:
     return {**pick, **scored}
 
 
-def run_attribution() -> dict:
+def run_shadow_attribution() -> dict:
     now = datetime.now(timezone.utc).astimezone()
-    history = load_json(HISTORY_FILE, {"records": []})
+    shadow = load_json(SHADOW_FILE, {})
     state = load_json(OUTPUT_FILE, {"version": 1, "items": {}, "summary": {}})
+    records = (shadow.get("history") or {}).get("records") or []
+
     items, new_count = run_track_attribution(
-        history.get("records") or [],
+        records,
         dict(state.get("items") or {}),
+        key_prefix=KEY_PREFIX,
         now=now,
     )
-    backfill_decision_labels(items, history.get("records") or [], score_missing=_retro_score_pick)
+    backfill_decision_labels(items, records, key_prefix=KEY_PREFIX, score_missing=_retro_score_pick)
     summary = summarize_items(items)
 
     payload = {
         "version": 1,
+        "track": "shadow",
         "updatedAt": now.isoformat(timespec="seconds"),
+        "candidateParams": shadow.get("candidateParams"),
         "items": items,
         "summary": summary,
     }
@@ -55,18 +60,21 @@ def run_attribution() -> dict:
 
     if new_count:
         append_event(
-            "reco_attribution",
+            "shadow_attribution",
             {
                 "newItems": new_count,
                 "avgReturnT5": summary.get("avgReturnT5"),
                 "winRateT5": summary.get("winRateT5"),
             },
         )
-        print(f"Attribution: +{new_count} items, T+5 avg={summary.get('avgReturnT5')}%")
+        print(
+            f"Shadow attribution: +{new_count} items, "
+            f"T+5 win={summary.get('winRateT5')}% avg={summary.get('avgReturnT5')}%"
+        )
     else:
-        print(f"Attribution: no new items ({len(items)} tracked)")
+        print(f"Shadow attribution: no new items ({len(items)} tracked)")
     return payload
 
 
 if __name__ == "__main__":
-    run_attribution()
+    run_shadow_attribution()

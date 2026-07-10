@@ -115,7 +115,7 @@ def _append_shadow_history(state: dict, picks: list[dict], recorded_at: datetime
 
 
 def compare_tracks() -> dict:
-    """对比生产 vs 影子历史记录数量与近期重叠度。"""
+    """对比生产 vs 影子历史记录与 T+5 归因。"""
     prod = _load(PROD_HISTORY, {"records": []}) or {"records": []}
     shadow = _load(OUTPUT, {}) or {}
     shadow_records = (shadow.get("history") or {}).get("records") or []
@@ -131,27 +131,59 @@ def compare_tracks() -> dict:
         if ps & ss:
             overlap += 1
 
-    attr = _load(DATA_DIR / "reco_attribution.json", {}) or {}
-    summary = attr.get("summary") or {}
+    prod_attr = _load(DATA_DIR / "reco_attribution.json", {}) or {}
+    shadow_attr = _load(DATA_DIR / "shadow_attribution.json", {}) or {}
+    prod_summary = prod_attr.get("summary") or {}
+    shadow_summary = shadow_attr.get("summary") or {}
+
     shadow_weeks = len(shadow_records) // max(1, len(MARKETS))
-    prod_matured = summary.get("maturedT5") or 0
+    prod_matured = prod_summary.get("maturedT5") or 0
+    shadow_matured = shadow_summary.get("maturedT5") or 0
+    prod_win = prod_summary.get("winRateT5")
+    prod_avg = prod_summary.get("avgReturnT5")
+    shadow_win = shadow_summary.get("winRateT5")
+    shadow_avg = shadow_summary.get("avgReturnT5")
+
     shadow_wins = False
     reason = "影子轨积累中"
-    if shadow_weeks >= 4 and prod_matured >= 10:
-        # 待 shadow_attribution 成熟后细化；暂用探索回测期望作参考
-        cand = _load(CANDIDATES_FILE, {}) or {}
-        explore = (cand.get("current") or {}).get("exploration") or {}
-        prod_exp = explore.get("expectancy", 0)  # placeholder until dual attribution
-        best_exp = (cand.get("bestCandidate") or {}).get("expectancy", 0)
-        if best_exp > prod_exp + 0.5:
+    if shadow_matured > 0 and shadow_win is not None:
+        reason = (
+            f"影子 T+5 {shadow_win}%/{shadow_avg}% "
+            f"vs 生产 {prod_win}%/{prod_avg}% · {shadow_matured} 笔成熟"
+        )
+    elif shadow_weeks >= 1:
+        reason = f"影子轨第 {shadow_weeks} 周 · 归因样本积累中"
+
+    min_shadow_samples = 8
+    if (
+        shadow_weeks >= 4
+        and shadow_matured >= min_shadow_samples
+        and prod_matured >= min_shadow_samples
+        and shadow_win is not None
+        and prod_win is not None
+        and shadow_avg is not None
+        and prod_avg is not None
+    ):
+        win_edge = shadow_win - prod_win
+        avg_edge = shadow_avg - prod_avg
+        if win_edge >= 3 and avg_edge >= -0.3:
             shadow_wins = True
-            reason = f"影子候选期望 {best_exp}% 优于探索基准 {prod_exp}%（满 4 周可提 PR）"
+            reason = (
+                f"影子 T+5 胜率 {shadow_win}% vs 生产 {prod_win}%（+{win_edge:.1f}），"
+                f"均收益 {shadow_avg}% vs {prod_avg}% — 可申请升级 PR"
+            )
 
     return {
         "prodRecords": len(prod_records),
         "shadowRecords": len(shadow_records),
         "shadowWeeks": shadow_weeks,
         "symbolOverlapRecent": overlap,
+        "prodMaturedT5": prod_matured,
+        "shadowMaturedT5": shadow_matured,
+        "prodWinRateT5": prod_win,
+        "prodAvgReturnT5": prod_avg,
+        "shadowWinRateT5": shadow_win,
+        "shadowAvgReturnT5": shadow_avg,
         "shadowWins": shadow_wins,
         "reason": reason,
         "readyForUpgradePR": shadow_wins and shadow_weeks >= 4,

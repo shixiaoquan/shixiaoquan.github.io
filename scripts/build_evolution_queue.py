@@ -30,13 +30,18 @@ def build_queue() -> dict:
     cmp_ = shadow.get("comparison") or {}
     if cmp_.get("readyForUpgradePR"):
         params = shadow.get("candidateParams") or {}
+        dual = (
+            f"影子 T+5 {cmp_.get('shadowWinRateT5')}% vs 生产 {cmp_.get('prodWinRateT5')}%"
+            if cmp_.get("shadowWinRateT5") is not None
+            else cmp_.get("reason")
+        )
         tasks.append(
             {
                 "id": "shadow-upgrade-pr",
                 "type": "strategy_pr",
                 "priority": "high",
                 "title": "影子轨验证通过 · 可申请升级战术参数",
-                "reason": cmp_.get("reason"),
+                "reason": dual or cmp_.get("reason"),
                 "cursorPrompt": (
                     f"影子轨已满 4 周且优于生产。请更新 strategy_config.py："
                     f"BUY_SCORE={params.get('buyScore')}, BREAKOUT_SCORE_MIN={params.get('breakoutScoreMin')}，"

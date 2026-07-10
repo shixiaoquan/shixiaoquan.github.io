@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10T05:21:53+00:00",
+  "updatedAt": "2026-07-10T05:44:14+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -20,14 +20,29 @@
     "currentPaperSystem": "XRPS-X-1.0",
     "backtestUpdatedAt": "2026-07-05T03:06:15+00:00",
     "backtestWinRate": null,
-    "recoAvgReturnT5": 0.42,
-    "recoWinRateT5": 37.5,
+    "recoAvgReturnT5": 0.66,
+    "recoWinRateT5": 53.1,
+    "recoDecisionBuckets": {
+      "未知": {
+        "avgT5": 0.42,
+        "count": 40,
+        "winRate": 37.5
+      },
+      "中": {
+        "avgT5": 0.84,
+        "count": 56,
+        "winRate": 64.3
+      }
+    },
+    "shadowWinRateT5": null,
+    "shadowAvgReturnT5": null,
+    "shadowMaturedT5": 0,
     "strategyUpgradePending": true,
     "strategyUpgradeHint": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）",
     "shadowReadyForPR": false
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-10T05:21:53+00:00",
+    "updatedAt": "2026-07-10T05:43:38+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-macro",
@@ -90,6 +105,20 @@
   },
   "recentLog": [
     {
+      "at": "2026-07-10T05:44:12+00:00",
+      "type": "reco_attribution",
+      "newItems": 16,
+      "avgReturnT5": 0.66,
+      "winRateT5": 53.1
+    },
+    {
+      "at": "2026-07-10T05:43:35+00:00",
+      "type": "reco_attribution",
+      "newItems": 40,
+      "avgReturnT5": -0.56,
+      "winRateT5": 43.8
+    },
+    {
       "at": "2026-07-10T05:11:38+00:00",
       "type": "master_learn",
       "revision": 108,
@@ -124,13 +153,6 @@
       "currentExpectancy": 0,
       "bestExpectancy": 0,
       "reason": "hold"
-    },
-    {
-      "at": "2026-07-10T01:54:44+00:00",
-      "type": "reco_attribution",
-      "newItems": 40,
-      "avgReturnT5": 0.42,
-      "winRateT5": 37.5
     }
   ],
   "pipelines": [
@@ -141,7 +163,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T05:11:50+00:00",
       "status": "ok",
-      "ageMinutes": 10
+      "ageMinutes": 32
     },
     {
       "id": "macro",
@@ -150,7 +172,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T05:11:43+00:00",
       "status": "ok",
-      "ageMinutes": 10
+      "ageMinutes": 32
     },
     {
       "id": "truth",
@@ -159,7 +181,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-10T05:05:53+00:00",
       "status": "ok",
-      "ageMinutes": 16
+      "ageMinutes": 38
     },
     {
       "id": "wencai",
@@ -168,7 +190,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-10T04:15:14+00:00",
       "status": "ok",
-      "ageMinutes": 66
+      "ageMinutes": 89
     },
     {
       "id": "reports",
@@ -177,7 +199,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-10T12:44:11+08:00",
       "status": "ok",
-      "ageMinutes": 37
+      "ageMinutes": 60
     },
     {
       "id": "backtest",
@@ -186,7 +208,7 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-05T03:06:16+00:00",
       "status": "ok",
-      "ageMinutes": 7335
+      "ageMinutes": 7357
     }
   ],
   "triggeredBy": "local",
