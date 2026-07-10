@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-07-10T01:55:34+00:00",
+  "stale": [
+    {
+      "id": "reports",
+      "name": "投资决策研报",
+      "schedule": "09:00 / 12:00 / 16:00 北京时间",
+      "workflow": "generate-investment-report.yml",
+      "updatedAt": "2026-06-27T02:11:54+08:00",
+      "status": "stale",
+      "ageMinutes": 19183,
+      "reason": "stale"
+    }
+  ],
+  "healthyCount": 5,
+  "issueTitle": "[自动] 数据流水线异常",
+  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下数据流水线超过新鲜度阈值：\n\n- **投资决策研报** (`reports`): stale · 工作流 `generate-investment-report.yml`\n\n排查建议：\n1. 打开 [Actions](https://github.com/shixiaoquan/shixiaoquan.github.io/actions) 查看失败日志\n2. 检查 Secrets（WENCAI_COOKIE 等）是否过期\n3. 修复后本 Issue 将在下次健康检查通过时自动关闭\n\n<!-- pipeline-health-bot -->"
+}
