@@ -83,6 +83,7 @@ from strategy_scoring import (
 from reco_signals import update_reco_signals
 from strategy_masters import build_master_recommendations
 from archive_reco_history import write_recent_slice
+from decision_score import enrich_picks, load_context_files
 
 
 def load_tactic_tune() -> dict:
@@ -442,6 +443,8 @@ def compact_pick(pick: dict) -> dict:
         "stopLossPrice": pick.get("stopLossPrice"),
         "targetPrice": pick.get("targetPrice"),
         "plan": pick.get("plan", {}),
+        "decisionScore": pick.get("decisionScore"),
+        "decisionLabel": pick.get("decisionLabel"),
     }
 
 
@@ -589,6 +592,15 @@ def main() -> None:
     master_recommendations = build_master_recommendations(
         CANDIDATES, quote_map, market_ctx, macro, now
     )
+    ctx = load_context_files()
+    if macro:
+        ctx["macro"] = macro
+    recommendations["picks"] = enrich_picks(
+        recommendations.get("picks") or [],
+        market_ctx["summary"],
+        master_recommendations,
+        ctx,
+    )
     for item in stocks:
         if item.get("symbol") and item.get("changePct") is not None:
             change_map[item["symbol"]] = item["changePct"]
@@ -637,6 +649,20 @@ def main() -> None:
         now,
         reco_record_id=reco_id,
     )
+
+    try:
+        from shadow_reco import run_shadow_update
+
+        run_shadow_update()
+    except Exception as exc:
+        print(f"shadow_reco skip: {exc}")
+
+    try:
+        from build_evolution_queue import build_queue
+
+        build_queue()
+    except Exception as exc:
+        print(f"evolution_queue skip: {exc}")
 
 
 if __name__ == "__main__":

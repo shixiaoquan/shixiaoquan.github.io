@@ -14,6 +14,7 @@ const AI_CHAIN_URL = "data/ai_chain.json";
 const REPORTS_INDEX_URL = "data/reports/index.json";
 const MACRO_URL = "data/macro.json";
 const SITE_STATUS_URL = "data/site_status.json";
+const EVOLUTION_QUEUE_URL = "data/evolution_queue.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
 const HISTORY_DISPLAY_LIMIT = 40;
 const AI_SEARCH_DEBOUNCE_MS = 250;
@@ -887,6 +888,7 @@ function renderPickCard(pick, compact = false) {
         <div class="reco-card__badge-box">
           <span class="reco-badge reco-badge--${pick.signal}">${pick.signalLabel}</span>
           <span class="reco-score">评分 ${pick.score}</span>
+          ${pick.decisionScore != null ? `<span class="reco-decision reco-decision--${pick.decisionLabel === "高" ? "high" : pick.decisionLabel === "低" ? "low" : "mid"}">决策 ${pick.decisionScore}</span>` : ""}
         </div>
       </div>
       <p class="stock-card__price">${formatNumber(pick.price)} <span>${pick.currency || ""}</span></p>
@@ -3238,6 +3240,9 @@ async function refreshPaperData() {
 
 async function fetchJson(url) {
   try {
+    if (typeof DataCache !== "undefined") {
+      return await DataCache.fetchJson(url);
+    }
     const response = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
     if (!response.ok) return null;
     return await response.json();
@@ -3349,20 +3354,55 @@ function applyData(data) {
 }
 
 async function fetchMarketData() {
+  const merge = async (core, reco) => ({ ...core, ...reco });
+
+  if (typeof DataCache !== "undefined") {
+    let coreData = null;
+    let recoData = null;
+    await Promise.all([
+      DataCache.fetchJson(CORE_URL, {
+        onStale: (d) => {
+          coreData = d;
+        },
+        onFresh: (d) => {
+          coreData = d;
+        },
+      }).catch(() => null),
+      DataCache.fetchJson(RECO_URL, {
+        onStale: (d) => {
+          recoData = d;
+        },
+        onFresh: (d) => {
+          recoData = d;
+        },
+      }).catch(() => null),
+    ]);
+    if (coreData && recoData) return merge(coreData, recoData);
+    if (coreData) return coreData;
+  }
+
   try {
     const [coreRes, recoRes] = await Promise.all([
       fetch(`${CORE_URL}?t=${Date.now()}`, { cache: "no-store" }),
       fetch(`${RECO_URL}?t=${Date.now()}`, { cache: "no-store" }),
     ]);
     if (coreRes.ok && recoRes.ok) {
-      return { ...(await coreRes.json()), ...(await recoRes.json()) };
+      const core = await coreRes.json();
+      const reco = await recoRes.json();
+      if (typeof DataCache !== "undefined") {
+        DataCache.set(CORE_URL, core);
+        DataCache.set(RECO_URL, reco);
+      }
+      return merge(core, reco);
     }
   } catch (err) {
     console.warn("split market fetch failed, fallback", err);
   }
   const response = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: "no-store" });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  return response.json();
+  const data = await response.json();
+  if (typeof DataCache !== "undefined") DataCache.set(DATA_URL, data);
+  return data;
 }
 
 async function refreshData() {

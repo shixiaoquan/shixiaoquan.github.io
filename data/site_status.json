@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10T05:11:50+00:00",
+  "updatedAt": "2026-07-10T05:44:14+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -20,12 +20,104 @@
     "currentPaperSystem": "XRPS-X-1.0",
     "backtestUpdatedAt": "2026-07-05T03:06:15+00:00",
     "backtestWinRate": null,
-    "recoAvgReturnT5": 0.42,
-    "recoWinRateT5": 37.5,
+    "recoAvgReturnT5": 0.66,
+    "recoWinRateT5": 53.1,
+    "recoDecisionBuckets": {
+      "未知": {
+        "avgT5": 0.42,
+        "count": 40,
+        "winRate": 37.5
+      },
+      "中": {
+        "avgT5": 0.84,
+        "count": 56,
+        "winRate": 64.3
+      }
+    },
+    "shadowWinRateT5": null,
+    "shadowAvgReturnT5": null,
+    "shadowMaturedT5": 0,
     "strategyUpgradePending": true,
-    "strategyUpgradeHint": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）"
+    "strategyUpgradeHint": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）",
+    "shadowReadyForPR": false
+  },
+  "evolutionQueue": {
+    "updatedAt": "2026-07-10T05:43:38+00:00",
+    "tasks": [
+      {
+        "id": "fix-pipeline-macro",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · 宏观与跨资产",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      },
+      {
+        "id": "fix-pipeline-truth",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · Truth Social 镜像",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+      },
+      {
+        "id": "fix-pipeline-wencai",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · 问财自然语言筛选",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-wencai-data.yml 日志与 Secrets。"
+      },
+      {
+        "id": "shadow-tracking",
+        "type": "shadow_track",
+        "priority": "medium",
+        "title": "影子轨积累中",
+        "reason": "影子轨积累中",
+        "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
+      },
+      {
+        "id": "candidate-explore",
+        "type": "shadow_candidate",
+        "priority": "medium",
+        "title": "探索参数优于当前 · 已转入影子轨验证",
+        "reason": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）",
+        "cursorPrompt": "勿直接改 strategy_config。确认 shadow_reco 满 4 周后再开 PR。",
+        "params": {
+          "buyScore": 72,
+          "breakoutScoreMin": 62
+        }
+      },
+      {
+        "id": "paper-ab-hint",
+        "type": "research",
+        "priority": "low",
+        "title": "A/B 回测：v1.2 宽松优于 v1.3",
+        "reason": "Δ期望 0.36%",
+        "cursorPrompt": "仅研究参考；生产升级仍以影子轨 forward 为准。"
+      }
+    ],
+    "summary": {
+      "total": 6,
+      "high": 3,
+      "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
+    }
   },
   "recentLog": [
+    {
+      "at": "2026-07-10T05:44:12+00:00",
+      "type": "reco_attribution",
+      "newItems": 16,
+      "avgReturnT5": 0.66,
+      "winRateT5": 53.1
+    },
+    {
+      "at": "2026-07-10T05:43:35+00:00",
+      "type": "reco_attribution",
+      "newItems": 40,
+      "avgReturnT5": -0.56,
+      "winRateT5": 43.8
+    },
     {
       "at": "2026-07-10T05:11:38+00:00",
       "type": "master_learn",
@@ -61,13 +153,6 @@
       "currentExpectancy": 0,
       "bestExpectancy": 0,
       "reason": "hold"
-    },
-    {
-      "at": "2026-07-10T01:54:44+00:00",
-      "type": "reco_attribution",
-      "newItems": 40,
-      "avgReturnT5": 0.42,
-      "winRateT5": 37.5
     }
   ],
   "pipelines": [
@@ -78,7 +163,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T05:11:50+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 32
     },
     {
       "id": "macro",
@@ -87,7 +172,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T05:11:43+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 32
     },
     {
       "id": "truth",
@@ -96,7 +181,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-10T05:05:53+00:00",
       "status": "ok",
-      "ageMinutes": 5
+      "ageMinutes": 38
     },
     {
       "id": "wencai",
@@ -105,7 +190,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-10T04:15:14+00:00",
       "status": "ok",
-      "ageMinutes": 56
+      "ageMinutes": 89
     },
     {
       "id": "reports",
@@ -114,7 +199,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-10T12:44:11+08:00",
       "status": "ok",
-      "ageMinutes": 27
+      "ageMinutes": 60
     },
     {
       "id": "backtest",
@@ -123,9 +208,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-05T03:06:16+00:00",
       "status": "ok",
-      "ageMinutes": 7325
+      "ageMinutes": 7357
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "29070759938"
+  "triggeredBy": "local",
+  "runId": null
 }

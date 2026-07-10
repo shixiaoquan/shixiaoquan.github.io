@@ -1,6 +1,6 @@
 name: Update Market Data
 
-# 纯静态站数据构建：每 5 分钟更新行情、信号与模拟盘（问财见 update-wencai-data）
+# 纯静态站数据构建：交易日高频 / 休市降频（见 market_calendar.py）
 
 on:
   schedule:
@@ -22,7 +22,12 @@ jobs:
 
       - uses: ./.github/actions/setup-python-deps
 
+      - name: Market calendar
+        id: cal
+        run: python scripts/market_calendar.py
+
       - name: Fetch market data
+        if: steps.cal.outputs.intensity != 'closed' || github.event_name == 'workflow_dispatch'
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
@@ -30,28 +35,32 @@ jobs:
           python scripts/fetch_data.py
           python scripts/fetch_macro.py
 
+      - name: Light refresh (market closed)
+        if: steps.cal.outputs.intensity == 'closed' && github.event_name != 'workflow_dispatch'
+        run: |
+          python scripts/tactic_tune.py || true
+          python scripts/build_evolution_queue.py
+          python scripts/build_site_status.py
+
       - name: Tactic tune from attribution
+        if: steps.cal.outputs.intensity != 'closed' || github.event_name == 'workflow_dispatch'
         run: python scripts/tactic_tune.py
 
-      - name: Verify macro output
-        run: |
-          python3 - <<'PY'
-          import json
-          d = json.load(open("data/macro.json", encoding="utf-8"))
-          fred_src = next((s for s in d.get("sources", []) if s.get("id") == "fred"), {})
-          fh_src = next((s for s in d.get("sources", []) if s.get("id") == "finnhub"), {})
-          print("fred keyUsed:", fred_src.get("cookieUsed"), "status:", fred_src.get("status"), "items:", fred_src.get("items"))
-          print("finnhub keyUsed:", fh_src.get("cookieUsed"), "status:", fh_src.get("status"), "items:", fh_src.get("items"))
-          PY
-
       - name: Run trading engine
+        if: steps.cal.outputs.intensity != 'closed' || github.event_name == 'workflow_dispatch'
         run: python scripts/trading_engine.py
 
       - name: Build site evolution status
+        if: steps.cal.outputs.intensity != 'closed' || github.event_name == 'workflow_dispatch'
         env:
           GITHUB_WORKFLOW: ${{ github.workflow }}
           GITHUB_RUN_ID: ${{ github.run_id }}
-        run: python scripts/build_site_status.py
+        run: |
+          python scripts/build_evolution_queue.py
+          python scripts/build_site_status.py
+
+      - name: Validate data schema
+        run: python scripts/validate_data.py
 
       - name: Commit and push if changed
         run: |

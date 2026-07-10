@@ -29,7 +29,10 @@ function renderEvolutionPanel(data) {
     hintEl.textContent = `GitHub Actions · ${sum.pipelinesHealthy ?? 0}/${sum.pipelinesTotal ?? 0} 条活跃${staleNote} · Cursor PR 审阅策略升级`;
   }
 
-  const attrT5 = ev.recoWinRateT5 != null ? `T+5 胜率 ${ev.recoWinRateT5}%` : null;
+  const attrT5 =
+    ev.recoWinRateT5 != null
+      ? `生产 ${ev.recoWinRateT5}%${ev.shadowWinRateT5 != null ? ` · 影子 ${ev.shadowWinRateT5}%` : ""}`
+      : null;
   const upgradeNote = ev.strategyUpgradePending ? "待 Cursor 审阅升级" : null;
   const tuneNote =
     typeof window.marketData?.tacticTune?.buyScoreAdjust === "number" &&
@@ -92,6 +95,29 @@ function renderEvolutionPanel(data) {
         </div>`;
       })
       .join("");
+
+  const queueEl = document.getElementById("cockpit-evolution-queue");
+  const queue = data.evolutionQueue || window.evolutionQueueData;
+  if (queueEl) {
+    const tasks = queue?.tasks || [];
+    if (!tasks.length) {
+      queueEl.innerHTML = '<p class="evolution-queue__empty">进化队列空闲 · 系统正常运转</p>';
+    } else {
+      queueEl.innerHTML = `
+        <h3 class="evolution-queue__title">进化指令队列 <span>${tasks.length}</span></h3>
+        <ul class="evolution-queue__list">${tasks
+          .slice(0, 5)
+          .map(
+            (t) => `
+          <li class="evolution-queue__item evolution-queue__item--${t.priority || "low"}">
+            <strong>${t.title || t.type}</strong>
+            <p>${t.reason || ""}</p>
+            <code class="evolution-queue__prompt">${t.cursorPrompt || ""}</code>
+          </li>`
+          )
+          .join("")}</ul>`;
+    }
+  }
 }
 
 function updateEvolutionBadge(data) {
@@ -106,12 +132,30 @@ function updateEvolutionBadge(data) {
 async function refreshSiteStatus() {
   if (typeof SITE_STATUS_URL === "undefined") return;
   try {
-    const res = await fetch(`${SITE_STATUS_URL}?t=${Date.now()}`, { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    let data;
+    if (typeof DataCache !== "undefined") {
+      data = await DataCache.fetchJson(SITE_STATUS_URL, {
+        onStale: (d) => {
+          window.siteStatusData = d;
+          renderEvolutionPanel(d);
+        },
+      });
+    } else {
+      const res = await fetch(`${SITE_STATUS_URL}?t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      data = await res.json();
+    }
     if (data.updatedAt === window.lastSiteStatusAt && window.siteStatusData) return;
     window.lastSiteStatusAt = data.updatedAt;
     window.siteStatusData = data;
+    if (typeof EVOLUTION_QUEUE_URL !== "undefined") {
+      window.evolutionQueueData = await fetch(
+        `${EVOLUTION_QUEUE_URL}?t=${Date.now()}`,
+        { cache: "no-store" }
+      )
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null);
+    }
     renderEvolutionPanel(data);
     updateEvolutionBadge(data);
     if (typeof updateHeaderFreshness === "function") updateHeaderFreshness();

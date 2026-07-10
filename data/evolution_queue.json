@@ -1,0 +1,62 @@
+{
+  "updatedAt": "2026-07-10T05:43:38+00:00",
+  "tasks": [
+    {
+      "id": "fix-pipeline-macro",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · 宏观与跨资产",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+    },
+    {
+      "id": "fix-pipeline-truth",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · Truth Social 镜像",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+    },
+    {
+      "id": "fix-pipeline-wencai",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · 问财自然语言筛选",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-wencai-data.yml 日志与 Secrets。"
+    },
+    {
+      "id": "shadow-tracking",
+      "type": "shadow_track",
+      "priority": "medium",
+      "title": "影子轨积累中",
+      "reason": "影子轨积累中",
+      "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
+    },
+    {
+      "id": "candidate-explore",
+      "type": "shadow_candidate",
+      "priority": "medium",
+      "title": "探索参数优于当前 · 已转入影子轨验证",
+      "reason": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）",
+      "cursorPrompt": "勿直接改 strategy_config。确认 shadow_reco 满 4 周后再开 PR。",
+      "params": {
+        "buyScore": 72,
+        "breakoutScoreMin": 62
+      }
+    },
+    {
+      "id": "paper-ab-hint",
+      "type": "research",
+      "priority": "low",
+      "title": "A/B 回测：v1.2 宽松优于 v1.3",
+      "reason": "Δ期望 0.36%",
+      "cursorPrompt": "仅研究参考；生产升级仍以影子轨 forward 为准。"
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "high": 3,
+    "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
+  }
+}

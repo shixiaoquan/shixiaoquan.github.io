@@ -29,6 +29,9 @@ jobs:
       - name: Reco T+N attribution
         run: python scripts/reco_attribution.py
 
+      - name: Shadow T+N attribution
+        run: python scripts/shadow_attribution.py || true
+
       - name: Strategy param sweep
         run: python scripts/strategy_param_sweep.py
 
@@ -41,20 +44,28 @@ jobs:
       - name: Archive reco history
         run: python scripts/archive_reco_history.py
 
+      - name: Shadow track & evolution queue
+        run: |
+          python scripts/shadow_reco.py || true
+          python scripts/build_evolution_queue.py
+
       - name: Build site evolution status
         env:
           GITHUB_WORKFLOW: ${{ github.workflow }}
           GITHUB_RUN_ID: ${{ github.run_id }}
         run: python scripts/build_site_status.py
 
+      - name: Validate data schema
+        run: python scripts/validate_data.py
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/backtest.json data/paper_backtest.json data/paper_backtest_curves/
-          git add data/reco_attribution.json data/strategy_candidates.json data/evolution_log.json
+          git add data/reco_attribution.json data/shadow_attribution.json data/strategy_candidates.json data/evolution_log.json
           git add data/tactic_tune.json data/paper_ab.json data/reco_history.json data/reco_history_recent.json
-          git add data/archive/ data/site_status.json
+          git add data/shadow_reco.json data/evolution_queue.json data/archive/ data/site_status.json
           if git diff --staged --quiet; then
             echo "No backtest changes."
           else

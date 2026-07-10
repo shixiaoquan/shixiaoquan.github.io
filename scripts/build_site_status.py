@@ -120,6 +120,7 @@ def _evolution_block() -> dict:
     history = _load_json(DATA_DIR / "reco_history.json") or {}
     backtest = _load_json(DATA_DIR / "backtest.json") or {}
     attribution = _load_json(DATA_DIR / "reco_attribution.json") or {}
+    shadow_attr = _load_json(DATA_DIR / "shadow_attribution.json") or {}
     candidates = _load_json(DATA_DIR / "strategy_candidates.json") or {}
 
     try:
@@ -136,6 +137,8 @@ def _evolution_block() -> dict:
     ]
     avg_master_win = round(sum(win_rates) / len(win_rates), 1) if win_rates else None
     attr_summary = attribution.get("summary") or {}
+    shadow_summary = shadow_attr.get("summary") or {}
+    comparison = (_load_json(DATA_DIR / "shadow_reco.json") or {}).get("comparison") or {}
 
     return {
         "strategyVersion": STRATEGY_VERSION,
@@ -150,8 +153,13 @@ def _evolution_block() -> dict:
         "backtestWinRate": (backtest.get("summary") or {}).get("winRate"),
         "recoAvgReturnT5": attr_summary.get("avgReturnT5"),
         "recoWinRateT5": attr_summary.get("winRateT5"),
+        "recoDecisionBuckets": attr_summary.get("byDecisionLabel"),
+        "shadowWinRateT5": shadow_summary.get("winRateT5") or comparison.get("shadowWinRateT5"),
+        "shadowAvgReturnT5": shadow_summary.get("avgReturnT5") or comparison.get("shadowAvgReturnT5"),
+        "shadowMaturedT5": shadow_summary.get("maturedT5") or comparison.get("shadowMaturedT5"),
         "strategyUpgradePending": bool(candidates.get("recommendUpgrade")),
         "strategyUpgradeHint": candidates.get("upgradeReason") or "",
+        "shadowReadyForPR": bool(comparison.get("readyForUpgradePR")),
     }
 
 
@@ -185,6 +193,8 @@ def build_payload() -> dict:
     except Exception:
         recent_log = (_load_json(DATA_DIR / "evolution_log.json") or {}).get("events", [])[:6]
 
+    evolution_queue = _load_json(DATA_DIR / "evolution_queue.json") or {}
+
     return {
         "updatedAt": now.isoformat(timespec="seconds"),
         "mode": "github-actions",
@@ -197,6 +207,7 @@ def build_payload() -> dict:
             "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR",
         },
         "evolution": evolution,
+        "evolutionQueue": evolution_queue,
         "recentLog": recent_log,
         "pipelines": pipelines,
         "triggeredBy": os.environ.get("GITHUB_WORKFLOW") or "local",

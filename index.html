@@ -14,10 +14,11 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
+  <script src="js/data-cache.js" defer></script>
   <script src="js/poll-scheduler.js" defer></script>
   <script src="js/evolution-panel.js" defer></script>
   <script src="js/truth.js" defer></script>
-  <script src="js/app.js?v=30" defer></script>
+  <script src="js/app.js?v=31" defer></script>
 </head>
 <body>
   <div class="app">
@@ -64,8 +65,9 @@
         <div class="evolution-summary" id="cockpit-evolution-summary">
           <p class="empty">加载自动化状态…</p>
         </div>
-        <div class="evolution-pipelines" id="cockpit-evolution-pipelines"></div>
-      </section>
+      <div class="evolution-pipelines" id="cockpit-evolution-pipelines"></div>
+      <div class="evolution-queue" id="cockpit-evolution-queue"></div>
+    </section>
 
       <section class="panel panel--wide" id="cockpit-macro">
         <div class="panel__head panel__head--row">
