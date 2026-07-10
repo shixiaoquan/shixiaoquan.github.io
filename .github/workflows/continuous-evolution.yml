@@ -1,11 +1,17 @@
-name: Weekly Backtest
+name: Continuous Evolution
 
-# 策略回测每周运行一次；行情与信号仍由 update-market-data 每 5 分钟更新
+# 汇总各模块新鲜度与策略进化指标；代码或工作流变更时同步更新看板数据
 
 on:
   schedule:
-    # 每周日 02:00 UTC
-    - cron: "0 2 * * 0"
+    - cron: "30 * * * *"
+  push:
+    branches: [master]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/**"
+      - "js/**"
+      - "index.html"
   workflow_dispatch:
 
 permissions:
@@ -16,7 +22,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  backtest:
+  status:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,16 +31,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        run: pip install -r scripts/requirements.txt
-
-      - name: Run backtest
-        run: python scripts/backtest.py
-
-      - name: Run paper backtest (Xiaomi)
-        run: python scripts/paper_backtest.py
-
-      - name: Build site evolution status
+      - name: Build site status
         env:
           GITHUB_WORKFLOW: ${{ github.workflow }}
           GITHUB_RUN_ID: ${{ github.run_id }}
@@ -44,11 +41,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/backtest.json data/paper_backtest.json data/paper_backtest_curves/ data/site_status.json
+          git add data/site_status.json
           if git diff --staged --quiet; then
-            echo "No backtest changes."
+            echo "Site status unchanged."
           else
-            git commit -m "chore: weekly backtest update"
+            git commit -m "chore: update site evolution status"
             git pull --rebase origin master
             git push
           fi

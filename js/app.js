@@ -10,6 +10,7 @@ const DIAGNOSTICS_URL = "data/diagnostics.json";
 const AI_CHAIN_URL = "data/ai_chain.json";
 const REPORTS_INDEX_URL = "data/reports/index.json";
 const MACRO_URL = "data/macro.json";
+const SITE_STATUS_URL = "data/site_status.json";
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
 const HISTORY_DISPLAY_LIMIT = 40;
 const AI_SEARCH_DEBOUNCE_MS = 250;
@@ -28,6 +29,8 @@ const XRPS_ROLLING_BUY_LEVELS = [
 ];
 
 let lastUpdatedAt = null;
+let lastSiteStatusAt = null;
+let siteStatusData = null;
 let lastTradingUpdatedAt = null;
 let historyFilter = "all";
 let recoHistory = null;
@@ -185,6 +188,67 @@ function updateHeaderFreshness() {
   if (wencaiAt) parts.push(`问财 ${wencaiAt}`);
   if (paperAt) parts.push(`模拟盘 ${paperAt}`);
   el.textContent = parts.length ? parts.join(" · ") : "数据更新中…";
+
+  const evoBadge = document.getElementById("evolution-badge");
+  if (evoBadge && siteStatusData?.evolution) {
+    const rev = siteStatusData.evolution.masterLearnRevision;
+    const ver = siteStatusData.evolution.strategyVersion;
+    evoBadge.hidden = false;
+    evoBadge.textContent = rev != null ? `${ver} · 学习 #${rev}` : `${ver} · 自动进化`;
+  }
+}
+
+function pipelineStatusLabel(status) {
+  const map = { ok: "运行中", missing: "未就绪", empty: "暂无数据" };
+  return map[status] || status || "—";
+}
+
+function renderEvolutionPanel(data) {
+  const summaryEl = document.getElementById("cockpit-evolution-summary");
+  const pipesEl = document.getElementById("cockpit-evolution-pipelines");
+  const hintEl = document.getElementById("cockpit-evolution-hint");
+  if (!summaryEl || !pipesEl) return;
+
+  if (!data) {
+    summaryEl.innerHTML = '<p class="empty">自动化状态加载中…</p>';
+    pipesEl.innerHTML = "";
+    return;
+  }
+
+  const ev = data.evolution || {};
+  const sum = data.summary || {};
+  if (hintEl) {
+    hintEl.textContent = `GitHub Actions · ${sum.pipelinesHealthy ?? 0}/${sum.pipelinesTotal ?? 0} 条流水线活跃 · 推送 master 即发布`;
+  }
+
+  summaryEl.innerHTML = [
+    { label: "战术策略", value: ev.strategyVersion || "—" },
+    { label: "大师学习迭代", value: ev.masterLearnRevision != null ? `#${ev.masterLearnRevision}` : "—" },
+    { label: "荐股存档", value: ev.recoHistoryRecords != null ? `${ev.recoHistoryRecords} 条` : "—" },
+    { label: "流水线", value: `${sum.pipelinesHealthy ?? 0} / ${sum.pipelinesTotal ?? 0}` },
+  ]
+    .map(
+      (item) => `
+      <div class="evolution-stat">
+        <p class="evolution-stat__label">${item.label}</p>
+        <p class="evolution-stat__value">${item.value}</p>
+      </div>`
+    )
+    .join("");
+
+  const pipelines = data.pipelines || [];
+  pipesEl.innerHTML = pipelines
+    .map((pipe) => {
+      const status = pipe.status || "empty";
+      const updated = pipe.updatedAt ? formatFreshnessTime(pipe.updatedAt) : "—";
+      return `
+        <div class="evolution-pipe">
+          <p class="evolution-pipe__name">${pipe.name}</p>
+          <p class="evolution-pipe__meta">${pipe.schedule} · 更新 ${updated}</p>
+          <span class="evolution-pipe__status evolution-pipe__status--${status}">${pipelineStatusLabel(status)}</span>
+        </div>`;
+    })
+    .join("");
 }
 
 function marketClass(market) {
@@ -3311,6 +3375,21 @@ async function fetchMarketData() {
   return response.json();
 }
 
+async function refreshSiteStatus() {
+  try {
+    const res = await fetch(`${SITE_STATUS_URL}?t=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (data.updatedAt === lastSiteStatusAt && siteStatusData) return;
+    lastSiteStatusAt = data.updatedAt;
+    siteStatusData = data;
+    renderEvolutionPanel(data);
+    updateHeaderFreshness();
+  } catch (err) {
+    console.warn("site status refresh failed", err);
+  }
+}
+
 async function refreshData() {
   try {
     const data = await fetchMarketData();
@@ -3348,6 +3427,7 @@ async function init() {
     refreshMacroData(),
     refreshWencaiData(),
     refreshTradingData(),
+    refreshSiteStatus(),
   ]);
 
   await ensureTabData(initialLocation.tab);
@@ -3356,6 +3436,7 @@ async function init() {
   setInterval(refreshMacroData, POLL_INTERVAL_MS);
   setInterval(refreshWencaiData, POLL_INTERVAL_MS);
   setInterval(refreshTradingData, POLL_INTERVAL_MS);
+  setInterval(refreshSiteStatus, POLL_INTERVAL_MS);
   setInterval(() => {
     if (tabBundles.paper) {
       refreshPaperExtras();
