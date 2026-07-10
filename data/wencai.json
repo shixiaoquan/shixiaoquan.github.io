@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-10T07:55:15+00:00",
+  "updatedAt": "2026-07-10T11:19:30+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 29 条资讯",
+  "message": "已更新 4 个市场问句 · 38 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 94,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603110.SH",
@@ -91,13 +91,16 @@
           "changePct": 10.0
         }
       ],
-      "count": 94
+      "count": 94,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002192.SZ",
@@ -130,13 +133,16 @@
           "changePct": -10.06
         }
       ],
-      "count": 5
+      "count": 5,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002185.SZ",
@@ -208,13 +214,15 @@
           "changePct": 9.99,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603019.SH",
@@ -272,72 +280,41 @@
           "changePct": 3.6,
           "flow": 952630082
         }
-      ]
-    },
-    {
-      "id": "breakout",
-      "title": "突破年线",
-      "query": "突破年线且成交量放大",
-      "status": "ok",
-      "items": [
-        {
-          "code": "002414.SZ",
-          "name": "高德红外",
-          "price": 14.64,
-          "changePct": 9.99
-        },
-        {
-          "code": "300102.SZ",
-          "name": "乾照光电",
-          "price": 24.13,
-          "changePct": 12.18
-        },
-        {
-          "code": "600863.SH",
-          "name": "华能蒙电",
-          "price": 4.77,
-          "changePct": 6.24
-        },
-        {
-          "code": "300105.SZ",
-          "name": "龙源技术",
-          "price": 8.18,
-          "changePct": 18.38
-        },
-        {
-          "code": "300043.SZ",
-          "name": "星辉娱乐",
-          "price": 5.8,
-          "changePct": 9.64
-        },
-        {
-          "code": "000887.SZ",
-          "name": "中鼎股份",
-          "price": 20.68,
-          "changePct": 10.0
-        },
-        {
-          "code": "002342.SZ",
-          "name": "巨力索具",
-          "price": 11.07,
-          "changePct": 10.04
-        },
-        {
-          "code": "300456.SZ",
-          "name": "赛微电子",
-          "price": 40.78,
-          "changePct": 5.05
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
+    {
+      "id": "wencai:ea6d15911b60f458",
+      "title": "江苏新能：江苏新能2026年半年度业绩预告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/603693_20260711_YDEJ.pdf",
+      "publisher": "同花顺问财",
+      "related": "江苏新能 (603693.SH)",
+      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
     {
       "id": "wencai:f2608ff4a4b5d0aa",
       "title": "新金路：关于公司拟任独立董事取得独立董事资格证书的公告",
       "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418188.PDF",
       "publisher": "同花顺问财",
       "related": "新金路 (000510.SZ)",
+      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:1500fa724be80430",
+      "title": "光华科技：关于公司及全资子公司向金融机构申请新增综合授信额度并由公司为子公司提供担保的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418187.PDF",
+      "publisher": "同花顺问财",
+      "related": "光华科技 (002741.SZ)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -366,11 +343,11 @@
       "category": "公告"
     },
     {
-      "id": "wencai:1500fa724be80430",
-      "title": "光华科技：关于公司及全资子公司向金融机构申请新增综合授信额度并由公司为子公司提供担保的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418187.PDF",
+      "id": "wencai:86fdce8b829b67fa",
+      "title": "京投发展：京投发展股份有限公司关于筹划重大资产重组的进展公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600683_20260711_WM3G.pdf",
       "publisher": "同花顺问财",
-      "related": "光华科技 (002741.SZ)",
+      "related": "京投发展 (600683.SH)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -388,6 +365,28 @@
       "category": "公告"
     },
     {
+      "id": "wencai:af89abffe37afa96",
+      "title": "惠博普：2026年半年度业绩预告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225419584.PDF",
+      "publisher": "同花顺问财",
+      "related": "惠博普 (002554.SZ)",
+      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:24088c80d1e180ef",
+      "title": "重庆银行：关于诉讼事项的进展公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/601963_20260711_PPON.pdf",
+      "publisher": "同花顺问财",
+      "related": "重庆银行 (601963.SH)",
+      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
       "id": "wencai:b35ad00a8f3aabfe",
       "title": "开滦股份：开滦能源化工股份有限公司2026年半年度业绩预亏公告",
       "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600997_20260711_9EX0.pdf",
@@ -399,121 +398,176 @@
       "category": "公告"
     },
     {
-      "id": "wencai:c9b57821e9989b3c",
-      "title": "同兴达：深圳同兴达科技股份有限公司2026年半年度业绩预告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418184.PDF",
+      "id": "wencai:2d0857bee880e584",
+      "title": "巨化股份：巨化股份关于为控股子公司提供担保进展的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600160_20260711_FA7B.pdf",
       "publisher": "同花顺问财",
-      "related": "同兴达 (002845.SZ)",
+      "related": "巨化股份 (600160.SH)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:fafe36f39035c10e",
-      "title": "三星电气：三星电气2026年半年度业绩预告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/601567_20260711_BWID.pdf",
+      "id": "wencai:2400d39b55df93ad",
+      "title": "巨化股份：巨化股份2026年上半年度主要经营数据公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600160_20260711_EN7G.pdf",
       "publisher": "同花顺问财",
-      "related": "三星电气 (601567.SH)",
+      "related": "巨化股份 (600160.SH)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:c7479fabe5c8cae6",
-      "title": "德马科技：德马科技关于与关联人共同投资暨关联交易终止的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/688360_20260711_BN54.pdf",
+      "id": "wencai:58e33d88803bd186",
+      "title": "恩捷股份：爱思开电池材料科技（江苏）有限公司2025年度审计报告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418835.PDF",
       "publisher": "同花顺问财",
-      "related": "德马科技 (688360.SH)",
+      "related": "恩捷股份 (002812.SZ)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:fe1672e200f2b516",
-      "title": "常青科技：2026年半年度业绩预告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/603125_20260711_8ZQS.pdf",
+      "id": "wencai:9f4e19541a362afb",
+      "title": "恩捷股份：爱思开电池材料科技（江苏）有限公司2026年一季度审计报告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418834.PDF",
       "publisher": "同花顺问财",
-      "related": "常青科技 (603125.SH)",
+      "related": "恩捷股份 (002812.SZ)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:9b0bd770b7010dc",
-      "title": "五洲特纸：五洲特种纸业集团股份有限公司关于项目投资进展情况的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/605007_20260711_RXOU.pdf",
+      "id": "wencai:d47b3c8fd060682a",
+      "title": "恩捷股份：关于2026年第三次临时股东会增加临时提案暨股东会补充通知的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418833.PDF",
       "publisher": "同花顺问财",
-      "related": "五洲特纸 (605007.SH)",
+      "related": "恩捷股份 (002812.SZ)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:ae8d26b4e1d0f34a",
-      "title": "福华尚纬：福华尚纬股份有限公司2026年半年度业绩预盈公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/603333_20260711_YBC1.pdf",
+      "id": "wencai:d570612bb8e304ca",
+      "title": "大悦城：关于召开2026年第一次临时股东会的通知",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418219.PDF",
       "publisher": "同花顺问财",
-      "related": "福华尚纬 (603333.SH)",
+      "related": "大悦城 (000031.SZ)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:3652090df4b301a0",
-      "title": "紫江企业：上海紫江企业集团股份有限公司关于副董事长增持股份公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600210_20260711_0X92.pdf",
+      "id": "wencai:7d30c6d8d12017b8",
+      "title": "大悦城：第十二届董事会第三次会议决议公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418218.PDF",
       "publisher": "同花顺问财",
-      "related": "紫江企业 (600210.SH)",
+      "related": "大悦城 (000031.SZ)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:f17f551f3897e42e",
-      "title": "羚锐制药：羚锐制药关于公司及子公司产品纳入《国家基本药物目录》（2026年版）的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600285_20260711_FCZR.pdf",
+      "id": "wencai:abf1a8f298e748e5",
+      "title": "大悦城：关于董事、高级管理人员离任的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418221.PDF",
       "publisher": "同花顺问财",
-      "related": "羚锐制药 (600285.SH)",
+      "related": "大悦城 (000031.SZ)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:9e97b3943269c7a1",
-      "title": "融捷股份：2026年半年度业绩预告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418172.PDF",
+      "id": "wencai:6cef00966b27ebda",
+      "title": "长城证券：2026年度第九期短期融资券发行结果公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418917.PDF",
       "publisher": "同花顺问财",
-      "related": "融捷股份 (002192.SZ)",
+      "related": "长城证券 (002939.SZ)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:8e55878cbf8d04fa",
-      "title": "鑫科材料：鑫科材料关于为控股子公司提供担保的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600255_20260711_TBAP.pdf",
+      "id": "wencai:493d3ad967d89ee2",
+      "title": "圣诺生物：天健会计师事务所（特殊普通合伙）《关于成都圣诺生物科技股份有限公司2025年年度报告的信息披露监管问询函》的专项说明",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/688117_20260711_KC0P.pdf",
       "publisher": "同花顺问财",
-      "related": "鑫科材料 (600255.SH)",
+      "related": "圣诺生物 (688117.SH)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:9f369af66af8ccdf",
-      "title": "胜利精密：关于法定代表人变更并完成工商变更登记的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418174.PDF",
+      "id": "wencai:c4cc32e32ae6d8c3",
+      "title": "圣诺生物：关于2025年年度报告的信息披露监管问询函的回复公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/688117_20260711_UC9I.pdf",
       "publisher": "同花顺问财",
-      "related": "胜利精密 (002426.SZ)",
+      "related": "圣诺生物 (688117.SH)",
+      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:1265831fc5cdf7b1",
+      "title": "新五丰：湖南新五丰股份有限公司2026年1-6月主要经营数据公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600975_20260711_316A.pdf",
+      "publisher": "同花顺问财",
+      "related": "新五丰 (600975.SH)",
+      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:e1cdfd66b6ff2987",
+      "title": "新五丰：湖南新五丰股份有限公司2026年第三次临时股东会会议资料",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600975_20260711_E3RH.pdf",
+      "publisher": "同花顺问财",
+      "related": "新五丰 (600975.SH)",
+      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:3913e35b133e7ee6",
+      "title": "长飞光纤：长飞光纤光缆股份有限公司关于召开2026年第一次临时股东会的通知",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/601869_20260711_QE1Z.pdf",
+      "publisher": "同花顺问财",
+      "related": "长飞光纤 (601869.SH)",
+      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:5c71c77eee742d09",
+      "title": "长飞光纤：长飞光纤光缆股份有限公司独立董事候选人声明-李长爱",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/601869_20260711_CGQW.pdf",
+      "publisher": "同花顺问财",
+      "related": "长飞光纤 (601869.SH)",
+      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:9aaac2c10ffc34a0",
+      "title": "长飞光纤：长飞光纤光缆股份有限公司2026年第一次临时股东会会议资料",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/601869_20260711_0NUM.pdf",
+      "publisher": "同花顺问财",
+      "related": "长飞光纤 (601869.SH)",
       "publishedAt": "2026-07-10T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -531,17 +585,6 @@
       "category": "利好"
     },
     {
-      "id": "wencai:2b13e8fc0366926e",
-      "title": "思泰克获得实用新型专利授权：“一种X射线探测器校正调节装置”",
-      "link": "https://stock.stockstar.com/RB2026071000003551.shtml",
-      "publisher": "同花顺问财",
-      "related": "思泰克 (301568.SZ)",
-      "publishedAt": "2026-07-09T19:32:37+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
       "id": "wencai:9855d2da4c696595",
       "title": "石化油服获得实用新型专利授权：“一种滚动稳扭PDC钻头”",
       "link": "https://stock.stockstar.com/RB2026071000003553.shtml",
@@ -553,12 +596,12 @@
       "category": "利好"
     },
     {
-      "id": "wencai:1e5235e0fe576122",
-      "title": "格力电器获得实用新型专利授权：“空调器”",
-      "link": "https://stock.stockstar.com/RB2026071000003502.shtml",
+      "id": "wencai:2b13e8fc0366926e",
+      "title": "思泰克获得实用新型专利授权：“一种X射线探测器校正调节装置”",
+      "link": "https://stock.stockstar.com/RB2026071000003551.shtml",
       "publisher": "同花顺问财",
-      "related": "格力电器 (000651.SZ)",
-      "publishedAt": "2026-07-09T19:32:29+00:00",
+      "related": "思泰克 (301568.SZ)",
+      "publishedAt": "2026-07-09T19:32:37+00:00",
       "summary": "利好",
       "source": "wencai",
       "category": "利好"
@@ -580,6 +623,17 @@
       "link": "https://stock.stockstar.com/RB2026071000003504.shtml",
       "publisher": "同花顺问财",
       "related": "美好医疗 (301363.SZ)",
+      "publishedAt": "2026-07-09T19:32:29+00:00",
+      "summary": "利好",
+      "source": "wencai",
+      "category": "利好"
+    },
+    {
+      "id": "wencai:1e5235e0fe576122",
+      "title": "格力电器获得实用新型专利授权：“空调器”",
+      "link": "https://stock.stockstar.com/RB2026071000003502.shtml",
+      "publisher": "同花顺问财",
+      "related": "格力电器 (000651.SZ)",
       "publishedAt": "2026-07-09T19:32:29+00:00",
       "summary": "利好",
       "source": "wencai",
@@ -641,15 +695,21 @@
       "category": "公告"
     },
     {
-      "id": "wencai:1858815d4dff2453",
-      "title": "常青科技：关于使用暂时闲置自有资金进行现金管理的进展公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-10/603125_20260710_WFMK.pdf",
+      "id": "wencai:d8c09e668f9be716",
+      "title": "理财业务2026年上半年报告",
+      "link": "https://www.cqcbank.com/bfam6/20260710/2072801503396204545.pdf",
       "publisher": "同花顺问财",
-      "related": "常青科技 (603125.SH)",
+      "related": "重庆银行 (601963.SH)",
       "publishedAt": "2026-07-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     }
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "breakout: 'NoneType' object has no attribute 'get'"
   ]
 }
