@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""汇总各数据模块新鲜度与策略进化指标，写入 data/site_status.json。
-
-供 GitHub Actions 在每次数据更新后调用，前端展示「持续进化」状态。
-"""
+"""汇总各数据模块新鲜度与策略进化指标，写入 data/site_status.json。"""
 
 from __future__ import annotations
 
@@ -14,6 +11,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT = DATA_DIR / "site_status.json"
+
+STALE_MINUTES = {
+    "market": 45,
+    "macro": 45,
+    "truth": 60,
+    "wencai": 150,
+    "reports": 60 * 48,
+    "backtest": 60 * 24 * 10,
+}
 
 PIPELINES = (
     {
@@ -70,13 +76,22 @@ def _load_json(path: Path) -> dict | list | None:
         return None
 
 
+def _parse_dt(text: str | None) -> datetime | None:
+    if not text:
+        return None
+    try:
+        return datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
 def _updated_at(data: dict | list | None) -> str | None:
     if isinstance(data, dict):
         return data.get("updatedAt") or data.get("generatedAt")
     return None
 
 
-def _pipeline_status(files: tuple[str, ...]) -> tuple[str | None, str]:
+def _pipeline_status(pipe_id: str, files: tuple[str, ...], now: datetime) -> tuple[str | None, str, int | None]:
     latest: str | None = None
     found = 0
     for name in files:
@@ -88,10 +103,15 @@ def _pipeline_status(files: tuple[str, ...]) -> tuple[str | None, str]:
         if ts and (latest is None or ts > latest):
             latest = ts
     if found == 0:
-        return None, "missing"
-    if latest:
-        return latest, "ok"
-    return None, "empty"
+        return None, "missing", None
+    if not latest:
+        return None, "empty", None
+    updated = _parse_dt(latest)
+    age_min = int((now - updated).total_seconds() / 60) if updated else None
+    limit = STALE_MINUTES.get(pipe_id, 120)
+    if age_min is not None and age_min > limit:
+        return latest, "stale", age_min
+    return latest, "ok", age_min
 
 
 def _evolution_block() -> dict:
@@ -99,6 +119,8 @@ def _evolution_block() -> dict:
     versions = _load_json(DATA_DIR / "strategy_versions.json") or {}
     history = _load_json(DATA_DIR / "reco_history.json") or {}
     backtest = _load_json(DATA_DIR / "backtest.json") or {}
+    attribution = _load_json(DATA_DIR / "reco_attribution.json") or {}
+    candidates = _load_json(DATA_DIR / "strategy_candidates.json") or {}
 
     try:
         from strategy_config import STRATEGY_NAME, STRATEGY_VERSION
@@ -113,6 +135,7 @@ def _evolution_block() -> dict:
         if isinstance(p, dict) and p.get("winRate") is not None
     ]
     avg_master_win = round(sum(win_rates) / len(win_rates), 1) if win_rates else None
+    attr_summary = attribution.get("summary") or {}
 
     return {
         "strategyVersion": STRATEGY_VERSION,
@@ -125,14 +148,21 @@ def _evolution_block() -> dict:
         "currentPaperSystem": versions.get("current"),
         "backtestUpdatedAt": backtest.get("updatedAt"),
         "backtestWinRate": (backtest.get("summary") or {}).get("winRate"),
+        "recoAvgReturnT5": attr_summary.get("avgReturnT5"),
+        "recoWinRateT5": attr_summary.get("winRateT5"),
+        "strategyUpgradePending": bool(candidates.get("recommendUpgrade")),
+        "strategyUpgradeHint": candidates.get("upgradeReason") or "",
     }
 
 
 def build_payload() -> dict:
     now = datetime.now(timezone.utc).astimezone()
     pipelines = []
+    stale_count = 0
     for spec in PIPELINES:
-        updated_at, status = _pipeline_status(spec["files"])
+        updated_at, status, age_min = _pipeline_status(spec["id"], spec["files"], now)
+        if status == "stale":
+            stale_count += 1
         pipelines.append(
             {
                 "id": spec["id"],
@@ -141,11 +171,19 @@ def build_payload() -> dict:
                 "workflow": spec["workflow"],
                 "updatedAt": updated_at,
                 "status": status,
+                "ageMinutes": age_min,
             }
         )
 
     ok_count = sum(1 for p in pipelines if p["status"] == "ok")
     evolution = _evolution_block()
+
+    try:
+        from evolution_log import recent_events
+
+        recent_log = recent_events(6)
+    except Exception:
+        recent_log = (_load_json(DATA_DIR / "evolution_log.json") or {}).get("events", [])[:6]
 
     return {
         "updatedAt": now.isoformat(timespec="seconds"),
@@ -153,10 +191,13 @@ def build_payload() -> dict:
         "summary": {
             "pipelinesTotal": len(pipelines),
             "pipelinesHealthy": ok_count,
-            "automation": "持续运行中",
+            "pipelinesStale": stale_count,
+            "automation": "持续运行中" if stale_count == 0 else f"{stale_count} 条流水线过期",
             "deploy": "GitHub Pages · master 推送即发布",
+            "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR",
         },
         "evolution": evolution,
+        "recentLog": recent_log,
         "pipelines": pipelines,
         "triggeredBy": os.environ.get("GITHUB_WORKFLOW") or "local",
         "runId": os.environ.get("GITHUB_RUN_ID"),
@@ -169,8 +210,8 @@ def main() -> None:
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     ev = payload["evolution"]
     print(
-        f"Wrote {OUTPUT} · pipelines {payload['summary']['pipelinesHealthy']}/"
-        f"{payload['summary']['pipelinesTotal']} · "
+        f"Wrote {OUTPUT} · ok {payload['summary']['pipelinesHealthy']}/"
+        f"{payload['summary']['pipelinesTotal']} · stale {payload['summary']['pipelinesStale']} · "
         f"strategy {ev.get('strategyVersion')} · learn #{ev.get('masterLearnRevision')}"
     )
 

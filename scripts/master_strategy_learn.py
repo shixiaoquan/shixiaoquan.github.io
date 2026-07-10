@@ -373,6 +373,19 @@ def upgrade_master_strategies(
         state["lastUpgrade"] = now.isoformat(timespec="seconds")
         state["upgradeNotes"] = notes
         print(f"Master strategy upgraded → {BASE_VERSION}.{state['revision']} ({regime})")
+        try:
+            from evolution_log import append_event
+
+            append_event(
+                "master_learn",
+                {
+                    "revision": state["revision"],
+                    "regime": regime,
+                    "notes": notes,
+                },
+            )
+        except Exception as exc:
+            print(f"evolution_log skip: {exc}")
     else:
         state["upgradeNotes"] = notes or state.get("upgradeNotes") or {}
 

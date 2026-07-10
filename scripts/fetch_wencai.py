@@ -12,7 +12,7 @@ from typing import Any
 
 import pandas as pd
 
-from wencai_queries import WENCAI_NEWS_QUERIES, WENCAI_SCREENS
+from wencai_queries import WENCAI_MOOD_SCREENS, WENCAI_NEWS_QUERIES, WENCAI_SCREENS
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -330,6 +330,19 @@ def build_sentiment(screens: list[dict], existing: dict | None = None) -> dict:
     }
 
 
+def mood_screen_from_market() -> dict | None:
+    """根据 market.json 情绪轮换一条附加问财（零额外 API）。"""
+    market_file = DATA_DIR / "market.json"
+    if not market_file.exists():
+        return None
+    try:
+        market = json.loads(market_file.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+    mood = (market.get("summary") or {}).get("mood") or "震荡"
+    return WENCAI_MOOD_SCREENS.get(mood) or WENCAI_MOOD_SCREENS.get("震荡")
+
+
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     cookie = os.environ.get("WENCAI_COOKIE") or None
@@ -354,6 +367,13 @@ def main() -> None:
                     "error": str(exc)[:200],
                 }
             )
+
+    mood_screen = mood_screen_from_market()
+    if mood_screen:
+        try:
+            screens.append(fetch_screen_resilient(mood_screen, cookie))
+        except Exception as exc:
+            errors.append(f"{mood_screen['id']}: {exc}")
 
     screens = [merge_screen_result(s, existing.get("screens", [])) for s in screens]
 
