@@ -15,7 +15,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js" defer></script>
   <script src="js/ai-mindmap.js" defer></script>
   <script src="js/truth.js" defer></script>
-  <script src="js/app.js?v=27" defer></script>
+  <script src="js/app.js?v=28" defer></script>
 </head>
 <body>
   <div class="app">
@@ -27,6 +27,7 @@
       </div>
       <div class="header__meta">
         <span class="badge" id="market-mood">加载中</span>
+        <span class="badge badge--evolution" id="evolution-badge" hidden>自动进化</span>
         <p class="updated" id="updated-at">数据更新中…</p>
       </div>
     </header>
@@ -50,6 +51,19 @@
       </div>
 
       <section class="panel panel--wide wencai-banner" id="cockpit-wencai"></section>
+
+      <section class="panel panel--wide evolution-panel" id="cockpit-evolution">
+        <div class="panel__head panel__head--row">
+          <div>
+            <h2>持续进化</h2>
+            <p id="cockpit-evolution-hint">GitHub Actions 自动流水线 · 策略在线学习</p>
+          </div>
+        </div>
+        <div class="evolution-summary" id="cockpit-evolution-summary">
+          <p class="empty">加载自动化状态…</p>
+        </div>
+        <div class="evolution-pipelines" id="cockpit-evolution-pipelines"></div>
+      </section>
 
       <section class="panel panel--wide" id="cockpit-macro">
         <div class="panel__head panel__head--row">

@@ -1,0 +1,74 @@
+{
+  "updatedAt": "2026-07-10T01:38:40+00:00",
+  "mode": "github-actions",
+  "summary": {
+    "pipelinesTotal": 6,
+    "pipelinesHealthy": 6,
+    "automation": "持续运行中",
+    "deploy": "GitHub Pages · master 推送即发布"
+  },
+  "evolution": {
+    "strategyVersion": "v1.3.0",
+    "strategyName": "三市场趋势策略（强趋势+突破过滤）",
+    "masterLearnRevision": 106,
+    "masterLearnUpdatedAt": "2026-07-10T01:14:43+00:00",
+    "masterAvgWinRate": 53.0,
+    "recoHistoryRecords": 200,
+    "strategyCatalogCount": 4,
+    "currentPaperSystem": "XRPS-X-1.0",
+    "backtestUpdatedAt": "2026-07-05T03:06:15+00:00",
+    "backtestWinRate": null
+  },
+  "pipelines": [
+    {
+      "id": "market",
+      "name": "行情·荐股·模拟盘",
+      "schedule": "每 5 分钟",
+      "workflow": "update-market-data.yml",
+      "updatedAt": "2026-07-10T01:14:59+00:00",
+      "status": "ok"
+    },
+    {
+      "id": "macro",
+      "name": "宏观与跨资产",
+      "schedule": "每 5 分钟",
+      "workflow": "update-market-data.yml",
+      "updatedAt": "2026-07-10T01:14:53+00:00",
+      "status": "ok"
+    },
+    {
+      "id": "truth",
+      "name": "Truth Social 镜像",
+      "schedule": "每 10 分钟",
+      "workflow": "update-truth-social.yml",
+      "updatedAt": "2026-07-10T01:03:40+00:00",
+      "status": "ok"
+    },
+    {
+      "id": "wencai",
+      "name": "问财自然语言筛选",
+      "schedule": "每小时",
+      "workflow": "update-wencai-data.yml",
+      "updatedAt": "2026-07-09T23:36:56+00:00",
+      "status": "ok"
+    },
+    {
+      "id": "reports",
+      "name": "投资决策研报",
+      "schedule": "09:00 / 12:00 / 16:00 北京时间",
+      "workflow": "generate-investment-report.yml",
+      "updatedAt": "2026-06-27T02:11:54+08:00",
+      "status": "ok"
+    },
+    {
+      "id": "backtest",
+      "name": "策略周度回测",
+      "schedule": "每周日",
+      "workflow": "weekly-backtest.yml",
+      "updatedAt": "2026-07-05T03:06:16+00:00",
+      "status": "ok"
+    }
+  ],
+  "triggeredBy": "local",
+  "runId": null
+}

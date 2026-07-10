@@ -48,11 +48,17 @@ jobs:
               print("WARN: 未拉取到帖子，请检查 RSS 镜像或 Truth Social 凭证")
           PY
 
+      - name: Build site evolution status
+        env:
+          GITHUB_WORKFLOW: ${{ github.workflow }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python scripts/build_site_status.py
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/trump_truth.json
+          git add data/trump_truth.json data/site_status.json
           if git diff --staged --quiet; then
             echo "No truth data changes."
           else
