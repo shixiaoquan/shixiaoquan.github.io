@@ -81,3 +81,10 @@ python scripts/build_site_status.py
 ## Cursor 协作
 
 详见 `.github/EVOLUTION_PLAYBOOK.md`：机器产出候选 → Cursor 审阅开 PR → 合并发布，全程不增加外部资源。
+
+## 近期优化（P0–P3）
+
+- **P0**：修复 `generate_report.py` 空指针；参数搜索探索模式（2y+放宽过滤）；研报失败自动开 Issue
+- **P1**：`market_core.json` / `market_reco.json` 拆分；`reco_history` 归档；pip cache 复用；研报默认不重复 fetch
+- **P2**：`tactic_tune.json` 归因反哺门槛；`poll-scheduler.js` 标签页隐藏降频；进化面板链到 Actions
+- **P3**：`paper_ab.json` 战术 A/B；Truth 帖子舆情标签

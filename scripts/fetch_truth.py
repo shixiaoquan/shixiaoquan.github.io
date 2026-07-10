@@ -41,6 +41,27 @@ DEFAULT_ACCOUNT = {
     "note": "",
 }
 
+# 舆情主题标签（正则，无 LLM）
+TRUTH_TOPIC_PATTERNS: tuple[tuple[str, str, str], ...] = (
+    ("energy", r"\b(oil|gasoline|gas|OPEC|energy|petroleum)\b", "能源"),
+    ("trade", r"\b(tariff|trade|China|Mexico|Canada)\b", "贸易"),
+    ("iran", r"\b(Iran|nuclear|Islamic Republic)\b", "伊朗/核"),
+    ("military", r"\b(military|NATO|army|weapon|defense)\b", "军事"),
+    ("election", r"\b(election|endorsement|primary|vote|ballot)\b", "选举"),
+    ("media", r"\b(fake news|media|press)\b", "媒体"),
+    ("economy", r"\b(stock market|jobs|economy|inflation|rate)\b", "经济"),
+)
+
+
+def extract_truth_tags(text: str) -> list[dict]:
+    if not text:
+        return []
+    tags = []
+    for tag_id, pattern, label in TRUTH_TOPIC_PATTERNS:
+        if re.search(pattern, text, flags=re.I):
+            tags.append({"id": tag_id, "label": label})
+    return tags
+
 
 def strip_html(content: str) -> str:
     if not content:
@@ -142,6 +163,7 @@ def fetch_from_truthbrush() -> tuple[list[dict], dict, str]:
                     "content": plain,
                     "contentHtml": content_html,
                     "media": media,
+                    "tags": extract_truth_tags(plain),
                     "reblogsCount": item.get("reblogs_count") or 0,
                     "favouritesCount": item.get("favourites_count") or 0,
                     "repliesCount": item.get("replies_count") or 0,
@@ -222,6 +244,7 @@ def fetch_from_rss(rss_url: str) -> tuple[list[dict], dict, str]:
                     "favouritesCount": 0,
                     "repliesCount": 0,
                     "source": "telegram_mirror",
+                    "tags": extract_truth_tags(plain),
                 }
             )
 
@@ -294,12 +317,29 @@ def main() -> None:
 
     if posts:
         posts = merge_translations(posts, existing.get("posts") or [])
+        topic_counts: dict[str, int] = {}
+        for post in posts:
+            for tag in post.get("tags") or []:
+                topic_counts[tag["id"]] = topic_counts.get(tag["id"], 0) + 1
+        topic_summary = sorted(
+            [
+                {
+                    "id": k,
+                    "label": next((t[2] for t in TRUTH_TOPIC_PATTERNS if t[0] == k), k),
+                    "count": v,
+                }
+                for k, v in topic_counts.items()
+            ],
+            key=lambda x: x["count"],
+            reverse=True,
+        )
         payload = {
             "updatedAt": now.isoformat(timespec="seconds"),
             "status": status,
             "credentialUsed": cred_used,
             "account": account,
             "posts": posts,
+            "topicSummary": topic_summary,
             "source": build_source_meta(data_source),
             "disclaimer": "非官方镜像，仅供阅读；版权归原发布者所有。",
         }

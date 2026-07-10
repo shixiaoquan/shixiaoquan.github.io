@@ -2,6 +2,24 @@
   "version": 1,
   "events": [
     {
+      "at": "2026-07-10T03:16:22+00:00",
+      "type": "master_learn",
+      "revision": 107,
+      "regime": "risk_on",
+      "notes": {
+        "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
+      }
+    },
+    {
+      "at": "2026-07-10T03:15:39+00:00",
+      "type": "param_sweep",
+      "recommendUpgrade": true,
+      "currentExpectancy": -0.14,
+      "bestExpectancy": 2.1,
+      "totalTrades": 20,
+      "reason": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）"
+    },
+    {
       "at": "2026-07-10T01:54:54+00:00",
       "type": "param_sweep",
       "recommendUpgrade": false,
@@ -17,5 +35,5 @@
       "winRateT5": 37.5
     }
   ],
-  "updatedAt": "2026-07-10T01:54:54+00:00"
+  "updatedAt": "2026-07-10T03:16:22+00:00"
 }

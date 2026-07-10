@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: data-updates-${{ github.workflow }}
+  group: data-push-master
   cancel-in-progress: false
 
 jobs:
@@ -20,12 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: pip install -r scripts/requirements.txt
+      - uses: ./.github/actions/setup-python-deps
 
       - name: Fetch market data
         env:
@@ -34,6 +29,9 @@ jobs:
         run: |
           python scripts/fetch_data.py
           python scripts/fetch_macro.py
+
+      - name: Tactic tune from attribution
+        run: python scripts/tactic_tune.py
 
       - name: Verify macro output
         run: |
@@ -44,10 +42,6 @@ jobs:
           fh_src = next((s for s in d.get("sources", []) if s.get("id") == "finnhub"), {})
           print("fred keyUsed:", fred_src.get("cookieUsed"), "status:", fred_src.get("status"), "items:", fred_src.get("items"))
           print("finnhub keyUsed:", fh_src.get("cookieUsed"), "status:", fh_src.get("status"), "items:", fh_src.get("items"))
-          if fred_src.get("cookieUsed") and not d.get("fred"):
-              print("WARN: FRED_API_KEY 已配置但未拉取到序列")
-          if fh_src.get("cookieUsed") and not d.get("finnhubNews") and not d.get("earningsCalendar"):
-              print("WARN: FINNHUB_API_KEY 已配置但未拉取到新闻/财报")
           PY
 
       - name: Run trading engine

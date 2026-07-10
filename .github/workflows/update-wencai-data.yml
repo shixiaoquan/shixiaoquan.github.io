@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: data-updates-${{ github.workflow }}
+  group: data-push-master
   cancel-in-progress: false
 
 jobs:
@@ -25,12 +25,7 @@ jobs:
         with:
           node-version: "20"
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: pip install -r scripts/requirements.txt
+      - uses: ./.github/actions/setup-python-deps
 
       - name: Fetch wencai data
         env:

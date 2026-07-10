@@ -1,11 +1,14 @@
 const DATA_URL = "data/market.json";
-const HISTORY_URL = "data/reco_history.json";
+const CORE_URL = "data/market_core.json";
+const RECO_URL = "data/market_reco.json";
+const HISTORY_URL = "data/reco_history_recent.json";
 const WENCAI_URL = "data/wencai.json";
 const BACKTEST_URL = "data/backtest.json";
 const SIGNALS_URL = "data/signals.json";
 const PAPER_URL = "data/paper_account.json";
 const PAPER_STRATEGY_URL = "data/paper_strategy.json";
 const PAPER_BACKTEST_URL = "data/paper_backtest.json";
+const PAPER_AB_URL = "data/paper_ab.json";
 const DIAGNOSTICS_URL = "data/diagnostics.json";
 const AI_CHAIN_URL = "data/ai_chain.json";
 const REPORTS_INDEX_URL = "data/reports/index.json";
@@ -29,8 +32,6 @@ const XRPS_ROLLING_BUY_LEVELS = [
 ];
 
 let lastUpdatedAt = null;
-let lastSiteStatusAt = null;
-let siteStatusData = null;
 let lastTradingUpdatedAt = null;
 let historyFilter = "all";
 let recoHistory = null;
@@ -190,89 +191,12 @@ function updateHeaderFreshness() {
   el.textContent = parts.length ? parts.join(" · ") : "数据更新中…";
 
   const evoBadge = document.getElementById("evolution-badge");
-  if (evoBadge && siteStatusData?.evolution) {
-    const rev = siteStatusData.evolution.masterLearnRevision;
-    const ver = siteStatusData.evolution.strategyVersion;
+  if (evoBadge && window.siteStatusData?.evolution) {
+    const rev = window.siteStatusData.evolution.masterLearnRevision;
+    const ver = window.siteStatusData.evolution.strategyVersion;
     evoBadge.hidden = false;
     evoBadge.textContent = rev != null ? `${ver} · 学习 #${rev}` : `${ver} · 自动进化`;
   }
-}
-
-function pipelineStatusLabel(status) {
-  const map = { ok: "运行中", stale: "数据过期", missing: "未就绪", empty: "暂无数据" };
-  return map[status] || status || "—";
-}
-
-function renderEvolutionPanel(data) {
-  const summaryEl = document.getElementById("cockpit-evolution-summary");
-  const pipesEl = document.getElementById("cockpit-evolution-pipelines");
-  const hintEl = document.getElementById("cockpit-evolution-hint");
-  if (!summaryEl || !pipesEl) return;
-
-  if (!data) {
-    summaryEl.innerHTML = '<p class="empty">自动化状态加载中…</p>';
-    pipesEl.innerHTML = "";
-    return;
-  }
-
-  const ev = data.evolution || {};
-  const sum = data.summary || {};
-  if (hintEl) {
-    const staleNote = sum.pipelinesStale ? ` · ${sum.pipelinesStale} 条过期` : "";
-    hintEl.textContent = `GitHub Actions · ${sum.pipelinesHealthy ?? 0}/${sum.pipelinesTotal ?? 0} 条活跃${staleNote} · Cursor PR 审阅策略升级`;
-  }
-
-  const attrT5 = ev.recoWinRateT5 != null ? `T+5 胜率 ${ev.recoWinRateT5}%` : null;
-  const upgradeNote = ev.strategyUpgradePending ? "待 Cursor 审阅升级" : null;
-
-  summaryEl.innerHTML = [
-    { label: "战术策略", value: ev.strategyVersion || "—" },
-    { label: "大师学习迭代", value: ev.masterLearnRevision != null ? `#${ev.masterLearnRevision}` : "—" },
-    { label: "荐股 T+5", value: attrT5 || "累计中" },
-    { label: "策略候选", value: upgradeNote || "持有当前" },
-  ]
-    .map(
-      (item) => `
-      <div class="evolution-stat">
-        <p class="evolution-stat__label">${item.label}</p>
-        <p class="evolution-stat__value">${item.value}</p>
-      </div>`
-    )
-    .join("");
-
-  const log = data.recentLog || [];
-  const logHtml = log.length
-    ? `<ul class="evolution-log">${log
-        .map((e) => {
-          const when = formatFreshnessTime(e.at) || e.at;
-          const detail =
-            e.type === "master_learn"
-              ? `大师学习 #${e.revision} · ${e.regime || ""}`
-              : e.type === "param_sweep"
-                ? `参数搜索 · ${e.reason || ""}`
-                : e.type === "reco_attribution"
-                  ? `荐股归因 +${e.newItems || 0}`
-                  : e.type || "event";
-          return `<li><span class="evolution-log__time">${when}</span> ${detail}</li>`;
-        })
-        .join("")}</ul>`
-    : "";
-
-  const pipelines = data.pipelines || [];
-  pipesEl.innerHTML =
-    logHtml +
-    pipelines
-    .map((pipe) => {
-      const status = pipe.status || "empty";
-      const updated = pipe.updatedAt ? formatFreshnessTime(pipe.updatedAt) : "—";
-      return `
-        <div class="evolution-pipe">
-          <p class="evolution-pipe__name">${pipe.name}</p>
-          <p class="evolution-pipe__meta">${pipe.schedule} · 更新 ${updated}</p>
-          <span class="evolution-pipe__status evolution-pipe__status--${status}">${pipelineStatusLabel(status)}</span>
-        </div>`;
-    })
-    .join("");
 }
 
 function marketClass(market) {
@@ -1915,6 +1839,32 @@ function renderCockpitPaper(paper, diagnostics) {
   ]);
 }
 
+function renderLabAbCompare(ab) {
+  const el = document.getElementById("lab-ab-compare");
+  if (!el || !ab?.variants) return;
+  const leader = ab.leader;
+  const rows = Object.values(ab.variants)
+    .map((v) => {
+      const m = v.metrics || {};
+      const isLeader = v.id === leader;
+      return `<tr${isLeader ? ' class="version-compare__leader"' : ""}>
+        <td>${v.label}${isLeader ? " ★" : ""}</td>
+        <td>${m.totalTrades ?? "—"}</td>
+        <td>${m.winRate ?? "—"}%</td>
+        <td>${m.expectancy ?? "—"}%</td>
+        <td>${m.maxDrawdown ?? "—"}%</td>
+      </tr>`;
+    })
+    .join("");
+  el.innerHTML = `
+    <h3 class="lab-ab__title">战术 A/B 对照（2y 探索回测）</h3>
+    <table class="data-table data-table--compact">
+      <thead><tr><th>变体</th><th>交易</th><th>胜率</th><th>期望</th><th>回撤</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <p class="lab-ab__hint">领先：${ab.variants[leader]?.label || leader} · Δ期望 ${ab.delta?.expectancy ?? "—"}%</p>`;
+}
+
 function renderLabMetrics(backtest) {
   const m = backtest?.metrics || {};
   const periodEl = document.getElementById("lab-backtest-period");
@@ -2880,9 +2830,11 @@ function renderReportsPanel() {
 
   const reports = reportsIndex?.reports || [];
   if (subtitle) {
+    const reportPipe = (window.siteStatusData?.pipelines || []).find((p) => p.id === "reports");
+    const staleNote = reportPipe?.status === "stale" ? " · 数据可能过期，等待 Actions 更新" : "";
     subtitle.textContent = reportsIndex?.updatedAt
-      ? `最近更新 ${formatDateTime(reportsIndex.updatedAt)} · 每日 09:00 / 12:00 / 16:00`
-      : "每日 09:00 / 12:00 / 16:00（北京时间）自动生成";
+      ? `最近更新 ${formatDateTime(reportsIndex.updatedAt)} · 每日 09:00 / 12:00 / 16:00${staleNote}`
+      : `每日 09:00 / 12:00 / 16:00（北京时间）自动生成${staleNote}`;
   }
 
   if (!reports.length) {
@@ -3235,6 +3187,7 @@ function applyTradingData(payload) {
     renderCockpitTactical(backtest);
     if (activeTab === "lab") renderBacktestChart(backtest.equityCurve);
   }
+  if (payload.paperAb) renderLabAbCompare(payload.paperAb);
   if (signals) {
     signalsData = signals;
     renderTacticalSignals(signals);
@@ -3300,16 +3253,17 @@ function tradingDataStamp(signals, backtest, paper, diagnostics) {
 
 async function refreshTradingData() {
   try {
-    const [signals, backtest, paper, diagnostics] = await Promise.all([
+    const [signals, backtest, paper, diagnostics, paperAb] = await Promise.all([
       fetchJson(SIGNALS_URL),
       fetchJson(BACKTEST_URL),
       fetchJson(PAPER_URL),
       fetchJson(DIAGNOSTICS_URL),
+      fetchJson(PAPER_AB_URL),
     ]);
     const stamp = tradingDataStamp(signals, backtest, paper, diagnostics);
     const needsPaper = !paperData && paper;
     if (stamp && stamp === lastTradingUpdatedAt && !needsPaper) return;
-    applyTradingData({ signals, backtest, paper, diagnostics });
+    applyTradingData({ signals, backtest, paper, diagnostics, paperAb });
     lastTradingUpdatedAt = stamp;
   } catch (error) {
     console.error("trading data load failed", error);
@@ -3356,6 +3310,7 @@ function buildQuoteMap(data) {
 }
 
 function applyData(data) {
+  window.marketData = data;
   marketData = data;
   quoteMap = buildQuoteMap(data);
 
@@ -3394,24 +3349,20 @@ function applyData(data) {
 }
 
 async function fetchMarketData() {
+  try {
+    const [coreRes, recoRes] = await Promise.all([
+      fetch(`${CORE_URL}?t=${Date.now()}`, { cache: "no-store" }),
+      fetch(`${RECO_URL}?t=${Date.now()}`, { cache: "no-store" }),
+    ]);
+    if (coreRes.ok && recoRes.ok) {
+      return { ...(await coreRes.json()), ...(await recoRes.json()) };
+    }
+  } catch (err) {
+    console.warn("split market fetch failed, fallback", err);
+  }
   const response = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: "no-store" });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   return response.json();
-}
-
-async function refreshSiteStatus() {
-  try {
-    const res = await fetch(`${SITE_STATUS_URL}?t=${Date.now()}`, { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    if (data.updatedAt === lastSiteStatusAt && siteStatusData) return;
-    lastSiteStatusAt = data.updatedAt;
-    siteStatusData = data;
-    renderEvolutionPanel(data);
-    updateHeaderFreshness();
-  } catch (err) {
-    console.warn("site status refresh failed", err);
-  }
 }
 
 async function refreshData() {
@@ -3419,6 +3370,7 @@ async function refreshData() {
     const data = await fetchMarketData();
     if (data.updatedAt === lastUpdatedAt) return;
     applyData(data);
+    if (window.siteStatusData) renderEvolutionPanel(window.siteStatusData);
   } catch (error) {
     if (lastUpdatedAt === null) {
       updateHeaderFreshness();
@@ -3456,17 +3408,33 @@ async function init() {
 
   await ensureTabData(initialLocation.tab);
 
-  setInterval(refreshData, POLL_INTERVAL_MS);
-  setInterval(refreshMacroData, POLL_INTERVAL_MS);
-  setInterval(refreshWencaiData, POLL_INTERVAL_MS);
-  setInterval(refreshTradingData, POLL_INTERVAL_MS);
-  setInterval(refreshSiteStatus, POLL_INTERVAL_MS);
-  setInterval(() => {
-    if (tabBundles.paper) {
-      refreshPaperExtras();
-      refreshHistory();
-    }
-  }, POLL_INTERVAL_MS);
+  if (typeof PollScheduler !== "undefined") {
+    PollScheduler.configure({ intervalMs: POLL_INTERVAL_MS });
+    PollScheduler.register(refreshData);
+    PollScheduler.register(refreshMacroData);
+    PollScheduler.register(refreshWencaiData);
+    PollScheduler.register(refreshTradingData);
+    PollScheduler.register(() => {
+      if (tabBundles.paper) {
+        refreshPaperExtras();
+        refreshHistory();
+      }
+    });
+    initEvolutionPolling();
+    PollScheduler.start();
+  } else {
+    setInterval(refreshData, POLL_INTERVAL_MS);
+    setInterval(refreshMacroData, POLL_INTERVAL_MS);
+    setInterval(refreshWencaiData, POLL_INTERVAL_MS);
+    setInterval(refreshTradingData, POLL_INTERVAL_MS);
+    setInterval(() => {
+      if (tabBundles.paper) {
+        refreshPaperExtras();
+        refreshHistory();
+      }
+    }, POLL_INTERVAL_MS);
+    setInterval(refreshSiteStatus, POLL_INTERVAL_MS);
+  }
 
   const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 2500));
   scheduleIdle(() => {

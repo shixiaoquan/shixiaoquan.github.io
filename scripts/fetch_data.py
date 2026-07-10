@@ -12,8 +12,10 @@ import yfinance as yf
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "market.json"
+CORE_FILE = DATA_DIR / "market_core.json"
+RECO_FILE = DATA_DIR / "market_reco.json"
 HISTORY_FILE = DATA_DIR / "reco_history.json"
-MAX_HISTORY_RECORDS = 200
+MAX_HISTORY_RECORDS = 80
 SCORING_HISTORY_PERIOD = "2y"
 
 INDICES = {
@@ -80,6 +82,17 @@ from strategy_scoring import (
 )
 from reco_signals import update_reco_signals
 from strategy_masters import build_master_recommendations
+from archive_reco_history import write_recent_slice
+
+
+def load_tactic_tune() -> dict:
+    path = DATA_DIR / "tactic_tune.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
 
 MAX_PICKS_PER_MARKET = 1
 MARKETS = ("A股", "港股", "美股")
@@ -235,8 +248,11 @@ def analyze_candidate(symbol: str, meta: dict, benchmarks: dict[str, list[float]
     lows = [float(v) for v in hist["Low"].dropna().tolist()]
     volumes = [float(v) for v in hist["Volume"].dropna().tolist()]
     bench = benchmarks.get(market, [])
+    score_adjust = load_tactic_tune()
 
-    scored = score_series(closes, highs, lows, volumes, bench, market, min_bars=65)
+    scored = score_series(
+        closes, highs, lows, volumes, bench, market, min_bars=65, score_adjust=score_adjust
+    )
     if not scored:
         return None
 
@@ -588,12 +604,33 @@ def main() -> None:
         "news": news,
         "recommendations": recommendations,
         "masterRecommendations": master_recommendations,
+        "tacticTune": load_tactic_tune(),
     }
 
+    core_payload = {
+        "updatedAt": payload["updatedAt"],
+        "summary": payload["summary"],
+        "marketRadar": payload["marketRadar"],
+        "quoteMap": quote_map,
+        "changeMap": change_map,
+        "indices": indices,
+        "stocks": stocks,
+        "news": news,
+        "tacticTune": payload["tacticTune"],
+    }
+    reco_payload = {
+        "updatedAt": payload["updatedAt"],
+        "recommendations": recommendations,
+        "masterRecommendations": master_recommendations,
+    }
+
+    CORE_FILE.write_text(json.dumps(core_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    RECO_FILE.write_text(json.dumps(reco_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {OUTPUT_FILE}")
+    print(f"Wrote {CORE_FILE}, {RECO_FILE}, {OUTPUT_FILE}")
 
     history, reco_id = append_reco_history(recommendations, now)
+    write_recent_slice(history)
     update_reco_signals(
         recommendations.get("picks") or [],
         quote_map,

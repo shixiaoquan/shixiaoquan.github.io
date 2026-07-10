@@ -181,10 +181,15 @@ def score_series(
     bench_closes: list[float],
     market: str = "美股",
     min_bars: int = MIN_BARS,
+    score_adjust: dict | None = None,
 ) -> dict | None:
-    """对截至最新一根 K 线的序列打分。"""
+    """对截至最新一根 K 线的序列打分。score_adjust 可含 buyScoreAdjust / breakoutScoreAdjust。"""
     if len(closes) < min_bars:
         return None
+
+    adj = score_adjust or {}
+    buy_threshold = BUY_SCORE + int(adj.get("buyScoreAdjust") or 0)
+    breakout_threshold = BREAKOUT_SCORE_MIN + int(adj.get("breakoutScoreAdjust") or 0)
 
     price = closes[-1]
     sma10 = sma(closes, 10)
@@ -286,19 +291,19 @@ def score_series(
     entry_type = None
     if not regime["regimeOk"]:
         signal, signal_label = "hold", "暂不参与"
-    elif breakout_info["breakout"] and score >= BREAKOUT_SCORE_MIN and rsi <= MAX_RSI_ENTRY and soft_ok:
+    elif breakout_info["breakout"] and score >= breakout_threshold and rsi <= MAX_RSI_ENTRY and soft_ok:
         signal, signal_label = "buy", "突破买入"
         entry_type = "breakout"
     elif (
         not REQUIRE_BREAKOUT_FOR_BUY
-        and score >= BUY_SCORE
+        and score >= buy_threshold
         and trend_ok
         and soft_ok
         and regime["bullMarket"]
     ):
         signal, signal_label = "buy", "趋势买入"
         entry_type = "trend"
-    elif score >= BUY_SCORE and trend_ok and REQUIRE_BREAKOUT_FOR_BUY:
+    elif score >= buy_threshold and trend_ok and REQUIRE_BREAKOUT_FOR_BUY:
         signal, signal_label = "watch", "趋势达标待突破"
         entry_type = None
     elif score >= WATCH_SCORE:
