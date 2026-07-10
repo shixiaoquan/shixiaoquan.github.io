@@ -19,7 +19,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: data-updates-${{ github.workflow }}
+  group: data-push-master
   cancel-in-progress: false
 
 jobs:
@@ -28,9 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+      - uses: ./.github/actions/setup-python-deps
 
       - name: Build site status
         env:

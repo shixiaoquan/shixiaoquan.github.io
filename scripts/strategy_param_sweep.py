@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""战术策略参数轻量网格搜索 — 复用 backtest 逻辑，产出候选供 Cursor 开 PR。"""
+"""战术策略参数探索搜索 — 在放宽过滤的探索模式下网格搜索，产出候选供 Cursor 审阅。"""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
+import backtest as bt
 import strategy_scoring as sc
 from backtest import BACKTEST_UNIVERSE, MARKET_MAP, compute_metrics, load_benchmark_series, simulate_symbol
 from evolution_log import append_event
@@ -17,13 +18,27 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "strategy_candidates.json"
 
-BUY_GRID = (72, 75, 78, 80)
-BREAKOUT_GRID = (68, 72, 75)
+BUY_GRID = (68, 72, 75, 78)
+BREAKOUT_GRID = (62, 68, 72)
+EXPLORE_PERIOD = "2y"
+
+# 探索模式：放宽 v1.3 强过滤以积累样本，生产环境仍用 strategy_config 原值
+EXPLORE_RELAX = {
+    "REQUIRE_BREAKOUT_FOR_BUY": False,
+    "REQUIRE_BULL_MARKET": False,
+    "REQUIRE_BENCH_ABOVE_MA200": False,
+    "REQUIRE_MACD_POSITIVE": False,
+    "MIN_RELATIVE_STRENGTH": 0.0,
+}
 
 
-def _run_combo(buy_score: int, breakout_min: int) -> dict:
-    with patch.object(sc, "BUY_SCORE", buy_score), patch.object(sc, "BREAKOUT_SCORE_MIN", breakout_min):
-        bench = load_benchmark_series("1y")
+def _run_combo(buy_score: int, breakout_min: int, *, production: bool = False) -> dict:
+    patches = {"BUY_SCORE": buy_score, "BREAKOUT_SCORE_MIN": breakout_min}
+    if not production:
+        patches.update(EXPLORE_RELAX)
+
+    with patch.multiple(sc, **patches), patch.object(bt, "BACKTEST_PERIOD", EXPLORE_PERIOD):
+        bench = load_benchmark_series(EXPLORE_PERIOD)
         trades = []
         for symbol in BACKTEST_UNIVERSE:
             market = MARKET_MAP.get(symbol, "美股")
@@ -32,23 +47,28 @@ def _run_combo(buy_score: int, breakout_min: int) -> dict:
     return {
         "buyScore": buy_score,
         "breakoutScoreMin": breakout_min,
-        "metrics": metrics,
+        "mode": "production" if production else "exploration",
+        "period": EXPLORE_PERIOD,
         "totalTrades": metrics.get("totalTrades", 0),
         "winRate": metrics.get("winRate", 0),
         "expectancy": metrics.get("expectancy", 0),
         "profitFactor": metrics.get("profitFactor", 0),
+        "sharpe": metrics.get("sharpe", 0),
+        "maxDrawdown": metrics.get("maxDrawdown", 0),
     }
 
 
 def run_sweep() -> dict:
     now = datetime.now(timezone.utc).astimezone()
-    current = _run_combo(BUY_SCORE, BREAKOUT_SCORE_MIN)
+    current_prod = _run_combo(BUY_SCORE, BREAKOUT_SCORE_MIN, production=True)
+    current_explore = _run_combo(BUY_SCORE, BREAKOUT_SCORE_MIN, production=False)
+
     candidates = []
     for buy in BUY_GRID:
         for breakout in BREAKOUT_GRID:
             if buy == BUY_SCORE and breakout == BREAKOUT_SCORE_MIN:
                 continue
-            candidates.append(_run_combo(buy, breakout))
+            candidates.append(_run_combo(buy, breakout, production=False))
 
     candidates.sort(
         key=lambda c: (c["expectancy"], c["winRate"], c["profitFactor"]),
@@ -57,13 +77,22 @@ def run_sweep() -> dict:
     best = candidates[0] if candidates else None
     recommend = False
     reason = ""
-    if best and best["totalTrades"] >= 5:
-        if best["expectancy"] > current["expectancy"] + 0.15 and best["winRate"] >= current["winRate"] - 2:
+    insufficient = current_explore["totalTrades"] < 5
+
+    if insufficient:
+        reason = (
+            f"探索模式样本不足（{current_explore['totalTrades']} 笔），"
+            "已使用 2y+放宽过滤；请继续积累 reco 归因"
+        )
+    elif best and best["totalTrades"] >= 5:
+        if best["expectancy"] > current_explore["expectancy"] + 0.12 and best["winRate"] >= current_explore["winRate"] - 3:
             recommend = True
             reason = (
-                f"期望收益 {best['expectancy']}% > 当前 {current['expectancy']}% · "
-                f"buy={best['buyScore']} breakout={best['breakoutScoreMin']}"
+                f"探索期望 {best['expectancy']}% > 当前 {current_explore['expectancy']}% · "
+                f"buy={best['buyScore']} breakout={best['breakoutScoreMin']}（需 Cursor 审阅后合入生产）"
             )
+        else:
+            reason = "hold"
 
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
@@ -71,16 +100,18 @@ def run_sweep() -> dict:
             "strategyVersion": STRATEGY_VERSION,
             "buyScore": BUY_SCORE,
             "breakoutScoreMin": BREAKOUT_SCORE_MIN,
-            "metrics": current,
+            "production": current_prod,
+            "exploration": current_explore,
         },
         "bestCandidate": best,
         "topCandidates": candidates[:5],
         "recommendUpgrade": recommend,
         "upgradeReason": reason,
+        "insufficientSamples": insufficient,
         "cursorHint": (
-            "若 recommendUpgrade 为 true，请 Cursor Agent 创建分支更新 strategy_config.py 并开 PR"
+            "recommendUpgrade=true 时请 Cursor 更新 strategy_config.py 并开 PR"
             if recommend
-            else "暂无优于当前的参数组合"
+            else reason
         ),
     }
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -88,12 +119,16 @@ def run_sweep() -> dict:
         "param_sweep",
         {
             "recommendUpgrade": recommend,
-            "currentExpectancy": current.get("expectancy"),
+            "currentExpectancy": current_explore.get("expectancy"),
             "bestExpectancy": (best or {}).get("expectancy"),
-            "reason": reason or "hold",
+            "totalTrades": current_explore.get("totalTrades"),
+            "reason": reason,
         },
     )
-    print(f"Param sweep: current exp={current['expectancy']}% best={((best or {}).get('expectancy'))}% upgrade={recommend}")
+    print(
+        f"Param sweep: explore trades={current_explore['totalTrades']} "
+        f"exp={current_explore['expectancy']}% best={((best or {}).get('expectancy'))}% upgrade={recommend}"
+    )
     return payload
 
 

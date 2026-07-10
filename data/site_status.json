@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-10T01:55:34+00:00",
+  "updatedAt": "2026-07-10T03:16:10+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 5,
-    "pipelinesStale": 1,
-    "automation": "1 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -15,17 +15,26 @@
     "masterLearnRevision": 106,
     "masterLearnUpdatedAt": "2026-07-10T01:14:43+00:00",
     "masterAvgWinRate": 53.0,
-    "recoHistoryRecords": 200,
+    "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
     "backtestUpdatedAt": "2026-07-05T03:06:15+00:00",
     "backtestWinRate": null,
     "recoAvgReturnT5": 0.42,
     "recoWinRateT5": 37.5,
-    "strategyUpgradePending": false,
-    "strategyUpgradeHint": ""
+    "strategyUpgradePending": true,
+    "strategyUpgradeHint": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）"
   },
   "recentLog": [
+    {
+      "at": "2026-07-10T03:15:39+00:00",
+      "type": "param_sweep",
+      "recommendUpgrade": true,
+      "currentExpectancy": -0.14,
+      "bestExpectancy": 2.1,
+      "totalTrades": 20,
+      "reason": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）"
+    },
     {
       "at": "2026-07-10T01:54:54+00:00",
       "type": "param_sweep",
@@ -49,8 +58,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T01:14:59+00:00",
-      "status": "ok",
-      "ageMinutes": 40
+      "status": "stale",
+      "ageMinutes": 121
     },
     {
       "id": "macro",
@@ -58,8 +67,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T01:14:53+00:00",
-      "status": "ok",
-      "ageMinutes": 40
+      "status": "stale",
+      "ageMinutes": 121
     },
     {
       "id": "truth",
@@ -67,8 +76,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-10T01:03:40+00:00",
-      "status": "ok",
-      "ageMinutes": 51
+      "status": "stale",
+      "ageMinutes": 132
     },
     {
       "id": "wencai",
@@ -76,17 +85,17 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-09T23:36:56+00:00",
-      "status": "ok",
-      "ageMinutes": 138
+      "status": "stale",
+      "ageMinutes": 219
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-06-27T02:11:54+08:00",
-      "status": "stale",
-      "ageMinutes": 19183
+      "updatedAt": "2026-07-10T11:15:31+08:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -95,9 +104,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-05T03:06:16+00:00",
       "status": "ok",
-      "ageMinutes": 7129
+      "ageMinutes": 7209
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "29063479956"
+  "triggeredBy": "local",
+  "runId": null
 }

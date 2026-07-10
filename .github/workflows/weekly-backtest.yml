@@ -1,10 +1,7 @@
 name: Weekly Backtest
 
-# 策略回测每周运行一次；行情与信号仍由 update-market-data 每 5 分钟更新
-
 on:
   schedule:
-    # 每周日 02:00 UTC
     - cron: "0 2 * * 0"
   workflow_dispatch:
 
@@ -12,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: data-updates-${{ github.workflow }}
+  group: data-push-master
   cancel-in-progress: false
 
 jobs:
@@ -21,12 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: pip install -r scripts/requirements.txt
+      - uses: ./.github/actions/setup-python-deps
 
       - name: Run backtest
         run: python scripts/backtest.py
@@ -40,6 +32,15 @@ jobs:
       - name: Strategy param sweep
         run: python scripts/strategy_param_sweep.py
 
+      - name: Tactic tune from attribution
+        run: python scripts/tactic_tune.py
+
+      - name: Paper A/B compare
+        run: python scripts/paper_ab.py
+
+      - name: Archive reco history
+        run: python scripts/archive_reco_history.py
+
       - name: Build site evolution status
         env:
           GITHUB_WORKFLOW: ${{ github.workflow }}
@@ -51,11 +52,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/backtest.json data/paper_backtest.json data/paper_backtest_curves/
-          git add data/reco_attribution.json data/strategy_candidates.json data/evolution_log.json data/site_status.json
+          git add data/reco_attribution.json data/strategy_candidates.json data/evolution_log.json
+          git add data/tactic_tune.json data/paper_ab.json data/reco_history.json data/reco_history_recent.json
+          git add data/archive/ data/site_status.json
           if git diff --staged --quiet; then
             echo "No backtest changes."
           else
-            git commit -m "chore: weekly backtest update"
+            git commit -m "chore: weekly backtest and evolution update"
             git pull --rebase origin master
             git push
           fi

@@ -66,6 +66,13 @@ function renderTruthMedia(media) {
     .join("")}</div>`;
 }
 
+function renderTruthTags(tags) {
+  if (!tags?.length) return "";
+  return `<div class="truth-post__tags">${tags
+    .map((t) => `<span class="truth-tag">${escapeHtml(t.label || t.id)}</span>`)
+    .join("")}</div>`;
+}
+
 function renderTruthPost(post, account, linkLabel) {
   const id = escapeHtml(post.id);
   const zh = post.contentZh || post.content || "";
@@ -86,6 +93,7 @@ function renderTruthPost(post, account, linkLabel) {
       </div>
       <p class="truth-post__body truth-post__body--zh">${escapeHtml(zh)}</p>
       <p class="truth-post__body truth-post__body--original" hidden>${escapeHtml(original)}</p>
+      ${renderTruthTags(post.tags)}
       ${renderTruthMedia(post.media)}
       <div class="truth-post__actions">
         <button type="button" class="truth-post__toggle" data-post-id="${id}" aria-pressed="false">显示原文</button>
@@ -138,6 +146,12 @@ function renderTruthPanel(data) {
   const updated = data.updatedAt ? formatTruthTime(data.updatedAt) : "—";
 
   const linkLabel = truthLinkLabel(data);
+  const topicLine = (data.topicSummary || []).length
+    ? `舆情主题：${data.topicSummary
+        .slice(0, 4)
+        .map((t) => `${t.label}(${t.count})`)
+        .join(" · ")}`
+    : "";
 
   const emptyHtml =
   posts.length === 0
@@ -148,7 +162,7 @@ function renderTruthPanel(data) {
     <div class="truth-app">
       <div class="truth-banner">
         <p class="truth-banner__title">Truth Social 镜像 · @realDonaldTrump</p>
-        <p class="truth-banner__sub">${truthBannerSub(data)}</p>
+        <p class="truth-banner__sub">${truthBannerSub(data)}${topicLine ? ` · ${topicLine}` : ""}</p>
       </div>
       <section class="truth-profile">
         <div class="truth-profile__header"${account.header ? ` style="background-image:url('${escapeHtml(account.header)}')"` : ""}></div>

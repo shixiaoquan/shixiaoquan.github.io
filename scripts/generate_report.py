@@ -416,13 +416,13 @@ def executive_summary(
 def watchlist(slot: str, market: dict | None, paper: dict | None, signals: dict | None, diag: dict | None) -> str:
     items = []
     plan = (diag or {}).get("xrpsActionPlan") or {}
+    next_sell = plan.get("nextSell") or {}
+    next_buy = plan.get("nextBuy") or {}
 
-    if plan.get("nextSell", {}).get("triggerPrice"):
-        s = plan["nextSell"]
-        items.append(f"小米滚动卖出触发：{s.get('label')} @ {fmt_num(s['triggerPrice'])}")
-    if plan.get("nextBuy", {}).get("triggerPrice"):
-        b = plan["nextBuy"]
-        items.append(f"小米回撤买回触发：{b.get('label')} @ {fmt_num(b['triggerPrice'])}")
+    if next_sell.get("triggerPrice"):
+        items.append(f"小米滚动卖出触发：{next_sell.get('label')} @ {fmt_num(next_sell['triggerPrice'])}")
+    if next_buy.get("triggerPrice"):
+        items.append(f"小米回撤买回触发：{next_buy.get('label')} @ {fmt_num(next_buy['triggerPrice'])}")
 
     for sig in (signals or {}).get("signals", []) or []:
         if sig.get("status") != "open":
