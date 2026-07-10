@@ -33,13 +33,20 @@
 | `generate-investment-report.yml` | UTC 1/4/8 点 | `data/reports/*.md` | 晨会 / 午间 / 收盘三份日报 |
 | `weekly-backtest.yml` | 周日 02:00 UTC | `data/backtest.json` | 战术策略与小米 XRPS 回测 |
 | `continuous-evolution.yml` | `30 * * * *` + push | `data/site_status.json` | 汇总新鲜度与策略进化指标 |
+| `pipeline-failure-alert.yml` | 工作流失败时 | GitHub Issue | 零成本告警 |
+| `weekly-backtest.yml`（扩展） | 周日 | `reco_attribution.json` / `strategy_candidates.json` | 荐股归因 + 参数搜索 |
 
 ## 策略「进化」机制
 
 1. **战术荐股**：`strategy_config.py` 定义版本（当前 v1.3），`fetch_data.py` 每 5 分钟重算信号并写入 `reco_history.json` 存档。
-2. **投资大师**：`master_strategy_learn.py` 根据历史荐股胜率微调 7 位大师权重，`revision` 随每次行情更新递增。
-3. **周度回测**：`weekly-backtest.yml` 刷新 `backtest.json`，实验室 Tab 对比各策略版本。
-4. **进化看板**：`build_site_status.py` 聚合上述指标 → `site_status.json`，驾驶舱展示流水线健康度。
+2. **投资大师**：`master_strategy_learn.py` 根据历史荐股胜率微调 7 位大师权重，`revision` 随每次行情更新递增；变更写入 `evolution_log.json`。
+3. **荐股归因**：`reco_attribution.py` 每周计算 T+1/5/20 收益（yfinance，无新 API）。
+4. **参数搜索**：`strategy_param_sweep.py` 每周网格搜索，产出 `strategy_candidates.json`；若优于当前则 **Cursor 开 PR** 升级（见 `EVOLUTION_PLAYBOOK.md`）。
+5. **问财自适应**：`fetch_wencai.py` 按 `market.json` 情绪轮换附加问句。
+6. **周度回测**：`weekly-backtest.yml` 刷新 `backtest.json`，实验室 Tab 对比各策略版本。
+7. **进化看板**：`build_site_status.py` 聚合上述指标 → `site_status.json`，驾驶舱展示流水线健康度。
+8. **健康告警**：`pipeline_health.py` + GitHub Issues（`pipeline-health` 标签），失败工作流由 `pipeline-failure-alert.yml` 通知。
+9. **Dependabot**：每周检查 pip / Actions 依赖，PR 由 Cursor 或人工合并。
 
 ## 前端刷新
 
@@ -70,3 +77,7 @@ python scripts/build_site_status.py
 | `TRUTHSOCIAL_TOKEN` | Truth 直连（无则走 RSS） |
 
 未配置的模块会降级或跳过，不影响其余流水线。
+
+## Cursor 协作
+
+详见 `.github/EVOLUTION_PLAYBOOK.md`：机器产出候选 → Cursor 审阅开 PR → 合并发布，全程不增加外部资源。

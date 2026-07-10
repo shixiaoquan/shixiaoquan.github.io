@@ -1,6 +1,6 @@
 name: Continuous Evolution
 
-# 汇总各模块新鲜度与策略进化指标；代码或工作流变更时同步更新看板数据
+# 汇总各模块新鲜度与策略进化指标；过期流水线自动开 GitHub Issue
 
 on:
   schedule:
@@ -16,6 +16,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: data-updates-${{ github.workflow }}
@@ -37,11 +38,68 @@ jobs:
           GITHUB_RUN_ID: ${{ github.run_id }}
         run: python scripts/build_site_status.py
 
+      - name: Pipeline health check
+        env:
+          GITHUB_ACTIONS: "true"
+        run: python scripts/pipeline_health.py || true
+
+      - name: Sync pipeline health Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = 'data/pipeline_health.json';
+            if (!fs.existsSync(path)) {
+              core.info('No pipeline_health.json');
+              return;
+            }
+            const health = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const stale = health.stale || [];
+            const title = health.issueTitle;
+            const marker = '<!-- pipeline-health-bot -->';
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'pipeline-health',
+              per_page: 5,
+            });
+            const existing = issues.find(i => i.title === title);
+            if (stale.length === 0) {
+              if (existing) {
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existing.number,
+                  state: 'closed',
+                });
+                core.info('Closed pipeline health issue');
+              }
+              return;
+            }
+            const body = health.issueBody + '\n\nRun: ' + context.runId;
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: `健康检查仍失败（${stale.length} 条）· ${new Date().toISOString()}\n\n${body}`,
+              });
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['pipeline-health', 'automated'],
+            });
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/site_status.json
+          git add data/site_status.json data/pipeline_health.json data/evolution_log.json
           if git diff --staged --quiet; then
             echo "Site status unchanged."
           else

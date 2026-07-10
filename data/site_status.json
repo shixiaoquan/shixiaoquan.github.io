@@ -1,11 +1,13 @@
 {
-  "updatedAt": "2026-07-10T01:39:05+00:00",
+  "updatedAt": "2026-07-10T01:55:04+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "automation": "持续运行中",
-    "deploy": "GitHub Pages · master 推送即发布"
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
+    "deploy": "GitHub Pages · master 推送即发布",
+    "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
@@ -17,8 +19,29 @@
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
     "backtestUpdatedAt": "2026-07-05T03:06:15+00:00",
-    "backtestWinRate": null
+    "backtestWinRate": null,
+    "recoAvgReturnT5": 0.42,
+    "recoWinRateT5": 37.5,
+    "strategyUpgradePending": false,
+    "strategyUpgradeHint": ""
   },
+  "recentLog": [
+    {
+      "at": "2026-07-10T01:54:54+00:00",
+      "type": "param_sweep",
+      "recommendUpgrade": false,
+      "currentExpectancy": 0,
+      "bestExpectancy": 0,
+      "reason": "hold"
+    },
+    {
+      "at": "2026-07-10T01:54:44+00:00",
+      "type": "reco_attribution",
+      "newItems": 40,
+      "avgReturnT5": 0.42,
+      "winRateT5": 37.5
+    }
+  ],
   "pipelines": [
     {
       "id": "market",
@@ -26,7 +49,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T01:14:59+00:00",
-      "status": "ok"
+      "status": "ok",
+      "ageMinutes": 40
     },
     {
       "id": "macro",
@@ -34,7 +58,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T01:14:53+00:00",
-      "status": "ok"
+      "status": "ok",
+      "ageMinutes": 40
     },
     {
       "id": "truth",
@@ -42,7 +67,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-10T01:03:40+00:00",
-      "status": "ok"
+      "status": "ok",
+      "ageMinutes": 51
     },
     {
       "id": "wencai",
@@ -50,7 +76,8 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-09T23:36:56+00:00",
-      "status": "ok"
+      "status": "ok",
+      "ageMinutes": 138
     },
     {
       "id": "reports",
@@ -58,7 +85,8 @@
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-06-27T02:11:54+08:00",
-      "status": "ok"
+      "status": "stale",
+      "ageMinutes": 19183
     },
     {
       "id": "backtest",
@@ -66,9 +94,10 @@
       "schedule": "每周日",
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-05T03:06:16+00:00",
-      "status": "ok"
+      "status": "ok",
+      "ageMinutes": 7128
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "29062852388"
+  "triggeredBy": "local",
+  "runId": null
 }

@@ -1,0 +1,63 @@
+name: Pipeline Failure Alert
+
+# 任一数据流水线失败时开 GitHub Issue（零外部通知服务）
+
+on:
+  workflow_run:
+    workflows:
+      - Update Market Data
+      - Update Wencai Data
+      - Update Truth Social
+      - Generate Investment Report
+      - Weekly Backtest
+      - Continuous Evolution
+    types: [completed]
+
+permissions:
+  issues: write
+
+jobs:
+  alert:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            const title = `[自动] 工作流失败 · ${run.name}`;
+            const body = [
+              'GitHub Actions 工作流执行失败，请检查日志。',
+              '',
+              `- 工作流：**${run.name}**`,
+              `- 分支：${run.head_branch}`,
+              `- 运行：[#${run.id}](${run.html_url})`,
+              `- 结论：${run.conclusion}`,
+              '',
+              '修复合并后本 Issue 可手动关闭。',
+              '',
+              '<!-- workflow-failure-bot -->',
+            ].join('\n');
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 20,
+            });
+            const dup = issues.find(i => i.title === title);
+            if (dup) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: dup.number,
+                body: `再次失败 · ${new Date().toISOString()}\n${run.html_url}`,
+              });
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['pipeline-health', 'automated'],
+            });

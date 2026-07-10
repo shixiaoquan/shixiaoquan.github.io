@@ -199,7 +199,7 @@ function updateHeaderFreshness() {
 }
 
 function pipelineStatusLabel(status) {
-  const map = { ok: "运行中", missing: "未就绪", empty: "暂无数据" };
+  const map = { ok: "运行中", stale: "数据过期", missing: "未就绪", empty: "暂无数据" };
   return map[status] || status || "—";
 }
 
@@ -218,14 +218,18 @@ function renderEvolutionPanel(data) {
   const ev = data.evolution || {};
   const sum = data.summary || {};
   if (hintEl) {
-    hintEl.textContent = `GitHub Actions · ${sum.pipelinesHealthy ?? 0}/${sum.pipelinesTotal ?? 0} 条流水线活跃 · 推送 master 即发布`;
+    const staleNote = sum.pipelinesStale ? ` · ${sum.pipelinesStale} 条过期` : "";
+    hintEl.textContent = `GitHub Actions · ${sum.pipelinesHealthy ?? 0}/${sum.pipelinesTotal ?? 0} 条活跃${staleNote} · Cursor PR 审阅策略升级`;
   }
+
+  const attrT5 = ev.recoWinRateT5 != null ? `T+5 胜率 ${ev.recoWinRateT5}%` : null;
+  const upgradeNote = ev.strategyUpgradePending ? "待 Cursor 审阅升级" : null;
 
   summaryEl.innerHTML = [
     { label: "战术策略", value: ev.strategyVersion || "—" },
     { label: "大师学习迭代", value: ev.masterLearnRevision != null ? `#${ev.masterLearnRevision}` : "—" },
-    { label: "荐股存档", value: ev.recoHistoryRecords != null ? `${ev.recoHistoryRecords} 条` : "—" },
-    { label: "流水线", value: `${sum.pipelinesHealthy ?? 0} / ${sum.pipelinesTotal ?? 0}` },
+    { label: "荐股 T+5", value: attrT5 || "累计中" },
+    { label: "策略候选", value: upgradeNote || "持有当前" },
   ]
     .map(
       (item) => `
@@ -236,8 +240,28 @@ function renderEvolutionPanel(data) {
     )
     .join("");
 
+  const log = data.recentLog || [];
+  const logHtml = log.length
+    ? `<ul class="evolution-log">${log
+        .map((e) => {
+          const when = formatFreshnessTime(e.at) || e.at;
+          const detail =
+            e.type === "master_learn"
+              ? `大师学习 #${e.revision} · ${e.regime || ""}`
+              : e.type === "param_sweep"
+                ? `参数搜索 · ${e.reason || ""}`
+                : e.type === "reco_attribution"
+                  ? `荐股归因 +${e.newItems || 0}`
+                  : e.type || "event";
+          return `<li><span class="evolution-log__time">${when}</span> ${detail}</li>`;
+        })
+        .join("")}</ul>`
+    : "";
+
   const pipelines = data.pipelines || [];
-  pipesEl.innerHTML = pipelines
+  pipesEl.innerHTML =
+    logHtml +
+    pipelines
     .map((pipe) => {
       const status = pipe.status || "empty";
       const updated = pipe.updatedAt ? formatFreshnessTime(pipe.updatedAt) : "—";
