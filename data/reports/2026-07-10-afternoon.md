@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年07月10日 15:41（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年07月10日 18:46（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-07-10 13:11 · 宏观：2026-07-10 13:11 · 问财：2026-07-10 12:15
+> 行情更新：2026-07-10 16:43 · 宏观：2026-07-10 16:43 · 问财：2026-07-10 15:55
 
 ---
 
@@ -11,11 +11,11 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **+1.09%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
+全球跟踪指数平均涨跌 **+0.53%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
-战役仓小米 XRPS 处于 **9 连阴月**积累阶段，模拟收益率 +5.59%；策略要求在此阶段坚持股数目标，不宜因净值回撤动摇持仓框架。
+战役仓小米 XRPS 处于 **9 连阴月**积累阶段，模拟收益率 +4.74%；策略要求在此阶段坚持股数目标，不宜因净值回撤动摇持仓框架。
 
 战术端暂无 buy 突破信号，建议以观察为主。
 
@@ -25,25 +25,25 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.1 全球指数
 
-跟踪 6 只主要指数：上涨 **6** 只、
-下跌 **0** 只，平均涨跌 **+1.09%**。
+跟踪 6 只主要指数：上涨 **5** 只、
+下跌 **1** 只，平均涨跌 **+0.53%**。
 
-**美股** +0.79%（偏强）；**港股** +1.86%（偏强）；**A股** +0.76%（偏强）。相对强势区域：美股、港股、A股。
+**美股** +0.79%（偏强）；**港股** +0.60%（偏强）；**A股** -1.00%（偏弱）。相对强势区域：美股、港股。相对弱势区域：A股，战术配置宜降权。
 
 **波动居前指数：**
 
-- **恒生指数** 24,476.69，日涨跌 +1.86%（周 +4.83% / 月 -0.36%）
-- **日经 225** 68,803.49，日涨跌 +1.56%（周 -1.35% / 月 +7.14%）
 - **纳斯达克** 26,206.89，日涨跌 +1.30%（周 +0.64% / 月 +1.07%）
+- **日经 225** 68,557.73，日涨跌 +1.20%（周 -1.70% / 月 +6.76%）
+- **上证指数** 3,996.16，日涨跌 -1.00%（周 -1.17% / 月 +0.07%）
 - **标普 500** 7,543.64，日涨跌 +0.81%（周 +0.81% / 月 +1.86%）
 
 ### 1.2 A股短线情绪
 
-问财统计涨停 **75** 家、跌停 **14** 家，情绪定性 **偏多**，涨跌停比约 **5.4 : 1**。赚钱效应尚可，题材轮动活跃，但需警惕高位分歧。（部分榜单沿用缓存，盘中宜以实时行情为准）
+问财统计涨停 **94** 家、跌停 **5** 家，情绪定性 **偏多**，涨跌停比约 **18.8 : 1**。赚钱效应尚可，题材轮动活跃，但需警惕高位分歧。
 
 ### 1.3 宏观与跨资产
 
-- **VIX** 15.8（normal）
+- **VIX** 16.1（normal）
 - **美10Y收益率** 4.54%
 - **10Y-2Y 利差（FRED）** 0.38%（偏窄）
 - **USDCNH** 6.7800（日 —）
@@ -61,8 +61,8 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - [Gold heads for weekly drop as Gulf attacks reinforce rate-hike bets - Reuters](https://news.google.com/rss/articles/CBMirAFBVV95cUxQY0V5Q0tTaFY3eWtUQUwydFZrcHA4dzI1blE1ZHNzRGRmcV9TVXNoVWxNQ2pXTHpvenpyYUM4X2tnZXcxT1JIUG1lWGQwS1kxWVJ3aHAweGl2Z1FEa1VaYjlLUi1BQ3RoRXBSUU1aWWpwTFRfbWJQbk5lUExMd2lBdDNWZC1COVpRTkhEWURwR3JJTUU1MDE1Q2NLaHVxaXpOMmR6SU5Kck1Pdnoz?oc=5)（Reuters）
 - [Oil heads for weekly gain as Middle East supply risks persist - Reuters](https://news.google.com/rss/articles/CBMiugFBVV95cUxOdU1pbkMwaXhwRm5RZ000RGVzRzA0b0hTa24wcF9ZWG8wcThYNnRmSTlDdDBsdFhBZEk3OWg5Uzl1WHlvZ3hNSUlZVUtfSFp2Y1RqYmx0bGpfNlRNT05jY2JrUXQxSkR5bWY4UUtjUjl4VWROSnZoeEpIaGtYTkJfZjdET2I0eDk0ZzlNek9QZ1JJYXRIcEhvaWJNWGlZbV9SN2hRSlZwQmJpZFN1ajNSYzBZNmFYR2ZIMlE?oc=5)（Reuters）
 - [Trading Day: What war? Chip-led rally helps markets ignore on-again, off-again US-Iran truce - Reuters](https://news.google.com/rss/articles/CBMimwFBVV95cUxNX1N2Ukoyd25SczJJNXFaTF9XcEVlSUU0dlpNdVhmRG5vQ1RFd09WVzVKYUdxaE9hYU9hMU9yYS1kblEzeUt2bGlWOG5QaDZPdjBxTk9pYnNrRVk2M2pPSTdNdmpHRk9aQUlWRGExS2lvVXliUkZRajhrcFZwanhSZFEtTy1DcEZuZ245U1Q3aGxFV2o0QlBfZ2c4RQ?oc=5)（Reuters）
-- [Slain Iranian leader buried as successor remains out of sight - Reuters](https://news.google.com/rss/articles/CBMirgFBVV95cUxNTHpfT3hyLXNRcDVsVDNZdk9uSDJsbU1KQXBqdWlaMVhXdGdHay0wN2k3bEthNlpHaHlVX2dKTEpIWHdncE5Ka0lIOGVsR04zLXNUVzB2M2VSNWJxVjVxRlRHYlUtcHUxUFJvVEZGTHUzMnJXeE1JanhjUHpDMGgzOWFZNUh0RHUxT2ViMHlyOWJ6d3YzdVBiT1cxeVRKbF9MbGRrQ0F0M3pJLUN5QXc?oc=5)（Reuters）
 - [Nasdaq ends sharply higher; chip surge offsets Iran worries - Reuters](https://news.google.com/rss/articles/CBMitAFBVV95cUxOWlJrcUhGNjUtY2dOX1RQcWxqNW1KNGtrZU9uYU5KSjZiaDdZM3ozU1BZUjR4WmJyLVJjLW9yYjJGRHdSSEo4T0NNVUQ1T2VHN19keUtvRklORURPYUhtS0hUR2NJWnRIcnd3VFRLdGpDTmcwSnA0WHcxSUJ2RHhrNG1hOWUycm5kUjl6OHhoTjhSNVZXRmFUVnRMclJYMW9FdXRJZ1VLSkFrbmxRWVg5N3Z5c3M?oc=5)（Reuters）
+- [Skeptical US Democrats in Congress urge debate on Israel plans - Reuters](https://news.google.com/rss/articles/CBMirgFBVV95cUxQeHpmRDVrNkNFZWppa2tqcTVNRFhXdzZQYV9JaGFjZjlCd2FDbk1aSWpVVHQ4MkVBOGNreHlBSVNXUVdtanZzRnVCb0ZySURxcnFpa1I0OGd0Y1h5cmYwSWZkQnR3akFDZFNnTC1YLUhwMWZnS2FoaVRka3FDbEdFcFd5aUVkb19yUkY3RlFMZGhwYU95VjJKeUVDUmVjWUJiWmN2b1FCdklnSDlQOFE?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **ACU** 2026-07-17  · EPS预期 0.59
@@ -73,7 +73,6 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - **CCFN** 2026-07-17  · EPS预期 —
 - 美债收益率回落，利于风险资产估值修复。
 - 美股行业轮动：科技 领涨（+2.18%），必需消费 靠后。
-- 原油强、黄金弱 — 偏再通胀/增长预期。
 - FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。
 
 *数据源：Yahoo Finance、Frankfurter (ECB)、FRED (St. Louis Fed)、Finnhub*
@@ -88,15 +87,15 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **标的**：小米集团（1810.HK）
 
-**模拟净值**：收益率 +5.59%，仓位 66.2%，持股 26,714 股，均价 22.74。
+**模拟净值**：收益率 +4.74%，仓位 65.9%，持股 26,714 股，均价 22.74。
 
 **月线状态**：连续 **9** 个月收跌，上月 -24.65%，近两月累计 -30.15%，近三月累计 -32.42%。我们判断当前仍处于 XRPS「股数积累」逻辑占优的阶段，浮亏不应成为削减核心仓的理由。
 
 **阶段判断**：建仓积累期——侧重摊薄成本、增加股数，滚动网格尚未全面激活。
 
-**现价参考**：26.16 HKD。
+**现价参考**：25.84 HKD。
 
-- 下一档**滚动卖出**（涨 15%）：触发价 **27.00**，距现价 +3.20%。
+- 下一档**滚动卖出**（涨 15%）：触发价 **27.00**，距现价 +4.50%。
 
 - 已 9 连阴月（上月 -24.65%），核心仓按规则加仓，勿因短期浮亏动摇长期股数目标。
 
@@ -106,19 +105,19 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 中芯国际(70.0分) · 港股最高 美团(51.9分) · 美股最高 AMD(80.0分)
+**全市场扫描**：A股最高 中芯国际(77.0分) · 港股最高 腾讯控股(53.8分) · 美股最高 AMD(80.0分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
-- **苹果**（美股）| 建议观察 | 评分 72.4 | 待突破 | 趋势过滤通过 | 止损缓冲 7.1% / 目标空间 25.5%
+- **中芯国际**（A股）| 弱信号观察 | 评分 77.0 | 待突破 | 趋势过滤未过 | 止损缓冲 18.7% / 目标空间 67.4% | 决策 62.6
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **中芯国际**（A股）| 弱信号观察 | 评分 70.0 | 待突破 | 趋势过滤未过 | 止损缓冲 17.2% / 目标空间 61.9%
+- **苹果**（美股）| 建议观察 | 评分 72.4 | 待突破 | 趋势过滤通过 | 止损缓冲 7.1% / 目标空间 25.5% | 决策 60.0
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **美团**（港股）| 弱信号观察 | 评分 51.9 | 待突破 | 趋势过滤未过 | 止损缓冲 12.2% / 目标空间 43.8%
+- **腾讯控股**（港股）| 弱信号观察 | 评分 53.8 | 待突破 | 趋势过滤未过 | 止损缓冲 10.1% / 目标空间 36.4% | 决策 64.1
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线
 
@@ -141,59 +140,59 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.108）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.109）。
 
-*在线学习：市场环境 risk_on · 修订 r108 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
+*在线学习：市场环境 risk_on · 修订 r109 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.8 · PEG 0.73 · ROE 20.5%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.5 · PEG 0.72 · ROE 20.5%
 
-  - ROE 20.52% — 资本回报优秀，符合巴菲特护城河标准；PE 16.78 — 估值在能力圈合理区间
+  - ROE 20.52% — 资本回报优秀，符合巴菲特护城河标准；PE 16.52 — 估值在能力圈合理区间
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.5 · ROE 14.0%
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.4 · ROE 14.0%
 
-  - ROE 14.0% — 盈利能力稳健；PE 14.53 — 估值在能力圈合理区间
+  - ROE 14.0% — 盈利能力稳健；PE 14.36 — 估值在能力圈合理区间
 
 
 ### 本杰明·格雷厄姆 · 深度价值
 
 *安全边际是投资核心：在价格显著低于内在价值时分批买入，分散持有。*
 
-- **招商银行**（A股）| 匹配 80.1 | 符合风格 · 建议关注 | PE 6.5 · PEG 9.21 · ROE 11.9%
+- **招商银行**（A股）| 匹配 78.2 | 符合风格 · 建议关注 | PE 6.5 · PEG 9.23 · ROE 11.9%
 
-  - PE 6.45 — 深度价值区间，安全边际充足；PB 0.82 — 资产折价，经典格雷厄姆信号
+  - PE 6.46 — 深度价值区间，安全边际充足；PB 0.82 — 资产折价，经典格雷厄姆信号
 
-- **中国平安**（A股）| 匹配 80.1 | 符合风格 · 建议关注 | PE 6.9 · ROE 11.3%
+- **中国平安**（A股）| 匹配 78.2 | 符合风格 · 建议关注 | PE 6.8 · ROE 11.3%
 
-  - PE 6.88 — 深度价值区间，安全边际充足；PB 0.89 — 资产折价，经典格雷厄姆信号
+  - PE 6.82 — 深度价值区间，安全边际充足；PB 0.88 — 资产折价，经典格雷厄姆信号
 
 
 ### 彼得·林奇 · 成长合理价 GARP
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.8 · PEG 0.28 · ROE 9.2%
+- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.7 · PEG 0.27 · ROE 9.2%
 
-  - PEG 0.28 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 82.6% — 成长故事可验证
+  - PEG 0.27 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 82.6% — 成长故事可验证
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.8 · PEG 0.73 · ROE 20.5%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.5 · PEG 0.72 · ROE 20.5%
 
-  - PEG 0.73 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 22.9% — 成长故事可验证
+  - PEG 0.72 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 22.9% — 成长故事可验证
 
 
 ### 查理·芒格 · 优质复利
 
 *以合理价格买入伟大的公司，胜过于以便宜价格买入平庸的公司。*
 
-- **贵州茅台**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.2 · PEG 10.11 · ROE 31.2%
+- **贵州茅台**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.2 · PEG 10.13 · ROE 31.2%
 
   - ROE 31.2% — 优质复利机器，芒格会长期持有；净利率 48.05% — 轻资产高毛利特征
 
-- **泡泡玛特**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 13.7 · PEG 5.04 · ROE 77.6%
+- **泡泡玛特**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 13.6 · PEG 5.03 · ROE 77.6%
 
   - ROE 77.6% — 优质复利机器，芒格会长期持有；净利率 34.42% — 轻资产高毛利特征
 
@@ -202,22 +201,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *在最大悲观时买入，在最大乐观时卖出；关注被错杀的优质资产。*
 
-- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.8 · PEG 0.28 · ROE 9.2%
+- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.7 · PEG 0.27 · ROE 9.2%
 
-  - 近三月 -28.39% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近三月 -28.8% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.5 · ROE 14.0%
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.4 · ROE 14.0%
 
-  - 近三月 -18.3% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近三月 -19.3% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
 
 
 ### 乔治·索罗斯 · 宏观趋势
 
 *反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
 
-- **中芯国际**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 280.3 · ROE 2.6%
+- **中芯国际**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 267.2 · ROE 2.6%
 
-  - 近一月 +36.43% — 趋势强劲，反身性正反馈；相对强度 +34.58% — 跑赢大盘，宏观共振
+  - 近一月 +30.06% — 趋势强劲，反身性正反馈；相对强度 +29.99% — 跑赢大盘，宏观共振
 
 - **AMD**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 172.5 · PEG 1.89 · ROE 8.1%
 
@@ -228,7 +227,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 544.9 · PEG 9.59 · ROE 3.9%
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 519.2 · PEG 9.14 · ROE 3.9%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
@@ -245,7 +244,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **系统进化看板**（GitHub Actions 自动维护）
 
-- 影子轨：影子轨积累中
+- 影子轨：影子轨第 1 周 · 归因样本积累中
 
 - 队列待办：**流水线过期 · 行情·荐股·模拟盘** — 检查工作流 update-market-data.yml 日志与 Secrets。
 
@@ -253,18 +252,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **After Apple, India’s smartphone manufacturing boom enters new phase with Vivo JV**（AAPL）
-  Vivo's joint venture could become a template for Chinese smartphone makers in India.…
-- [Yahoo] **Costco's June Sales Rose 10.6%, but the Stock Fell 4%. Here's What Spooked Investors.**（NVDA）
-  The headline numbers looked great. So why did the stock sell off?…
-- [Yahoo] **Jim Cramer says one AI giant holds key to market’s next move**（AAPL）
-  Yes, Jim Cramer has said a lot of things about a lot of stocks over the years. But when the "Mad Money" host identifies …
-- [Yahoo] **Why Mara Holdings Stock Spiked Today**（NVDA）
-  An intriguing acquisition is set to double the energy tech provider's power capacity.…
-- [Yahoo] **Micron's Data Center Gross Margin Hit 87% Last Quarter. Here's What It Means for the Stock.**（NVDA）
-  A memory chipmaker just posted a software-like margin. The real question is how long it can last.…
-- [Yahoo] **Should Arm’s AI-Driven Licensing Surge and New AGI CPU Strategy Require Action From Arm Holdings (ARM) Investors?**（^IXIC）
-  In recent days, Arm Holdings reported that licensing and other revenues rose 29% year on year to US$819 million, with ro…
+- [问财] **新金路：关于公司拟任独立董事取得独立董事资格证书的公告**（新金路 (000510.SZ)）
+  公告…
+- [问财] **光华科技：第六届董事会第九次会议决议公告**（光华科技 (002741.SZ)）
+  公告…
+- [问财] **光华科技：关于召开2026年第三次临时股东会的通知**（光华科技 (002741.SZ)）
+  公告…
+- [问财] **光华科技：关于公司及全资子公司向金融机构申请新增综合授信额度并由公司为子公司提供担保的公告**（光华科技 (002741.SZ)）
+  公告…
+- [问财] **泰豪科技：关于持股5%以上股东权益变动触及1%刻度的提示性公告**（泰豪科技 (600590.SH)）
+  公告…
+- [问财] **开滦股份：开滦能源化工股份有限公司2026年半年度业绩预亏公告**（开滦股份 (600997.SH)）
+  公告…
 
 ---
 
@@ -281,7 +280,8 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 ## 八、本时段关注清单
 
 1. 小米滚动卖出触发：涨 15% @ 27.00
-2. 收盘前：核对战役/战术止损位是否需手动校准（模拟盘仅作纪律参照）
+2. 待突破观察：中芯国际 突破位 174.51
+3. 收盘前：核对战役/战术止损位是否需手动校准（模拟盘仅作纪律参照）
 
 ---
 
