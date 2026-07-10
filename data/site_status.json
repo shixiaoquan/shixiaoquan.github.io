@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10T06:27:52+00:00",
+  "updatedAt": "2026-07-10T06:34:55+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -37,13 +37,23 @@
     "shadowWinRateT5": null,
     "shadowAvgReturnT5": null,
     "shadowMaturedT5": 0,
+    "pairedCount": 0,
+    "pairedShadowWinRate": null,
     "strategyUpgradePending": true,
     "strategyUpgradeHint": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）",
     "shadowReadyForPR": false
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-10T05:43:38+00:00",
+    "updatedAt": "2026-07-10T06:34:55+00:00",
     "tasks": [
+      {
+        "id": "fix-pipeline-market",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · 行情·荐股·模拟盘",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      },
       {
         "id": "fix-pipeline-macro",
         "type": "fix_pipeline",
@@ -59,14 +69,6 @@
         "title": "流水线过期 · Truth Social 镜像",
         "reason": "stale",
         "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
-      },
-      {
-        "id": "fix-pipeline-wencai",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · 问财自然语言筛选",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-wencai-data.yml 日志与 Secrets。"
       },
       {
         "id": "shadow-tracking",
@@ -163,7 +165,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T05:11:50+00:00",
       "status": "stale",
-      "ageMinutes": 76
+      "ageMinutes": 83
     },
     {
       "id": "macro",
@@ -172,7 +174,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T05:11:43+00:00",
       "status": "stale",
-      "ageMinutes": 76
+      "ageMinutes": 83
     },
     {
       "id": "truth",
@@ -181,7 +183,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-10T05:05:53+00:00",
       "status": "stale",
-      "ageMinutes": 81
+      "ageMinutes": 89
     },
     {
       "id": "wencai",
@@ -190,7 +192,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-10T04:15:14+00:00",
       "status": "ok",
-      "ageMinutes": 132
+      "ageMinutes": 139
     },
     {
       "id": "reports",
@@ -199,7 +201,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-10T12:44:11+08:00",
       "status": "ok",
-      "ageMinutes": 103
+      "ageMinutes": 110
     },
     {
       "id": "backtest",
@@ -208,9 +210,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-05T03:06:16+00:00",
       "status": "ok",
-      "ageMinutes": 7401
+      "ageMinutes": 7408
     }
   ],
   "triggeredBy": "Continuous Evolution",
-  "runId": "29073881006"
+  "runId": "29074189119"
 }
