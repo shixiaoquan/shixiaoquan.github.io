@@ -152,6 +152,9 @@ def _evolution_block() -> dict:
         "recoWinRateT5": attr_summary.get("winRateT5"),
         "strategyUpgradePending": bool(candidates.get("recommendUpgrade")),
         "strategyUpgradeHint": candidates.get("upgradeReason") or "",
+        "shadowReadyForPR": bool(
+            (_load_json(DATA_DIR / "shadow_reco.json") or {}).get("comparison", {}).get("readyForUpgradePR")
+        ),
     }
 
 
@@ -185,6 +188,8 @@ def build_payload() -> dict:
     except Exception:
         recent_log = (_load_json(DATA_DIR / "evolution_log.json") or {}).get("events", [])[:6]
 
+    evolution_queue = _load_json(DATA_DIR / "evolution_queue.json") or {}
+
     return {
         "updatedAt": now.isoformat(timespec="seconds"),
         "mode": "github-actions",
@@ -197,6 +202,7 @@ def build_payload() -> dict:
             "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR",
         },
         "evolution": evolution,
+        "evolutionQueue": evolution_queue,
         "recentLog": recent_log,
         "pipelines": pipelines,
         "triggeredBy": os.environ.get("GITHUB_WORKFLOW") or "local",

@@ -76,6 +76,7 @@ def run_sweep() -> dict:
     )
     best = candidates[0] if candidates else None
     recommend = False
+    shadow_candidate = False
     reason = ""
     insufficient = current_explore["totalTrades"] < 5
 
@@ -86,10 +87,11 @@ def run_sweep() -> dict:
         )
     elif best and best["totalTrades"] >= 5:
         if best["expectancy"] > current_explore["expectancy"] + 0.12 and best["winRate"] >= current_explore["winRate"] - 3:
-            recommend = True
+            # 不直接 recommend 生产升级，转影子轨 forward 验证
+            shadow_candidate = True
             reason = (
-                f"探索期望 {best['expectancy']}% > 当前 {current_explore['expectancy']}% · "
-                f"buy={best['buyScore']} breakout={best['breakoutScoreMin']}（需 Cursor 审阅后合入生产）"
+                f"探索候选 buy={best['buyScore']} breakout={best['breakoutScoreMin']} "
+                f"期望 {best['expectancy']}% — 已写入影子轨，满 4 周后可提 PR"
             )
         else:
             reason = "hold"
@@ -106,11 +108,12 @@ def run_sweep() -> dict:
         "bestCandidate": best,
         "topCandidates": candidates[:5],
         "recommendUpgrade": recommend,
+        "shadowCandidate": shadow_candidate,
         "upgradeReason": reason,
         "insufficientSamples": insufficient,
         "cursorHint": (
-            "recommendUpgrade=true 时请 Cursor 更新 strategy_config.py 并开 PR"
-            if recommend
+            "候选已转入影子轨 shadow_reco.json；勿直接改 strategy_config"
+            if shadow_candidate
             else reason
         ),
     }

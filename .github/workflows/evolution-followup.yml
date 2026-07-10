@@ -1,0 +1,48 @@
+name: Evolution Follow-up
+
+# 行情/回测工作流成功后：影子轨对比 + 进化队列刷新（事件驱动）
+
+on:
+  workflow_run:
+    workflows:
+      - Update Market Data
+      - Weekly Backtest
+    types: [completed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-push-master
+  cancel-in-progress: false
+
+jobs:
+  followup:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-python-deps
+
+      - name: Shadow track & evolution queue
+        run: |
+          python scripts/shadow_reco.py || true
+          python scripts/build_evolution_queue.py
+          python scripts/build_site_status.py
+
+      - name: Validate data schema
+        run: python scripts/validate_data.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/shadow_reco.json data/evolution_queue.json data/site_status.json
+          if git diff --staged --quiet; then
+            echo "No followup changes."
+          else
+            git commit -m "chore: evolution followup (shadow + queue)"
+            git pull --rebase origin master
+            git push
+          fi
