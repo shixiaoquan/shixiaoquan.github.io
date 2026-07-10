@@ -255,6 +255,11 @@ def tactical_section(market: dict | None, signals: dict | None) -> str:
                 f"- **{p.get('name')}**（{p.get('market')}）| {p.get('signalLabel')} | "
                 f"评分 {p.get('score')} | {breakout} | {regime} | "
                 f"止损缓冲 {fmt_num(p.get('distToStopPct'), 1)}% / 目标空间 {fmt_num(p.get('distToTargetPct'), 1)}%"
+                + (
+                    f" | 决策 {p.get('decisionScore')}"
+                    if p.get("decisionScore") is not None
+                    else ""
+                )
             )
             if p.get("reasons"):
                 parts.append(f"  - 逻辑：{'；'.join(p['reasons'][:3])}")
@@ -290,6 +295,40 @@ def tactical_section(market: dict | None, signals: dict | None) -> str:
                     f"RSI {fmt_num(c.get('rsi'), 1)} RS {fmt_pct(c.get('relativeStrength'))}"
                 )
 
+    return "\n\n".join(parts)
+
+
+def evolution_section() -> str:
+    """持续进化状态 — 影子轨、队列、战术自适应。"""
+    queue = load_json(DATA_DIR / "evolution_queue.json", {})
+    shadow = load_json(DATA_DIR / "shadow_reco.json", {})
+    paired = load_json(DATA_DIR / "paired_attribution.json", {})
+    tune = load_json(DATA_DIR / "tactic_tune.json", {})
+
+    parts = ["**系统进化看板**（GitHub Actions 自动维护）"]
+    cmp_ = shadow.get("comparison") or {}
+    if cmp_.get("reason"):
+        parts.append(f"- 影子轨：{cmp_['reason']}")
+    paired_sum = paired.get("summary") or {}
+    if paired_sum.get("pairedCount"):
+        parts.append(
+            f"- 配对归因：{paired_sum['pairedCount']} 对 · "
+            f"影子胜率 {paired_sum.get('shadowWinRate')}% · "
+            f"均边际 {fmt_num(paired_sum.get('avgEdgeT5'))}%"
+        )
+    if tune.get("active"):
+        parts.append(
+            f"- 战术自适应：门槛 {tune.get('buyScoreAdjust'):+d} · "
+            f"{'; '.join((tune.get('notes') or [])[:2])}"
+        )
+    tasks = queue.get("tasks") or []
+    if tasks:
+        top = tasks[0]
+        parts.append(f"- 队列待办：**{top.get('title')}** — {top.get('cursorPrompt', '')[:120]}")
+    else:
+        parts.append("- 进化队列：空闲，系统正常运转")
+    if cmp_.get("readyForUpgradePR"):
+        parts.append("> **提示**：影子轨验证通过，可请 Cursor 按 EVOLUTION_PLAYBOOK 开策略升级 PR。")
     return "\n\n".join(parts)
 
 
@@ -597,13 +636,19 @@ def build_report(slot: str, now_bjt: datetime | None = None) -> tuple[str, dict]
 
 ---
 
-## 五、资讯与主题线索
+## 五、持续进化状态
+
+{evolution_section()}
+
+---
+
+## 六、资讯与主题线索
 
 {news_section(market, wencai)}
 
 ---
 
-## 六、风险提示
+## 七、风险提示
 
 1. 本报告基于公开行情与规则化模型，**不构成投资建议**；战术实验与战役 XRPS 为相互独立的两套体系，请勿混仓决策。  
 2. 港股 / 美股存在汇率、流动性及隔夜缺口风险；A股须关注涨跌停制度下的执行偏差。  
@@ -613,7 +658,7 @@ def build_report(slot: str, now_bjt: datetime | None = None) -> tuple[str, dict]
 
 ---
 
-## 七、本时段关注清单
+## 八、本时段关注清单
 
 {watchlist(slot, market, paper, signals, diag)}
 

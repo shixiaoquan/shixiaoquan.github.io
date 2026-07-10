@@ -28,6 +28,7 @@ jobs:
       - name: Shadow track & evolution queue
         run: |
           python scripts/shadow_attribution.py || true
+          python scripts/paired_attribution.py || true
           python scripts/shadow_reco.py || true
           python scripts/build_evolution_queue.py
           python scripts/build_site_status.py
@@ -39,7 +40,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/shadow_reco.json data/shadow_attribution.json data/evolution_queue.json data/site_status.json
+          git add data/shadow_reco.json data/shadow_attribution.json data/paired_attribution.json data/evolution_queue.json data/site_status.json
           if git diff --staged --quiet; then
             echo "No followup changes."
           else

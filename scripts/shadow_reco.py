@@ -11,6 +11,7 @@ from unittest.mock import patch
 
 import strategy_scoring as sc
 from decision_score import enrich_picks, load_context_files
+from market_regime import detect_market_regime
 from fetch_data import (
     CANDIDATES,
     MARKETS,
@@ -95,7 +96,7 @@ def build_shadow_picks(now: datetime, params: dict) -> list[dict]:
     return picks[: len(MARKETS)]
 
 
-def _append_shadow_history(state: dict, picks: list[dict], recorded_at: datetime) -> None:
+def _append_shadow_history(state: dict, picks: list[dict], recorded_at: datetime, *, market_context: dict | None = None) -> None:
     records = state.setdefault("history", {}).get("records", [])
     if not isinstance(state.get("history"), dict):
         state["history"] = {"records": []}
@@ -108,6 +109,7 @@ def _append_shadow_history(state: dict, picks: list[dict], recorded_at: datetime
         {
             "id": recorded_at.isoformat(timespec="seconds"),
             "recordedAt": recorded_at.isoformat(timespec="seconds"),
+            "marketContext": market_context or {},
             "picks": [compact_pick(p) for p in picks],
         }
     )
@@ -155,7 +157,31 @@ def compare_tracks() -> dict:
         reason = f"影子轨第 {shadow_weeks} 周 · 归因样本积累中"
 
     min_shadow_samples = 8
+    paired = _load(DATA_DIR / "paired_attribution.json", {}) or {}
+    paired_summary = paired.get("summary") or {}
+    paired_count = paired_summary.get("pairedCount") or 0
+    paired_win = paired_summary.get("shadowWinRate")
+    paired_edge = paired_summary.get("avgEdgeT5")
+
+    if paired_count >= 6 and paired_win is not None:
+        reason = (
+            f"配对归因 {paired_count} 对 · 影子胜率 {paired_win}% · "
+            f"均边际 {paired_edge}%"
+        )
+
     if (
+        shadow_weeks >= 4
+        and paired_count >= 6
+        and paired_win is not None
+        and paired_edge is not None
+    ):
+        if paired_win >= 55 and paired_edge >= 0.5:
+            shadow_wins = True
+            reason = (
+                f"配对归因 {paired_count} 对：影子胜率 {paired_win}%，"
+                f"均边际 +{paired_edge}% — 可申请升级 PR"
+            )
+    elif (
         shadow_weeks >= 4
         and shadow_matured >= min_shadow_samples
         and prod_matured >= min_shadow_samples
@@ -184,6 +210,9 @@ def compare_tracks() -> dict:
         "prodAvgReturnT5": prod_avg,
         "shadowWinRateT5": shadow_win,
         "shadowAvgReturnT5": shadow_avg,
+        "pairedCount": paired_count,
+        "pairedShadowWinRate": paired_win,
+        "pairedAvgEdgeT5": paired_edge,
         "shadowWins": shadow_wins,
         "reason": reason,
         "readyForUpgradePR": shadow_wins and shadow_weeks >= 4,
@@ -210,7 +239,18 @@ def run_shadow_update() -> dict:
         "picks": picks,
         "disclaimer": "影子荐股仅供 forward 验证，不可直接跟单。",
     }
-    _append_shadow_history(state, picks, now)
+    _append_shadow_history(
+        state,
+        picks,
+        now,
+        market_context={
+            "mood": market.get("summary", {}).get("mood"),
+            "regime": detect_market_regime(
+                market.get("summary"),
+                (ctx.get("macro") or {}).get("summary"),
+            ),
+        },
+    )
     state["comparison"] = compare_tracks()
     OUTPUT.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Shadow reco: {len(picks)} picks · records {len(state['history']['records'])} · {state['comparison']['reason']}")

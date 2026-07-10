@@ -3278,6 +3278,9 @@ async function refreshTradingData() {
 
 async function fetchRecoHistory() {
   try {
+    if (typeof DataCache !== "undefined") {
+      return await DataCache.fetchJson(HISTORY_URL);
+    }
     const response = await fetch(`${HISTORY_URL}?t=${Date.now()}`, { cache: "no-store" });
     if (!response.ok) return null;
     return await response.json();

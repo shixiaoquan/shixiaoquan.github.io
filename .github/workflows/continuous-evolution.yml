@@ -30,16 +30,26 @@ jobs:
 
       - uses: ./.github/actions/setup-python-deps
 
-      - name: Build site status
+      - name: Build site status & evolution queue
         env:
           GITHUB_WORKFLOW: ${{ github.workflow }}
           GITHUB_RUN_ID: ${{ github.run_id }}
-        run: python scripts/build_site_status.py
+        run: |
+          python scripts/build_evolution_queue.py
+          python scripts/build_site_status.py
 
       - name: Pipeline health check
         env:
           GITHUB_ACTIONS: "true"
         run: python scripts/pipeline_health.py || true
+
+      - name: Evolution queue health check
+        env:
+          GITHUB_ACTIONS: "true"
+        run: python scripts/evolution_queue_health.py || true
+
+      - name: Validate data schema
+        run: python scripts/validate_data.py
 
       - name: Sync pipeline health Issue
         uses: actions/github-script@v9
@@ -93,11 +103,63 @@ jobs:
               labels: ['pipeline-health', 'automated'],
             });
 
+      - name: Sync evolution queue Issue
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            const path = 'data/evolution_queue_health.json';
+            if (!fs.existsSync(path)) {
+              core.info('No evolution_queue_health.json');
+              return;
+            }
+            const health = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const tasks = health.actionable || [];
+            const title = health.issueTitle;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'evolution-queue',
+              per_page: 5,
+            });
+            const existing = issues.find(i => i.title === title);
+            if (tasks.length === 0) {
+              if (existing) {
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existing.number,
+                  state: 'closed',
+                });
+                core.info('Closed evolution queue issue');
+              }
+              return;
+            }
+            const body = health.issueBody + '\n\nRun: ' + context.runId;
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: `进化队列仍有 ${tasks.length} 条高优待办 · ${new Date().toISOString()}\n\n${body}`,
+              });
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['evolution-queue', 'automated'],
+            });
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/site_status.json data/pipeline_health.json data/evolution_log.json
+          git add data/evolution_queue.json data/evolution_queue_health.json
           if git diff --staged --quiet; then
             echo "Site status unchanged."
           else

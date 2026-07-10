@@ -157,6 +157,10 @@ def _evolution_block() -> dict:
         "shadowWinRateT5": shadow_summary.get("winRateT5") or comparison.get("shadowWinRateT5"),
         "shadowAvgReturnT5": shadow_summary.get("avgReturnT5") or comparison.get("shadowAvgReturnT5"),
         "shadowMaturedT5": shadow_summary.get("maturedT5") or comparison.get("shadowMaturedT5"),
+        "pairedCount": comparison.get("pairedCount")
+        or (_load_json(DATA_DIR / "paired_attribution.json") or {}).get("summary", {}).get("pairedCount"),
+        "pairedShadowWinRate": comparison.get("pairedShadowWinRate")
+        or (_load_json(DATA_DIR / "paired_attribution.json") or {}).get("summary", {}).get("shadowWinRate"),
         "strategyUpgradePending": bool(candidates.get("recommendUpgrade")),
         "strategyUpgradeHint": candidates.get("upgradeReason") or "",
         "shadowReadyForPR": bool(comparison.get("readyForUpgradePR")),

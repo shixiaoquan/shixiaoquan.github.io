@@ -31,7 +31,7 @@ function renderEvolutionPanel(data) {
 
   const attrT5 =
     ev.recoWinRateT5 != null
-      ? `生产 ${ev.recoWinRateT5}%${ev.shadowWinRateT5 != null ? ` · 影子 ${ev.shadowWinRateT5}%` : ""}`
+      ? `生产 ${ev.recoWinRateT5}%${ev.shadowWinRateT5 != null ? ` · 影子 ${ev.shadowWinRateT5}%` : ""}${ev.pairedShadowWinRate != null ? ` · 配对 ${ev.pairedShadowWinRate}%` : ""}`
       : null;
   const upgradeNote = ev.strategyUpgradePending ? "待 Cursor 审阅升级" : null;
   const tuneNote =
