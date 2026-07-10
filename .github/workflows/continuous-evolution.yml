@@ -42,7 +42,7 @@ jobs:
         run: python scripts/pipeline_health.py || true
 
       - name: Sync pipeline health Issue
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
