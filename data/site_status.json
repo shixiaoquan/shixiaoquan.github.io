@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-11T09:49:53+00:00",
+  "updatedAt": "2026-07-11T09:52:50+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -163,7 +163,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T13:34:09+00:00",
       "status": "stale",
-      "ageMinutes": 1215
+      "ageMinutes": 1218
     },
     {
       "id": "macro",
@@ -172,16 +172,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T13:34:00+00:00",
       "status": "stale",
-      "ageMinutes": 1215
+      "ageMinutes": 1218
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-07-11T08:13:21+00:00",
-      "status": "stale",
-      "ageMinutes": 96
+      "updatedAt": "2026-07-11T09:52:48+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -190,7 +190,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-11T08:59:33+00:00",
       "status": "ok",
-      "ageMinutes": 50
+      "ageMinutes": 53
     },
     {
       "id": "reports",
@@ -199,7 +199,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-11T17:20:02+08:00",
       "status": "ok",
-      "ageMinutes": 29
+      "ageMinutes": 32
     },
     {
       "id": "backtest",
@@ -208,9 +208,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-05T03:06:16+00:00",
       "status": "ok",
-      "ageMinutes": 9043
+      "ageMinutes": 9046
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "29148346935"
+  "triggeredBy": "Update Truth Social",
+  "runId": "29148431638"
 }
