@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-12T13:56:21+00:00",
+  "updatedAt": "2026-07-12T15:16:27+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 30 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 30 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 94,
@@ -222,7 +222,7 @@
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603019.SH",
@@ -280,65 +280,10 @@
           "changePct": 3.6,
           "flow": 952630082
         }
-      ]
-    },
-    {
-      "id": "range",
-      "title": "箱体震荡",
-      "query": "60日内振幅小于15%且今日放量",
-      "status": "stale",
-      "items": [
-        {
-          "code": "600887.SH",
-          "name": "伊利股份",
-          "price": 24.88,
-          "changePct": 0.12
-        },
-        {
-          "code": "600674.SH",
-          "name": "川投能源",
-          "price": 14.67,
-          "changePct": -0.07
-        },
-        {
-          "code": "600177.SH",
-          "name": "雅戈尔",
-          "price": 7.61,
-          "changePct": -1.42
-        },
-        {
-          "code": "601319.SH",
-          "name": "中国人保",
-          "price": 7.06,
-          "changePct": -0.98
-        },
-        {
-          "code": "601928.SH",
-          "name": "凤凰传媒",
-          "price": 9.13,
-          "changePct": 0.44
-        },
-        {
-          "code": "600755.SH",
-          "name": "厦门国贸",
-          "price": 5.95,
-          "changePct": -1.98
-        },
-        {
-          "code": "002332.SZ",
-          "name": "仙琚制药",
-          "price": 8.25,
-          "changePct": 0.86
-        },
-        {
-          "code": "600033.SH",
-          "name": "福建高速",
-          "price": 3.42,
-          "changePct": 1.18
-        }
       ],
       "stale": true,
-      "staleMessage": "沿用上次数据"
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -675,6 +620,9 @@
   ],
   "errors": [
     "limit_down: 'NoneType' object has no attribute 'get'",
-    "hot: 'NoneType' object has no attribute 'get'"
-  ]
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "range: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
