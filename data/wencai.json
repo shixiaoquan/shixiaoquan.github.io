@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-12T03:59:18+00:00",
+  "updatedAt": "2026-07-12T06:46:26+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 34 条资讯 · 部分沿用缓存",
+  "message": "已更新 5 个市场问句 · 11 条资讯",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 94,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "000004.SZ",
@@ -91,16 +91,13 @@
           "changePct": 10.02
         }
       ],
-      "count": 94,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 94
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "002192.SZ",
@@ -133,16 +130,13 @@
           "changePct": -10.0
         }
       ],
-      "count": 5,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 5
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "002354.SZ",
@@ -152,38 +146,38 @@
           "rank": "1"
         },
         {
-          "code": "002185.SZ",
-          "name": "华天科技",
-          "price": 25.31,
-          "changePct": 6.66,
-          "rank": "2"
-        },
-        {
           "code": "000938.SZ",
           "name": "紫光股份",
           "price": 38.41,
           "changePct": 7.65,
+          "rank": "2"
+        },
+        {
+          "code": "002185.SZ",
+          "name": "华天科技",
+          "price": 25.31,
+          "changePct": 6.66,
           "rank": "3"
         },
         {
-          "code": "000725.SZ",
-          "name": "京东方A",
-          "price": 7.59,
-          "changePct": -6.87,
+          "code": "603019.SH",
+          "name": "中科曙光",
+          "price": 107.5,
+          "changePct": 3.38,
           "rank": "4"
-        },
-        {
-          "code": "605090.SH",
-          "name": "九丰能源",
-          "price": 37.98,
-          "changePct": 9.99,
-          "rank": "5"
         },
         {
           "code": "000977.SZ",
           "name": "浪潮信息",
           "price": 89.52,
           "changePct": 4.11,
+          "rank": "5"
+        },
+        {
+          "code": "000725.SZ",
+          "name": "京东方A",
+          "price": 7.59,
+          "changePct": -6.87,
           "rank": "6"
         },
         {
@@ -201,29 +195,26 @@
           "rank": "8"
         },
         {
-          "code": "603019.SH",
-          "name": "中科曙光",
-          "price": 107.5,
-          "changePct": 3.38,
+          "code": "605090.SH",
+          "name": "九丰能源",
+          "price": 37.98,
+          "changePct": 9.99,
           "rank": "9"
         },
         {
-          "code": "600206.SH",
-          "name": "有研新材",
-          "price": 60.0,
-          "changePct": 1.04,
+          "code": "300065.SZ",
+          "name": "海兰信",
+          "price": 28.79,
+          "changePct": 20.01,
           "rank": "10"
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "603019.SH",
@@ -281,273 +272,73 @@
           "changePct": 3.6,
           "flow": 952630082
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
+    },
+    {
+      "id": "range",
+      "title": "箱体震荡",
+      "query": "60日内振幅小于15%且今日放量",
+      "status": "ok",
+      "items": [
+        {
+          "code": "600887.SH",
+          "name": "伊利股份",
+          "price": 24.88,
+          "changePct": 0.12
+        },
+        {
+          "code": "600674.SH",
+          "name": "川投能源",
+          "price": 14.67,
+          "changePct": -0.07
+        },
+        {
+          "code": "600177.SH",
+          "name": "雅戈尔",
+          "price": 7.61,
+          "changePct": -1.42
+        },
+        {
+          "code": "601319.SH",
+          "name": "中国人保",
+          "price": 7.06,
+          "changePct": -0.98
+        },
+        {
+          "code": "601928.SH",
+          "name": "凤凰传媒",
+          "price": 9.13,
+          "changePct": 0.44
+        },
+        {
+          "code": "600755.SH",
+          "name": "厦门国贸",
+          "price": 5.95,
+          "changePct": -1.98
+        },
+        {
+          "code": "002332.SZ",
+          "name": "仙琚制药",
+          "price": 8.25,
+          "changePct": 0.86
+        },
+        {
+          "code": "600033.SH",
+          "name": "福建高速",
+          "price": 3.42,
+          "changePct": 1.18
+        }
+      ]
     }
   ],
   "news": [
     {
-      "id": "wencai:290be0801eb195c8",
-      "title": "联建光电：公司章程（2026年7月）",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225419571.pdf",
+      "id": "wencai:aac757fe3d463aa0",
+      "title": "赛意信息：2026年7月10日投资者关系活动记录表",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-12/1225420489.PDF",
       "publisher": "同花顺问财",
-      "related": "联建光电 (300269.SZ)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:93a029312c8706e5",
-      "title": "联建光电：公司章程修订表（2026年7月）",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225419570.PDF",
-      "publisher": "同花顺问财",
-      "related": "联建光电 (300269.SZ)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:1c232c74c10fa012",
-      "title": "联建光电：关于召开2026年第一次临时股东会的通知",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225419568.PDF",
-      "publisher": "同花顺问财",
-      "related": "联建光电 (300269.SZ)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:511739e54b34415e",
-      "title": "华电新能：华电新能源集团股份有限公司关于首次公开发行前已发行的部分限售股份及首次公开发行部分战略配售股份上市流通的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600930_20260711_RC4F.pdf",
-      "publisher": "同花顺问财",
-      "related": "华电新能 (600930.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:dc26abfbeabde6a2",
-      "title": "华电新能：中国国际金融股份有限公司关于华电新能源集团股份有限公司首次公开发行前已发行的部分限售股份及首次公开发行部分战略配售股份上市流通的核查意见",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600930_20260711_4BWS.pdf",
-      "publisher": "同花顺问财",
-      "related": "华电新能 (600930.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:319d12e46322c55f",
-      "title": "华电新能：华泰联合证券有限责任公司关于华电新能源集团股份有限公司首次公开发行前已发行的部分限售股份及首次公开发行部分战略配售股份上市流通的核查意见",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600930_20260711_S8UQ.pdf",
-      "publisher": "同花顺问财",
-      "related": "华电新能 (600930.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:683ac31a747e9366",
-      "title": "瑞立科密：关于获得国家科学技术进步奖二等奖的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418247.PDF",
-      "publisher": "同花顺问财",
-      "related": "瑞立科密 (001285.SZ)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:ea6d15911b60f458",
-      "title": "江苏新能：江苏新能2026年半年度业绩预告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/603693_20260711_YDEJ.pdf",
-      "publisher": "同花顺问财",
-      "related": "江苏新能 (603693.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:f2608ff4a4b5d0aa",
-      "title": "新金路：关于公司拟任独立董事取得独立董事资格证书的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418188.PDF",
-      "publisher": "同花顺问财",
-      "related": "新金路 (000510.SZ)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:c38d767e0bffffd7",
-      "title": "光华科技：第六届董事会第九次会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418185.PDF",
-      "publisher": "同花顺问财",
-      "related": "光华科技 (002741.SZ)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:91d0ba98cdf68469",
-      "title": "光华科技：关于召开2026年第三次临时股东会的通知",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418186.PDF",
-      "publisher": "同花顺问财",
-      "related": "光华科技 (002741.SZ)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:1500fa724be80430",
-      "title": "光华科技：关于公司及全资子公司向金融机构申请新增综合授信额度并由公司为子公司提供担保的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225418187.PDF",
-      "publisher": "同花顺问财",
-      "related": "光华科技 (002741.SZ)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:86fdce8b829b67fa",
-      "title": "京投发展：京投发展股份有限公司关于筹划重大资产重组的进展公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600683_20260711_WM3G.pdf",
-      "publisher": "同花顺问财",
-      "related": "京投发展 (600683.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:f97b0072f2459c6e",
-      "title": "泰豪科技：关于持股5%以上股东权益变动触及1%刻度的提示性公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600590_20260711_558P.pdf",
-      "publisher": "同花顺问财",
-      "related": "泰豪科技 (600590.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:af89abffe37afa96",
-      "title": "惠博普：2026年半年度业绩预告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-11/1225419584.PDF",
-      "publisher": "同花顺问财",
-      "related": "惠博普 (002554.SZ)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:23eb26f02e96274f",
-      "title": "京能电力：2025年年度权益分派实施公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600578_20260711_0QKZ.pdf",
-      "publisher": "同花顺问财",
-      "related": "京能电力 (600578.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:33667865d4c1b2d5",
-      "title": "万东医疗：万东医疗2026年半年度业绩预告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600055_20260711_I0AS.pdf",
-      "publisher": "同花顺问财",
-      "related": "万东医疗 (600055.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:4d064b29acff909f",
-      "title": "万东医疗：万东医疗关于上海证券交易所对公司2025年年度报告及2026年一季度报告的信息披露监管问询函的回复公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600055_20260711_CHUO.pdf",
-      "publisher": "同花顺问财",
-      "related": "万东医疗 (600055.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:411fa437c65c6f02",
-      "title": "万东医疗：立信会计师事务所（特殊普通合伙）对关于万东医疗2025年年度报告及2026年一季度报告的信息披露监管问询函的回复",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600055_20260711_M1Y3.pdf",
-      "publisher": "同花顺问财",
-      "related": "万东医疗 (600055.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:24088c80d1e180ef",
-      "title": "重庆银行：关于诉讼事项的进展公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/601963_20260711_PPON.pdf",
-      "publisher": "同花顺问财",
-      "related": "重庆银行 (601963.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:51e855a4dfa5d278",
-      "title": "城投控股：上海城投控股股份有限公司2026年半年度业绩预告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600649_20260711_V2L0.pdf",
-      "publisher": "同花顺问财",
-      "related": "城投控股 (600649.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:b35ad00a8f3aabfe",
-      "title": "开滦股份：开滦能源化工股份有限公司2026年半年度业绩预亏公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600997_20260711_9EX0.pdf",
-      "publisher": "同花顺问财",
-      "related": "开滦股份 (600997.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:2d0857bee880e584",
-      "title": "巨化股份：巨化股份关于为控股子公司提供担保进展的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600160_20260711_FA7B.pdf",
-      "publisher": "同花顺问财",
-      "related": "巨化股份 (600160.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:2400d39b55df93ad",
-      "title": "巨化股份：巨化股份2026年上半年度主要经营数据公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-11/600160_20260711_EN7G.pdf",
-      "publisher": "同花顺问财",
-      "related": "巨化股份 (600160.SH)",
-      "publishedAt": "2026-07-10T16:00:00+00:00",
+      "related": "赛意信息 (300687.SZ)",
+      "publishedAt": "2026-07-11T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
@@ -662,12 +453,5 @@
       "source": "wencai",
       "category": "利好"
     }
-  ],
-  "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
-    "limit_down: 'NoneType' object has no attribute 'get'",
-    "main_flow: 'NoneType' object has no attribute 'get'",
-    "range: 'NoneType' object has no attribute 'get'"
-  ],
-  "newsStale": true
+  ]
 }
