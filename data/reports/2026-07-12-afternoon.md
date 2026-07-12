@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年07月12日 14:39（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年07月12日 17:44（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-07-10 21:33 · 宏观：2026-07-10 21:34 · 问财：2026-07-12 11:59
+> 行情更新：2026-07-10 21:33 · 宏观：2026-07-10 21:34 · 问财：2026-07-12 17:16
 
 ---
 
@@ -254,18 +254,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 六、资讯与主题线索
 
-- [问财] **联建光电：公司章程（2026年7月）**（联建光电 (300269.SZ)）
+- [问财] **赛意信息：2026年7月10日投资者关系活动记录表**（赛意信息 (300687.SZ)）
   公告…
-- [问财] **联建光电：公司章程修订表（2026年7月）**（联建光电 (300269.SZ)）
-  公告…
-- [问财] **联建光电：关于召开2026年第一次临时股东会的通知**（联建光电 (300269.SZ)）
-  公告…
-- [问财] **华电新能：华电新能源集团股份有限公司关于首次公开发行前已发行的部分限售股份及首次公开发行部分战略配售股份上市流通的公告**（华电新能 (600930.SH)）
-  公告…
-- [问财] **华电新能：中国国际金融股份有限公司关于华电新能源集团股份有限公司首次公开发行前已发行的部分限售股份及首次公开发行部分战略配售股份上市流通的核查意见**（华电新能 (600930.SH)）
-  公告…
-- [问财] **华电新能：华泰联合证券有限责任公司关于华电新能源集团股份有限公司首次公开发行前已发行的部分限售股份及首次公开发行部分战略配售股份上市流通的核查意见**（华电新能 (600930.SH)）
-  公告…
+- [Yahoo] **Goldman Sachs Reports Earnings on July 14. Can Its Investment Banking Surge Keep Going?**（NVDA）
+  Goldman Sachs is poised for a strong Q2.…
+- [Yahoo] **Stock Market Today: Dow Rises, But Nasdaq Falls Ahead Of SK Hynix Stock Debut (Live Coverage)**（^GSPC）
+  Stock Market Today: The Dow Jones index rose Friday, while the Nasdaq dropped ahead of the debut of SK Hynix stock.…
+- [Yahoo] **Should You Buy Micron Stock Under $1,000?**（NVDA）
+  Micron stock has been cratering since the company reported earnings in late June.…
+- [Yahoo] **Here’s Kingdom Capital Advisors’ Views on Scully Royalty (SRL)**（^GSPC）
+  Kingdom Capital Advisors, a registered investment advisor, released its second-quarter 2026 investor letter. A copy of t…
+- [Yahoo] **Magnera (MAGN) Shows Strong Execution, Cheap Valuation**（^GSPC）
+  Kingdom Capital Advisors, a registered investment advisor, released its second-quarter 2026 investor letter. A copy of t…
 
 ---
 
