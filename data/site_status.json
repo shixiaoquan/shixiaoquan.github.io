@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-12T05:24:42+00:00",
+  "updatedAt": "2026-07-12T06:39:01+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -162,7 +162,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T13:34:09+00:00",
       "status": "stale",
-      "ageMinutes": 2390
+      "ageMinutes": 2464
     },
     {
       "id": "macro",
@@ -171,7 +171,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-10T13:34:00+00:00",
       "status": "stale",
-      "ageMinutes": 2390
+      "ageMinutes": 2465
     },
     {
       "id": "truth",
@@ -179,8 +179,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-12T04:43:38+00:00",
-      "status": "ok",
-      "ageMinutes": 41
+      "status": "stale",
+      "ageMinutes": 115
     },
     {
       "id": "wencai",
@@ -188,17 +188,17 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-12T03:59:18+00:00",
-      "status": "ok",
-      "ageMinutes": 85
+      "status": "stale",
+      "ageMinutes": 159
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-07-12T12:21:12+08:00",
+      "updatedAt": "2026-07-12T14:39:01+08:00",
       "status": "ok",
-      "ageMinutes": 63
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -207,9 +207,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-12T05:23:36+00:00",
       "status": "ok",
-      "ageMinutes": 1
+      "ageMinutes": 75
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "29181113962"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "29182961687"
 }
