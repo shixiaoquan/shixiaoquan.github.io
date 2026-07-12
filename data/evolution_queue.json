@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12T04:47:21+00:00",
+  "updatedAt": "2026-07-12T05:24:06+00:00",
   "tasks": [
     {
       "id": "fix-pipeline-market",
@@ -18,14 +18,6 @@
       "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
     },
     {
-      "id": "fix-pipeline-truth",
-      "type": "fix_pipeline",
-      "priority": "high",
-      "title": "流水线过期 · Truth Social 镜像",
-      "reason": "stale",
-      "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
-    },
-    {
       "id": "shadow-tracking",
       "type": "shadow_track",
       "priority": "medium",
@@ -38,7 +30,7 @@
       "type": "shadow_candidate",
       "priority": "medium",
       "title": "探索参数优于当前 · 已转入影子轨验证",
-      "reason": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）",
+      "reason": "探索候选 buy=72 breakout=62 期望 2.0% — 已写入影子轨，满 4 周后可提 PR",
       "cursorPrompt": "勿直接改 strategy_config。确认 shadow_reco 满 4 周后再开 PR。",
       "params": {
         "buyScore": 72,
@@ -55,8 +47,8 @@
     }
   ],
   "summary": {
-    "total": 6,
-    "high": 3,
+    "total": 5,
+    "high": 2,
     "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
   }
 }

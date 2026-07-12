@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10T03:15:31+00:00",
+  "updatedAt": "2026-07-12T05:23:42+00:00",
   "current": {
     "strategyVersion": "v1.3.0",
     "buyScore": 78,
@@ -34,11 +34,11 @@
     "breakoutScoreMin": 62,
     "mode": "exploration",
     "period": "2y",
-    "totalTrades": 23,
-    "winRate": 34.8,
-    "expectancy": 2.1,
-    "profitFactor": 4.45,
-    "sharpe": 0.51,
+    "totalTrades": 24,
+    "winRate": 33.3,
+    "expectancy": 2.0,
+    "profitFactor": 4.36,
+    "sharpe": 0.5,
     "maxDrawdown": -7.67
   },
   "topCandidates": [
@@ -47,11 +47,11 @@
       "breakoutScoreMin": 62,
       "mode": "exploration",
       "period": "2y",
-      "totalTrades": 23,
-      "winRate": 34.8,
-      "expectancy": 2.1,
-      "profitFactor": 4.45,
-      "sharpe": 0.51,
+      "totalTrades": 24,
+      "winRate": 33.3,
+      "expectancy": 2.0,
+      "profitFactor": 4.36,
+      "sharpe": 0.5,
       "maxDrawdown": -7.67
     },
     {
@@ -59,11 +59,11 @@
       "breakoutScoreMin": 68,
       "mode": "exploration",
       "period": "2y",
-      "totalTrades": 23,
-      "winRate": 34.8,
-      "expectancy": 2.1,
-      "profitFactor": 4.45,
-      "sharpe": 0.51,
+      "totalTrades": 24,
+      "winRate": 33.3,
+      "expectancy": 2.0,
+      "profitFactor": 4.36,
+      "sharpe": 0.5,
       "maxDrawdown": -7.67
     },
     {
@@ -71,11 +71,11 @@
       "breakoutScoreMin": 72,
       "mode": "exploration",
       "period": "2y",
-      "totalTrades": 23,
-      "winRate": 34.8,
-      "expectancy": 2.1,
-      "profitFactor": 4.45,
-      "sharpe": 0.51,
+      "totalTrades": 24,
+      "winRate": 33.3,
+      "expectancy": 2.0,
+      "profitFactor": 4.36,
+      "sharpe": 0.5,
       "maxDrawdown": -7.67
     },
     {
@@ -85,8 +85,8 @@
       "period": "2y",
       "totalTrades": 28,
       "winRate": 35.7,
-      "expectancy": 0.72,
-      "profitFactor": 1.74,
+      "expectancy": 0.71,
+      "profitFactor": 1.73,
       "sharpe": 0.3,
       "maxDrawdown": -12.3
     },
@@ -97,14 +97,15 @@
       "period": "2y",
       "totalTrades": 28,
       "winRate": 35.7,
-      "expectancy": 0.72,
-      "profitFactor": 1.74,
+      "expectancy": 0.71,
+      "profitFactor": 1.73,
       "sharpe": 0.3,
       "maxDrawdown": -12.3
     }
   ],
-  "recommendUpgrade": true,
-  "upgradeReason": "探索期望 2.1% > 当前 -0.14% · buy=72 breakout=62（需 Cursor 审阅后合入生产）",
+  "recommendUpgrade": false,
+  "shadowCandidate": true,
+  "upgradeReason": "探索候选 buy=72 breakout=62 期望 2.0% — 已写入影子轨，满 4 周后可提 PR",
   "insufficientSamples": false,
-  "cursorHint": "recommendUpgrade=true 时请 Cursor 更新 strategy_config.py 并开 PR"
+  "cursorHint": "候选已转入影子轨 shadow_reco.json；勿直接改 strategy_config"
 }
