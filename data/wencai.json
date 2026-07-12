@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-12T11:31:49+00:00",
+  "updatedAt": "2026-07-12T13:56:21+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 30 条资讯",
+  "message": "已更新 5 个市场问句 · 30 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 94,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000004.SZ",
@@ -91,13 +91,15 @@
           "changePct": 10.02
         }
       ],
-      "count": 94
+      "count": 94,
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002192.SZ",
@@ -130,13 +132,16 @@
           "changePct": -10.0
         }
       ],
-      "count": 5
+      "count": 5,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002354.SZ",
@@ -208,7 +213,10 @@
           "changePct": -2.33,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
@@ -278,7 +286,7 @@
       "id": "range",
       "title": "箱体震荡",
       "query": "60日内振幅小于15%且今日放量",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "600887.SH",
@@ -328,7 +336,9 @@
           "price": 3.42,
           "changePct": 1.18
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     }
   ],
   "news": [
@@ -520,9 +530,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:45791775941a2aa3",
-      "title": "陕天然气：独立董事提名人声明与承诺（杜民）",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420553.PDF",
+      "id": "wencai:7c392eb0094b4d8d",
+      "title": "陕天然气：关于召开2026年第二次临时股东会的通知",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420548.PDF",
       "publisher": "同花顺问财",
       "related": "陕天然气 (002267.SZ)",
       "publishedAt": "2026-07-12T16:00:00+00:00",
@@ -531,9 +541,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:66acad1ae79ab925",
-      "title": "陕天然气：关于董事会换届选举的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420549.PDF",
+      "id": "wencai:45791775941a2aa3",
+      "title": "陕天然气：独立董事提名人声明与承诺（杜民）",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420553.PDF",
       "publisher": "同花顺问财",
       "related": "陕天然气 (002267.SZ)",
       "publishedAt": "2026-07-12T16:00:00+00:00",
@@ -662,5 +672,9 @@
       "source": "wencai",
       "category": "利好"
     }
+  ],
+  "errors": [
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'"
   ]
 }
