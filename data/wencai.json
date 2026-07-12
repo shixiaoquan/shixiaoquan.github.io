@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-12T09:16:21+00:00",
+  "updatedAt": "2026-07-12T11:31:49+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 11 条资讯 · 部分沿用缓存",
+  "message": "已更新 5 个市场问句 · 30 条资讯",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 94,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "000004.SZ",
@@ -91,16 +91,13 @@
           "changePct": 10.02
         }
       ],
-      "count": 94,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 94
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "002192.SZ",
@@ -133,16 +130,13 @@
           "changePct": -10.0
         }
       ],
-      "count": 5,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 5
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "002354.SZ",
@@ -152,78 +146,75 @@
           "rank": "1"
         },
         {
+          "code": "601127.SH",
+          "name": "赛力斯",
+          "price": 59.9,
+          "changePct": 1.58,
+          "rank": "2"
+        },
+        {
+          "code": "600118.SH",
+          "name": "中国卫星",
+          "price": 90.02,
+          "changePct": 10.0,
+          "rank": "3"
+        },
+        {
           "code": "000938.SZ",
           "name": "紫光股份",
           "price": 38.41,
           "changePct": 7.65,
-          "rank": "2"
+          "rank": "4"
         },
         {
           "code": "002185.SZ",
           "name": "华天科技",
           "price": 25.31,
           "changePct": 6.66,
-          "rank": "3"
+          "rank": "5"
         },
         {
           "code": "603019.SH",
           "name": "中科曙光",
           "price": 107.5,
           "changePct": 3.38,
-          "rank": "4"
-        },
-        {
-          "code": "000977.SZ",
-          "name": "浪潮信息",
-          "price": 89.52,
-          "changePct": 4.11,
-          "rank": "5"
+          "rank": "6"
         },
         {
           "code": "000725.SZ",
           "name": "京东方A",
           "price": 7.59,
           "changePct": -6.87,
-          "rank": "6"
+          "rank": "7"
         },
         {
-          "code": "603986.SH",
-          "name": "兆易创新",
-          "price": 612.0,
-          "changePct": -7.76,
-          "rank": "7"
+          "code": "000977.SZ",
+          "name": "浪潮信息",
+          "price": 89.52,
+          "changePct": 4.11,
+          "rank": "8"
+        },
+        {
+          "code": "002342.SZ",
+          "name": "巨力索具",
+          "price": 11.07,
+          "changePct": 10.04,
+          "rank": "9"
         },
         {
           "code": "600584.SH",
           "name": "长电科技",
           "price": 101.11,
           "changePct": -2.33,
-          "rank": "8"
-        },
-        {
-          "code": "605090.SH",
-          "name": "九丰能源",
-          "price": 37.98,
-          "changePct": 9.99,
-          "rank": "9"
-        },
-        {
-          "code": "300065.SZ",
-          "name": "海兰信",
-          "price": 28.79,
-          "changePct": 20.01,
           "rank": "10"
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "603019.SH",
@@ -281,20 +272,282 @@
           "changePct": 3.6,
           "flow": 952630082
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
+    },
+    {
+      "id": "range",
+      "title": "箱体震荡",
+      "query": "60日内振幅小于15%且今日放量",
+      "status": "ok",
+      "items": [
+        {
+          "code": "600887.SH",
+          "name": "伊利股份",
+          "price": 24.88,
+          "changePct": 0.12
+        },
+        {
+          "code": "600674.SH",
+          "name": "川投能源",
+          "price": 14.67,
+          "changePct": -0.07
+        },
+        {
+          "code": "600177.SH",
+          "name": "雅戈尔",
+          "price": 7.61,
+          "changePct": -1.42
+        },
+        {
+          "code": "601319.SH",
+          "name": "中国人保",
+          "price": 7.06,
+          "changePct": -0.98
+        },
+        {
+          "code": "601928.SH",
+          "name": "凤凰传媒",
+          "price": 9.13,
+          "changePct": 0.44
+        },
+        {
+          "code": "600755.SH",
+          "name": "厦门国贸",
+          "price": 5.95,
+          "changePct": -1.98
+        },
+        {
+          "code": "002332.SZ",
+          "name": "仙琚制药",
+          "price": 8.25,
+          "changePct": 0.86
+        },
+        {
+          "code": "600033.SH",
+          "name": "福建高速",
+          "price": 3.42,
+          "changePct": 1.18
+        }
+      ]
     }
   ],
   "news": [
     {
-      "id": "wencai:aac757fe3d463aa0",
-      "title": "赛意信息：2026年7月10日投资者关系活动记录表",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-12/1225420489.PDF",
+      "id": "wencai:d9ab7ddc5a9a4e7",
+      "title": "圣诺生物：2026年半年度业绩预告的自愿性披露公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-13/688117_20260713_42GB.pdf",
       "publisher": "同花顺问财",
-      "related": "赛意信息 (300687.SZ)",
-      "publishedAt": "2026-07-11T16:00:00+00:00",
+      "related": "圣诺生物 (688117.SH)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:df58603008a223a6",
+      "title": "普路通：关于发行股份及支付现金购买资产并募集配套资金暨关联交易事项的进展公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225419725.PDF",
+      "publisher": "同花顺问财",
+      "related": "普路通 (002769.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:b2a1d38485359c75",
+      "title": "联瑞新材：联瑞新材关于可转债投资者适当性要求的风险提示性公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-13/688300_20260713_6QPI.pdf",
+      "publisher": "同花顺问财",
+      "related": "联瑞新材 (688300.SH)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:a78389a961068884",
+      "title": "赛力斯：2026年半年度业绩预亏公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-13/601127_20260713_610V.pdf",
+      "publisher": "同花顺问财",
+      "related": "赛力斯 (601127.SH)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:bfa7e472df1619a2",
+      "title": "东北制药：关于子公司产品被新增纳入《国家基本药物目录(2026年版)》的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420538.PDF",
+      "publisher": "同花顺问财",
+      "related": "东北制药 (000597.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:4ea874f05d261f16",
+      "title": "柘中股份：股票交易异常波动公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420558.PDF",
+      "publisher": "同花顺问财",
+      "related": "柘中股份 (002346.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:e3ce3aa9c56830ae",
+      "title": "沃尔核材：H股公告：2026年第三次临时股东会通函",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420536.PDF",
+      "publisher": "同花顺问财",
+      "related": "沃尔核材 (002130.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:a26d88b34e3d98c1",
+      "title": "沃尔核材：H股公告：董事名单与其角色和职能",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420537.PDF",
+      "publisher": "同花顺问财",
+      "related": "沃尔核材 (002130.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:a982ed69678acc9b",
+      "title": "沃尔核材：H股公告：2026年第三次临时股东会之代表委任表格（适用于H股股东）",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420535.PDF",
+      "publisher": "同花顺问财",
+      "related": "沃尔核材 (002130.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:af67c5fae33b8f40",
+      "title": "争光股份：关于公司高级管理人员减持股份的预披露公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420159.PDF",
+      "publisher": "同花顺问财",
+      "related": "争光股份 (301092.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:c03db55149bb3fc1",
+      "title": "铁龙物流：中铁铁龙集装箱物流股份有限公司关于敦促公司失联原始股东办理股份确权及相关手续的公告（第二次）",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-13/600125_20260713_C0FS.pdf",
+      "publisher": "同花顺问财",
+      "related": "铁龙物流 (600125.SH)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:b9c1d37c91fcda25",
+      "title": "苏 泊 尔：关于公司高级管理人员减持股份计划实施完毕的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420279.PDF",
+      "publisher": "同花顺问财",
+      "related": "苏泊尔 (002032.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:84b2bb00259ab4e2",
+      "title": "上海谊众：上海谊众药业股份有限公司董事会薪酬与考核委员会关于公司2026年限制性股票激励计划激励对象名单的核查意见及公示情况说明",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-13/688091_20260713_ETOL.pdf",
+      "publisher": "同花顺问财",
+      "related": "上海谊众 (688091.SH)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:78d2d3cead3c8f30",
+      "title": "联检科技：关于公司特定股东减持股份预披露的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225419871.PDF",
+      "publisher": "同花顺问财",
+      "related": "联检科技 (301115.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:2e9d58cb712dde1b",
+      "title": "平高电气：河南平高电气股份有限公司简式权益变动报告书",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-13/600312_20260713_JS8I.pdf",
+      "publisher": "同花顺问财",
+      "related": "平高电气 (600312.SH)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:70e9e543df0b4634",
+      "title": "平高电气：河南平高电气股份有限公司关于股东增持股份达到5%的权益变动提示性公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-13/600312_20260713_2IU6.pdf",
+      "publisher": "同花顺问财",
+      "related": "平高电气 (600312.SH)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:1c336a9768b204f6",
+      "title": "陕天然气：独立董事提名人声明与承诺（徐焕章）",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420550.PDF",
+      "publisher": "同花顺问财",
+      "related": "陕天然气 (002267.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:45791775941a2aa3",
+      "title": "陕天然气：独立董事提名人声明与承诺（杜民）",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420553.PDF",
+      "publisher": "同花顺问财",
+      "related": "陕天然气 (002267.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:66acad1ae79ab925",
+      "title": "陕天然气：关于董事会换届选举的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-13/1225420549.PDF",
+      "publisher": "同花顺问财",
+      "related": "陕天然气 (002267.SZ)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:5eef3473847b531b",
+      "title": "山东钢铁：山东钢铁股份有限公司2026年半年度业绩预告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-13/600022_20260713_S6F9.pdf",
+      "publisher": "同花顺问财",
+      "related": "山东钢铁 (600022.SH)",
+      "publishedAt": "2026-07-12T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
@@ -409,13 +662,5 @@
       "source": "wencai",
       "category": "利好"
     }
-  ],
-  "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
-    "limit_down: 'NoneType' object has no attribute 'get'",
-    "hot: 'NoneType' object has no attribute 'get'",
-    "main_flow: 'NoneType' object has no attribute 'get'",
-    "range: 'NoneType' object has no attribute 'get'"
-  ],
-  "newsStale": true
+  ]
 }
