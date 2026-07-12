@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12T22:13:06+00:00",
+  "updatedAt": "2026-07-12T22:28:01+00:00",
   "tasks": [
     {
       "id": "shadow-tracking",
@@ -22,6 +22,14 @@
       }
     },
     {
+      "id": "pipelines-stale",
+      "type": "fix_pipeline",
+      "priority": "medium",
+      "title": "部分流水线数据过期",
+      "reason": "2 条流水线过期",
+      "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
+    },
+    {
       "id": "paper-ab-hint",
       "type": "research",
       "priority": "low",
@@ -31,7 +39,7 @@
     }
   ],
   "summary": {
-    "total": 3,
+    "total": 4,
     "high": 0,
     "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
   }
