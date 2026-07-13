@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-13T20:37:18+00:00",
+  "updatedAt": "2026-07-13T20:45:56+00:00",
   "tasks": [
     {
       "id": "fix-pipeline-market",
@@ -16,6 +16,14 @@
       "title": "流水线过期 · 宏观与跨资产",
       "reason": "stale",
       "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+    },
+    {
+      "id": "fix-pipeline-wencai",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · 问财自然语言筛选",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-wencai-data.yml 日志与 Secrets。"
     },
     {
       "id": "shadow-tracking",
@@ -47,8 +55,8 @@
     }
   ],
   "summary": {
-    "total": 5,
-    "high": 2,
+    "total": 6,
+    "high": 3,
     "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
   }
 }
