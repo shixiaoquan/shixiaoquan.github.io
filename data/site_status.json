@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-07-13T15:18:55+00:00",
+  "updatedAt": "2026-07-13T16:10:14+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 115,
-    "masterLearnUpdatedAt": "2026-07-13T13:33:48+00:00",
-    "masterAvgWinRate": 61.0,
+    "masterLearnRevision": 116,
+    "masterLearnUpdatedAt": "2026-07-13T16:09:46+00:00",
+    "masterAvgWinRate": 62.8,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -44,7 +44,7 @@
     "shadowReadyForPR": false
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-13T15:18:55+00:00",
+    "updatedAt": "2026-07-13T16:10:14+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -61,6 +61,14 @@
         "title": "流水线过期 · 宏观与跨资产",
         "reason": "stale",
         "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      },
+      {
+        "id": "fix-pipeline-truth",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · Truth Social 镜像",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
       },
       {
         "id": "shadow-tracking",
@@ -92,12 +100,22 @@
       }
     ],
     "summary": {
-      "total": 5,
-      "high": 2,
+      "total": 6,
+      "high": 3,
       "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
     }
   },
   "recentLog": [
+    {
+      "at": "2026-07-13T16:09:57+00:00",
+      "type": "master_learn",
+      "revision": 116,
+      "regime": "neutral",
+      "notes": {
+        "soros": "近期表现反馈：beta↓、volume↓",
+        "serenity": "近期表现反馈：range↓"
+      }
+    },
     {
       "at": "2026-07-13T13:34:01+00:00",
       "type": "master_learn",
@@ -148,13 +166,6 @@
       "bestExpectancy": 2.0,
       "totalTrades": 20,
       "reason": "探索候选 buy=72 breakout=62 期望 2.0% — 已写入影子轨，满 4 周后可提 PR"
-    },
-    {
-      "at": "2026-07-12T05:23:40+00:00",
-      "type": "reco_attribution",
-      "newItems": 32,
-      "avgReturnT5": 3.2,
-      "winRateT5": 64.8
     }
   ],
   "pipelines": [
@@ -163,18 +174,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-07-13T13:34:30+00:00",
-      "status": "stale",
-      "ageMinutes": 104
+      "updatedAt": "2026-07-13T16:10:14+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-07-13T13:34:21+00:00",
-      "status": "stale",
-      "ageMinutes": 104
+      "updatedAt": "2026-07-13T16:10:03+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -183,7 +194,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-13T13:36:12+00:00",
       "status": "stale",
-      "ageMinutes": 102
+      "ageMinutes": 154
     },
     {
       "id": "wencai",
@@ -192,7 +203,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-13T15:12:03+00:00",
       "status": "ok",
-      "ageMinutes": 6
+      "ageMinutes": 58
     },
     {
       "id": "reports",
@@ -201,7 +212,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-13T18:52:14+08:00",
       "status": "ok",
-      "ageMinutes": 266
+      "ageMinutes": 318
     },
     {
       "id": "backtest",
@@ -210,9 +221,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-12T05:23:36+00:00",
       "status": "ok",
-      "ageMinutes": 2035
+      "ageMinutes": 2086
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "29261672154"
+  "triggeredBy": "Update Market Data",
+  "runId": "29265244214"
 }
