@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-14T22:27:32+00:00",
+  "updatedAt": "2026-07-14T22:28:07+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -44,7 +44,7 @@
     "shadowReadyForPR": false
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-14T22:27:32+00:00",
+    "updatedAt": "2026-07-14T22:28:07+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
@@ -156,7 +156,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-14T22:26:51+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 1
     },
     {
       "id": "macro",
@@ -165,7 +165,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-14T22:26:45+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 1
     },
     {
       "id": "truth",
@@ -173,8 +173,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-14T21:26:52+00:00",
-      "status": "ok",
-      "ageMinutes": 60
+      "status": "stale",
+      "ageMinutes": 61
     },
     {
       "id": "wencai",
@@ -183,7 +183,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-14T21:15:38+00:00",
       "status": "ok",
-      "ageMinutes": 71
+      "ageMinutes": 72
     },
     {
       "id": "reports",
@@ -201,9 +201,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-12T05:23:36+00:00",
       "status": "ok",
-      "ageMinutes": 3903
+      "ageMinutes": 3904
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "29373018676"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "29373054384"
 }
