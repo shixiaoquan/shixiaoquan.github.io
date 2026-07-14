@@ -1,15 +1,15 @@
 {
-  "checkedAt": "2026-07-14T00:13:10+00:00",
+  "checkedAt": "2026-07-14T03:43:02+00:00",
   "actionable": [
     {
-      "id": "fix-pipeline-macro",
+      "id": "fix-pipeline-truth",
       "type": "fix_pipeline",
       "priority": "high",
-      "title": "流水线过期 · 宏观与跨资产",
-      "reason": "过期 45 分钟（阈值 45）",
-      "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      "title": "流水线过期 · Truth Social 镜像",
+      "reason": "过期 60 分钟（阈值 60）",
+      "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
     }
   ],
   "issueTitle": "[自动] 进化队列高优任务待审阅",
-  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下进化任务需要 Cursor / 人工审阅：\n\n- **流水线过期 · 宏观与跨资产** (`fix-pipeline-macro`)\n  - 过期 45 分钟（阈值 45）\n  - Cursor：`检查工作流 update-market-data.yml 日志与 Secrets。`\n\n处理建议：\n1. 阅读 `data/evolution_queue.json` 与 `data/shadow_reco.json`\n2. 按 `.github/EVOLUTION_PLAYBOOK.md` 开 PR 或修复流水线\n3. 任务完成后本 Issue 将在下次检查通过时自动关闭\n\n<!-- evolution-queue-bot -->"
+  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下进化任务需要 Cursor / 人工审阅：\n\n- **流水线过期 · Truth Social 镜像** (`fix-pipeline-truth`)\n  - 过期 60 分钟（阈值 60）\n  - Cursor：`检查工作流 update-truth-social.yml 日志与 Secrets。`\n\n处理建议：\n1. 阅读 `data/evolution_queue.json` 与 `data/shadow_reco.json`\n2. 按 `.github/EVOLUTION_PLAYBOOK.md` 开 PR 或修复流水线\n3. 任务完成后本 Issue 将在下次检查通过时自动关闭\n\n<!-- evolution-queue-bot -->"
 }
