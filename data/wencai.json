@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-14T19:42:59+00:00",
+  "updatedAt": "2026-07-14T21:15:38+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 32 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 32 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 87,
@@ -184,7 +184,7 @@
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002185.SZ",
@@ -256,13 +256,16 @@
           "changePct": 10.0,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "300502.SZ",
@@ -320,63 +323,9 @@
           "changePct": 6.03,
           "flow": 1116317351
         }
-      ]
-    },
-    {
-      "id": "low_pe",
-      "title": "低估值防御",
-      "query": "市盈率低于行业均值且股息率大于3%",
-      "status": "ok",
-      "items": [
-        {
-          "code": "603939.SH",
-          "name": "益丰药房",
-          "price": 21.35,
-          "changePct": 3.14
-        },
-        {
-          "code": "002404.SZ",
-          "name": "嘉欣丝绸",
-          "price": 5.73,
-          "changePct": 2.14
-        },
-        {
-          "code": "003000.SZ",
-          "name": "劲仔食品",
-          "price": 10.45,
-          "changePct": 0.77
-        },
-        {
-          "code": "603697.SH",
-          "name": "有友食品",
-          "price": 10.16,
-          "changePct": -0.39
-        },
-        {
-          "code": "601857.SH",
-          "name": "中国石油",
-          "price": 10.0,
-          "changePct": 3.52
-        },
-        {
-          "code": "600219.SH",
-          "name": "南山铝业",
-          "price": 4.16,
-          "changePct": 5.85
-        },
-        {
-          "code": "002091.SZ",
-          "name": "江苏国泰",
-          "price": 7.32,
-          "changePct": 1.53
-        },
-        {
-          "code": "600575.SH",
-          "name": "淮河能源",
-          "price": 3.16,
-          "changePct": 0.64
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     }
   ],
   "news": [
@@ -734,6 +683,10 @@
     }
   ],
   "errors": [
-    "limit_down: 'NoneType' object has no attribute 'get'"
-  ]
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "low_pe: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
