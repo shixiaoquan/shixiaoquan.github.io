@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T08:39:59+00:00",
+  "updatedAt": "2026-07-15T08:40:34+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -44,7 +44,7 @@
     "shadowReadyForPR": false
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-15T08:39:59+00:00",
+    "updatedAt": "2026-07-15T08:40:34+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
@@ -67,6 +67,14 @@
         }
       },
       {
+        "id": "pipelines-stale",
+        "type": "fix_pipeline",
+        "priority": "medium",
+        "title": "部分流水线数据过期",
+        "reason": "1 条流水线过期",
+        "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
+      },
+      {
         "id": "paper-ab-hint",
         "type": "research",
         "priority": "low",
@@ -76,7 +84,7 @@
       }
     ],
     "summary": {
-      "total": 3,
+      "total": 4,
       "high": 0,
       "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
@@ -175,7 +183,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-15T06:32:25+00:00",
       "status": "stale",
-      "ageMinutes": 127
+      "ageMinutes": 128
     },
     {
       "id": "wencai",
@@ -184,7 +192,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-15T06:28:16+00:00",
       "status": "ok",
-      "ageMinutes": 131
+      "ageMinutes": 132
     },
     {
       "id": "reports",
@@ -193,7 +201,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-15T11:53:12+08:00",
       "status": "ok",
-      "ageMinutes": 286
+      "ageMinutes": 287
     },
     {
       "id": "backtest",
@@ -205,6 +213,6 @@
       "ageMinutes": 4516
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "29401560715"
+  "triggeredBy": "Evolution Follow-up",
+  "runId": "29401611176"
 }
