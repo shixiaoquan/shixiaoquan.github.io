@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-15T18:45:32+00:00",
+  "updatedAt": "2026-07-15T19:37:48+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -176,8 +176,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-15T18:16:31+00:00",
-      "status": "ok",
-      "ageMinutes": 29
+      "status": "stale",
+      "ageMinutes": 81
     },
     {
       "id": "macro",
@@ -185,8 +185,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-15T18:16:12+00:00",
-      "status": "ok",
-      "ageMinutes": 29
+      "status": "stale",
+      "ageMinutes": 81
     },
     {
       "id": "truth",
@@ -195,16 +195,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-15T18:45:31+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 52
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-07-15T17:39:15+00:00",
+      "updatedAt": "2026-07-15T19:36:55+00:00",
       "status": "ok",
-      "ageMinutes": 66
+      "ageMinutes": 0
     },
     {
       "id": "reports",
@@ -213,7 +213,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-15T17:53:40+08:00",
       "status": "ok",
-      "ageMinutes": 531
+      "ageMinutes": 584
     },
     {
       "id": "backtest",
@@ -222,9 +222,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-12T05:23:36+00:00",
       "status": "ok",
-      "ageMinutes": 5121
+      "ageMinutes": 5174
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "29441819245"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "29445151838"
 }
