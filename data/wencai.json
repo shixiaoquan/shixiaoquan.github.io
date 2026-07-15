@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-15T11:48:52+00:00",
+  "updatedAt": "2026-07-15T14:10:38+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 39 条资讯",
+  "message": "已更新 5 个市场问句 · 39 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 74,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002309.SZ",
@@ -91,13 +91,16 @@
           "changePct": 10.0
         }
       ],
-      "count": 74
+      "count": 74,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "600360.SH",
@@ -172,13 +175,16 @@
           "changePct": -10.01
         }
       ],
-      "count": 33
+      "count": 33,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688525.SH",
@@ -250,13 +256,16 @@
           "changePct": 0.81,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "600276.SH",
@@ -314,13 +323,16 @@
           "changePct": 2.14,
           "flow": 657418265
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "breakout",
       "title": "突破年线",
       "query": "突破年线且成交量放大",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002412.SZ",
@@ -370,7 +382,9 @@
           "price": 42.0,
           "changePct": 12.33
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     }
   ],
   "news": [
@@ -803,6 +817,12 @@
       "source": "wencai",
       "category": "公告"
     }
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'"
   ],
   "newsStale": true
 }
