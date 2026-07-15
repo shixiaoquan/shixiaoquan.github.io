@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-07-15T04:12:57+00:00",
+  "updatedAt": "2026-07-15T06:20:14+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 137,
-    "masterLearnUpdatedAt": "2026-07-15T03:56:04+00:00",
-    "masterAvgWinRate": 80.0,
+    "masterLearnRevision": 138,
+    "masterLearnUpdatedAt": "2026-07-15T06:19:45+00:00",
+    "masterAvgWinRate": 77.4,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -44,7 +44,7 @@
     "shadowReadyForPR": false
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-15T03:56:51+00:00",
+    "updatedAt": "2026-07-15T06:20:13+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -107,6 +107,19 @@
   },
   "recentLog": [
     {
+      "at": "2026-07-15T06:19:59+00:00",
+      "type": "master_learn",
+      "revision": 138,
+      "regime": "risk_on",
+      "notes": {
+        "graham": "近期表现反馈：pe↑、pb↑、range↑、dividend↑",
+        "munger": "近期表现反馈：roe↑、margins↑、debt↑、pe↑",
+        "soros": "近期表现反馈：volume↓",
+        "serenity": "近期表现反馈：range↓",
+        "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
+      }
+    },
+    {
       "at": "2026-07-15T03:56:11+00:00",
       "type": "master_learn",
       "revision": 137,
@@ -157,17 +170,6 @@
         "serenity": "近期表现反馈：range↓",
         "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
       }
-    },
-    {
-      "at": "2026-07-14T18:54:45+00:00",
-      "type": "master_learn",
-      "revision": 132,
-      "regime": "risk_off",
-      "notes": {
-        "soros": "近期表现反馈：volume↓",
-        "serenity": "近期表现反馈：range↓",
-        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
-      }
     }
   ],
   "pipelines": [
@@ -176,18 +178,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-07-15T03:56:21+00:00",
+      "updatedAt": "2026-07-15T06:20:13+00:00",
       "status": "ok",
-      "ageMinutes": 16
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-07-15T03:56:16+00:00",
+      "updatedAt": "2026-07-15T06:20:03+00:00",
       "status": "ok",
-      "ageMinutes": 16
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -195,8 +197,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-15T04:12:54+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 127
     },
     {
       "id": "wencai",
@@ -204,8 +206,8 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-15T03:35:02+00:00",
-      "status": "ok",
-      "ageMinutes": 37
+      "status": "stale",
+      "ageMinutes": 165
     },
     {
       "id": "reports",
@@ -214,7 +216,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-15T11:53:12+08:00",
       "status": "ok",
-      "ageMinutes": 19
+      "ageMinutes": 147
     },
     {
       "id": "backtest",
@@ -223,9 +225,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-12T05:23:36+00:00",
       "status": "ok",
-      "ageMinutes": 4249
+      "ageMinutes": 4376
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "29388416764"
+  "triggeredBy": "Update Market Data",
+  "runId": "29393863718"
 }
