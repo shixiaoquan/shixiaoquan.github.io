@@ -63,4 +63,5 @@ jobs:
         run: python scripts/validate_data.py
 
       - name: Commit and push if changed
-        run: bash scripts/git_push_data.sh "chore: update market data" data/
+        run: |
+          bash scripts/git_push_data.sh "chore: update market data" data/
