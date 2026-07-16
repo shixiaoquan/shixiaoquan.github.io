@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-16T20:24:44+00:00",
+  "updatedAt": "2026-07-16T20:46:37+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -12,9 +12,9 @@
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 161,
-    "masterLearnUpdatedAt": "2026-07-16T19:52:28+00:00",
-    "masterAvgWinRate": 66.2,
+    "masterLearnRevision": 162,
+    "masterLearnUpdatedAt": "2026-07-16T20:46:18+00:00",
+    "masterAvgWinRate": 66.3,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -85,24 +85,8 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-16T20:24:44+00:00",
+    "updatedAt": "2026-07-16T20:46:37+00:00",
     "tasks": [
-      {
-        "id": "fix-pipeline-market",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · 行情·荐股·模拟盘",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-      },
-      {
-        "id": "fix-pipeline-macro",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · 宏观与跨资产",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-      },
       {
         "id": "shadow-tracking",
         "type": "shadow_track",
@@ -141,12 +125,23 @@
       }
     ],
     "summary": {
-      "total": 6,
-      "high": 2,
-      "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      "total": 4,
+      "high": 0,
+      "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
   },
   "recentLog": [
+    {
+      "at": "2026-07-16T20:46:25+00:00",
+      "type": "master_learn",
+      "revision": 162,
+      "regime": "neutral",
+      "notes": {
+        "graham": "近期表现反馈：pe↑、pb↑、range↑",
+        "soros": "近期表现反馈：beta↓、volume↓",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
+      }
+    },
     {
       "at": "2026-07-16T19:52:45+00:00",
       "type": "master_learn",
@@ -201,18 +196,6 @@
         "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
       }
-    },
-    {
-      "at": "2026-07-16T12:55:45+00:00",
-      "type": "master_learn",
-      "revision": 156,
-      "regime": "risk_off",
-      "notes": {
-        "munger": "近期表现反馈：roe↑、margins↑、debt↑、pe↑",
-        "soros": "近期表现反馈：month↓、rs↓、volume↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
-        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
-      }
     }
   ],
   "pipelines": [
@@ -221,18 +204,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-07-16T19:53:04+00:00",
+      "updatedAt": "2026-07-16T20:46:37+00:00",
       "status": "ok",
-      "ageMinutes": 31
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-07-16T19:52:53+00:00",
+      "updatedAt": "2026-07-16T20:46:31+00:00",
       "status": "ok",
-      "ageMinutes": 31
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -241,7 +224,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-16T20:14:36+00:00",
       "status": "ok",
-      "ageMinutes": 10
+      "ageMinutes": 32
     },
     {
       "id": "wencai",
@@ -250,7 +233,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-16T20:09:57+00:00",
       "status": "ok",
-      "ageMinutes": 14
+      "ageMinutes": 36
     },
     {
       "id": "reports",
@@ -259,7 +242,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-16T18:18:32+08:00",
       "status": "ok",
-      "ageMinutes": 606
+      "ageMinutes": 628
     },
     {
       "id": "backtest",
@@ -268,9 +251,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-12T05:23:36+00:00",
       "status": "ok",
-      "ageMinutes": 6661
+      "ageMinutes": 6683
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "29531923877"
+  "triggeredBy": "Update Market Data",
+  "runId": "29533398830"
 }
