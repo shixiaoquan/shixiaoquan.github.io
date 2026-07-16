@@ -154,6 +154,63 @@ jobs:
               labels: ['evolution-queue', 'automated'],
             });
 
+      - name: Close recovered workflow-failure Issues
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const prefix = '[自动] 工作流失败 · ';
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'pipeline-health',
+              per_page: 30,
+            });
+            const failureIssues = issues.filter(i => i.title.startsWith(prefix));
+            for (const issue of failureIssues) {
+              const workflowName = issue.title.slice(prefix.length);
+              const { data: workflows } = await github.rest.actions.listRepoWorkflows({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                per_page: 50,
+              });
+              const wf = workflows.workflows.find(w => w.name === workflowName);
+              if (!wf) {
+                core.info(`Keep #${issue.number}: workflow not found ${workflowName}`);
+                continue;
+              }
+              const { data: runs } = await github.rest.actions.listWorkflowRuns({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: wf.id,
+                per_page: 20,
+                status: 'completed',
+              });
+              const named = runs.workflow_runs;
+              const recentOk = named.find(r => {
+                if (r.conclusion !== 'success') return false;
+                const ageH = (Date.now() - new Date(r.created_at).getTime()) / 3600000;
+                return ageH < 72;
+              });
+              if (!recentOk) {
+                core.info(`Keep #${issue.number}: ${workflowName} no success in 72h`);
+                continue;
+              }
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `近 72h 内已有成功运行 · ${recentOk.html_url}\n<!-- workflow-failure-bot -->`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+              core.info(`Closed recovered failure issue #${issue.number}`);
+            }
+
       - name: Commit and push if changed
         run: |
           bash scripts/git_push_data.sh "chore: update site evolution status" \
