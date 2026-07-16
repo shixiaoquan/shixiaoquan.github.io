@@ -1,11 +1,21 @@
 {
-  "updatedAt": "2026-07-16T01:10:33+00:00",
-  "buyScoreAdjust": 0,
-  "breakoutScoreAdjust": 0,
+  "updatedAt": "2026-07-16T01:53:49+00:00",
+  "buyScoreAdjust": -1,
+  "breakoutScoreAdjust": -1,
+  "buyScoreAdjustByMarket": {
+    "A股": -2,
+    "港股": 0,
+    "美股": -2
+  },
+  "breakoutScoreAdjustByMarket": {
+    "A股": -2,
+    "港股": 0,
+    "美股": -2
+  },
   "attribution": {
     "buySamples": 0,
-    "winRateT5": 64.8,
-    "avgReturnT5": 3.2,
+    "winRateT5": 57.7,
+    "avgReturnT5": 1.26,
     "byDecisionLabel": {
       "未知": {
         "avgT5": 0.42,
@@ -13,40 +23,42 @@
         "winRate": 37.5
       },
       "中": {
-        "avgT5": 4.46,
-        "count": 88,
-        "winRate": 77.3
+        "avgT5": 1.53,
+        "count": 128,
+        "winRate": 64.1
       }
     },
     "byMarket": {
       "美股": {
-        "avgT5": 0.03,
-        "count": 58,
-        "winRate": 65.5
+        "avgT5": -0.24,
+        "count": 73,
+        "winRate": 60.3
       },
       "A股": {
-        "avgT5": 8.01,
-        "count": 57,
-        "winRate": 78.9
+        "avgT5": 3.84,
+        "count": 72,
+        "winRate": 66.7
       },
       "港股": {
-        "avgT5": -3.77,
-        "count": 13,
-        "winRate": 0.0
+        "avgT5": -2.02,
+        "count": 23,
+        "winRate": 21.7
       }
     },
     "byRegime": {
       "unknown": {
-        "avgT5": 3.2,
-        "count": 128,
-        "winRate": 64.8
+        "avgT5": 1.26,
+        "count": 168,
+        "winRate": 57.7
       }
     }
   },
   "notes": [
-    "中决策分 T+5 胜率 77.3% 良好，门槛 -1",
-    "港股 T+5 胜率 0.0% 拖累，门槛 +1",
+    "中决策分 T+5 胜率 64.1% 良好，门槛 -1",
+    "A股 T+5 胜率 66.7% 良好，门槛 -1（市场门槛→-2）",
+    "港股 T+5 胜率 21.7% 偏低，门槛 +1（市场门槛→+0）",
+    "美股 T+5 胜率 60.3% 良好，门槛 -1（市场门槛→-2）",
     "buy 样本不足，主要依据 watch 池、市场与决策分桶观察"
   ],
-  "active": false
+  "active": true
 }

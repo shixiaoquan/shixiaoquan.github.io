@@ -11,10 +11,16 @@ ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
-from attribution_lib import decision_label, summarize_items  # noqa: E402
+from attribution_lib import (  # noqa: E402
+    backfill_decision_labels,
+    backfill_market_context,
+    decision_label,
+    summarize_items,
+)
 from decision_score import score_pick  # noqa: E402
 from market_regime import detect_market_regime, regime_label  # noqa: E402
-from paired_attribution import build_paired_attribution  # noqa: E402
+from paired_attribution import build_paired_attribution, _summarize_pairs  # noqa: E402
+from shadow_reco import _calendar_weeks  # noqa: E402
 from validate_data import main as validate_main  # noqa: E402
 
 
@@ -79,6 +85,69 @@ class PairedAttributionTests(unittest.TestCase):
         payload = build_paired_attribution()
         self.assertIn("summary", payload)
         self.assertIn("pairs", payload)
+        self.assertIn("marketPairs", payload)
+        self.assertIn("marketPairedCount", payload["summary"])
+
+    def test_summarize_pairs(self):
+        summary = _summarize_pairs(
+            [
+                {"edgeT5": 1.0, "prodReturnT5": 0.5, "shadowReturnT5": 1.5, "shadowWins": True},
+                {"edgeT5": -0.5, "prodReturnT5": 1.0, "shadowReturnT5": 0.5, "shadowWins": False},
+            ]
+        )
+        self.assertEqual(summary["pairedCount"], 2)
+        self.assertEqual(summary["shadowWinRate"], 50.0)
+
+
+class ShadowTrackTests(unittest.TestCase):
+    def test_calendar_weeks_span(self):
+        weeks, days = _calendar_weeks(
+            [
+                {"recordedAt": "2026-07-10T10:00:00+08:00"},
+                {"recordedAt": "2026-07-10T16:00:00+08:00"},
+                {"recordedAt": "2026-07-17T10:00:00+08:00"},
+            ]
+        )
+        self.assertEqual(days, 2)
+        self.assertEqual(weeks, 1.0)
+
+    def test_calendar_weeks_empty(self):
+        weeks, days = _calendar_weeks([])
+        self.assertEqual(weeks, 0.0)
+        self.assertEqual(days, 0)
+
+
+class BackfillTests(unittest.TestCase):
+    def test_backfill_market_context(self):
+        items = {
+            "2026-03-10T00:00:00:AAPL": {
+                "marketRegime": "unknown",
+                "marketMood": None,
+            }
+        }
+        records = [
+            {
+                "id": "2026-03-10T00:00:00",
+                "recordedAt": "2026-03-10T00:00:00",
+                "marketContext": {"regime": "risk_on", "mood": "偏多"},
+                "picks": [{"symbol": "AAPL"}],
+            }
+        ]
+        backfill_market_context(items, records)
+        self.assertEqual(items["2026-03-10T00:00:00:AAPL"]["marketRegime"], "risk_on")
+        self.assertEqual(items["2026-03-10T00:00:00:AAPL"]["marketMood"], "偏多")
+
+    def test_backfill_decision_labels(self):
+        items = {"r1:MSFT": {"decisionLabel": "未知", "decisionScore": None}}
+        records = [
+            {
+                "id": "r1",
+                "picks": [{"symbol": "MSFT", "decisionScore": 72}],
+            }
+        ]
+        backfill_decision_labels(items, records)
+        self.assertEqual(items["r1:MSFT"]["decisionLabel"], "高")
+        self.assertEqual(items["r1:MSFT"]["decisionScore"], 72)
 
 
 class ValidateDataTests(unittest.TestCase):

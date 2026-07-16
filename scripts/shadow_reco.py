@@ -10,6 +10,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import strategy_scoring as sc
+from attribution_lib import parse_dt
 from decision_score import enrich_picks, load_context_files
 from market_regime import detect_market_regime
 from fetch_data import (
@@ -102,9 +103,24 @@ def _append_shadow_history(state: dict, picks: list[dict], recorded_at: datetime
         state["history"] = {"records": []}
         records = state["history"]["records"]
 
+    day = recorded_at.date().isoformat()
     fp = picks_fingerprint(picks)
-    if records and picks_fingerprint(records[-1].get("picks", [])) == fp:
-        return
+    # 每日最多一条；同日更新则覆盖最后一条
+    if records:
+        last_day = (records[-1].get("recordedAt") or "")[:10]
+        if last_day == day:
+            if picks_fingerprint(records[-1].get("picks", [])) == fp:
+                return
+            records[-1] = {
+                "id": recorded_at.isoformat(timespec="seconds"),
+                "recordedAt": recorded_at.isoformat(timespec="seconds"),
+                "marketContext": market_context or {},
+                "picks": [compact_pick(p) for p in picks],
+            }
+            state["history"]["records"] = records[-MAX_SHADOW_RECORDS:]
+            return
+        if picks_fingerprint(records[-1].get("picks", [])) == fp:
+            return
     records.append(
         {
             "id": recorded_at.isoformat(timespec="seconds"),
@@ -114,6 +130,22 @@ def _append_shadow_history(state: dict, picks: list[dict], recorded_at: datetime
         }
     )
     state["history"]["records"] = records[-MAX_SHADOW_RECORDS:]
+
+
+def _calendar_weeks(records: list[dict]) -> tuple[float, int]:
+    """返回 (日历周跨度, 独立交易日数)。"""
+    days = sorted({(r.get("recordedAt") or "")[:10] for r in records if r.get("recordedAt")})
+    if not days:
+        return 0.0, 0
+    if len(days) == 1:
+        return 0.0, 1
+    try:
+        first = datetime.fromisoformat(days[0]).date()
+        last = datetime.fromisoformat(days[-1]).date()
+    except ValueError:
+        return 0.0, len(days)
+    span_days = (last - first).days
+    return round(span_days / 7, 1), len(days)
 
 
 def compare_tracks() -> dict:
@@ -138,7 +170,7 @@ def compare_tracks() -> dict:
     prod_summary = prod_attr.get("summary") or {}
     shadow_summary = shadow_attr.get("summary") or {}
 
-    shadow_weeks = len(shadow_records) // max(1, len(MARKETS))
+    shadow_weeks, shadow_days = _calendar_weeks(shadow_records)
     prod_matured = prod_summary.get("maturedT5") or 0
     shadow_matured = shadow_summary.get("maturedT5") or 0
     prod_win = prod_summary.get("winRateT5")
@@ -146,15 +178,26 @@ def compare_tracks() -> dict:
     shadow_win = shadow_summary.get("winRateT5")
     shadow_avg = shadow_summary.get("avgReturnT5")
 
+    now = datetime.now(timezone.utc).astimezone()
+    first_at = parse_dt(shadow_records[0].get("recordedAt")) if shadow_records else None
+    age_days = int((now - first_at).total_seconds() / 86400) if first_at else 0
+    days_until_mature = max(0, 5 - age_days)
+
     shadow_wins = False
+    attribution_stalled = age_days >= 7 and shadow_matured == 0 and shadow_days >= 3
     reason = "影子轨积累中"
-    if shadow_matured > 0 and shadow_win is not None:
+    if attribution_stalled:
+        reason = f"归因停滞：已运行 {age_days} 天 / {shadow_days} 个交易日，成熟样本仍为 0"
+    elif shadow_matured > 0 and shadow_win is not None:
         reason = (
             f"影子 T+5 {shadow_win}%/{shadow_avg}% "
             f"vs 生产 {prod_win}%/{prod_avg}% · {shadow_matured} 笔成熟"
         )
-    elif shadow_weeks >= 1:
-        reason = f"影子轨第 {shadow_weeks} 周 · 归因样本积累中"
+    elif shadow_days >= 1:
+        reason = (
+            f"影子轨日历 {shadow_weeks} 周 · {shadow_days} 个交易日 · "
+            f"{'距首批成熟约 ' + str(days_until_mature) + ' 天' if days_until_mature else '归因样本积累中'}"
+        )
 
     min_shadow_samples = 8
     paired = _load(DATA_DIR / "paired_attribution.json", {}) or {}
@@ -162,15 +205,22 @@ def compare_tracks() -> dict:
     paired_count = paired_summary.get("pairedCount") or 0
     paired_win = paired_summary.get("shadowWinRate")
     paired_edge = paired_summary.get("avgEdgeT5")
+    market_pairs = paired_summary.get("marketPairedCount") or 0
 
     if paired_count >= 6 and paired_win is not None:
         reason = (
             f"配对归因 {paired_count} 对 · 影子胜率 {paired_win}% · "
             f"均边际 {paired_edge}%"
         )
+    elif market_pairs >= 6 and paired_summary.get("marketShadowWinRate") is not None:
+        reason = (
+            f"市场日配对 {market_pairs} 对 · 影子胜率 {paired_summary.get('marketShadowWinRate')}% · "
+            f"均边际 {paired_summary.get('marketAvgEdgeT5')}%"
+        )
 
+    effective_weeks = shadow_weeks
     if (
-        shadow_weeks >= 4
+        effective_weeks >= 4
         and paired_count >= 6
         and paired_win is not None
         and paired_edge is not None
@@ -182,7 +232,7 @@ def compare_tracks() -> dict:
                 f"均边际 +{paired_edge}% — 可申请升级 PR"
             )
     elif (
-        shadow_weeks >= 4
+        effective_weeks >= 4
         and shadow_matured >= min_shadow_samples
         and prod_matured >= min_shadow_samples
         and shadow_win is not None
@@ -203,6 +253,10 @@ def compare_tracks() -> dict:
         "prodRecords": len(prod_records),
         "shadowRecords": len(shadow_records),
         "shadowWeeks": shadow_weeks,
+        "shadowTradingDays": shadow_days,
+        "shadowAgeDays": age_days,
+        "daysUntilFirstMature": days_until_mature,
+        "attributionStalled": attribution_stalled,
         "symbolOverlapRecent": overlap,
         "prodMaturedT5": prod_matured,
         "shadowMaturedT5": shadow_matured,
@@ -213,9 +267,10 @@ def compare_tracks() -> dict:
         "pairedCount": paired_count,
         "pairedShadowWinRate": paired_win,
         "pairedAvgEdgeT5": paired_edge,
+        "marketPairedCount": market_pairs,
         "shadowWins": shadow_wins,
         "reason": reason,
-        "readyForUpgradePR": shadow_wins and shadow_weeks >= 4,
+        "readyForUpgradePR": shadow_wins and effective_weeks >= 4,
     }
 
 

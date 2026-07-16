@@ -154,16 +154,28 @@ def _evolution_block() -> dict:
         "recoAvgReturnT5": attr_summary.get("avgReturnT5"),
         "recoWinRateT5": attr_summary.get("winRateT5"),
         "recoDecisionBuckets": attr_summary.get("byDecisionLabel"),
+        "recoMarketBuckets": attr_summary.get("byMarket"),
+        "recoRegimeBuckets": attr_summary.get("byRegime"),
         "shadowWinRateT5": shadow_summary.get("winRateT5") or comparison.get("shadowWinRateT5"),
         "shadowAvgReturnT5": shadow_summary.get("avgReturnT5") or comparison.get("shadowAvgReturnT5"),
         "shadowMaturedT5": shadow_summary.get("maturedT5") or comparison.get("shadowMaturedT5"),
+        "shadowWeeks": comparison.get("shadowWeeks"),
+        "shadowTradingDays": comparison.get("shadowTradingDays"),
+        "shadowAgeDays": comparison.get("shadowAgeDays"),
+        "daysUntilFirstMature": comparison.get("daysUntilFirstMature"),
+        "attributionStalled": bool(comparison.get("attributionStalled")),
+        "shadowReason": comparison.get("reason") or "",
+        "shadowCandidateParams": (_load_json(DATA_DIR / "shadow_reco.json") or {}).get("candidateParams"),
         "pairedCount": comparison.get("pairedCount")
         or (_load_json(DATA_DIR / "paired_attribution.json") or {}).get("summary", {}).get("pairedCount"),
         "pairedShadowWinRate": comparison.get("pairedShadowWinRate")
         or (_load_json(DATA_DIR / "paired_attribution.json") or {}).get("summary", {}).get("shadowWinRate"),
-        "strategyUpgradePending": bool(candidates.get("recommendUpgrade")),
+        "marketPairedCount": comparison.get("marketPairedCount")
+        or (_load_json(DATA_DIR / "paired_attribution.json") or {}).get("summary", {}).get("marketPairedCount"),
+        "strategyUpgradePending": bool(candidates.get("recommendUpgrade") or candidates.get("shadowCandidate")),
         "strategyUpgradeHint": candidates.get("upgradeReason") or "",
         "shadowReadyForPR": bool(comparison.get("readyForUpgradePR")),
+        "tacticTuneByMarket": (_load_json(DATA_DIR / "tactic_tune.json") or {}).get("buyScoreAdjustByMarket"),
     }
 
 

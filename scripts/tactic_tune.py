@@ -19,6 +19,7 @@ MIN_REGIME_SAMPLES = 4
 LOW_WIN_RATE = 45.0
 HIGH_WIN_RATE = 58.0
 LOW_DECISION_WIN = 40.0
+MARKETS = ("A股", "港股", "美股")
 
 
 def _load_attr() -> dict:
@@ -32,6 +33,18 @@ def _load_attr() -> dict:
 
 def _clamp(value: int, lo: int, hi: int) -> int:
     return max(lo, min(hi, value))
+
+
+def _bucket_adjust(bucket: dict, *, min_samples: int, label: str) -> tuple[int, str | None]:
+    count = bucket.get("count") or 0
+    win = bucket.get("winRate")
+    if count < min_samples or win is None:
+        return 0, None
+    if win >= HIGH_WIN_RATE:
+        return -1, f"{label} T+5 胜率 {win}% 良好，门槛 -1"
+    if win < LOW_WIN_RATE:
+        return 1, f"{label} T+5 胜率 {win}% 偏低，门槛 +1"
+    return 0, None
 
 
 def run_tune() -> dict:
@@ -88,22 +101,6 @@ def run_tune() -> dict:
                 adjust += 1
                 notes.append(f"中决策分 T+5 胜率 {mid_win}% 偏低，门槛 +1")
 
-    market_candidates = [
-        (name, by_market.get(name) or {})
-        for name in ("A股", "港股", "美股")
-        if (by_market.get(name) or {}).get("count", 0) >= MIN_MARKET_SAMPLES
-        and (by_market.get(name) or {}).get("winRate") is not None
-    ]
-    if market_candidates:
-        worst_name, worst = min(market_candidates, key=lambda x: x[1]["winRate"])
-        best_name, best = max(market_candidates, key=lambda x: x[1]["winRate"])
-        if worst["winRate"] < LOW_WIN_RATE:
-            adjust += 1
-            notes.append(f"{worst_name} T+5 胜率 {worst['winRate']}% 拖累，门槛 +1")
-        elif best["winRate"] >= HIGH_WIN_RATE:
-            adjust -= 1
-            notes.append(f"{best_name} T+5 胜率 {best['winRate']}% 领先，门槛 -1")
-
     risk_off = by_regime.get("risk_off") or {}
     if (risk_off.get("count") or 0) >= MIN_REGIME_SAMPLES and (risk_off.get("winRate") or 100) < LOW_WIN_RATE:
         adjust += 1
@@ -116,14 +113,31 @@ def run_tune() -> dict:
 
     adjust = _clamp(adjust, -3, 4)
 
+    # 分市场增量：在全局 adjust 之上叠加（港股拖累不再冲掉 A股/美股红利）
+    by_market_adjust: dict[str, int] = {}
+    for market_name in MARKETS:
+        delta, note = _bucket_adjust(
+            by_market.get(market_name) or {},
+            min_samples=MIN_MARKET_SAMPLES,
+            label=market_name,
+        )
+        market_total = _clamp(adjust + delta, -3, 4)
+        by_market_adjust[market_name] = market_total
+        if note:
+            notes.append(f"{note}（市场门槛→{market_total:+d}）")
+
     watch_count = watch_stats.get("count") or 0
     if watch_count >= MIN_SAMPLES * 2 and buy_count < MIN_SAMPLES:
         notes.append("buy 样本不足，主要依据 watch 池、市场与决策分桶观察")
+
+    active = adjust != 0 or any(v != 0 for v in by_market_adjust.values())
 
     payload = {
         "updatedAt": now.isoformat(timespec="seconds"),
         "buyScoreAdjust": adjust,
         "breakoutScoreAdjust": adjust,
+        "buyScoreAdjustByMarket": by_market_adjust,
+        "breakoutScoreAdjustByMarket": dict(by_market_adjust),
         "attribution": {
             "buySamples": buy_count,
             "winRateT5": buy_win,
@@ -133,10 +147,13 @@ def run_tune() -> dict:
             "byRegime": by_regime,
         },
         "notes": notes,
-        "active": adjust != 0,
+        "active": active,
     }
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Tactic tune: buyScoreAdjust={adjust} ({'; '.join(notes) or 'neutral'})")
+    print(
+        f"Tactic tune: global={adjust:+d} byMarket={by_market_adjust} "
+        f"({'; '.join(notes[:3]) or 'neutral'})"
+    )
     return payload
 
 

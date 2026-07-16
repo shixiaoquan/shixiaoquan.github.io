@@ -54,6 +54,20 @@ def build_queue() -> dict:
                 "params": params,
             }
         )
+    elif cmp_.get("attributionStalled"):
+        tasks.append(
+            {
+                "id": "shadow-attribution-stalled",
+                "type": "shadow_track",
+                "priority": "high",
+                "title": "影子轨归因停滞",
+                "reason": cmp_.get("reason"),
+                "cursorPrompt": (
+                    "检查 shadow_attribution.py / weekly-backtest 是否运行；"
+                    "确认 MIN_AGE_DAYS 与历史 recordedAt。勿直接升生产。"
+                ),
+            }
+        )
     elif shadow.get("candidateParams"):
         tasks.append(
             {

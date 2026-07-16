@@ -55,6 +55,9 @@ function renderEvolutionPanel(data) {
     )
     .join("");
 
+  renderShadowTrack(ev);
+  renderEvolutionBuckets(ev);
+
   const log = data.recentLog || [];
   const logHtml = log.length
     ? `<ul class="evolution-log">${log
@@ -118,6 +121,74 @@ function renderEvolutionPanel(data) {
           .join("")}</ul>`;
     }
   }
+}
+
+function renderShadowTrack(ev) {
+  const el = document.getElementById("cockpit-evolution-shadow");
+  if (!el) return;
+  const params = ev.shadowCandidateParams || {};
+  const ready = ev.shadowReadyForPR;
+  const stalled = ev.attributionStalled;
+  const days = ev.shadowTradingDays != null ? `${ev.shadowTradingDays} 日` : "—";
+  const weeks = ev.shadowWeeks != null ? `${ev.shadowWeeks} 周` : "—";
+  const matured = ev.shadowMaturedT5 != null ? ev.shadowMaturedT5 : "—";
+  const paired =
+    ev.pairedCount != null
+      ? `${ev.pairedCount} 标的${ev.marketPairedCount != null ? ` · ${ev.marketPairedCount} 市场日` : ""}`
+      : "—";
+  const statusClass = ready ? "ready" : stalled ? "stalled" : "tracking";
+  const statusText = ready ? "可申请升级 PR" : stalled ? "归因停滞" : "积累中";
+  el.innerHTML = `
+    <div class="evolution-shadow__card evolution-shadow__card--${statusClass}">
+      <div class="evolution-shadow__head">
+        <h3>影子荐股轨</h3>
+        <span class="evolution-shadow__status">${statusText}</span>
+      </div>
+      <p class="evolution-shadow__reason">${ev.shadowReason || "等待影子轨数据"}</p>
+      <ul class="evolution-shadow__meta">
+        <li>候选 buy≥${params.buyScore ?? "—"} / breakout≥${params.breakoutScoreMin ?? "—"}</li>
+        <li>日历 ${weeks} · 交易日 ${days} · 成熟 ${matured}</li>
+        <li>配对 ${paired}${ev.daysUntilFirstMature > 0 ? ` · 距首批成熟 ${ev.daysUntilFirstMature} 天` : ""}</li>
+      </ul>
+    </div>`;
+}
+
+function renderEvolutionBuckets(ev) {
+  const el = document.getElementById("cockpit-evolution-buckets");
+  if (!el) return;
+  const decision = ev.recoDecisionBuckets || {};
+  const market = ev.recoMarketBuckets || {};
+  const tuneByM = ev.tacticTuneByMarket || {};
+
+  const decisionHtml = ["高", "中", "低"]
+    .map((k) => {
+      const b = decision[k] || {};
+      if (!b.count) return "";
+      return `<span class="evo-bucket evo-bucket--dec-${k === "高" ? "high" : k === "低" ? "low" : "mid"}">决策${k} ${b.winRate ?? "—"}% <small>n=${b.count}</small></span>`;
+    })
+    .filter(Boolean)
+    .join("");
+
+  const marketHtml = ["A股", "港股", "美股"]
+    .map((k) => {
+      const b = market[k] || {};
+      if (!b.count) return "";
+      const adj = tuneByM[k];
+      const adjText = typeof adj === "number" && adj !== 0 ? ` · 门槛${adj > 0 ? "+" : ""}${adj}` : "";
+      return `<span class="evo-bucket evo-bucket--mkt">${k} ${b.winRate ?? "—"}%${adjText} <small>n=${b.count}</small></span>`;
+    })
+    .filter(Boolean)
+    .join("");
+
+  if (!decisionHtml && !marketHtml) {
+    el.innerHTML = "";
+    return;
+  }
+  el.innerHTML = `
+    <div class="evolution-buckets__row">
+      ${decisionHtml}
+      ${marketHtml}
+    </div>`;
 }
 
 function updateEvolutionBadge(data) {

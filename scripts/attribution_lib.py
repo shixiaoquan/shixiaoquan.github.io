@@ -11,7 +11,8 @@ import yfinance as yf
 
 HORIZONS = (1, 5, 20)
 MAX_NEW_PER_RUN = 40
-MIN_AGE_DAYS = 6
+# T+5 目标日过后即可归因（约 5 个自然日）；过严会导致影子轨长期 matured=0
+MIN_AGE_DAYS = 5
 
 
 def load_json(path: Path, default):
@@ -166,6 +167,30 @@ def backfill_decision_labels(
             pick = score_missing(pick)
         item["decisionScore"] = pick.get("decisionScore")
         item["decisionLabel"] = decision_label(pick)
+
+
+def backfill_market_context(items: dict, records: list[dict], *, key_prefix: str = "") -> None:
+    """用历史 record.marketContext 回填归因项的 marketRegime / marketMood。"""
+    ctx_map: dict[str, dict] = {}
+    for record in records:
+        record_id = record.get("id") or record.get("recordedAt") or ""
+        ctx = record.get("marketContext") or {}
+        if not ctx:
+            continue
+        for pick in record.get("picks") or []:
+            symbol = pick.get("symbol")
+            if symbol:
+                ctx_map[pick_key(record_id, symbol)] = ctx
+
+    for key, item in items.items():
+        if item.get("marketRegime") and item.get("marketRegime") != "unknown":
+            continue
+        plain_key = key[len(key_prefix) :] if key_prefix and key.startswith(key_prefix) else key
+        ctx = ctx_map.get(plain_key)
+        if not ctx:
+            continue
+        item["marketRegime"] = ctx.get("regime") or item.get("marketRegime")
+        item["marketMood"] = ctx.get("mood") or item.get("marketMood")
 
 
 def summarize_items(items: dict) -> dict:

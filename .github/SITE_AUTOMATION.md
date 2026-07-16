@@ -43,9 +43,10 @@
 
 1. **战术荐股**：`strategy_config.py` v1.3 + `tactic_tune.json` 归因反哺门槛
 2. **决策质量分**：`decision_score.py` 四维加权，写入 history 快照（含 `decisionComponents`）
-3. **影子轨**：`shadow_reco.py` 并行 forward 验证，满 4 周 + 配对归因优于生产才可升 PR
-4. **配对归因**：`paired_attribution.py` 同日复盘同标的 T+5 对比
-5. **荐股归因**：`reco_attribution.py` 按信号/市场/决策分/Regime 分桶
+3. **影子轨**：`shadow_reco.py` 日历周跨度 + 日去重并行验证，满 4 周 + 配对归因优于生产才可升 PR
+4. **配对归因**：`paired_attribution.py` 同日同标的 + 同市场 top-pick T+5 对比
+5. **荐股归因**：`reco_attribution.py` 按信号/市场/决策分/Regime 分桶，并回填历史 `marketRegime`/`decisionLabel`
+5b. **分市场门槛**：`tactic_tune.buyScoreAdjustByMarket` → `strategy_scoring` 按市场叠加
 6. **参数搜索**：`strategy_param_sweep.py` → `strategy_candidates.json` → 影子轨
 7. **进化队列**：`evolution_queue.json` 单入口待办，高优任务自动开 Issue（`evolution-queue` 标签）
 8. **Schema Gate**：`validate_data.py` ERROR 时 CI 失败
