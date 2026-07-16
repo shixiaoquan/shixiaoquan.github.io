@@ -37,7 +37,7 @@ jobs:
         run: python scripts/validate_data.py
 
       - name: Commit and push if changed
-        run: >
-          bash scripts/git_push_data.sh "chore: evolution followup (shadow + queue)"
-          data/shadow_reco.json data/shadow_attribution.json data/paired_attribution.json
-          data/evolution_queue.json data/site_status.json
+        run: |
+          bash scripts/git_push_data.sh "chore: evolution followup (shadow + queue)" \
+            data/shadow_reco.json data/shadow_attribution.json data/paired_attribution.json \
+            data/evolution_queue.json data/site_status.json

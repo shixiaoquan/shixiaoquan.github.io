@@ -53,4 +53,5 @@ jobs:
         run: python scripts/build_site_status.py
 
       - name: Commit and push if changed
-        run: bash scripts/git_push_data.sh "chore: update wencai data" data/wencai.json data/site_status.json
+        run: |
+          bash scripts/git_push_data.sh "chore: update wencai data" data/wencai.json data/site_status.json

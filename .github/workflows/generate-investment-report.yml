@@ -89,4 +89,5 @@ jobs:
 
       - name: Commit and push if changed
         if: success()
-        run: bash scripts/git_push_data.sh "chore: update investment report" data/reports/ data/site_status.json
+        run: |
+          bash scripts/git_push_data.sh "chore: update investment report" data/reports/ data/site_status.json

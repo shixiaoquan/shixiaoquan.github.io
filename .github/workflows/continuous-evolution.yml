@@ -155,7 +155,7 @@ jobs:
             });
 
       - name: Commit and push if changed
-        run: >
-          bash scripts/git_push_data.sh "chore: update site evolution status"
-          data/site_status.json data/pipeline_health.json data/evolution_log.json
-          data/evolution_queue.json data/evolution_queue_health.json
+        run: |
+          bash scripts/git_push_data.sh "chore: update site evolution status" \
+            data/site_status.json data/pipeline_health.json data/evolution_log.json \
+            data/evolution_queue.json data/evolution_queue_health.json
