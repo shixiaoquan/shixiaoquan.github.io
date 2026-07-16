@@ -62,17 +62,10 @@ jobs:
         run: python scripts/validate_data.py
 
       - name: Commit and push if changed
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/backtest.json data/paper_backtest.json data/paper_backtest_curves/
-          git add data/reco_attribution.json data/shadow_attribution.json data/paired_attribution.json data/strategy_candidates.json data/evolution_log.json
-          git add data/tactic_tune.json data/paper_ab.json data/reco_history.json data/reco_history_recent.json
-          git add data/shadow_reco.json data/evolution_queue.json data/archive/ data/site_status.json
-          if git diff --staged --quiet; then
-            echo "No backtest changes."
-          else
-            git commit -m "chore: weekly backtest and evolution update"
-            git pull --rebase origin master
-            git push
-          fi
+        run: >
+          bash scripts/git_push_data.sh "chore: weekly backtest and evolution update"
+          data/backtest.json data/paper_backtest.json data/paper_backtest_curves/
+          data/reco_attribution.json data/shadow_attribution.json data/paired_attribution.json
+          data/strategy_candidates.json data/evolution_log.json data/tactic_tune.json data/paper_ab.json
+          data/reco_history.json data/reco_history_recent.json data/shadow_reco.json
+          data/evolution_queue.json data/archive/ data/site_status.json

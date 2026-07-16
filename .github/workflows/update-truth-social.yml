@@ -50,14 +50,4 @@ jobs:
         run: python scripts/build_site_status.py
 
       - name: Commit and push if changed
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/trump_truth.json data/site_status.json
-          if git diff --staged --quiet; then
-            echo "No truth data changes."
-          else
-            git commit -m "chore: update Trump Truth Social posts"
-            git pull --rebase origin master
-            git push
-          fi
+        run: bash scripts/git_push_data.sh "chore: update Trump Truth Social posts" data/trump_truth.json data/site_status.json

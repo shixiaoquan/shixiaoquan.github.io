@@ -14,13 +14,20 @@ DATA_DIR = ROOT / "data"
 STATUS_FILE = DATA_DIR / "site_status.json"
 ISSUE_TITLE = "[自动] 数据流水线异常"
 
+# 交易时段阈值；休市时 market/macro 放宽（见 market_calendar）
 STALE_MINUTES = {
     "market": 45,
     "macro": 45,
-    "truth": 60,
+    "truth": 90,  # 10min 调度，允许并发推送延迟
     "wencai": 150,
     "reports": 60 * 48,
     "backtest": 60 * 24 * 10,
+}
+
+STALE_MINUTES_CLOSED = {
+    **STALE_MINUTES,
+    "market": 60 * 18,  # 休市过夜不告警
+    "macro": 60 * 18,
 }
 
 
@@ -33,17 +40,29 @@ def _parse_dt(text: str | None) -> datetime | None:
         return None
 
 
+def _limits() -> dict[str, int]:
+    try:
+        from market_calendar import market_intensity
+
+        if market_intensity() == "closed":
+            return STALE_MINUTES_CLOSED
+    except Exception:
+        pass
+    return STALE_MINUTES
+
+
 def check_stale() -> tuple[list[dict], list[dict]]:
     if not STATUS_FILE.exists():
         return [], [{"id": "site_status", "issue": "site_status.json 缺失"}]
     data = json.loads(STATUS_FILE.read_text(encoding="utf-8"))
     now = datetime.now(timezone.utc).astimezone()
+    limits = _limits()
     stale: list[dict] = []
     healthy: list[dict] = []
     for pipe in data.get("pipelines") or []:
         pid = pipe.get("id")
         updated = _parse_dt(pipe.get("updatedAt"))
-        limit = STALE_MINUTES.get(pid, 120)
+        limit = limits.get(pid, 120)
         if pipe.get("status") != "ok" or not updated:
             stale.append({**pipe, "reason": pipe.get("status") or "no timestamp"})
             continue
@@ -90,7 +109,6 @@ def main() -> int:
     if os.environ.get("GITHUB_ACTIONS") != "true":
         return 1 if stale else 0
 
-    # 输出给 workflow 的 github-script 步骤
     out = ROOT / "data" / "pipeline_health.json"
     out.write_text(
         json.dumps(

@@ -155,15 +155,7 @@ jobs:
             });
 
       - name: Commit and push if changed
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/site_status.json data/pipeline_health.json data/evolution_log.json
-          git add data/evolution_queue.json data/evolution_queue_health.json
-          if git diff --staged --quiet; then
-            echo "Site status unchanged."
-          else
-            git commit -m "chore: update site evolution status"
-            git pull --rebase origin master
-            git push
-          fi
+        run: >
+          bash scripts/git_push_data.sh "chore: update site evolution status"
+          data/site_status.json data/pipeline_health.json data/evolution_log.json
+          data/evolution_queue.json data/evolution_queue_health.json
