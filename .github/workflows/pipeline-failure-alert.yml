@@ -1,6 +1,6 @@
 name: Pipeline Failure Alert
 
-# 任一数据流水线失败时开 GitHub Issue（零外部通知服务）
+# 数据流水线失败时开 Issue；成功时自动关闭同名失败 Issue
 
 on:
   workflow_run:
@@ -34,7 +34,7 @@ jobs:
               `- 运行：[#${run.id}](${run.html_url})`,
               `- 结论：${run.conclusion}`,
               '',
-              '修复合并后本 Issue 可手动关闭。',
+              '后续成功运行将自动关闭本 Issue。',
               '',
               '<!-- workflow-failure-bot -->',
             ].join('\n');
@@ -42,7 +42,8 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
-              per_page: 20,
+              labels: 'pipeline-health',
+              per_page: 30,
             });
             const dup = issues.find(i => i.title === title);
             if (dup) {
@@ -61,3 +62,38 @@ jobs:
               body,
               labels: ['pipeline-health', 'automated'],
             });
+
+  resolve:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v9
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            const title = `[自动] 工作流失败 · ${run.name}`;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'pipeline-health',
+              per_page: 30,
+            });
+            const existing = issues.find(i => i.title === title);
+            if (!existing) {
+              core.info(`No open failure issue for ${run.name}`);
+              return;
+            }
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: existing.number,
+              body: `已恢复成功 · ${new Date().toISOString()}\n${run.html_url}`,
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: existing.number,
+              state: 'closed',
+            });
+            core.info(`Closed issue #${existing.number}`);
