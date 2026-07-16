@@ -892,11 +892,38 @@ function renderPickCard(pick, compact = false) {
         </div>
       </div>
       <p class="stock-card__price">${formatNumber(pick.price)} <span>${pick.currency || ""}</span></p>
+      ${!compact && pick.decisionComponents ? renderDecisionComponents(pick.decisionComponents) : ""}
       ${riskHtml}
       ${reasons}
       ${plan}
     </article>
   `;
+}
+
+function renderDecisionComponents(components) {
+  if (!components || typeof components !== "object") return "";
+  const order = [
+    ["macro", "宏观"],
+    ["wencai", "问财"],
+    ["masters", "大师"],
+    ["truth", "舆情"],
+  ];
+  const bars = order
+    .map(([key, label]) => {
+      const row = components[key] || {};
+      const score = typeof row.score === "number" ? row.score : null;
+      if (score == null) return "";
+      const width = Math.max(0, Math.min(100, score));
+      const bucket = Math.max(10, Math.round(width / 10) * 10);
+      return `<div class="decision-bar" title="${row.note || label}">
+        <span class="decision-bar__label">${label}</span>
+        <span class="decision-bar__track"><span class="decision-bar__fill decision-bar__fill--${bucket}"></span></span>
+        <span class="decision-bar__score">${score}</span>
+      </div>`;
+    })
+    .filter(Boolean)
+    .join("");
+  return bars ? `<div class="decision-components">${bars}</div>` : "";
 }
 
 function formatMasterMetric(key, val) {

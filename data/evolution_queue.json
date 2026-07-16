@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-07-16T01:40:11+00:00",
+  "updatedAt": "2026-07-16T01:53:49+00:00",
   "tasks": [
     {
       "id": "shadow-tracking",
       "type": "shadow_track",
       "priority": "medium",
       "title": "影子轨积累中",
-      "reason": "影子轨第 10 周 · 归因样本积累中",
+      "reason": "影子轨日历 0.7 周 · 5 个交易日 · 归因样本积累中",
       "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
     },
     {
@@ -22,6 +22,14 @@
       }
     },
     {
+      "id": "tactic-tune-active",
+      "type": "tactic_tune",
+      "priority": "low",
+      "title": "战术门槛自适应调整 -1",
+      "reason": "中决策分 T+5 胜率 64.1% 良好，门槛 -1; A股 T+5 胜率 66.7% 良好，门槛 -1（市场门槛→-2）; 港股 T+5 胜率 21.7% 偏低，门槛 +1（市场门槛→+0）; 美股 T+5 胜率 60.3% 良好，门槛 -1（市场门槛→-2）; buy 样本不足，主要依据 watch 池、市场与决策分桶观察",
+      "cursorPrompt": "可选：审阅 tactic_tune.json 是否需固化到 strategy_config。"
+    },
+    {
       "id": "paper-ab-hint",
       "type": "research",
       "priority": "low",
@@ -31,7 +39,7 @@
     }
   ],
   "summary": {
-    "total": 3,
+    "total": 4,
     "high": 0,
     "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
   }

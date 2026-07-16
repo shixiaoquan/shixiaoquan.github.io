@@ -7,7 +7,13 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from attribution_lib import backfill_decision_labels, load_json, run_track_attribution, summarize_items
+from attribution_lib import (
+    backfill_decision_labels,
+    backfill_market_context,
+    load_json,
+    run_track_attribution,
+    summarize_items,
+)
 from decision_score import load_context_files, score_pick
 from evolution_log import append_event
 
@@ -46,6 +52,7 @@ def run_shadow_attribution() -> dict:
         now=now,
     )
     backfill_decision_labels(items, records, key_prefix=KEY_PREFIX, score_missing=_retro_score_pick)
+    backfill_market_context(items, records, key_prefix=KEY_PREFIX)
     summary = summarize_items(items)
 
     payload = {

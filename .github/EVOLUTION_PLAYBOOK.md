@@ -62,6 +62,16 @@
 | 研报进化章节 | `generate_report.py` | 日报第五节展示影子轨/队列/自适应 |
 | 脚本测试 | `scripts-test.yml` | PR 前 unittest |
 
+## 三期增强
+
+| 能力 | 说明 |
+|------|------|
+| 日历周数 + 日去重 | `shadow_reco` 用日历跨度，每日一条影子快照 |
+| 归因回填 | `marketRegime` / `decisionLabel` 回填既有 items |
+| 市场日配对 | `paired_attribution` 同日同市场 top-pick 对比 |
+| 分市场门槛 | `tactic_tune.buyScoreAdjustByMarket` → `strategy_scoring` |
+| 驾驶舱影子轨 | 进度 / 配对 / 决策·市场分桶可视化 |
+
 ## Cursor 负责什么
 
 当 `data/evolution_queue.json` 出现 **`shadow-upgrade-pr`**（或 `shadow_reco.comparison.readyForUpgradePR`）时：

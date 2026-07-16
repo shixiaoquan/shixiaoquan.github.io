@@ -188,8 +188,12 @@ def score_series(
         return None
 
     adj = score_adjust or {}
-    buy_threshold = BUY_SCORE + int(adj.get("buyScoreAdjust") or 0)
-    breakout_threshold = BREAKOUT_SCORE_MIN + int(adj.get("breakoutScoreAdjust") or 0)
+    by_mkt_buy = (adj.get("buyScoreAdjustByMarket") or {}).get(market)
+    by_mkt_brk = (adj.get("breakoutScoreAdjustByMarket") or {}).get(market)
+    buy_delta = by_mkt_buy if by_mkt_buy is not None else adj.get("buyScoreAdjust") or 0
+    brk_delta = by_mkt_brk if by_mkt_brk is not None else adj.get("breakoutScoreAdjust") or 0
+    buy_threshold = BUY_SCORE + int(buy_delta)
+    breakout_threshold = BREAKOUT_SCORE_MIN + int(brk_delta)
 
     price = closes[-1]
     sma10 = sma(closes, 10)
