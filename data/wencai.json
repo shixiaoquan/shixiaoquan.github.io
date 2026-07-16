@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-16T08:31:03+00:00",
+  "updatedAt": "2026-07-16T11:10:08+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 34 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 32 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 55,
@@ -100,7 +100,7 @@
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "605255.SH",
@@ -175,13 +175,16 @@
           "changePct": -10.0
         }
       ],
-      "count": 38
+      "count": 38,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603538.SH",
@@ -253,13 +256,15 @@
           "changePct": -10.0,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002156.SZ",
@@ -317,72 +322,30 @@
           "changePct": 4.34,
           "flow": 381433792
         }
-      ]
-    },
-    {
-      "id": "low_pe",
-      "title": "低估值防御",
-      "query": "市盈率低于行业均值且股息率大于3%",
-      "status": "ok",
-      "items": [
-        {
-          "code": "603697.SH",
-          "name": "有友食品",
-          "price": 10.49,
-          "changePct": -0.76
-        },
-        {
-          "code": "002091.SZ",
-          "name": "江苏国泰",
-          "price": 7.45,
-          "changePct": 0.13
-        },
-        {
-          "code": "601857.SH",
-          "name": "中国石油",
-          "price": 9.99,
-          "changePct": -0.3
-        },
-        {
-          "code": "002142.SZ",
-          "name": "宁波银行",
-          "price": 31.28,
-          "changePct": -0.95
-        },
-        {
-          "code": "001872.SZ",
-          "name": "招商港口",
-          "price": 20.94,
-          "changePct": -0.48
-        },
-        {
-          "code": "603939.SH",
-          "name": "益丰药房",
-          "price": 21.43,
-          "changePct": -0.14
-        },
-        {
-          "code": "600036.SH",
-          "name": "招商银行",
-          "price": 37.67,
-          "changePct": -0.24
-        },
-        {
-          "code": "920208.BJ",
-          "name": "青矩技术",
-          "price": 12.19,
-          "changePct": -0.89
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
     {
-      "id": "wencai:a06283e915c29112",
-      "title": "徕木股份：徕木股份关于为控股子公司提供担保的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603633_20260717_UHZ6.pdf",
+      "id": "wencai:c58aeb13efa53226",
+      "title": "天合光能：天合光能股份有限公司2026年半年度业绩预告的自愿性披露公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/688599_20260717_X6VS.pdf",
       "publisher": "同花顺问财",
-      "related": "徕木股份 (603633.SH)",
+      "related": "天合光能 (688599.SH)",
+      "publishedAt": "2026-07-16T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:24b241fe894062d6",
+      "title": "久立特材：关于实际控制人之一致行动人完成增持公司股份的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-17/1225427638.PDF",
+      "publisher": "同花顺问财",
+      "related": "久立特材 (002318.SZ)",
       "publishedAt": "2026-07-16T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -394,6 +357,28 @@
       "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/600971_20260717_JQIM.pdf",
       "publisher": "同花顺问财",
       "related": "恒源煤电 (600971.SH)",
+      "publishedAt": "2026-07-16T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:fd8b42c816aceef8",
+      "title": "千红制药：关于向不特定对象发行可转换公司债券申请获得中国证券监督管理委员会同意注册批复的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-17/1225427981.PDF",
+      "publisher": "同花顺问财",
+      "related": "千红制药 (002550.SZ)",
+      "publishedAt": "2026-07-16T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:e99ec8bd1c2bf263",
+      "title": "华盛昌：股票交易异常波动公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-17/1225428443.PDF",
+      "publisher": "同花顺问财",
+      "related": "华盛昌 (002980.SZ)",
       "publishedAt": "2026-07-16T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -422,22 +407,66 @@
       "category": "公告"
     },
     {
-      "id": "wencai:13628b32ad9d9c3f",
-      "title": "博迈科：博迈科海洋工程股份有限公司关于召开2026年半年度业绩说明会的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603727_20260717_6JZK.pdf",
+      "id": "wencai:e82ca11e5899e5eb",
+      "title": "千禾味业：千禾味业食品股份有限公司2025年度权益分派实施公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603027_20260717_X9QI.pdf",
       "publisher": "同花顺问财",
-      "related": "博迈科 (603727.SH)",
+      "related": "千禾味业 (603027.SH)",
       "publishedAt": "2026-07-16T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:492799a017c44aa7",
-      "title": "基蛋生物：关于执行《和解协议》暨转让控股子公司股权的进展公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603387_20260717_FJ9Z.pdf",
+      "id": "wencai:edcf9da20f9a3914",
+      "title": "云图控股：关于控股股东部分股份补充质押的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-17/1225427787.PDF",
       "publisher": "同花顺问财",
-      "related": "基蛋生物 (603387.SH)",
+      "related": "云图控股 (002539.SZ)",
+      "publishedAt": "2026-07-16T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:e1ec21a1db67ec5a",
+      "title": "辽宁成大：辽宁成大股份有限公司关于股东股份解质押的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/600739_20260717_E3HU.pdf",
+      "publisher": "同花顺问财",
+      "related": "辽宁成大 (600739.SH)",
+      "publishedAt": "2026-07-16T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:7ba7e94c59ecacfe",
+      "title": "联芸科技：关于向特定对象发行A股股票申请获得上海证券交易所审核通过的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/688449_20260717_XC5M.pdf",
+      "publisher": "同花顺问财",
+      "related": "联芸科技 (688449.SH)",
+      "publishedAt": "2026-07-16T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:b1eb142630ca7c5e",
+      "title": "康强电子：关于使用自有资金购买理财产品的进展公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-17/1225428201.PDF",
+      "publisher": "同花顺问财",
+      "related": "康强电子 (002119.SZ)",
+      "publishedAt": "2026-07-16T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:13628b32ad9d9c3f",
+      "title": "博迈科：博迈科海洋工程股份有限公司关于召开2026年半年度业绩说明会的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603727_20260717_6JZK.pdf",
+      "publisher": "同花顺问财",
+      "related": "博迈科 (603727.SH)",
       "publishedAt": "2026-07-16T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -466,132 +495,11 @@
       "category": "公告"
     },
     {
-      "id": "wencai:a29359872c134580",
-      "title": "康尼机电：康尼机电关于举办2026年投资者开放日活动的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603111_20260717_W6QA.pdf",
+      "id": "wencai:40bc9b9333d5b6ac",
+      "title": "海螺水泥：翌日披露報表",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/600585_20260717_XEY9.pdf",
       "publisher": "同花顺问财",
-      "related": "康尼机电 (603111.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:b0bc902cfb6bee23",
-      "title": "神马电力：第五届董事会第三十九次会议决议公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603530_20260717_TFKC.pdf",
-      "publisher": "同花顺问财",
-      "related": "神马电力 (603530.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:3bae9a7f0e2e04d1",
-      "title": "神马电力：董事、高级管理人员薪酬管理制度（2026年7月修订）",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603530_20260717_L9Q0.pdf",
-      "publisher": "同花顺问财",
-      "related": "神马电力 (603530.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:507acc49acc8b39b",
-      "title": "神马电力：关于向金融机构申请综合授信额度的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603530_20260717_D768.pdf",
-      "publisher": "同花顺问财",
-      "related": "神马电力 (603530.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:57543398f3305c93",
-      "title": "纳芯微：董事会薪酬与考核委员会关于公司2026年A股限制性股票激励计划激励对象名单的核查意见及公示情况说明",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/688052_20260717_CTL3.pdf",
-      "publisher": "同花顺问财",
-      "related": "纳芯微 (688052.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:4fd67e4435c87806",
-      "title": "纬德信息：2026年第一次临时股东会会议资料",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/688171_20260717_6AT4.pdf",
-      "publisher": "同花顺问财",
-      "related": "纬德信息 (688171.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:3f2a456c0443b97f",
-      "title": "财通证券：关于高级管理人员辞职的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/601108_20260717_IE9Y.pdf",
-      "publisher": "同花顺问财",
-      "related": "财通证券 (601108.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:29f054cfbd3aa9c6",
-      "title": "华翔股份：关于持股5%以上股东非公开发行可交换公司债券完成办理补充担保及信托登记的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603112_20260717_MI7G.pdf",
-      "publisher": "同花顺问财",
-      "related": "华翔股份 (603112.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:8a07d3879c3170",
-      "title": "华翔股份：山西华翔集团股份有限公司相关债券2026年跟踪评级报告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603112_20260717_6T56.pdf",
-      "publisher": "同花顺问财",
-      "related": "华翔股份 (603112.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:e151624e0fc44189",
-      "title": "华翔股份：关于“翔26转债”2026年跟踪评级结果的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603112_20260717_Z049.pdf",
-      "publisher": "同花顺问财",
-      "related": "华翔股份 (603112.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:59fad8bb97a35351",
-      "title": "松炀资源：广东松炀再生资源股份有限公司关于控股股东、实际控制人之一致行动人部分股份解除质押的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-17/603863_20260717_ACT1.pdf",
-      "publisher": "同花顺问财",
-      "related": "松炀资源 (603863.SH)",
-      "publishedAt": "2026-07-16T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:ff9204b5c6c4d039",
-      "title": "焦点科技：关于2025年股票期权激励计划部分股票期权注销完成的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-17/1225427450.PDF",
-      "publisher": "同花顺问财",
-      "related": "焦点科技 (002315.SZ)",
+      "related": "海螺水泥 (600585.SH)",
       "publishedAt": "2026-07-16T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -620,66 +528,11 @@
       "category": "利好"
     },
     {
-      "id": "wencai:fce7535a33a34e33",
-      "title": "上海锦江在线网络服务股份有限公司2025年年度权益分派实施公告",
-      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnuv7957677.shtml",
-      "publisher": "同花顺问财",
-      "related": "锦江在线 (600650.SH)",
-      "publishedAt": "2026-07-15T17:45:00+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
-      "id": "wencai:6cc748fa85bce303",
-      "title": "TCL科技集团股份有限公司关于深圳证券交易所并购重组审核委员会审核公司发行股份及支付现金购买资产事项会议安排的公告",
-      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnuv7911684.shtml",
-      "publisher": "同花顺问财",
-      "related": "TCL科技 (000100.SZ)",
-      "publishedAt": "2026-07-15T17:45:00+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
       "id": "wencai:cce5277b3d0d69e1",
       "title": "新智认知数字科技股份有限公司2025年年度权益分派实施公告",
       "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnus4581361.shtml",
       "publisher": "同花顺问财",
       "related": "ST智知 (603869.SH)",
-      "publishedAt": "2026-07-15T17:45:00+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
-      "id": "wencai:49cb671c0827e1b8",
-      "title": "浙江三美化工股份有限公司关于放弃联营企业增资优先认缴出资权暨关联交易的公告",
-      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnus4581359.shtml",
-      "publisher": "同花顺问财",
-      "related": "三美股份 (603379.SH)",
-      "publishedAt": "2026-07-15T17:45:00+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
-      "id": "wencai:ca261bf3a6c6f922",
-      "title": "株洲欧科亿数控精密刀具股份有限公司2025年年度权益分派实施公告",
-      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnuq7804474.shtml",
-      "publisher": "同花顺问财",
-      "related": "欧科亿 (688308.SH)",
-      "publishedAt": "2026-07-15T17:45:00+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
-      "id": "wencai:fa8981c0ba231d5f",
-      "title": "国金证券股份有限公司关于2025年年度权益分派实施后调整回购价格上限的公告",
-      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnuv7912152.shtml",
-      "publisher": "同花顺问财",
-      "related": "国金证券 (600109.SH)",
       "publishedAt": "2026-07-15T17:45:00+00:00",
       "summary": "利好",
       "source": "wencai",
@@ -702,6 +555,61 @@
       "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnuq7803997.shtml",
       "publisher": "同花顺问财",
       "related": "恒瑞医药 (600276.SH)",
+      "publishedAt": "2026-07-15T17:45:00+00:00",
+      "summary": "利好",
+      "source": "wencai",
+      "category": "利好"
+    },
+    {
+      "id": "wencai:c8dcd46b5f238e46",
+      "title": "厦门特宝生物工程股份有限公司自愿披露关于ACT201注射液获得药物临床试验批准通知书的公告",
+      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnuv7954828.shtml",
+      "publisher": "同花顺问财",
+      "related": "特宝生物 (688278.SH)",
+      "publishedAt": "2026-07-15T17:45:00+00:00",
+      "summary": "利好",
+      "source": "wencai",
+      "category": "利好"
+    },
+    {
+      "id": "wencai:6cc748fa85bce303",
+      "title": "TCL科技集团股份有限公司关于深圳证券交易所并购重组审核委员会审核公司发行股份及支付现金购买资产事项会议安排的公告",
+      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnuv7911684.shtml",
+      "publisher": "同花顺问财",
+      "related": "TCL科技 (000100.SZ)",
+      "publishedAt": "2026-07-15T17:45:00+00:00",
+      "summary": "利好",
+      "source": "wencai",
+      "category": "利好"
+    },
+    {
+      "id": "wencai:49cb671c0827e1b8",
+      "title": "浙江三美化工股份有限公司关于放弃联营企业增资优先认缴出资权暨关联交易的公告",
+      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnus4581359.shtml",
+      "publisher": "同花顺问财",
+      "related": "三美股份 (603379.SH)",
+      "publishedAt": "2026-07-15T17:45:00+00:00",
+      "summary": "利好",
+      "source": "wencai",
+      "category": "利好"
+    },
+    {
+      "id": "wencai:fce7535a33a34e33",
+      "title": "上海锦江在线网络服务股份有限公司2025年年度权益分派实施公告",
+      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnuv7957677.shtml",
+      "publisher": "同花顺问财",
+      "related": "锦江在线 (600650.SH)",
+      "publishedAt": "2026-07-15T17:45:00+00:00",
+      "summary": "利好",
+      "source": "wencai",
+      "category": "利好"
+    },
+    {
+      "id": "wencai:fa8981c0ba231d5f",
+      "title": "国金证券股份有限公司关于2025年年度权益分派实施后调整回购价格上限的公告",
+      "link": "https://finance.sina.com.cn/roll/2026-07-16/doc-inihxnuv7912152.shtml",
+      "publisher": "同花顺问财",
+      "related": "国金证券 (600109.SH)",
       "publishedAt": "2026-07-15T17:45:00+00:00",
       "summary": "利好",
       "source": "wencai",
@@ -741,11 +649,33 @@
       "category": "利好"
     },
     {
-      "id": "wencai:ce280a2bc7ee3319",
-      "title": "纳芯微：H股公告-翌日披露报表",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-16/688052_20260716_FN3C.pdf",
+      "id": "wencai:e56bc9d5162660a2",
+      "title": "千红制药:关于同意千红制药再融资注册的批复",
+      "link": "http://reportdocs.static.szse.cn/UpFiles/rasinfodisc1/202607/RAS_202607_16163565AF37C3B21B404FB48EE7E0B0324C46.pdf",
       "publisher": "同花顺问财",
-      "related": "纳芯微 (688052.SH)",
+      "related": "千红制药 (002550.SZ)",
+      "publishedAt": "2026-07-15T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:8b7b8ab583f71774",
+      "title": "辽宁成大：辽宁成大股份有限公司关于股东股份质押的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-16/600739_20260716_MLC5.pdf",
+      "publisher": "同花顺问财",
+      "related": "辽宁成大 (600739.SH)",
+      "publishedAt": "2026-07-15T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:a217e3a3311b9181",
+      "title": "海螺水泥：翌日披露報表",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-16/600585_20260716_4QWB.pdf",
+      "publisher": "同花顺问财",
+      "related": "海螺水泥 (600585.SH)",
       "publishedAt": "2026-07-15T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -753,6 +683,9 @@
     }
   ],
   "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'"
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "low_pe: 'NoneType' object has no attribute 'get'"
   ]
 }
