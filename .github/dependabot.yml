@@ -9,6 +9,10 @@ updates:
     labels:
       - dependencies
       - automated
+    ignore:
+      # 0.4+ 在 Python 3.11 无可用发行版
+      - dependency-name: truthbrush
+        versions: [">=0.4"]
 
   - package-ecosystem: github-actions
     directory: /
