@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-18T10:37:44+00:00",
+  "updatedAt": "2026-07-18T12:02:21+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 36 条资讯",
+  "message": "已更新 4 个市场问句 · 36 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 35,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000037.SZ",
@@ -91,13 +91,16 @@
           "changePct": 10.0
         }
       ],
-      "count": 35
+      "count": 35,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000021.SZ",
@@ -173,13 +176,16 @@
         }
       ],
       "count": 100,
-      "countNote": "100+"
+      "countNote": "100+",
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "001309.SZ",
@@ -251,13 +257,16 @@
           "changePct": -9.96,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "300750.SZ",
@@ -315,63 +324,10 @@
           "changePct": 2.76,
           "flow": 540560163
         }
-      ]
-    },
-    {
-      "id": "low_pe",
-      "title": "低估值防御",
-      "query": "市盈率低于行业均值且股息率大于3%",
-      "status": "ok",
-      "items": [
-        {
-          "code": "600575.SH",
-          "name": "淮河能源",
-          "price": 3.16,
-          "changePct": 0.32
-        },
-        {
-          "code": "600219.SH",
-          "name": "南山铝业",
-          "price": 3.98,
-          "changePct": -2.69
-        },
-        {
-          "code": "002142.SZ",
-          "name": "宁波银行",
-          "price": 31.64,
-          "changePct": 1.15
-        },
-        {
-          "code": "601326.SH",
-          "name": "秦港股份",
-          "price": 3.44,
-          "changePct": 0.58
-        },
-        {
-          "code": "603939.SH",
-          "name": "益丰药房",
-          "price": 20.83,
-          "changePct": -2.8
-        },
-        {
-          "code": "600036.SH",
-          "name": "招商银行",
-          "price": 38.02,
-          "changePct": 0.93
-        },
-        {
-          "code": "001323.SZ",
-          "name": "慕思股份",
-          "price": 16.19,
-          "changePct": -4.2
-        },
-        {
-          "code": "601838.SH",
-          "name": "成都银行",
-          "price": 18.25,
-          "changePct": -0.22
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -453,17 +409,6 @@
       "category": "公告"
     },
     {
-      "id": "wencai:d3d6867b31608dc8",
-      "title": "云天化：云天化关于向控股股东申请财务资助的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-18/600096_20260718_8IGH.pdf",
-      "publisher": "同花顺问财",
-      "related": "云天化 (600096.SH)",
-      "publishedAt": "2026-07-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
       "id": "wencai:9f80ceee89dcb55b",
       "title": "云天化：云天化关于召开2026年第三次临时股东会的通知",
       "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-18/600096_20260718_LX3N.pdf",
@@ -478,6 +423,17 @@
       "id": "wencai:c0fd568d461eff2a",
       "title": "云天化：云天化关于第十届董事会第十六次（临时）会议决议的公告",
       "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-18/600096_20260718_1OQT.pdf",
+      "publisher": "同花顺问财",
+      "related": "云天化 (600096.SH)",
+      "publishedAt": "2026-07-17T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:9329dba6c048309",
+      "title": "云天化：云天化关于全资子公司对外投资的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-18/600096_20260718_FJD4.pdf",
       "publisher": "同花顺问财",
       "related": "云天化 (600096.SH)",
       "publishedAt": "2026-07-17T16:00:00+00:00",
@@ -519,44 +475,44 @@
       "category": "公告"
     },
     {
-      "id": "wencai:691830a0c0a31fd6",
-      "title": "湖南裕能：董事会议事规则（草案）（H股发行并上市后适用）",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-18/1225431028.PDF",
-      "publisher": "同花顺问财",
-      "related": "湖南裕能 (301358.SZ)",
-      "publishedAt": "2026-07-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:982b50c2fbdf33a5",
-      "title": "湖南裕能：独立董事工作制度（草案）（H股发行并上市后适用）",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-18/1225431022.PDF",
-      "publisher": "同花顺问财",
-      "related": "湖南裕能 (301358.SZ)",
-      "publishedAt": "2026-07-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:25c60475acfad2be",
-      "title": "湖南裕能：董事会提名委员会工作细则（草案）（H股发行并上市后适用）",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-18/1225431032.PDF",
-      "publisher": "同花顺问财",
-      "related": "湖南裕能 (301358.SZ)",
-      "publishedAt": "2026-07-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
       "id": "wencai:19f2dcffff7f6912",
       "title": "金河生物：关于2026年员工持股计划非交易过户完成的公告",
       "link": "http://static.cninfo.com.cn/finalpage/2026-07-18/1225429227.PDF",
       "publisher": "同花顺问财",
       "related": "金河生物 (002688.SZ)",
+      "publishedAt": "2026-07-17T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:94bd11b884498cec",
+      "title": "湖南裕能：关于增选公司独立非执行董事的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-18/1225431015.PDF",
+      "publisher": "同花顺问财",
+      "related": "湖南裕能 (301358.SZ)",
+      "publishedAt": "2026-07-17T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:18b7fb7c252296",
+      "title": "湖南裕能：关于修订H股发行并上市后适用的《公司章程》及其附件、修订及制定部分公司治理制度的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-18/1225431020.PDF",
+      "publisher": "同花顺问财",
+      "related": "湖南裕能 (301358.SZ)",
+      "publishedAt": "2026-07-17T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:8b4aa50fba84a63d",
+      "title": "湖南裕能：董事会成员及员工多元化政策（草案）（H股发行并上市后适用）",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-18/1225431029.PDF",
+      "publisher": "同花顺问财",
+      "related": "湖南裕能 (301358.SZ)",
       "publishedAt": "2026-07-17T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -771,5 +727,12 @@
       "source": "wencai",
       "category": "利好"
     }
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "low_pe: 'NoneType' object has no attribute 'get'"
   ]
 }
