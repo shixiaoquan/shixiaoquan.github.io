@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-18T18:05:01+00:00",
+  "updatedAt": "2026-07-18T19:21:04+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 36 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
-    "limitUp": 35,
+    "limitUp": 33,
     "limitDown": 100,
     "limitUpNote": "100+",
     "limitDownNote": "100+",
@@ -15,26 +15,14 @@
     {
       "id": "limit_up",
       "title": "今日涨停",
-      "query": "今日涨停",
-      "status": "stale",
+      "query": "今日涨停（备用：非ST今日涨停）",
+      "status": "ok",
       "items": [
-        {
-          "code": "000037.SZ",
-          "name": "深南电A",
-          "price": 9.2,
-          "changePct": 10.05
-        },
         {
           "code": "000676.SZ",
           "name": "智度股份",
           "price": 6.84,
           "changePct": 9.97
-        },
-        {
-          "code": "000722.SZ",
-          "name": "湖南发展",
-          "price": 13.83,
-          "changePct": 10.02
         },
         {
           "code": "000779.SZ",
@@ -43,40 +31,16 @@
           "changePct": 9.98
         },
         {
-          "code": "000899.SZ",
-          "name": "赣能股份",
-          "price": 10.7,
-          "changePct": 9.97
-        },
-        {
-          "code": "001258.SZ",
-          "name": "立新能源",
-          "price": 8.27,
-          "changePct": 9.97
-        },
-        {
-          "code": "001369.SZ",
-          "name": "双欣材料",
-          "price": 12.95,
-          "changePct": 10.03
-        },
-        {
-          "code": "001388.SZ",
-          "name": "信通电子",
-          "price": 24.74,
-          "changePct": 10.0
-        },
-        {
-          "code": "002432.SZ",
-          "name": "九安医疗",
-          "price": 79.2,
-          "changePct": 10.0
-        },
-        {
           "code": "002632.SZ",
           "name": "道明光学",
           "price": 10.59,
           "changePct": 9.97
+        },
+        {
+          "code": "000037.SZ",
+          "name": "深南电A",
+          "price": 9.2,
+          "changePct": 10.05
         },
         {
           "code": "002677.SZ",
@@ -85,16 +49,50 @@
           "changePct": 9.96
         },
         {
-          "code": "002731.SZ",
-          "name": "*ST萃华",
-          "price": 2.53,
+          "code": "002766.SZ",
+          "name": "索菱股份",
+          "price": 3.94,
+          "changePct": 10.06
+        },
+        {
+          "code": "002829.SZ",
+          "name": "星网宇达",
+          "price": 20.72,
+          "changePct": 9.98
+        },
+        {
+          "code": "000722.SZ",
+          "name": "湖南发展",
+          "price": 13.83,
+          "changePct": 10.02
+        },
+        {
+          "code": "000899.SZ",
+          "name": "赣能股份",
+          "price": 10.7,
+          "changePct": 9.97
+        },
+        {
+          "code": "300577.SZ",
+          "name": "开润股份",
+          "price": 20.36,
+          "changePct": 19.98
+        },
+        {
+          "code": "600227.SH",
+          "name": "赤天化",
+          "price": 3.06,
+          "changePct": 10.07
+        },
+        {
+          "code": "002432.SZ",
+          "name": "九安医疗",
+          "price": 79.2,
           "changePct": 10.0
         }
       ],
-      "count": 35,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 33,
+      "fallbackQuery": true
     },
     {
       "id": "limit_down",
@@ -729,9 +727,9 @@
     }
   ],
   "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
     "limit_down: 'NoneType' object has no attribute 'get'",
     "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
     "low_pe: 'NoneType' object has no attribute 'get'"
   ],
   "newsStale": true
