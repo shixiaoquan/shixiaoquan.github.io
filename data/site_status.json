@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-18T06:01:58+00:00",
+  "updatedAt": "2026-07-18T06:18:27+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -233,7 +233,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-17T15:18:51+00:00",
       "status": "stale",
-      "ageMinutes": 883
+      "ageMinutes": 899
     },
     {
       "id": "macro",
@@ -242,7 +242,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-17T15:18:44+00:00",
       "status": "stale",
-      "ageMinutes": 883
+      "ageMinutes": 899
     },
     {
       "id": "truth",
@@ -251,16 +251,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-18T05:48:56+00:00",
       "status": "ok",
-      "ageMinutes": 13
+      "ageMinutes": 29
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-07-18T03:26:19+00:00",
-      "status": "stale",
-      "ageMinutes": 155
+      "updatedAt": "2026-07-18T06:17:17+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -269,7 +269,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-18T13:55:46+08:00",
       "status": "ok",
-      "ageMinutes": 6
+      "ageMinutes": 22
     },
     {
       "id": "backtest",
@@ -278,9 +278,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-12T05:23:36+00:00",
       "status": "ok",
-      "ageMinutes": 8678
+      "ageMinutes": 8694
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "29633278699"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "29633680193"
 }
