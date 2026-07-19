@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T23:06:13+00:00",
+  "updatedAt": "2026-07-19T00:05:53+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 36 条资讯 · 部分沿用缓存",
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000037.SZ",
@@ -91,13 +91,16 @@
           "changePct": 10.0
         }
       ],
-      "count": 35
+      "count": 35,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000021.SZ",
@@ -173,13 +176,16 @@
         }
       ],
       "count": 100,
-      "countNote": "100+"
+      "countNote": "100+",
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "300394.SZ",
@@ -251,7 +257,10 @@
           "changePct": -8.97,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
@@ -319,6 +328,13 @@
       "stale": true,
       "staleMessage": "沿用上次数据",
       "error": "'NoneType' object has no attribute 'get'"
+    },
+    {
+      "id": "low_pe",
+      "title": "低估值防御",
+      "query": "市盈率低于行业均值且股息率大于3%",
+      "status": "empty",
+      "items": []
     }
   ],
   "news": [
@@ -720,8 +736,10 @@
     }
   ],
   "errors": [
-    "main_flow: 'NoneType' object has no attribute 'get'",
-    "low_pe: 'NoneType' object has no attribute 'get'"
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'"
   ],
   "newsStale": true
 }
