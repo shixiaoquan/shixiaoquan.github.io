@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T20:38:52+00:00",
+  "updatedAt": "2026-07-20T22:11:21+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 26 条资讯 · 部分沿用缓存",
@@ -185,7 +185,7 @@
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "001309.SZ",
@@ -195,72 +195,69 @@
           "rank": "1"
         },
         {
-          "code": "002384.SZ",
-          "name": "东山精密",
-          "price": 217.73,
-          "changePct": -10.0,
-          "rank": "2"
-        },
-        {
           "code": "601991.SH",
           "name": "大唐发电",
           "price": 6.38,
           "changePct": 10.0,
-          "rank": "3"
+          "rank": "2"
         },
         {
           "code": "000938.SZ",
           "name": "紫光股份",
           "price": 37.69,
           "changePct": 7.29,
+          "rank": "3"
+        },
+        {
+          "code": "002384.SZ",
+          "name": "东山精密",
+          "price": 217.73,
+          "changePct": -10.0,
           "rank": "4"
-        },
-        {
-          "code": "603823.SH",
-          "name": "百合花",
-          "price": 77.2,
-          "changePct": 10.0,
-          "rank": "5"
-        },
-        {
-          "code": "603986.SH",
-          "name": "兆易创新",
-          "price": 432.3,
-          "changePct": -6.66,
-          "rank": "6"
-        },
-        {
-          "code": "600584.SH",
-          "name": "长电科技",
-          "price": 76.99,
-          "changePct": -9.94,
-          "rank": "7"
         },
         {
           "code": "002185.SZ",
           "name": "华天科技",
           "price": 16.85,
           "changePct": -9.99,
-          "rank": "8"
-        },
-        {
-          "code": "000725.SZ",
-          "name": "京东方A",
-          "price": 5.79,
-          "changePct": -4.61,
-          "rank": "9"
+          "rank": "5"
         },
         {
           "code": "001258.SZ",
           "name": "立新能源",
           "price": 9.1,
           "changePct": 10.04,
+          "rank": "6"
+        },
+        {
+          "code": "000725.SZ",
+          "name": "京东方A",
+          "price": 5.79,
+          "changePct": -4.61,
+          "rank": "7"
+        },
+        {
+          "code": "603986.SH",
+          "name": "兆易创新",
+          "price": 432.3,
+          "changePct": -6.66,
+          "rank": "8"
+        },
+        {
+          "code": "600584.SH",
+          "name": "长电科技",
+          "price": 76.99,
+          "changePct": -9.94,
+          "rank": "9"
+        },
+        {
+          "code": "600664.SH",
+          "name": "哈药股份",
+          "price": 5.31,
+          "changePct": -0.38,
           "rank": "10"
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
     },
     {
       "id": "main_flow",
@@ -328,13 +325,6 @@
       "stale": true,
       "staleMessage": "沿用上次数据",
       "error": "'NoneType' object has no attribute 'get'"
-    },
-    {
-      "id": "low_pe",
-      "title": "低估值防御",
-      "query": "市盈率低于行业均值且股息率大于3%",
-      "status": "empty",
-      "items": []
     }
   ],
   "news": [
@@ -626,10 +616,9 @@
     }
   ],
   "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
     "limit_down: 'NoneType' object has no attribute 'get'",
-    "hot: 'NoneType' object has no attribute 'get'",
-    "main_flow: 'NoneType' object has no attribute 'get'"
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "low_pe: 'NoneType' object has no attribute 'get'"
   ],
   "newsStale": true
 }
