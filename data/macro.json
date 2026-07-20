@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T16:24:37+00:00",
+  "updatedAt": "2026-07-20T18:28:03+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: HTTP Error 520: <none>",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,17 +29,17 @@
     }
   ],
   "summary": {
-    "vix": 17.5,
+    "vix": 17.8,
     "vixRegime": "normal",
-    "us10yYield": 4.59,
+    "us10yYield": 4.6,
     "usdCnh": 6.77,
     "usdCnhChangePct": null,
-    "sectorLeader": "科技",
+    "sectorLeader": "能源",
     "sectorLaggard": "材料",
     "yieldSpread10y2y": 0.37,
     "hints": [
       "美债收益率上行，对高估值成长股形成压力。",
-      "美股行业轮动：科技 领涨（+1.22%），材料 靠后。",
+      "美股行业轮动：能源 领涨（+0.99%），材料 靠后。",
       "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
@@ -58,9 +52,9 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 17.5,
-      "changePct": -6.77,
-      "weekChangePct": 1.98,
+      "price": 17.8,
+      "changePct": -5.17,
+      "weekChangePct": 3.73,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -73,9 +67,9 @@
       "unit": "yield_pct",
       "currency": null,
       "region": null,
-      "price": 4.59,
-      "changePct": 1.12,
-      "weekChangePct": -0.37,
+      "price": 4.6,
+      "changePct": 1.3,
+      "weekChangePct": -0.2,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -123,9 +117,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7809,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7669,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-20"
     },
     {
       "symbol": "USDHKD=X",
@@ -135,15 +129,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.01,
-      "weekChangePct": 0.02,
+      "changePct": 0.0,
+      "weekChangePct": 0.01,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8402,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8406,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-20"
     },
     {
       "symbol": "USDJPY=X",
@@ -152,16 +146,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 162.53,
-      "changePct": 0.1,
-      "weekChangePct": 0.41,
+      "price": 162.46,
+      "changePct": 0.05,
+      "weekChangePct": 0.36,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 162.4882,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 162.38,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-20"
     },
     {
       "symbol": "EURUSD=X",
@@ -171,25 +165,51 @@
       "currency": null,
       "region": null,
       "price": 1.14,
-      "changePct": -0.23,
-      "weekChangePct": 0.12,
+      "changePct": -0.21,
+      "weekChangePct": 0.14,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.875,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8752,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-20"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7439,
+      "price": 0.7429,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-20"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8083,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-20"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2908,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-20"
     }
   ],
   "commodities": [
@@ -200,9 +220,9 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4018.0,
-      "changePct": 0.13,
-      "weekChangePct": 0.53,
+      "price": 4016.0,
+      "changePct": 0.08,
+      "weekChangePct": 0.48,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -213,9 +233,9 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 81.4,
-      "changePct": -1.32,
-      "weekChangePct": 4.17,
+      "price": 82.12,
+      "changePct": -0.45,
+      "weekChangePct": 5.09,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -226,9 +246,9 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.35,
-      "changePct": 2.15,
-      "weekChangePct": 1.93,
+      "price": 6.36,
+      "changePct": 2.27,
+      "weekChangePct": 2.06,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -276,32 +296,32 @@
   ],
   "sectors": [
     {
-      "symbol": "XLK",
-      "name": "科技",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 177.74,
-      "changePct": 1.22,
-      "weekChangePct": -1.95,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "科技"
-    },
-    {
       "symbol": "XLE",
       "name": "能源",
       "category": "sector",
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 58.17,
-      "changePct": 0.84,
-      "weekChangePct": 2.51,
+      "price": 58.25,
+      "changePct": 0.99,
+      "weekChangePct": 2.66,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "能源"
+    },
+    {
+      "symbol": "XLK",
+      "name": "科技",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 177.17,
+      "changePct": 0.9,
+      "weekChangePct": -2.27,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "sector": "科技"
     },
     {
       "symbol": "XLC",
@@ -310,26 +330,12 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 111.57,
-      "changePct": 0.83,
-      "weekChangePct": -0.02,
+      "price": 111.03,
+      "changePct": 0.34,
+      "weekChangePct": -0.51,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "通信"
-    },
-    {
-      "symbol": "XLY",
-      "name": "可选消费",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 115.43,
-      "changePct": -0.01,
-      "weekChangePct": -0.53,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "可选消费"
     },
     {
       "symbol": "XLF",
@@ -338,12 +344,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 56.22,
-      "changePct": -0.08,
-      "weekChangePct": 0.26,
+      "price": 56.14,
+      "changePct": -0.21,
+      "weekChangePct": 0.13,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "金融"
+    },
+    {
+      "symbol": "XLRE",
+      "name": "地产",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 45.22,
+      "changePct": -0.43,
+      "weekChangePct": 1.17,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "sector": "地产"
     },
     {
       "symbol": "XLI",
@@ -352,26 +372,12 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 179.07,
-      "changePct": -0.19,
-      "weekChangePct": -0.72,
+      "price": 178.49,
+      "changePct": -0.51,
+      "weekChangePct": -1.04,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "工业"
-    },
-    {
-      "symbol": "XLV",
-      "name": "健康",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 160.35,
-      "changePct": -0.46,
-      "weekChangePct": -0.65,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "健康"
     },
     {
       "symbol": "XLP",
@@ -380,9 +386,9 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 84.79,
-      "changePct": -0.47,
-      "weekChangePct": 0.24,
+      "price": 84.73,
+      "changePct": -0.54,
+      "weekChangePct": 0.17,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "必需消费"
@@ -394,26 +400,40 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 44.94,
-      "changePct": -0.5,
-      "weekChangePct": -1.7,
+      "price": 44.93,
+      "changePct": -0.54,
+      "weekChangePct": -1.74,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "公用事业"
     },
     {
-      "symbol": "XLRE",
-      "name": "地产",
+      "symbol": "XLY",
+      "name": "可选消费",
       "category": "sector",
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 45.17,
-      "changePct": -0.56,
-      "weekChangePct": 1.04,
+      "price": 114.76,
+      "changePct": -0.59,
+      "weekChangePct": -1.1,
       "monthChangePct": null,
       "source": "yahoo",
-      "sector": "地产"
+      "sector": "可选消费"
+    },
+    {
+      "symbol": "XLV",
+      "name": "健康",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 159.94,
+      "changePct": -0.71,
+      "weekChangePct": -0.91,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "sector": "健康"
     },
     {
       "symbol": "XLB",
@@ -422,9 +442,9 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 50.21,
-      "changePct": -0.63,
-      "weekChangePct": -0.73,
+      "price": 50.08,
+      "changePct": -0.9,
+      "weekChangePct": -1.0,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "材料"
@@ -488,6 +508,56 @@
   ],
   "finnhubNews": [
     {
+      "id": 8245191,
+      "title": "Could ‘The Odyssey’ lead the 'apes' back home to AMC shares?",
+      "summary": "AMC options surged out of the gate this morning with over 300,000 contracts traded as of writing.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/07/20/could-the-odyssey-lead-the-apes-back-home-to-amc-shares.html",
+      "publishedAt": "2026-07-20T18:05:06+00:00",
+      "related": ""
+    },
+    {
+      "id": 8245079,
+      "title": "The bar for Tesla earnings is sky-high. Here's why and how options traders can capitalize",
+      "summary": "Michael Khouw breaks down how he's trading Tesla into earnings.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/07/20/the-bar-for-tesla-earnings-is-sky-high-heres-why-and-how-options-traders-can-capitalize.html",
+      "publishedAt": "2026-07-20T17:16:22+00:00",
+      "related": ""
+    },
+    {
+      "id": 8244024,
+      "title": "Yemen's Houthis declare naval blockade against Saudi Arabia - Reuters",
+      "summary": "Yemen's Houthis declare naval blockade against Saudi Arabia  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQcUowRTU0M2hEUzRtdXAxY1FENjh0OWdXcEJlb2h4VlpBOVdGM2YzZ1BQSVhLMFQwOXhRN01aQ1poMVd5TTNRUHBZbV9jNWZRaGFaejU2ckpkNW5HUlZSdlJXWU5GNTlFU0NFUU9DYkJ1LXVFNHZBanlSemdrb3M1Vm80azBhNlRmTGRWbjQ2dEtkQVNfbTVNMUVReDIwYXB6aDNjN0pReHQ5S1BBUFl1NUc4Z1VyVHB4MWNnQ09JZw?oc=5",
+      "publishedAt": "2026-07-20T16:58:28+00:00",
+      "related": ""
+    },
+    {
+      "id": 8244978,
+      "title": "What is China's next surprise for oil markets? Lower imports, higher fuel exports? - Reuters",
+      "summary": "What is China's next surprise for oil markets? Lower imports, higher fuel exports?  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNNkVNby0tbVgtVUxCWFJyNVVXM2V4VUVOb0tDdlFLOUc4djJnRi1jTTBTNnY4T2doUVlYaWVyZkhHbU9CLTV2cDcwQzJTTGttdWIzZHpidkFiQ2RlSV9fbEFmcE9nVHlfQXRoUTFvOUFvUFJQQURsUkxFMUFWaXV6QnBYdmtrRTY2YlhYWk41clc4WlNTdUswYlZLNFBXeGlBQ0VvS0xWZ181cEdvdVF3djNLeUtwQ3VVMllwemJZNkRJTHc4cU9mXzAycGFWdUxkSy13MU1zTmZRdWc?oc=5",
+      "publishedAt": "2026-07-20T16:52:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8241800,
+      "title": "Spain beat Argentina to win World Cup - Reuters",
+      "summary": "Spain beat Argentina to win World Cup  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNOUNxR3JQOUlFcEZneEdwbl9udUdLUm9fOWVhZWlOMDh4SFNVc1JwQ09JZUNVNVlkUnRFbVMzc3VjemNWc0NqSllSU0IteXpLSDN2N2xrU0d3T2taX1hIMEppQmdRY0ZiSzNGT3lBMGVnZk5LT3E1MFJndkNIUk1Xc1k4WVFwZGhNemZ6Yjk3cw?oc=5",
+      "publishedAt": "2026-07-20T16:35:26+00:00",
+      "related": ""
+    },
+    {
       "id": 8244662,
       "title": "What to know about testosterone replacement therapy as the U.S. military plans to test troops",
       "summary": "While some research has shown benefits for patients who qualify, questions remain about the therapy's long-term risks and use among men without a medical need.",
@@ -495,6 +565,16 @@
       "category": "general",
       "link": "https://www.cnbc.com/2026/07/20/what-to-know-about-testosterone-replacement-therapy.html",
       "publishedAt": "2026-07-20T15:40:07+00:00",
+      "related": ""
+    },
+    {
+      "id": 8243792,
+      "title": "Why oil prices haven't gone crazy despite 5 months of US-Iran war - Reuters",
+      "summary": "Why oil prices haven't gone crazy despite 5 months of US-Iran war  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQRWljTmhtaTVPdmZTRkZFLVFDSkpiYlhTWkZidlprdlZhQW1KOW9aY3daeWkxdm5RaVgxX0k1aVY2N3ZWQk9Hald6X29aeE5jdHFuT0RxWXpCbkJCWkJHaHJqZWVXb09aYmFrWHhKZGNfa2pzeTY5RHJkR0lYUTZQbGZXRm50dXVyQjJBbS1ETVFEOUlVR2lwcGk4dWFJTlpyeFUxeVNRNHdCcEVKdWVXLVRJQQ?oc=5",
+      "publishedAt": "2026-07-20T15:32:04+00:00",
       "related": ""
     },
     {
@@ -508,83 +588,23 @@
       "related": ""
     },
     {
-      "id": 8244024,
-      "title": "Yemen's Houthis declare naval blockade against Saudi Arabia - Reuters",
-      "summary": "Yemen's Houthis declare naval blockade against Saudi Arabia  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQcUowRTU0M2hEUzRtdXAxY1FENjh0OWdXcEJlb2h4VlpBOVdGM2YzZ1BQSVhLMFQwOXhRN01aQ1poMVd5TTNRUHBZbV9jNWZRaGFaejU2ckpkNW5HUlZSdlJXWU5GNTlFU0NFUU9DYkJ1LXVFNHZBanlSemdrb3M1Vm80azBhNlRmTGRWbjQ2dEtkQVNfbTVNMUVReDIwYXB6aDNjN0pReHQ5S1BBUFl1NUc4Z1VyVHB4MWNnQ09JZw?oc=5",
-      "publishedAt": "2026-07-20T14:35:44+00:00",
-      "related": ""
-    },
-    {
-      "id": 8243904,
-      "title": "Hamas names Khalil Al-Hayya as new overall leader - Reuters",
-      "summary": "Hamas names Khalil Al-Hayya as new overall leader  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNOHJqTDlBbG5vM09JMm5YLUVPLW5CbHFpbDhWREhJQk41NW1iMWhxMURadktJVklMWEMxVld1WmhzUDlNQkoxQmVQTHdibnhkbTVzODNhb3BCNkV3Y3NCSTZtZ0pOOV9nV2J1Nnl4ajFqOHhiZ2pJY3JqbUdhU0dJdWRZWklaRkV5U3FKa1EySU5jbUxDa0gyM0VsNkZ5Sk5QZ2dHR0VGRjhNc0E?oc=5",
-      "publishedAt": "2026-07-20T14:34:35+00:00",
-      "related": ""
-    },
-    {
-      "id": 8241904,
-      "title": "Houthis impose Saudi naval blockade, opening new front in US-Iran war - Reuters",
-      "summary": "Houthis impose Saudi naval blockade, opening new front in US-Iran war  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPbmtOemhMR1UtaVNoMENBMHltNEpKTWJNekRXUEtSa3hidndTM0VZVnRoTEJlV2ZENWtkYVFCUkJtSk8zdFhPeEJQSXRNMS1vWC03N2NJek14WklXdzhNZWkzMnZRUFpGcHg2OXotaHpyVW9jblFTYUM4U2lGcXFWa1NFbnZSQnpreVF6OXVhMW1oeHdIdkFNMjBJa09UZGgycjRkMjZ6Z1dxNC10enJIVDZJdlVSQjRxQlBZc05Tdw?oc=5",
-      "publishedAt": "2026-07-20T14:02:17+00:00",
-      "related": ""
-    },
-    {
-      "id": 8243143,
-      "title": "Two Dynacom Tankers vessels attacked off Oman amid escalating US-Iran war - Reuters",
-      "summary": "Two Dynacom Tankers vessels attacked off Oman amid escalating US-Iran war  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNYUVxdUFVU3hpbENhZ1lPc3BZYU9ub1c1ZGxCdm1ocTBhZm5SSTZ2RXJYd3BxeWFoUW13Y3NJb2JQN05IOUJYNXV5TU1YVHIwVkpkclBPaGpwYVl1Q0VXenRvMkRLNl9HQkdkVENpRHZSbG5ydWNzWGRWNE5YNEZISXR5NFVVVE5CN00zcnQ3M1ZONndRVDMzMGx0aC12NE5ERmN0SFNRcGx0QXJ0b2VZNG0wWEZLMGFhemFMNmc4N1o?oc=5",
-      "publishedAt": "2026-07-20T13:53:06+00:00",
-      "related": ""
-    },
-    {
-      "id": 8241800,
-      "title": "Spain beat Argentina to win World Cup - Reuters",
-      "summary": "Spain beat Argentina to win World Cup  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNOUNxR3JQOUlFcEZneEdwbl9udUdLUm9fOWVhZWlOMDh4SFNVc1JwQ09JZUNVNVlkUnRFbVMzc3VjemNWc0NqSllSU0IteXpLSDN2N2xrU0d3T2taX1hIMEppQmdRY0ZiSzNGT3lBMGVnZk5LT3E1MFJndkNIUk1Xc1k4WVFwZGhNemZ6Yjk3cw?oc=5",
-      "publishedAt": "2026-07-20T13:35:40+00:00",
-      "related": ""
-    },
-    {
-      "id": 8244128,
-      "title": "Jim Cramer's top 10 things to watch in the stock market Monday",
-      "summary": "Semiconductor stocks are higher, and Bristol Myers is buying new Nvidia chips for AI drug discovery.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/07/20/jim-cramers-top-10-things-to-watch-in-the-stock-market-monday.html",
-      "publishedAt": "2026-07-20T12:53:55+00:00",
-      "related": ""
-    },
-    {
-      "id": 8244769,
-      "title": "GBPUSD break the 200 hour moving average and moves toward a cluster of technical targets",
-      "summary": "<p class=\"PDq2pG_selectionAnchorContainer\">The GBPUSD is extending to the downside, and in the process the technical picture has shifted more decisively in favor of the sellers. What had been a relati",
+      "id": 8245083,
+      "title": "UK names John Healey Chancellor of the Exchequer",
+      "summary": "<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"auto\">John Healey has been announced as the new Chancellor of the Exchequer.  This is a surprise as Shabana Mahmood was consider",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/technical-analysis/gbpusd-break-the-200-hour-moving-average-and-moves-toward-a-cluster-of-technical-targets",
-      "publishedAt": "2026-07-20T15:52:01+00:00",
+      "link": "https://investinglive.com/news/uk-names-john-healey-chancellor-of-the-exchequer",
+      "publishedAt": "2026-07-20T17:27:00+00:00",
       "related": ""
     },
     {
-      "id": 8244560,
-      "title": "US yields are pushing to new highs and along with it the US dollar",
-      "summary": "<p>US rates are trading higher on the day and so is the US dollar. Looking at the yield curve:</p><ul><li>2 year yield is at 4.216% up 4.5 basis points.</li><li>5 year yield is at 4.316%, up 4.3 basis",
+      "id": 8245084,
+      "title": "Trump: Iran will pay for killing American soldiers many times over",
+      "summary": "<p>Back from the World Cup where he posed with the championship team Spain as they lifted the World Cup Trophy, Trump is on TruthSocial saying that:</p><ul><li>Iran will pay for killing American Soldi",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/technical-analysis/us-yields-are-pushing-to-new-highs-and-along-with-it-the-us-dollar",
-      "publishedAt": "2026-07-20T14:48:29+00:00",
+      "link": "https://investinglive.com/news/trump-iran-will-pay-for-killing-american-soldiers-many-times-over",
+      "publishedAt": "2026-07-20T17:09:03+00:00",
       "related": ""
     }
   ],
