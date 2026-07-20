@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T13:16:43+00:00",
+  "updatedAt": "2026-07-20T13:23:17+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -90,7 +90,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-20T12:38:51+00:00",
+    "updatedAt": "2026-07-20T13:23:17+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
@@ -113,14 +113,6 @@
         }
       },
       {
-        "id": "pipelines-stale",
-        "type": "fix_pipeline",
-        "priority": "medium",
-        "title": "部分流水线数据过期",
-        "reason": "2 条流水线过期",
-        "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
-      },
-      {
         "id": "tactic-tune-active",
         "type": "tactic_tune",
         "priority": "low",
@@ -138,7 +130,7 @@
       }
     ],
     "summary": {
-      "total": 5,
+      "total": 4,
       "high": 0,
       "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
@@ -219,7 +211,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-20T12:38:50+00:00",
       "status": "ok",
-      "ageMinutes": 37
+      "ageMinutes": 44
     },
     {
       "id": "macro",
@@ -228,7 +220,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-20T12:38:40+00:00",
       "status": "ok",
-      "ageMinutes": 38
+      "ageMinutes": 44
     },
     {
       "id": "truth",
@@ -237,7 +229,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-20T12:33:22+00:00",
       "status": "ok",
-      "ageMinutes": 43
+      "ageMinutes": 49
     },
     {
       "id": "wencai",
@@ -246,7 +238,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-20T13:16:07+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 7
     },
     {
       "id": "reports",
@@ -255,7 +247,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-20T19:08:52+08:00",
       "status": "ok",
-      "ageMinutes": 127
+      "ageMinutes": 134
     },
     {
       "id": "backtest",
@@ -264,9 +256,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-19T05:18:14+00:00",
       "status": "ok",
-      "ageMinutes": 1918
+      "ageMinutes": 1925
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "29745491168"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "29746007721"
 }
