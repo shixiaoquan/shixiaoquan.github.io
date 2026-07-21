@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-21T04:29:59+00:00",
+  "updatedAt": "2026-07-21T06:21:17+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -231,8 +231,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-21T04:25:50+00:00",
-      "status": "ok",
-      "ageMinutes": 4
+      "status": "stale",
+      "ageMinutes": 115
     },
     {
       "id": "macro",
@@ -240,8 +240,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-21T04:25:44+00:00",
-      "status": "ok",
-      "ageMinutes": 4
+      "status": "stale",
+      "ageMinutes": 115
     },
     {
       "id": "truth",
@@ -249,8 +249,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-21T04:29:57+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 111
     },
     {
       "id": "wencai",
@@ -258,17 +258,17 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-21T03:39:50+00:00",
-      "status": "ok",
-      "ageMinutes": 50
+      "status": "stale",
+      "ageMinutes": 161
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-07-21T12:21:36+08:00",
+      "updatedAt": "2026-07-21T14:21:17+08:00",
       "status": "ok",
-      "ageMinutes": 8
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -277,9 +277,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-19T05:18:14+00:00",
       "status": "ok",
-      "ageMinutes": 2831
+      "ageMinutes": 2943
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "29801390729"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "29806738054"
 }
