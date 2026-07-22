@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-22T18:20:24+00:00",
+  "updatedAt": "2026-07-22T20:20:11+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 26 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 26 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 48,
@@ -93,7 +93,8 @@
       ],
       "count": 48,
       "stale": true,
-      "staleMessage": "沿用上次数据"
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
@@ -158,13 +159,14 @@
       ],
       "count": 9,
       "stale": true,
-      "staleMessage": "沿用上次数据"
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000938.SZ",
@@ -236,13 +238,16 @@
           "changePct": 2.04,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000063.SZ",
@@ -300,63 +305,10 @@
           "changePct": 5.36,
           "flow": 671724951
         }
-      ]
-    },
-    {
-      "id": "breakout",
-      "title": "突破年线",
-      "query": "突破年线且成交量放大",
-      "status": "ok",
-      "items": [
-        {
-          "code": "000889.SZ",
-          "name": "中嘉博创",
-          "price": 3.99,
-          "changePct": 5.0
-        },
-        {
-          "code": "300006.SZ",
-          "name": "莱美药业",
-          "price": 5.27,
-          "changePct": 16.59
-        },
-        {
-          "code": "000815.SZ",
-          "name": "美利云",
-          "price": 16.13,
-          "changePct": 10.03
-        },
-        {
-          "code": "600400.SH",
-          "name": "红豆股份",
-          "price": 2.66,
-          "changePct": 7.69
-        },
-        {
-          "code": "600362.SH",
-          "name": "江西铜业",
-          "price": 43.05,
-          "changePct": 5.51
-        },
-        {
-          "code": "300040.SZ",
-          "name": "九洲集团",
-          "price": 7.25,
-          "changePct": 11.88
-        },
-        {
-          "code": "002258.SZ",
-          "name": "利尔化学",
-          "price": 13.78,
-          "changePct": 5.76
-        },
-        {
-          "code": "300317.SZ",
-          "name": "珈伟新能",
-          "price": 4.8,
-          "changePct": 11.63
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -646,5 +598,13 @@
       "source": "wencai",
       "category": "公告"
     }
-  ]
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "breakout: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
