@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年07月22日 14:20（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年07月22日 18:31（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-07-22 12:32 · 宏观：2026-07-22 12:32 · 问财：2026-07-22 11:40
+> 行情更新：2026-07-22 17:43 · 宏观：2026-07-22 17:43 · 问财：2026-07-22 17:36
 
 ---
 
@@ -11,7 +11,7 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **+0.62%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
+全球跟踪指数平均涨跌 **+0.31%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
@@ -25,27 +25,28 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.1 全球指数
 
-跟踪 6 只主要指数：上涨 **5** 只、
-下跌 **1** 只，平均涨跌 **+0.62%**。
+跟踪 6 只主要指数：上涨 **4** 只、
+下跌 **2** 只，平均涨跌 **+0.31%**。
 
-**美股** +0.97%（偏强）；**港股** -0.83%（偏弱）；**A股** +0.50%（偏强）。相对强势区域：美股、A股。相对弱势区域：港股，战术配置宜降权。
+**美股** +0.97%（偏强）；**港股** -0.95%（偏弱）；**A股** +0.07%（震荡）。相对强势区域：美股。相对弱势区域：港股，战术配置宜降权。
 
 **波动居前指数：**
 
 - **纳斯达克** 25,837.21，日涨跌 +1.29%（周 -1.03% / 月 -2.57%）
-- **日经 225** 66,972.34，日涨跌 +1.12%（周 -1.14% / 月 -7.44%）
+- **恒生指数** 24,892.66，日涨跌 -0.95%（周 +0.86% / 月 +4.73%）
 - **标普 500** 7,509.20，日涨跌 +0.89%（周 -0.46% / 月 +0.11%）
-- **恒生指数** 24,923.77，日涨跌 -0.83%（周 +0.98% / 月 +4.86%）
+- **道琼斯** 52,224.64，日涨跌 +0.74%（周 -0.54% / 月 +1.28%）
 
 ### 1.2 A股短线情绪
 
-问财统计涨停 **51** 家、跌停 **5** 家，情绪定性 **偏多**，涨跌停比约 **10.2 : 1**。赚钱效应尚可，题材轮动活跃，但需警惕高位分歧。
+问财统计涨停 **44** 家、跌停 **9** 家，情绪定性 **偏多**，涨跌停比约 **4.9 : 1**。赚钱效应尚可，题材轮动活跃，但需警惕高位分歧。（部分榜单沿用缓存，盘中宜以实时行情为准）
 
 ### 1.3 宏观与跨资产
 
-- **VIX** 17.1（normal）
+- **VIX** 17.4（normal）
 - **美10Y收益率** 4.63%
 - **10Y-2Y 利差（FRED）** 0.37%（偏窄）
+- **USDCNH** 6.7700（日 —）
 - **美股行业**：科技 领涨，必需消费 靠后
 
 **FRED 官方序列**
@@ -57,11 +58,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：332.6（变动 +1.83%，2026-06-01）
 
 **Finnhub 宏观要闻**
-- [Oil prices rise slightly after US announces new round of strikes on Iran - Reuters](https://news.google.com/rss/articles/CBMiugFBVV95cUxPVktKb0FFdG9HQ0VvZ0dKR2ozZExNVVZ5eU1Wc29kUmhBRHVQclVYNk14WXhfb0MxV2lyaEk2UDJLdGJOdk9sRjE2M3NaNXpmUVBOSTFTLVFHSTV0UnJKTG5fZm95czJacHdDVVU2cE8wd013R1B4M0RHcHF2YURVX3pmbENTbktzRzRfZ0htelRKU1hQNUp4Z3ZFNUV5RkZ1NFE3STNndlFVSVVFT0JHUWVudU1XXzcwQXc?oc=5)（Reuters）
-- [Nike to cut off thousands of online distributors in China, restructure digital footprint](https://www.cnbc.com/2026/07/21/nike-to-cut-off-thousands-of-online-distributors-in-china.html)（CNBC）
-- [Wall St ends higher on chip stocks recovery; earnings in focus - Reuters](https://news.google.com/rss/articles/CBMiowFBVV95cUxOUDZOb0lyeDNtSHo4bVQ4MlJ3RnhPUUR2WmxYT2xqaWRVNFFVNkNUdHBNUUIxWm5kZGpVaVc0SFZicnBmN1F0RWI3RXpqNUpCbjQ3RHhPZEJkTmlaeGI3YXp3MUlSSXN2RGdBZ3dfekVaQzQxbFJzeHhuNU9veGtKMzdidFZ1N2QwbFE3Z3B1VmxoY1VuTUFtU3Rfa09XMlRMWl9B?oc=5)（Reuters）
-- [Saudi, UAE ministers use social media to signal unity after months of tension - Reuters](https://news.google.com/rss/articles/CBMiwgFBVV95cUxNbGZLNURqa3B4VG1TYkQtc3VrcXY1Q04tMjBRSl81LTd1bFI3SmRJeU5qd0lRYndOVTMxTzVoMHB1cUE2MkRwSWd3ZnVXYmI3b0FqZWNhR2p6ek5lRHlZUDZqc3Q1YWw2QmZQWEw4V3ZYSnExbElaMnB6ZWs4TkU5MUJCSC1pZ3REYU5JTVk3VE1GU3NjNkpzallHM2FjbG14ajhHOHFvYWpaUHFyYzNGRFpmemFvZ0ZZX3piaVVuYkp2Zw?oc=5)（Reuters）
-- [Lebanese army enters southern town after Israeli withdrawal, in first test of US-brokered deal - Reuters](https://news.google.com/rss/articles/CBMixwFBVV95cUxNX2hGZ2YzcFQ1aXJWdnEyNUJYU1ZhdTlyWFY3ajVHWkpjNDRkZHRJSGhzYUtFQ2tJREpDM1BENm9SX2JQZlB4Y0lrUkp1Tnpvc00zRkV4TTBMdldZVm1RdW1sTHAzMUJwU212clU2LVhGMEx6aTRzbkw4NVJFUnFpc2t1dkVldThkRDVPSlEyNUNEc2sxRERieGlDazJqblliVU9NdnUzbXNLVWlMYnc0VUxXS0N6M1lyaXI3Q3UxNkJGNVk2R1FR?oc=5)（Reuters）
+- [Rubio says US still willing to negotiate over Iran crisis - Reuters](https://news.google.com/rss/articles/CBMirAFBVV95cUxONHRSTEdBY3l6NGhsLTFvUDRHeThEZkgzQzdzeDVSOWk1NzJ3R3dCT1JZWkE0VWoycVhEaG0wdmtWTnFyWElMbklkcFRUMW9qTkdqWGFfVHpDaDgyTnFNWGF4clVQSENtY2x5OS14dDBYX3JjYTdXRkV1SUZlcDU3eTduYXp3VndEMzlWZmpvZjY5S3dhVmdMdk5JVFhvNzNCQmJBRjBRX1daQ2ZB?oc=5)（Reuters）
+- [Houthi Red Sea threat would challenge a stretched US military - Reuters](https://news.google.com/rss/articles/CBMiswFBVV95cUxPOThodmVRdFZqSlZuSnpSMDJBb1dkX1NUam1GcVJsRWlHcV9qM0x6MUhXRlJtRXd3MWdKMHpYOVFvUGZjcmUtR1pkSTZsUEd2M2xZS1YtUGRqUkhteGw5QzR6a1ZhcG4wR1c4LXUzaXZrN3ctTlI2Vkc4NzlnUlRBb01pY3kxRTlweVFDWGMydnpsLThrUGlXamcxX3RDTnFpVXFwY1FJT01LRU1pVEdxdW1pQQ?oc=5)（Reuters）
+- [Rupee's sensitivity to oil rises as renewed Iran conflict fuels crude rally - Reuters](https://news.google.com/rss/articles/CBMiogFBVV95cUxPdklZam1NbG9QYS05VE5BWlUxN2E2Mm5PeXdVaWdFamtOYVpoZ2ZNTG44VGFlYnlrcUYtYXJ6amM2SmxWbHdCUmJCVWtSR3d4LXp3eWZ6MHBKeGh5Qkc2cnI2RkJCR1ZudDJvMXNOcmktSnpMZTRMXzJrRzFRZUxSRmNLbWlqYTFtaUpvNkd3a2lvYTRoUkx1Qzk5T2RVVTlsenc?oc=5)（Reuters）
+- [Hormuz vessel crossings fall further as security concerns linger - Reuters](https://news.google.com/rss/articles/CBMitgFBVV95cUxPWEY5bV83Y1ZGdmZPT1FPdm8tUjhQMDhNUmtEUHpEcENaUmtXblg0QUNHTWJwc3NHWm9ZaVMtQVZjdTc1aFlGUVNRWWFwdUhDZ1BtUTZPUE15QTU1Y19pTFdXVm14Z1VJX2lzeEVaaHBFc2hBakc1cEZTU0NCZDIyOGhCb1RzOWYzcGdXZkdwcnBNN2JVSW9qQ2NpM0o1WGN4NndiblFKUThxdXJlQlN2YmpPV2RVQQ?oc=5)（Reuters）
+- [Rubio holds talks with China's Wang Yi as regional powers join ASEAN meet - Reuters](https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQUU3WElZU3gydzRFZEY1Q1lSR1pQOWM3M2dfM3pQbkFwMlFJbG45LS1MZnFYX2M3dVBpRVlyR3lLWlhGOXpHTGxyVjBsNUY0d0RkVDRfcnV3MGdaQ3dLc0Z5dzNqakR3b0FSNjBNemduOU9jRXNQd2NOZ3BCQmJOdHJPX25mcWhHWWZXOFdBZ0Z6aEJwak1mcWVtZkowU2l6QWgwZ0NnczdZeDJmTS1yS0RFTnNQMTFjWWhv?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **ADAM** 2026-07-29  · EPS预期 0.21
@@ -112,11 +113,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **中芯国际**（A股）| 弱信号观察 | 评分 67.0 | 待突破 | 趋势过滤未过 | 止损缓冲 21.0% / 目标空间 75.6% | 决策 60.0
+- **中芯国际**（A股）| 弱信号观察 | 评分 67.0 | 待突破 | 趋势过滤未过 | 止损缓冲 21.6% / 目标空间 77.9% | 决策 60.0
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **美团**（港股）| 弱信号观察 | 评分 57.0 | 待突破 | 趋势过滤未过 | 止损缓冲 12.8% / 目标空间 45.9% | 决策 59.0
+- **美团**（港股）| 弱信号观察 | 评分 57.0 | 待突破 | 趋势过滤未过 | 止损缓冲 12.6% / 目标空间 45.5% | 决策 59.0
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线
 
@@ -139,18 +140,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.207）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.209）。
 
-*在线学习：市场环境 risk_on · 修订 r207 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
+*在线学习：市场环境 risk_on · 修订 r209 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.0 · PEG 0.70 · ROE 20.5%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.8 · PEG 0.69 · ROE 20.5%
 
-  - ROE 20.52% — 资本回报优秀，符合巴菲特护城河标准；PE 16.03 — 估值在能力圈合理区间
+  - ROE 20.52% — 资本回报优秀，符合巴菲特护城河标准；PE 15.81 — 估值在能力圈合理区间
 
 - **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.8 · ROE 14.0%
 
@@ -161,37 +162,37 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *安全边际是投资核心：在价格显著低于内在价值时分批买入，分散持有。*
 
-- **招商银行**（A股）| 匹配 98.8 | 符合风格 · 建议关注 | PE 6.7 · PEG 9.54 · ROE 11.9%
+- **中国平安**（A股）| 匹配 97.5 | 符合风格 · 建议关注 | PE 7.4 · ROE 11.3%
 
-  - PE 6.68 — 深度价值区间，安全边际充足；PB 0.85 — 资产折价，经典格雷厄姆信号
+  - PE 7.44 — 深度价值区间，安全边际充足；PB 0.96 — 资产折价，经典格雷厄姆信号
 
-- **中国平安**（A股）| 匹配 98.8 | 符合风格 · 建议关注 | PE 7.4 · ROE 11.3%
+- **招商银行**（A股）| 匹配 92.0 | 符合风格 · 建议关注 | PE 6.8 · PEG 9.68 · ROE 11.9%
 
-  - PE 7.36 — 深度价值区间，安全边际充足；PB 0.95 — 资产折价，经典格雷厄姆信号
+  - PE 6.78 — 深度价值区间，安全边际充足；PB 0.86 — 资产折价，经典格雷厄姆信号
 
 
 ### 彼得·林奇 · 成长合理价 GARP
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.8 · PEG 0.28 · ROE 9.2%
+- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 23.1 · PEG 0.28 · ROE 9.2%
 
   - PEG 0.28 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 82.6% — 成长故事可验证
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.0 · PEG 0.70 · ROE 20.5%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.8 · PEG 0.69 · ROE 20.5%
 
-  - PEG 0.7 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 22.9% — 成长故事可验证
+  - PEG 0.69 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 22.9% — 成长故事可验证
 
 
 ### 查理·芒格 · 优质复利
 
 *以合理价格买入伟大的公司，胜过于以便宜价格买入平庸的公司。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.0 · PEG 0.70 · ROE 20.5%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.8 · PEG 0.69 · ROE 20.5%
 
   - 净利率 30.61% — 轻资产高毛利特征；低杠杆 — 符合芒格「避免愚蠢」原则
 
-- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 83.4 · PEG 32.22 · ROE 53.9%
+- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 79.1 · PEG 30.54 · ROE 53.9%
 
   - ROE 53.93% — 优质复利机器，芒格会长期持有；净利率 29.28% — 轻资产高毛利特征
 
@@ -204,20 +205,20 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 近三月 -16.78% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
 
-- **五粮液**（A股）| 匹配 91.6 | 符合风格 · 建议关注 | PE 22.8 · PEG 0.28 · ROE 9.2%
+- **五粮液**（A股）| 匹配 91.6 | 符合风格 · 建议关注 | PE 23.1 · PEG 0.28 · ROE 9.2%
 
-  - 近三月 -26.15% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近三月 -25.21% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
 
 
 ### 乔治·索罗斯 · 宏观趋势
 
 *反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
 
-- **苹果**（美股）| 匹配 92.9 | 符合风格 · 建议关注 | PE 39.5 · PEG 1.81 · ROE 141.5%
+- **苹果**（美股）| 匹配 95.9 | 符合风格 · 建议关注 | PE 39.5 · PEG 1.81 · ROE 141.5%
 
   - 近一月 +9.98% — 趋势强劲，反身性正反馈；相对强度 +9.87% — 跑赢大盘，宏观共振
 
-- **Meta**（美股）| 匹配 92.9 | 符合风格 · 建议关注 | PE 23.5 · PEG 0.38 · ROE 32.9%
+- **Meta**（美股）| 匹配 95.9 | 符合风格 · 建议关注 | PE 23.5 · PEG 0.38 · ROE 32.9%
 
   - 近一月 +11.54% — 趋势强劲，反身性正反馈；相对强度 +11.43% — 跑赢大盘，宏观共振
 
@@ -226,11 +227,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 437.9 · PEG 7.71 · ROE 3.9%
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 422.3 · PEG 7.43 · ROE 3.9%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
-- **AMD**（美股）| 匹配 92.0 | 符合风格 · 建议关注 | PE 166.5 · PEG 1.83 · ROE 8.1%
+- **AMD**（美股）| 匹配 80.8 | 符合风格 · 建议关注 | PE 166.5 · PEG 1.83 · ROE 8.1%
 
   - 半导体 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · GPU/CPU — 算力供应链关键环节
 
@@ -247,24 +248,24 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - 战术自适应：门槛 -1 · 中决策分 T+5 胜率 64.1% 良好，门槛 -1; A股 T+5 胜率 67.1% 良好，门槛 -1（市场门槛→-2）
 
-- 队列待办：**流水线过期 · 行情·荐股·模拟盘** — 检查工作流 update-market-data.yml 日志与 Secrets。
+- 队列待办：**流水线过期 · Truth Social 镜像** — 检查工作流 update-truth-social.yml 日志与 Secrets。
 
 ---
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **Why Upstart Stock Lost 19% in the First Half of 2026**（NVDA）
-  Declining take rates and a CEO switch weighed on the stock.…
-- [Yahoo] **Elon Musk Says the Short Sellers Betting Against SpaceX Have a "Very Low" Survival Probability. Their Bets Now Equal 32% of the Float.**（NVDA）
-  Short sellers have built a $25 billion bet against the rocket maker. Its CEO says they won't survive.…
-- [Yahoo] **Why AMD Stock Jumped Today**（NVDA）
-  The semiconductor specialist's new AI systems will help power a leading cloud computing platform.…
-- [Yahoo] **Dow Jones Futures: S&P 500 Regains 50-Day As Sandisk, Micron Soar; Google, Tesla Earnings Due**（^GSPC）
-  The S&P 500 reclaimed key support as Sandisk, Micron and AI stocks led a broad rally. Google, Tesla earnings loom.…
-- [Yahoo] **Nvidia supplier Wistron launches $700 million Texas factory for AI system production**（NVDA）
-  Taiwan's Wistron, a supplier to Nvidia, launched a $700 million ‌manufacturing facility in Texas on Tuesday to ‌produce …
-- [Yahoo] **Aflac Has Raised Its Dividend for 43 Straight Years. Here's the Catch Income Investors Need to Watch.**（NVDA）
-  Aflac increased its first-quarter dividend 5.2%, but investors need to watch more than the dividend with this unique ins…
+- [问财] **光迅科技：武汉光迅科技股份有限公司关于2022年限制性股票激励计划首次授予的限制性股票第二个解除限售期解除限售条件成就的公告**（光迅科技 (002281.SZ)）
+  公告…
+- [问财] **光迅科技：北京市嘉源律师事务所关于武汉光迅科技股份有限公司2022年限制性股票激励计划首次授予的限制性股票第二个解除限售期解除限售条件成就相关事项的法律意见书**（光迅科技 (002281.SZ)）
+  公告…
+- [问财] **光迅科技：武汉光迅科技股份有限公司薪酬与考核委员会2026年第二次会议意见**（光迅科技 (002281.SZ)）
+  公告…
+- [问财] **云天化：云天化2026年第二次临时股东会的法律意见**（云天化 (600096.SH)）
+  公告…
+- [问财] **云天化：云天化2026年第二次临时股东会决议公告**（云天化 (600096.SH)）
+  公告…
+- [问财] **华培动力：关于控股股东部分股份质押、实际控制人及其一致行动人部分股份补充质押的公告**（华培动力 (603121.SH)）
+  公告…
 
 ---
 
