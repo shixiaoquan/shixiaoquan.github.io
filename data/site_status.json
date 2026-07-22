@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-22T10:37:06+00:00",
+  "updatedAt": "2026-07-22T11:17:42+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -230,7 +230,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-22T09:43:31+00:00",
       "status": "stale",
-      "ageMinutes": 53
+      "ageMinutes": 94
     },
     {
       "id": "macro",
@@ -239,16 +239,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-22T09:43:21+00:00",
       "status": "stale",
-      "ageMinutes": 53
+      "ageMinutes": 94
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-07-22T09:04:06+00:00",
-      "status": "stale",
-      "ageMinutes": 93
+      "updatedAt": "2026-07-22T11:17:41+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -257,7 +257,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-22T09:36:24+00:00",
       "status": "ok",
-      "ageMinutes": 60
+      "ageMinutes": 101
     },
     {
       "id": "reports",
@@ -266,7 +266,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-22T18:31:57+08:00",
       "status": "ok",
-      "ageMinutes": 5
+      "ageMinutes": 45
     },
     {
       "id": "backtest",
@@ -275,9 +275,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-19T05:18:14+00:00",
       "status": "ok",
-      "ageMinutes": 4638
+      "ageMinutes": 4679
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "29912565436"
+  "triggeredBy": "Update Truth Social",
+  "runId": "29915129462"
 }
