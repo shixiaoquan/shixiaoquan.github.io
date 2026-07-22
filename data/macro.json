@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-22T09:43:21+00:00",
+  "updatedAt": "2026-07-22T11:31:36+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,7 +35,7 @@
     }
   ],
   "summary": {
-    "vix": 17.38,
+    "vix": 17.45,
     "vixRegime": "normal",
     "us10yYield": 4.63,
     "usdCnh": 6.77,
@@ -51,10 +57,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 17.38,
-      "changePct": 1.94,
-      "weekChangePct": 10.91,
-      "monthChangePct": 0.58,
+      "price": 17.45,
+      "changePct": 2.35,
+      "weekChangePct": 11.36,
+      "monthChangePct": 0.98,
       "source": "yahoo"
     }
   ],
@@ -110,15 +116,15 @@
       "currency": null,
       "region": null,
       "price": 6.76,
-      "changePct": -0.18,
-      "weekChangePct": -0.14,
-      "monthChangePct": -0.21,
+      "changePct": -0.17,
+      "weekChangePct": -0.13,
+      "monthChangePct": -0.2,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7661,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-21"
+      "refPrice": 6.7767,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,15 +134,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": -0.0,
+      "changePct": 0.0,
       "weekChangePct": 0.04,
       "monthChangePct": 0.02,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8407,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-21"
+      "refPrice": 7.842,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -145,16 +151,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 163.0,
-      "changePct": 0.31,
-      "weekChangePct": 0.5,
-      "monthChangePct": 0.88,
+      "price": 163.04,
+      "changePct": 0.34,
+      "weekChangePct": 0.52,
+      "monthChangePct": 0.91,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 162.74,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-21"
+      "refPrice": 163.013,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -164,51 +170,25 @@
       "currency": null,
       "region": null,
       "price": 1.14,
-      "changePct": -0.05,
-      "weekChangePct": -0.1,
-      "monthChangePct": -0.12,
+      "changePct": -0.08,
+      "weekChangePct": -0.14,
+      "monthChangePct": -0.16,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8758,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-21"
+      "refPrice": 0.8767,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7462,
+      "price": 0.7471,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-21"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8109,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-21"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2904,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-21"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -219,10 +199,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4122.3,
-      "changePct": 1.26,
-      "weekChangePct": 1.94,
-      "monthChangePct": -1.43,
+      "price": 4125.7,
+      "changePct": 1.34,
+      "weekChangePct": 2.02,
+      "monthChangePct": -1.34,
       "source": "yahoo"
     },
     {
@@ -232,10 +212,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 88.2,
-      "changePct": 3.87,
-      "weekChangePct": 10.8,
-      "monthChangePct": 17.88,
+      "price": 87.38,
+      "changePct": 2.91,
+      "weekChangePct": 9.77,
+      "monthChangePct": 16.79,
       "source": "yahoo"
     },
     {
@@ -246,9 +226,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.52,
-      "changePct": 0.18,
-      "weekChangePct": 3.65,
-      "monthChangePct": 2.62,
+      "changePct": 0.1,
+      "weekChangePct": 3.56,
+      "monthChangePct": 2.53,
       "source": "yahoo"
     }
   ],
@@ -507,13 +487,23 @@
   ],
   "finnhubNews": [
     {
-      "id": 8252463,
-      "title": "Rubio says US still willing to negotiate over Iran crisis - Reuters",
-      "summary": "Rubio says US still willing to negotiate over Iran crisis  Reuters",
+      "id": 8253299,
+      "title": "Iranian official denies two French diplomats were mistreated - Reuters",
+      "summary": "Iranian official denies two French diplomats were mistreated  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxONHRSTEdBY3l6NGhsLTFvUDRHeThEZkgzQzdzeDVSOWk1NzJ3R3dCT1JZWkE0VWoycVhEaG0wdmtWTnFyWElMbklkcFRUMW9qTkdqWGFfVHpDaDgyTnFNWGF4clVQSENtY2x5OS14dDBYX3JjYTdXRkV1SUZlcDU3eTduYXp3VndEMzlWZmpvZjY5S3dhVmdMdk5JVFhvNzNCQmJBRjBRX1daQ2ZB?oc=5",
-      "publishedAt": "2026-07-22T07:01:13+00:00",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQT1FnTE9CVUZ1ZmhCeUVOdS1wbGFGdGowQ1dMZUFTZGZIS0RvOVQxTVJPODJmZU1xWVM4YVRsWnpSZkg1NlBjX2JqZF9hWlhOUDh1b2xyLTRFTGpfWWVWWlVteEFpZlZjTVNod0JPYjM0eXVlR1ZuOWZlMHV2U1VaZkJ2V3YwdHA2QUJ6UDNMYmJ0clFuZHVkOGJkTmNsRy0tWk9SNUhFMDZiVnlzMTBhb0RQRDRQZXVzbXc?oc=5",
+      "publishedAt": "2026-07-22T09:53:12+00:00",
+      "related": ""
+    },
+    {
+      "id": 8252151,
+      "title": "Rubio holds talks with China's Wang Yi as regional powers join ASEAN meet - Reuters",
+      "summary": "Rubio holds talks with China's Wang Yi as regional powers join ASEAN meet  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQUU3WElZU3gydzRFZEY1Q1lSR1pQOWM3M2dfM3pQbkFwMlFJbG45LS1MZnFYX2M3dVBpRVlyR3lLWlhGOXpHTGxyVjBsNUY0d0RkVDRfcnV3MGdaQ3dLc0Z5dzNqakR3b0FSNjBNemduOU9jRXNQd2NOZ3BCQmJOdHJPX25mcWhHWWZXOFdBZ0Z6aEJwak1mcWVtZkowU2l6QWgwZ0NnczdZeDJmTS1yS0RFTnNQMTFjWWhv?oc=5",
+      "publishedAt": "2026-07-22T08:57:43+00:00",
       "related": ""
     },
     {
@@ -523,13 +513,23 @@
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPOThodmVRdFZqSlZuSnpSMDJBb1dkX1NUam1GcVJsRWlHcV9qM0x6MUhXRlJtRXd3MWdKMHpYOVFvUGZjcmUtR1pkSTZsUEd2M2xZS1YtUGRqUkhteGw5QzR6a1ZhcG4wR1c4LXUzaXZrN3ctTlI2Vkc4NzlnUlRBb01pY3kxRTlweVFDWGMydnpsLThrUGlXamcxX3RDTnFpVXFwY1FJT01LRU1pVEdxdW1pQQ?oc=5",
-      "publishedAt": "2026-07-22T05:03:00+00:00",
+      "publishedAt": "2026-07-22T06:59:44+00:00",
+      "related": ""
+    },
+    {
+      "id": 8252463,
+      "title": "Rubio says US still willing to negotiate over Iran crisis - Reuters",
+      "summary": "Rubio says US still willing to negotiate over Iran crisis  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxONHRSTEdBY3l6NGhsLTFvUDRHeThEZkgzQzdzeDVSOWk1NzJ3R3dCT1JZWkE0VWoycVhEaG0wdmtWTnFyWElMbklkcFRUMW9qTkdqWGFfVHpDaDgyTnFNWGF4clVQSENtY2x5OS14dDBYX3JjYTdXRkV1SUZlcDU3eTduYXp3VndEMzlWZmpvZjY5S3dhVmdMdk5JVFhvNzNCQmJBRjBRX1daQ2ZB?oc=5",
+      "publishedAt": "2026-07-22T03:21:00+00:00",
       "related": ""
     },
     {
       "id": 8253192,
-      "title": "Rupee's sensitivity to oil rises as renewed Iran conflict fuels crude rally - Reuters",
-      "summary": "Rupee's sensitivity to oil rises as renewed Iran conflict fuels crude rally  Reuters",
+      "title": "Rupee languishes at two-month lows as supply worries raise oil prices - Reuters",
+      "summary": "Rupee languishes at two-month lows as supply worries raise oil prices  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPdklZam1NbG9QYS05VE5BWlUxN2E2Mm5PeXdVaWdFamtOYVpoZ2ZNTG44VGFlYnlrcUYtYXJ6amM2SmxWbHdCUmJCVWtSR3d4LXp3eWZ6MHBKeGh5Qkc2cnI2RkJCR1ZudDJvMXNOcmktSnpMZTRMXzJrRzFRZUxSRmNLbWlqYTFtaUpvNkd3a2lvYTRoUkx1Qzk5T2RVVTlsenc?oc=5",
@@ -547,19 +547,9 @@
       "related": ""
     },
     {
-      "id": 8252151,
-      "title": "Rubio holds talks with China's Wang Yi as regional powers join ASEAN meet - Reuters",
-      "summary": "Rubio holds talks with China's Wang Yi as regional powers join ASEAN meet  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPQUU3WElZU3gydzRFZEY1Q1lSR1pQOWM3M2dfM3pQbkFwMlFJbG45LS1MZnFYX2M3dVBpRVlyR3lLWlhGOXpHTGxyVjBsNUY0d0RkVDRfcnV3MGdaQ3dLc0Z5dzNqakR3b0FSNjBNemduOU9jRXNQd2NOZ3BCQmJOdHJPX25mcWhHWWZXOFdBZ0Z6aEJwak1mcWVtZkowU2l6QWgwZ0NnczdZeDJmTS1yS0RFTnNQMTFjWWhv?oc=5",
-      "publishedAt": "2026-07-22T02:11:00+00:00",
-      "related": ""
-    },
-    {
       "id": 8252359,
-      "title": "Gold touches two-week high as investors monitor Mideast developments - Reuters",
-      "summary": "Gold touches two-week high as investors monitor Mideast developments  Reuters",
+      "title": "Gold climbs to two-week high as investors watch Middle East conflict - Reuters",
+      "summary": "Gold climbs to two-week high as investors watch Middle East conflict  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQSEhsalF5aHFJNWhKX1N0MFJGc2tUSkUtZnN2Qk43cW5leGhtZkFaenZuWWJ0SDRiZ2xuVDNhMG0teU5JeDZhRGRMV0xNSDFoQlF2akZ5OWlYbmRGRDNIa3VtNElkZlJLVXczWEdLR2ZfRFJCd0kzaDhYU3pMWEhGMnp4S0N5THd0YUZvVkhuNUJJbzgxaTJfRzdSamd3a0gxc2pjUTEyVUZIWGFEdUc4S012RzVaS0U?oc=5",
@@ -577,33 +567,23 @@
       "related": ""
     },
     {
-      "id": 8251741,
-      "title": "Oil climbs to near six-week highs as conflict threatens key oil transit routes - Reuters",
-      "summary": "Oil climbs to near six-week highs as conflict threatens key oil transit routes  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPVktKb0FFdG9HQ0VvZ0dKR2ozZExNVVZ5eU1Wc29kUmhBRHVQclVYNk14WXhfb0MxV2lyaEk2UDJLdGJOdk9sRjE2M3NaNXpmUVBOSTFTLVFHSTV0UnJKTG5fZm95czJacHdDVVU2cE8wd013R1B4M0RHcHF2YURVX3pmbENTbktzRzRfZ0htelRKU1hQNUp4Z3ZFNUV5RkZ1NFE3STNndlFVSVVFT0JHUWVudU1XXzcwQXc?oc=5",
-      "publishedAt": "2026-07-22T00:26:00+00:00",
+      "id": 8253714,
+      "title": "Red Sea shipping disruption now in focus as vessels are forced to change course",
+      "summary": "<p class=\"text-align-justify\" style=\"text-align: justify;\">If you think having the Strait of Hormuz closed is bad enough, it looks like things may yet﻿ get worse with shipping disruptions now starting",
+      "source": "Forexlive",
+      "category": "forex",
+      "link": "https://investinglive.com/news/red-sea-shipping-disruption-now-in-focus-as-vessels-are-changing-course",
+      "publishedAt": "2026-07-22T11:01:57+00:00",
       "related": ""
     },
     {
-      "id": 8252770,
-      "title": "Iran says it struck US military facilities in Jordan and Bahrain",
-      "summary": "<p class=\"PDq2pG_selectionAnchorContainer\">The Iranian military targeted US assets stationed at Jordan's Al Azraq base as well as facilities used by American personnel at Bahrain's Sheikh Isa Air Base",
+      "id": 8253400,
+      "title": "Iran is in a lot of trouble, says US secretary of state Rubio",
+      "summary": "<ul><li>Iran is in a lot of trouble</li><li>Nothing China has done has changed the trajectory of the conflict with Iran</li><li>In fact, in some cases China has been cooperative on Iran situation</li>",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/iran-says-it-struck-us-military-facilities-in-jordan-and-bahrain",
-      "publishedAt": "2026-07-22T06:45:35+00:00",
-      "related": ""
-    },
-    {
-      "id": 8252771,
-      "title": "What are the main events for today?",
-      "summary": "<p>EUROPEAN SESSION</p><p>In the European session, the only highlight was the <a href=\"https://investinglive.com/news/uk-june-cpi-2-6-vs-2-7-y-y-expected/\" rel=\"follow\">UK CPI</a> report. The data sho",
-      "source": "Forexlive",
-      "category": "forex",
-      "link": "https://investinglive.com/news/what-are-the-main-events-for-today-8",
-      "publishedAt": "2026-07-22T06:28:47+00:00",
+      "link": "https://investinglive.com/news/iran-is-in-a-lot-of-trouble-says-us-secretary-of-state-rubio",
+      "publishedAt": "2026-07-22T09:45:03+00:00",
       "related": ""
     }
   ],
