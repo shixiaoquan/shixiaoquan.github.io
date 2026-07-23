@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-23T16:42:57+00:00",
+  "updatedAt": "2026-07-23T18:22:10+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 24 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 24 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 100,
@@ -206,7 +206,7 @@
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "300750.SZ",
@@ -264,63 +264,10 @@
           "changePct": 4.36,
           "flow": 532057840
         }
-      ]
-    },
-    {
-      "id": "low_pe",
-      "title": "低估值防御",
-      "query": "市盈率低于行业均值且股息率大于3%",
-      "status": "ok",
-      "items": [
-        {
-          "code": "000895.SZ",
-          "name": "双汇发展",
-          "price": 25.06,
-          "changePct": 0.24
-        },
-        {
-          "code": "301552.SZ",
-          "name": "科力装备",
-          "price": 20.3,
-          "changePct": 1.75
-        },
-        {
-          "code": "600036.SH",
-          "name": "招商银行",
-          "price": 38.91,
-          "changePct": 0.52
-        },
-        {
-          "code": "001872.SZ",
-          "name": "招商港口",
-          "price": 21.42,
-          "changePct": -6.59
-        },
-        {
-          "code": "601728.SH",
-          "name": "中国电信",
-          "price": 6.04,
-          "changePct": 0.33
-        },
-        {
-          "code": "002142.SZ",
-          "name": "宁波银行",
-          "price": 31.85,
-          "changePct": 0.95
-        },
-        {
-          "code": "600197.SH",
-          "name": "伊力特",
-          "price": 10.2,
-          "changePct": 0.0
-        },
-        {
-          "code": "603281.SH",
-          "name": "江瀚新材",
-          "price": 19.14,
-          "changePct": 3.35
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -592,6 +539,9 @@
   "errors": [
     "limit_up: 'NoneType' object has no attribute 'get'",
     "limit_down: 'NoneType' object has no attribute 'get'",
-    "hot: 'NoneType' object has no attribute 'get'"
-  ]
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "low_pe: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
