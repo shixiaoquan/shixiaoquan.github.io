@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-24T01:09:54+00:00",
+  "updatedAt": "2026-07-24T04:31:49+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -46,7 +40,6 @@
     "hints": [
       "美债收益率上行，对高估值成长股形成压力。",
       "美股行业轮动：工业 领涨（+1.73%），可选消费 靠后。",
-      "原油强、黄金弱 — 偏再通胀/增长预期。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
   },
@@ -116,16 +109,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.77,
-      "changePct": -0.04,
-      "weekChangePct": -0.04,
-      "monthChangePct": -0.29,
+      "price": 6.78,
+      "changePct": 0.04,
+      "weekChangePct": 0.04,
+      "monthChangePct": -0.22,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.783,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7703,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-23"
     },
     {
       "symbol": "USDHKD=X",
@@ -141,9 +134,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.841,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8413,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-23"
     },
     {
       "symbol": "USDJPY=X",
@@ -152,16 +145,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 163.83,
-      "changePct": 0.46,
-      "weekChangePct": 0.9,
-      "monthChangePct": 1.28,
+      "price": 163.82,
+      "changePct": 0.45,
+      "weekChangePct": 0.89,
+      "monthChangePct": 1.27,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 163.6921,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 163.47,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-23"
     },
     {
       "symbol": "EURUSD=X",
@@ -171,25 +164,51 @@
       "currency": null,
       "region": null,
       "price": 1.14,
-      "changePct": -0.22,
-      "weekChangePct": -0.5,
-      "monthChangePct": 0.29,
+      "changePct": -0.24,
+      "weekChangePct": -0.53,
+      "monthChangePct": 0.27,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8782,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8778,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-23"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7503,
+      "price": 0.7489,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-23"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8159,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-23"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2913,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-23"
     }
   ],
   "commodities": [
@@ -200,10 +219,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4052.1,
-      "changePct": -2.29,
-      "weekChangePct": 1.67,
-      "monthChangePct": -1.88,
+      "price": 4030.7,
+      "changePct": -0.39,
+      "weekChangePct": 0.45,
+      "monthChangePct": 1.01,
       "source": "yahoo"
     },
     {
@@ -213,10 +232,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 91.9,
-      "changePct": 5.84,
-      "weekChangePct": 16.4,
-      "monthChangePct": 25.53,
+      "price": 91.76,
+      "changePct": -0.47,
+      "weekChangePct": 11.24,
+      "monthChangePct": 30.45,
       "source": "yahoo"
     },
     {
@@ -227,9 +246,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.32,
-      "changePct": -1.95,
-      "weekChangePct": 0.46,
-      "monthChangePct": 3.0,
+      "changePct": 0.18,
+      "weekChangePct": 1.55,
+      "monthChangePct": 6.28,
       "source": "yahoo"
     }
   ],
@@ -241,9 +260,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4529.1,
-      "changePct": -3.6,
-      "weekChangePct": -5.26,
+      "price": 4672.64,
+      "changePct": 3.17,
+      "weekChangePct": -0.48,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -254,7 +273,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3575.52,
+      "price": 3511.75,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -267,7 +286,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1789.69,
+      "price": 1794.48,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -488,6 +507,36 @@
   ],
   "finnhubNews": [
     {
+      "id": 8261885,
+      "title": "US military says it completed 13th consecutive night of strikes on Iran - Reuters",
+      "summary": "US military says it completed 13th consecutive night of strikes on Iran  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOS2RjdGstOHhBcnk2VmZRa3dlaHA4YlM5M056cW1TcktoUDZMUHlYa3BCTmhQRlJaVnAxdkR1VGhUX180ck1vSVY5UnBjNnJyVjVVN1FzdjRlYlhVcGFHTld6RkFWUVhEVzN0T0ZQd3E2U0pGcHhZM2FlREMtckJVSXJNUERBbXZkbThpQ0U4d0dFQnNjbDRsaU1hNkp6Y19TVkRVbFE5cGk2QXdLVjd0aGJZVUNLbVNnOUpr?oc=5",
+      "publishedAt": "2026-07-24T01:56:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8261779,
+      "title": "Asian stocks skid as oil spike revives inflation fears, bonds take a hit - Reuters",
+      "summary": "Asian stocks skid as oil spike revives inflation fears, bonds take a hit  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxORzVSb2tZRUVrYzhLQ0hCcVk1clVDQ1hjaGFPVElvd0JKZ0RVeGFTQ2JBVlVwRFNLbUxHOGZKTnl3WGEyeU5PQzEtTnBmVjBRdVVVUHBaSzJXY1pRT2ZFenczR0d2emszLWpGZDItNEcxd29RSGdWSDhVOEM5RjZRRXc0VQ?oc=5",
+      "publishedAt": "2026-07-24T01:20:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8261778,
+      "title": "Add a month at sea and $2.5 million - what it costs oil tankers to flee Hormuz and Bab el-Mandeb - Reuters",
+      "summary": "Add a month at sea and $2.5 million - what it costs oil tankers to flee Hormuz and Bab el-Mandeb  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOUlN1bTdzeXE4MGNNX3JUY0FhZVRPbXlMdXhWcnZuaXBJQnpjNEVJeGM2cnZJeExGWnN0YUZMaWxBN2xKdk04S0ItTnppcjM2aUJYaUZqdFpmWjFHNk54SjZsSXotUURVdzhCVzFac2FCRHhaZ28yMHkwbzVzQmNBZGk5TzRmVGo5M25FRmVDelN3UnotbDNmb3VjWFVJRkJfZnJITElmNzdtNExlam15a0hpUmJSYXk4Z3ZqOXRPZWh5WFVMRHZz?oc=5",
+      "publishedAt": "2026-07-23T23:07:30+00:00",
+      "related": ""
+    },
+    {
       "id": 8260621,
       "title": "Southwest Airlines put Texas jet fuel on a boat to LA for the first time amid supply worries",
       "summary": "Southwest hired a ship this spring to send fuel from Houston to Los Angeles in case of supply shortages.",
@@ -538,33 +587,13 @@
       "related": ""
     },
     {
-      "id": 8259556,
-      "title": "EXCLUSIVE: Iran flew IRGC commanders, missile gear to Yemen's Houthis, sources say - Reuters",
-      "summary": "EXCLUSIVE: Iran flew IRGC commanders, missile gear to Yemen's Houthis, sources say  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNX0VBOVcxX1BiZmZ6M1VfVkNSVmg1bGREUzRDNWdjYWFQeXR3TXUyVm1aQURfb3ZpNlpuVVd2LXk0YTFhV3AtTW1HZzBoYjFFMGhpY0J5X1JUM3MtTmJaYmI5cExla1VOSTAzdi1CZVdGb0RXckdQU2hDSlVCMXd4eVZPalltOGQzQnE2M0w0SVYzdUNmYy0xRzFUNWRUSXZHeF9rWkY1UzI1LVpsN0NBUjdDZlJRT3oyWnpB?oc=5",
-      "publishedAt": "2026-07-23T17:58:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8260306,
-      "title": "UK says armed forces ready to defend country after Iran warning over US bombers - Reuters",
-      "summary": "UK says armed forces ready to defend country after Iran warning over US bombers  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOSUtaMHdwUWNQbXpNb0IzUXMxZm5sUFRDVlJGclZmak52YVFySlE1LUV1aTBiRDhqT055V2pIMWFQNmFILW1GSnRCRTBLYi1oSVY0Vm0tRjJPX19CazNmeUQtQkdDUXZmbVU2TFlhcnFKZVNMbVFZS05ZR1VlenRFSXRUa3d2dzhlSTNBeDQyOFA2Z3k1RXBYSWQ1Rm5Bd1FKT3ItT0UzT19nYkEwcmpPQlc0TDZSdlBCT3owXzJGMHFCRmp3dklCU0NJWmNFeTZTVy0yVy1n?oc=5",
-      "publishedAt": "2026-07-23T17:48:05+00:00",
-      "related": ""
-    },
-    {
-      "id": 8259987,
-      "title": "JPMorgan report finds dramatic jump in AI-themed ETFs — despite rough quarter",
-      "summary": "Wall Street is banking heavily on exchange-traded funds that give investors artificial intelligence exposure, according to JPMorgan Asset Management.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/07/23/jpmorgan-dramatic-jump-in-ai-etfs-despite-rough-quarter.html",
-      "publishedAt": "2026-07-23T17:10:06+00:00",
+      "id": 8262194,
+      "title": "investingLive Asia-Pacific market moving news: 24 July 2026: Asian equities slapped down",
+      "summary": "<ul><li><a href=\"https://investinglive.com:443/commodities/icymi-iran-rejects-trump-ceasefire-offer-carried-by-iraqi-pm-nyt-reports\" rel=\"follow\">ICYMI - Iran rejects Trump ceasefire offer carried by ",
+      "source": "Forexlive",
+      "category": "forex",
+      "link": "https://investinglive.com/news/investinglive-asia-pacific-market-moving-news-24-july-2026-asian-equities-slapped-down",
+      "publishedAt": "2026-07-24T03:52:13+00:00",
       "related": ""
     },
     {
@@ -575,16 +604,6 @@
       "category": "forex",
       "link": "https://investinglive.com/news/japan-june-inflation",
       "publishedAt": "2026-07-23T23:42:25+00:00",
-      "related": ""
-    },
-    {
-      "id": 8261354,
-      "title": "Australia composite PMI rises to 52.6 in July as new orders return to growth",
-      "summary": "<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">The pickup in the composite output index to 52.6 from 50.4 signals a second straight month of expansion and the strongest r",
-      "source": "Forexlive",
-      "category": "forex",
-      "link": "https://investinglive.com/news/australia-composite-pmi-rises-to-52-6-in-july-as-new-orders-return-to-growth",
-      "publishedAt": "2026-07-23T23:12:00+00:00",
       "related": ""
     }
   ],
