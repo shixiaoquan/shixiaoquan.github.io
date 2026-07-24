@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-23T23:41:38+00:00",
+  "updatedAt": "2026-07-24T01:09:54+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -24,7 +30,7 @@
       "id": "finnhub",
       "name": "Finnhub",
       "status": "ok",
-      "items": 11,
+      "items": 20,
       "cookieUsed": true
     }
   ],
@@ -32,7 +38,7 @@
     "vix": 18.7,
     "vixRegime": "elevated",
     "us10yYield": 4.7,
-    "usdCnh": null,
+    "usdCnh": 6.78,
     "usdCnhChangePct": null,
     "sectorLeader": "工业",
     "sectorLaggard": "可选消费",
@@ -89,6 +95,21 @@
   ],
   "fx": [
     {
+      "symbol": "USDCNH=X",
+      "name": "美元/离岸人民币",
+      "category": "fx",
+      "unit": "index",
+      "currency": null,
+      "region": null,
+      "price": 6.78,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "base": "USD",
+      "quote": "CNH"
+    },
+    {
       "symbol": "USDCNY=X",
       "name": "美元/在岸人民币",
       "category": "fx",
@@ -96,15 +117,15 @@
       "currency": null,
       "region": null,
       "price": 6.77,
-      "changePct": 0.1,
-      "weekChangePct": 0.06,
-      "monthChangePct": -0.26,
+      "changePct": -0.04,
+      "weekChangePct": -0.04,
+      "monthChangePct": -0.29,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7703,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-23"
+      "refPrice": 6.783,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -115,14 +136,14 @@
       "region": null,
       "price": 7.84,
       "changePct": 0.01,
-      "weekChangePct": 0.0,
-      "monthChangePct": 0.02,
+      "weekChangePct": 0.01,
+      "monthChangePct": 0.03,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8413,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-23"
+      "refPrice": 7.841,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -131,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 163.82,
-      "changePct": 0.45,
-      "weekChangePct": 0.89,
-      "monthChangePct": 1.27,
+      "price": 163.83,
+      "changePct": 0.46,
+      "weekChangePct": 0.9,
+      "monthChangePct": 1.28,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 163.47,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-23"
+      "refPrice": 163.6921,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -150,51 +171,25 @@
       "currency": null,
       "region": null,
       "price": 1.14,
-      "changePct": -0.27,
-      "weekChangePct": -0.56,
-      "monthChangePct": 0.23,
+      "changePct": -0.22,
+      "weekChangePct": -0.5,
+      "monthChangePct": 0.29,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8778,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-23"
+      "refPrice": 0.8782,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7489,
+      "price": 0.7503,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-23"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8159,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-23"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2913,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-23"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -205,10 +200,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4051.9,
+      "price": 4052.1,
       "changePct": -2.29,
-      "weekChangePct": 1.66,
-      "monthChangePct": -1.89,
+      "weekChangePct": 1.67,
+      "monthChangePct": -1.88,
       "source": "yahoo"
     },
     {
@@ -218,10 +213,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 92.15,
-      "changePct": 6.13,
-      "weekChangePct": 16.72,
-      "monthChangePct": 25.87,
+      "price": 91.9,
+      "changePct": 5.84,
+      "weekChangePct": 16.4,
+      "monthChangePct": 25.53,
       "source": "yahoo"
     },
     {
@@ -231,10 +226,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.33,
-      "changePct": -1.85,
-      "weekChangePct": 0.56,
-      "monthChangePct": 3.1,
+      "price": 6.32,
+      "changePct": -1.95,
+      "weekChangePct": 0.46,
+      "monthChangePct": 3.0,
       "source": "yahoo"
     }
   ],
@@ -573,6 +568,16 @@
       "related": ""
     },
     {
+      "id": 8261460,
+      "title": "Japan June 2026 inflation: Headline jumps to 1.7% y/y (prior 1.5%)",
+      "summary": "<p>Just the data this post, I'll have more to come on this separately. </p><p>---</p><p></p><p>Japan Inflation Rate June 2026:</p><p>Headline Y/Y 1.7% </p><ul><li>expected 1.7%, prior .5%</li></ul><p>",
+      "source": "Forexlive",
+      "category": "forex",
+      "link": "https://investinglive.com/news/japan-june-inflation",
+      "publishedAt": "2026-07-23T23:42:25+00:00",
+      "related": ""
+    },
+    {
       "id": 8261354,
       "title": "Australia composite PMI rises to 52.6 in July as new orders return to growth",
       "summary": "<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">The pickup in the composite output index to 52.6 from 50.4 signals a second straight month of expansion and the strongest r",
@@ -581,25 +586,78 @@
       "link": "https://investinglive.com/news/australia-composite-pmi-rises-to-52-6-in-july-as-new-orders-return-to-growth",
       "publishedAt": "2026-07-23T23:12:00+00:00",
       "related": ""
-    },
-    {
-      "id": 8260947,
-      "title": "investingLive Americas FX news wrap 23 Jul: Risk off sentiment as geopolitical tensions rise.",
-      "summary": "<ul><li><a href=\"https://investinglive.com:443/stocks/it-was-an-ugly-day-for-us-stocks\" rel=\"follow\">It was an ugly day for US stocks.</a></li><li><a href=\"https://investinglive.com:443/news/carney-ca",
-      "source": "Forexlive",
-      "category": "forex",
-      "link": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-23-jul-risk-off-sentiment-as-geopolitical-tensions-rise",
-      "publishedAt": "2026-07-23T21:26:40+00:00",
-      "related": ""
     }
   ],
   "earningsCalendar": [
     {
-      "symbol": "AAPL",
-      "date": "2026-07-30",
-      "hour": "amc",
-      "epsEstimate": 1.9299,
-      "revenueEstimate": 110740860032
+      "symbol": "ABBV",
+      "date": "2026-07-31",
+      "hour": "bmo",
+      "epsEstimate": 3.6684,
+      "revenueEstimate": 17085346473
+    },
+    {
+      "symbol": "ACH",
+      "date": "2026-07-31",
+      "hour": "bmo",
+      "epsEstimate": -0.0865,
+      "revenueEstimate": 633645043
+    },
+    {
+      "symbol": "AN",
+      "date": "2026-07-31",
+      "hour": "",
+      "epsEstimate": 5.6609,
+      "revenueEstimate": 7233279854
+    },
+    {
+      "symbol": "ARES",
+      "date": "2026-07-31",
+      "hour": "bmo",
+      "epsEstimate": 1.3105,
+      "revenueEstimate": 1223691756
+    },
+    {
+      "symbol": "AU",
+      "date": "2026-07-31",
+      "hour": "",
+      "epsEstimate": 2.2485,
+      "revenueEstimate": 3289486280
+    },
+    {
+      "symbol": "AVBC",
+      "date": "2026-07-31",
+      "hour": "",
+      "epsEstimate": 0.3468,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "BCPC",
+      "date": "2026-07-31",
+      "hour": "",
+      "epsEstimate": 1.4229,
+      "revenueEstimate": 273873060
+    },
+    {
+      "symbol": "BEN",
+      "date": "2026-07-31",
+      "hour": "bmo",
+      "epsEstimate": 0.6781,
+      "revenueEstimate": 1779183427
+    },
+    {
+      "symbol": "BEPC",
+      "date": "2026-07-31",
+      "hour": "",
+      "epsEstimate": -0.459,
+      "revenueEstimate": 1859460000
+    },
+    {
+      "symbol": "BTSG",
+      "date": "2026-07-31",
+      "hour": "bmo",
+      "epsEstimate": 0.4046,
+      "revenueEstimate": 3730812384
     }
   ]
 }
