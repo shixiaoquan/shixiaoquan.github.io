@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-24T06:37:18+00:00",
+  "updatedAt": "2026-07-24T09:30:17+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 34 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 34 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
-    "limitUp": 32,
+    "limitUp": 42,
     "limitDown": 4,
     "limitUpNote": "100+",
     "limitDownNote": "100+",
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "002298.SZ",
@@ -25,10 +25,10 @@
           "changePct": 10.05
         },
         {
-          "code": "601678.SH",
-          "name": "滨化股份",
-          "price": 6.84,
-          "changePct": 9.97
+          "code": "605198.SH",
+          "name": "安德利",
+          "price": 54.63,
+          "changePct": 10.01
         },
         {
           "code": "603221.SH",
@@ -37,10 +37,28 @@
           "changePct": 9.98
         },
         {
+          "code": "002189.SZ",
+          "name": "中光学",
+          "price": 19.1,
+          "changePct": 10.02
+        },
+        {
+          "code": "688622.SH",
+          "name": "*ST禾信",
+          "price": 101.93,
+          "changePct": 20.0
+        },
+        {
           "code": "603068.SH",
           "name": "博通集成",
           "price": 37.02,
           "changePct": 10.01
+        },
+        {
+          "code": "603580.SH",
+          "name": "艾艾精工",
+          "price": 46.3,
+          "changePct": 10.0
         },
         {
           "code": "603976.SH",
@@ -55,45 +73,25 @@
           "changePct": 10.1
         },
         {
+          "code": "301583.SZ",
+          "name": "托伦斯",
+          "price": 174.0,
+          "changePct": 20.0
+        },
+        {
+          "code": "600539.SH",
+          "name": "狮头股份",
+          "price": 18.51,
+          "changePct": 9.98
+        },
+        {
           "code": "002211.SZ",
           "name": "ST宏达",
           "price": 3.44,
           "changePct": 9.9
-        },
-        {
-          "code": "002879.SZ",
-          "name": "长缆科技",
-          "price": 18.05,
-          "changePct": 9.99
-        },
-        {
-          "code": "002208.SZ",
-          "name": "合肥城建",
-          "price": 13.6,
-          "changePct": 10.03
-        },
-        {
-          "code": "002303.SZ",
-          "name": "美盈森",
-          "price": 4.57,
-          "changePct": 10.12
-        },
-        {
-          "code": "600617.SH",
-          "name": "国新能源",
-          "price": 3.39,
-          "changePct": 10.06
-        },
-        {
-          "code": "002374.SZ",
-          "name": "中锐股份",
-          "price": 3.09,
-          "changePct": 9.96
         }
       ],
-      "count": 32,
-      "stale": true,
-      "staleMessage": "沿用上次数据"
+      "count": 42
     },
     {
       "id": "limit_down",
@@ -135,7 +133,7 @@
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "001258.SZ",
@@ -207,13 +205,16 @@
           "changePct": 10.0,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002156.SZ",
@@ -271,63 +272,10 @@
           "changePct": 6.06,
           "flow": 577136069
         }
-      ]
-    },
-    {
-      "id": "low_pe",
-      "title": "低估值防御",
-      "query": "市盈率低于行业均值且股息率大于3%",
-      "status": "ok",
-      "items": [
-        {
-          "code": "600036.SH",
-          "name": "招商银行",
-          "price": 39.09,
-          "changePct": 0.46
-        },
-        {
-          "code": "600219.SH",
-          "name": "南山铝业",
-          "price": 4.46,
-          "changePct": -6.89
-        },
-        {
-          "code": "000895.SZ",
-          "name": "双汇发展",
-          "price": 25.03,
-          "changePct": -0.12
-        },
-        {
-          "code": "002142.SZ",
-          "name": "宁波银行",
-          "price": 32.0,
-          "changePct": 0.47
-        },
-        {
-          "code": "002406.SZ",
-          "name": "远东传动",
-          "price": 6.13,
-          "changePct": -2.39
-        },
-        {
-          "code": "002998.SZ",
-          "name": "优彩资源",
-          "price": 7.02,
-          "changePct": -2.64
-        },
-        {
-          "code": "000788.SZ",
-          "name": "北大医药",
-          "price": 4.96,
-          "changePct": -4.43
-        },
-        {
-          "code": "001872.SZ",
-          "name": "招商港口",
-          "price": 21.04,
-          "changePct": -1.77
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -707,6 +655,9 @@
     }
   ],
   "errors": [
-    "limit_down: 'NoneType' object has no attribute 'get'"
-  ]
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "low_pe: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
