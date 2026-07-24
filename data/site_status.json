@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-24T16:55:01+00:00",
+  "updatedAt": "2026-07-24T17:02:00+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -90,16 +90,8 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-07-24T15:12:08+00:00",
+    "updatedAt": "2026-07-24T17:02:00+00:00",
     "tasks": [
-      {
-        "id": "fix-pipeline-truth",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · Truth Social 镜像",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
-      },
       {
         "id": "shadow-tracking",
         "type": "shadow_track",
@@ -121,6 +113,14 @@
         }
       },
       {
+        "id": "pipelines-stale",
+        "type": "fix_pipeline",
+        "priority": "medium",
+        "title": "部分流水线数据过期",
+        "reason": "2 条流水线过期",
+        "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
+      },
+      {
         "id": "tactic-tune-active",
         "type": "tactic_tune",
         "priority": "low",
@@ -139,8 +139,8 @@
     ],
     "summary": {
       "total": 5,
-      "high": 1,
-      "topAction": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+      "high": 0,
+      "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
   },
   "recentLog": [
@@ -227,7 +227,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-24T14:42:47+00:00",
       "status": "stale",
-      "ageMinutes": 132
+      "ageMinutes": 139
     },
     {
       "id": "macro",
@@ -236,7 +236,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-24T14:42:38+00:00",
       "status": "stale",
-      "ageMinutes": 132
+      "ageMinutes": 139
     },
     {
       "id": "truth",
@@ -245,7 +245,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-24T16:54:59+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 7
     },
     {
       "id": "wencai",
@@ -254,7 +254,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-24T15:42:21+00:00",
       "status": "ok",
-      "ageMinutes": 72
+      "ageMinutes": 79
     },
     {
       "id": "reports",
@@ -263,7 +263,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-24T18:26:13+08:00",
       "status": "ok",
-      "ageMinutes": 388
+      "ageMinutes": 395
     },
     {
       "id": "backtest",
@@ -272,9 +272,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-19T05:18:14+00:00",
       "status": "ok",
-      "ageMinutes": 7896
+      "ageMinutes": 7903
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "30110908885"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "30111359910"
 }
