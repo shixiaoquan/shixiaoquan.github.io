@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-24T03:38:54+00:00",
+  "updatedAt": "2026-07-24T06:37:18+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 34 条资讯",
+  "message": "已更新 5 个市场问句 · 34 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 32,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002298.SZ",
@@ -91,13 +91,15 @@
           "changePct": 9.96
         }
       ],
-      "count": 32
+      "count": 32,
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603629.SH",
@@ -124,7 +126,10 @@
           "changePct": -10.04
         }
       ],
-      "count": 4
+      "count": 4,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
@@ -135,71 +140,71 @@
         {
           "code": "001258.SZ",
           "name": "立新能源",
-          "price": 13.32,
-          "changePct": 9.99,
+          "price": 13.12,
+          "changePct": 8.34,
           "rank": "1"
-        },
-        {
-          "code": "600396.SH",
-          "name": "华电辽能",
-          "price": 15.6,
-          "changePct": -4.94,
-          "rank": "2"
-        },
-        {
-          "code": "600664.SH",
-          "name": "哈药股份",
-          "price": 5.71,
-          "changePct": -4.83,
-          "rank": "3"
         },
         {
           "code": "000938.SZ",
           "name": "紫光股份",
-          "price": 42.1,
-          "changePct": -0.82,
-          "rank": "4"
+          "price": 41.9,
+          "changePct": -1.3,
+          "rank": "2"
+        },
+        {
+          "code": "600396.SH",
+          "name": "华电辽能",
+          "price": 14.77,
+          "changePct": -9.99,
+          "rank": "3"
         },
         {
           "code": "601179.SH",
           "name": "中国西电",
-          "price": 13.9,
-          "changePct": 1.83,
-          "rank": "5"
+          "price": 13.65,
+          "changePct": 0.0,
+          "rank": "4"
         },
         {
-          "code": "000815.SZ",
-          "name": "美利云",
-          "price": 16.33,
-          "changePct": -7.95,
-          "rank": "6"
+          "code": "600664.SH",
+          "name": "哈药股份",
+          "price": 5.47,
+          "changePct": -8.83,
+          "rank": "5"
         },
         {
           "code": "001309.SZ",
           "name": "德明利",
-          "price": 405.95,
-          "changePct": -6.68,
+          "price": 401.7,
+          "changePct": -7.66,
+          "rank": "6"
+        },
+        {
+          "code": "000815.SZ",
+          "name": "美利云",
+          "price": 16.31,
+          "changePct": -8.06,
           "rank": "7"
         },
         {
           "code": "600744.SH",
           "name": "华银电力",
-          "price": 7.92,
-          "changePct": 0.51,
+          "price": 7.58,
+          "changePct": -3.81,
           "rank": "8"
         },
         {
           "code": "601991.SH",
           "name": "大唐发电",
-          "price": 6.51,
-          "changePct": -6.87,
+          "price": 6.29,
+          "changePct": -10.01,
           "rank": "9"
         },
         {
-          "code": "002384.SZ",
-          "name": "东山精密",
-          "price": 198.48,
-          "changePct": -3.95,
+          "code": "002156.SZ",
+          "name": "通富微电",
+          "price": 76.8,
+          "changePct": 10.0,
           "rank": "10"
         }
       ]
@@ -213,58 +218,58 @@
         {
           "code": "002156.SZ",
           "name": "通富微电",
-          "price": 74.35,
-          "changePct": 6.49,
-          "flow": 778436267
-        },
-        {
-          "code": "300433.SZ",
-          "name": "蓝思科技",
-          "price": 37.63,
-          "changePct": 2.87,
-          "flow": 613992749
+          "price": 76.8,
+          "changePct": 10.0,
+          "flow": 981364087
         },
         {
           "code": "688012.SH",
           "name": "中微公司",
-          "price": 385.5,
-          "changePct": 2.75,
-          "flow": 588662939
-        },
-        {
-          "code": "002371.SZ",
-          "name": "北方华创",
-          "price": 765.79,
-          "changePct": 3.49,
-          "flow": 546922843
-        },
-        {
-          "code": "603893.SH",
-          "name": "瑞芯微",
-          "price": 224.82,
-          "changePct": 5.06,
-          "flow": 542490819
-        },
-        {
-          "code": "688146.SH",
-          "name": "中船特气",
-          "price": 242.18,
-          "changePct": 12.64,
-          "flow": 390086870
+          "price": 389.09,
+          "changePct": 3.7,
+          "flow": 907066206
         },
         {
           "code": "002185.SZ",
           "name": "华天科技",
-          "price": 18.08,
-          "changePct": 2.2,
-          "flow": 371158900
+          "price": 18.55,
+          "changePct": 4.86,
+          "flow": 736886411
+        },
+        {
+          "code": "002371.SZ",
+          "name": "北方华创",
+          "price": 759.09,
+          "changePct": 2.58,
+          "flow": 647126934
+        },
+        {
+          "code": "600584.SH",
+          "name": "长电科技",
+          "price": 83.57,
+          "changePct": 3.42,
+          "flow": 631401081
         },
         {
           "code": "300604.SZ",
           "name": "长川科技",
-          "price": 302.5,
-          "changePct": 3.87,
-          "flow": 361054998
+          "price": 305.88,
+          "changePct": 5.03,
+          "flow": 622870683
+        },
+        {
+          "code": "688146.SH",
+          "name": "中船特气",
+          "price": 244.82,
+          "changePct": 13.87,
+          "flow": 594235982
+        },
+        {
+          "code": "688072.SH",
+          "name": "拓荆科技",
+          "price": 788.0,
+          "changePct": 6.06,
+          "flow": 577136069
         }
       ]
     },
@@ -277,20 +282,32 @@
         {
           "code": "600036.SH",
           "name": "招商银行",
-          "price": 39.07,
-          "changePct": 0.41
+          "price": 39.09,
+          "changePct": 0.46
+        },
+        {
+          "code": "600219.SH",
+          "name": "南山铝业",
+          "price": 4.46,
+          "changePct": -6.89
+        },
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "price": 25.03,
+          "changePct": -0.12
         },
         {
           "code": "002142.SZ",
           "name": "宁波银行",
-          "price": 32.19,
-          "changePct": 1.07
+          "price": 32.0,
+          "changePct": 0.47
         },
         {
-          "code": "301087.SZ",
-          "name": "可孚医疗",
-          "price": 53.12,
-          "changePct": 0.23
+          "code": "002406.SZ",
+          "name": "远东传动",
+          "price": 6.13,
+          "changePct": -2.39
         },
         {
           "code": "002998.SZ",
@@ -299,28 +316,16 @@
           "changePct": -2.64
         },
         {
-          "code": "002406.SZ",
-          "name": "远东传动",
-          "price": 6.11,
-          "changePct": -2.71
-        },
-        {
-          "code": "601872.SH",
-          "name": "招商轮船",
-          "price": 15.92,
-          "changePct": 0.32
+          "code": "000788.SZ",
+          "name": "北大医药",
+          "price": 4.96,
+          "changePct": -4.43
         },
         {
           "code": "001872.SZ",
           "name": "招商港口",
-          "price": 21.1,
-          "changePct": -1.49
-        },
-        {
-          "code": "600197.SH",
-          "name": "伊力特",
-          "price": 10.08,
-          "changePct": -1.18
+          "price": 21.04,
+          "changePct": -1.77
         }
       ]
     }
@@ -448,9 +453,20 @@
       "category": "公告"
     },
     {
-      "id": "wencai:4e5d5bdc3c264180",
-      "title": "荣安地产：关于董事会完成换届选举及聘任高级管理人员、证券事务代表的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-24/1225439638.PDF",
+      "id": "wencai:66629d7f6e7259d",
+      "title": "*ST康佳A：关于对子公司提供借款逾期的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-24/1225439935.PDF",
+      "publisher": "同花顺问财",
+      "related": "*ST康佳A (000016.SZ)",
+      "publishedAt": "2026-07-23T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:5f4c82055fc76d07",
+      "title": "荣安地产：2026年第二次临时股东会法律意见书",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-24/1225439626.PDF",
       "publisher": "同花顺问财",
       "related": "荣安地产 (000517.SZ)",
       "publishedAt": "2026-07-23T16:00:00+00:00",
@@ -459,9 +475,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:8ed5c4b516ed3fac",
-      "title": "荣安地产：第十三届董事会第一次临时会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-07-24/1225439637.PDF",
+      "id": "wencai:4e5d5bdc3c264180",
+      "title": "荣安地产：关于董事会完成换届选举及聘任高级管理人员、证券事务代表的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-24/1225439638.PDF",
       "publisher": "同花顺问财",
       "related": "荣安地产 (000517.SZ)",
       "publishedAt": "2026-07-23T16:00:00+00:00",
@@ -558,17 +574,6 @@
       "category": "公告"
     },
     {
-      "id": "wencai:f25dce5013483c61",
-      "title": "澜起科技：澜起科技关于2023年限制性股票激励计划首次授予第三个归属期、2024年限制性股票激励计划预留授予第一个归属期符合归属条件的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/688008_20260724_0EST.pdf",
-      "publisher": "同花顺问财",
-      "related": "澜起科技 (688008.SH)",
-      "publishedAt": "2026-07-23T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
       "id": "wencai:fe90b7c0e026391c",
       "title": "澜起科技：澜起科技关于以集中竞价交易方式回购A股股份的回购报告书",
       "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/688008_20260724_ZD7A.pdf",
@@ -580,9 +585,20 @@
       "category": "公告"
     },
     {
-      "id": "wencai:e4125823d0457ad8",
-      "title": "澜起科技：澜起科技董事会薪酬与考核委员会关于2023年限制性股票激励计划首次授予部分第三个归属期归属名单及2024年限制性股票激励计划预留授予部分第一个归属期归属名单的核查意见",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/688008_20260724_GRSC.pdf",
+      "id": "wencai:5afbabeb973f7a79",
+      "title": "澜起科技：澜起科技第三届董事会第十八次会议决议公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/688008_20260724_IXRF.pdf",
+      "publisher": "同花顺问财",
+      "related": "澜起科技 (688008.SH)",
+      "publishedAt": "2026-07-23T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:b896f53e6d9e63a3",
+      "title": "澜起科技：澜起科技关于调整2023年、2024年限制性股票激励计划及第三届董事会核心高管激励计划授予价格的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/688008_20260724_BRB9.pdf",
       "publisher": "同花顺问财",
       "related": "澜起科技 (688008.SH)",
       "publishedAt": "2026-07-23T16:00:00+00:00",
@@ -607,6 +623,39 @@
       "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/603061_20260724_FE4D.pdf",
       "publisher": "同花顺问财",
       "related": "金海通 (603061.SH)",
+      "publishedAt": "2026-07-23T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:e5f9ddc56a52cba8",
+      "title": "金河生物：平安证券股份有限公司关于金河生物科技股份有限公司2025年度以简易程序向特定对象发行股票之发行保荐书",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-24/1225439932.PDF",
+      "publisher": "同花顺问财",
+      "related": "金河生物 (002688.SZ)",
+      "publishedAt": "2026-07-23T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:594c4351aabde4e",
+      "title": "金河生物：平安证券股份有限公司关于金河生物科技股份有限公司2025年度以简易程序向特定对象发行股票之上市保荐书",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-24/1225439933.PDF",
+      "publisher": "同花顺问财",
+      "related": "金河生物 (002688.SZ)",
+      "publishedAt": "2026-07-23T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:4d15b9b77605ee06",
+      "title": "金河生物：北京市华联律师事务所关于金河生物科技股份有限公司以简易程序向特定对象发行A股股票的法律意见书",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-07-24/1225439934.PDF",
+      "publisher": "同花顺问财",
+      "related": "金河生物 (002688.SZ)",
       "publishedAt": "2026-07-23T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -655,50 +704,9 @@
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
-    },
-    {
-      "id": "wencai:d54c7c95eb550bfe",
-      "title": "石头科技：北京石头世纪科技股份有限公司关于续聘会计师事务所的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/688169_20260724_86W4.pdf",
-      "publisher": "同花顺问财",
-      "related": "石头科技 (688169.SH)",
-      "publishedAt": "2026-07-23T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:712b771751335b43",
-      "title": "石头科技：北京石头世纪科技股份有限公司第三届董事会第十八次会议决议公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/688169_20260724_3NO2.pdf",
-      "publisher": "同花顺问财",
-      "related": "石头科技 (688169.SH)",
-      "publishedAt": "2026-07-23T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:65abcd24bbd1f549",
-      "title": "石头科技：北京石头世纪科技股份有限公司关于公司2023年限制性股票激励计划第三个归属期符合归属条件的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/688169_20260724_5SPD.pdf",
-      "publisher": "同花顺问财",
-      "related": "石头科技 (688169.SH)",
-      "publishedAt": "2026-07-23T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:d94975dbcd2caa41",
-      "title": "方邦股份：董事、高级管理人员减持股份计划时间届满暨减持结果公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-24/688020_20260724_EPEY.pdf",
-      "publisher": "同花顺问财",
-      "related": "方邦股份 (688020.SH)",
-      "publishedAt": "2026-07-23T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
     }
+  ],
+  "errors": [
+    "limit_down: 'NoneType' object has no attribute 'get'"
   ]
 }
