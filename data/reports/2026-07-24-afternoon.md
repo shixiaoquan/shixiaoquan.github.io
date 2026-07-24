@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年07月24日 14:17（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年07月24日 18:26（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-07-24 12:31 · 宏观：2026-07-24 12:31 · 问财：2026-07-24 11:38
+> 行情更新：2026-07-24 17:36 · 宏观：2026-07-24 17:36 · 问财：2026-07-24 17:30
 
 ---
 
@@ -11,11 +11,11 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **-1.66%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
+全球跟踪指数平均涨跌 **-1.61%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
-战役仓小米 XRPS 处于 **9 连阴月**积累阶段，模拟收益率 +6.93%；策略要求在此阶段坚持股数目标，不宜因净值回撤动摇持仓框架。
+战役仓小米 XRPS 处于 **9 连阴月**积累阶段，模拟收益率 +7.19%；策略要求在此阶段坚持股数目标，不宜因净值回撤动摇持仓框架。
 
 战术端暂无 buy 突破信号，建议以观察为主。
 
@@ -26,27 +26,27 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 ### 1.1 全球指数
 
 跟踪 6 只主要指数：上涨 **0** 只、
-下跌 **6** 只，平均涨跌 **-1.66%**。
+下跌 **6** 只，平均涨跌 **-1.61%**。
 
-**美股** -1.44%（偏弱）；**港股** -1.27%（偏弱）；**A股** -1.20%（偏弱）。相对弱势区域：美股、港股、A股，战术配置宜降权。
+**美股** -1.44%（偏弱）；**港股** -0.98%（偏弱）；**A股** -1.61%（偏弱）。相对弱势区域：美股、港股、A股，战术配置宜降权。
 
 **波动居前指数：**
 
-- **日经 225** 64,317.47，日涨跌 -3.17%（周 -3.77% / 月 -7.02%）
+- **日经 225** 64,611.15，日涨跌 -2.73%（周 -3.33% / 月 -6.60%）
 - **纳斯达克** 25,137.69，日涨跌 -2.15%（周 -2.88% / 月 -1.76%）
-- **恒生指数** 24,891.84，日涨跌 -1.27%（周 +1.34% / 月 +6.32%）
+- **上证指数** 3,814.20，日涨跌 -1.61%（周 +1.33% / 月 -7.43%）
 - **标普 500** 7,408.30，日涨跌 -1.21%（周 -1.67% / 月 +0.58%）
 
 ### 1.2 A股短线情绪
 
-问财统计涨停 **32** 家、跌停 **4** 家，情绪定性 **偏多**，涨跌停比约 **8.0 : 1**。赚钱效应尚可，题材轮动活跃，但需警惕高位分歧。
+问财统计涨停 **42** 家、跌停 **4** 家，情绪定性 **偏多**，涨跌停比约 **10.5 : 1**。赚钱效应尚可，题材轮动活跃，但需警惕高位分歧。（部分榜单沿用缓存，盘中宜以实时行情为准）
 
 ### 1.3 宏观与跨资产
 
 - **VIX** 18.7（elevated）
 - **美10Y收益率** 4.70%
 - **10Y-2Y 利差（FRED）** 0.34%（偏窄）
-- **USDCNH** 6.7800（日 —）
+- **USDCNH** 6.7700（日 —）
 - **美股行业**：工业 领涨，可选消费 靠后
 
 **FRED 官方序列**
@@ -58,11 +58,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：332.6（变动 +1.83%，2026-06-01）
 
 **Finnhub 宏观要闻**
+- [Treasury yields retreat, 10-year hovers around January 2025 highs](https://www.cnbc.com/2026/07/24/treasury-yields-bonds-us-debt.html)（CNBC）
+- [In India, Iran war forces Diet Coke to roll out a bigger can, heftier price tag - Reuters](https://news.google.com/rss/articles/CBMiuAFBVV95cUxOaE1wYlpuSThBV1hnZUNHVy1GTDZLaUliaVozZi1qcXBMNXJFQ3drMW43dmNQdXBlSlVMTVZHMU1Ec1ZLUUw4MzFDMkFoWElhVU9HN253WW9KLVVRS1g1bGNqSDF2WkdOdzRLNG96NFQteG5MbjNqeTlWZ2VGdHlWNzNjbWVKaXItdGszUmR5bXpCTVpQYW5UZ2dhYmdTN2ZEQldBMFFURDd1WmJVVFBWYU5yRFZxbzJ5?oc=5)（Reuters）
+- [Morning Bid: Oil batters bonds as AI burns cash - Reuters](https://news.google.com/rss/articles/CBMif0FVX3lxTE4yM3BiWGJhY1RtWFk0U2tXSlp5b21ueFR0cjFRSlUyU3dvclFFdUJ1YThDdmJ5aVpqdlM4bUNHMVJ3NV94YjBhS3ZlUnJpVEVvRlpiVjV5Vk94VXJ5MUcybk91VzZVSFRFakxDN083X0IxajNjSmlMTDNXMG5uREU?oc=5)（Reuters）
+- [Trump vows to punish Iran and Houthis for attacks in Red Sea - Reuters](https://news.google.com/rss/articles/CBMiogFBVV95cUxQNFdZY1R2bFRCTk51X1E2U2dLZUphMDA2MVlUaGRzOEJXRXc5Vl9ObDNaVE9FNnU4eTV6TXBjYjRyR2xZekJYeGY2VHNrYW9hSjhpSjQ0aVJEdXBkSk9Ja2NXRjZjQng3Rkp1eFBHMlVwQ2paZUlVRnZUN0l3OThQRlZVLTJDanZHREpMTjFNVm9odWl5alZwRUpDbUhwSWRWeHc?oc=5)（Reuters）
 - [US military says it completed 13th consecutive night of strikes on Iran - Reuters](https://news.google.com/rss/articles/CBMiuwFBVV95cUxOS2RjdGstOHhBcnk2VmZRa3dlaHA4YlM5M056cW1TcktoUDZMUHlYa3BCTmhQRlJaVnAxdkR1VGhUX180ck1vSVY5UnBjNnJyVjVVN1FzdjRlYlhVcGFHTld6RkFWUVhEVzN0T0ZQd3E2U0pGcHhZM2FlREMtckJVSXJNUERBbXZkbThpQ0U4d0dFQnNjbDRsaU1hNkp6Y19TVkRVbFE5cGk2QXdLVjd0aGJZVUNLbVNnOUpr?oc=5)（Reuters）
-- [Asian stocks skid as oil spike revives inflation fears, bonds take a hit - Reuters](https://news.google.com/rss/articles/CBMigwFBVV95cUxORzVSb2tZRUVrYzhLQ0hCcVk1clVDQ1hjaGFPVElvd0JKZ0RVeGFTQ2JBVlVwRFNLbUxHOGZKTnl3WGEyeU5PQzEtTnBmVjBRdVVVUHBaSzJXY1pRT2ZFenczR0d2emszLWpGZDItNEcxd29RSGdWSDhVOEM5RjZRRXc0VQ?oc=5)（Reuters）
-- [Add a month at sea and $2.5 million - what it costs oil tankers to flee Hormuz and Bab el-Mandeb - Reuters](https://news.google.com/rss/articles/CBMixwFBVV95cUxOUlN1bTdzeXE4MGNNX3JUY0FhZVRPbXlMdXhWcnZuaXBJQnpjNEVJeGM2cnZJeExGWnN0YUZMaWxBN2xKdk04S0ItTnppcjM2aUJYaUZqdFpmWjFHNk54SjZsSXotUURVdzhCVzFac2FCRHhaZ28yMHkwbzVzQmNBZGk5TzRmVGo5M25FRmVDelN3UnotbDNmb3VjWFVJRkJfZnJITElmNzdtNExlam15a0hpUmJSYXk4Z3ZqOXRPZWh5WFVMRHZz?oc=5)（Reuters）
-- [Southwest Airlines put Texas jet fuel on a boat to LA for the first time amid supply worries](https://www.cnbc.com/2026/07/23/southwest-shipped-jet-fuel-from-texas-to-california-amid-supply-crunch.html)（CNBC）
-- [US says Saudi nuclear deal off without Israel recognition - Reuters](https://news.google.com/rss/articles/CBMiygFBVV95cUxPaFEtb2pVRzJFQThOZGROZ0hBV0pQUHNWSE1kZkFIdG9nV3d4eHBHUXlaTW1jQlpKVmNmV2twYmQ4VjJ1WDNPeW4tOXYtamtJeXk4STFCWk5CS09yUDBoRENzakZmR1FXbXdTcy0zbGdneURkUWphR1p0bTZxOUszS3Z5TXkxQnBwYjlBYVpXSEJCR3cyR3dZZTYwQktlTDJ1ejNpYklIQmlESXJCempEYUR4UWJXX2QyR1lwVGdiUmtMYU5NdzE2UDBn?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **ABBV** 2026-07-31 bmo · EPS预期 3.67
@@ -73,6 +73,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - **AVBC** 2026-07-31  · EPS预期 0.35
 - 美债收益率上行，对高估值成长股形成压力。
 - 美股行业轮动：工业 领涨（+1.73%），可选消费 靠后。
+- 黄金强、原油弱 — 偏避险/衰退交易特征。
 - FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。
 
 *数据源：Yahoo Finance、Frankfurter (ECB)、FRED (St. Louis Fed)、Finnhub*
@@ -87,15 +88,15 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **标的**：小米集团（1810.HK）
 
-**模拟净值**：收益率 +6.93%，仓位 63.4%，持股 25,467 股，均价 22.74。
+**模拟净值**：收益率 +7.19%，仓位 63.5%，持股 25,467 股，均价 22.74。
 
 **月线状态**：连续 **9** 个月收跌，上月 -24.65%，近两月累计 -30.15%，近三月累计 -32.42%。我们判断当前仍处于 XRPS「股数积累」逻辑占优的阶段，浮亏不应成为削减核心仓的理由。
 
 **阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
 
-**现价参考**：26.62 HKD。
+**现价参考**：26.72 HKD。
 
-- 下一档**滚动卖出**（涨 25%）：触发价 **29.35**，距现价 +10.30%。
+- 下一档**滚动卖出**（涨 25%）：触发价 **29.35**，距现价 +9.80%。
 
 - 已 9 连阴月（上月 -24.65%），核心仓按规则加仓，勿因短期浮亏动摇长期股数目标。
 
@@ -105,7 +106,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 招商银行(66.3分) · 港股最高 美团(58.6分) · 美股最高 苹果(74.1分)
+**全市场扫描**：A股最高 招商银行(66.5分) · 港股最高 美团(58.7分) · 美股最高 苹果(74.1分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
@@ -113,11 +114,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **招商银行**（A股）| 弱信号观察 | 评分 66.3 | 待突破 | 趋势过滤未过 | 止损缓冲 4.8% / 目标空间 17.2% | 决策 47.6
+- **招商银行**（A股）| 弱信号观察 | 评分 66.5 | 待突破 | 趋势过滤未过 | 止损缓冲 4.8% / 目标空间 17.1% | 决策 47.6
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **美团**（港股）| 弱信号观察 | 评分 58.6 | 待突破 | 趋势过滤未过 | 止损缓冲 12.6% / 目标空间 45.3% | 决策 41.5
+- **美团**（港股）| 弱信号观察 | 评分 58.7 | 待突破 | 趋势过滤未过 | 止损缓冲 12.5% / 目标空间 45.2% | 决策 41.5
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线
 
@@ -133,9 +134,9 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.235）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.237）。
 
-*在线学习：市场环境 risk_off · 修订 r235 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
+*在线学习：市场环境 risk_off · 修订 r237 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
 
 
 ### 沃伦·巴菲特 · 价值投资
@@ -144,33 +145,33 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.5 · PEG 0.68 · ROE 20.5%
 
-  - ROE 20.52% — 资本回报优秀，符合巴菲特护城河标准；PE 15.47 — 估值在能力圈合理区间
+  - ROE 20.52% — 资本回报优秀，符合巴菲特护城河标准；PE 15.52 — 估值在能力圈合理区间
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.7 · ROE 14.0%
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.8 · ROE 14.0%
 
-  - ROE 14.0% — 盈利能力稳健；PE 14.71 — 估值在能力圈合理区间
+  - ROE 14.0% — 盈利能力稳健；PE 14.76 — 估值在能力圈合理区间
 
 
 ### 本杰明·格雷厄姆 · 深度价值
 
 *安全边际是投资核心：在价格显著低于内在价值时分批买入，分散持有。*
 
-- **招商银行**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 6.8 · PEG 9.77 · ROE 11.9%
+- **招商银行**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 6.9 · PEG 9.81 · ROE 11.9%
 
-  - PE 6.84 — 深度价值区间，安全边际充足；PB 0.87 — 资产折价，经典格雷厄姆信号
+  - PE 6.87 — 深度价值区间，安全边际充足；PB 0.87 — 资产折价，经典格雷厄姆信号
 
-- **中国平安**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 7.4 · ROE 11.3%
+- **中国平安**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 7.5 · ROE 11.3%
 
-  - PE 7.43 — 深度价值区间，安全边际充足；PB 0.96 — 资产折价，经典格雷厄姆信号
+  - PE 7.45 — 深度价值区间，安全边际充足；PB 0.96 — 资产折价，经典格雷厄姆信号
 
 
 ### 彼得·林奇 · 成长合理价 GARP
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 23.0 · PEG 0.28 · ROE 9.2%
+- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.6 · PEG 0.27 · ROE 9.2%
 
-  - PEG 0.28 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 82.6% — 成长故事可验证
+  - PEG 0.27 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 82.6% — 成长故事可验证
 
 - **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.5 · PEG 0.68 · ROE 20.5%
 
@@ -185,7 +186,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 净利率 30.61% — 轻资产高毛利特征；低杠杆 — 符合芒格「避免愚蠢」原则
 
-- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 78.8 · PEG 30.43 · ROE 53.9%
+- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 78.0 · PEG 30.13 · ROE 53.9%
 
   - ROE 53.93% — 优质复利机器，芒格会长期持有；净利率 29.28% — 轻资产高毛利特征
 
@@ -196,31 +197,31 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.5 · PEG 0.68 · ROE 20.5%
 
-  - 近三月 -16.12% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近三月 -15.85% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
 
-- **五粮液**（A股）| 匹配 91.6 | 符合风格 · 建议关注 | PE 23.0 · PEG 0.28 · ROE 9.2%
+- **五粮液**（A股）| 匹配 91.6 | 符合风格 · 建议关注 | PE 22.6 · PEG 0.27 · ROE 9.2%
 
-  - 近三月 -23.75% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近三月 -24.87% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
 
 
 ### 乔治·索罗斯 · 宏观趋势
 
 *反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
 
-- **苹果**（美股）| 匹配 75.3 | 符合风格 · 建议关注 | PE 39.5 · PEG 1.81 · ROE 141.5%
+- **苹果**（美股）| 匹配 70.4 | 部分符合 · 观察等待 | PE 39.5 · PEG 1.81 · ROE 141.5%
 
   - 近一月 +9.3% — 趋势强劲，反身性正反馈；相对强度 +8.72% — 跑赢大盘，宏观共振
 
-- **招商银行**（A股）| 匹配 72.3 | 符合风格 · 建议关注 | PE 6.8 · PEG 9.77 · ROE 11.9%
+- **招商银行**（A股）| 匹配 67.9 | 部分符合 · 观察等待 | PE 6.9 · PEG 9.81 · ROE 11.9%
 
-  - 近一月 +10.8% — 趋势强劲，反身性正反馈；相对强度 +17.84% — 跑赢大盘，宏观共振
+  - 近一月 +11.17% — 趋势强劲，反身性正反馈；相对强度 +18.6% — 跑赢大盘，宏观共振
 
 
 ### 白毛股神 Serenity · 卡脖子 · 瓶颈猎手
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 388.4 · PEG 6.84 · ROE 3.9%
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 383.5 · PEG 6.75 · ROE 3.9%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
@@ -241,24 +242,24 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - 战术自适应：门槛 -1 · 中决策分 T+5 胜率 64.1% 良好，门槛 -1; A股 T+5 胜率 67.1% 良好，门槛 -1（市场门槛→-2）
 
-- 队列待办：**流水线过期 · 行情·荐股·模拟盘** — 检查工作流 update-market-data.yml 日志与 Secrets。
+- 队列待办：**影子轨积累中** — 无需操作，继续观察 shadow_reco.json comparison。
 
 ---
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **3 Absurdly Cheap Dividend Stocks to Buy With $1,000 Right Now**（NVDA）
-  With yields like this, these undervalued tickers aren't apt to remain this cheap forever.…
-- [Yahoo] **Alphabet Just Revealed a $94 Billion Stake in SpaceX -- and It Can't Sell a Single Share Yet**（NVDA）
-  A $1 billion bet from 2015 has turned into one of the biggest investment wins in corporate history. Selling is another m…
-- [Yahoo] **Prediction: This Autonomous Driving Stock Will Be a Much Better Buy Than Tesla Over the Long Term**（NVDA）
-  Uber is taking a unique approach to the autonomous driving revolution.…
-- [Yahoo] **Dow Jones Futures: Market Sells Off On Oil Prices, Google, Tesla; Intel Jumps Late**（^GSPC）
-  The Nasdaq undercut key levels as Google and Tesla led titans lower while oil prices soared. Intel jumped late.…
-- [Yahoo] **Ford set to challenge Tesla after big new deal with tech giant**（AAPL）
-  Doug Field spent years at Apple working on a car the company never built. When Apple shut down Project Titan in early 20…
-- [Yahoo] **Why Tesla Stock Crashed Today**（NVDA）
-  The automaker's "massive capex year" is driving investors toward the exit lane.…
+- [Yahoo] **Meet the Trillion-Dollar Company Retail Investors Have Spent More Money Buying Than Any Other Stock in July**（AAPL）
+  Retail investors have poured four times as much into this stock since the beginning of July as they did into Alphabet, A…
+- [Yahoo] **Better Crypto Buy Right Now: XRP vs. Cardano (ADA)**（NVDA）
+  This is one match up where the winner is hard to miss.…
+- [Yahoo] **Chipotle Is Down 39% From Its 52-Week High. Should You Buy Before July 29?**（NVDA）
+  The fast casual Mexican chain's valuation has fallen, but is it low enough to make it a smart buy?…
+- [Yahoo] **2 Vanguard Index Funds Are Crushing the S&P 500 This Year**（^GSPC）
+  These Vanguard index funds have trounced the overall U.S. stock market this year.…
+- [Yahoo] **U.S. Investors Are Doing Something They've Never Done Before, and It Could Lead to a Major Meltdown in the Markets**（^GSPC）
+  Investors are looking to extend their gains, but taking on more risk.…
+- [Yahoo] **3 High-Yield Dividend Stocks to Buy Right Now for a Lifetime of Rising Passive Income**（NVDA）
+  These companies are the blueprint for building wealth in a volatile industry.…
 
 ---
 
