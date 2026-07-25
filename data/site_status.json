@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-25T01:14:46+00:00",
+  "updatedAt": "2026-07-25T03:37:28+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -243,7 +243,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-24T14:42:47+00:00",
       "status": "stale",
-      "ageMinutes": 631
+      "ageMinutes": 774
     },
     {
       "id": "macro",
@@ -252,7 +252,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-24T14:42:38+00:00",
       "status": "stale",
-      "ageMinutes": 632
+      "ageMinutes": 774
     },
     {
       "id": "truth",
@@ -260,17 +260,17 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-25T01:04:20+00:00",
-      "status": "ok",
-      "ageMinutes": 10
+      "status": "stale",
+      "ageMinutes": 153
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-07-25T00:14:25+00:00",
+      "updatedAt": "2026-07-25T03:36:16+00:00",
       "status": "ok",
-      "ageMinutes": 60
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -279,7 +279,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-24T18:26:13+08:00",
       "status": "ok",
-      "ageMinutes": 888
+      "ageMinutes": 1031
     },
     {
       "id": "backtest",
@@ -288,9 +288,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-19T05:18:14+00:00",
       "status": "ok",
-      "ageMinutes": 8396
+      "ageMinutes": 8539
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "30138074933"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "30142539029"
 }
