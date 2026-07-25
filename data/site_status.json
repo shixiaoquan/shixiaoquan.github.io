@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-25T09:05:29+00:00",
+  "updatedAt": "2026-07-25T09:10:36+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -235,7 +235,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-24T14:42:47+00:00",
       "status": "stale",
-      "ageMinutes": 1102
+      "ageMinutes": 1107
     },
     {
       "id": "macro",
@@ -244,7 +244,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-24T14:42:38+00:00",
       "status": "stale",
-      "ageMinutes": 1102
+      "ageMinutes": 1107
     },
     {
       "id": "truth",
@@ -253,16 +253,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-07-25T08:49:53+00:00",
       "status": "ok",
-      "ageMinutes": 15
+      "ageMinutes": 20
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-07-25T06:27:35+00:00",
-      "status": "stale",
-      "ageMinutes": 157
+      "updatedAt": "2026-07-25T09:09:39+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "reports",
@@ -271,7 +271,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-25T14:09:00+08:00",
       "status": "ok",
-      "ageMinutes": 176
+      "ageMinutes": 181
     },
     {
       "id": "backtest",
@@ -280,9 +280,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-19T05:18:14+00:00",
       "status": "ok",
-      "ageMinutes": 8867
+      "ageMinutes": 8872
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "30152220056"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "30152326317"
 }
