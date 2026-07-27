@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-27T20:02:17+00:00",
+  "updatedAt": "2026-07-27T20:23:53+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 5,
-    "pipelinesStale": 1,
-    "automation": "1 条流水线过期",
+    "pipelinesHealthy": 6,
+    "pipelinesStale": 0,
+    "automation": "持续运行中",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -241,7 +241,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-27T19:59:40+00:00",
       "status": "ok",
-      "ageMinutes": 2
+      "ageMinutes": 24
     },
     {
       "id": "macro",
@@ -250,16 +250,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-27T19:59:27+00:00",
       "status": "ok",
-      "ageMinutes": 2
+      "ageMinutes": 24
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-07-27T18:51:16+00:00",
-      "status": "stale",
-      "ageMinutes": 71
+      "updatedAt": "2026-07-27T20:23:47+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -268,7 +268,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-27T18:44:52+00:00",
       "status": "ok",
-      "ageMinutes": 77
+      "ageMinutes": 99
     },
     {
       "id": "reports",
@@ -277,7 +277,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-27T19:33:10+08:00",
       "status": "ok",
-      "ageMinutes": 509
+      "ageMinutes": 530
     },
     {
       "id": "backtest",
@@ -286,9 +286,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-26T05:28:10+00:00",
       "status": "ok",
-      "ageMinutes": 2314
+      "ageMinutes": 2335
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "30300821073"
+  "triggeredBy": "Update Truth Social",
+  "runId": "30302368354"
 }
