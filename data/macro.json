@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-27T23:38:50+00:00",
+  "updatedAt": "2026-07-28T01:02:33+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: HTTP Error 522: <none>",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -32,7 +38,7 @@
     "vix": 18.67,
     "vixRegime": "elevated",
     "us10yYield": 4.64,
-    "usdCnh": 6.77,
+    "usdCnh": 6.76,
     "usdCnhChangePct": null,
     "sectorLeader": "必需消费",
     "sectorLaggard": "科技",
@@ -40,7 +46,6 @@
     "hints": [
       "美债收益率回落，利于风险资产估值修复。",
       "美股行业轮动：必需消费 领涨（+2.58%），科技 靠后。",
-      "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
   },
@@ -95,7 +100,7 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.77,
+      "price": 6.76,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -111,15 +116,15 @@
       "currency": null,
       "region": null,
       "price": 6.77,
-      "changePct": -0.01,
-      "weekChangePct": -0.01,
-      "monthChangePct": null,
+      "changePct": -0.1,
+      "weekChangePct": -0.11,
+      "monthChangePct": -0.48,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7661,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-27"
+      "refPrice": 6.7746,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -130,14 +135,14 @@
       "region": null,
       "price": 7.84,
       "changePct": -0.01,
-      "weekChangePct": 0.0,
+      "weekChangePct": 0.01,
       "monthChangePct": -0.01,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.842,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-27"
+      "refPrice": 7.8418,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +151,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 163.75,
-      "changePct": 0.08,
-      "weekChangePct": 0.78,
-      "monthChangePct": 1.21,
+      "price": 163.72,
+      "changePct": 0.07,
+      "weekChangePct": 0.76,
+      "monthChangePct": 1.2,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 163.64,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-27"
+      "refPrice": 163.7225,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,51 +170,25 @@
       "currency": null,
       "region": null,
       "price": 1.14,
-      "changePct": -0.2,
-      "weekChangePct": -0.4,
-      "monthChangePct": -0.11,
+      "changePct": -0.13,
+      "weekChangePct": -0.33,
+      "monthChangePct": -0.05,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.878,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-27"
+      "refPrice": 0.8788,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7509,
+      "price": 0.7519,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-27"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8152,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-27"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2904,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-27"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,9 +199,9 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4074.4,
-      "changePct": 0.17,
-      "weekChangePct": 1.6,
+      "price": 4059.7,
+      "changePct": -0.19,
+      "weekChangePct": 1.23,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -233,9 +212,9 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 82.08,
-      "changePct": -8.1,
-      "weekChangePct": -1.38,
+      "price": 82.05,
+      "changePct": -8.13,
+      "weekChangePct": -1.42,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -246,9 +225,9 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.39,
-      "changePct": 1.16,
-      "weekChangePct": 1.5,
+      "price": 6.37,
+      "changePct": 0.74,
+      "weekChangePct": 1.07,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -610,71 +589,71 @@
   ],
   "earningsCalendar": [
     {
-      "symbol": "AACB",
-      "date": "2026-08-03",
+      "symbol": "AACG",
+      "date": "2026-08-04",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
     },
     {
-      "symbol": "ABTC",
-      "date": "2026-08-03",
+      "symbol": "ABUS",
+      "date": "2026-08-04",
       "hour": "",
-      "epsEstimate": 0,
-      "revenueEstimate": 72063000
+      "epsEstimate": -0.0306,
+      "revenueEstimate": 459000
     },
     {
-      "symbol": "ACIU",
-      "date": "2026-08-03",
+      "symbol": "AC",
+      "date": "2026-08-04",
       "hour": "",
-      "epsEstimate": -0.1136,
-      "revenueEstimate": 6837468
+      "epsEstimate": null,
+      "revenueEstimate": null
     },
     {
-      "symbol": "ADEA",
-      "date": "2026-08-03",
+      "symbol": "ACAD",
+      "date": "2026-08-04",
       "hour": "",
-      "epsEstimate": 0.3142,
-      "revenueEstimate": 98722740
+      "epsEstimate": 0.0586,
+      "revenueEstimate": 301774497
     },
     {
-      "symbol": "ADTN",
-      "date": "2026-08-03",
-      "hour": "",
-      "epsEstimate": 0.0986,
-      "revenueEstimate": 295960435
-    },
-    {
-      "symbol": "ADUS",
-      "date": "2026-08-03",
-      "hour": "",
-      "epsEstimate": 1.7331,
-      "revenueEstimate": 383790147
-    },
-    {
-      "symbol": "AEIS",
-      "date": "2026-08-03",
+      "symbol": "ACEL",
+      "date": "2026-08-04",
       "hour": "amc",
-      "epsEstimate": 2.2447,
-      "revenueEstimate": 553628551
+      "epsEstimate": 0.2234,
+      "revenueEstimate": 363634763
     },
     {
-      "symbol": "AESI",
-      "date": "2026-08-03",
+      "symbol": "ACIC",
+      "date": "2026-08-04",
       "hour": "",
-      "epsEstimate": -0.1469,
-      "revenueEstimate": 286487624
+      "epsEstimate": 0.4284,
+      "revenueEstimate": 71066460
     },
     {
-      "symbol": "AHRT",
-      "date": "2026-08-03",
+      "symbol": "ACMTA",
+      "date": "2026-08-04",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "ACNT",
+      "date": "2026-08-04",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "ACRE",
+      "date": "2026-08-04",
       "hour": "bmo",
-      "epsEstimate": 0.0204,
-      "revenueEstimate": 69803190
+      "epsEstimate": 0.0544,
+      "revenueEstimate": 12790800
     },
     {
-      "symbol": "AILLP",
-      "date": "2026-08-03",
+      "symbol": "ACUT",
+      "date": "2026-08-04",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
