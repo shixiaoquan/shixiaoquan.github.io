@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-29T07:17:38+00:00",
+  "updatedAt": "2026-07-29T10:01:33+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: HTTP Error 522: <none>",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,7 +35,7 @@
     }
   ],
   "summary": {
-    "vix": 18.67,
+    "vix": 18.18,
     "vixRegime": "elevated",
     "us10yYield": 4.64,
     "usdCnh": 6.77,
@@ -51,9 +57,9 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 18.67,
-      "changePct": -0.16,
-      "weekChangePct": -0.53,
+      "price": 18.18,
+      "changePct": -2.62,
+      "weekChangePct": -2.52,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -109,16 +115,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.77,
-      "changePct": 0.02,
-      "weekChangePct": 0.02,
-      "monthChangePct": -0.39,
+      "price": 6.76,
+      "changePct": -0.02,
+      "weekChangePct": -0.02,
+      "monthChangePct": -0.43,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7713,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-28"
+      "refPrice": 6.7785,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -134,9 +140,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8416,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-28"
+      "refPrice": 7.8417,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -145,16 +151,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 163.52,
-      "changePct": -0.15,
-      "weekChangePct": 0.21,
-      "monthChangePct": 0.99,
+      "price": 163.62,
+      "changePct": -0.09,
+      "weekChangePct": 0.27,
+      "monthChangePct": 1.05,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 163.91,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-28"
+      "refPrice": 163.8306,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -164,51 +170,25 @@
       "currency": null,
       "region": null,
       "price": 1.14,
-      "changePct": 0.26,
-      "weekChangePct": -0.05,
-      "monthChangePct": -0.21,
+      "changePct": 0.22,
+      "weekChangePct": -0.08,
+      "monthChangePct": -0.24,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8797,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-28"
+      "refPrice": 0.8787,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7526,
+      "price": 0.7525,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-28"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8198,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-28"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2934,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-28"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -219,10 +199,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4042.4,
-      "changePct": 0.15,
-      "weekChangePct": -2.52,
-      "monthChangePct": 0.5,
+      "price": 4095.1,
+      "changePct": 1.46,
+      "weekChangePct": -1.25,
+      "monthChangePct": 1.81,
       "source": "yahoo"
     },
     {
@@ -232,10 +212,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 81.95,
-      "changePct": 3.39,
-      "weekChangePct": -5.62,
-      "monthChangePct": 15.83,
+      "price": 82.15,
+      "changePct": 3.65,
+      "weekChangePct": -5.39,
+      "monthChangePct": 16.11,
       "source": "yahoo"
     },
     {
@@ -245,10 +225,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.34,
-      "changePct": 0.35,
-      "weekChangePct": -1.66,
-      "monthChangePct": 4.04,
+      "price": 6.33,
+      "changePct": 0.08,
+      "weekChangePct": -1.92,
+      "monthChangePct": 3.76,
       "source": "yahoo"
     }
   ],
@@ -507,9 +487,39 @@
   ],
   "finnhubNews": [
     {
+      "id": 8278121,
+      "title": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack - Reuters",
+      "summary": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPd0ctWlZRN0hINkdrNUJmWWxpV0ZGNGw2Y2taRk1DbFBpdzd5bFdXQmJEcW9VRExnRFBtTWlTTHBRTU5tcDN2azF6VmtxdDN6WlVncmJxSVJhYjM4Wlctb3NEcnEzSWt4djdPSWJJX3ItYmpaN0UyZ09pbV85YjlRMkQ4RTV2RDE2c2NhYlRTdEVEUUFoWEVLMVBqUzhhX2xtVlJLUFp0RWFZTFpCSGJwMTRydUQ3NUx6ejJyYWFCdzBMVWpOYWZqbzF3?oc=5",
+      "publishedAt": "2026-07-29T08:51:20+00:00",
+      "related": ""
+    },
+    {
+      "id": 8278637,
+      "title": "Zendaya, Tom Holland and more at Spider Man: Brand New Day premiere - Reuters",
+      "summary": "Zendaya, Tom Holland and more at Spider Man: Brand New Day premiere  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPSGdyZGU4NERmYzlkMjdIYmptUk5GYXRvVUVuT1pPN3NlcjFEYzBaeVA0bmxrY0lNajJDTGoxb0FSWVd1bnJtZGFtRUtCMC1Cby1IV21XMUU1NGxJVThrc1lkR0RFdEozODVvNURqUXJySHpqcUNHR0lxeGFpQkpxYTNNWmNGd0ZkeXRPU0hsYkN6OGcyZGdZNFNNOGdJTnFocG54cVMtdGVxZ0kwTWJ6XzN5ZEUzTG1JX0wwZg?oc=5",
+      "publishedAt": "2026-07-29T08:42:17+00:00",
+      "related": ""
+    },
+    {
+      "id": 8278748,
+      "title": "Iran rules out regional management of Hormuz Strait, hitting hopes for breakthrough - Reuters",
+      "summary": "Iran rules out regional management of Hormuz Strait, hitting hopes for breakthrough  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQcm9JU2paOWtPTENMY1JfVDZWWTA5MDVrNUQ5b1FndWhaSVk5Q2psS3dhc0lPeFg5cEE0ZktEVXBzb2JZRmFiUWdXZHNBSU1ON1BLZEM2X21FYmd1T3BFd2tjbU4xSGlibVluMm1xY2xMV0plaTlhUExiMWZtYml6aWNhd1d3ZkcxWC1tN2Q4UzdFdE5QOEc1eWxVNEZIaHdmWTNPczRwbXFGNHZjQ3E1dVdyd3ZLYkRISndfOXFrbFhYdVdFWFdIQw?oc=5",
+      "publishedAt": "2026-07-29T07:06:12+00:00",
+      "related": ""
+    },
+    {
       "id": 8278118,
-      "title": "Iran rules out Omani proposal to manage Strait of Hormuz - Reuters",
-      "summary": "Iran rules out Omani proposal to manage Strait of Hormuz  Reuters",
+      "title": "Major Gulf fighting restarts as US and Saudi strike Iran's allies in Iraq - Reuters",
+      "summary": "Major Gulf fighting restarts as US and Saudi strike Iran's allies in Iraq  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNcFJoOXIwZmxCNHBjd05nc3dlYjNXXzd1NzdyQldTOVQ4S3NjZnNDRWdqdG1WUFRUS2tRSkJJTEhQYjJWa1FraklySUtoamVybzBfbUR4aUItanFrRG1hMDZJTzlSQ3lrS25SLUo4QzR0RVQxdmFSVUFaUFpHYWV0cmdnVURNVHJ1QzBzM0pIRTMwUmVFZmxwVVpyTklTallXU2ZLOGl3TDJ1U3VnRzd3bmZnQjVfcUw2a1pWSGdFOTNlUXFa?oc=5",
@@ -533,17 +543,7 @@
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOUHJGTGM0cWxxc1lyajNFQ1Y1NXNKUUdnREtjZDk3Z3RaRUFabm41dmF2UE1YVTFfbVJNTHJWZTlRYzJCTEpGbnVRWlg1akk2cGJKamVPRmZQNEZZRFVsSFp1LXFOOWQxYzRObjYyYmQ1U29LWUVyRHAtNHVFcUplWHlZYWZnWVFJeTVxdmktRVdmaTJ2aTh6SkM5R3VJOEtKR254SzdEMFNyZFJHcHJGN3kwaE4ySVdSUngwbTdhZ1M?oc=5",
-      "publishedAt": "2026-07-29T00:38:30+00:00",
-      "related": ""
-    },
-    {
-      "id": 8278121,
-      "title": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack - Reuters",
-      "summary": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPd0ctWlZRN0hINkdrNUJmWWxpV0ZGNGw2Y2taRk1DbFBpdzd5bFdXQmJEcW9VRExnRFBtTWlTTHBRTU5tcDN2azF6VmtxdDN6WlVncmJxSVJhYjM4Wlctb3NEcnEzSWt4djdPSWJJX3ItYmpaN0UyZ09pbV85YjlRMkQ4RTV2RDE2c2NhYlRTdEVEUUFoWEVLMVBqUzhhX2xtVlJLUFp0RWFZTFpCSGJwMTRydUQ3NUx6ejJyYWFCdzBMVWpOYWZqbzF3?oc=5",
-      "publishedAt": "2026-07-29T00:27:00+00:00",
+      "publishedAt": "2026-07-29T00:37:00+00:00",
       "related": ""
     },
     {
@@ -567,33 +567,13 @@
       "related": ""
     },
     {
-      "id": 8278161,
-      "title": "Top US oil trade group opposes Hormuz tolls after Gulf-backed voluntary fee proposal - Reuters",
-      "summary": "Top US oil trade group opposes Hormuz tolls after Gulf-backed voluntary fee proposal  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPQjBCRWJ5ekpMbWF5dm5Yc0c4c0VXTDNZaGlybGZ2OU4xaGx2cEZjMjl1RUZnT3YyQTFhM0ptTHZSbUJiWkZGMDRydFlYZktRVTNPMU9nTzhqUXg2Rzc2V3hjYkczbllfLWszbEJORmVlVDRTYUJBVmhiX19VVVNGVDdjcS1zcmRCLTZnUm1GS0NQOHhXRHlTSThZYVNBT1NlOFR6N0JvODU0YnRhOFNsZTlKWTJiMDFGZE1DQUQ2T0NjbWFpWDRMVw?oc=5",
-      "publishedAt": "2026-07-28T22:55:54+00:00",
-      "related": ""
-    },
-    {
-      "id": 8278141,
-      "title": "Petrobras cuts imports as it pushes local output amid U.S.-Iran conflict - Reuters",
-      "summary": "Petrobras cuts imports as it pushes local output amid U.S.-Iran conflict  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQWEpKandCZmpKVTRXejZfQmp1bHNZdmtiYXo1ZTEtZFNCOGxEaUtocm5UdDdGMUVOT2tOWUU4bVBNM3EtY0ZOSHJoRHFqZ205UmxjN0dRejBvTU8yRkJzWWFxU2lTbDZHNGNRY3hYZi0wVHdBaFBsQ1JMSVozeUVWaFMySWE3WHdKWlNsdU51eFNyMjNDd0tRZWE4Z0l0Qi1BV3N2dGRYQWt5cURpQ0twQnVQcw?oc=5",
-      "publishedAt": "2026-07-28T22:41:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8278217,
-      "title": "German import prices fell in June due to drop in energy prices",
-      "summary": "<ul><li>June import prices -0.7% vs -0.7% m/m expected</li><li>Prior +0.7%</li></ul><p class=\"text-align-justify\" style=\"text-align: justify;\">This is in contrast to the May estimate but it matches wi",
+      "id": 8278629,
+      "title": "UK mortgage approvals rebound in June but credit data continues to point to worrying signals",
+      "summary": "<ul><li>June mortgage approvals 58.2k vs 57.2k expected</li><li>Prior 56.2k; revised to 56.6k</li><li>June net consumer credit £1.8 billion</li><li>Prior £1.7 billion</li></ul><p class=\"text-align-jus",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/german-import-prices-fell-in-june-due-to-drop-in-energy-prices/",
-      "publishedAt": "2026-07-29T06:26:12+00:00",
+      "link": "https://investinglive.com/news/uk-mortgage-approvals-rebound-in-june-but-credit-data-continues-to-point-to-worrying-signals/",
+      "publishedAt": "2026-07-29T08:53:14+00:00",
       "related": ""
     },
     {
