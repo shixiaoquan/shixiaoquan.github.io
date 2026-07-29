@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-29T09:47:46+00:00",
+  "updatedAt": "2026-07-29T12:16:27+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 28 条资讯",
+  "message": "已更新 4 个市场问句 · 28 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 86,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "605068.SH",
@@ -91,13 +91,16 @@
           "changePct": 10.02
         }
       ],
-      "count": 86
+      "count": 86,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000938.SZ",
@@ -154,13 +157,16 @@
           "changePct": -10.0
         }
       ],
-      "count": 9
+      "count": 9,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688825.SH",
@@ -232,13 +238,16 @@
           "changePct": 4.93,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688825.SH",
@@ -296,14 +305,10 @@
           "changePct": 2.47,
           "flow": 780489470
         }
-      ]
-    },
-    {
-      "id": "low_pe",
-      "title": "低估值防御",
-      "query": "市盈率低于行业均值且股息率大于3%",
-      "status": "empty",
-      "items": []
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -615,6 +620,13 @@
       "source": "wencai",
       "category": "公告"
     }
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "breakout: 'NoneType' object has no attribute 'get'"
   ],
   "newsStale": true
 }
