@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-29T19:41:11+00:00",
+  "updatedAt": "2026-07-29T19:42:11+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -239,7 +239,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-29T18:34:53+00:00",
       "status": "stale",
-      "ageMinutes": 66
+      "ageMinutes": 67
     },
     {
       "id": "macro",
@@ -248,16 +248,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-29T18:34:40+00:00",
       "status": "stale",
-      "ageMinutes": 66
+      "ageMinutes": 67
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-07-29T18:08:41+00:00",
-      "status": "stale",
-      "ageMinutes": 92
+      "updatedAt": "2026-07-29T19:42:10+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -266,7 +266,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-29T19:40:08+00:00",
       "status": "ok",
-      "ageMinutes": 1
+      "ageMinutes": 2
     },
     {
       "id": "reports",
@@ -275,7 +275,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-29T18:46:23+08:00",
       "status": "ok",
-      "ageMinutes": 534
+      "ageMinutes": 535
     },
     {
       "id": "backtest",
@@ -284,9 +284,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-26T05:28:10+00:00",
       "status": "ok",
-      "ageMinutes": 5173
+      "ageMinutes": 5174
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "30485355079"
+  "triggeredBy": "Update Truth Social",
+  "runId": "30485534351"
 }
