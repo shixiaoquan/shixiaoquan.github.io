@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-29T10:01:33+00:00",
+  "updatedAt": "2026-07-29T12:10:57+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: HTTP Error 522: <none>",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,17 +29,17 @@
     }
   ],
   "summary": {
-    "vix": 18.18,
+    "vix": 18.35,
     "vixRegime": "elevated",
-    "us10yYield": 4.64,
+    "us10yYield": 4.6,
     "usdCnh": 6.77,
     "usdCnhChangePct": null,
-    "sectorLeader": "必需消费",
-    "sectorLaggard": "能源",
+    "sectorLeader": "健康",
+    "sectorLaggard": "科技",
     "yieldSpread10y2y": 0.35,
     "hints": [
       "美债收益率回落，利于风险资产估值修复。",
-      "美股行业轮动：必需消费 领涨（+2.58%），能源 靠后。",
+      "美股行业轮动：健康 领涨（+2.36%），科技 靠后。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
   },
@@ -57,10 +51,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 18.18,
-      "changePct": -2.62,
-      "weekChangePct": -2.52,
-      "monthChangePct": null,
+      "price": 18.35,
+      "changePct": 0.77,
+      "weekChangePct": 10.28,
+      "monthChangePct": 3.97,
       "source": "yahoo"
     }
   ],
@@ -72,9 +66,9 @@
       "unit": "yield_pct",
       "currency": null,
       "region": null,
-      "price": 4.64,
-      "changePct": -1.32,
-      "weekChangePct": 2.2,
+      "price": 4.6,
+      "changePct": -0.8,
+      "weekChangePct": -0.52,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -85,9 +79,9 @@
       "unit": "yield_pct",
       "currency": null,
       "region": null,
-      "price": 3.8,
-      "changePct": -0.08,
-      "weekChangePct": 2.43,
+      "price": 3.76,
+      "changePct": -0.97,
+      "weekChangePct": 0.8,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -116,15 +110,15 @@
       "currency": null,
       "region": null,
       "price": 6.76,
-      "changePct": -0.02,
-      "weekChangePct": -0.02,
-      "monthChangePct": -0.43,
+      "changePct": -0.16,
+      "weekChangePct": -0.15,
+      "monthChangePct": -0.57,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7785,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7713,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-28"
     },
     {
       "symbol": "USDHKD=X",
@@ -136,13 +130,13 @@
       "price": 7.84,
       "changePct": 0.01,
       "weekChangePct": 0.01,
-      "monthChangePct": 0.03,
+      "monthChangePct": 0.02,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8417,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8416,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-28"
     },
     {
       "symbol": "USDJPY=X",
@@ -151,16 +145,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 163.62,
-      "changePct": -0.09,
-      "weekChangePct": 0.27,
-      "monthChangePct": 1.05,
+      "price": 163.68,
+      "changePct": -0.06,
+      "weekChangePct": 0.3,
+      "monthChangePct": 1.08,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 163.8306,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 163.91,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-28"
     },
     {
       "symbol": "EURUSD=X",
@@ -170,25 +164,51 @@
       "currency": null,
       "region": null,
       "price": 1.14,
-      "changePct": 0.22,
-      "weekChangePct": -0.08,
-      "monthChangePct": -0.24,
+      "changePct": 0.12,
+      "weekChangePct": -0.18,
+      "monthChangePct": -0.34,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8787,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8797,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-28"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7525,
+      "price": 0.7526,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-28"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8198,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-28"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2934,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-28"
     }
   ],
   "commodities": [
@@ -199,10 +219,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4095.1,
-      "changePct": 1.46,
-      "weekChangePct": -1.25,
-      "monthChangePct": 1.81,
+      "price": 4090.5,
+      "changePct": 1.34,
+      "weekChangePct": -1.36,
+      "monthChangePct": 1.7,
       "source": "yahoo"
     },
     {
@@ -212,10 +232,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 82.15,
-      "changePct": 3.65,
-      "weekChangePct": -5.39,
-      "monthChangePct": 16.11,
+      "price": 82.56,
+      "changePct": 4.16,
+      "weekChangePct": -4.92,
+      "monthChangePct": 16.69,
       "source": "yahoo"
     },
     {
@@ -225,10 +245,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.33,
-      "changePct": 0.08,
-      "weekChangePct": -1.92,
-      "monthChangePct": 3.76,
+      "price": 6.32,
+      "changePct": 0.01,
+      "weekChangePct": -1.99,
+      "monthChangePct": 3.69,
       "source": "yahoo"
     }
   ],
@@ -275,15 +295,29 @@
   ],
   "sectors": [
     {
+      "symbol": "XLV",
+      "name": "健康",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 167.26,
+      "changePct": 2.36,
+      "weekChangePct": 4.37,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "sector": "健康"
+    },
+    {
       "symbol": "XLP",
       "name": "必需消费",
       "category": "sector",
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 85.36,
-      "changePct": 2.58,
-      "weekChangePct": 0.2,
+      "price": 87.06,
+      "changePct": 1.99,
+      "weekChangePct": 3.57,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "必需消费"
@@ -295,82 +329,12 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 107.66,
-      "changePct": 2.16,
-      "weekChangePct": -2.7,
+      "price": 109.67,
+      "changePct": 1.87,
+      "weekChangePct": -0.33,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "通信"
-    },
-    {
-      "symbol": "XLY",
-      "name": "可选消费",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 110.84,
-      "changePct": 1.91,
-      "weekChangePct": -3.98,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "可选消费"
-    },
-    {
-      "symbol": "XLRE",
-      "name": "地产",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 45.76,
-      "changePct": 1.8,
-      "weekChangePct": 0.75,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "地产"
-    },
-    {
-      "symbol": "XLF",
-      "name": "金融",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 56.88,
-      "changePct": 1.01,
-      "weekChangePct": 1.5,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "金融"
-    },
-    {
-      "symbol": "XLV",
-      "name": "健康",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 163.4,
-      "changePct": 0.51,
-      "weekChangePct": 2.61,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "健康"
-    },
-    {
-      "symbol": "XLI",
-      "name": "工业",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 183.2,
-      "changePct": 0.3,
-      "weekChangePct": 2.85,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "工业"
     },
     {
       "symbol": "XLB",
@@ -379,26 +343,54 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 51.39,
-      "changePct": 0.25,
-      "weekChangePct": 2.72,
+      "price": 52.34,
+      "changePct": 1.85,
+      "weekChangePct": 4.47,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "材料"
     },
     {
-      "symbol": "XLK",
-      "name": "科技",
+      "symbol": "XLY",
+      "name": "可选消费",
       "category": "sector",
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 174.3,
-      "changePct": -0.9,
-      "weekChangePct": -0.8,
+      "price": 112.48,
+      "changePct": 1.48,
+      "weekChangePct": -2.08,
       "monthChangePct": null,
       "source": "yahoo",
-      "sector": "科技"
+      "sector": "可选消费"
+    },
+    {
+      "symbol": "XLF",
+      "name": "金融",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 57.6,
+      "changePct": 1.27,
+      "weekChangePct": 2.66,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "sector": "金融"
+    },
+    {
+      "symbol": "XLRE",
+      "name": "地产",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 46.01,
+      "changePct": 0.55,
+      "weekChangePct": 1.79,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "sector": "地产"
     },
     {
       "symbol": "XLU",
@@ -407,12 +399,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 45.68,
-      "changePct": -1.32,
-      "weekChangePct": 1.65,
+      "price": 45.52,
+      "changePct": -0.35,
+      "weekChangePct": 1.34,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "公用事业"
+    },
+    {
+      "symbol": "XLI",
+      "name": "工业",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 182.49,
+      "changePct": -0.39,
+      "weekChangePct": 2.14,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "sector": "工业"
     },
     {
       "symbol": "XLE",
@@ -421,12 +427,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 58.36,
-      "changePct": -2.11,
-      "weekChangePct": 0.72,
+      "price": 57.57,
+      "changePct": -1.35,
+      "weekChangePct": -1.59,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "能源"
+    },
+    {
+      "symbol": "XLK",
+      "name": "科技",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 171.09,
+      "changePct": -1.84,
+      "weekChangePct": -5.36,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "sector": "科技"
     }
   ],
   "fred": [
@@ -487,13 +507,13 @@
   ],
   "finnhubNews": [
     {
-      "id": 8278121,
-      "title": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack - Reuters",
-      "summary": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack  Reuters",
+      "id": 8278961,
+      "title": "EXCLUSIVE: US commander warns troops their videos help Iran, sources say - Reuters",
+      "summary": "EXCLUSIVE: US commander warns troops their videos help Iran, sources say  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPd0ctWlZRN0hINkdrNUJmWWxpV0ZGNGw2Y2taRk1DbFBpdzd5bFdXQmJEcW9VRExnRFBtTWlTTHBRTU5tcDN2azF6VmtxdDN6WlVncmJxSVJhYjM4Wlctb3NEcnEzSWt4djdPSWJJX3ItYmpaN0UyZ09pbV85YjlRMkQ4RTV2RDE2c2NhYlRTdEVEUUFoWEVLMVBqUzhhX2xtVlJLUFp0RWFZTFpCSGJwMTRydUQ3NUx6ejJyYWFCdzBMVWpOYWZqbzF3?oc=5",
-      "publishedAt": "2026-07-29T08:51:20+00:00",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOQnRvd2JkQWxrSjBpdHRBSkU2bnZMZUtQc0g0SVZ3eHhzb2FSRFJ6UF9yZlNlcXVWek9jZkVmWVhnNVRSeFNrdUNBZm1PNEQ0RmxxMDY1SkZOS0NHM04xSk1iQzN5b29UbEdhY21IaGZSQU12WWsxR0VNd2t5LXoya1VoRHVET015cWM5emFfM1lhYWZTbS1BWGlfSFdZeXJGalRYdVZCYWFEM1hzd0l5ekQ5M2hJb19YSkNR?oc=5",
+      "publishedAt": "2026-07-29T10:42:53+00:00",
       "related": ""
     },
     {
@@ -503,7 +523,37 @@
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPSGdyZGU4NERmYzlkMjdIYmptUk5GYXRvVUVuT1pPN3NlcjFEYzBaeVA0bmxrY0lNajJDTGoxb0FSWVd1bnJtZGFtRUtCMC1Cby1IV21XMUU1NGxJVThrc1lkR0RFdEozODVvNURqUXJySHpqcUNHR0lxeGFpQkpxYTNNWmNGd0ZkeXRPU0hsYkN6OGcyZGdZNFNNOGdJTnFocG54cVMtdGVxZ0kwTWJ6XzN5ZEUzTG1JX0wwZg?oc=5",
-      "publishedAt": "2026-07-29T08:42:17+00:00",
+      "publishedAt": "2026-07-29T10:41:42+00:00",
+      "related": ""
+    },
+    {
+      "id": 8278962,
+      "title": "EXCLUSIVE: Yemen's Houthis considering fees for ships sailing through Red Sea, sources say - Reuters",
+      "summary": "EXCLUSIVE: Yemen's Houthis considering fees for ships sailing through Red Sea, sources say  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQZzFWSEJjR1NNV3libHZfdlE0dkVfbW9jdG5VX3NpbEg4OGJQSllPQ2RsZmoyNXFjVEFMZkdoME5wRHZMS3NrZlEzT2JUT2hPVXZnQkROOTV0YVJIQk80cEw2ODNKWnlMcmNXYVVFcng4UlVEOVUzYWkzYVhCU19HaHVnQ0JSQzVzSE9OQjdDYzNDRjZiWXZQeDlMandraXA3d1NtRzhHVWRBMlA3NExVblNTY3dYbUpXb2pjVnRkcGhEWWU1U0E?oc=5",
+      "publishedAt": "2026-07-29T10:40:06+00:00",
+      "related": ""
+    },
+    {
+      "id": 8278121,
+      "title": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack - Reuters",
+      "summary": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPd0ctWlZRN0hINkdrNUJmWWxpV0ZGNGw2Y2taRk1DbFBpdzd5bFdXQmJEcW9VRExnRFBtTWlTTHBRTU5tcDN2azF6VmtxdDN6WlVncmJxSVJhYjM4Wlctb3NEcnEzSWt4djdPSWJJX3ItYmpaN0UyZ09pbV85YjlRMkQ4RTV2RDE2c2NhYlRTdEVEUUFoWEVLMVBqUzhhX2xtVlJLUFp0RWFZTFpCSGJwMTRydUQ3NUx6ejJyYWFCdzBMVWpOYWZqbzF3?oc=5",
+      "publishedAt": "2026-07-29T10:38:04+00:00",
+      "related": ""
+    },
+    {
+      "id": 8278963,
+      "title": "Israeli elections: how they work and who is in the race - Reuters",
+      "summary": "Israeli elections: how they work and who is in the race  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNMndqcXg1czF5MVNTaTVzQ2laN3RILUlTZGpwY3RQZ0o4UVM1eXRycnJPbWxMdHZBQXBVRkhxZnA4a3VlQlhtVElOaW9WNHN3OE90X0xGaEpBcGxyZGFzUDNTMVcwSWlrRXRCZEhQYjdwcFlkcjdTWnlIM0RocUk1QVVYaGY2TElERXUyVTdXUDZuczJUMnhTd1RxLTlLUQ?oc=5",
+      "publishedAt": "2026-07-29T09:37:43+00:00",
       "related": ""
     },
     {
@@ -518,8 +568,8 @@
     },
     {
       "id": 8278118,
-      "title": "Major Gulf fighting restarts as US and Saudi strike Iran's allies in Iraq - Reuters",
-      "summary": "Major Gulf fighting restarts as US and Saudi strike Iran's allies in Iraq  Reuters",
+      "title": "Major Gulf fighting resumes as US and Saudi strike Iran's allies in Iraq - Reuters",
+      "summary": "Major Gulf fighting resumes as US and Saudi strike Iran's allies in Iraq  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNcFJoOXIwZmxCNHBjd05nc3dlYjNXXzd1NzdyQldTOVQ4S3NjZnNDRWdqdG1WUFRUS2tRSkJJTEhQYjJWa1FraklySUtoamVybzBfbUR4aUItanFrRG1hMDZJTzlSQ3lrS25SLUo4QzR0RVQxdmFSVUFaUFpHYWV0cmdnVURNVHJ1QzBzM0pIRTMwUmVFZmxwVVpyTklTallXU2ZLOGl3TDJ1U3VnRzd3bmZnQjVfcUw2a1pWSGdFOTNlUXFa?oc=5",
@@ -537,43 +587,13 @@
       "related": ""
     },
     {
-      "id": 8278119,
-      "title": "US military says US, Saudi forces struck sites of Iran-backed groups in Iraq - Reuters",
-      "summary": "US military says US, Saudi forces struck sites of Iran-backed groups in Iraq  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOUHJGTGM0cWxxc1lyajNFQ1Y1NXNKUUdnREtjZDk3Z3RaRUFabm41dmF2UE1YVTFfbVJNTHJWZTlRYzJCTEpGbnVRWlg1akk2cGJKamVPRmZQNEZZRFVsSFp1LXFOOWQxYzRObjYyYmQ1U29LWUVyRHAtNHVFcUplWHlZYWZnWVFJeTVxdmktRVdmaTJ2aTh6SkM5R3VJOEtKR254SzdEMFNyZFJHcHJGN3kwaE4ySVdSUngwbTdhZ1M?oc=5",
-      "publishedAt": "2026-07-29T00:37:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8278164,
-      "title": "Zelenskiy says he told Trump, senators that Ukraine needs anti-ballistic systems, missiles - Reuters",
-      "summary": "Zelenskiy says he told Trump, senators that Ukraine needs anti-ballistic systems, missiles  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPMk9Eb1BSa0hvSWNXcXdRTlhzR2NiU1NmUmxzYlpaNVpiWVNackZfZnRWMXRrc1ctLWRGV1NmdGZQMDFXd2JQLW9Xc0FmdG1DV1dTMWhFMjM0X2RiQmJxWHNJajNOYk84alR3dWVlejd6d0tfMThpRjgwaVR2MTJvTzhoNVdVeUVydVJhOFQtWEVzYjllODNGLUhqamo0ampIYlZIa0t5dG9SNEs0T3ptOEVDRzdSZFc3NXNZMVJVbTY5b00ycjNFUnNZM1h4SU1UY1dGRUR0c0hzZw?oc=5",
-      "publishedAt": "2026-07-28T23:43:04+00:00",
-      "related": ""
-    },
-    {
-      "id": 8278120,
-      "title": "US says it intercepted Iranian ballistic missiles launched towards US forces in Middle East - Reuters",
-      "summary": "US says it intercepted Iranian ballistic missiles launched towards US forces in Middle East  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQbExYYjdfX1I4Mmt6eFo1Ty1JWjFtdEl5dWxIRnJsbllyODZPd3pmUjc0bzlMX29iV1ZlaUJVSUwwNl8yNkd1dkI5WERxdm1NUXp6Q1RXS1JqLVgzZzZXbFA4ZU9HU2Q0UVNQS2h3N0dtTldHbE5oLUxPek9iem9uMTBiZGU0QUNNeUpwX2Z2ZVF5bkVEZ1FVVjBlVkFoRjBzVkN1ZWU2N1hSbXR0QjgyUVpveXNsT244VDQ1Zm5Nb3BUbFRjR3FNUDhmZTQ?oc=5",
-      "publishedAt": "2026-07-28T23:32:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8278629,
-      "title": "UK mortgage approvals rebound in June but credit data continues to point to worrying signals",
-      "summary": "<ul><li>June mortgage approvals 58.2k vs 57.2k expected</li><li>Prior 56.2k; revised to 56.6k</li><li>June net consumer credit £1.8 billion</li><li>Prior £1.7 billion</li></ul><p class=\"text-align-jus",
+      "id": 8279289,
+      "title": "investingLive European markets wrap: Oil climbs again as Iran rejects Oman proposal on Strait of Hormuz, FOMC meeting eyed next",
+      "summary": "<p>Headlines:</p><ul><li><a href=\"https://investinglive.com/news/iran-official-reportedly-says-oman-proposal-on-strait-of-hormuz-has-no-chance-of-success\" rel=\"follow\">Iran official reportedly says Om",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/uk-mortgage-approvals-rebound-in-june-but-credit-data-continues-to-point-to-worrying-signals/",
-      "publishedAt": "2026-07-29T08:53:14+00:00",
+      "link": "https://investinglive.com/news/investinglive-european-markets-wrap-oil-climbs-again-as-iran-rejects-oman-proposal-on-strait-of-hormuz-fomc-meeting-eyed-next/",
+      "publishedAt": "2026-07-29T11:33:26+00:00",
       "related": ""
     },
     {
