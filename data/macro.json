@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-29T23:07:18+00:00",
+  "updatedAt": "2026-07-30T00:09:00+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -115,9 +121,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7663,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-29"
+      "refPrice": 6.7785,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -133,9 +139,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8424,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-29"
+      "refPrice": 7.8417,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -144,16 +150,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 163.33,
-      "changePct": -0.32,
-      "weekChangePct": 0.15,
-      "monthChangePct": 0.43,
+      "price": 163.22,
+      "changePct": -0.39,
+      "weekChangePct": 0.09,
+      "monthChangePct": 0.36,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 163.68,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-29"
+      "refPrice": 163.8306,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -163,15 +169,15 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": 0.78,
-      "weekChangePct": 0.56,
-      "monthChangePct": 0.55,
+      "changePct": 0.73,
+      "weekChangePct": 0.5,
+      "monthChangePct": 0.49,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
       "refPrice": 0.8787,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-29"
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
@@ -180,34 +186,8 @@
       "quote": "GBP",
       "price": 0.7525,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-29"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.82,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-29"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2926,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-29"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -218,10 +198,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4147.0,
-      "changePct": 2.74,
-      "weekChangePct": 0.0,
-      "monthChangePct": 3.1,
+      "price": 4143.5,
+      "changePct": 2.66,
+      "weekChangePct": -0.08,
+      "monthChangePct": 3.01,
       "source": "yahoo"
     },
     {
@@ -231,10 +211,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 84.43,
-      "changePct": 6.52,
-      "weekChangePct": -2.76,
-      "monthChangePct": 19.34,
+      "price": 84.26,
+      "changePct": 6.31,
+      "weekChangePct": -2.96,
+      "monthChangePct": 19.1,
       "source": "yahoo"
     },
     {
@@ -506,13 +486,33 @@
   ],
   "finnhubNews": [
     {
+      "id": 8281873,
+      "title": "Samsung Electronics second-quarter operating profit beats estimates on soaring AI chip demand",
+      "summary": "Samsung Electronics extended its record run with second-quarter operating profit topping analysts' estimates.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/07/30/samsung-q2-earnings-ai-chip-.html",
+      "publishedAt": "2026-07-29T23:58:50+00:00",
+      "related": ""
+    },
+    {
+      "id": 8281766,
+      "title": "US strikes $58.6 billion Patriot missile deal amid rising stockpile concerns - Reuters",
+      "summary": "US strikes $58.6 billion Patriot missile deal amid rising stockpile concerns  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNb2Yxa3h6SzNCUGZjOFBOTXBHY2tLc0x4WVhQTks1UF9BWkt3ZlcwSHRYVG9IV0NneDJrdVhtcm54ODVkc3cxcFdVMUZCek5EdHpER0J3d3RMWUNyeXc5LUp0Vl9HRlYzSGlhemNXOHZkc3dLNzRaQlM4QVBrUHktSDhHd1RoOE5pVWxwLXFNVzZEbjRJV2xQRnJKS0lpcTBRYkZqYm1MNGszZlU0eDF2NVI0RVRIOHZ5RGs5a0t0QWRsa0stelBVNzBvblpmSXhWbmgzdEl3cjZVZw?oc=5",
+      "publishedAt": "2026-07-29T23:23:08+00:00",
+      "related": ""
+    },
+    {
       "id": 8280393,
       "title": "Drone hits gas storage tanker at Egypt's Mediterranean port, Ambrey reports - Reuters",
       "summary": "Drone hits gas storage tanker at Egypt's Mediterranean port, Ambrey reports  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPM3F5LWg3Mm9rYmlhejJpdzJqQW9SWnU1WHJRVm9iZ1p0TUpmRTR6Mk1JYXVUekU2c1VlTHI5bV9DbzIyejlvYU13Y2cxYU12WExOYzJoVmxsVzVoc2hiWkQ2ZWFUZ0EwZHBZZlZ1UnREZjZGc243TlQtMXVKcDQ5bUpEaDR2Tmo5eTJkdlJhSXMtZ0U2cnk0OWNLLU50YlBjbnZrei1FVm9CYWw5cUE?oc=5",
-      "publishedAt": "2026-07-29T21:26:21+00:00",
+      "publishedAt": "2026-07-29T22:29:19+00:00",
       "related": ""
     },
     {
@@ -566,26 +566,6 @@
       "related": ""
     },
     {
-      "id": 8280713,
-      "title": "Hims and Hers shares fall 10% as FTC sues company over data, billing practices",
-      "summary": "The FTC sued Hims & Hers over alleged health data sharing with Meta and Snap, billing practices and subscription cancellations.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/07/29/hims-and-hers-ftc-lawsuit-stock.html",
-      "publishedAt": "2026-07-29T18:24:09+00:00",
-      "related": ""
-    },
-    {
-      "id": 8280278,
-      "title": "Jim Cramer sees opportunity to snap up more shares of this chipmaker",
-      "summary": "The Investing Club holds its \"Morning Meeting\" every weekday at 10:20 a.m. ET.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/07/29/jim-cramer-sees-opportunity-to-snap-up-more-shares-of-this-chipmaker-.html",
-      "publishedAt": "2026-07-29T16:14:35+00:00",
-      "related": ""
-    },
-    {
       "id": 8281657,
       "title": "Trump is weighing another two-week campaign of strikes against Iran",
       "summary": "<p>There are no credible reports of explosions in Iran at the moment but I would expect them.</p><p>The WSJ reports that a US Commander has <a href=\"https://www.wsj.com/politics/policy/the-u-s-command",
@@ -608,74 +588,74 @@
   ],
   "earningsCalendar": [
     {
-      "symbol": "AATC",
-      "date": "2026-08-05",
+      "symbol": "AAM",
+      "date": "2026-08-06",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
     },
     {
-      "symbol": "ABCL",
-      "date": "2026-08-05",
+      "symbol": "AAOI",
+      "date": "2026-08-06",
       "hour": "",
-      "epsEstimate": -0.1457,
-      "revenueEstimate": 7939680
+      "epsEstimate": 0.0153,
+      "revenueEstimate": 194287968
     },
     {
-      "symbol": "ACA",
-      "date": "2026-08-05",
-      "hour": "",
-      "epsEstimate": 1.2039,
-      "revenueEstimate": 694375000
-    },
-    {
-      "symbol": "ACFN",
-      "date": "2026-08-05",
+      "symbol": "AAUAF",
+      "date": "2026-08-06",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
     },
     {
-      "symbol": "ACIC",
-      "date": "2026-08-05",
-      "hour": "",
-      "epsEstimate": 0.4284,
-      "revenueEstimate": 71066460
-    },
-    {
-      "symbol": "ACLX",
-      "date": "2026-08-05",
+      "symbol": "ABNB",
+      "date": "2026-08-06",
       "hour": "amc",
-      "epsEstimate": -1.1546,
-      "revenueEstimate": 7905000
+      "epsEstimate": 1.2766,
+      "revenueEstimate": 3646242929
     },
     {
-      "symbol": "ACT",
-      "date": "2026-08-05",
-      "hour": "amc",
-      "epsEstimate": 1.2049,
-      "revenueEstimate": 318972140
-    },
-    {
-      "symbol": "ACTG",
-      "date": "2026-08-05",
+      "symbol": "ABX",
+      "date": "2026-08-06",
       "hour": "",
-      "epsEstimate": -0.102,
-      "revenueEstimate": 50490000
+      "epsEstimate": 0.2418,
+      "revenueEstimate": 66748546
     },
     {
-      "symbol": "ADNT",
-      "date": "2026-08-05",
-      "hour": "bmo",
-      "epsEstimate": 0.5778,
-      "revenueEstimate": 3796869420
-    },
-    {
-      "symbol": "ADV",
-      "date": "2026-08-05",
+      "symbol": "ACDC",
+      "date": "2026-08-06",
       "hour": "",
-      "epsEstimate": 1.5251,
-      "revenueEstimate": 896173000
+      "epsEstimate": -0.3024,
+      "revenueEstimate": 508735200
+    },
+    {
+      "symbol": "ACET",
+      "date": "2026-08-06",
+      "hour": "",
+      "epsEstimate": -2.0732,
+      "revenueEstimate": 0
+    },
+    {
+      "symbol": "ACHV",
+      "date": "2026-08-06",
+      "hour": "",
+      "epsEstimate": -0.1582,
+      "revenueEstimate": 0
+    },
+    {
+      "symbol": "ACIW",
+      "date": "2026-08-06",
+      "hour": "",
+      "epsEstimate": 0.3009,
+      "revenueEstimate": 439201545
+    },
+    {
+      "symbol": "ACLS",
+      "date": "2026-08-06",
+      "hour": "",
+      "epsEstimate": 0.9115,
+      "revenueEstimate": 209084496
     }
   ]
 }
