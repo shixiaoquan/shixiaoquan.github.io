@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T17:53:12+00:00",
+  "updatedAt": "2026-07-30T19:11:36+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,9 +35,9 @@
     }
   ],
   "summary": {
-    "vix": 18.06,
-    "vixRegime": "elevated",
-    "us10yYield": 4.67,
+    "vix": 17.76,
+    "vixRegime": "normal",
+    "us10yYield": 4.66,
     "usdCnh": 6.75,
     "usdCnhChangePct": null,
     "sectorLeader": "科技",
@@ -39,7 +45,7 @@
     "yieldSpread10y2y": 0.45,
     "hints": [
       "美债收益率上行，对高估值成长股形成压力。",
-      "美股行业轮动：科技 领涨（+5.25%），通信 靠后。",
+      "美股行业轮动：科技 领涨（+5.59%），通信 靠后。",
       "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
@@ -52,10 +58,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 18.06,
-      "changePct": -12.58,
-      "weekChangePct": -3.42,
-      "monthChangePct": 9.79,
+      "price": 17.76,
+      "changePct": -14.04,
+      "weekChangePct": -5.03,
+      "monthChangePct": 7.96,
       "source": "yahoo"
     }
   ],
@@ -67,10 +73,10 @@
       "unit": "yield_pct",
       "currency": null,
       "region": null,
-      "price": 4.67,
-      "changePct": 0.97,
-      "weekChangePct": -0.77,
-      "monthChangePct": 5.64,
+      "price": 4.66,
+      "changePct": 0.89,
+      "weekChangePct": -0.85,
+      "monthChangePct": 5.55,
       "source": "yahoo"
     },
     {
@@ -110,16 +116,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.74,
-      "changePct": -0.44,
-      "weekChangePct": -0.46,
-      "monthChangePct": -0.77,
+      "price": 6.76,
+      "changePct": -0.24,
+      "weekChangePct": -0.26,
+      "monthChangePct": -0.57,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7551,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-30"
+      "refPrice": 6.7736,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -135,9 +141,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.844,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-30"
+      "refPrice": 7.8421,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.0,
-      "changePct": -2.97,
-      "weekChangePct": -2.5,
-      "monthChangePct": -2.23,
+      "price": 159.17,
+      "changePct": -2.87,
+      "weekChangePct": -2.4,
+      "monthChangePct": -2.13,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 162.94,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-30"
+      "refPrice": 163.5309,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,51 +171,25 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": 1.28,
-      "weekChangePct": 1.06,
-      "monthChangePct": 1.05,
+      "changePct": 1.3,
+      "weekChangePct": 1.07,
+      "monthChangePct": 1.06,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8714,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-30"
+      "refPrice": 0.8756,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7469,
+      "price": 0.7507,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-30"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8125,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-30"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2875,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-30"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,10 +200,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4162.7,
-      "changePct": 3.17,
-      "weekChangePct": 2.87,
-      "monthChangePct": 3.48,
+      "price": 4159.5,
+      "changePct": 3.09,
+      "weekChangePct": 2.79,
+      "monthChangePct": 3.4,
       "source": "yahoo"
     },
     {
@@ -233,10 +213,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 83.83,
-      "changePct": -0.75,
-      "weekChangePct": -9.07,
-      "monthChangePct": 20.62,
+      "price": 83.55,
+      "changePct": -1.08,
+      "weekChangePct": -9.37,
+      "monthChangePct": 20.22,
       "source": "yahoo"
     },
     {
@@ -246,10 +226,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.47,
-      "changePct": 3.21,
-      "weekChangePct": 2.7,
-      "monthChangePct": 4.56,
+      "price": 6.49,
+      "changePct": 3.44,
+      "weekChangePct": 2.93,
+      "monthChangePct": 4.8,
       "source": "yahoo"
     }
   ],
@@ -302,10 +282,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 175.31,
-      "changePct": 5.25,
-      "weekChangePct": -1.76,
-      "monthChangePct": -7.98,
+      "price": 175.88,
+      "changePct": 5.59,
+      "weekChangePct": -1.44,
+      "monthChangePct": -7.68,
       "source": "yahoo",
       "sector": "科技"
     },
@@ -316,10 +296,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 112.39,
-      "changePct": 0.69,
-      "weekChangePct": 3.33,
-      "monthChangePct": -4.17,
+      "price": 112.67,
+      "changePct": 0.95,
+      "weekChangePct": 3.6,
+      "monthChangePct": -3.93,
       "source": "yahoo",
       "sector": "可选消费"
     },
@@ -330,10 +310,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 177.35,
-      "changePct": 0.39,
-      "weekChangePct": -2.52,
-      "monthChangePct": -4.25,
+      "price": 178.06,
+      "changePct": 0.79,
+      "weekChangePct": -2.13,
+      "monthChangePct": -3.87,
       "source": "yahoo",
       "sector": "工业"
     },
@@ -344,10 +324,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 56.88,
-      "changePct": 0.35,
-      "weekChangePct": 1.88,
-      "monthChangePct": 6.1,
+      "price": 56.97,
+      "changePct": 0.51,
+      "weekChangePct": 2.04,
+      "monthChangePct": 6.27,
       "source": "yahoo",
       "sector": "金融"
     },
@@ -358,10 +338,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 58.58,
-      "changePct": -0.11,
-      "weekChangePct": -1.34,
-      "monthChangePct": 10.31,
+      "price": 58.82,
+      "changePct": 0.29,
+      "weekChangePct": -0.94,
+      "monthChangePct": 10.75,
       "source": "yahoo",
       "sector": "能源"
     },
@@ -372,10 +352,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 51.47,
-      "changePct": -0.51,
-      "weekChangePct": 2.36,
-      "monthChangePct": 1.27,
+      "price": 51.58,
+      "changePct": -0.31,
+      "weekChangePct": 2.57,
+      "monthChangePct": 1.48,
       "source": "yahoo",
       "sector": "材料"
     },
@@ -386,10 +366,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 44.63,
-      "changePct": -0.61,
-      "weekChangePct": -3.37,
-      "monthChangePct": -1.55,
+      "price": 44.71,
+      "changePct": -0.45,
+      "weekChangePct": -3.2,
+      "monthChangePct": -1.39,
       "source": "yahoo",
       "sector": "公用事业"
     },
@@ -400,10 +380,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 45.22,
-      "changePct": -1.62,
-      "weekChangePct": 0.59,
-      "monthChangePct": 2.69,
+      "price": 45.29,
+      "changePct": -1.46,
+      "weekChangePct": 0.76,
+      "monthChangePct": 2.86,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -414,10 +394,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 163.25,
-      "changePct": -1.8,
-      "weekChangePct": 1.12,
-      "monthChangePct": 2.89,
+      "price": 163.74,
+      "changePct": -1.51,
+      "weekChangePct": 1.42,
+      "monthChangePct": 3.2,
       "source": "yahoo",
       "sector": "健康"
     },
@@ -428,10 +408,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 85.34,
-      "changePct": -2.31,
-      "weekChangePct": 2.56,
-      "monthChangePct": 2.73,
+      "price": 85.47,
+      "changePct": -2.16,
+      "weekChangePct": 2.72,
+      "monthChangePct": 2.89,
       "source": "yahoo",
       "sector": "必需消费"
     },
@@ -442,10 +422,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 106.25,
-      "changePct": -2.98,
-      "weekChangePct": 0.83,
-      "monthChangePct": -0.82,
+      "price": 106.47,
+      "changePct": -2.78,
+      "weekChangePct": 1.03,
+      "monthChangePct": -0.62,
       "source": "yahoo",
       "sector": "通信"
     }
@@ -508,6 +488,16 @@
   ],
   "finnhubNews": [
     {
+      "id": 8285908,
+      "title": "Microsoft wins back Jim Cramer's support after a surprisingly good quarter",
+      "summary": "Jim Cramer has had a change of heart about Microsoft following Wednesday evening's earnings report.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/07/30/microsoft-wins-back-jim-cramers-support-after-a-surprisingly-good-quarter.html",
+      "publishedAt": "2026-07-30T18:52:13+00:00",
+      "related": ""
+    },
+    {
       "id": 8285595,
       "title": "UEFA threatens World Cup boycott over FIFA private equity investment plan",
       "summary": "FIFA has faced backlash from global soccer governing bodies over the proposal to allow private investment.",
@@ -515,6 +505,16 @@
       "category": "general",
       "link": "https://www.cnbc.com/2026/07/30/uefa-threatens-world-cup-boycott-over-fifa-investment-plan.html",
       "publishedAt": "2026-07-30T17:30:06+00:00",
+      "related": ""
+    },
+    {
+      "id": 8285704,
+      "title": "Cramer predicts a breakout for Starbucks shares as CEO Niccol's turnaround accelerates",
+      "summary": "\"There are so many good things ahead here,\" Jim Cramer said Thursday.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/07/30/cramer-predicts-a-breakout-for-starbucks-shares-as-ceo-niccols-turnaround-accelerates-.html",
+      "publishedAt": "2026-07-30T16:36:35+00:00",
       "related": ""
     },
     {
@@ -549,8 +549,8 @@
     },
     {
       "id": 8285164,
-      "title": "EXCLUSIVE: Yemen's Houthis are attacking Saudi Arabia from Iraq, sources say - reuters.com",
-      "summary": "EXCLUSIVE: Yemen's Houthis are attacking Saudi Arabia from Iraq, sources say  reuters.com",
+      "title": "EXCLUSIVE: Yemen's Houthis are attacking Saudi Arabia from Iraq, sources say - Reuters",
+      "summary": "EXCLUSIVE: Yemen's Houthis are attacking Saudi Arabia from Iraq, sources say  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOOG5nRVpXaFJmYzZnNk1aMDMwdmc4NDdTalNOTWtaWHhzZGFXWE5JanRRM192OC1qZUs4Q0JHUktVR2VEb1lvdWh4ZjFEd0xQWW1aZkczRFY4VmxQTVV1anlGQ2RsSjFPTjB0aW53NGloTU9Na0hhM1V2ZnpTRFAwOTEtQUpIZ085VHZyS05XN241U3EyZmFqa3hGNzZsU0ZjN1Y2cTRaakE0bWU5VmV6ZTVR?oc=5",
@@ -568,33 +568,13 @@
       "related": ""
     },
     {
-      "id": 8284955,
-      "title": "Gaza ceasefire talks see rare progress, sources say - Reuters",
-      "summary": "Gaza ceasefire talks see rare progress, sources say  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQNHh3eHRRcUdPRGdqS1ViTm1TTDE0NGQwQXZ6Ml82R3g2cVA2c1NLanFFVHpJZU81VENlQ3NaS0xvWmV4VW5HU0hyX2YzUWhZbFJGN3p0dHh5aG5PQ08zakhtZGZycVpFYVdOLVA1ZlVPNGJqZFNvZGhBZDI5QmxiNUlnTXpSWTV2ZFVMZ1BQeGR4Mmo2TWhTTXZrY1dnUmlDWGlCYzVRNXFMNjROdmIxYkY0OG1mWXZiMXFtM1NPcEVoVUllLUJQdVNKMjk?oc=5",
-      "publishedAt": "2026-07-30T14:42:14+00:00",
-      "related": ""
-    },
-    {
-      "id": 8285384,
-      "title": "Iran's Araqchi presses European counterparts over use of bases in US operations - reuters.com",
-      "summary": "Iran's Araqchi presses European counterparts over use of bases in US operations  reuters.com",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPT1U2RVJiSTk2d0ZGMzVLVlc4MXU2d0drYUotbVg5aEd0bUlQbHlCM2x6eVBIUmFiaE9iRGxBc2E5Q2FaaV9EcW1lcWNGSU90ck5OcU5VU1FMcGgyUkIzV3l2cTNVaXROZl9DcDZocm54TUR6aUxsN0gtQmsweDVNLXEzRVRITThFSlBjdjBxYWpQYjJ3LXZ3SllwOUtkLV9OekRNV2xtMXZCRmhfeHdzdFNZUERBQVFOekdOVS1HcUx0UW16anBYRW52UmhPMFN4?oc=5",
-      "publishedAt": "2026-07-30T14:29:43+00:00",
-      "related": ""
-    },
-    {
-      "id": 8285484,
-      "title": "S&P and Nasdaq indices show new life. What has the moves higher today done to the technicals",
-      "summary": "<p class=\"PDq2pG_selectionAnchorContainer\">The broader S&P 500 and Nasdaq indices are sharply higher today, but has the rally changed the technical picture? The answer is: it has improved it, but the ",
+      "id": 8285906,
+      "title": "The NZDUSD and the AUDUSD are both up over 1% on the day. What next?",
+      "summary": "<p class=\"PDq2pG_selectionAnchorContainer\">The NZDUSD and AUDUSD are both posting strong gains today, with the NZD leading the way. The NZDUSD is up 1.45%, while the AUDUSD has advanced 1.05%.</p><p>F",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/technical-analysis/s-p-and-nasdaq-indices-show-new-life-what-has-the-moves-higher-today-done-to-the-technicals/",
-      "publishedAt": "2026-07-30T16:57:22+00:00",
+      "link": "https://investinglive.com/technical-analysis/the-nzdusd-and-the-audusd-are-both-up-over-1-on-the-day-what-next/",
+      "publishedAt": "2026-07-30T18:47:47+00:00",
       "related": ""
     }
   ],
