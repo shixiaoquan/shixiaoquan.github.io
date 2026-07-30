@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T00:09:00+00:00",
+  "updatedAt": "2026-07-30T03:26:16+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -114,16 +108,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.77,
-      "changePct": 0.08,
-      "weekChangePct": 0.08,
-      "monthChangePct": -0.33,
+      "price": 6.76,
+      "changePct": -0.17,
+      "weekChangePct": -0.19,
+      "monthChangePct": -0.5,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7785,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7663,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-29"
     },
     {
       "symbol": "USDHKD=X",
@@ -133,15 +127,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.02,
-      "weekChangePct": 0.03,
-      "monthChangePct": -0.0,
+      "changePct": 0.03,
+      "weekChangePct": 0.04,
+      "monthChangePct": 0.01,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8417,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8424,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-29"
     },
     {
       "symbol": "USDJPY=X",
@@ -150,16 +144,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 163.22,
-      "changePct": -0.39,
-      "weekChangePct": 0.09,
-      "monthChangePct": 0.36,
+      "price": 163.51,
+      "changePct": -0.22,
+      "weekChangePct": 0.26,
+      "monthChangePct": 0.54,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 163.8306,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 163.68,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-29"
     },
     {
       "symbol": "EURUSD=X",
@@ -169,15 +163,15 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": 0.73,
-      "weekChangePct": 0.5,
-      "monthChangePct": 0.49,
+      "changePct": 0.59,
+      "weekChangePct": 0.37,
+      "monthChangePct": 0.35,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
       "refPrice": 0.8787,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-29"
     },
     {
       "symbol": "USDGBP",
@@ -186,8 +180,34 @@
       "quote": "GBP",
       "price": 0.7525,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-29"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.82,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-29"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2926,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-29"
     }
   ],
   "commodities": [
@@ -198,10 +218,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4143.5,
-      "changePct": 2.66,
-      "weekChangePct": -0.08,
-      "monthChangePct": 3.01,
+      "price": 4119.3,
+      "changePct": 2.06,
+      "weekChangePct": -0.67,
+      "monthChangePct": 2.41,
       "source": "yahoo"
     },
     {
@@ -211,10 +231,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 84.26,
-      "changePct": 6.31,
-      "weekChangePct": -2.96,
-      "monthChangePct": 19.1,
+      "price": 83.34,
+      "changePct": 5.15,
+      "weekChangePct": -4.02,
+      "monthChangePct": 17.8,
       "source": "yahoo"
     },
     {
@@ -239,9 +259,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4529.1,
-      "changePct": -3.6,
-      "weekChangePct": -5.26,
+      "price": 4514.14,
+      "changePct": -0.33,
+      "weekChangePct": -3.86,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -252,7 +272,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3378.7,
+      "price": 3196.17,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -265,7 +285,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1678.74,
+      "price": 1585.89,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -516,6 +536,16 @@
       "related": ""
     },
     {
+      "id": 8281981,
+      "title": "Trump says will hit Iran hard after attack, was briefed on Egypt tanker - Reuters",
+      "summary": "Trump says will hit Iran hard after attack, was briefed on Egypt tanker  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOS2Nvem1TcnlqcGxxZjc1Xy1RZHFPNDFWOU1HSVUyYk1DVjZuYUhYWV9QN1I1Q0JraUlHcTNyaEY1bUJTZVZZbl9BYi1pdTBXWTU4VXRzcHpRX25KUGtPUG8xM2FGVFpaWGh5M25OVXZpenZPeUMtbHdVdHNwMS1yTkVfNU1pR2N2aGhjcFZqakJjakdKWGNkSHNqWGUxTEZySzV6Ujh1ZVUtTEItSmtKd2lzVXJGamNDakVGT1B3?oc=5",
+      "publishedAt": "2026-07-29T21:48:54+00:00",
+      "related": ""
+    },
+    {
       "id": 8281456,
       "title": "Saudi Arabia seeks international coalition to protect Red Sea shipping from Houthis, sources say - Reuters",
       "summary": "Saudi Arabia seeks international coalition to protect Red Sea shipping from Houthis, sources say  Reuters",
@@ -556,23 +586,13 @@
       "related": ""
     },
     {
-      "id": 8280818,
-      "title": "Fed keeps rates steady. The big question now: What will Microsoft and Meta say on AI capex?",
-      "summary": "Every weekday, the Investing Club releases the Homestretch; an actionable afternoon update just in time for the last hour of trading.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/07/29/fed-keeps-rates-steady-the-big-question-now-what-will-microsoft-and-meta-say-on-ai-capex-.html",
-      "publishedAt": "2026-07-29T19:11:58+00:00",
-      "related": ""
-    },
-    {
-      "id": 8281657,
-      "title": "Trump is weighing another two-week campaign of strikes against Iran",
-      "summary": "<p>There are no credible reports of explosions in Iran at the moment but I would expect them.</p><p>The WSJ reports that a US Commander has <a href=\"https://www.wsj.com/politics/policy/the-u-s-command",
+      "id": 8282399,
+      "title": "US says it successfully completed a 'heavy wave' of attacks on Iran",
+      "summary": "<p>US Central Command released a statement:</p>At 10 p.m. ET on July 29, U.S. Central Command (CENTCOM) forces successfully completed a heavy wave of strikes against Iran in response to yesterday's at",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/trump-is-weighing-another-two-week-campaign-of-strikes-against-iran/",
-      "publishedAt": "2026-07-29T22:39:29+00:00",
+      "link": "https://investinglive.com/news/us-says-it-successfully-completed-a-heavy-wave-of-attacks-on-iran/",
+      "publishedAt": "2026-07-30T02:22:49+00:00",
       "related": ""
     },
     {
