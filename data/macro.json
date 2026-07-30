@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T19:11:36+00:00",
+  "updatedAt": "2026-07-30T20:35:07+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,7 +29,7 @@
     }
   ],
   "summary": {
-    "vix": 17.76,
+    "vix": 17.09,
     "vixRegime": "normal",
     "us10yYield": 4.66,
     "usdCnh": 6.75,
@@ -45,7 +39,7 @@
     "yieldSpread10y2y": 0.45,
     "hints": [
       "美债收益率上行，对高估值成长股形成压力。",
-      "美股行业轮动：科技 领涨（+5.59%），通信 靠后。",
+      "美股行业轮动：科技 领涨（+5.50%），通信 靠后。",
       "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
@@ -58,10 +52,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 17.76,
-      "changePct": -14.04,
-      "weekChangePct": -5.03,
-      "monthChangePct": 7.96,
+      "price": 17.09,
+      "changePct": -17.28,
+      "weekChangePct": -8.61,
+      "monthChangePct": 3.89,
       "source": "yahoo"
     }
   ],
@@ -116,16 +110,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.76,
+      "price": 6.75,
       "changePct": -0.24,
-      "weekChangePct": -0.26,
-      "monthChangePct": -0.57,
+      "weekChangePct": -0.27,
+      "monthChangePct": -0.58,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7736,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7551,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-30"
     },
     {
       "symbol": "USDHKD=X",
@@ -135,15 +129,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.02,
-      "weekChangePct": 0.03,
-      "monthChangePct": -0.0,
+      "changePct": 0.03,
+      "weekChangePct": 0.04,
+      "monthChangePct": 0.01,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8421,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.844,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-30"
     },
     {
       "symbol": "USDJPY=X",
@@ -152,16 +146,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.17,
-      "changePct": -2.87,
-      "weekChangePct": -2.4,
-      "monthChangePct": -2.13,
+      "price": 159.5,
+      "changePct": -2.67,
+      "weekChangePct": -2.2,
+      "monthChangePct": -1.93,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 163.5309,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 162.94,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-30"
     },
     {
       "symbol": "EURUSD=X",
@@ -171,25 +165,51 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": 1.3,
-      "weekChangePct": 1.07,
-      "monthChangePct": 1.06,
+      "changePct": 1.28,
+      "weekChangePct": 1.06,
+      "monthChangePct": 1.05,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8756,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8714,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-07-30"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7507,
+      "price": 0.7469,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-30"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8125,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-30"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2875,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-07-30"
     }
   ],
   "commodities": [
@@ -200,10 +220,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4159.5,
-      "changePct": 3.09,
-      "weekChangePct": 2.79,
-      "monthChangePct": 3.4,
+      "price": 4172.8,
+      "changePct": 3.42,
+      "weekChangePct": 3.12,
+      "monthChangePct": 3.73,
       "source": "yahoo"
     },
     {
@@ -213,10 +233,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 83.55,
-      "changePct": -1.08,
-      "weekChangePct": -9.37,
-      "monthChangePct": 20.22,
+      "price": 84.12,
+      "changePct": -0.4,
+      "weekChangePct": -8.75,
+      "monthChangePct": 21.04,
       "source": "yahoo"
     },
     {
@@ -226,10 +246,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.49,
-      "changePct": 3.44,
-      "weekChangePct": 2.93,
-      "monthChangePct": 4.8,
+      "price": 6.51,
+      "changePct": 3.71,
+      "weekChangePct": 3.19,
+      "monthChangePct": 5.06,
       "source": "yahoo"
     }
   ],
@@ -282,26 +302,12 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 175.88,
-      "changePct": 5.59,
-      "weekChangePct": -1.44,
-      "monthChangePct": -7.68,
+      "price": 175.73,
+      "changePct": 5.5,
+      "weekChangePct": -1.52,
+      "monthChangePct": -7.76,
       "source": "yahoo",
       "sector": "科技"
-    },
-    {
-      "symbol": "XLY",
-      "name": "可选消费",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 112.67,
-      "changePct": 0.95,
-      "weekChangePct": 3.6,
-      "monthChangePct": -3.93,
-      "source": "yahoo",
-      "sector": "可选消费"
     },
     {
       "symbol": "XLI",
@@ -310,12 +316,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 178.06,
-      "changePct": 0.79,
-      "weekChangePct": -2.13,
-      "monthChangePct": -3.87,
+      "price": 178.39,
+      "changePct": 0.98,
+      "weekChangePct": -1.95,
+      "monthChangePct": -3.69,
       "source": "yahoo",
       "sector": "工业"
+    },
+    {
+      "symbol": "XLY",
+      "name": "可选消费",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 112.39,
+      "changePct": 0.7,
+      "weekChangePct": 3.34,
+      "monthChangePct": -4.17,
+      "source": "yahoo",
+      "sector": "可选消费"
     },
     {
       "symbol": "XLF",
@@ -324,10 +344,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 56.97,
-      "changePct": 0.51,
-      "weekChangePct": 2.04,
-      "monthChangePct": 6.27,
+      "price": 57.0,
+      "changePct": 0.56,
+      "weekChangePct": 2.1,
+      "monthChangePct": 6.32,
       "source": "yahoo",
       "sector": "金融"
     },
@@ -338,10 +358,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 58.82,
-      "changePct": 0.29,
-      "weekChangePct": -0.94,
-      "monthChangePct": 10.75,
+      "price": 58.96,
+      "changePct": 0.53,
+      "weekChangePct": -0.71,
+      "monthChangePct": 11.01,
       "source": "yahoo",
       "sector": "能源"
     },
@@ -352,10 +372,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 51.58,
-      "changePct": -0.31,
-      "weekChangePct": 2.57,
-      "monthChangePct": 1.48,
+      "price": 51.64,
+      "changePct": -0.19,
+      "weekChangePct": 2.68,
+      "monthChangePct": 1.59,
       "source": "yahoo",
       "sector": "材料"
     },
@@ -366,10 +386,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 44.71,
-      "changePct": -0.45,
-      "weekChangePct": -3.2,
-      "monthChangePct": -1.39,
+      "price": 44.66,
+      "changePct": -0.56,
+      "weekChangePct": -3.31,
+      "monthChangePct": -1.5,
       "source": "yahoo",
       "sector": "公用事业"
     },
@@ -380,10 +400,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 45.29,
-      "changePct": -1.46,
-      "weekChangePct": 0.76,
-      "monthChangePct": 2.86,
+      "price": 45.3,
+      "changePct": -1.44,
+      "weekChangePct": 0.78,
+      "monthChangePct": 2.88,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -394,10 +414,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 163.74,
-      "changePct": -1.51,
-      "weekChangePct": 1.42,
-      "monthChangePct": 3.2,
+      "price": 163.52,
+      "changePct": -1.64,
+      "weekChangePct": 1.29,
+      "monthChangePct": 3.06,
       "source": "yahoo",
       "sector": "健康"
     },
@@ -422,10 +442,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 106.47,
-      "changePct": -2.78,
-      "weekChangePct": 1.03,
-      "monthChangePct": -0.62,
+      "price": 106.58,
+      "changePct": -2.68,
+      "weekChangePct": 1.14,
+      "monthChangePct": -0.51,
       "source": "yahoo",
       "sector": "通信"
     }
@@ -435,9 +455,9 @@
       "seriesId": "DGS10",
       "name": "美10年期国债收益率",
       "unit": "pct",
-      "price": 4.61,
-      "changePct": -0.86,
-      "observedAt": "2026-07-28",
+      "price": 4.67,
+      "changePct": 1.3,
+      "observedAt": "2026-07-29",
       "source": "fred"
     },
     {
@@ -488,6 +508,26 @@
   ],
   "finnhubNews": [
     {
+      "id": 8286012,
+      "title": "'The Odyssey' extends stay in 70mm IMAX theaters as shows sell out weeks in advance",
+      "summary": "Universal and IMAX have extended the availability of 70mm screenings of Christopher Nolan's retelling of Homer's epic into mid-September.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/07/30/the-odyssey-70mm-imax-run-extended-until-september.html",
+      "publishedAt": "2026-07-30T19:24:10+00:00",
+      "related": ""
+    },
+    {
+      "id": 8285384,
+      "title": "Iran's Araqchi presses European counterparts over use of bases in US operations - Reuters",
+      "summary": "Iran's Araqchi presses European counterparts over use of bases in US operations  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPT1U2RVJiSTk2d0ZGMzVLVlc4MXU2d0drYUotbVg5aEd0bUlQbHlCM2x6eVBIUmFiaE9iRGxBc2E5Q2FaaV9EcW1lcWNGSU90ck5OcU5VU1FMcGgyUkIzV3l2cTNVaXROZl9DcDZocm54TUR6aUxsN0gtQmsweDVNLXEzRVRITThFSlBjdjBxYWpQYjJ3LXZ3SllwOUtkLV9OekRNV2xtMXZCRmhfeHdzdFNZUERBQVFOekdOVS1HcUx0UW16anBYRW52UmhPMFN4?oc=5",
+      "publishedAt": "2026-07-30T19:03:48+00:00",
+      "related": ""
+    },
+    {
       "id": 8285908,
       "title": "Microsoft wins back Jim Cramer's support after a surprisingly good quarter",
       "summary": "Jim Cramer has had a change of heart about Microsoft following Wednesday evening's earnings report.",
@@ -495,6 +535,26 @@
       "category": "general",
       "link": "https://www.cnbc.com/2026/07/30/microsoft-wins-back-jim-cramers-support-after-a-surprisingly-good-quarter.html",
       "publishedAt": "2026-07-30T18:52:13+00:00",
+      "related": ""
+    },
+    {
+      "id": 8286020,
+      "title": "Imports hold back US economic growth in Q2, but domestic demand robust - Reuters",
+      "summary": "Imports hold back US economic growth in Q2, but domestic demand robust  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxObWh4Um5od3luS0pRM0hOYTNwN0Z4bElZWFBXVDRRdFFVT2FpejU4ZkQ3MTVuY3hYb1NpMVd4QXV4WFhFMFUwbTRCbGs2cGlPOW11LWUxdzFyRnU0a0cwZU02b0s5b012M0p3Y2prV25KT0RQd3BGZk52aWNlanFDSDh5UTRRUVYtc2lsSm1RWjM4MjlzMXFCcEVrVjNvYVNzN3pNTm1zU2ZpV1U?oc=5",
+      "publishedAt": "2026-07-30T18:36:01+00:00",
+      "related": ""
+    },
+    {
+      "id": 8286019,
+      "title": "US issues sanctions targeting support networks for Iran's Mahan Air - Reuters",
+      "summary": "US issues sanctions targeting support networks for Iran's Mahan Air  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNYWwwbkpQREZyMHd4cWZMcVdqOXZJZEpWMGpJeFRWcE1CVG53TElTMWdOa1pPSmVvelZXVUVJdkVvSWl2YU5vb1poSVFtR29vdmxtQnE5WW4zZ2Jvck5lSnM0Ykg5Z0dqU2xKa3l3ZVM0QjA2X0w2djluS1o4WUsxZU53bkp5YzY2MFRld3EtajFPS0NUemVuMTJfRGh2bU1VZk5HcjZ5NERoSjhab1RVRDZPZkIyRGs?oc=5",
+      "publishedAt": "2026-07-30T17:36:09+00:00",
       "related": ""
     },
     {
@@ -525,46 +585,6 @@
       "category": "general",
       "link": "https://www.cnbc.com/2026/07/30/cramer-sees-signal-to-buy-stocks-previews-reports-amzn-aapl.html",
       "publishedAt": "2026-07-30T16:17:11+00:00",
-      "related": ""
-    },
-    {
-      "id": 8285270,
-      "title": "The real story at Apple is the memory crunch — and there's little room for error",
-      "summary": "It's a high-stakes quarter for the iPhone maker. Apple needs to show Wall Street exactly how it plans to mitigate the risks of rising memory costs.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/07/30/the-real-story-at-apple-is-memory-and-theres-little-room-for-error.html",
-      "publishedAt": "2026-07-30T15:59:58+00:00",
-      "related": ""
-    },
-    {
-      "id": 8285267,
-      "title": "We're buying an AI stock that we recently took profits on and upgrading another",
-      "summary": "If leverage is out of the AI infrastructure stocks, then it's time to get more positive on the theme after their recent decline.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/07/30/were-buying-an-ai-stock-that-we-recently-took-profits-on-and-upgrading-another.html",
-      "publishedAt": "2026-07-30T15:43:17+00:00",
-      "related": ""
-    },
-    {
-      "id": 8285164,
-      "title": "EXCLUSIVE: Yemen's Houthis are attacking Saudi Arabia from Iraq, sources say - Reuters",
-      "summary": "EXCLUSIVE: Yemen's Houthis are attacking Saudi Arabia from Iraq, sources say  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOOG5nRVpXaFJmYzZnNk1aMDMwdmc4NDdTalNOTWtaWHhzZGFXWE5JanRRM192OC1qZUs4Q0JHUktVR2VEb1lvdWh4ZjFEd0xQWW1aZkczRFY4VmxQTVV1anlGQ2RsSjFPTjB0aW53NGloTU9Na0hhM1V2ZnpTRFAwOTEtQUpIZ085VHZyS05XN241U3EyZmFqa3hGNzZsU0ZjN1Y2cTRaakE0bWU5VmV6ZTVR?oc=5",
-      "publishedAt": "2026-07-30T14:58:16+00:00",
-      "related": ""
-    },
-    {
-      "id": 8285056,
-      "title": "How NBCUniversal's deal with YouTube could jumpstart the next chapter of the streaming wars",
-      "summary": "The next iteration of the streaming wars is likely to be about aggregating content on the biggest existing platforms.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/07/30/nbcuniversal-youtube-deal-streaming-wars.html",
-      "publishedAt": "2026-07-30T14:55:17+00:00",
       "related": ""
     },
     {
