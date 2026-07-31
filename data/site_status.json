@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-31T10:17:00+00:00",
+  "updatedAt": "2026-07-31T10:18:50+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 5,
-    "pipelinesStale": 1,
-    "automation": "1 条流水线过期",
+    "pipelinesHealthy": 6,
+    "pipelinesStale": 0,
+    "automation": "持续运行中",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -240,7 +240,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-31T10:17:00+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 1
     },
     {
       "id": "macro",
@@ -249,16 +249,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-31T10:16:54+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 1
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-07-31T07:40:09+00:00",
-      "status": "stale",
-      "ageMinutes": 156
+      "updatedAt": "2026-07-31T10:18:49+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -267,7 +267,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-31T09:51:21+00:00",
       "status": "ok",
-      "ageMinutes": 25
+      "ageMinutes": 27
     },
     {
       "id": "reports",
@@ -276,7 +276,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-31T14:35:36+08:00",
       "status": "ok",
-      "ageMinutes": 221
+      "ageMinutes": 223
     },
     {
       "id": "backtest",
@@ -285,9 +285,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-26T05:28:10+00:00",
       "status": "ok",
-      "ageMinutes": 7488
+      "ageMinutes": 7490
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "30622964060"
+  "triggeredBy": "Update Truth Social",
+  "runId": "30623038540"
 }
