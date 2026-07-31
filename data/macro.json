@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-31T04:48:29+00:00",
+  "updatedAt": "2026-07-31T07:41:35+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,10 +35,10 @@
     }
   ],
   "summary": {
-    "vix": 17.09,
+    "vix": 16.83,
     "vixRegime": "normal",
     "us10yYield": 4.66,
-    "usdCnh": 6.74,
+    "usdCnh": 6.75,
     "usdCnhChangePct": null,
     "sectorLeader": "科技",
     "sectorLaggard": "通信",
@@ -52,10 +58,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 17.09,
-      "changePct": -17.28,
-      "weekChangePct": -8.61,
-      "monthChangePct": 3.89,
+      "price": 16.83,
+      "changePct": -1.52,
+      "weekChangePct": -9.42,
+      "monthChangePct": 1.45,
       "source": "yahoo"
     }
   ],
@@ -95,7 +101,7 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.74,
+      "price": 6.75,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -110,16 +116,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.74,
-      "changePct": -0.44,
-      "weekChangePct": -0.53,
-      "monthChangePct": -0.85,
+      "price": 6.75,
+      "changePct": -0.29,
+      "weekChangePct": -0.38,
+      "monthChangePct": -0.7,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7551,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-30"
+      "refPrice": 6.7657,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -129,15 +135,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.01,
-      "weekChangePct": 0.02,
-      "monthChangePct": -0.02,
+      "changePct": -0.02,
+      "weekChangePct": -0.01,
+      "monthChangePct": -0.04,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.844,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-30"
+      "refPrice": 7.8433,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 160.71,
-      "changePct": -1.59,
-      "weekChangePct": -1.91,
-      "monthChangePct": -1.13,
+      "price": 160.57,
+      "changePct": -1.67,
+      "weekChangePct": -1.99,
+      "monthChangePct": -1.21,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 162.94,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-30"
+      "refPrice": 160.5745,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,51 +171,25 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": 0.36,
-      "weekChangePct": 1.16,
-      "monthChangePct": 1.15,
+      "changePct": 0.47,
+      "weekChangePct": 1.26,
+      "monthChangePct": 1.25,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8714,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-07-30"
+      "refPrice": 0.8688,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7469,
+      "price": 0.7446,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-30"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8125,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-30"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2875,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-07-30"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,10 +200,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4138.6,
-      "changePct": 0.94,
-      "weekChangePct": 1.75,
-      "monthChangePct": 1.73,
+      "price": 4129.3,
+      "changePct": 0.71,
+      "weekChangePct": 1.52,
+      "monthChangePct": 1.5,
       "source": "yahoo"
     },
     {
@@ -233,10 +213,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 82.08,
-      "changePct": -1.81,
-      "weekChangePct": -8.1,
-      "monthChangePct": 19.69,
+      "price": 82.46,
+      "changePct": -1.35,
+      "weekChangePct": -7.67,
+      "monthChangePct": 20.24,
       "source": "yahoo"
     },
     {
@@ -247,9 +227,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.51,
-      "changePct": 1.06,
-      "weekChangePct": 3.05,
-      "monthChangePct": 6.35,
+      "changePct": 0.98,
+      "weekChangePct": 2.97,
+      "monthChangePct": 6.27,
       "source": "yahoo"
     }
   ],
@@ -261,9 +241,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4605.92,
-      "changePct": 1.7,
-      "weekChangePct": -1.91,
+      "price": 4588.2,
+      "changePct": 1.3,
+      "weekChangePct": -2.28,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -274,7 +254,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3408.15,
+      "price": 3343.96,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -287,7 +267,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1682.27,
+      "price": 1635.96,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -558,16 +538,6 @@
       "related": ""
     },
     {
-      "id": 8285384,
-      "title": "Iran's Araqchi presses European counterparts over use of bases in US operations - Reuters",
-      "summary": "Iran's Araqchi presses European counterparts over use of bases in US operations  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPT1U2RVJiSTk2d0ZGMzVLVlc4MXU2d0drYUotbVg5aEd0bUlQbHlCM2x6eVBIUmFiaE9iRGxBc2E5Q2FaaV9EcW1lcWNGSU90ck5OcU5VU1FMcGgyUkIzV3l2cTNVaXROZl9DcDZocm54TUR6aUxsN0gtQmsweDVNLXEzRVRITThFSlBjdjBxYWpQYjJ3LXZ3SllwOUtkLV9OekRNV2xtMXZCRmhfeHdzdFNZUERBQVFOekdOVS1HcUx0UW16anBYRW52UmhPMFN4?oc=5",
-      "publishedAt": "2026-07-30T19:07:10+00:00",
-      "related": ""
-    },
-    {
       "id": 8285908,
       "title": "Microsoft wins back Jim Cramer's support after a surprisingly good quarter",
       "summary": "Jim Cramer has had a change of heart about Microsoft following Wednesday evening's earnings report.",
@@ -588,13 +558,23 @@
       "related": ""
     },
     {
-      "id": 8287792,
-      "title": "investingLive Asia-pacific FX news wrap: Yen intervention fades as BOJ holds",
-      "summary": "<ul><li><a href=\"https://investinglive.com/central-banks/boj-leaves-rates-unchanged-as-expected-vote-was-8-1\" rel=\"follow\">BOJ leaves rates unchanged as expected. Vote was 8-1</a></li><li><a href=\"htt",
+      "id": 8286019,
+      "title": "US issues sanctions targeting support networks for Iran's Mahan Air - Reuters",
+      "summary": "US issues sanctions targeting support networks for Iran's Mahan Air  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNYWwwbkpQREZyMHd4cWZMcVdqOXZJZEpWMGpJeFRWcE1CVG53TElTMWdOa1pPSmVvelZXVUVJdkVvSWl2YU5vb1poSVFtR29vdmxtQnE5WW4zZ2Jvck5lSnM0Ykg5Z0dqU2xKa3l3ZVM0QjA2X0w2djluS1o4WUsxZU53bkp5YzY2MFRld3EtajFPS0NUemVuMTJfRGh2bU1VZk5HcjZ5NERoSjhab1RVRDZPZkIyRGs?oc=5",
+      "publishedAt": "2026-07-30T17:36:09+00:00",
+      "related": ""
+    },
+    {
+      "id": 8288407,
+      "title": "French inflation accelerates in July, reaffirming the broader trend in the region",
+      "summary": "<ul><li>July preliminary CPI +2.1% vs +1.8% y/y expected</li><li>Prior +1.8%</li><li>July preliminary HICP +2.4% vs +2.1% y/y expected</li><li>Prior +2.0%</li></ul><p class=\"text-align-justify\" style=",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/investinglive-asia-pacific-fx-news-wrap-yen-intervention-fades-as-boj-holds/",
-      "publishedAt": "2026-07-31T03:57:28+00:00",
+      "link": "https://investinglive.com/news/french-inflation-accelerates-in-july-reaffirming-the-broader-trend-in-the-region/",
+      "publishedAt": "2026-07-31T06:54:29+00:00",
       "related": ""
     }
   ],
