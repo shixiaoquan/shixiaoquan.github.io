@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-01T01:10:57+00:00",
+  "updatedAt": "2026-08-01T01:20:00+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-01T01:02:55+00:00",
+    "updatedAt": "2026-08-01T01:20:00+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -122,6 +122,14 @@
         "title": "流水线过期 · 宏观与跨资产",
         "reason": "stale",
         "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      },
+      {
+        "id": "fix-pipeline-truth",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · Truth Social 镜像",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
       },
       {
         "id": "shadow-tracking",
@@ -161,8 +169,8 @@
       }
     ],
     "summary": {
-      "total": 6,
-      "high": 2,
+      "total": 7,
+      "high": 3,
       "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
     }
   },
@@ -248,7 +256,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-31T14:44:26+00:00",
       "status": "stale",
-      "ageMinutes": 626
+      "ageMinutes": 635
     },
     {
       "id": "macro",
@@ -257,7 +265,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-07-31T14:44:20+00:00",
       "status": "stale",
-      "ageMinutes": 626
+      "ageMinutes": 635
     },
     {
       "id": "truth",
@@ -266,7 +274,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-01T01:10:56+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 9
     },
     {
       "id": "wencai",
@@ -275,7 +283,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-07-31T23:15:36+00:00",
       "status": "ok",
-      "ageMinutes": 115
+      "ageMinutes": 124
     },
     {
       "id": "reports",
@@ -284,7 +292,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-07-31T18:47:08+08:00",
       "status": "ok",
-      "ageMinutes": 863
+      "ageMinutes": 872
     },
     {
       "id": "backtest",
@@ -293,9 +301,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-07-26T05:28:10+00:00",
       "status": "ok",
-      "ageMinutes": 8382
+      "ageMinutes": 8391
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "30677316806"
+  "triggeredBy": "Update Market Data",
+  "runId": "30677666103"
 }
