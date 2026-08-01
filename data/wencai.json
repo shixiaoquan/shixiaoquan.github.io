@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-01T03:46:13+00:00",
+  "updatedAt": "2026-08-01T06:38:56+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 34 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 34 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 100,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000009.SZ",
@@ -92,7 +92,10 @@
         }
       ],
       "count": 100,
-      "countNote": "100+"
+      "countNote": "100+",
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
@@ -182,7 +185,7 @@
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688825.SH",
@@ -254,13 +257,16 @@
           "changePct": 4.4,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "300058.SZ",
@@ -318,63 +324,10 @@
           "changePct": 6.06,
           "flow": 773247434
         }
-      ]
-    },
-    {
-      "id": "breakout",
-      "title": "突破年线",
-      "query": "突破年线且成交量放大",
-      "status": "ok",
-      "items": [
-        {
-          "code": "300058.SZ",
-          "name": "蓝色光标",
-          "price": 14.35,
-          "changePct": 19.98
-        },
-        {
-          "code": "300017.SZ",
-          "name": "网宿科技",
-          "price": 14.03,
-          "changePct": 17.5
-        },
-        {
-          "code": "603466.SH",
-          "name": "风语筑",
-          "price": 10.21,
-          "changePct": 10.02
-        },
-        {
-          "code": "300166.SZ",
-          "name": "东方国信",
-          "price": 13.23,
-          "changePct": 10.16
-        },
-        {
-          "code": "002015.SZ",
-          "name": "协鑫能科",
-          "price": 15.08,
-          "changePct": 9.99
-        },
-        {
-          "code": "300738.SZ",
-          "name": "奥飞数据",
-          "price": 22.36,
-          "changePct": 5.92
-        },
-        {
-          "code": "300244.SZ",
-          "name": "迪安诊断",
-          "price": 18.25,
-          "changePct": 11.96
-        },
-        {
-          "code": "300454.SZ",
-          "name": "深信服",
-          "price": 119.71,
-          "changePct": 14.77
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -752,6 +705,13 @@
       "source": "wencai",
       "category": "利好"
     }
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "breakout: 'NoneType' object has no attribute 'get'"
   ],
   "newsStale": true
 }
