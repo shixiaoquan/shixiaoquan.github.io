@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-02T06:43:21+00:00",
+  "updatedAt": "2026-08-02T09:18:51+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 34 条资讯 · 部分沿用缓存",
+  "message": "已更新 5 个市场问句 · 30 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 100,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "000009.SZ",
@@ -92,10 +92,7 @@
         }
       ],
       "count": 100,
-      "countNote": "100+",
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "countNote": "100+"
     },
     {
       "id": "limit_down",
@@ -185,62 +182,62 @@
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "stale",
+      "status": "ok",
       "items": [
+        {
+          "code": "002131.SZ",
+          "name": "利欧股份",
+          "price": 4.66,
+          "changePct": 9.91,
+          "rank": "1"
+        },
         {
           "code": "688825.SH",
           "name": "长鑫科技",
           "price": 53.97,
           "changePct": 2.08,
-          "rank": "1"
+          "rank": "2"
+        },
+        {
+          "code": "002354.SZ",
+          "name": "天娱数科",
+          "price": 6.51,
+          "changePct": 9.97,
+          "rank": "3"
         },
         {
           "code": "300058.SZ",
           "name": "蓝色光标",
           "price": 14.35,
           "changePct": 19.98,
-          "rank": "2"
-        },
-        {
-          "code": "001309.SZ",
-          "name": "德明利",
-          "price": 385.9,
-          "changePct": -1.06,
-          "rank": "3"
-        },
-        {
-          "code": "002131.SZ",
-          "name": "利欧股份",
-          "price": 4.66,
-          "changePct": 9.91,
           "rank": "4"
-        },
-        {
-          "code": "603221.SH",
-          "name": "爱丽家居",
-          "price": 22.54,
-          "changePct": 10.0,
-          "rank": "5"
-        },
-        {
-          "code": "603986.SH",
-          "name": "兆易创新",
-          "price": 378.6,
-          "changePct": 2.02,
-          "rank": "6"
         },
         {
           "code": "003032.SZ",
           "name": "传智教育",
           "price": 8.81,
           "changePct": 9.99,
-          "rank": "7"
+          "rank": "5"
+        },
+        {
+          "code": "001309.SZ",
+          "name": "德明利",
+          "price": 385.9,
+          "changePct": -1.06,
+          "rank": "6"
         },
         {
           "code": "600667.SH",
           "name": "太极实业",
           "price": 17.23,
           "changePct": 10.03,
+          "rank": "7"
+        },
+        {
+          "code": "000938.SZ",
+          "name": "紫光股份",
+          "price": 34.89,
+          "changePct": 3.84,
           "rank": "8"
         },
         {
@@ -251,22 +248,19 @@
           "rank": "9"
         },
         {
-          "code": "300308.SZ",
-          "name": "中际旭创",
-          "price": 902.01,
-          "changePct": 4.4,
+          "code": "603986.SH",
+          "name": "兆易创新",
+          "price": 378.6,
+          "changePct": 2.02,
           "rank": "10"
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "300058.SZ",
@@ -324,262 +318,271 @@
           "changePct": 6.06,
           "flow": 773247434
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
+    },
+    {
+      "id": "breakout",
+      "title": "突破年线",
+      "query": "突破年线且成交量放大",
+      "status": "ok",
+      "items": [
+        {
+          "code": "300058.SZ",
+          "name": "蓝色光标",
+          "price": 14.35,
+          "changePct": 19.98
+        },
+        {
+          "code": "300017.SZ",
+          "name": "网宿科技",
+          "price": 14.03,
+          "changePct": 17.5
+        },
+        {
+          "code": "603466.SH",
+          "name": "风语筑",
+          "price": 10.21,
+          "changePct": 10.02
+        },
+        {
+          "code": "300166.SZ",
+          "name": "东方国信",
+          "price": 13.23,
+          "changePct": 10.16
+        },
+        {
+          "code": "002015.SZ",
+          "name": "协鑫能科",
+          "price": 15.08,
+          "changePct": 9.99
+        },
+        {
+          "code": "300738.SZ",
+          "name": "奥飞数据",
+          "price": 22.36,
+          "changePct": 5.92
+        },
+        {
+          "code": "300244.SZ",
+          "name": "迪安诊断",
+          "price": 18.25,
+          "changePct": 11.96
+        },
+        {
+          "code": "300454.SZ",
+          "name": "深信服",
+          "price": 119.71,
+          "changePct": 14.77
+        }
+      ]
     }
   ],
   "news": [
     {
-      "id": "wencai:b1303b62c3691598",
-      "title": "华邦健康：关于全资子公司获得《药品注册证书》的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-01/1225450103.PDF",
+      "id": "wencai:f611e91371d7e17b",
+      "title": "兆易创新：兆易创新2026年第二次临时股东会会议资料",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-03/603986_20260803_V9KJ.pdf",
       "publisher": "同花顺问财",
-      "related": "华邦健康 (002004.SZ)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "兆易创新 (603986.SH)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:a4748c85621a9778",
-      "title": "柏诚股份：2026年第二次临时股东会决议公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/601133_20260801_ZLKW.pdf",
+      "id": "wencai:94d4b8f28930fb28",
+      "title": "华峰化学：关于筹划发行股份及支付现金购买资产暨关联交易事项的进展公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225452794.PDF",
       "publisher": "同花顺问财",
-      "related": "柏诚股份 (601133.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "华峰化学 (002064.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:b22be4bf3616875",
-      "title": "柏诚股份：关于为合并报表范围内子公司提供担保的进展公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/601133_20260801_6K10.pdf",
+      "id": "wencai:11eea6bdd06576a9",
+      "title": "龙佰集团：关于公司控股股东、部分董事、高级管理人员及核心骨干员工增持公司股份计划实施完毕暨增持结果的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225451425.PDF",
       "publisher": "同花顺问财",
-      "related": "柏诚股份 (601133.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "龙佰集团 (002601.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:4edc2808537328f4",
-      "title": "柏诚股份：江苏世纪同仁律师事务所关于柏诚系统科技股份有限公司2026年第二次临时股东会的法律意见书",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/601133_20260801_X9V3.pdf",
+      "id": "wencai:146a250cce207111",
+      "title": "华海药业：浙江华海药业股份有限公司关于公司产品拟中选第十二批全国药品集中采购的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-03/600521_20260803_DEN3.pdf",
       "publisher": "同花顺问财",
-      "related": "柏诚股份 (601133.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "华海药业 (600521.SH)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:5453d8f5356a2cd6",
-      "title": "多伦科技：多伦科技关于高级管理人员辞职的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/603528_20260801_NKWK.pdf",
+      "id": "wencai:760cdd7fb4d16b70",
+      "title": "中国卫通：关于公司高级管理人员退休离任的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-03/601698_20260803_2XRZ.pdf",
       "publisher": "同花顺问财",
-      "related": "多伦科技 (603528.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "中国卫通 (601698.SH)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:9911a38ac3851d48",
-      "title": "光格科技：光格科技2026年第二次临时股东会会议资料",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/688450_20260801_8BVK.pdf",
+      "id": "wencai:dc6bd29c954418c8",
+      "title": "鼎通科技：2026年第二次临时股东会会议资料",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-03/688668_20260803_GJJI.pdf",
       "publisher": "同花顺问财",
-      "related": "光格科技 (688450.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "鼎通科技 (688668.SH)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:2333faf46655d5c8",
-      "title": "石头科技：北京石头世纪科技股份有限公司2023年限制性股票激励计划第三个归属期归属结果暨股份上市公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/688169_20260801_2CS8.pdf",
+      "id": "wencai:f03d78d8b3a90c0e",
+      "title": "欣天科技：简式权益变动报告书（石伟平）",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225452782.PDF",
       "publisher": "同花顺问财",
-      "related": "石头科技 (688169.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "欣天科技 (300615.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:5e842cc9b3e40d75",
-      "title": "联美控股：联美量子股份有限公司关于取得金融机构股票回购专项贷款承诺函的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/600167_20260801_L0PW.pdf",
+      "id": "wencai:3755ab21f55c1a9a",
+      "title": "欣天科技：关于筹划公司控制权变更事项进展暨复牌的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225452779.PDF",
       "publisher": "同花顺问财",
-      "related": "联美控股 (600167.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "欣天科技 (300615.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:ea67ac7299aa8ff4",
-      "title": "金开新能：关于股份回购进展公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/600821_20260801_ZVG7.pdf",
+      "id": "wencai:65da05cc1e758e3a",
+      "title": "欣天科技：简式权益变动报告书（薛枫）",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225452783.PDF",
       "publisher": "同花顺问财",
-      "related": "金开新能 (600821.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "欣天科技 (300615.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:a5386d58935d691e",
-      "title": "金开新能：关于子公司2026年7月提供担保的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/600821_20260801_HY5U.pdf",
+      "id": "wencai:919785b778757c75",
+      "title": "华泰证券：华泰证券股份有限公司关于间接全资子公司根据中期票据计划进行发行并由全资子公司提供担保的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-03/601688_20260803_XUXF.pdf",
       "publisher": "同花顺问财",
-      "related": "金开新能 (600821.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "华泰证券 (601688.SH)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:3c0dd20ec4db1bf8",
-      "title": "苏利股份：关于苏利股份2026年第一次临时股东会的法律意见书",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/603585_20260801_423R.pdf",
+      "id": "wencai:92f7762a88a3494",
+      "title": "正帆科技：关于实施“正帆转债”赎回暨摘牌的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-03/688596_20260803_SIOF.pdf",
       "publisher": "同花顺问财",
-      "related": "苏利股份 (603585.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "正帆科技 (688596.SH)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:3a86fdef17e8d825",
-      "title": "苏利股份：苏利股份2026年第一次临时股东会决议公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/603585_20260801_JWQM.pdf",
+      "id": "wencai:236894b4bfeb40c9",
+      "title": "广联航空：关于公司控股子公司收到中标通知书的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225452791.PDF",
       "publisher": "同花顺问财",
-      "related": "苏利股份 (603585.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "广联航空 (300900.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:6d7206692fa890f5",
-      "title": "苏利股份：苏利股份关于向下修正“苏利转债”转股价格暨转股停复牌的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/603585_20260801_MPQP.pdf",
+      "id": "wencai:fff778c37dd48055",
+      "title": "北汽蓝谷：子公司2026年7月份产销快报",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-03/600733_20260803_MVFL.pdf",
       "publisher": "同花顺问财",
-      "related": "苏利股份 (603585.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "北汽蓝谷 (600733.SH)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:91ed9de3feb7c506",
-      "title": "千禾味业：千禾味业食品股份有限公司关于控股股东部分股份质押的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/603027_20260801_JC6P.pdf",
+      "id": "wencai:104127ec27ef7358",
+      "title": "一博科技：广东信达律师事务所关于深圳市一博科技股份有限公司2026年限制性股票激励计划授予价格调整事项的法律意见书",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225450269.PDF",
       "publisher": "同花顺问财",
-      "related": "千禾味业 (603027.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "一博科技 (301366.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:f225b7d7091055fb",
-      "title": "大北农：关于回购股份进展情况的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-01/1225450895.PDF",
+      "id": "wencai:e2b64f700122b267",
+      "title": "一博科技：中国国际金融股份有限公司关于深圳市一博科技股份有限公司使用部分闲置募集资金临时补充流动资金的核查意见",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225450276.PDF",
       "publisher": "同花顺问财",
-      "related": "大北农 (002385.SZ)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "一博科技 (301366.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:78d46967f8f36168",
-      "title": "万华化学：万华化学福建工业园MDI装置复产公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/600309_20260801_FS6V.pdf",
+      "id": "wencai:52dc859ceabaa6bd",
+      "title": "一博科技：2026年半年度报告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225450272.PDF",
       "publisher": "同花顺问财",
-      "related": "万华化学 (600309.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "一博科技 (301366.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:1d53706ad8f87b10",
-      "title": "浙海德曼：关于浙江海德曼智能装备股份有限公司向特定对象发行股票申请文件的审核问询函的回复（豁免版）",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/688577_20260801_DH27.pdf",
+      "id": "wencai:7b7e264bdb1ff263",
+      "title": "苏州天脉：向不特定对象发行可转换公司债券发行提示性公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225449973.PDF",
       "publisher": "同花顺问财",
-      "related": "浙海德曼 (688577.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "苏州天脉 (301626.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:6ea3f27db1f8d6cf",
-      "title": "浙海德曼：会计师关于浙江海德曼智能装备股份有限公司向特定对象发行股票申请文件的审核问询函的回复（豁免版）",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/688577_20260801_W8UO.pdf",
+      "id": "wencai:1a0bec7e0fed07cf",
+      "title": "荣旗科技：关于回购公司股份的进展公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225450670.PDF",
       "publisher": "同花顺问财",
-      "related": "浙海德曼 (688577.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "荣旗科技 (301360.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:b06c6ebbddb97d3",
-      "title": "浙海德曼：浙江海德曼智能装备股份有限公司向特定对象发行股票证券募集说明书（申报稿）",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/688577_20260801_EQLG.pdf",
+      "id": "wencai:43f3b20c920f8977",
+      "title": "*ST发展：关于公司股票停牌的提示性公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-03/1225451043.PDF",
       "publisher": "同花顺问财",
-      "related": "浙海德曼 (688577.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:d1c87744ecb1c9a4",
-      "title": "辽宁成大：辽宁成大股份有限公司关于为全资子公司融资提供担保的进展公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/600739_20260801_B94E.pdf",
-      "publisher": "同花顺问财",
-      "related": "辽宁成大 (600739.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:fc7673bbd2df4d6a",
-      "title": "贝隆精密：关于签订募集资金监管协议的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-01/1225450144.PDF",
-      "publisher": "同花顺问财",
-      "related": "贝隆精密 (301567.SZ)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:e0c7ddaee1d75beb",
-      "title": "泛微网络：泛微网络股票交易异常波动公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/603039_20260801_76GY.pdf",
-      "publisher": "同花顺问财",
-      "related": "泛微网络 (603039.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:9fd3af0712cd966e",
-      "title": "泛微网络：关于《泛微网络科技股份有限公司关于股票交易异常波动有关事宜的问询函》的回函",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-01/603039_20260801_BCQQ.pdf",
-      "publisher": "同花顺问财",
-      "related": "泛微网络 (603039.SH)",
-      "publishedAt": "2026-07-31T16:00:00+00:00",
+      "related": "*ST发展 (000838.SZ)",
+      "publishedAt": "2026-08-02T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
@@ -618,17 +621,6 @@
       "category": "利好"
     },
     {
-      "id": "wencai:f226988bc714b000",
-      "title": "金银河获得实用新型专利授权：“一种底涂机头机构及涂布设备”",
-      "link": "https://stock.stockstar.com/RB2026073100004211.shtml",
-      "publisher": "同花顺问财",
-      "related": "金银河 (300619.SZ)",
-      "publishedAt": "2026-07-30T19:26:53+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
       "id": "wencai:3c0d4430c0c14e00",
       "title": "龙溪股份获得实用新型专利授权：“一种用于拆卸自润滑锥形销的工装组件”",
       "link": "https://stock.stockstar.com/RB2026073100004214.shtml",
@@ -640,12 +632,12 @@
       "category": "利好"
     },
     {
-      "id": "wencai:6bdb14b1826b1052",
-      "title": "合兴股份获得实用新型专利授权：“一种交流发电机的软铜连接结构”",
-      "link": "https://stock.stockstar.com/RB2026073100003801.shtml",
+      "id": "wencai:f226988bc714b000",
+      "title": "金银河获得实用新型专利授权：“一种底涂机头机构及涂布设备”",
+      "link": "https://stock.stockstar.com/RB2026073100004211.shtml",
       "publisher": "同花顺问财",
-      "related": "合兴股份 (605005.SH)",
-      "publishedAt": "2026-07-30T19:24:51+00:00",
+      "related": "金银河 (300619.SZ)",
+      "publishedAt": "2026-07-30T19:26:53+00:00",
       "summary": "利好",
       "source": "wencai",
       "category": "利好"
@@ -656,6 +648,17 @@
       "link": "https://stock.stockstar.com/RB2026073100003802.shtml",
       "publisher": "同花顺问财",
       "related": "长城汽车 (601633.SH)",
+      "publishedAt": "2026-07-30T19:24:51+00:00",
+      "summary": "利好",
+      "source": "wencai",
+      "category": "利好"
+    },
+    {
+      "id": "wencai:6bdb14b1826b1052",
+      "title": "合兴股份获得实用新型专利授权：“一种交流发电机的软铜连接结构”",
+      "link": "https://stock.stockstar.com/RB2026073100003801.shtml",
+      "publisher": "同花顺问财",
+      "related": "合兴股份 (605005.SH)",
       "publishedAt": "2026-07-30T19:24:51+00:00",
       "summary": "利好",
       "source": "wencai",
@@ -705,13 +708,5 @@
       "source": "wencai",
       "category": "利好"
     }
-  ],
-  "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
-    "limit_down: 'NoneType' object has no attribute 'get'",
-    "hot: 'NoneType' object has no attribute 'get'",
-    "main_flow: 'NoneType' object has no attribute 'get'",
-    "breakout: 'NoneType' object has no attribute 'get'"
-  ],
-  "newsStale": true
+  ]
 }
