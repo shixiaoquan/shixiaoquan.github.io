@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-03T07:40:47+00:00",
+  "updatedAt": "2026-08-03T11:40:23+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 29 条资讯",
+  "message": "已更新 4 个市场问句 · 29 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 83,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603217.SH",
@@ -91,13 +91,16 @@
           "changePct": 20.0
         }
       ],
-      "count": 83
+      "count": 83,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "605068.SH",
@@ -154,13 +157,16 @@
           "changePct": -9.98
         }
       ],
-      "count": 9
+      "count": 9,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688825.SH",
@@ -232,13 +238,16 @@
           "changePct": -5.13,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "300394.SZ",
@@ -296,63 +305,10 @@
           "changePct": 14.89,
           "flow": 366770737
         }
-      ]
-    },
-    {
-      "id": "range",
-      "title": "箱体震荡",
-      "query": "60日内振幅小于15%且今日放量",
-      "status": "ok",
-      "items": [
-        {
-          "code": "003000.SZ",
-          "name": "劲仔食品",
-          "price": 10.95,
-          "changePct": 0.83
-        },
-        {
-          "code": "601568.SH",
-          "name": "北元化工",
-          "price": 3.76,
-          "changePct": 2.17
-        },
-        {
-          "code": "002142.SZ",
-          "name": "宁波银行",
-          "price": 32.29,
-          "changePct": 1.29
-        },
-        {
-          "code": "601838.SH",
-          "name": "成都银行",
-          "price": 18.47,
-          "changePct": -0.16
-        },
-        {
-          "code": "600820.SH",
-          "name": "隧道股份",
-          "price": 5.74,
-          "changePct": 1.59
-        },
-        {
-          "code": "002807.SZ",
-          "name": "江阴银行",
-          "price": 4.21,
-          "changePct": 1.45
-        },
-        {
-          "code": "002014.SZ",
-          "name": "永新股份",
-          "price": 11.1,
-          "changePct": 0.54
-        },
-        {
-          "code": "600016.SH",
-          "name": "民生银行",
-          "price": 3.65,
-          "changePct": 0.83
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -675,5 +631,13 @@
       "source": "wencai",
       "category": "利好"
     }
-  ]
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "range: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }

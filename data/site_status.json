@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-03T11:35:38+00:00",
+  "updatedAt": "2026-08-03T11:41:21+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -229,7 +229,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-03T08:17:30+00:00",
       "status": "stale",
-      "ageMinutes": 198
+      "ageMinutes": 203
     },
     {
       "id": "macro",
@@ -238,7 +238,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-03T08:17:18+00:00",
       "status": "stale",
-      "ageMinutes": 198
+      "ageMinutes": 204
     },
     {
       "id": "truth",
@@ -247,16 +247,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-03T10:59:25+00:00",
       "status": "ok",
-      "ageMinutes": 36
+      "ageMinutes": 41
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-08-03T07:40:47+00:00",
-      "status": "stale",
-      "ageMinutes": 234
+      "updatedAt": "2026-08-03T11:40:23+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "reports",
@@ -265,7 +265,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-03T19:35:38+08:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 5
     },
     {
       "id": "backtest",
@@ -274,9 +274,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-02T05:22:59+00:00",
       "status": "ok",
-      "ageMinutes": 1812
+      "ageMinutes": 1818
     }
   ],
-  "triggeredBy": "Generate Investment Report",
-  "runId": "30810110684"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "30810419942"
 }
