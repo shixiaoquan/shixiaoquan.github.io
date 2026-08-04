@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-04T07:17:20+00:00",
+  "updatedAt": "2026-08-04T10:03:00+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,7 +35,7 @@
     }
   ],
   "summary": {
-    "vix": 15.99,
+    "vix": 15.71,
     "vixRegime": "normal",
     "us10yYield": 4.74,
     "usdCnh": 6.75,
@@ -52,9 +58,9 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.99,
-      "changePct": -6.44,
-      "weekChangePct": -13.94,
+      "price": 15.71,
+      "changePct": -1.75,
+      "weekChangePct": -15.85,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -110,16 +116,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.75,
-      "changePct": 0.01,
-      "weekChangePct": -0.21,
-      "monthChangePct": -0.55,
+      "price": 6.74,
+      "changePct": -0.14,
+      "weekChangePct": -0.35,
+      "monthChangePct": -0.69,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7526,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-03"
+      "refPrice": 6.7659,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -129,15 +135,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.0,
-      "weekChangePct": 0.01,
-      "monthChangePct": -0.01,
+      "changePct": 0.01,
+      "weekChangePct": 0.02,
+      "monthChangePct": 0.0,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8426,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-03"
+      "refPrice": 7.8421,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 157.7,
-      "changePct": 0.07,
-      "weekChangePct": -3.71,
-      "monthChangePct": -2.33,
+      "price": 157.88,
+      "changePct": 0.19,
+      "weekChangePct": -3.6,
+      "monthChangePct": -2.21,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 156.68,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-03"
+      "refPrice": 157.1671,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,51 +171,25 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": -0.25,
-      "weekChangePct": 1.28,
-      "monthChangePct": 0.68,
+      "changePct": -0.27,
+      "weekChangePct": 1.26,
+      "monthChangePct": 0.66,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8669,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-03"
+      "refPrice": 0.8687,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7424,
+      "price": 0.7441,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-03"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.808,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-03"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2816,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-03"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,9 +200,9 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4121.0,
-      "changePct": 1.78,
-      "weekChangePct": 1.14,
+      "price": 4104.4,
+      "changePct": 1.37,
+      "weekChangePct": 0.73,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -233,9 +213,9 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 80.43,
-      "changePct": -5.01,
-      "weekChangePct": -2.64,
+      "price": 82.31,
+      "changePct": -2.79,
+      "weekChangePct": -0.36,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -246,9 +226,9 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.6,
-      "changePct": 2.51,
-      "weekChangePct": 4.08,
+      "price": 6.62,
+      "changePct": 2.88,
+      "weekChangePct": 4.46,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -508,6 +488,16 @@
   ],
   "finnhubNews": [
     {
+      "id": 8295173,
+      "title": "BP's quarterly profit doubles to over $5 billion after Iran war oil surge - Reuters",
+      "summary": "BP's quarterly profit doubles to over $5 billion after Iran war oil surge  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOdU9hYzNQV1Ezbmd5OXB4Z1d4QTR0QU80Z0MteS03b002RE5yd2hPb2l5Z0NqLWJ4Y21PSTN0Z29UNVBBVEVyRDRGc0VNUnoySWNlcWU4cUlVXy1iNWd0MVA3V3pXLXN1ZHlyQWcyNzRfcmNxYnJKWFBQTWZ1anZtajRzcFRSd3BIQWJhOVlfQXZUaVU2Y1RlTUhqcHBQZ1ItTjhJeEg0NA?oc=5",
+      "publishedAt": "2026-08-04T06:09:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8290376,
       "title": "OPEC+ oil output hike is irrelevant for now, not for later - Reuters",
       "summary": "OPEC+ oil output hike is irrelevant for now, not for later  Reuters",
@@ -515,6 +505,36 @@
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOZ1F5SEtvVzlTU0VibXRmNGx4ZldyYllQcHBfSEkzRHVLVGdrNUxMLUZtQXZsT1pTWjJ4Z1F0ekFyN3NkWjRITjdCc2NtcmpFZ0k2OWN5Z25WOVVFVHpJNEVWQkU3emxZYkUtVFhFand1cWVHSWUyRUpQa1FOOUtPWlRKUzRVQUs3V3oxcWphVzVKUUhSSUNZaHNtdHVkM1U5VXE2Q0ZPNzE4UG5WQmdVS2cwZlU3UnNN?oc=5",
       "publishedAt": "2026-08-04T06:00:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8294970,
+      "title": "Aramco posts 44% rise in net profit as Iran war drives up oil prices - Reuters",
+      "summary": "Aramco posts 44% rise in net profit as Iran war drives up oil prices  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOcXFsci0ySk53THJaUktvbFlJd0ZjTzhFNmJSU0gtY1B5RElscWFhWHJLWTcxdlJ1SDhhV1dJcmQteVdaT0NLekZaMU05V2tockhvaGFtYlgzbk5OdWpDVEM4TmFoX2FpZFMyQWdxTzJ2SkdzYVExYVdRWHBKVlNPcTBzX1hub05WWk45TE1HVDM?oc=5",
+      "publishedAt": "2026-08-04T05:32:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8294972,
+      "title": "Toyota lifts annual forecast and announces stock buyback, but shares fall - Reuters",
+      "summary": "Toyota lifts annual forecast and announces stock buyback, but shares fall  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQSy1kNU1lRXkxX25PQUFPbTQtT2FCaXp3VHNJb0N6czVieVFvZmY1U1lta3NzVEdwRUEzQmd6b2h0dmtOTTVyZmNTTDhiVU1od3dCWFN6U2JRMFRZeTE2cnBwTHpGekxMNzhGRk1CMnZSRllsdG5UZmpmXzRoNTVKeDlQUlBwMWFlUG9KbzJGOGkzZGtUajh4V1R2WmhMdXdiVVNiZlFiLTZHbHhlUExSS05QdnU2RFRUUTRuQ3ZsM2M1M0RSdkxFajVMWU4ycDVGanc?oc=5",
+      "publishedAt": "2026-08-04T05:08:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8295072,
+      "title": "Oil traders set to wind down UAE exchange positions after ADNOC benchmark change - Reuters",
+      "summary": "Oil traders set to wind down UAE exchange positions after ADNOC benchmark change  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTTIzRWd4cTNxUHJ2NTJfQTNMVjIyRnJrN0U0NGFMNzNHdVJscGsxQ0tPeHljNVVjd0p0MU1FM3FEcXdfR05zR3c5QVB4czU0V1BfamdIVUtLdWZNa3BCb0ozM2NPZkU2WFNFSGFKbmVkUXZiOGNhbnBZRWQwNkNINWlWTm5QdW1hbXpCZDBDVXhUZmQ1b0ZLZ2dOelRJbkVlN0RjNXozSUdmVXdnSW01VnVBTzIyTVVzY2VmRUNPTlczWGZSNzQ5eQ?oc=5",
+      "publishedAt": "2026-08-04T04:46:00+00:00",
       "related": ""
     },
     {
@@ -528,73 +548,33 @@
       "related": ""
     },
     {
-      "id": 8294344,
-      "title": "Gold holds ground with Middle East turmoil, US jobs data in focus - Reuters",
-      "summary": "Gold holds ground with Middle East turmoil, US jobs data in focus  Reuters",
+      "id": 8295071,
+      "title": "Rupee nudges higher, inflow-led boost runs into importer hedging drag - Reuters",
+      "summary": "Rupee nudges higher, inflow-led boost runs into importer hedging drag  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPdzFHZFRoSEVvd0hvWk5nQl9nYVZPdGJSSTRMcWdPMFc5MS1NYnVtNFdvOEpwQVJHbmZtMWJYTzRmcnJCNkt1bmpBb0ZfTUsycW5SZXFDTWdiU0JrOUl1ek9lVC1qZWVMYjJ5bVQwTy11MkNpVDF6RW8xMm9GY0d1YnB0RDJ5REhSZjZ5QXAzOE15QzVWNk5SRERBUjJOM1oxc1VXdHNR?oc=5",
-      "publishedAt": "2026-08-04T01:05:00+00:00",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxONXZxeFNDdDRBUUFmVU9XeDVzcEFMMzQ1SVFzZHFsWlZaNFdtb25RdkN2WEI1OUZ6WEt3OHlITUpjZjMxSDVGa2JoQ1poU2RMaVhVU2d0bFQxczFiREtFcDVDVC1zTzNvcVFhYkNOeTczdVh4eThDZEZpeG5wWVJXRDlRZWgtcVllLTBXZnJIVkR4QV9ucHh0TFlCdEpGcnUwUElWakdBakFIcHUxU1U4TFZhRFFQYWJsMDlz?oc=5",
+      "publishedAt": "2026-08-04T02:56:00+00:00",
       "related": ""
     },
     {
-      "id": 8293926,
-      "title": "Oil ticks up after selloff as talks to end US-Iran war remain uncertain - Reuters",
-      "summary": "Oil ticks up after selloff as talks to end US-Iran war remain uncertain  Reuters",
+      "id": 8295388,
+      "title": "Shipping traffic at key Gulf waterways little changed on uncertain peace talks - Reuters",
+      "summary": "Shipping traffic at key Gulf waterways little changed on uncertain peace talks  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOU0VaWUlWWUxJMXVaM1NiVS0yeWUtYWhpTlo4MTh0ZzZkZms3aFVLNVRfR1JISmxrY2d2VmM1UWFKTVFtSlEzYmt0N3ZuRUFLWXd5bzh5QkVXOVRxUVh3VHRnOWkzanJWb2tqUU13cURMRFR3TFphYkFzRVRsbnY5aEpDdTJLLVNLOXpwYzRNckVGQW9TcThhNHdKVlVTZ2Q4SkRraWR5TjlvbmN4VE1rLWViVFNTRUZU?oc=5",
-      "publishedAt": "2026-08-04T01:02:00+00:00",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNX3lXOERWQUVYQV8yeHduRkh1cDJVWjE2eEZja21TbXpqeDJEVHZBS0J5OXExanZmNEpCaVEzT2VRdDFsaXpJWjRXbmVpRFVkelozdXUtYUZEcDdCVjFxQVFfODBRc2dzR1dfWVNyQjVhNHVFckg3OG9XRW01dW5EYlBTNnRFZ1A1OFVRSTJkYkJzcmdsUEpSYU9wa3lpeGxmLUkyNVJHeXBhWkNBNlN0ZUJ1NUdURGl3Y3NkRFRZOTl2d1Zv?oc=5",
+      "publishedAt": "2026-08-04T02:14:00+00:00",
       "related": ""
     },
     {
-      "id": 8294345,
-      "title": "Yen clings to intervention gains as traders stay alert to more - Reuters",
-      "summary": "Yen clings to intervention gains as traders stay alert to more  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQN3VzRDl6d2tuSmN4M2xWZ080QWhfVWFjRGw4MjRwakpXMndBZ25zUWZzdXRwbmJVQ3ViYVJjS1hPdlFJR3MxX00xLW92YnZXak1HYi1nQ0phY3Y3amRKWjBKZ243Nm9YaEplbnBPVUNibG5jeTYtM0x0cmtNM3ctYzN4UjEyUk8xSnhhelZFNnlBZWQxQmR0dDlHWThJVGJTbGo4b09FalJmSVhI?oc=5",
-      "publishedAt": "2026-08-04T01:02:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8291500,
-      "title": "Wall Street rallies, Dow closes at record on Iran talks optimism - Reuters",
-      "summary": "Wall Street rallies, Dow closes at record on Iran talks optimism  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQTC1HdWxXY3dmcFlCNm9FZ3N5VnVhSWg0ZHV4a1RRdUdlUVM5QUhNYUlueDN2akloUFFEUWRIWXNHeFk1VEFHMDhBRTV1XzY5TnBxUXlVQk96NkFMSnNuTURuTzhCOVRBUkVVT2p1VjBOZFBZdk4zM01WQlFDY1ZZTGhqR2NaeXNrVWN0Ym5aQ1VENmZ5aGRKRWRoMHlNRTVxMWxVSFVrOA?oc=5",
-      "publishedAt": "2026-08-03T23:22:02+00:00",
-      "related": ""
-    },
-    {
-      "id": 8293207,
-      "title": "Analysis: Federal Reserve may be pulled into Bessent’s effort to support Japan’s yen",
-      "summary": "Treasury Secretary Scott Bessent wants to defend the yen without selling Treasuries into a sensitive U.S. bond market. The Federal Reserve could help.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/03/bessent-fed-japan-yen-fima-repo-facility.html",
-      "publishedAt": "2026-08-03T22:40:32+00:00",
-      "related": ""
-    },
-    {
-      "id": 8293824,
-      "title": "US FAA certifies Boeing 737 MAX 7 in win for planemaker - Reuters",
-      "summary": "US FAA certifies Boeing 737 MAX 7 in win for planemaker  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObm5abmxuWVVCMWR2ZDdDaTFWSnJ5SEYxZnc5MFg0Qko5RkJWMGZpTndzclotOVAza0ZYRHJoTmpUZk1yclB4MnZxUFlYanVwbnlGd3JaNk5sZ2YxbjliM3EyVk55bUtEZU9mQWNRR214WTlQRVdTRXAwbVdGRzdYdE1CY0hrOXlIWjRlV0V0VGg2d05qLUJzT05iQ0oyaS13UFM4azRFMXF2T2ZOUEhPT2hJblN1bUozNlc1SkNn?oc=5",
-      "publishedAt": "2026-08-03T22:26:27+00:00",
-      "related": ""
-    },
-    {
-      "id": 8294967,
-      "title": "What are the main events for today?",
-      "summary": "<p>EUROPEAN SESSION</p><p>In the European session, we don't have much on the agenda other than a couple of low tier releases like the Spanish employment change and Italian retail sales data. The figur",
+      "id": 8295384,
+      "title": "Reminder: US non-farm payrolls will be on the data docket this week",
+      "summary": "<p class=\"text-align-justify\" style=\"text-align: justify;\">And it doesn't come any bigger than the US jobs report. To be fair, perhaps the US CPI report will be of more importance. However, don't unde",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/what-are-the-main-events-for-today-17/",
-      "publishedAt": "2026-08-04T06:31:00+00:00",
+      "link": "https://investinglive.com/news/reminder-us-non-farm-payrolls-will-be-on-the-data-docket-this-week/",
+      "publishedAt": "2026-08-04T08:42:23+00:00",
       "related": ""
     }
   ],
