@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-04T14:39:05+00:00",
+  "updatedAt": "2026-08-04T16:30:49+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: HTTP Error 522: <none>",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,9 +35,9 @@
     }
   ],
   "summary": {
-    "vix": 15.91,
+    "vix": 16.12,
     "vixRegime": "normal",
-    "us10yYield": 4.64,
+    "us10yYield": 4.63,
     "usdCnh": 6.75,
     "usdCnhChangePct": null,
     "sectorLeader": "科技",
@@ -39,7 +45,7 @@
     "yieldSpread10y2y": 0.45,
     "hints": [
       "美债收益率回落，利于风险资产估值修复。",
-      "美股行业轮动：科技 领涨（+3.59%），公用事业 靠后。",
+      "美股行业轮动：科技 领涨（+4.58%），公用事业 靠后。",
       "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
@@ -52,10 +58,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.91,
-      "changePct": 0.32,
-      "weekChangePct": -12.63,
-      "monthChangePct": 2.18,
+      "price": 16.12,
+      "changePct": 1.64,
+      "weekChangePct": -11.48,
+      "monthChangePct": 3.53,
       "source": "yahoo"
     }
   ],
@@ -67,10 +73,10 @@
       "unit": "yield_pct",
       "currency": null,
       "region": null,
-      "price": 4.64,
-      "changePct": -0.96,
-      "weekChangePct": 0.8,
-      "monthChangePct": 3.62,
+      "price": 4.63,
+      "changePct": -1.26,
+      "weekChangePct": 0.5,
+      "monthChangePct": 3.3,
       "source": "yahoo"
     },
     {
@@ -111,15 +117,15 @@
       "currency": null,
       "region": null,
       "price": 6.74,
-      "changePct": -0.23,
-      "weekChangePct": -0.45,
-      "monthChangePct": -0.79,
+      "changePct": -0.22,
+      "weekChangePct": -0.44,
+      "monthChangePct": -0.78,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7535,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-04"
+      "refPrice": 6.7659,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -129,15 +135,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.02,
+      "changePct": 0.01,
       "weekChangePct": 0.02,
       "monthChangePct": 0.0,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8433,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-04"
+      "refPrice": 7.8421,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 157.54,
-      "changePct": -0.03,
-      "weekChangePct": -3.8,
-      "monthChangePct": -2.42,
+      "price": 157.46,
+      "changePct": -0.07,
+      "weekChangePct": -3.85,
+      "monthChangePct": -2.47,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 157.41,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-04"
+      "refPrice": 157.1671,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,51 +171,25 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": -0.13,
-      "weekChangePct": 1.4,
-      "monthChangePct": 0.8,
+      "changePct": -0.18,
+      "weekChangePct": 1.35,
+      "monthChangePct": 0.75,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8684,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-04"
+      "refPrice": 0.8687,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7437,
+      "price": 0.7441,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-04"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8093,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-04"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2824,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-04"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,10 +200,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4142.6,
-      "changePct": 2.7,
-      "weekChangePct": 2.63,
-      "monthChangePct": -0.3,
+      "price": 4141.2,
+      "changePct": 2.67,
+      "weekChangePct": 2.6,
+      "monthChangePct": -0.33,
       "source": "yahoo"
     },
     {
@@ -233,10 +213,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 76.36,
-      "changePct": -4.95,
-      "weekChangePct": -3.66,
-      "monthChangePct": 11.39,
+      "price": 76.04,
+      "changePct": -5.35,
+      "weekChangePct": -4.06,
+      "monthChangePct": 10.93,
       "source": "yahoo"
     },
     {
@@ -246,10 +226,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.66,
-      "changePct": 2.2,
-      "weekChangePct": 5.31,
-      "monthChangePct": 7.76,
+      "price": 6.64,
+      "changePct": 1.87,
+      "weekChangePct": 4.97,
+      "monthChangePct": 7.41,
       "source": "yahoo"
     }
   ],
@@ -261,9 +241,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4600.93,
-      "changePct": 1.59,
-      "weekChangePct": -2.01,
+      "price": 4529.1,
+      "changePct": -3.6,
+      "weekChangePct": -5.26,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -302,40 +282,12 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 184.43,
-      "changePct": 3.59,
-      "weekChangePct": 7.8,
-      "monthChangePct": 0.47,
+      "price": 186.2,
+      "changePct": 4.58,
+      "weekChangePct": 8.83,
+      "monthChangePct": 1.43,
       "source": "yahoo",
       "sector": "科技"
-    },
-    {
-      "symbol": "XLF",
-      "name": "金融",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 57.76,
-      "changePct": 0.65,
-      "weekChangePct": 0.27,
-      "monthChangePct": 2.88,
-      "source": "yahoo",
-      "sector": "金融"
-    },
-    {
-      "symbol": "XLI",
-      "name": "工业",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 184.1,
-      "changePct": 0.51,
-      "weekChangePct": 0.88,
-      "monthChangePct": -0.79,
-      "source": "yahoo",
-      "sector": "工业"
     },
     {
       "symbol": "XLB",
@@ -344,26 +296,40 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 51.24,
-      "changePct": 0.46,
-      "weekChangePct": -2.09,
-      "monthChangePct": -1.41,
+      "price": 51.83,
+      "changePct": 1.62,
+      "weekChangePct": -0.96,
+      "monthChangePct": -0.28,
       "source": "yahoo",
       "sector": "材料"
     },
     {
-      "symbol": "XLC",
-      "name": "通信",
+      "symbol": "XLI",
+      "name": "工业",
       "category": "sector",
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 111.02,
-      "changePct": -0.29,
-      "weekChangePct": 1.23,
-      "monthChangePct": 0.73,
+      "price": 185.75,
+      "changePct": 1.41,
+      "weekChangePct": 1.79,
+      "monthChangePct": 0.1,
       "source": "yahoo",
-      "sector": "通信"
+      "sector": "工业"
+    },
+    {
+      "symbol": "XLF",
+      "name": "金融",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 57.88,
+      "changePct": 0.88,
+      "weekChangePct": 0.49,
+      "monthChangePct": 3.11,
+      "source": "yahoo",
+      "sector": "金融"
     },
     {
       "symbol": "XLY",
@@ -372,10 +338,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 117.74,
-      "changePct": -0.4,
-      "weekChangePct": 4.67,
-      "monthChangePct": -0.23,
+      "price": 118.24,
+      "changePct": 0.02,
+      "weekChangePct": 5.12,
+      "monthChangePct": 0.19,
       "source": "yahoo",
       "sector": "可选消费"
     },
@@ -386,12 +352,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 84.39,
-      "changePct": -0.55,
-      "weekChangePct": -3.07,
-      "monthChangePct": 0.34,
+      "price": 84.81,
+      "changePct": -0.06,
+      "weekChangePct": -2.58,
+      "monthChangePct": 0.84,
       "source": "yahoo",
       "sector": "必需消费"
+    },
+    {
+      "symbol": "XLC",
+      "name": "通信",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 111.24,
+      "changePct": -0.09,
+      "weekChangePct": 1.43,
+      "monthChangePct": 0.93,
+      "source": "yahoo",
+      "sector": "通信"
     },
     {
       "symbol": "XLV",
@@ -400,10 +380,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 161.24,
-      "changePct": -0.62,
-      "weekChangePct": -3.6,
-      "monthChangePct": -0.44,
+      "price": 162.06,
+      "changePct": -0.11,
+      "weekChangePct": -3.11,
+      "monthChangePct": 0.06,
       "source": "yahoo",
       "sector": "健康"
     },
@@ -414,10 +394,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 44.69,
-      "changePct": -1.08,
-      "weekChangePct": -2.87,
-      "monthChangePct": 0.9,
+      "price": 45.12,
+      "changePct": -0.14,
+      "weekChangePct": -1.95,
+      "monthChangePct": 1.86,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -428,10 +408,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 58.11,
-      "changePct": -1.16,
-      "weekChangePct": 0.94,
-      "monthChangePct": 9.37,
+      "price": 58.49,
+      "changePct": -0.5,
+      "weekChangePct": 1.61,
+      "monthChangePct": 10.1,
       "source": "yahoo",
       "sector": "能源"
     },
@@ -442,10 +422,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 43.74,
-      "changePct": -1.41,
-      "weekChangePct": -3.92,
-      "monthChangePct": -3.45,
+      "price": 44.08,
+      "changePct": -0.62,
+      "weekChangePct": -3.15,
+      "monthChangePct": -2.68,
       "source": "yahoo",
       "sector": "公用事业"
     }
@@ -508,6 +488,26 @@
   ],
   "finnhubNews": [
     {
+      "id": 8295716,
+      "title": "EXCLUSIVE: US has used 'virtually all' of its long-range precision missiles during Iran war, sources say - Reuters",
+      "summary": "EXCLUSIVE: US has used 'virtually all' of its long-range precision missiles during Iran war, sources say  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOZjVoa01lTFhQYVMtVjRxRWZKSng1YzFUTTNJOVI1T1pWZVNKc1czOWhJWHB3VDFFWnVrY3lLT1FnSVBfU1M1RFdrU2FsYVlKZXdhVm9VbF9PaEFNeGVMR0ZtNmlEeGhkWG1iang1U0kzb3hmWENGSnNXODRzdnZYaE1LYkY4Vm1hbzJEcEl1ZzZIRVBQLS1nYUYyTWdDdjZjXzN0NmtuZm5IV2FEdlBQby1UUnBqc0FF?oc=5",
+      "publishedAt": "2026-08-04T16:16:40+00:00",
+      "related": ""
+    },
+    {
+      "id": 8294343,
+      "title": "Qatar says progress made toward US-Iran talks on ending war - Reuters",
+      "summary": "Qatar says progress made toward US-Iran talks on ending war  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOaUY3M2pidURfcVlodzZaVEctbGNSYS1rNlJrR21pQm8yVm50U05QSmRlWURQWWh5UklWZUVMVmlRdzhmbVJrN05IdVNXVW83T3l1TUo0ZjJTMzNURzlOdmNMM2YxY2JwVHQtby1aTFVfZmFnSjRFT0hSaHlzeW50XzNPcUZROG13MUxxNVMwdGd3UkR2cTgyeURHNERQWlUxeFJYR1ln?oc=5",
+      "publishedAt": "2026-08-04T15:12:17+00:00",
+      "related": ""
+    },
+    {
       "id": 8296501,
       "title": "Someone on Wall Street thinks SpaceX could triple this week",
       "summary": "SpaceX reports its first earnings results since its June IPO Tuesday after the bell.",
@@ -528,13 +528,13 @@
       "related": ""
     },
     {
-      "id": 8295716,
-      "title": "EXCLUSIVE: US has used 'virtually all' of its long-range precision missiles during Iran war, sources say - Reuters",
-      "summary": "EXCLUSIVE: US has used 'virtually all' of its long-range precision missiles during Iran war, sources say  Reuters",
+      "id": 8294970,
+      "title": "Aramco says US-Iran war has cost the global market 2.6 billion barrels of oil - Reuters",
+      "summary": "Aramco says US-Iran war has cost the global market 2.6 billion barrels of oil  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOZjVoa01lTFhQYVMtVjRxRWZKSng1YzFUTTNJOVI1T1pWZVNKc1czOWhJWHB3VDFFWnVrY3lLT1FnSVBfU1M1RFdrU2FsYVlKZXdhVm9VbF9PaEFNeGVMR0ZtNmlEeGhkWG1iang1U0kzb3hmWENGSnNXODRzdnZYaE1LYkY4Vm1hbzJEcEl1ZzZIRVBQLS1nYUYyTWdDdjZjXzN0NmtuZm5IV2FEdlBQby1UUnBqc0FF?oc=5",
-      "publishedAt": "2026-08-04T13:28:39+00:00",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOcXFsci0ySk53THJaUktvbFlJd0ZjTzhFNmJSU0gtY1B5RElscWFhWHJLWTcxdlJ1SDhhV1dJcmQteVdaT0NLekZaMU05V2tockhvaGFtYlgzbk5OdWpDVEM4TmFoX2FpZFMyQWdxTzJ2SkdzYVExYVdRWHBKVlNPcTBzX1hub05WWk45TE1HVDM?oc=5",
+      "publishedAt": "2026-08-04T13:32:48+00:00",
       "related": ""
     },
     {
@@ -548,53 +548,33 @@
       "related": ""
     },
     {
-      "id": 8296040,
-      "title": "EXCLUSIVE: Ukraine's Fire Point starts to integrate European tech into missile defence system - Reuters",
-      "summary": "EXCLUSIVE: Ukraine's Fire Point starts to integrate European tech into missile defence system  Reuters",
+      "id": 8294972,
+      "title": "Toyota lifts annual forecast and unveils $6 billion buyback, but shares fall - Reuters",
+      "summary": "Toyota lifts annual forecast and unveils $6 billion buyback, but shares fall  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQRzFrNFI0Ry1iYVEtVTB1SFBPbXF1N244ZjJOaTh4SE52eWVETjFvcHBlRlJ5eXlpdGJsYktuX1JPVW5LbmRneW1jQXdpdC1XSmo4OTVEME42eXk3bEhBYWZUOEdOaHVmSHc0OFk3NUl2Y2lkYXZvdGlFa0Q0ODVMYVdNSHZ1SzU2czZSN3ZuczdBbFVJSTZSTkZPTXItMU1zV0Z0VmxsT2RvaVNxT0tsd0hiWDdKcERacDVsUERSdFpRbXpIU1NGa29aU0xMd08wbl9mc1lUbjA?oc=5",
-      "publishedAt": "2026-08-04T11:19:34+00:00",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQSy1kNU1lRXkxX25PQUFPbTQtT2FCaXp3VHNJb0N6czVieVFvZmY1U1lta3NzVEdwRUEzQmd6b2h0dmtOTTVyZmNTTDhiVU1od3dCWFN6U2JRMFRZeTE2cnBwTHpGekxMNzhGRk1CMnZSRllsdG5UZmpmXzRoNTVKeDlQUlBwMWFlUG9KbzJGOGkzZGtUajh4V1R2WmhMdXdiVVNiZlFiLTZHbHhlUExSS05QdnU2RFRUUTRuQ3ZsM2M1M0RSdkxFajVMWU4ycDVGanc?oc=5",
+      "publishedAt": "2026-08-04T11:34:37+00:00",
       "related": ""
     },
     {
-      "id": 8295819,
-      "title": "Pfizer tops quarterly estimates, hikes low end of revenue guidance on strength of non-Covid products",
-      "summary": "Pfizer said it cut its full-year revenue expectation for its Covid products to $4 billion, down from around $5 billion previously.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/04/pfizer-pfe-earnings-q2-2026.html",
-      "publishedAt": "2026-08-04T11:13:24+00:00",
-      "related": ""
-    },
-    {
-      "id": 8295700,
-      "title": "Palantir jumps 16% on 'otherworldly' commercial revenue — here's what's driving the demand",
-      "summary": "\"Our customers have declined to become vassal states of the language labs,\" Palantir's co-founder and CEO Alex Karp said after blowout second-quarter earnings.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/04/palantir-2q-earnings-ai-sovereign-tools.html",
-      "publishedAt": "2026-08-04T10:27:09+00:00",
-      "related": ""
-    },
-    {
-      "id": 8296273,
-      "title": "PODCAST: US munitions, Max Miller, Ceuta and Infantino's future - Reuters",
-      "summary": "PODCAST: US munitions, Max Miller, Ceuta and Infantino's future  Reuters",
+      "id": 8295495,
+      "title": "Stocks rise despite higher oil prices as Iran tensions persist - Reuters",
+      "summary": "Stocks rise despite higher oil prices as Iran tensions persist  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUEY5UU5rSzJLWl80R1JRekd4T2RpZkUyU2JCeG04V2VTOGJuRDFnTzQ5MWFGQk9UcXJ2UnlnYnFiY3FMSzNvVWtYbGJyUkpaNHRueUpKbDdGeVMtdGhTUmhBbVoxeDdvcVNGa2E1TXZpN0J4TVZWdHVHMVZaSUExTDZhdkZXQVFROG9ncEV4NHgyWk9QR2I4?oc=5",
-      "publishedAt": "2026-08-04T10:23:14+00:00",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9FbUhCcDNQSE1IQ3dnM055RTJNZ0N1WHYtTUswbUtjZmRTS3FwbEtKZkd5Ti1WT0JndWtUSEJJTktud19OQzRELW93em1SMFdjcnphTVBMQ1BPMzBJLTdEYmxMbnJ2bFB4NVN4ZVlKYjIyZUlFZGx3RUljSQ?oc=5",
+      "publishedAt": "2026-08-04T11:32:23+00:00",
       "related": ""
     },
     {
-      "id": 8296602,
-      "title": "JOLTs job openings 7.359M vs 7.400M estimate.  Lower than last month.",
-      "summary": "<ul><li>Prior month 7.537M</li></ul><p class=\"markdown prose dark:prose-invert wrap-break-word w-full light markdown-new-styling\"></p><p class=\"PDq2pG_selectionAnchorContainer\">US JOLTS Report (June) ",
+      "id": 8296946,
+      "title": "USDCAD has had an up and down trading day today, but buyers are trying to make a play",
+      "summary": "<p class=\"PDq2pG_selectionAnchorContainer\">The USDCAD has spent the day yo-yoing between support and resistance, with price action largely confined between the 100-hour and 200-hour moving averages. S",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/jolts-job-openings-7-359m-vs-7-400m-estimate-lower-than-last-month/",
-      "publishedAt": "2026-08-04T14:00:59+00:00",
+      "link": "https://investinglive.com/technical-analysis/usdcad-has-had-an-up-and-down-trading-day-today-but-buyers-are-trying-to-make-a-play/",
+      "publishedAt": "2026-08-04T15:44:33+00:00",
       "related": ""
     }
   ],
