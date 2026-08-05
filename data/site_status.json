@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-05T04:38:40+00:00",
+  "updatedAt": "2026-08-05T06:17:59+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -253,8 +253,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-05T04:20:09+00:00",
-      "status": "ok",
-      "ageMinutes": 18
+      "status": "stale",
+      "ageMinutes": 117
     },
     {
       "id": "macro",
@@ -262,8 +262,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-05T04:20:02+00:00",
-      "status": "ok",
-      "ageMinutes": 18
+      "status": "stale",
+      "ageMinutes": 117
     },
     {
       "id": "truth",
@@ -271,8 +271,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-05T04:29:53+00:00",
-      "status": "ok",
-      "ageMinutes": 8
+      "status": "stale",
+      "ageMinutes": 108
     },
     {
       "id": "wencai",
@@ -280,17 +280,17 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-05T03:28:32+00:00",
-      "status": "ok",
-      "ageMinutes": 70
+      "status": "stale",
+      "ageMinutes": 169
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-08-05T12:17:40+08:00",
+      "updatedAt": "2026-08-05T14:17:59+08:00",
       "status": "ok",
-      "ageMinutes": 21
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -299,9 +299,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-02T05:22:59+00:00",
       "status": "ok",
-      "ageMinutes": 4275
+      "ageMinutes": 4375
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "30975703056"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "30980860393"
 }
