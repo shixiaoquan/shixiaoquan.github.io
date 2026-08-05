@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-05T09:46:55+00:00",
+  "updatedAt": "2026-08-05T10:02:18+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 6,
+    "pipelinesStale": 0,
+    "automation": "持续运行中",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -246,7 +246,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-05T09:46:55+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 15
     },
     {
       "id": "macro",
@@ -255,25 +255,25 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-05T09:46:48+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 15
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-08-05T07:19:19+00:00",
-      "status": "stale",
-      "ageMinutes": 147
+      "updatedAt": "2026-08-05T10:02:17+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-08-05T06:39:33+00:00",
-      "status": "stale",
-      "ageMinutes": 187
+      "updatedAt": "2026-08-05T09:45:42+00:00",
+      "status": "ok",
+      "ageMinutes": 16
     },
     {
       "id": "reports",
@@ -282,7 +282,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-05T14:17:59+08:00",
       "status": "ok",
-      "ageMinutes": 208
+      "ageMinutes": 224
     },
     {
       "id": "backtest",
@@ -291,9 +291,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-02T05:22:59+00:00",
       "status": "ok",
-      "ageMinutes": 4583
+      "ageMinutes": 4599
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "30994600089"
+  "triggeredBy": "Update Truth Social",
+  "runId": "30995742560"
 }
