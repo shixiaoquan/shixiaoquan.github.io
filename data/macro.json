@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-05T04:20:02+00:00",
+  "updatedAt": "2026-08-05T07:07:18+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -111,15 +117,15 @@
       "currency": null,
       "region": null,
       "price": 6.75,
-      "changePct": -0.09,
-      "weekChangePct": -0.37,
-      "monthChangePct": -0.73,
+      "changePct": -0.08,
+      "weekChangePct": -0.35,
+      "monthChangePct": -0.72,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7535,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-04"
+      "refPrice": 6.7629,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -129,15 +135,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.02,
+      "changePct": 0.01,
       "weekChangePct": 0.03,
       "monthChangePct": 0.01,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8433,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-04"
+      "refPrice": 7.8426,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 157.39,
-      "changePct": -0.09,
-      "weekChangePct": -3.95,
-      "monthChangePct": -2.9,
+      "price": 157.66,
+      "changePct": 0.08,
+      "weekChangePct": -3.79,
+      "monthChangePct": -2.73,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 157.41,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-04"
+      "refPrice": 157.6199,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,15 +171,15 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": 0.3,
-      "weekChangePct": 1.37,
-      "monthChangePct": 0.88,
+      "changePct": 0.34,
+      "weekChangePct": 1.4,
+      "monthChangePct": 0.91,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8684,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-04"
+      "refPrice": 0.8678,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
@@ -182,34 +188,8 @@
       "quote": "GBP",
       "price": 0.7437,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-04"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8093,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-04"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2824,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-04"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,10 +200,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4197.1,
-      "changePct": 4.05,
-      "weekChangePct": 3.98,
-      "monthChangePct": 1.01,
+      "price": 4235.7,
+      "changePct": 3.43,
+      "weekChangePct": 4.98,
+      "monthChangePct": 2.18,
       "source": "yahoo"
     },
     {
@@ -233,10 +213,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 74.59,
-      "changePct": -7.16,
-      "weekChangePct": -5.89,
-      "monthChangePct": 8.81,
+      "price": 75.1,
+      "changePct": -0.88,
+      "weekChangePct": -11.08,
+      "monthChangePct": 6.62,
       "source": "yahoo"
     },
     {
@@ -246,10 +226,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.65,
-      "changePct": 2.06,
-      "weekChangePct": 5.16,
-      "monthChangePct": 7.62,
+      "price": 6.66,
+      "changePct": 0.56,
+      "weekChangePct": 6.09,
+      "monthChangePct": 7.84,
       "source": "yahoo"
     }
   ],
@@ -261,9 +241,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4646.25,
-      "changePct": 2.59,
-      "weekChangePct": -1.05,
+      "price": 4655.48,
+      "changePct": 2.79,
+      "weekChangePct": -0.85,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -274,7 +254,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3519.86,
+      "price": 3531.26,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -287,7 +267,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1700.05,
+      "price": 1693.01,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -508,9 +488,29 @@
   ],
   "finnhubNews": [
     {
+      "id": 8299784,
+      "title": "US and Iran having 'very good discussions', Trump says - Reuters",
+      "summary": "US and Iran having 'very good discussions', Trump says  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQUFpfZEh3NVhNLURNVl9ETWp2ak5nZEx4d0JYQ19WZ3Z6bTl3V2wyUzVLQmFnTkJrZTZtVXd1cnp2dkdXUmh0d1FXUmhfbGQ1a3dKY1ZzQ0pXQTdUcS02X1llNkdFbzFLN0k2YXk2X2JEUTVCV1RBeGdUaFA2VGFzSW9LYlRDQm5senFDSzFVRkxHaXdSazRBWUlTT1pjY00yU1Qw?oc=5",
+      "publishedAt": "2026-08-05T05:11:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8299681,
+      "title": "Gulf shipping traffic steady amid uncertainty of peace talks - Reuters",
+      "summary": "Gulf shipping traffic steady amid uncertainty of peace talks  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQaWpxYUZIYkdaMkhoNVRrM2ZkZ3NYdWh4aUJEb2pOa29zOFBROGFHdmxwNDZZOHhicHpOOGVlS0FGTC1QdHR4UmRVbmtacWZrc3J4empuUEt5dDNSZTJRb25obllvdEFaQTVQV1B1Q05wRlpwdVpVaEJHZW80MTBxWmViU2d3V0psZHMxMENsV0x3RzBJWXpZV0hlc3MyeWxSQ3dmZllIZzRkaGNvb2ppaQ?oc=5",
+      "publishedAt": "2026-08-05T03:04:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8299166,
-      "title": "Oil steadies after two-day slump as investors eye Hormuz traffic - Reuters",
-      "summary": "Oil steadies after two-day slump as investors eye Hormuz traffic  Reuters",
+      "title": "Oil extends declines as investors await outcome of US-Iran talks - Reuters",
+      "summary": "Oil extends declines as investors await outcome of US-Iran talks  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOZDd2cFJ5Z2dsbTliajVMY1o5eVQ3Q3djdGVaYXA2aVhJQUROSVk5NmVjSkUydkw0YUItOGI1VFl1Wl9uZVY2SWhZLVZZY2hFTTFyaEoxM0otRWQ0Vzk4bjdEV18yYkhQS05GUzQ5dHdsY0wwemg4cG53dnZkVmx0M1pMdzl2cDk2MDBlZlN3ZVY0RVMxU2JNcE5Ta2Nrd3l4OVpvTnlIY0hscHRpOUozRVpDUQ?oc=5",
@@ -518,23 +518,13 @@
       "related": ""
     },
     {
-      "id": 8294343,
-      "title": "Qatar says mediators make progress in efforts to end US-Iran war - Reuters",
-      "summary": "Qatar says mediators make progress in efforts to end US-Iran war  Reuters",
+      "id": 8299682,
+      "title": "Gold extends gains on lower oil and softer dollar - Reuters",
+      "summary": "Gold extends gains on lower oil and softer dollar  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOaUY3M2pidURfcVlodzZaVEctbGNSYS1rNlJrR21pQm8yVm50U05QSmRlWURQWWh5UklWZUVMVmlRdzhmbVJrN05IdVNXVW83T3l1TUo0ZjJTMzNURzlOdmNMM2YxY2JwVHQtby1aTFVfZmFnSjRFT0hSaHlzeW50XzNPcUZROG13MUxxNVMwdGd3UkR2cTgyeURHNERQWlUxeFJYR1ln?oc=5",
-      "publishedAt": "2026-08-05T00:56:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8295495,
-      "title": "Stock indexes register records after upbeat company forecasts; oil drops - Reuters",
-      "summary": "Stock indexes register records after upbeat company forecasts; oil drops  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9FbUhCcDNQSE1IQ3dnM055RTJNZ0N1WHYtTUswbUtjZmRTS3FwbEtKZkd5Ti1WT0JndWtUSEJJTktud19OQzRELW93em1SMFdjcnphTVBMQ1BPMzBJLTdEYmxMbnJ2bFB4NVN4ZVlKYjIyZUlFZGx3RUljSQ?oc=5",
-      "publishedAt": "2026-08-04T23:03:39+00:00",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNSmlKVnBzQTlPclFHcWhMcVpJeXB0eVQ1ODYxMTk1bkRLbDVybnI4dXhqQ01HaDR1N1FULU03ZDhZWUlEMkFtV2Z3RmFTWHhpVDFlRi0wRG9ZSkFlWVFTUFhXUFVjN3A5Zm1FSnNUbHlwWHF4OEo0TkxvZVV2OEdJNS1ZdG9OQ3V4ME43NV9QeXpSSnVQUEdIb1Jn?oc=5",
+      "publishedAt": "2026-08-05T01:01:00+00:00",
       "related": ""
     },
     {
@@ -578,23 +568,13 @@
       "related": ""
     },
     {
-      "id": 8297068,
-      "title": "Asia crude and fuel imports recover, still shy of pre-Iran war levels - Reuters",
-      "summary": "Asia crude and fuel imports recover, still shy of pre-Iran war levels  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxORGVwVDlqUHgzUTZBLWFQWGVUNWZWS0hmM3hiRElSNFNDcVhtc2pPMUI4X1lzY2pBNlFBRTdKd0s3MDlaY0NhWVV0N0lsU2RGTzI0cGJ3eFo4SFR2dEV0VFY1a2lzZW4yenVWYUFpMmNJU1pxQi15N19DZ2VfLVlTVmJuR2lZd1MyVzJHVkJXaWMyeTNRSHhPQzZybDQydmdjNnExMnRXTmNaMW1TUl9rb1BzOWI3VVR2d0QxZHdBT2NrU2hJellTTDl3?oc=5",
-      "publishedAt": "2026-08-04T18:43:50+00:00",
-      "related": ""
-    },
-    {
-      "id": 8299468,
-      "title": "investingLive Asia-Pacific market news 5 August 2026: Gold jumped above US$4130",
-      "summary": "<ul><li><a href=\"https://investinglive.com/central-banks/follow-up-kiwi-dips-as-jobless-rate-climbs-ahead-of-rbnz-s-september-decision\" rel=\"follow\">Follow up - Kiwi dips as jobless rate climbs ahead ",
+      "id": 8299994,
+      "title": "What are the main events for today?",
+      "summary": "<p>EUROPEAN SESSION</p><p>In the European session, we don't have much on the agenda other than the final services PMIs for the major Eurozone economies and the UK. The data is not going to change anyt",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/investinglive-asia-pacific-market-news-5-august-2026-gold-jumped-above-us-4130/",
-      "publishedAt": "2026-08-05T03:42:15+00:00",
+      "link": "https://investinglive.com/news/what-are-the-main-events-for-today-18/",
+      "publishedAt": "2026-08-05T06:26:35+00:00",
       "related": ""
     }
   ],
