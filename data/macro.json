@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-05T07:07:18+00:00",
+  "updatedAt": "2026-08-05T09:46:48+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,7 +29,7 @@
     }
   ],
   "summary": {
-    "vix": 16.5,
+    "vix": 16.21,
     "vixRegime": "normal",
     "us10yYield": 4.63,
     "usdCnh": 6.75,
@@ -46,7 +40,6 @@
     "hints": [
       "美债收益率回落，利于风险资产估值修复。",
       "美股行业轮动：科技 领涨（+4.98%），公用事业 靠后。",
-      "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
   },
@@ -58,10 +51,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 16.5,
-      "changePct": 4.04,
-      "weekChangePct": -9.39,
-      "monthChangePct": 5.97,
+      "price": 16.21,
+      "changePct": -1.76,
+      "weekChangePct": -21.54,
+      "monthChangePct": 0.5,
       "source": "yahoo"
     }
   ],
@@ -117,15 +110,15 @@
       "currency": null,
       "region": null,
       "price": 6.75,
-      "changePct": -0.08,
-      "weekChangePct": -0.35,
-      "monthChangePct": -0.72,
+      "changePct": -0.06,
+      "weekChangePct": -0.34,
+      "monthChangePct": -0.7,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7629,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7535,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-04"
     },
     {
       "symbol": "USDHKD=X",
@@ -135,15 +128,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.01,
+      "changePct": 0.02,
       "weekChangePct": 0.03,
       "monthChangePct": 0.01,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8426,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8433,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-04"
     },
     {
       "symbol": "USDJPY=X",
@@ -152,16 +145,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 157.66,
-      "changePct": 0.08,
-      "weekChangePct": -3.79,
-      "monthChangePct": -2.73,
+      "price": 157.7,
+      "changePct": 0.11,
+      "weekChangePct": -3.76,
+      "monthChangePct": -2.71,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 157.6199,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 157.41,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-04"
     },
     {
       "symbol": "EURUSD=X",
@@ -171,15 +164,15 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": 0.34,
-      "weekChangePct": 1.4,
-      "monthChangePct": 0.91,
+      "changePct": 0.32,
+      "weekChangePct": 1.39,
+      "monthChangePct": 0.9,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8678,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8684,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-04"
     },
     {
       "symbol": "USDGBP",
@@ -188,8 +181,34 @@
       "quote": "GBP",
       "price": 0.7437,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-04"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8093,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-04"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2824,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-04"
     }
   ],
   "commodities": [
@@ -200,10 +219,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4235.7,
-      "changePct": 3.43,
-      "weekChangePct": 4.98,
-      "monthChangePct": 2.18,
+      "price": 4214.0,
+      "changePct": 2.9,
+      "weekChangePct": 4.44,
+      "monthChangePct": 1.66,
       "source": "yahoo"
     },
     {
@@ -213,10 +232,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 75.1,
-      "changePct": -0.88,
-      "weekChangePct": -11.08,
-      "monthChangePct": 6.62,
+      "price": 76.19,
+      "changePct": 0.55,
+      "weekChangePct": -9.79,
+      "monthChangePct": 8.16,
       "source": "yahoo"
     },
     {
@@ -226,10 +245,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.66,
-      "changePct": 0.56,
-      "weekChangePct": 6.09,
-      "monthChangePct": 7.84,
+      "price": 6.65,
+      "changePct": 0.43,
+      "weekChangePct": 5.95,
+      "monthChangePct": 7.7,
       "source": "yahoo"
     }
   ],
@@ -241,9 +260,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4655.48,
-      "changePct": 2.79,
-      "weekChangePct": -0.85,
+      "price": 4658.15,
+      "changePct": 2.85,
+      "weekChangePct": -0.79,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -254,7 +273,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3531.26,
+      "price": 3535.14,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -267,7 +286,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1693.01,
+      "price": 1693.67,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -488,6 +507,16 @@
   ],
   "finnhubNews": [
     {
+      "id": 8300320,
+      "title": "Yemen's Houthis say they attacked Saudi oil tanker in Red Sea - Reuters",
+      "summary": "Yemen's Houthis say they attacked Saudi oil tanker in Red Sea  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNWEQwU2pxeTRYSXhNQWtrT3hmNFhmOUx6eVUzUUt4aVBtOEpub01Fa3U5S0ZOYXRmU2oyb0t4WEpRRXZ3VmwxWksyYkNRcF9GbFJvbEpkMGxWWVY5alo2NS1LdDFzMWVPdmYtV082T3JOaVpoYW5NTFNncUxHZndSdnUzMXdWWHNXQWQ3NXZXMy02MDloQ3dWTHJhWHBfS2pNVnZoUXBEcVZKQm1HZXl5Ug?oc=5",
+      "publishedAt": "2026-08-05T07:27:57+00:00",
+      "related": ""
+    },
+    {
       "id": 8299784,
       "title": "US and Iran having 'very good discussions', Trump says - Reuters",
       "summary": "US and Iran having 'very good discussions', Trump says  Reuters",
@@ -495,6 +524,26 @@
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQUFpfZEh3NVhNLURNVl9ETWp2ak5nZEx4d0JYQ19WZ3Z6bTl3V2wyUzVLQmFnTkJrZTZtVXd1cnp2dkdXUmh0d1FXUmhfbGQ1a3dKY1ZzQ0pXQTdUcS02X1llNkdFbzFLN0k2YXk2X2JEUTVCV1RBeGdUaFA2VGFzSW9LYlRDQm5senFDSzFVRkxHaXdSazRBWUlTT1pjY00yU1Qw?oc=5",
       "publishedAt": "2026-08-05T05:11:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8300423,
+      "title": "Trump says US held 'all-day negotiation' with Iran on Tuesday - Reuters",
+      "summary": "Trump says US held 'all-day negotiation' with Iran on Tuesday  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOdjBkc2xFczRwS1pfZ0VISDd3R0NGc0phaktLZVFaM21pZW1ncF91VF9YSHdHc3hob2Mxc25zRmJxYlYwZFI3QXkwVTBTS0dtT3dDY3V2Nnk1SWQ3ZnF1MmZyLWoteVNENlFKdkc1QkpmTklvc0RaX3EtTndVOFBsZG0tYmJxallWYXFnRmFLQmJfaWJkRWk3TEN1QVBCOVU?oc=5",
+      "publishedAt": "2026-08-05T04:48:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8300211,
+      "title": "China eases controls on fuel exports for a second month, sources say - Reuters",
+      "summary": "China eases controls on fuel exports for a second month, sources say  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNbHRMR3J2NzJaT2hKV1ZTem4wMWhSQVF4NnNNQ19WNXFLaUNVamQ5Slg4NjB6Y0ZpWkN0SWYxeFZrVnF5QXhGSXl6UnNyMXRFVXRQVUtsaURERFRDM25FaW9DQW9QRDZPdmpuMTNGdHVpSFNPcG1Da0VtMXNpVk1OVXVMVlVFS3RHekhiT19FelYwMFFGMVI5QnNzNkJUY0tQMWxMUk5RR0hIWDVyN293?oc=5",
+      "publishedAt": "2026-08-05T04:37:00+00:00",
       "related": ""
     },
     {
@@ -508,9 +557,29 @@
       "related": ""
     },
     {
+      "id": 8300539,
+      "title": "Stocks get AI-boost; investors on tenterhooks over Mideast peace talks - Reuters",
+      "summary": "Stocks get AI-boost; investors on tenterhooks over Mideast peace talks  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPSjNOaFJhdXRJblJMNldJM09LeFJDOXNqY2Y0R3dhcGt3S1ZyNm1peFdvVlBfN2RrNmtCYVhQa3pzenI5VlBld2c2Y0JPLTAzNWRhTWxUYWxjNEpvWGxIYlR3M2NLdGg5RnpRSmtYVVVwamJfYTZ5S1JaQ3J5QjFEQ3B0WQ?oc=5",
+      "publishedAt": "2026-08-05T01:37:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8300319,
+      "title": "Yen drifts after intervention whirlwind; Iran optimism dents dollar - Reuters",
+      "summary": "Yen drifts after intervention whirlwind; Iran optimism dents dollar  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNRFFDTkhtVFJsMkg2YzlLQzd2c0c0aXhwZHl2M3lFZE1vdnNka1ZnbFNwalhDZ0x5Y3ZZQWZ5ZUw4bGwwdzVzU1QxUXNpT3FEMzJhTVVJTEhqTG5KTDZqS2l5Qmc0dUZ1THk5YTFpckwxaE1weFNYUFRtd0xFd2JVc2RvQ1FTQ3FjUkk5REEtTk50cWdwdzVPb3p6Q1lkOVNYTEdaWmE1UkhicVlrY004TkpvOGJSWGxVMmR5bmZEcGpPX09ETWFV?oc=5",
+      "publishedAt": "2026-08-05T01:36:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8299166,
-      "title": "Oil extends declines as investors await outcome of US-Iran talks - Reuters",
-      "summary": "Oil extends declines as investors await outcome of US-Iran talks  Reuters",
+      "title": "Oil prices rebound after Houthis say they attacked Saudi tanker - Reuters",
+      "summary": "Oil prices rebound after Houthis say they attacked Saudi tanker  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOZDd2cFJ5Z2dsbTliajVMY1o5eVQ3Q3djdGVaYXA2aVhJQUROSVk5NmVjSkUydkw0YUItOGI1VFl1Wl9uZVY2SWhZLVZZY2hFTTFyaEoxM0otRWQ0Vzk4bjdEV18yYkhQS05GUzQ5dHdsY0wwemg4cG53dnZkVmx0M1pMdzl2cDk2MDBlZlN3ZVY0RVMxU2JNcE5Ta2Nrd3l4OVpvTnlIY0hscHRpOUozRVpDUQ?oc=5",
@@ -518,63 +587,13 @@
       "related": ""
     },
     {
-      "id": 8299682,
-      "title": "Gold extends gains on lower oil and softer dollar - Reuters",
-      "summary": "Gold extends gains on lower oil and softer dollar  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNSmlKVnBzQTlPclFHcWhMcVpJeXB0eVQ1ODYxMTk1bkRLbDVybnI4dXhqQ01HaDR1N1FULU03ZDhZWUlEMkFtV2Z3RmFTWHhpVDFlRi0wRG9ZSkFlWVFTUFhXUFVjN3A5Zm1FSnNUbHlwWHF4OEo0TkxvZVV2OEdJNS1ZdG9OQ3V4ME43NV9QeXpSSnVQUEdIb1Jn?oc=5",
-      "publishedAt": "2026-08-05T01:01:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8298434,
-      "title": "Dow, S&P 500 close at record on AI-linked earnings, Mideast deal hopes - Reuters",
-      "summary": "Dow, S&P 500 close at record on AI-linked earnings, Mideast deal hopes  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOMHk5N1NJZXlfQ196NTA1SjFaUUtUaDd0UXNDY2FsLWM2aE1VTElKc1oxaXFMbmd1M2kwcXVmaFBKbEo3TmFmY2lfRVFraDFVcTZpTTNfbGU2VU9iZnQ0Q2xBR0ZCVHFmRUktbVk0VTR1RVVYNzVxNEVUa3dJbmFQXzQ0SldqNzVoSXAtRnF3SDJ0M0UwNEhRLVhsUTd3Yk9jdnhTQUJ0WGdOUEdRTHJfeUpKZUw?oc=5",
-      "publishedAt": "2026-08-04T23:02:38+00:00",
-      "related": ""
-    },
-    {
-      "id": 8298329,
-      "title": "Jim Cramer says one hedge fund's collapse cleared the way for tech's rally",
-      "summary": "CNBC's Jim Cramer said the collapse of AI-focused hedge fund Situational Awareness removed a major source of forced selling.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/04/cramer-one-hedge-fund-collapse-cleared-way-for-tech-rally.html",
-      "publishedAt": "2026-08-04T22:22:22+00:00",
-      "related": ""
-    },
-    {
-      "id": 8297689,
-      "title": "Projectile sinks Indian ship near Yemeni waters but all seafarers safe, Indian minister says - Reuters",
-      "summary": "Projectile sinks Indian ship near Yemeni waters but all seafarers safe, Indian minister says  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPNmtBb0gtUVhaWUFKQ2tlakdWSDhOREJnbHM3dVN6ZGRkbEF1Mnp0VXVFYzY0TXRZRDduZDVibW0yaVpkaDg0TjNpY1VCWFlrQnRQam0xN2ZWWG1vZWpZSUlzTU5CWG9rSVM5dDlGQXRFZzVFXzZCcXVsd2ZUUmJaTi0tUDhiSVp3T1M0bGdRcGZuWmgtV01NLW5OTVFCZlQ2VWdEX2dzRUptUFhxSlVXMEI4T1A3UQ?oc=5",
-      "publishedAt": "2026-08-04T19:02:35+00:00",
-      "related": ""
-    },
-    {
-      "id": 8297588,
-      "title": "TikTok users are sharing the items they say are always worth the money—here's what financial planners say",
-      "summary": "Financial planners weigh in on a recent trend on TikTok that has users sharing the items they swear are always worth the money.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/04/worth-the-money-financial-planners.html",
-      "publishedAt": "2026-08-04T19:00:01+00:00",
-      "related": ""
-    },
-    {
-      "id": 8299994,
-      "title": "What are the main events for today?",
-      "summary": "<p>EUROPEAN SESSION</p><p>In the European session, we don't have much on the agenda other than the final services PMIs for the major Eurozone economies and the UK. The data is not going to change anyt",
+      "id": 8300639,
+      "title": "Drop in energy prices drive fall in Eurozone producer prices in June",
+      "summary": "<ul><li>June PPI -0.3% vs -0.3% m/m expected</li><li>Prior +0.2%</li></ul><p class=\"text-align-justify\" style=\"text-align: justify;\">Euro area producer prices came in lower in June, matching estimates",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/what-are-the-main-events-for-today-18/",
-      "publishedAt": "2026-08-05T06:26:35+00:00",
+      "link": "https://investinglive.com/news/eurozone-june-producer-prices-0-3-vs-0-3-m-m-expected/",
+      "publishedAt": "2026-08-05T09:00:16+00:00",
       "related": ""
     }
   ],
