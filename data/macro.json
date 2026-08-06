@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-06T07:15:10+00:00",
+  "updatedAt": "2026-08-06T10:02:07+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,17 +35,16 @@
     }
   ],
   "summary": {
-    "vix": 15.81,
+    "vix": 15.93,
     "vixRegime": "normal",
     "us10yYield": 4.62,
-    "usdCnh": 6.75,
+    "usdCnh": null,
     "usdCnhChangePct": null,
     "sectorLeader": "健康",
     "sectorLaggard": "能源",
     "yieldSpread10y2y": 0.45,
     "hints": [
       "美股行业轮动：健康 领涨（+1.27%），能源 靠后。",
-      "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
   },
@@ -51,10 +56,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.81,
-      "changePct": -4.18,
-      "weekChangePct": -23.48,
-      "monthChangePct": -1.98,
+      "price": 15.93,
+      "changePct": 0.76,
+      "weekChangePct": -6.79,
+      "monthChangePct": -5.74,
       "source": "yahoo"
     }
   ],
@@ -88,37 +93,22 @@
   ],
   "fx": [
     {
-      "symbol": "USDCNH=X",
-      "name": "美元/离岸人民币",
-      "category": "fx",
-      "unit": "index",
-      "currency": null,
-      "region": null,
-      "price": 6.75,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "base": "USD",
-      "quote": "CNH"
-    },
-    {
       "symbol": "USDCNY=X",
       "name": "美元/在岸人民币",
       "category": "fx",
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.75,
-      "changePct": -0.07,
-      "weekChangePct": -0.26,
-      "monthChangePct": -0.66,
+      "price": 6.74,
+      "changePct": -0.24,
+      "weekChangePct": -0.43,
+      "monthChangePct": -0.83,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.75,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-05"
+      "refPrice": 6.7622,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,15 +118,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.01,
-      "weekChangePct": 0.01,
-      "monthChangePct": 0.02,
+      "changePct": 0.02,
+      "weekChangePct": 0.03,
+      "monthChangePct": 0.03,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8431,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-05"
+      "refPrice": 7.844,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -145,16 +135,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 157.79,
-      "changePct": 0.06,
-      "weekChangePct": -3.37,
-      "monthChangePct": -2.82,
+      "price": 157.86,
+      "changePct": 0.11,
+      "weekChangePct": -3.33,
+      "monthChangePct": -2.77,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 157.59,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-05"
+      "refPrice": 157.6096,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -164,51 +154,25 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": 0.14,
-      "weekChangePct": 0.71,
-      "monthChangePct": 1.27,
+      "changePct": 0.08,
+      "weekChangePct": 0.65,
+      "monthChangePct": 1.21,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8655,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-05"
+      "refPrice": 0.8657,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7419,
+      "price": 0.7425,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-05"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8088,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-05"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2815,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-05"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -219,10 +183,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4315.0,
-      "changePct": 1.63,
-      "weekChangePct": 5.24,
-      "monthChangePct": 6.0,
+      "price": 4334.2,
+      "changePct": 2.08,
+      "weekChangePct": 5.71,
+      "monthChangePct": 6.47,
       "source": "yahoo"
     },
     {
@@ -232,10 +196,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 75.04,
-      "changePct": -0.24,
-      "weekChangePct": -10.23,
-      "monthChangePct": 2.07,
+      "price": 75.43,
+      "changePct": 0.28,
+      "weekChangePct": -9.76,
+      "monthChangePct": 2.6,
       "source": "yahoo"
     },
     {
@@ -245,10 +209,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.71,
-      "changePct": 0.09,
-      "weekChangePct": 4.1,
-      "monthChangePct": 10.81,
+      "price": 6.83,
+      "changePct": 1.83,
+      "weekChangePct": 5.91,
+      "monthChangePct": 12.73,
       "source": "yahoo"
     }
   ],
@@ -260,9 +224,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4651.97,
-      "changePct": 2.71,
-      "weekChangePct": -0.92,
+      "price": 4651.31,
+      "changePct": 2.7,
+      "weekChangePct": -0.94,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -286,7 +250,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1700.81,
+      "price": 1701.29,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -507,13 +471,53 @@
   ],
   "finnhubNews": [
     {
-      "id": 8304206,
-      "title": "Asia shares fall on tech pullback, oil stable as Iran talks stay in focus - Reuters",
-      "summary": "Asia shares fall on tech pullback, oil stable as Iran talks stay in focus  Reuters",
+      "id": 8305878,
+      "title": "Hadrian valued at nearly $8 billion after fresh funding as money pours into defense tech",
+      "summary": "Hadrian is one of a number of defense tech startups raising large sums and benefiting from President Trump's plans to upgrade the U.S. military.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/08/06/hadrian-defense-tech-ai-manufacturing.html",
+      "publishedAt": "2026-08-06T09:54:58+00:00",
+      "related": ""
+    },
+    {
+      "id": 8305448,
+      "title": "Israel strikes south Lebanon after soldiers killed, talks continue in Rome - reuters.com",
+      "summary": "Israel strikes south Lebanon after soldiers killed, talks continue in Rome  reuters.com",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNcE5UZ1dJanFrQ1hFUUNWWmM2N2cxckRKUFYtOHNLUHhtVkdpLXpmNXZjeVMzd2dycVUxSmVlNU54aE1DLVFnMmY0VnVsZk1IT1puQVQydHlUS19RNkVhRXlfbU1fdlhIZ0tORnBOWHl4a2dUZFUyZFpoUzZuZDFkUFZucw?oc=5",
-      "publishedAt": "2026-08-06T05:54:24+00:00",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxORWNLdnd6QTJNaVRGaG5aOVJqRjBnOFAzT05ubjAxY2dya0luUWg4Rk5xZU5KOXF2aEEzY3pQcDlLWXhvQmlNcXBKMTk4M09lWHFqM0ltOXlyeXdxQTFVRTZTTDR2Rl9pNFlDQm1PdFhpRE1zc1hhTzQ2MkZPR0lFbmZ4WXVLRzVLcmdOLXc1QVhUNm1GQlY4MWgxekxSM1NtOGNPS0tlbnJlSDRybFdZNFlqM2k0b1NNeWFaZA?oc=5",
+      "publishedAt": "2026-08-06T07:30:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8305664,
+      "title": "Oil traders double down on Iran deal bet as odds worsen - Reuters",
+      "summary": "Oil traders double down on Iran deal bet as odds worsen  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQYTlrUTg0TjljZzBlaVJyRkJnS21MLU9TblltYU1oUm1NLVRqX1NnVEZvM2ZCTlMwXzBtUWk5cE1pSE5ZTnFYeGVtZjNZcnBlaU1iRHdfYlVzN3pyd0VYM3ZXRTJzcHhUYlNMT1ZmRU15eHhqZi1FNkpKa04waEk2YXA2X2QtUVBKcmZtMjRkWDd6anFaQzBJeXlhUXZmZTZxYUxYcU4wUjFNUnliUDk4YWVRb2FCZTFmV1FHQnFWck8wd0k?oc=5",
+      "publishedAt": "2026-08-06T06:00:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8305346,
+      "title": "Morning Bid: AI stocks learn to fly — but ain't got wings - Reuters",
+      "summary": "Morning Bid: AI stocks learn to fly — but ain't got wings  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNLVdyc053UEtXR1QxVFh6Q0xDYjlVYUxyaXdYZG05c0lkaHhoQnhZSnJGaXhPTFhoMkEwMUIzdE0tV2F0WGI1NGtxdTJGWklQV3JfYjRmU2dYXzQzNXBpeDRhT09ITGN3aGM4ekdDb2xzejNjUldiSVY5U1ZlWFJFaDYycG8ybzZKYlY1NG5R?oc=5",
+      "publishedAt": "2026-08-06T04:52:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8305345,
+      "title": "EXCLUSIVE: Sinopec steps up Russian oil imports to offset Mideast supply cuts, traders and tracker say - reuters.com",
+      "summary": "EXCLUSIVE: Sinopec steps up Russian oil imports to offset Mideast supply cuts, traders and tracker say  reuters.com",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPNldJczB0MXMxMnZEaExVV3M1T0ZTM3JxUG1Fci1GVGNMaFd4c1ZsQnh0enBKVUdoSXJScU9aVDgzaFpqTkl5NEZ1LUlTQzhXWWRodjZDU25JeExHLXJDNXNnZ2IyOGxKXzZHaHBRVXczS05wY1JsdU5UcllxVjR4TnNkVXU2RzdIaDhrN21zaWhhYlJOeXJ3cGh5T0hSeGItVlVzbWhGY19MU2JMcEFjdUJrdUQyd2NFVVF3S0Q5R2NsMVAwMnQ1ZXc0SQ?oc=5",
+      "publishedAt": "2026-08-06T04:26:00+00:00",
       "related": ""
     },
     {
@@ -528,8 +532,8 @@
     },
     {
       "id": 8304508,
-      "title": "Yen and dollar drift on Iran deal concerns, payroll jitters - Reuters",
-      "summary": "Yen and dollar drift on Iran deal concerns, payroll jitters  Reuters",
+      "title": "Yen and dollar drift as markets await Iran deal news, look towards payrolls - Reuters",
+      "summary": "Yen and dollar drift as markets await Iran deal news, look towards payrolls  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQT2VsMnRGWG5QTmNmeVNLM21MZHV1dkdiRnBOWnNrZUdicjNhZTB3M3JjLTdJVGk0VTc4VjhEUkxtdUpGZ0J5bV9BMklYVWhSb1lMQkFlWk1JRm5SY3BmcU1tUkhUbWNaRGZDUHhNcW42RU1QZ0Y0ODdxWXZSa1l4OWxfSVlhMEx1ODdCZUI5UlJRUUpmMEJ4Z3lFOERXVWFXRGRjV3h1MjRlQQ?oc=5",
@@ -537,63 +541,23 @@
       "related": ""
     },
     {
-      "id": 8304207,
-      "title": "Oil prices slip as Iran cites progress with Oman on Hormuz agreement - Reuters",
-      "summary": "Oil prices slip as Iran cites progress with Oman on Hormuz agreement  Reuters",
+      "id": 8304206,
+      "title": "Asia shares fall on tech pullback, oil stable as Iran talks stay in focus - Reuters",
+      "summary": "Asia shares fall on tech pullback, oil stable as Iran talks stay in focus  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQTmw0WV9PeEJVU0pBczd6UzhWSjdUMlQ2aDhwUGxDbWdvc3hMakw5d3h3Q2wxMXNRakctZjRlTW8wNi1PNnU2eDY0anYxakZYSkZBSVN6SUhJOEF4aW1HSTVnUWREc3k2dFBvUEl0azM4TXFoV1I1S1pJRVlVUm1SakpIeVFqM0wxS2gtMDFvc3ktZ05QYjc3VXRtSHdsNk9hLWUwb3VxTzBFcVhBeUx3Zm82Zw?oc=5",
-      "publishedAt": "2026-08-06T01:07:00+00:00",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNcE5UZ1dJanFrQ1hFUUNWWmM2N2cxckRKUFYtOHNLUHhtVkdpLXpmNXZjeVMzd2dycVUxSmVlNU54aE1DLVFnMmY0VnVsZk1IT1puQVQydHlUS19RNkVhRXlfbU1fdlhIZ0tORnBOWHl4a2dUZFUyZFpoUzZuZDFkUFZucw?oc=5",
+      "publishedAt": "2026-08-06T01:27:00+00:00",
       "related": ""
     },
     {
-      "id": 8304105,
-      "title": "Gold touches seven-week peak on Strait of Hormuz reopening hopes - Reuters",
-      "summary": "Gold touches seven-week peak on Strait of Hormuz reopening hopes  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVWd6ZjFIZXZHQ2JsNi1UdXBvS1JIUm0xYWtjaDQ1UXVOczhzTzZLNEY0ZTRtb1l5N2lrY09ERHFySlMyakJJNndhRUx5M0FabFZ5TllJZWZPU05na2VqMkRVckJ2VndLdUlFUGd1NklHQlN6V1VJUzRxS09jUmtVVWhMTGRuVlN3YzctZjhBWVI2UUZkQkJqZ0NvdF9uQ1I0RGtCNVNORThqQQ?oc=5",
-      "publishedAt": "2026-08-06T00:51:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8302737,
-      "title": "Dow closes at record on Mideast optimism; SpaceX, AMD drag Nasdaq - Reuters",
-      "summary": "Dow closes at record on Mideast optimism; SpaceX, AMD drag Nasdaq  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPdklHVUNCN0JQTDlLR0piZnVyYXRkNkU1akFlU3dWWFRoQTUyVUFxTXVtbnU2V3pTY2QwZ3pXRUw3eTFZeG1IbDAzM0Q5eEJPd0VSRldTckFHb1dBYXUtQ2tocm44b2p1SE5EbGhCNUJyMG9SX0RhZTlRZjFFbURfWmhPbnN2YmNSTlF3NFFZbG5yNmFzWTNiZFBOTlFfOWp1cmZIMkxicE50d2tJWkVXOVZQRmFxc21qN01jaDR6RQ?oc=5",
-      "publishedAt": "2026-08-05T23:07:43+00:00",
-      "related": ""
-    },
-    {
-      "id": 8303477,
-      "title": "Jim Cramer says investors should consider buying SpaceX for their kids",
-      "summary": "CNBC’s Jim Cramer said investors should view SpaceX as a multigenerational investment, whose biggest opportunities may take decades to fully materialize.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/05/jim-cramer-investors-should-consider-buying-spacex-kids.html",
-      "publishedAt": "2026-08-05T22:40:41+00:00",
-      "related": ""
-    },
-    {
-      "id": 8304104,
-      "title": "FAA says Marine One was briefly too close to passenger airplane - Reuters",
-      "summary": "FAA says Marine One was briefly too close to passenger airplane  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWGVVekl4bEJ3UlhoSEc3U3J1Z0lBZk1KVFRmdWg3UHVjOW5tM010QUVNeUdZbzlmUkx1X2lhM3gxN0EydFo1UnhBanVkUU12YnlKUXV6NHJTeS1ROXNlRU5ucHUwcndQQXo0Y3RqeVJ4MkZ1SEhIRmQ5c0Z6Yy15VkpTbUFDSVdVTUhJakJmOF9BVjdZckNobUVvcHhHa0FaS3V6RG90bzMwd3N5X0hKczEwQWRTMVBsbVFtTkNDc0I?oc=5",
-      "publishedAt": "2026-08-05T22:13:27+00:00",
-      "related": ""
-    },
-    {
-      "id": 8305233,
-      "title": "What are the main events for today?",
-      "summary": "<p>EUROPEAN SESSION</p><p>In the European session, we don't have much on the agenda other than a couple of low tier releases like Spanish and Italian industrial production, and the Eurozone retail sal",
+      "id": 8305879,
+      "title": "US-based employers announce fewest job cuts in two years in July",
+      "summary": "<ul><li>July layoffs 33,429</li><li>Prior 45,849</li></ul><p class=\"text-align-justify\" style=\"text-align: justify;\">US-based employers announced 33,429 job cuts in July, which marks a 27% decline com",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/what-are-the-main-events-for-today-19/",
-      "publishedAt": "2026-08-06T06:29:48+00:00",
+      "link": "https://investinglive.com/news/us-based-employers-announce-fewest-job-cuts-in-two-years-in-july/",
+      "publishedAt": "2026-08-06T09:30:05+00:00",
       "related": ""
     }
   ],
