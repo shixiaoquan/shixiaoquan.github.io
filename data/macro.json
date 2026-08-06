@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-06T01:03:52+00:00",
+  "updatedAt": "2026-08-06T04:24:57+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -116,15 +110,15 @@
       "currency": null,
       "region": null,
       "price": 6.75,
-      "changePct": -0.06,
-      "weekChangePct": -0.25,
-      "monthChangePct": -0.65,
+      "changePct": -0.08,
+      "weekChangePct": -0.27,
+      "monthChangePct": -0.68,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7622,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.75,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-05"
     },
     {
       "symbol": "USDHKD=X",
@@ -134,15 +128,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.02,
-      "weekChangePct": 0.02,
-      "monthChangePct": 0.03,
+      "changePct": 0.01,
+      "weekChangePct": 0.01,
+      "monthChangePct": 0.02,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.844,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8431,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-05"
     },
     {
       "symbol": "USDJPY=X",
@@ -151,16 +145,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 157.73,
+      "price": 157.72,
       "changePct": 0.02,
-      "weekChangePct": -3.41,
-      "monthChangePct": -2.85,
+      "weekChangePct": -3.42,
+      "monthChangePct": -2.86,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 157.6096,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 157.59,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-05"
     },
     {
       "symbol": "EURUSD=X",
@@ -170,25 +164,51 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": 0.23,
-      "weekChangePct": 0.8,
-      "monthChangePct": 1.36,
+      "changePct": 0.16,
+      "weekChangePct": 0.73,
+      "monthChangePct": 1.29,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8657,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8655,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-05"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7425,
+      "price": 0.7419,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-05"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8088,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-05"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2815,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-05"
     }
   ],
   "commodities": [
@@ -199,10 +219,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4354.0,
-      "changePct": 6.31,
-      "weekChangePct": 7.91,
-      "monthChangePct": 5.03,
+      "price": 4322.7,
+      "changePct": 1.81,
+      "weekChangePct": 5.43,
+      "monthChangePct": 6.19,
       "source": "yahoo"
     },
     {
@@ -212,10 +232,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 74.9,
-      "changePct": -1.15,
-      "weekChangePct": -11.32,
-      "monthChangePct": 6.33,
+      "price": 74.81,
+      "changePct": -0.55,
+      "weekChangePct": -10.5,
+      "monthChangePct": 1.75,
       "source": "yahoo"
     },
     {
@@ -225,10 +245,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.74,
-      "changePct": 1.87,
-      "weekChangePct": 7.47,
-      "monthChangePct": 9.24,
+      "price": 6.72,
+      "changePct": 0.26,
+      "weekChangePct": 4.28,
+      "monthChangePct": 11.0,
       "source": "yahoo"
     }
   ],
@@ -240,9 +260,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4529.1,
-      "changePct": -3.6,
-      "weekChangePct": -5.26,
+      "price": 4637.89,
+      "changePct": 2.4,
+      "weekChangePct": -1.22,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -253,7 +273,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3535.14,
+      "price": 3511.47,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -266,7 +286,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1693.67,
+      "price": 1690.91,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -487,6 +507,46 @@
   ],
   "finnhubNews": [
     {
+      "id": 8304508,
+      "title": "Yen and dollar drift on Iran deal concerns, payroll jitters - Reuters",
+      "summary": "Yen and dollar drift on Iran deal concerns, payroll jitters  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQT2VsMnRGWG5QTmNmeVNLM21MZHV1dkdiRnBOWnNrZUdicjNhZTB3M3JjLTdJVGk0VTc4VjhEUkxtdUpGZ0J5bV9BMklYVWhSb1lMQkFlWk1JRm5SY3BmcU1tUkhUbWNaRGZDUHhNcW42RU1QZ0Y0ODdxWXZSa1l4OWxfSVlhMEx1ODdCZUI5UlJRUUpmMEJ4Z3lFOERXVWFXRGRjV3h1MjRlQQ?oc=5",
+      "publishedAt": "2026-08-06T02:01:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8304206,
+      "title": "Asia shares ease on tech pullback, oil stable as Iran talks stay in focus - Reuters",
+      "summary": "Asia shares ease on tech pullback, oil stable as Iran talks stay in focus  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNcE5UZ1dJanFrQ1hFUUNWWmM2N2cxckRKUFYtOHNLUHhtVkdpLXpmNXZjeVMzd2dycVUxSmVlNU54aE1DLVFnMmY0VnVsZk1IT1puQVQydHlUS19RNkVhRXlfbU1fdlhIZ0tORnBOWHl4a2dUZFUyZFpoUzZuZDFkUFZucw?oc=5",
+      "publishedAt": "2026-08-06T01:27:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8304105,
+      "title": "Gold touches seven-week high on Strait of Hormuz reopening hopes - Reuters",
+      "summary": "Gold touches seven-week high on Strait of Hormuz reopening hopes  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVWd6ZjFIZXZHQ2JsNi1UdXBvS1JIUm0xYWtjaDQ1UXVOczhzTzZLNEY0ZTRtb1l5N2lrY09ERHFySlMyakJJNndhRUx5M0FabFZ5TllJZWZPU05na2VqMkRVckJ2VndLdUlFUGd1NklHQlN6V1VJUzRxS09jUmtVVWhMTGRuVlN3YzctZjhBWVI2UUZkQkJqZ0NvdF9uQ1I0RGtCNVNORThqQQ?oc=5",
+      "publishedAt": "2026-08-06T01:12:07+00:00",
+      "related": ""
+    },
+    {
+      "id": 8304207,
+      "title": "Oil prices slip as Iran-Oman talks fuel hopes for US-Iran peace deal - Reuters",
+      "summary": "Oil prices slip as Iran-Oman talks fuel hopes for US-Iran peace deal  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQTmw0WV9PeEJVU0pBczd6UzhWSjdUMlQ2aDhwUGxDbWdvc3hMakw5d3h3Q2wxMXNRakctZjRlTW8wNi1PNnU2eDY0anYxakZYSkZBSVN6SUhJOEF4aW1HSTVnUWREc3k2dFBvUEl0azM4TXFoV1I1S1pJRVlVUm1SakpIeVFqM0wxS2gtMDFvc3ktZ05QYjc3VXRtSHdsNk9hLWUwb3VxTzBFcVhBeUx3Zm82Zw?oc=5",
+      "publishedAt": "2026-08-06T01:07:41+00:00",
+      "related": ""
+    },
+    {
       "id": 8302737,
       "title": "Dow closes at record on Mideast optimism; SpaceX, AMD drag Nasdaq - Reuters",
       "summary": "Dow closes at record on Mideast optimism; SpaceX, AMD drag Nasdaq  Reuters",
@@ -507,6 +567,16 @@
       "related": ""
     },
     {
+      "id": 8304104,
+      "title": "FAA says Marine One was briefly too close to passenger airplane - Reuters",
+      "summary": "FAA says Marine One was briefly too close to passenger airplane  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWGVVekl4bEJ3UlhoSEc3U3J1Z0lBZk1KVFRmdWg3UHVjOW5tM010QUVNeUdZbzlmUkx1X2lhM3gxN0EydFo1UnhBanVkUU12YnlKUXV6NHJTeS1ROXNlRU5ucHUwcndQQXo0Y3RqeVJ4MkZ1SEhIRmQ5c0Z6Yy15VkpTbUFDSVdVTUhJakJmOF9BVjdZckNobUVvcHhHa0FaS3V6RG90bzMwd3N5X0hKczEwQWRTMVBsbVFtTkNDc0I?oc=5",
+      "publishedAt": "2026-08-05T22:13:27+00:00",
+      "related": ""
+    },
+    {
       "id": 8302842,
       "title": "EXCLUSIVE: Iran threatens to hit Gulf states if US launches new strikes - Reuters",
       "summary": "EXCLUSIVE: Iran threatens to hit Gulf states if US launches new strikes  Reuters",
@@ -517,63 +587,13 @@
       "related": ""
     },
     {
-      "id": 8303265,
-      "title": "Hollywood is cranking out billion-dollar movies again. Spider-Man just joined the ranks",
-      "summary": "Box office analysts say the resurgence of billion-dollar releases bodes well for a film industry that's still chasing pre-Covid levels, even with higher prices.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/05/hollywood-2026-billion-dollar-movies.html",
-      "publishedAt": "2026-08-05T21:15:01+00:00",
-      "related": ""
-    },
-    {
-      "id": 8301661,
-      "title": "Israeli military strikes southern Lebanon after evacuation warning to village - Reuters",
-      "summary": "Israeli military strikes southern Lebanon after evacuation warning to village  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPSUNJWWdZUW9teWxlNDE2eWVZWTFmd0JQdmwwYUNvSEpES1BhMjBJNF9LczlwUTZkaTZjMm5MNFhEUFN1RnpZclZHamljVnlGcW5GdkFMclYyUjQ4dEpHRWwtNjJLdjNoNWx5YlU3Q1FIUmhoV1hxMktXNnZXanZLLW9YS1JjRGp6ZkNMbTNGOVlETVRSUGREMnZ5dDVhUjYyWlB1RzBwenhtUDg3dDdIYVpoTXBlN2dFWTkyVnJn?oc=5",
-      "publishedAt": "2026-08-05T19:17:01+00:00",
-      "related": ""
-    },
-    {
-      "id": 8302732,
-      "title": "Alphabet slumps on more AI brain drain. We're not too worried",
-      "summary": "Every weekday, the Investing Club releases the Homestretch; an actionable afternoon update just in time for the last hour of trading.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/05/alphabet-is-slumping-on-the-departure-of-another-ai-exec.html",
-      "publishedAt": "2026-08-05T19:11:19+00:00",
-      "related": ""
-    },
-    {
-      "id": 8302116,
-      "title": "Phillips 66 beats quarterly estimates as Iran war boosts US refining margins - Reuters",
-      "summary": "Phillips 66 beats quarterly estimates as Iran war boosts US refining margins  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPdFdjb1Q5RzUtcnRaUmV5U2FuN0dBcUZwT3RMa2pqVVVocG8zZmRPV2E1NjhlRTR6TXBsN1NHQ21EUTJvQ0JvV2NtbXhWbHVjMUN3NHFvTzlVR0IxUmxHaTFUbEpNX0xJSFFncjE4UllwaTJ2bm9UVTdHd00xOVBuTmZJVXRCekZPclluTDhFQUF2S3MwcG5rR3VrOE5TdFBHd3piYTRjTW9yVldvZGFVV3lfa1pLNlIzTXloYQ?oc=5",
-      "publishedAt": "2026-08-05T18:38:47+00:00",
-      "related": ""
-    },
-    {
-      "id": 8300320,
-      "title": "Yemen's Houthis say they attacked Saudi oil tankers in Red Sea, Gulf of Aden - Reuters",
-      "summary": "Yemen's Houthis say they attacked Saudi oil tankers in Red Sea, Gulf of Aden  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNWEQwU2pxeTRYSXhNQWtrT3hmNFhmOUx6eVUzUUt4aVBtOEpub01Fa3U5S0ZOYXRmU2oyb0t4WEpRRXZ3VmwxWksyYkNRcF9GbFJvbEpkMGxWWVY5alo2NS1LdDFzMWVPdmYtV082T3JOaVpoYW5NTFNncUxHZndSdnUzMXdWWHNXQWQ3NXZXMy02MDloQ3dWTHJhWHBfS2pNVnZoUXBEcVZKQm1HZXl5Ug?oc=5",
-      "publishedAt": "2026-08-05T18:34:15+00:00",
-      "related": ""
-    },
-    {
-      "id": 8303581,
-      "title": "Trump administration refunds $100bn of struck down tariffs",
-      "summary": "<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">The scale of the refund underscores how significant the Supreme Court's February ruling has been for importers, with more t",
+      "id": 8304608,
+      "title": "investingLive Asia-Pacific Financial Market news: Japan, South Korea equities slide",
+      "summary": "<ul><li><a href=\"https://investinglive.com/central-banks/more-re-fed-s-daly-supported-decision-to-hold-rates-steady-at-july-fomc-meeting\" rel=\"follow\">More re Fed's Daly - supported decision to hold r",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/trump-administration-refunds-100bn-of-struck-down-tariffs/",
-      "publishedAt": "2026-08-05T22:53:28+00:00",
+      "link": "https://investinglive.com/news/investinglive-asia-pacific-financial-market-news-japan-south-korea-equities-slide/",
+      "publishedAt": "2026-08-06T03:40:42+00:00",
       "related": ""
     }
   ],
