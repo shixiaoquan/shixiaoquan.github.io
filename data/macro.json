@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-05T23:39:05+00:00",
+  "updatedAt": "2026-08-06T01:03:52+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -110,15 +116,15 @@
       "currency": null,
       "region": null,
       "price": 6.75,
-      "changePct": 0.01,
-      "weekChangePct": -0.26,
-      "monthChangePct": -0.63,
+      "changePct": -0.06,
+      "weekChangePct": -0.25,
+      "monthChangePct": -0.65,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.75,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-05"
+      "refPrice": 6.7622,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,15 +134,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": 0.01,
-      "weekChangePct": 0.01,
-      "monthChangePct": 0.02,
+      "changePct": 0.02,
+      "weekChangePct": 0.02,
+      "monthChangePct": 0.03,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8431,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-05"
+      "refPrice": 7.844,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -145,16 +151,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 157.63,
-      "changePct": -0.04,
-      "weekChangePct": -3.47,
-      "monthChangePct": -2.91,
+      "price": 157.73,
+      "changePct": 0.02,
+      "weekChangePct": -3.41,
+      "monthChangePct": -2.85,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 157.59,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-05"
+      "refPrice": 157.6096,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -170,45 +176,19 @@
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8655,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-05"
+      "refPrice": 0.8657,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7419,
+      "price": 0.7425,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-05"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8088,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-05"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2815,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-05"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -219,10 +199,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4321.6,
-      "changePct": 5.52,
-      "weekChangePct": 7.11,
-      "monthChangePct": 4.25,
+      "price": 4354.0,
+      "changePct": 6.31,
+      "weekChangePct": 7.91,
+      "monthChangePct": 5.03,
       "source": "yahoo"
     },
     {
@@ -232,10 +212,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 75.02,
-      "changePct": -0.99,
-      "weekChangePct": -11.18,
-      "monthChangePct": 6.5,
+      "price": 74.9,
+      "changePct": -1.15,
+      "weekChangePct": -11.32,
+      "monthChangePct": 6.33,
       "source": "yahoo"
     },
     {
@@ -245,10 +225,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.75,
-      "changePct": 2.03,
-      "weekChangePct": 7.64,
-      "monthChangePct": 9.42,
+      "price": 6.74,
+      "changePct": 1.87,
+      "weekChangePct": 7.47,
+      "monthChangePct": 9.24,
       "source": "yahoo"
     }
   ],
@@ -507,6 +487,16 @@
   ],
   "finnhubNews": [
     {
+      "id": 8302737,
+      "title": "Dow closes at record on Mideast optimism; SpaceX, AMD drag Nasdaq - Reuters",
+      "summary": "Dow closes at record on Mideast optimism; SpaceX, AMD drag Nasdaq  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPdklHVUNCN0JQTDlLR0piZnVyYXRkNkU1akFlU3dWWFRoQTUyVUFxTXVtbnU2V3pTY2QwZ3pXRUw3eTFZeG1IbDAzM0Q5eEJPd0VSRldTckFHb1dBYXUtQ2tocm44b2p1SE5EbGhCNUJyMG9SX0RhZTlRZjFFbURfWmhPbnN2YmNSTlF3NFFZbG5yNmFzWTNiZFBOTlFfOWp1cmZIMkxicE50d2tJWkVXOVZQRmFxc21qN01jaDR6RQ?oc=5",
+      "publishedAt": "2026-08-05T23:07:43+00:00",
+      "related": ""
+    },
+    {
       "id": 8303477,
       "title": "Jim Cramer says investors should consider buying SpaceX for their kids",
       "summary": "CNBC’s Jim Cramer said investors should view SpaceX as a multigenerational investment, whose biggest opportunities may take decades to fully materialize.",
@@ -518,8 +508,8 @@
     },
     {
       "id": 8302842,
-      "title": "EXCLUSIVE: Iran threatens to hit Gulf states if US launches new strikes - reuters.com",
-      "summary": "EXCLUSIVE: Iran threatens to hit Gulf states if US launches new strikes  reuters.com",
+      "title": "EXCLUSIVE: Iran threatens to hit Gulf states if US launches new strikes - Reuters",
+      "summary": "EXCLUSIVE: Iran threatens to hit Gulf states if US launches new strikes  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPajFnaXk0anVrT2IwaV9XMDBma0pMQU53ZF9LRUJiT01nWjJsdG5FZXhwUjNtZFp2Yy1NV3Q4dFRIeUxzV1pCWk9RMVVZNk1UbWxxMFdiNEdNTG5KSVBVWTRCaWFJSFNlT3RiMFF6RWtqN2pnRThTUU9GaHNfelhwV3RZTXdfMzJwUk1aVlFXZ0FBNk1qWFFmd2xIRWNVWVpmQl9DSkE2NnhMaXlJZ2FFeQ?oc=5",
@@ -537,19 +527,9 @@
       "related": ""
     },
     {
-      "id": 8302737,
-      "title": "Dow closes at record on Mideast optimism; SpaceX, AMD drag Nasdaq - reuters.com",
-      "summary": "Dow closes at record on Mideast optimism; SpaceX, AMD drag Nasdaq  reuters.com",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPdklHVUNCN0JQTDlLR0piZnVyYXRkNkU1akFlU3dWWFRoQTUyVUFxTXVtbnU2V3pTY2QwZ3pXRUw3eTFZeG1IbDAzM0Q5eEJPd0VSRldTckFHb1dBYXUtQ2tocm44b2p1SE5EbGhCNUJyMG9SX0RhZTlRZjFFbURfWmhPbnN2YmNSTlF3NFFZbG5yNmFzWTNiZFBOTlFfOWp1cmZIMkxicE50d2tJWkVXOVZQRmFxc21qN01jaDR6RQ?oc=5",
-      "publishedAt": "2026-08-05T20:19:22+00:00",
-      "related": ""
-    },
-    {
       "id": 8301661,
-      "title": "Israeli military strikes southern Lebanon after evacuation warning to village - reuters.com",
-      "summary": "Israeli military strikes southern Lebanon after evacuation warning to village  reuters.com",
+      "title": "Israeli military strikes southern Lebanon after evacuation warning to village - Reuters",
+      "summary": "Israeli military strikes southern Lebanon after evacuation warning to village  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPSUNJWWdZUW9teWxlNDE2eWVZWTFmd0JQdmwwYUNvSEpES1BhMjBJNF9LczlwUTZkaTZjMm5MNFhEUFN1RnpZclZHamljVnlGcW5GdkFMclYyUjQ4dEpHRWwtNjJLdjNoNWx5YlU3Q1FIUmhoV1hxMktXNnZXanZLLW9YS1JjRGp6ZkNMbTNGOVlETVRSUGREMnZ5dDVhUjYyWlB1RzBwenhtUDg3dDdIYVpoTXBlN2dFWTkyVnJn?oc=5",
@@ -568,8 +548,8 @@
     },
     {
       "id": 8302116,
-      "title": "Phillips 66 beats quarterly estimates as Iran war boosts US refining margins - reuters.com",
-      "summary": "Phillips 66 beats quarterly estimates as Iran war boosts US refining margins  reuters.com",
+      "title": "Phillips 66 beats quarterly estimates as Iran war boosts US refining margins - Reuters",
+      "summary": "Phillips 66 beats quarterly estimates as Iran war boosts US refining margins  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPdFdjb1Q5RzUtcnRaUmV5U2FuN0dBcUZwT3RMa2pqVVVocG8zZmRPV2E1NjhlRTR6TXBsN1NHQ21EUTJvQ0JvV2NtbXhWbHVjMUN3NHFvTzlVR0IxUmxHaTFUbEpNX0xJSFFncjE4UllwaTJ2bm9UVTdHd00xOVBuTmZJVXRCekZPclluTDhFQUF2S3MwcG5rR3VrOE5TdFBHd3piYTRjTW9yVldvZGFVV3lfa1pLNlIzTXloYQ?oc=5",
@@ -578,8 +558,8 @@
     },
     {
       "id": 8300320,
-      "title": "Yemen's Houthis say they attacked Saudi oil tankers in Red Sea, Gulf of Aden - reuters.com",
-      "summary": "Yemen's Houthis say they attacked Saudi oil tankers in Red Sea, Gulf of Aden  reuters.com",
+      "title": "Yemen's Houthis say they attacked Saudi oil tankers in Red Sea, Gulf of Aden - Reuters",
+      "summary": "Yemen's Houthis say they attacked Saudi oil tankers in Red Sea, Gulf of Aden  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNWEQwU2pxeTRYSXhNQWtrT3hmNFhmOUx6eVUzUUt4aVBtOEpub01Fa3U5S0ZOYXRmU2oyb0t4WEpRRXZ3VmwxWksyYkNRcF9GbFJvbEpkMGxWWVY5alo2NS1LdDFzMWVPdmYtV082T3JOaVpoYW5NTFNncUxHZndSdnUzMXdWWHNXQWQ3NXZXMy02MDloQ3dWTHJhWHBfS2pNVnZoUXBEcVZKQm1HZXl5Ug?oc=5",
@@ -599,74 +579,74 @@
   ],
   "earningsCalendar": [
     {
-      "symbol": "AADX",
-      "date": "2026-08-12",
+      "symbol": "ACOG",
+      "date": "2026-08-13",
+      "hour": "",
+      "epsEstimate": -0.3998,
+      "revenueEstimate": 4471884
+    },
+    {
+      "symbol": "AEBI",
+      "date": "2026-08-13",
+      "hour": "",
+      "epsEstimate": 0.1359,
+      "revenueEstimate": 484263615
+    },
+    {
+      "symbol": "AEYE",
+      "date": "2026-08-13",
+      "hour": "",
+      "epsEstimate": 0.2168,
+      "revenueEstimate": 10912980
+    },
+    {
+      "symbol": "AFCG",
+      "date": "2026-08-13",
+      "hour": "",
+      "epsEstimate": 0.1326,
+      "revenueEstimate": 8168160
+    },
+    {
+      "symbol": "AGIG",
+      "date": "2026-08-13",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "AIRO",
+      "date": "2026-08-13",
+      "hour": "",
+      "epsEstimate": -0.2142,
+      "revenueEstimate": 31835903
+    },
+    {
+      "symbol": "AIT",
+      "date": "2026-08-13",
       "hour": "bmo",
-      "epsEstimate": 0.0281,
-      "revenueEstimate": 158967000
+      "epsEstimate": 2.9462,
+      "revenueEstimate": 1305467167
     },
     {
-      "symbol": "AAPI",
-      "date": "2026-08-12",
+      "symbol": "ALH",
+      "date": "2026-08-13",
+      "hour": "",
+      "epsEstimate": 0.3456,
+      "revenueEstimate": 483405482
+    },
+    {
+      "symbol": "AMAT",
+      "date": "2026-08-13",
+      "hour": "amc",
+      "epsEstimate": 3.462,
+      "revenueEstimate": 9168915088
+    },
+    {
+      "symbol": "AMCI",
+      "date": "2026-08-13",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
-    },
-    {
-      "symbol": "AASP",
-      "date": "2026-08-12",
-      "hour": "",
-      "epsEstimate": null,
-      "revenueEstimate": null
-    },
-    {
-      "symbol": "ABEO",
-      "date": "2026-08-12",
-      "hour": "",
-      "epsEstimate": -0.2346,
-      "revenueEstimate": 12483922
-    },
-    {
-      "symbol": "AC",
-      "date": "2026-08-12",
-      "hour": "",
-      "epsEstimate": null,
-      "revenueEstimate": null
-    },
-    {
-      "symbol": "ACRS",
-      "date": "2026-08-12",
-      "hour": "",
-      "epsEstimate": -0.1632,
-      "revenueEstimate": 1410547
-    },
-    {
-      "symbol": "ADTX",
-      "date": "2026-08-12",
-      "hour": "",
-      "epsEstimate": null,
-      "revenueEstimate": null
-    },
-    {
-      "symbol": "AERT",
-      "date": "2026-08-12",
-      "hour": "",
-      "epsEstimate": null,
-      "revenueEstimate": null
-    },
-    {
-      "symbol": "AIFA",
-      "date": "2026-08-12",
-      "hour": "",
-      "epsEstimate": null,
-      "revenueEstimate": null
-    },
-    {
-      "symbol": "AIM",
-      "date": "2026-08-12",
-      "hour": "",
-      "epsEstimate": -0.1717,
-      "revenueEstimate": 0
     }
   ]
 }
