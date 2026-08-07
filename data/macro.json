@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T11:28:02+00:00",
+  "updatedAt": "2026-08-07T12:10:56+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,7 +35,7 @@
     }
   ],
   "summary": {
-    "vix": 15.21,
+    "vix": 15.18,
     "vixRegime": "normal",
     "us10yYield": 4.67,
     "usdCnh": 6.75,
@@ -52,10 +58,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.21,
-      "changePct": 0.4,
-      "weekChangePct": -4.88,
-      "monthChangePct": -3.98,
+      "price": 15.18,
+      "changePct": 0.2,
+      "weekChangePct": -5.07,
+      "monthChangePct": -4.17,
       "source": "yahoo"
     }
   ],
@@ -111,15 +117,15 @@
       "currency": null,
       "region": null,
       "price": 6.74,
-      "changePct": -0.19,
-      "weekChangePct": -0.27,
+      "changePct": -0.18,
+      "weekChangePct": -0.26,
       "monthChangePct": -0.96,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7491,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-06"
+      "refPrice": 6.7634,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -130,14 +136,14 @@
       "region": null,
       "price": 7.84,
       "changePct": 0.02,
-      "weekChangePct": 0.02,
+      "weekChangePct": 0.03,
       "monthChangePct": 0.08,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8446,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-06"
+      "refPrice": 7.8447,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.35,
-      "changePct": 0.47,
-      "weekChangePct": -1.15,
-      "monthChangePct": -2.58,
+      "price": 158.31,
+      "changePct": 0.45,
+      "weekChangePct": -1.17,
+      "monthChangePct": -2.6,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 157.83,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-06"
+      "refPrice": 158.2052,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,51 +171,25 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": -0.24,
-      "weekChangePct": 0.06,
-      "monthChangePct": 0.95,
+      "changePct": -0.14,
+      "weekChangePct": 0.15,
+      "monthChangePct": 1.04,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8664,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-06"
+      "refPrice": 0.8673,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7426,
+      "price": 0.743,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-06"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8097,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-06"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2821,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-06"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,10 +200,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4377.8,
-      "changePct": 3.2,
-      "weekChangePct": 8.12,
-      "monthChangePct": 5.98,
+      "price": 4381.0,
+      "changePct": 3.28,
+      "weekChangePct": 8.2,
+      "monthChangePct": 6.06,
       "source": "yahoo"
     },
     {
@@ -233,10 +213,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 77.07,
-      "changePct": -0.28,
-      "weekChangePct": -8.98,
-      "monthChangePct": 6.92,
+      "price": 76.68,
+      "changePct": -0.79,
+      "weekChangePct": -9.44,
+      "monthChangePct": 6.38,
       "source": "yahoo"
     },
     {
@@ -246,10 +226,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.63,
-      "changePct": -0.91,
-      "weekChangePct": 2.95,
-      "monthChangePct": 6.61,
+      "price": 6.64,
+      "changePct": -0.68,
+      "weekChangePct": 3.19,
+      "monthChangePct": 6.86,
       "source": "yahoo"
     }
   ],
@@ -528,33 +508,13 @@
       "related": ""
     },
     {
-      "id": 8309674,
-      "title": "Oil prices firm on concerns over Strait of Hormuz plans - Reuters",
-      "summary": "Oil prices firm on concerns over Strait of Hormuz plans  Reuters",
+      "id": 8311354,
+      "title": "Rheinmetall says ramping up ATACMS output will take time as US rebuilds stocks - Reuters",
+      "summary": "Rheinmetall says ramping up ATACMS output will take time as US rebuilds stocks  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNN0Z0cU1oY1hpbHZmZ1JoanRWLXVubmFlTDlWbkpqQ3V1d2dYYlV1U18zVEJ1Zkh1QXFFYm51SVJtZ1ctNHRGYnVlZGk3X0xKcVRHdW5MMzlDM2VQWDBYcmlWc25WX2VaWEJITEJCb2lOOFJsNFRiX0NYOVhCcmxEMWVLVGZXSkJfUzJzQXB2ZTFSMlJnZTczRWVJU3ZTUHEyeWNhcFBuSlI?oc=5",
-      "publishedAt": "2026-08-07T08:48:05+00:00",
-      "related": ""
-    },
-    {
-      "id": 8309676,
-      "title": "Dollar set for weekly gain as traders eye Iran talks, US jobs data - Reuters",
-      "summary": "Dollar set for weekly gain as traders eye Iran talks, US jobs data  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPOUNvR1pacXVtTWI3eUROeE54TXVYY3JEU1FNSFA4YlBaVFp6MDFXY0tFaFpqSFBfM2R2WTJQVDVtNG5RN3ozQkZLTTZpTGN5aDMzUE9uUVAyanZWN0VWcnVzWlF1aDh6Y0k2dlY4WWpsMFRMdFNoRW81Y1M2WW9qNTlPSWZVZGFnRVh1eEVTTXhWSlhOQkgyRFJfUm5nMGtGaHRUbnlITTRidldKOFg3ZEg5NnRLR3dj?oc=5",
-      "publishedAt": "2026-08-07T08:35:51+00:00",
-      "related": ""
-    },
-    {
-      "id": 8310190,
-      "title": "AI demand keeps China's export engine humming, but risks loom - Reuters",
-      "summary": "AI demand keeps China's export engine humming, but risks loom  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQcmhJQUR2QVh5SHpuWDZ2ZFk3RWdCbDlINEY1MEZuc0tRbkJQT3FuRmQ1WDdtd2owTmhJeDdIU09EYkFiNEJpTnA3cWhQQ1dnWUpkWDJPVENiZDIzTXlNUlRNenF2VlRXM29EbFFJelBiTUhuU1cycU5EV3RvaVhIbU4yc0pNWDM2aGlCaGtSTG5ySGx3aXhFcTNRTkZ4cFlva3k0cA?oc=5",
-      "publishedAt": "2026-08-07T06:14:36+00:00",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQbDNieTdRemdmNGN4TnRTVk50Z3pHMmdhZVlfNk9sWUFpcU1qMzhrQmR0Tk5TVVZtM0ktMUlVSlk0bmdBYk8tZlN1M1R4anJTcVJBTEUtcXg3MDZ0WGpnWGItU09peWcxWjhaMFA4WVdOUWhEWl9UV3FOWE80V3BaMi1JWlBwN0gxTXB6aE8zVkIySUtWTkY1WTlNWlg0THZ1dVEtdk1NLWJnN2JXRUluSkZrclNGV011MDNHV1o4Y0luWVN0bUJKZFFB?oc=5",
+      "publishedAt": "2026-08-07T10:10:17+00:00",
       "related": ""
     },
     {
@@ -568,13 +528,23 @@
       "related": ""
     },
     {
-      "id": 8310497,
-      "title": "Everybody wants energy security post the Iran war, but how? - Reuters",
-      "summary": "Everybody wants energy security post the Iran war, but how?  Reuters",
+      "id": 8310190,
+      "title": "AI demand keeps China's export engine humming, but risks loom - Reuters",
+      "summary": "AI demand keeps China's export engine humming, but risks loom  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNY0VHNVlqVEZlcUZuWHpGVjZmak5COW1JRHVnLUVfUExEbF9NTEZ3SVRIZFhDeF84SmZ4Y2xwcDczb1oxSzNHWUFZT1JkWFhFb3FXTFJRTTFjUmpNVHdYdW5nX1A5WnNOVmpSOGRKcUduY0RhOWMwbE41eklWODdQVldLZ3RONm1SREtRZVhKTkt0cGxmTnBsWDVHNENUZWhwVjZhcG1BQ21rUGlVZ3FzSmNpamFsNFVCSnc?oc=5",
-      "publishedAt": "2026-08-07T04:30:10+00:00",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQcmhJQUR2QVh5SHpuWDZ2ZFk3RWdCbDlINEY1MEZuc0tRbkJQT3FuRmQ1WDdtd2owTmhJeDdIU09EYkFiNEJpTnA3cWhQQ1dnWUpkWDJPVENiZDIzTXlNUlRNenF2VlRXM29EbFFJelBiTUhuU1cycU5EV3RvaVhIbU4yc0pNWDM2aGlCaGtSTG5ySGx3aXhFcTNRTkZ4cFlva3k0cA?oc=5",
+      "publishedAt": "2026-08-07T02:42:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8309676,
+      "title": "Dollar on track for weekly gain as traders eye Iran talks, US jobs data - Reuters",
+      "summary": "Dollar on track for weekly gain as traders eye Iran talks, US jobs data  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPOUNvR1pacXVtTWI3eUROeE54TXVYY3JEU1FNSFA4YlBaVFp6MDFXY0tFaFpqSFBfM2R2WTJQVDVtNG5RN3ozQkZLTTZpTGN5aDMzUE9uUVAyanZWN0VWcnVzWlF1aDh6Y0k2dlY4WWpsMFRMdFNoRW81Y1M2WW9qNTlPSWZVZGFnRVh1eEVTTXhWSlhOQkgyRFJfUm5nMGtGaHRUbnlITTRidldKOFg3ZEg5NnRLR3dj?oc=5",
+      "publishedAt": "2026-08-07T02:05:00+00:00",
       "related": ""
     },
     {
@@ -588,13 +558,23 @@
       "related": ""
     },
     {
-      "id": 8311031,
-      "title": "All eyes on the US jobs report now",
-      "summary": "<p class=\"text-align-justify\" style=\"text-align: justify;\">The non-farm payrolls release is the only game in town for markets today, with little else to distract from it. US-Iran developments remain u",
+      "id": 8310497,
+      "title": "Everybody wants energy security post the Iran war, but how? - Reuters",
+      "summary": "Everybody wants energy security post the Iran war, but how?  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNY0VHNVlqVEZlcUZuWHpGVjZmak5COW1JRHVnLUVfUExEbF9NTEZ3SVRIZFhDeF84SmZ4Y2xwcDczb1oxSzNHWUFZT1JkWFhFb3FXTFJRTTFjUmpNVHdYdW5nX1A5WnNOVmpSOGRKcUduY0RhOWMwbE41eklWODdQVldLZ3RONm1SREtRZVhKTkt0cGxmTnBsWDVHNENUZWhwVjZhcG1BQ21rUGlVZ3FzSmNpamFsNFVCSnc?oc=5",
+      "publishedAt": "2026-08-07T00:54:34+00:00",
+      "related": ""
+    },
+    {
+      "id": 8311349,
+      "title": "investingLive European markets wrap: Gold advances, dollar muted ahead of NFP",
+      "summary": "<p>Headlines:</p><ul><li><a href=\"https://investinglive.com/news/all-eyes-on-the-us-jobs-report-now\" rel=\"follow\">All eyes on the US jobs report now</a></li><li><a href=\"https://investinglive.com/news",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/all-eyes-on-the-us-jobs-report-now/",
-      "publishedAt": "2026-08-07T10:01:48+00:00",
+      "link": "https://investinglive.com/news/investinglive-european-markets-wrap-gold-advances-dollar-muted-ahead-of-nfp/",
+      "publishedAt": "2026-08-07T11:05:05+00:00",
       "related": ""
     }
   ],
