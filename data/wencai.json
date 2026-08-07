@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-07T10:08:55+00:00",
+  "updatedAt": "2026-08-07T11:04:56+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 37 条资讯",
+  "message": "已更新 4 个市场问句 · 37 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 74,
@@ -147,59 +147,59 @@
           "rank": "2"
         },
         {
-          "code": "002407.SZ",
-          "name": "多氟多",
-          "price": 36.54,
-          "changePct": 1.25,
-          "rank": "3"
-        },
-        {
           "code": "600206.SH",
           "name": "有研新材",
           "price": 48.17,
           "changePct": 10.0,
+          "rank": "3"
+        },
+        {
+          "code": "002407.SZ",
+          "name": "多氟多",
+          "price": 36.54,
+          "changePct": 1.25,
           "rank": "4"
-        },
-        {
-          "code": "600584.SH",
-          "name": "长电科技",
-          "price": 77.75,
-          "changePct": 2.48,
-          "rank": "5"
-        },
-        {
-          "code": "000636.SZ",
-          "name": "风华高科",
-          "price": 58.29,
-          "changePct": 0.02,
-          "rank": "6"
         },
         {
           "code": "603986.SH",
           "name": "兆易创新",
           "price": 417.05,
           "changePct": 8.32,
+          "rank": "5"
+        },
+        {
+          "code": "600584.SH",
+          "name": "长电科技",
+          "price": 77.75,
+          "changePct": 2.48,
+          "rank": "6"
+        },
+        {
+          "code": "000636.SZ",
+          "name": "风华高科",
+          "price": 58.29,
+          "changePct": 0.02,
           "rank": "7"
+        },
+        {
+          "code": "688825.SH",
+          "name": "长鑫科技",
+          "price": 52.48,
+          "changePct": 1.0,
+          "rank": "8"
+        },
+        {
+          "code": "600487.SH",
+          "name": "亨通光电",
+          "price": 59.52,
+          "changePct": 6.0,
+          "rank": "9"
         },
         {
           "code": "003032.SZ",
           "name": "传智教育",
           "price": 11.5,
           "changePct": 5.02,
-          "rank": "8"
-        },
-        {
-          "code": "603221.SH",
-          "name": "爱丽家居",
-          "price": 24.82,
-          "changePct": 0.12,
-          "rank": "9"
-        },
-        {
-          "code": "002792.SZ",
-          "name": "通宇通讯",
-          "price": 37.19,
-          "changePct": 10.0,
           "rank": "10"
         }
       ]
@@ -208,7 +208,7 @@
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603986.SH",
@@ -266,63 +266,9 @@
           "changePct": 12.15,
           "flow": 756565580
         }
-      ]
-    },
-    {
-      "id": "range",
-      "title": "箱体震荡",
-      "query": "60日内振幅小于15%且今日放量",
-      "status": "ok",
-      "items": [
-        {
-          "code": "603987.SH",
-          "name": "康德莱",
-          "price": 7.42,
-          "changePct": 1.37
-        },
-        {
-          "code": "600022.SH",
-          "name": "山东钢铁",
-          "price": 1.35,
-          "changePct": -1.46
-        },
-        {
-          "code": "600827.SH",
-          "name": "百联股份",
-          "price": 7.67,
-          "changePct": -0.9
-        },
-        {
-          "code": "603858.SH",
-          "name": "步长制药",
-          "price": 15.95,
-          "changePct": 3.37
-        },
-        {
-          "code": "600282.SH",
-          "name": "南钢股份",
-          "price": 4.82,
-          "changePct": -2.82
-        },
-        {
-          "code": "002507.SZ",
-          "name": "涪陵榨菜",
-          "price": 11.46,
-          "changePct": -0.61
-        },
-        {
-          "code": "000089.SZ",
-          "name": "深圳机场",
-          "price": 6.49,
-          "changePct": -1.52
-        },
-        {
-          "code": "603566.SH",
-          "name": "普莱柯",
-          "price": 10.24,
-          "changePct": 1.09
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     }
   ],
   "news": [
@@ -733,5 +679,9 @@
       "source": "wencai",
       "category": "公告"
     }
-  ]
+  ],
+  "errors": [
+    "range: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
