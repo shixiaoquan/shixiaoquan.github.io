@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T23:45:33+00:00",
+  "updatedAt": "2026-08-08T02:18:28+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 38 条资讯 · 部分沿用缓存",
@@ -15,14 +15,20 @@
     {
       "id": "limit_up",
       "title": "今日涨停",
-      "query": "今日涨停",
-      "status": "stale",
+      "query": "今日涨停（备用：非ST今日涨停）",
+      "status": "ok",
       "items": [
         {
-          "code": "002741.SZ",
-          "name": "光华科技",
-          "price": 26.3,
-          "changePct": 10.0
+          "code": "000739.SZ",
+          "name": "普洛药业",
+          "price": 23.41,
+          "changePct": 10.01
+        },
+        {
+          "code": "002194.SZ",
+          "name": "武汉凡谷",
+          "price": 11.1,
+          "changePct": 10.01
         },
         {
           "code": "002443.SZ",
@@ -31,40 +37,16 @@
           "changePct": 10.02
         },
         {
-          "code": "002552.SZ",
-          "name": "宝鼎科技",
-          "price": 47.6,
+          "code": "002631.SZ",
+          "name": "德尔未来",
+          "price": 8.68,
           "changePct": 10.01
         },
         {
-          "code": "300363.SZ",
-          "name": "博腾股份",
-          "price": 20.44,
-          "changePct": 20.02
-        },
-        {
-          "code": "688693.SH",
-          "name": "锴威特",
-          "price": 93.38,
-          "changePct": 19.99
-        },
-        {
-          "code": "002437.SZ",
-          "name": "誉衡药业",
-          "price": 3.12,
-          "changePct": 9.86
-        },
-        {
-          "code": "300986.SZ",
-          "name": "志特新材",
-          "price": 14.8,
-          "changePct": 20.03
-        },
-        {
-          "code": "603137.SH",
-          "name": "恒尚节能",
-          "price": 27.5,
-          "changePct": 10.0
+          "code": "002762.SZ",
+          "name": "金发拉比",
+          "price": 10.41,
+          "changePct": 10.04
         },
         {
           "code": "000506.SZ",
@@ -73,28 +55,44 @@
           "changePct": 10.01
         },
         {
-          "code": "603567.SH",
-          "name": "珍宝岛",
-          "price": 7.08,
-          "changePct": 9.94
+          "code": "000603.SZ",
+          "name": "盛达资源",
+          "price": 34.43,
+          "changePct": 10.0
         },
         {
-          "code": "600110.SH",
-          "name": "诺德股份",
-          "price": 10.46,
-          "changePct": 9.99
+          "code": "002821.SZ",
+          "name": "凯莱英",
+          "price": 172.26,
+          "changePct": 10.0
         },
         {
-          "code": "603936.SH",
-          "name": "博敏电子",
-          "price": 15.93,
+          "code": "000831.SZ",
+          "name": "中国稀土",
+          "price": 57.19,
+          "changePct": 10.0
+        },
+        {
+          "code": "300363.SZ",
+          "name": "博腾股份",
+          "price": 20.44,
+          "changePct": 20.02
+        },
+        {
+          "code": "002037.SZ",
+          "name": "保利联合",
+          "price": 7.69,
           "changePct": 10.01
+        },
+        {
+          "code": "600183.SH",
+          "name": "生益科技",
+          "price": 139.98,
+          "changePct": 10.0
         }
       ],
       "count": 74,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "fallbackQuery": true
     },
     {
       "id": "limit_down",
@@ -702,7 +700,6 @@
     }
   ],
   "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
     "limit_down: 'NoneType' object has no attribute 'get'",
     "hot: 'NoneType' object has no attribute 'get'",
     "main_flow: 'NoneType' object has no attribute 'get'",
