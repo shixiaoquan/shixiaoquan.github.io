@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-09T11:41:15+00:00",
+  "updatedAt": "2026-08-09T13:12:43+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 4 个市场问句 · 40 条资讯 · 部分沿用缓存",
+  "message": "已更新 5 个市场问句 · 40 条资讯",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 74,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "000506.SZ",
@@ -91,16 +91,13 @@
           "changePct": 9.86
         }
       ],
-      "count": 74,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 74
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "000779.SZ",
@@ -127,16 +124,13 @@
           "changePct": -9.96
         }
       ],
-      "count": 4,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 4
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "603259.SH",
@@ -153,71 +147,68 @@
           "rank": "2"
         },
         {
+          "code": "600721.SH",
+          "name": "百花医药",
+          "price": 10.54,
+          "changePct": 10.02,
+          "rank": "3"
+        },
+        {
+          "code": "001258.SZ",
+          "name": "立新能源",
+          "price": 13.16,
+          "changePct": 7.96,
+          "rank": "4"
+        },
+        {
           "code": "002428.SZ",
           "name": "云南锗业",
           "price": 100.08,
           "changePct": 10.0,
-          "rank": "3"
+          "rank": "5"
         },
         {
           "code": "600206.SH",
           "name": "有研新材",
           "price": 48.17,
           "changePct": 10.0,
-          "rank": "4"
-        },
-        {
-          "code": "600721.SH",
-          "name": "百花医药",
-          "price": 10.54,
-          "changePct": 10.02,
-          "rank": "5"
-        },
-        {
-          "code": "600487.SH",
-          "name": "亨通光电",
-          "price": 59.52,
-          "changePct": 6.0,
           "rank": "6"
         },
         {
-          "code": "688825.SH",
-          "name": "长鑫科技",
-          "price": 52.48,
-          "changePct": 1.0,
+          "code": "603228.SH",
+          "name": "景旺电子",
+          "price": 94.95,
+          "changePct": 10.0,
           "rank": "7"
+        },
+        {
+          "code": "600176.SH",
+          "name": "中国巨石",
+          "price": 44.38,
+          "changePct": 8.83,
+          "rank": "8"
         },
         {
           "code": "000636.SZ",
           "name": "风华高科",
           "price": 58.29,
           "changePct": 0.02,
-          "rank": "8"
-        },
-        {
-          "code": "603986.SH",
-          "name": "兆易创新",
-          "price": 417.05,
-          "changePct": 8.32,
           "rank": "9"
         },
         {
-          "code": "300308.SZ",
-          "name": "中际旭创",
-          "price": 919.87,
-          "changePct": -3.68,
+          "code": "002407.SZ",
+          "name": "多氟多",
+          "price": 36.54,
+          "changePct": 1.25,
           "rank": "10"
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "603986.SH",
@@ -275,262 +266,381 @@
           "changePct": 12.15,
           "flow": 756565580
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
+    },
+    {
+      "id": "breakout",
+      "title": "突破年线",
+      "query": "突破年线且成交量放大",
+      "status": "ok",
+      "items": [
+        {
+          "code": "300142.SZ",
+          "name": "沃森生物",
+          "price": 13.14,
+          "changePct": 7.88
+        },
+        {
+          "code": "300307.SZ",
+          "name": "慈星股份",
+          "price": 7.7,
+          "changePct": 11.27
+        },
+        {
+          "code": "002414.SZ",
+          "name": "高德红外",
+          "price": 14.06,
+          "changePct": 4.23
+        },
+        {
+          "code": "300986.SZ",
+          "name": "志特新材",
+          "price": 14.8,
+          "changePct": 20.03
+        },
+        {
+          "code": "000989.SZ",
+          "name": "九芝堂",
+          "price": 9.48,
+          "changePct": 4.75
+        },
+        {
+          "code": "000823.SZ",
+          "name": "超声电子",
+          "price": 15.14,
+          "changePct": 5.87
+        },
+        {
+          "code": "300404.SZ",
+          "name": "博济医药",
+          "price": 10.9,
+          "changePct": 9.99
+        },
+        {
+          "code": "000737.SZ",
+          "name": "北方铜业",
+          "price": 14.64,
+          "changePct": 3.54
+        }
+      ]
     }
   ],
   "news": [
     {
-      "id": "wencai:213adc4d42113fa8",
-      "title": "方大特钢：方大特钢关于聘任高级管理人员的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-08/600507_20260808_4R5N.pdf",
+      "id": "wencai:3e413a662224a213",
+      "title": "高争民爆：收购报告书摘要",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464840.PDF",
       "publisher": "同花顺问财",
-      "related": "方大特钢 (600507.SH)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "高争民爆 (002827.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:890935636981a9ff",
-      "title": "天奥电子：关于部分限制性股票回购注销完成的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225463421.PDF",
+      "id": "wencai:e1417b70959c4664",
+      "title": "高争民爆：简式权益变动报告书",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464839.PDF",
       "publisher": "同花顺问财",
-      "related": "天奥电子 (002935.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "高争民爆 (002827.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:b1ca622f92278a60",
-      "title": "凯普生物：关于2026年以集中竞价交易方式回购公司股份比例达2%的进展公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225463135.PDF",
+      "id": "wencai:a6cdc9db991597e0",
+      "title": "欧菲光：关于媒体报道的澄清公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225465394.PDF",
       "publisher": "同花顺问财",
-      "related": "凯普生物 (300639.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "欧菲光 (002456.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:dbe05bf9180042e3",
-      "title": "联瑞新材：联瑞新材关于选举第五届董事会职工代表董事的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-08/688300_20260808_494E.pdf",
+      "id": "wencai:4ae2ad5b7a28dfed",
+      "title": "建龙微纳：关于以集中竞价交易方式回购公司股份比例达到1%暨回购进展公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688357_20260810_6VD3.pdf",
       "publisher": "同花顺问财",
-      "related": "联瑞新材 (688300.SH)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "建龙微纳 (688357.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:1c32722d5fc1288f",
-      "title": "联瑞新材：北京市康达（广州）律师事务所关于江苏联瑞新材料股份有限公司2026年第二次临时股东会的法律意见书",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-08/688300_20260808_NJLP.pdf",
+      "id": "wencai:253e6a726b94d868",
+      "title": "广钢气体：国泰海通证券股份有限公司关于广州广钢气体能源股份有限公司首次公开发行部分限售股上市流通的核查意见",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688548_20260810_CT0T.pdf",
       "publisher": "同花顺问财",
-      "related": "联瑞新材 (688300.SH)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "广钢气体 (688548.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:282041b4b93fd146",
-      "title": "联瑞新材：联瑞新材2026年第二次临时股东会决议公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-08/688300_20260808_FG4M.pdf",
+      "id": "wencai:aeda4dc494e7510e",
+      "title": "广钢气体：首次公开发行部分限售股上市流通的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688548_20260810_OMPA.pdf",
       "publisher": "同花顺问财",
-      "related": "联瑞新材 (688300.SH)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "广钢气体 (688548.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:9aa95d1dde4ab3e0",
-      "title": "柏诚股份：关于股东权益变动触及1%刻度的提示性公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-08/601133_20260808_SWTU.pdf",
+      "id": "wencai:6b3401cfc3834014",
+      "title": "浙江震元：关于为子公司震元生物提供担保的进展公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225463044.PDF",
       "publisher": "同花顺问财",
-      "related": "柏诚股份 (601133.SH)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "浙江震元 (000705.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:9163358c2f3606df",
-      "title": "江特电机：关于公司完成工商变更登记的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225463796.PDF",
+      "id": "wencai:8e2f7fcd724cdf50",
+      "title": "天山股份：第九届董事会第十九次会议决议公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464879.PDF",
       "publisher": "同花顺问财",
-      "related": "江特电机 (002176.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "天山股份 (000877.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:a0667b6a05ce6507",
-      "title": "鼎胜新材：江苏鼎胜新能源材料股份有限公司2026年员工持股计划第一次持有人会议决议公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-08/603876_20260808_4KWU.pdf",
+      "id": "wencai:1487c9170757c187",
+      "title": "天山股份：2026年第四次独立董事专门会议审核意见",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464880.PDF",
       "publisher": "同花顺问财",
-      "related": "鼎胜新材 (603876.SH)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "天山股份 (000877.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:3a3efb72c13d90ec",
-      "title": "千红制药：关于修订公司2025年员工持股计划相关事项的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225463109.PDF",
+      "id": "wencai:65c9bc9a496a362",
+      "title": "天山股份：关于召开2026年第四次临时股东会的通知",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464881.PDF",
       "publisher": "同花顺问财",
-      "related": "千红制药 (002550.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "天山股份 (000877.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:47e5e7c8c394a42d",
-      "title": "千红制药：第六届董事会第十四次会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225463107.PDF",
+      "id": "wencai:b5e899a2b94c4ed",
+      "title": "赛诺医疗：赛诺医疗科学技术股份有限公司关于子公司自膨式颅内药物涂层支架系统获得欧盟MDR认证的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688108_20260810_88OR.pdf",
       "publisher": "同花顺问财",
-      "related": "千红制药 (002550.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "赛诺医疗 (688108.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:de2fc931ab49b9b",
-      "title": "千红制药：2026年半年度非经营性资金占用及其他关联资金往来情况汇总表",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225463106.PDF",
+      "id": "wencai:b4dfb26df1ff13ea",
+      "title": "力源信息：2026年半年度报告摘要",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225463079.PDF",
       "publisher": "同花顺问财",
-      "related": "千红制药 (002550.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "力源信息 (300184.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:2a61caf6b317f0ac",
-      "title": "影石创新：关于开立募集资金专户并签订募集资金专户监管协议的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-08/688775_20260808_UHUN.pdf",
+      "id": "wencai:111e54aebd293837",
+      "title": "力源信息：2026年半年度非经营性资金占用及其他关联资金往来情况汇总表",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225463081.PDF",
       "publisher": "同花顺问财",
-      "related": "影石创新 (688775.SH)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "力源信息 (300184.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:aae9cdf521a48ba9",
-      "title": "罗欣药业：关于合计持有5%以上股东部分股份被司法冻结的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225462957.PDF",
+      "id": "wencai:e51c989644d88047",
+      "title": "力源信息：2026年半年度报告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225463080.PDF",
       "publisher": "同花顺问财",
-      "related": "罗欣药业 (002793.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "力源信息 (300184.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:298f16af546aa9c1",
-      "title": "深圳能源：2026年第三次临时股东会决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225463742.PDF",
+      "id": "wencai:6a2682f2c4fc8bd7",
+      "title": "新世界：新世界2025年年度权益分派实施公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/600628_20260810_W836.pdf",
       "publisher": "同花顺问财",
-      "related": "深圳能源 (000027.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "新世界 (600628.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:4db3b4f22702b5a",
-      "title": "深圳能源：深圳能源2026年第三次临时股东会法律意见书",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225463743.PDF",
+      "id": "wencai:2750652e5059cd81",
+      "title": "映翰通：关于以集中竞价交易方式回购股份的预案",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688080_20260810_7CZ0.pdf",
       "publisher": "同花顺问财",
-      "related": "深圳能源 (000027.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "映翰通 (688080.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:bcb660074369a8da",
-      "title": "协鑫能科：关于召开2026年第四次临时股东会的通知",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225464134.PDF",
+      "id": "wencai:dfffc7e3f1ef0776",
+      "title": "映翰通：第五届董事会第四次会议决议公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688080_20260810_0RHB.pdf",
       "publisher": "同花顺问财",
-      "related": "协鑫能科 (002015.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "映翰通 (688080.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:5cae2b8a10a9902",
-      "title": "协鑫能科：中国国际金融股份有限公司关于协鑫能源科技股份有限公司使用部分闲置募集资金进行现金管理及以协定存款方式存放募集资金的核查意见",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225464132.PDF",
+      "id": "wencai:a134959b33252dcd",
+      "title": "映翰通：关于召开2026年第一次临时股东会的通知",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688080_20260810_YIRH.pdf",
       "publisher": "同花顺问财",
-      "related": "协鑫能科 (002015.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "映翰通 (688080.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:45cfedae64144a7b",
-      "title": "协鑫能科：第九届董事会第十次会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225464133.PDF",
+      "id": "wencai:7e1cdbf3c20d0a60",
+      "title": "先锋精科：先锋精科向不特定对象发行可转换公司债券网上中签结果公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688605_20260810_0AHX.pdf",
       "publisher": "同花顺问财",
-      "related": "协鑫能科 (002015.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "先锋精科 (688605.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:5a965b6bc5aab2f7",
-      "title": "葵花药业：关于投资设立四川葵花医药有限公司的进展公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225462922.PDF",
+      "id": "wencai:347dc00f5c774718",
+      "title": "洁特生物：关于“洁特转债”可选择回售的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688026_20260810_7TME.pdf",
       "publisher": "同花顺问财",
-      "related": "葵花药业 (002737.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "洁特生物 (688026.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:54297f4824725634",
-      "title": "葵花药业：关于使用闲置自有资金进行现金管理的进展公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225462921.PDF",
+      "id": "wencai:4945aad7cf25b27f",
+      "title": "洁特生物：国联民生证券承销保荐有限公司关于广州洁特生物过滤股份有限公司可转换公司债券回售有关事项的核查意见",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-10/688026_20260810_4RPW.pdf",
       "publisher": "同花顺问财",
-      "related": "葵花药业 (002737.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "洁特生物 (688026.SH)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:cd72ddf3ac9172a8",
-      "title": "东方材料：新东方新材料股份有限公司2026年第二次临时股东会会议资料",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-08/603110_20260808_Q9LJ.pdf",
+      "id": "wencai:1fcbff9299665be8",
+      "title": "拓新药业：关于2026年度向特定对象发行股票申请获得深圳证券交易所受理的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225465297.PDF",
       "publisher": "同花顺问财",
-      "related": "东方材料 (603110.SH)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "拓新药业 (301089.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
     },
     {
-      "id": "wencai:6369ee8a64cee097",
-      "title": "华盛昌：关于2024年员工持股计划股份出售完毕暨终止的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-08/1225464446.PDF",
+      "id": "wencai:267dbcb1410deb51",
+      "title": "拓新药业：中泰证券股份有限公司关于拓新药业集团股份有限公司2026年度向特定对象发行股票之上市保荐书（申报稿）",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225465300.PDF",
       "publisher": "同花顺问财",
-      "related": "华盛昌 (002980.SZ)",
-      "publishedAt": "2026-08-07T16:00:00+00:00",
+      "related": "拓新药业 (301089.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:1ef24844ea6a89eb",
+      "title": "拓新药业：北京市康达律师事务所关于拓新药业集团股份有限公司2026年度向特定对象发行股票的法律意见书",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225465301.PDF",
+      "publisher": "同花顺问财",
+      "related": "拓新药业 (301089.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:77c1de95e32c7244",
+      "title": "鸿特科技：广东鸿特科技股份有限公司配股发行公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464994.PDF",
+      "publisher": "同花顺问财",
+      "related": "鸿特科技 (300176.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:4d389dc61a84a459",
+      "title": "鸿特科技：广东鸿特科技股份有限公司配股说明书摘要",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464995.PDF",
+      "publisher": "同花顺问财",
+      "related": "鸿特科技 (300176.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:4fecd8100c9b3d48",
+      "title": "鸿特科技：第六届董事会第十四次会议决议公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464997.PDF",
+      "publisher": "同花顺问财",
+      "related": "鸿特科技 (300176.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:6bc10e1428027dc5",
+      "title": "*ST发展：关于控股子公司重大诉讼的进展公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464842.PDF",
+      "publisher": "同花顺问财",
+      "related": "*ST发展 (000838.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:ce6a00a16fafc116",
+      "title": "*ST发展：关于与预重整投资人签署《重整投资协议》暨公司股票复牌的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-10/1225464841.PDF",
+      "publisher": "同花顺问财",
+      "related": "*ST发展 (000838.SZ)",
+      "publishedAt": "2026-08-09T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
       "category": "公告"
@@ -655,80 +765,6 @@
       "summary": "利好",
       "source": "wencai",
       "category": "利好"
-    },
-    {
-      "id": "wencai:c0a68fbafa213bad",
-      "title": "【图解财报】广合科技中报盈利9.56亿人民币，同比增加94.39%",
-      "link": "https://finance.eastmoney.com/a/202608073835548385.html",
-      "publisher": "同花顺问财",
-      "related": "广合科技 (001389.SZ)",
-      "publishedAt": "2026-08-07T14:53:00+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
-      "id": "wencai:8c1581f589a7be80",
-      "title": "广合科技(01989.HK)中期净利润约9.56亿元 同比上升94.4%",
-      "link": "https://finance.jrj.com.cn/2026/08/07224258049988.shtml",
-      "publisher": "同花顺问财",
-      "related": "广合科技 (001389.SZ)",
-      "publishedAt": "2026-08-07T14:42:34+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
-      "id": "wencai:e560bdf047c782c4",
-      "title": "寒武纪上半年营收翻番，净利润23亿元增长1.2倍",
-      "link": "http://news.10jqka.com.cn/19700122/c678773729.shtml",
-      "publisher": "同花顺问财",
-      "related": "寒武纪 (688256.SH)",
-      "publishedAt": "2026-08-07T14:38:40+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
-      "id": "wencai:d668d529c09b535e",
-      "title": "寒武纪上半年净利暴增122.61%",
-      "link": "http://news.10jqka.com.cn/19700122/c678773590.shtml",
-      "publisher": "同花顺问财",
-      "related": "寒武纪 (688256.SH)",
-      "publishedAt": "2026-08-07T14:12:40+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
-      "id": "wencai:f72e5d32c7159a80",
-      "title": "算力PCB需求强劲 广合科技上半年净利润增长94.4%",
-      "link": "http://news.10jqka.com.cn/19700122/c678773542.shtml",
-      "publisher": "同花顺问财",
-      "related": "广合科技 (001389.SZ)",
-      "publishedAt": "2026-08-07T14:06:08+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
-    },
-    {
-      "id": "wencai:2d59929e92df8ae6",
-      "title": "寒武纪：2026年半年度归属于上市公司股东的净利润同比增长122.61%",
-      "link": "http://news.10jqka.com.cn/19700122/c678773539.shtml",
-      "publisher": "同花顺问财",
-      "related": "寒武纪 (688256.SH)",
-      "publishedAt": "2026-08-07T14:05:01+00:00",
-      "summary": "利好",
-      "source": "wencai",
-      "category": "利好"
     }
-  ],
-  "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
-    "limit_down: 'NoneType' object has no attribute 'get'",
-    "hot: 'NoneType' object has no attribute 'get'",
-    "main_flow: 'NoneType' object has no attribute 'get'",
-    "breakout: 'NoneType' object has no attribute 'get'"
-  ],
-  "newsStale": true
+  ]
 }

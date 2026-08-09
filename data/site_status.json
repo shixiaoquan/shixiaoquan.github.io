@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-09T12:21:26+00:00",
+  "updatedAt": "2026-08-09T13:13:07+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -232,7 +232,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-07T15:36:07+00:00",
       "status": "stale",
-      "ageMinutes": 2685
+      "ageMinutes": 2737
     },
     {
       "id": "macro",
@@ -241,7 +241,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-07T15:35:59+00:00",
       "status": "stale",
-      "ageMinutes": 2685
+      "ageMinutes": 2737
     },
     {
       "id": "truth",
@@ -249,17 +249,17 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-09T12:01:06+00:00",
-      "status": "ok",
-      "ageMinutes": 20
+      "status": "stale",
+      "ageMinutes": 72
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-08-09T11:41:15+00:00",
+      "updatedAt": "2026-08-09T13:12:43+00:00",
       "status": "ok",
-      "ageMinutes": 40
+      "ageMinutes": 0
     },
     {
       "id": "reports",
@@ -268,7 +268,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-09T16:53:20+08:00",
       "status": "ok",
-      "ageMinutes": 208
+      "ageMinutes": 259
     },
     {
       "id": "backtest",
@@ -277,9 +277,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-09T03:28:40+00:00",
       "status": "ok",
-      "ageMinutes": 532
+      "ageMinutes": 584
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "31313053389"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "31315195963"
 }
