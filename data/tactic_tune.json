@@ -1,21 +1,21 @@
 {
-  "updatedAt": "2026-08-09T02:48:57+00:00",
+  "updatedAt": "2026-08-09T03:29:03+00:00",
   "buyScoreAdjust": -2,
   "breakoutScoreAdjust": -2,
   "buyScoreAdjustByMarket": {
-    "A股": -2,
-    "港股": -2,
+    "A股": -3,
+    "港股": -3,
     "美股": -3
   },
   "breakoutScoreAdjustByMarket": {
-    "A股": -2,
-    "港股": -2,
+    "A股": -3,
+    "港股": -3,
     "美股": -3
   },
   "attribution": {
     "buySamples": 0,
-    "winRateT5": 61.1,
-    "avgReturnT5": 0.72,
+    "winRateT5": 61.6,
+    "avgReturnT5": 0.48,
     "byDecisionLabel": {
       "未知": {
         "avgT5": 0.42,
@@ -23,31 +23,31 @@
         "winRate": 37.5
       },
       "中": {
-        "avgT5": 1.0,
-        "count": 183,
-        "winRate": 65.6
+        "avgT5": 0.71,
+        "count": 196,
+        "winRate": 64.8
       },
       "低": {
-        "avgT5": 0.1,
-        "count": 65,
-        "winRate": 63.1
+        "avgT5": 0.02,
+        "count": 92,
+        "winRate": 65.2
       }
     },
     "byMarket": {
       "美股": {
-        "avgT5": 0.79,
-        "count": 114,
-        "winRate": 74.6
+        "avgT5": -0.42,
+        "count": 128,
+        "winRate": 66.4
       },
       "A股": {
-        "avgT5": 0.74,
-        "count": 113,
-        "winRate": 54.0
+        "avgT5": 0.93,
+        "count": 126,
+        "winRate": 58.7
       },
       "港股": {
-        "avgT5": 0.55,
-        "count": 61,
-        "winRate": 49.2
+        "avgT5": 1.25,
+        "count": 74,
+        "winRate": 58.1
       }
     },
     "byRegime": {
@@ -57,9 +57,9 @@
         "winRate": 57.7
       },
       "risk_off": {
-        "avgT5": -0.62,
-        "count": 27,
-        "winRate": 70.4
+        "avgT5": -1.0,
+        "count": 67,
+        "winRate": 67.2
       },
       "neutral": {
         "avgT5": -0.31,
@@ -74,9 +74,11 @@
     }
   },
   "notes": [
-    "中决策分 T+5 胜率 65.6% 良好，门槛 -1",
+    "中决策分 T+5 胜率 64.8% 良好，门槛 -1",
     "偏多环境 T+5 胜率 71.9% 良好，门槛 -1",
-    "美股 T+5 胜率 74.6% 良好，门槛 -1（市场门槛→-3）",
+    "A股 T+5 胜率 58.7% 良好，门槛 -1（市场门槛→-3）",
+    "港股 T+5 胜率 58.1% 良好，门槛 -1（市场门槛→-3）",
+    "美股 T+5 胜率 66.4% 良好，门槛 -1（市场门槛→-3）",
     "buy 样本不足，主要依据 watch 池、市场与决策分桶观察"
   ],
   "active": true
