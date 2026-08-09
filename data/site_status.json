@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-09T13:13:07+00:00",
+  "updatedAt": "2026-08-09T13:13:35+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -248,18 +248,18 @@
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-08-09T12:01:06+00:00",
-      "status": "stale",
-      "ageMinutes": 72
+      "updatedAt": "2026-08-09T13:13:33+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-08-09T13:12:43+00:00",
+      "updatedAt": "2026-08-09T11:41:15+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 92
     },
     {
       "id": "reports",
@@ -268,7 +268,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-09T16:53:20+08:00",
       "status": "ok",
-      "ageMinutes": 259
+      "ageMinutes": 260
     },
     {
       "id": "backtest",
@@ -280,6 +280,6 @@
       "ageMinutes": 584
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "31315195963"
+  "triggeredBy": "Update Truth Social",
+  "runId": "31315216511"
 }
