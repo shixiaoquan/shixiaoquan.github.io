@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-09T22:48:20+00:00",
+  "updatedAt": "2026-08-09T22:54:53+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -13,7 +13,7 @@
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
     "masterLearnRevision": 357,
-    "masterLearnUpdatedAt": "2026-08-09T22:18:14+00:00",
+    "masterLearnUpdatedAt": "2026-08-09T22:54:07+00:00",
     "masterAvgWinRate": 57.1,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-09T22:19:20+00:00",
+    "updatedAt": "2026-08-09T22:54:53+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
@@ -224,18 +224,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-09T22:18:34+00:00",
+      "updatedAt": "2026-08-09T22:54:52+00:00",
       "status": "ok",
-      "ageMinutes": 29
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-09T22:18:28+00:00",
+      "updatedAt": "2026-08-09T22:54:40+00:00",
       "status": "ok",
-      "ageMinutes": 29
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -244,16 +244,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-09T22:48:18+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 6
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-08-09T21:45:37+00:00",
+      "updatedAt": "2026-08-09T22:46:46+00:00",
       "status": "ok",
-      "ageMinutes": 62
+      "ageMinutes": 8
     },
     {
       "id": "reports",
@@ -262,7 +262,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-09T16:53:20+08:00",
       "status": "ok",
-      "ageMinutes": 835
+      "ageMinutes": 841
     },
     {
       "id": "backtest",
@@ -271,9 +271,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-09T03:28:40+00:00",
       "status": "ok",
-      "ageMinutes": 1159
+      "ageMinutes": 1166
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "31340226234"
+  "triggeredBy": "Update Market Data",
+  "runId": "31340537904"
 }
