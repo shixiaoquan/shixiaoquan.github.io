@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-10T11:17:26+00:00",
+  "updatedAt": "2026-08-10T12:03:46+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,7 +35,7 @@
     }
   ],
   "summary": {
-    "vix": 15.46,
+    "vix": 15.45,
     "vixRegime": "normal",
     "us10yYield": 4.66,
     "usdCnh": 6.75,
@@ -50,10 +56,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.46,
-      "changePct": 3.76,
-      "weekChangePct": -2.52,
-      "monthChangePct": 2.86,
+      "price": 15.45,
+      "changePct": 3.69,
+      "weekChangePct": -2.59,
+      "monthChangePct": 2.79,
       "source": "yahoo"
     }
   ],
@@ -115,9 +121,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7476,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-07"
+      "refPrice": 6.7523,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -126,16 +132,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 7.84,
+      "price": 7.85,
       "changePct": 0.01,
       "weekChangePct": 0.04,
       "monthChangePct": 0.12,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8449,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-07"
+      "refPrice": 7.8456,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -144,16 +150,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.8,
-      "changePct": 0.24,
-      "weekChangePct": 0.77,
-      "monthChangePct": -2.2,
+      "price": 158.82,
+      "changePct": 0.26,
+      "weekChangePct": 0.79,
+      "monthChangePct": -2.18,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 158.34,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-07"
+      "refPrice": 157.881,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -163,51 +169,25 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": 0.27,
-      "weekChangePct": 0.1,
-      "monthChangePct": 1.07,
+      "changePct": 0.25,
+      "weekChangePct": 0.09,
+      "monthChangePct": 1.05,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8669,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-07"
+      "refPrice": 0.8655,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7435,
+      "price": 0.7415,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-07"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8103,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-07"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2809,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-07"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -218,10 +198,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4393.6,
-      "changePct": 1.22,
-      "weekChangePct": 8.92,
-      "monthChangePct": 7.05,
+      "price": 4395.0,
+      "changePct": 1.25,
+      "weekChangePct": 8.96,
+      "monthChangePct": 7.09,
       "source": "yahoo"
     },
     {
@@ -231,10 +211,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 79.42,
-      "changePct": 1.59,
-      "weekChangePct": -1.15,
-      "monthChangePct": 11.22,
+      "price": 79.61,
+      "changePct": 1.83,
+      "weekChangePct": -0.91,
+      "monthChangePct": 11.48,
       "source": "yahoo"
     },
     {
@@ -244,10 +224,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.61,
-      "changePct": 0.65,
-      "weekChangePct": 1.53,
-      "monthChangePct": 6.1,
+      "price": 6.62,
+      "changePct": 0.75,
+      "weekChangePct": 1.63,
+      "monthChangePct": 6.2,
       "source": "yahoo"
     }
   ],
@@ -517,8 +497,8 @@
     },
     {
       "id": 8325522,
-      "title": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact - reuters.com",
-      "summary": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact  reuters.com",
+      "title": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact - Reuters",
+      "summary": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNT0ZKNWFNbV9WOEFpMnZYa3NkbzBGWUNiVnVsMlJtT1IzRDliNHJIM0g0eUZ0N2lNcWxSSEd5QVV4QW1pZFRCSTQ5WndIdGtVRTFMcmYxUVVVZzVQazFQRy1vNG5Vd1hhbG9ObG14SnJnbl94VDJLZnJ6dmN4ZUJKTXRiTFBrTkdkN0FyWkFua3FhR3B6aHN5Z05ETmpNUkxLTlViUm4xdGtINktfUDk2UmRUOGtqdw?oc=5",
@@ -527,8 +507,8 @@
     },
     {
       "id": 8325629,
-      "title": "Mohsen Rezaei appointed as secretary of Iran's top security body - reuters.com",
-      "summary": "Mohsen Rezaei appointed as secretary of Iran's top security body  reuters.com",
+      "title": "Mohsen Rezaei appointed as secretary of Iran's top security body - Reuters",
+      "summary": "Mohsen Rezaei appointed as secretary of Iran's top security body  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOX01YNGdkRGZ6S1FUOFNoaHVnTGRjSFJISXI1QTVqVDFfMzI0bTBhZFhrcDJRNTkzcmh0YmpjN1RMQzZqak5GSldnMXVMMnpkTTRoMWZQQ01tLUFhLUpzT1NPWDNSQzZGZmZHVnR3ZXZGbThMNHpVdFZkSjZOd21EUE96TWI0czAyUkVGR0dJZFlsZDVaNEkxbWVvNmlyb19nZTlEOEVoa1VaMzI3MDNGWA?oc=5",
@@ -536,19 +516,29 @@
       "related": ""
     },
     {
+      "id": 8326074,
+      "title": "Gold inches down from seven-week high, US inflation data in focus - Reuters",
+      "summary": "Gold inches down from seven-week high, US inflation data in focus  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOdEF0Uk1tb1JuQWhENTdaLVRfN2ZtbExLM3RoUFVJZ0IzNkhCYlZuc3R2dTY5ZHJxWVJBZVpQbHBES0NybEFsRVkxUFRmT0lVSVMxeUFxOEJKb2ZMWUFDSDh5WHh6S2NscTc1dE5uUFJTalpGLUltVllCX085a2lUbndIeDRVU0NvUmVINTRjU1BnZm9oREFxbUFPeVhTSllrc1h2d29vN0E?oc=5",
+      "publishedAt": "2026-08-10T02:22:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8324279,
-      "title": "China is balancing Asia's crude oil demand by itself - reuters.com",
-      "summary": "China is balancing Asia's crude oil demand by itself  reuters.com",
+      "title": "China is balancing Asia's crude oil demand by itself - Reuters",
+      "summary": "China is balancing Asia's crude oil demand by itself  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNN0lBeUJuUi1Nek03cm1rOF9xMFhxS2RNa1NUNkxqQk9UT1dYOENkMHduLUx3ei12d3VQZmxLSlV6cFd3cDZXc05JcnJ3YnRXRjl2b3VMb2M0T1R3OUpVUnhfVWNxY1d0akVsQ1U0V1hkOEE1eUZWN2FySzNXcHRmLXJpNlR2SWlRekRYbkVld1VqNDI5S0RFdWFVUHBJQXF2bl9FMDZJUmotVzlfZlBidUhVTWpRTVMzYWZlTQ?oc=5",
-      "publishedAt": "2026-08-10T05:20:08+00:00",
+      "publishedAt": "2026-08-10T01:05:23+00:00",
       "related": ""
     },
     {
       "id": 8325630,
-      "title": "Global stocks tick up with oil steady on Hormuz plans - reuters.com",
-      "summary": "Global stocks tick up with oil steady on Hormuz plans  reuters.com",
+      "title": "Global stocks tick up with oil steady on Hormuz plans - Reuters",
+      "summary": "Global stocks tick up with oil steady on Hormuz plans  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQa0JfVHdob1VJM3o3c2RjRHBySGdOb0h0OFVfVTNUdGo5ems0NjhoaGhMaVhpWG9iR3J4dlJkZVBlYVgwS0w2SUd6ZGZiLUtMUndydTZycjNJQ1l0MENqTmdpOTFycEZBRkJ3ZUEyWlM3RERCOGhoYk5ISEdLZnNIUm9HYw?oc=5",
@@ -567,22 +557,12 @@
     },
     {
       "id": 8323771,
-      "title": "Iran ties Hormuz reopening to US concessions on several demands - reuters.com",
-      "summary": "Iran ties Hormuz reopening to US concessions on several demands  reuters.com",
+      "title": "Iran ties Hormuz reopening to US concessions on several demands - Reuters",
+      "summary": "Iran ties Hormuz reopening to US concessions on several demands  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQSmFvNGYwRDFRdHZrdWhBOWR0ZmVCdkZTSzRROXVNMG1UX1Azb04xa3ZCbEtYNkl4eFhSZG16b0xYeHNyd2tTdHhGWXFUTXJ6WFNVRjg3bmZYOEhEeHNaNHh4NU9qN0RQYXY3ZG13Qzh6Mk1LNG9jaGZraUZwRHVKY0hMZlFWUTdMOEpoaTRuemlPWEFJZUhsYk5TaUpNdWFqR1dId3NCM0xvYS1SNlNBMg?oc=5",
       "publishedAt": "2026-08-09T23:03:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8323874,
-      "title": "Oil edges higher as Iran tempers hopes of swift Hormuz reopening - reuters.com",
-      "summary": "Oil edges higher as Iran tempers hopes of swift Hormuz reopening  reuters.com",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQaXpSdTFpV0NCUnZ4ZmZ3bXhmR3QxR1VVbGthTXNFSmZDNU03WWxGTDQ2eE9SeVZPYVE1aHl3NWZuS3FxcW1WSnBBb3J1SXJLY1F6RnFkTy1wdVZHaXdMZkhpclJjM09BU0k1RmMyaFNHQmtnZzA5elZZbUpHVUFEZHFNbnJaek93UlM4cUZJTlU5ZzRUckVJVXdTVVd3amluLWRDb1ljZkY?oc=5",
-      "publishedAt": "2026-08-09T22:17:00+00:00",
       "related": ""
     },
     {
