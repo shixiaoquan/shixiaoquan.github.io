@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-10T10:02:02+00:00",
+  "updatedAt": "2026-08-10T11:17:26+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: HTTP Error 522: <none>",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,10 +29,10 @@
     }
   ],
   "summary": {
-    "vix": 15.43,
+    "vix": 15.46,
     "vixRegime": "normal",
     "us10yYield": 4.66,
-    "usdCnh": null,
+    "usdCnh": 6.75,
     "usdCnhChangePct": null,
     "sectorLeader": "可选消费",
     "sectorLaggard": "能源",
@@ -56,10 +50,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.43,
-      "changePct": 3.56,
-      "weekChangePct": -2.71,
-      "monthChangePct": 2.66,
+      "price": 15.46,
+      "changePct": 3.76,
+      "weekChangePct": -2.52,
+      "monthChangePct": 2.86,
       "source": "yahoo"
     }
   ],
@@ -93,6 +87,21 @@
   ],
   "fx": [
     {
+      "symbol": "USDCNH=X",
+      "name": "美元/离岸人民币",
+      "category": "fx",
+      "unit": "index",
+      "currency": null,
+      "region": null,
+      "price": 6.75,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "base": "USD",
+      "quote": "CNH"
+    },
+    {
       "symbol": "USDCNY=X",
       "name": "美元/在岸人民币",
       "category": "fx",
@@ -100,15 +109,15 @@
       "currency": null,
       "region": null,
       "price": 6.73,
-      "changePct": -0.25,
+      "changePct": -0.24,
       "weekChangePct": -0.28,
-      "monthChangePct": -0.89,
+      "monthChangePct": -0.88,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7523,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7476,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-07"
     },
     {
       "symbol": "USDHKD=X",
@@ -117,16 +126,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 7.85,
+      "price": 7.84,
       "changePct": 0.01,
       "weekChangePct": 0.04,
       "monthChangePct": 0.12,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8456,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8449,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-07"
     },
     {
       "symbol": "USDJPY=X",
@@ -135,16 +144,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.86,
-      "changePct": 0.28,
-      "weekChangePct": 0.81,
-      "monthChangePct": -2.16,
+      "price": 158.8,
+      "changePct": 0.24,
+      "weekChangePct": 0.77,
+      "monthChangePct": -2.2,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 157.881,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 158.34,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-07"
     },
     {
       "symbol": "EURUSD=X",
@@ -154,25 +163,51 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": 0.3,
-      "weekChangePct": 0.13,
-      "monthChangePct": 1.1,
+      "changePct": 0.27,
+      "weekChangePct": 0.1,
+      "monthChangePct": 1.07,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8655,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8669,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-07"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7415,
+      "price": 0.7435,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-07"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8103,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-07"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2809,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-07"
     }
   ],
   "commodities": [
@@ -183,10 +218,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4400.9,
-      "changePct": 1.39,
-      "weekChangePct": 9.1,
-      "monthChangePct": 7.23,
+      "price": 4393.6,
+      "changePct": 1.22,
+      "weekChangePct": 8.92,
+      "monthChangePct": 7.05,
       "source": "yahoo"
     },
     {
@@ -196,10 +231,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 79.01,
-      "changePct": 1.06,
-      "weekChangePct": -1.66,
-      "monthChangePct": 10.64,
+      "price": 79.42,
+      "changePct": 1.59,
+      "weekChangePct": -1.15,
+      "monthChangePct": 11.22,
       "source": "yahoo"
     },
     {
@@ -209,10 +244,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.63,
-      "changePct": 0.84,
-      "weekChangePct": 1.72,
-      "monthChangePct": 6.3,
+      "price": 6.61,
+      "changePct": 0.65,
+      "weekChangePct": 1.53,
+      "monthChangePct": 6.1,
       "source": "yahoo"
     }
   ],
@@ -471,23 +506,53 @@
   ],
   "finnhubNews": [
     {
+      "id": 8325950,
+      "title": "Santoli: Stocks return to their winning ways. But was July's brief pain enough to satisfy the market gods?",
+      "summary": "The stock market's winning history – a hit rate of 100% over any past 20-year span - is well understood. But investors recognize – or need to – the genuine hazard in equities.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/08/10/santoli-stocks-return-to-their-winning-ways-but-was-julys-brief-pain-enough-to-satisfy-the-market-gods.html",
+      "publishedAt": "2026-08-10T10:43:38+00:00",
+      "related": ""
+    },
+    {
       "id": 8325522,
-      "title": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact - Reuters",
-      "summary": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact  Reuters",
+      "title": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact - reuters.com",
+      "summary": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNT0ZKNWFNbV9WOEFpMnZYa3NkbzBGWUNiVnVsMlJtT1IzRDliNHJIM0g0eUZ0N2lNcWxSSEd5QVV4QW1pZFRCSTQ5WndIdGtVRTFMcmYxUVVVZzVQazFQRy1vNG5Vd1hhbG9ObG14SnJnbl94VDJLZnJ6dmN4ZUJKTXRiTFBrTkdkN0FyWkFua3FhR3B6aHN5Z05ETmpNUkxLTlViUm4xdGtINktfUDk2UmRUOGtqdw?oc=5",
-      "publishedAt": "2026-08-10T07:59:43+00:00",
+      "publishedAt": "2026-08-10T09:21:03+00:00",
+      "related": ""
+    },
+    {
+      "id": 8325629,
+      "title": "Mohsen Rezaei appointed as secretary of Iran's top security body - reuters.com",
+      "summary": "Mohsen Rezaei appointed as secretary of Iran's top security body  reuters.com",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOX01YNGdkRGZ6S1FUOFNoaHVnTGRjSFJISXI1QTVqVDFfMzI0bTBhZFhrcDJRNTkzcmh0YmpjN1RMQzZqak5GSldnMXVMMnpkTTRoMWZQQ01tLUFhLUpzT1NPWDNSQzZGZmZHVnR3ZXZGbThMNHpVdFZkSjZOd21EUE96TWI0czAyUkVGR0dJZFlsZDVaNEkxbWVvNmlyb19nZTlEOEVoa1VaMzI3MDNGWA?oc=5",
+      "publishedAt": "2026-08-10T08:01:01+00:00",
       "related": ""
     },
     {
       "id": 8324279,
-      "title": "China is balancing Asia's crude oil demand by itself - Reuters",
-      "summary": "China is balancing Asia's crude oil demand by itself  Reuters",
+      "title": "China is balancing Asia's crude oil demand by itself - reuters.com",
+      "summary": "China is balancing Asia's crude oil demand by itself  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNN0lBeUJuUi1Nek03cm1rOF9xMFhxS2RNa1NUNkxqQk9UT1dYOENkMHduLUx3ei12d3VQZmxLSlV6cFd3cDZXc05JcnJ3YnRXRjl2b3VMb2M0T1R3OUpVUnhfVWNxY1d0akVsQ1U0V1hkOEE1eUZWN2FySzNXcHRmLXJpNlR2SWlRekRYbkVld1VqNDI5S0RFdWFVUHBJQXF2bl9FMDZJUmotVzlfZlBidUhVTWpRTVMzYWZlTQ?oc=5",
-      "publishedAt": "2026-08-10T03:49:08+00:00",
+      "publishedAt": "2026-08-10T05:20:08+00:00",
+      "related": ""
+    },
+    {
+      "id": 8325630,
+      "title": "Global stocks tick up with oil steady on Hormuz plans - reuters.com",
+      "summary": "Global stocks tick up with oil steady on Hormuz plans  reuters.com",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQa0JfVHdob1VJM3o3c2RjRHBySGdOb0h0OFVfVTNUdGo5ems0NjhoaGhMaVhpWG9iR3J4dlJkZVBlYVgwS0w2SUd6ZGZiLUtMUndydTZycjNJQ1l0MENqTmdpOTFycEZBRkJ3ZUEyWlM3RERCOGhoYk5ISEdLZnNIUm9HYw?oc=5",
+      "publishedAt": "2026-08-10T00:25:00+00:00",
       "related": ""
     },
     {
@@ -502,8 +567,8 @@
     },
     {
       "id": 8323771,
-      "title": "Iran ties Hormuz reopening to US concessions on several demands - Reuters",
-      "summary": "Iran ties Hormuz reopening to US concessions on several demands  Reuters",
+      "title": "Iran ties Hormuz reopening to US concessions on several demands - reuters.com",
+      "summary": "Iran ties Hormuz reopening to US concessions on several demands  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQSmFvNGYwRDFRdHZrdWhBOWR0ZmVCdkZTSzRROXVNMG1UX1Azb04xa3ZCbEtYNkl4eFhSZG16b0xYeHNyd2tTdHhGWXFUTXJ6WFNVRjg3bmZYOEhEeHNaNHh4NU9qN0RQYXY3ZG13Qzh6Mk1LNG9jaGZraUZwRHVKY0hMZlFWUTdMOEpoaTRuemlPWEFJZUhsYk5TaUpNdWFqR1dId3NCM0xvYS1SNlNBMg?oc=5",
@@ -512,42 +577,12 @@
     },
     {
       "id": 8323874,
-      "title": "Oil steady as Iran tempers hopes of swift Hormuz reopening - Reuters",
-      "summary": "Oil steady as Iran tempers hopes of swift Hormuz reopening  Reuters",
+      "title": "Oil edges higher as Iran tempers hopes of swift Hormuz reopening - reuters.com",
+      "summary": "Oil edges higher as Iran tempers hopes of swift Hormuz reopening  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQaXpSdTFpV0NCUnZ4ZmZ3bXhmR3QxR1VVbGthTXNFSmZDNU03WWxGTDQ2eE9SeVZPYVE1aHl3NWZuS3FxcW1WSnBBb3J1SXJLY1F6RnFkTy1wdVZHaXdMZkhpclJjM09BU0k1RmMyaFNHQmtnZzA5elZZbUpHVUFEZHFNbnJaek93UlM4cUZJTlU5ZzRUckVJVXdTVVd3amluLWRDb1ljZkY?oc=5",
       "publishedAt": "2026-08-09T22:17:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8325419,
-      "title": "Israeli military closes Palestinian Christian village Taybeh, citing settler attacks - Reuters",
-      "summary": "Israeli military closes Palestinian Christian village Taybeh, citing settler attacks  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNcWhzbGhpYTNuV1JTcU8wSEotZ01CQ3lJb1pteWZiUzRpVVdmdmhUYldVSlV5cXNnR0pKQTFZVmFZeG1VUjZJWkN5Tm5Vak9FTmZFd1RncERPZnJBQmQwdllYaktkQ1VKeWQ5Qi1WaUdSdVlwbGRGaFM0NUJrNmt4MExPczhrVHdSZTVBQlJ4OUN5WVpvSi1XMDE0N0hub292RmlkOUJ1eG9xbkh2U0RXdEpraUF5VU01bXY2NFVqUVFYdjRLT0JWaVN3a0FjY0E?oc=5",
-      "publishedAt": "2026-08-09T21:26:39+00:00",
-      "related": ""
-    },
-    {
-      "id": 8323165,
-      "title": "Yemeni military says Houthi attack on Mocha kills 7, wounds 30 - Reuters",
-      "summary": "Yemeni military says Houthi attack on Mocha kills 7, wounds 30  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQY1pLdDR5UUhyOFl0d1dQNFFWV3lPV1RkNVg0TFgtSjVidElQVlpTcmt1cFQ0QmI4bTNsOXdjNlozM1RWLU9DUThrNmNjTURRZV9sSjJPbTVIYTR2ZUZQYzQ2NGdFbVRsSVlzeno5NWhiajhucW8ySmYwc1B6cENtOHg1RVhBY0pKUUFHSENiM0w5dU1lNkNJNTB0S0FLSFNKZnpZRHJLaGZHSVk2OFg1X3B0TEUyT0R4V2EtWHoxY2pjVF9IOHl4ZEpZZGF3QQ?oc=5",
-      "publishedAt": "2026-08-09T20:18:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8325418,
-      "title": "NORAD intercepts two aircraft as Trump watches golf tourney in New Jersey - Reuters",
-      "summary": "NORAD intercepts two aircraft as Trump watches golf tourney in New Jersey  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPbmxlZ0JvLUxjSzh2TkhGZUJlV2EwWHc0Q2NtcmhzbVNoaGFqT3A4dVJuMzBQQWlTODlwTFlfTkRqazlJWWVab0NGMDFJeFA1czR2eUFZclk5M1gta3o4VW5YeFpIOENjeUY0NnBGWTBRbkY4azhkdE4tYVpQZWhjT2R2WWQ5aVVZZl9LWkNkX1RTNHZaZGo5cE5FOGI5bkxhb3BUal9JNTdlUllSXzlsTW5R?oc=5",
-      "publishedAt": "2026-08-09T19:59:33+00:00",
       "related": ""
     },
     {
