@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-10T08:41:20+00:00",
+  "updatedAt": "2026-08-10T10:02:02+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: HTTP Error 522: <none>",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,10 +35,10 @@
     }
   ],
   "summary": {
-    "vix": 15.47,
+    "vix": 15.43,
     "vixRegime": "normal",
     "us10yYield": 4.66,
-    "usdCnh": 6.74,
+    "usdCnh": null,
     "usdCnhChangePct": null,
     "sectorLeader": "可选消费",
     "sectorLaggard": "能源",
@@ -50,10 +56,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.47,
-      "changePct": 3.83,
-      "weekChangePct": -2.46,
-      "monthChangePct": 2.93,
+      "price": 15.43,
+      "changePct": 3.56,
+      "weekChangePct": -2.71,
+      "monthChangePct": 2.66,
       "source": "yahoo"
     }
   ],
@@ -87,37 +93,22 @@
   ],
   "fx": [
     {
-      "symbol": "USDCNH=X",
-      "name": "美元/离岸人民币",
-      "category": "fx",
-      "unit": "index",
-      "currency": null,
-      "region": null,
-      "price": 6.74,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "base": "USD",
-      "quote": "CNH"
-    },
-    {
       "symbol": "USDCNY=X",
       "name": "美元/在岸人民币",
       "category": "fx",
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.74,
-      "changePct": -0.09,
-      "weekChangePct": -0.12,
-      "monthChangePct": -0.72,
+      "price": 6.73,
+      "changePct": -0.25,
+      "weekChangePct": -0.28,
+      "monthChangePct": -0.89,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7476,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-07"
+      "refPrice": 6.7523,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -133,9 +124,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8449,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-07"
+      "refPrice": 7.8456,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -144,16 +135,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.53,
-      "changePct": 0.08,
-      "weekChangePct": 0.6,
-      "monthChangePct": -2.36,
+      "price": 158.86,
+      "changePct": 0.28,
+      "weekChangePct": 0.81,
+      "monthChangePct": -2.16,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 158.34,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-07"
+      "refPrice": 157.881,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -163,51 +154,25 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": 0.36,
-      "weekChangePct": 0.19,
-      "monthChangePct": 1.16,
+      "changePct": 0.3,
+      "weekChangePct": 0.13,
+      "monthChangePct": 1.1,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8669,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-07"
+      "refPrice": 0.8655,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7435,
+      "price": 0.7415,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-07"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8103,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-07"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2809,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-07"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -218,10 +183,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4413.9,
-      "changePct": 1.69,
-      "weekChangePct": 9.43,
-      "monthChangePct": 7.55,
+      "price": 4400.9,
+      "changePct": 1.39,
+      "weekChangePct": 9.1,
+      "monthChangePct": 7.23,
       "source": "yahoo"
     },
     {
@@ -231,10 +196,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 78.67,
-      "changePct": 0.63,
-      "weekChangePct": -2.08,
-      "monthChangePct": 10.17,
+      "price": 79.01,
+      "changePct": 1.06,
+      "weekChangePct": -1.66,
+      "monthChangePct": 10.64,
       "source": "yahoo"
     },
     {
@@ -244,10 +209,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.65,
-      "changePct": 1.19,
-      "weekChangePct": 2.07,
-      "monthChangePct": 6.67,
+      "price": 6.63,
+      "changePct": 0.84,
+      "weekChangePct": 1.72,
+      "monthChangePct": 6.3,
       "source": "yahoo"
     }
   ],
@@ -506,13 +471,23 @@
   ],
   "finnhubNews": [
     {
+      "id": 8325522,
+      "title": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact - Reuters",
+      "summary": "Iran says no reason to fear Pakistan-Turkey-Saudi security pact  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNT0ZKNWFNbV9WOEFpMnZYa3NkbzBGWUNiVnVsMlJtT1IzRDliNHJIM0g0eUZ0N2lNcWxSSEd5QVV4QW1pZFRCSTQ5WndIdGtVRTFMcmYxUVVVZzVQazFQRy1vNG5Vd1hhbG9ObG14SnJnbl94VDJLZnJ6dmN4ZUJKTXRiTFBrTkdkN0FyWkFua3FhR3B6aHN5Z05ETmpNUkxLTlViUm4xdGtINktfUDk2UmRUOGtqdw?oc=5",
+      "publishedAt": "2026-08-10T07:59:43+00:00",
+      "related": ""
+    },
+    {
       "id": 8324279,
       "title": "China is balancing Asia's crude oil demand by itself - Reuters",
       "summary": "China is balancing Asia's crude oil demand by itself  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNN0lBeUJuUi1Nek03cm1rOF9xMFhxS2RNa1NUNkxqQk9UT1dYOENkMHduLUx3ei12d3VQZmxLSlV6cFd3cDZXc05JcnJ3YnRXRjl2b3VMb2M0T1R3OUpVUnhfVWNxY1d0akVsQ1U0V1hkOEE1eUZWN2FySzNXcHRmLXJpNlR2SWlRekRYbkVld1VqNDI5S0RFdWFVUHBJQXF2bl9FMDZJUmotVzlfZlBidUhVTWpRTVMzYWZlTQ?oc=5",
-      "publishedAt": "2026-08-10T06:03:55+00:00",
+      "publishedAt": "2026-08-10T03:49:08+00:00",
       "related": ""
     },
     {
@@ -537,12 +512,22 @@
     },
     {
       "id": 8323874,
-      "title": "Oil steady as Iran tempers hopes for swift Hormuz reopening - Reuters",
-      "summary": "Oil steady as Iran tempers hopes for swift Hormuz reopening  Reuters",
+      "title": "Oil steady as Iran tempers hopes of swift Hormuz reopening - Reuters",
+      "summary": "Oil steady as Iran tempers hopes of swift Hormuz reopening  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQaXpSdTFpV0NCUnZ4ZmZ3bXhmR3QxR1VVbGthTXNFSmZDNU03WWxGTDQ2eE9SeVZPYVE1aHl3NWZuS3FxcW1WSnBBb3J1SXJLY1F6RnFkTy1wdVZHaXdMZkhpclJjM09BU0k1RmMyaFNHQmtnZzA5elZZbUpHVUFEZHFNbnJaek93UlM4cUZJTlU5ZzRUckVJVXdTVVd3amluLWRDb1ljZkY?oc=5",
       "publishedAt": "2026-08-09T22:17:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8325419,
+      "title": "Israeli military closes Palestinian Christian village Taybeh, citing settler attacks - Reuters",
+      "summary": "Israeli military closes Palestinian Christian village Taybeh, citing settler attacks  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNcWhzbGhpYTNuV1JTcU8wSEotZ01CQ3lJb1pteWZiUzRpVVdmdmhUYldVSlV5cXNnR0pKQTFZVmFZeG1VUjZJWkN5Tm5Vak9FTmZFd1RncERPZnJBQmQwdllYaktkQ1VKeWQ5Qi1WaUdSdVlwbGRGaFM0NUJrNmt4MExPczhrVHdSZTVBQlJ4OUN5WVpvSi1XMDE0N0hub292RmlkOUJ1eG9xbkh2U0RXdEpraUF5VU01bXY2NFVqUVFYdjRLT0JWaVN3a0FjY0E?oc=5",
+      "publishedAt": "2026-08-09T21:26:39+00:00",
       "related": ""
     },
     {
@@ -556,43 +541,23 @@
       "related": ""
     },
     {
-      "id": 8321250,
-      "title": "Netanyahu says Trump's new Gaza plan is unacceptable - Reuters",
-      "summary": "Netanyahu says Trump's new Gaza plan is unacceptable  Reuters",
+      "id": 8325418,
+      "title": "NORAD intercepts two aircraft as Trump watches golf tourney in New Jersey - Reuters",
+      "summary": "NORAD intercepts two aircraft as Trump watches golf tourney in New Jersey  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOMm5hSE0yMGxRN0hITzZOLXp3R2tCX1dRc1IxaWp3MmZ5Uzc5T20yYmQxVlQ2ZDUzdkppNUJRNzJQcDNwaDh4aGd2cmI1S1lKY2lKRzNBUnJXVVpfOVNwa1JDM2JLenNkMi1YQ2h4MFJ3Yk1HM0FBY2RZZTVnbXd5QmhxU3ZKWTNQZDNEWmdEYVVBUzV3b2tZMEx5TDVTOER0SVZsemE4Z1F2VFJ0Ym9qX3Zn?oc=5",
-      "publishedAt": "2026-08-09T19:24:40+00:00",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPbmxlZ0JvLUxjSzh2TkhGZUJlV2EwWHc0Q2NtcmhzbVNoaGFqT3A4dVJuMzBQQWlTODlwTFlfTkRqazlJWWVab0NGMDFJeFA1czR2eUFZclk5M1gta3o4VW5YeFpIOENjeUY0NnBGWTBRbkY4azhkdE4tYVpQZWhjT2R2WWQ5aVVZZl9LWkNkX1RTNHZaZGo5cE5FOGI5bkxhb3BUal9JNTdlUllSXzlsTW5R?oc=5",
+      "publishedAt": "2026-08-09T19:59:33+00:00",
       "related": ""
     },
     {
-      "id": 8322461,
-      "title": "Trump says U.S. is 'low-keying it' with Iran, stresses economic pain, according to Axios interview - Reuters",
-      "summary": "Trump says U.S. is 'low-keying it' with Iran, stresses economic pain, according to Axios interview  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOazVhN1R5WHRFQTBvX1BRNWoyT1F4WGlKVXBncE5ad1h2TVZqM0ZPLWdEYy1OVkdDYnE2THh4Z2twaGtiRXBMdVY3V3NBT01UeGxuVlljODZHUVptY3NqNnVldHNDOEIzYndQQi0zUExFbExpVGdQbS0zS2ppeGpMbWlvVnZsNS10aVBLaXR1ZDA4Q0piT09XVHR4bjRNSk5qaDQtOGwzWm1seTB0UXlVUl9uN3FIRlVCWUdNS0lNX2xWUWR2ZHdTNnVqdS1sdw?oc=5",
-      "publishedAt": "2026-08-09T17:19:59+00:00",
-      "related": ""
-    },
-    {
-      "id": 8321551,
-      "title": "5 ‘rules’ your parents taught you that are sabotaging your career, says expert—like ‘always be grateful’",
-      "summary": "\"Well-intentioned career advice absorbed from a young age can work against you,\" says executive coach Melody Wilding, author of \"Managing Up.\"",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/09/rules-your-parents-taught-you-that-are-sabotaging-your-career-expert.html",
-      "publishedAt": "2026-08-09T13:34:01+00:00",
-      "related": ""
-    },
-    {
-      "id": 8325416,
-      "title": "Iran foreign ministry reaffirms that there are no negotiations with the US currently",
-      "summary": "<ul><li class=\"text-align-justify\" style=\"text-align: justify;\">We are only exchanging messages with the US via intermediaries</li><li class=\"text-align-justify\" style=\"text-align: justify;\">There are",
+      "id": 8325521,
+      "title": "Euro area investor confidence returns to positive territory in August - Sentix",
+      "summary": "<ul><li>August Sentix investor confidence 0.9 vs -0.5 expected</li><li>Prior -3.1</li></ul><p class=\"text-align-justify\" style=\"text-align: justify;\">Euro area investor sentiment continues to recover ",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/iran-foreign-ministry-reaffirms-that-there-are-no-negotiations-with-the-us-currently/",
-      "publishedAt": "2026-08-10T08:05:10+00:00",
+      "link": "https://investinglive.com/news/eurozone-august-sentix-investor-confidence-vs-0-5-expected/",
+      "publishedAt": "2026-08-10T08:33:11+00:00",
       "related": ""
     }
   ],
@@ -626,20 +591,6 @@
       "revenueEstimate": null
     },
     {
-      "symbol": "ANNX",
-      "date": "2026-08-17",
-      "hour": "",
-      "epsEstimate": -0.2438,
-      "revenueEstimate": 0
-    },
-    {
-      "symbol": "API",
-      "date": "2026-08-17",
-      "hour": "",
-      "epsEstimate": null,
-      "revenueEstimate": null
-    },
-    {
       "symbol": "AREC",
       "date": "2026-08-17",
       "hour": "",
@@ -662,6 +613,20 @@
     },
     {
       "symbol": "AXXA",
+      "date": "2026-08-17",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "AZIO",
+      "date": "2026-08-17",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "BASA",
       "date": "2026-08-17",
       "hour": "",
       "epsEstimate": null,
