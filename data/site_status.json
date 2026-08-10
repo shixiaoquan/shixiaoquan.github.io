@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-10T20:08:25+00:00",
+  "updatedAt": "2026-08-10T20:11:21+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -12,8 +12,8 @@
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 362,
-    "masterLearnUpdatedAt": "2026-08-10T19:31:00+00:00",
+    "masterLearnRevision": 363,
+    "masterLearnUpdatedAt": "2026-08-10T20:10:59+00:00",
     "masterAvgWinRate": 55.8,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
@@ -105,24 +105,8 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-10T20:08:25+00:00",
+    "updatedAt": "2026-08-10T20:11:21+00:00",
     "tasks": [
-      {
-        "id": "fix-pipeline-market",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · 行情·荐股·模拟盘",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-      },
-      {
-        "id": "fix-pipeline-macro",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · 宏观与跨资产",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-      },
       {
         "id": "shadow-tracking",
         "type": "shadow_track",
@@ -161,12 +145,22 @@
       }
     ],
     "summary": {
-      "total": 6,
-      "high": 2,
-      "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      "total": 4,
+      "high": 0,
+      "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
   },
   "recentLog": [
+    {
+      "at": "2026-08-10T20:11:07+00:00",
+      "type": "master_learn",
+      "revision": 363,
+      "regime": "neutral",
+      "notes": {
+        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
+        "serenity": "近期表现反馈：range↓、momentum↓"
+      }
+    },
     {
       "at": "2026-08-10T19:31:19+00:00",
       "type": "master_learn",
@@ -216,17 +210,6 @@
         "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
       }
-    },
-    {
-      "at": "2026-08-09T19:35:00+00:00",
-      "type": "master_learn",
-      "revision": 357,
-      "regime": "risk_on",
-      "notes": {
-        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
-        "serenity": "近期表现反馈：range↓、momentum↓",
-        "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
-      }
     }
   ],
   "pipelines": [
@@ -235,18 +218,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-10T19:32:07+00:00",
+      "updatedAt": "2026-08-10T20:11:21+00:00",
       "status": "ok",
-      "ageMinutes": 36
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-10T19:31:38+00:00",
+      "updatedAt": "2026-08-10T20:11:14+00:00",
       "status": "ok",
-      "ageMinutes": 36
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -255,7 +238,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-10T19:35:55+00:00",
       "status": "ok",
-      "ageMinutes": 32
+      "ageMinutes": 35
     },
     {
       "id": "wencai",
@@ -264,7 +247,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-10T19:59:49+00:00",
       "status": "ok",
-      "ageMinutes": 8
+      "ageMinutes": 11
     },
     {
       "id": "reports",
@@ -273,7 +256,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-10T17:40:45+08:00",
       "status": "ok",
-      "ageMinutes": 627
+      "ageMinutes": 630
     },
     {
       "id": "backtest",
@@ -282,9 +265,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-09T03:28:40+00:00",
       "status": "ok",
-      "ageMinutes": 2439
+      "ageMinutes": 2442
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "31427505867"
+  "triggeredBy": "Update Market Data",
+  "runId": "31427730213"
 }
