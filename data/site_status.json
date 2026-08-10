@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-10T06:56:40+00:00",
+  "updatedAt": "2026-08-10T06:57:28+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -13,8 +13,8 @@
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
     "masterLearnRevision": 357,
-    "masterLearnUpdatedAt": "2026-08-10T05:41:36+00:00",
-    "masterAvgWinRate": 59.5,
+    "masterLearnUpdatedAt": "2026-08-10T06:57:11+00:00",
+    "masterAvgWinRate": 57.7,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-10T06:49:15+00:00",
+    "updatedAt": "2026-08-10T06:57:28+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -248,27 +248,27 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-10T05:41:54+00:00",
-      "status": "stale",
-      "ageMinutes": 74
+      "updatedAt": "2026-08-10T06:57:28+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-10T05:41:48+00:00",
-      "status": "stale",
-      "ageMinutes": 74
+      "updatedAt": "2026-08-10T06:57:21+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-08-10T06:56:39+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "updatedAt": "2026-08-10T05:39:57+00:00",
+      "status": "stale",
+      "ageMinutes": 77
     },
     {
       "id": "wencai",
@@ -298,6 +298,6 @@
       "ageMinutes": 1648
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "31363865908"
+  "triggeredBy": "Update Market Data",
+  "runId": "31363890325"
 }
