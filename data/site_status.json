@@ -1,19 +1,19 @@
 {
-  "updatedAt": "2026-08-10T20:59:41+00:00",
+  "updatedAt": "2026-08-10T21:02:51+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 6,
+    "pipelinesStale": 0,
+    "automation": "持续运行中",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 363,
-    "masterLearnUpdatedAt": "2026-08-10T20:10:59+00:00",
+    "masterLearnRevision": 364,
+    "masterLearnUpdatedAt": "2026-08-10T21:01:57+00:00",
     "masterAvgWinRate": 55.8,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-10T20:11:21+00:00",
+    "updatedAt": "2026-08-10T21:02:51+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
@@ -128,6 +128,14 @@
         }
       },
       {
+        "id": "pipelines-stale",
+        "type": "fix_pipeline",
+        "priority": "medium",
+        "title": "部分流水线数据过期",
+        "reason": "2 条流水线过期",
+        "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
+      },
+      {
         "id": "tactic-tune-active",
         "type": "tactic_tune",
         "priority": "low",
@@ -145,12 +153,22 @@
       }
     ],
     "summary": {
-      "total": 4,
+      "total": 5,
       "high": 0,
       "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
   },
   "recentLog": [
+    {
+      "at": "2026-08-10T21:02:06+00:00",
+      "type": "master_learn",
+      "revision": 364,
+      "regime": "neutral",
+      "notes": {
+        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
+        "serenity": "近期表现反馈：range↓、momentum↓"
+      }
+    },
     {
       "at": "2026-08-10T20:11:07+00:00",
       "type": "master_learn",
@@ -200,16 +218,6 @@
         "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
         "serenity": "近期表现反馈：range↓、momentum↓"
       }
-    },
-    {
-      "at": "2026-08-10T15:39:22+00:00",
-      "type": "master_learn",
-      "revision": 358,
-      "regime": "neutral",
-      "notes": {
-        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
-      }
     }
   ],
   "pipelines": [
@@ -218,18 +226,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-10T20:11:21+00:00",
-      "status": "stale",
-      "ageMinutes": 48
+      "updatedAt": "2026-08-10T21:02:50+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-10T20:11:14+00:00",
-      "status": "stale",
-      "ageMinutes": 48
+      "updatedAt": "2026-08-10T21:02:12+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -238,7 +246,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-10T20:20:58+00:00",
       "status": "ok",
-      "ageMinutes": 38
+      "ageMinutes": 41
     },
     {
       "id": "wencai",
@@ -247,7 +255,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-10T20:58:41+00:00",
       "status": "ok",
-      "ageMinutes": 1
+      "ageMinutes": 4
     },
     {
       "id": "reports",
@@ -256,7 +264,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-10T17:40:45+08:00",
       "status": "ok",
-      "ageMinutes": 678
+      "ageMinutes": 682
     },
     {
       "id": "backtest",
@@ -265,9 +273,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-09T03:28:40+00:00",
       "status": "ok",
-      "ageMinutes": 2491
+      "ageMinutes": 2494
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "31431590573"
+  "triggeredBy": "Update Market Data",
+  "runId": "31431883869"
 }
