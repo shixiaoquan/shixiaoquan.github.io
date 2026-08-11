@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-11T10:09:07+00:00",
+  "updatedAt": "2026-08-11T11:02:50+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 40 条资讯",
+  "message": "已更新 4 个市场问句 · 20 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 60,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002963.SZ",
@@ -91,13 +91,16 @@
           "changePct": 9.97
         }
       ],
-      "count": 60
+      "count": 60,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002350.SZ",
@@ -112,13 +115,16 @@
           "changePct": -9.99
         }
       ],
-      "count": 2
+      "count": 2,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "600664.SH",
@@ -190,13 +196,16 @@
           "changePct": -3.19,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002384.SZ",
@@ -254,286 +263,13 @@
           "changePct": -0.7,
           "flow": 649476558
         }
-      ]
-    },
-    {
-      "id": "range",
-      "title": "箱体震荡",
-      "query": "60日内振幅小于15%且今日放量",
-      "status": "ok",
-      "items": [
-        {
-          "code": "000898.SZ",
-          "name": "鞍钢股份",
-          "price": 1.99,
-          "changePct": -2.45
-        },
-        {
-          "code": "600009.SH",
-          "name": "上海机场",
-          "price": 23.5,
-          "changePct": -1.76
-        },
-        {
-          "code": "002014.SZ",
-          "name": "永新股份",
-          "price": 10.79,
-          "changePct": -1.1
-        },
-        {
-          "code": "603566.SH",
-          "name": "普莱柯",
-          "price": 10.37,
-          "changePct": -1.8
-        },
-        {
-          "code": "603987.SH",
-          "name": "康德莱",
-          "price": 7.59,
-          "changePct": -0.78
-        },
-        {
-          "code": "600062.SH",
-          "name": "华润双鹤",
-          "price": 16.38,
-          "changePct": -0.12
-        },
-        {
-          "code": "600029.SH",
-          "name": "南方航空",
-          "price": 5.05,
-          "changePct": -1.94
-        },
-        {
-          "code": "000513.SZ",
-          "name": "丽珠集团",
-          "price": 30.75,
-          "changePct": 0.07
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
-    {
-      "id": "wencai:ecf043fff1365b19",
-      "title": "山鹰国际：关于回购股份注销实施暨股份变动的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/600567_20260812_XQRE.pdf",
-      "publisher": "同花顺问财",
-      "related": "山鹰国际 (600567.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:7457d246550d6621",
-      "title": "江苏新能：江苏新能关于公司办公地址及传真号码变更的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/603693_20260812_8MQ8.pdf",
-      "publisher": "同花顺问财",
-      "related": "江苏新能 (603693.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:4ec0e38be00a6cf7",
-      "title": "金安国纪：金安国纪集团股份有限公司2025年度向特定对象发行A股股票募集说明书（注册稿）",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225467680.PDF",
-      "publisher": "同花顺问财",
-      "related": "金安国纪 (002636.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:fc2637a2380e5a43",
-      "title": "金安国纪：关于向特定对象发行股票申请获得中国证监会同意注册批复的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225467679.PDF",
-      "publisher": "同花顺问财",
-      "related": "金安国纪 (002636.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:15f3593788b63a35",
-      "title": "京投发展：京投发展股份有限公司关于股票交易异常波动的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/600683_20260812_49N8.pdf",
-      "publisher": "同花顺问财",
-      "related": "京投发展 (600683.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:5f64f003613a0593",
-      "title": "宿迁联盛：宿迁联盛关于实际控制人部分股份质押的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/603065_20260812_TD4G.pdf",
-      "publisher": "同花顺问财",
-      "related": "宿迁联盛 (603065.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:4552c581ec3d86f5",
-      "title": "中原传媒：关于为河南新华物资集团有限公司提供银行综合授信担保的进展公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225467899.PDF",
-      "publisher": "同花顺问财",
-      "related": "中原传媒 (000719.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:62a5b3377a85de5",
-      "title": "天邦食品：关于全资子公司向全资孙公司增资以清理内部债务往来并转让全资孙公司100%股权的进展公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225467996.PDF",
-      "publisher": "同花顺问财",
-      "related": "天邦食品 (002124.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:e624cf68efeccf54",
-      "title": "长缆科技：关于回购公司股份比例达到2%的进展公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225467807.PDF",
-      "publisher": "同花顺问财",
-      "related": "长缆科技 (002879.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:37f9037334d1ac78",
-      "title": "海康威视：2026年半年度权益分派实施公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225468251.PDF",
-      "publisher": "同花顺问财",
-      "related": "海康威视 (002415.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:6442e64d0a7f7efe",
-      "title": "神州信息：关于为控股子公司提供担保的进展公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225468111.PDF",
-      "publisher": "同花顺问财",
-      "related": "神州信息 (000555.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:7ea628d8d0d56b89",
-      "title": "三旺通信：关于2026年限制性股票激励计划内幕信息知情人买卖公司股票情况的自查报告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/688618_20260812_HJYK.pdf",
-      "publisher": "同花顺问财",
-      "related": "三旺通信 (688618.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:fc5ad9e37957050",
-      "title": "三旺通信：北京国枫（深圳）律师事务所关于深圳市三旺通信股份有限公司2026年第二次临时股东会的法律意见书",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/688618_20260812_87WM.pdf",
-      "publisher": "同花顺问财",
-      "related": "三旺通信 (688618.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:697db8399b2cceed",
-      "title": "三旺通信：2026年第二次临时股东会决议公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/688618_20260812_FHL3.pdf",
-      "publisher": "同花顺问财",
-      "related": "三旺通信 (688618.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:f175664a2ac3a519",
-      "title": "贵阳银行：贵阳银行股份有限公司关于股东股份质押展期的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/601997_20260812_1SWE.pdf",
-      "publisher": "同花顺问财",
-      "related": "贵阳银行 (601997.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:5705a582af0b6387",
-      "title": "安孚科技：安徽安孚电池科技股份有限公司关于变更独立财务顾问主办人的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/603031_20260812_0BAE.pdf",
-      "publisher": "同花顺问财",
-      "related": "安孚科技 (603031.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:2839ccbac1bfa092",
-      "title": "和仁科技：2026年半年度报告摘要",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225467831.PDF",
-      "publisher": "同花顺问财",
-      "related": "和仁科技 (300550.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:bd9cee71dac9783b",
-      "title": "和仁科技：关于2026年1-6月计提资产减值准备及核销资产的公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225467835.PDF",
-      "publisher": "同花顺问财",
-      "related": "和仁科技 (300550.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:99b79648604c0b8a",
-      "title": "和仁科技：第五届董事会第三次会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-12/1225467834.PDF",
-      "publisher": "同花顺问财",
-      "related": "和仁科技 (300550.SZ)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:80cd86ac72098306",
-      "title": "厦钨新能：厦门厦钨新能源材料股份有限公司关于2026年限制性股票激励计划取得福建省人民政府国有资产监督管理委员会批复的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-12/688778_20260812_Y2GX.pdf",
-      "publisher": "同花顺问财",
-      "related": "厦钨新能 (688778.SH)",
-      "publishedAt": "2026-08-11T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
     {
       "id": "wencai:833f0ae1458dd9f",
       "title": "经纬恒润新注册《经纬恒润车载故障注入系统软件V1.0》项目的软件著作权",
@@ -754,5 +490,12 @@
       "source": "wencai",
       "category": "利好"
     }
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "range: 'NoneType' object has no attribute 'get'"
   ]
 }
