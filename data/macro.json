@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-11T02:51:53+00:00",
+  "updatedAt": "2026-08-11T04:10:00+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -111,14 +117,14 @@
       "region": null,
       "price": 6.74,
       "changePct": -0.05,
-      "weekChangePct": -0.12,
+      "weekChangePct": -0.13,
       "monthChangePct": -0.48,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7444,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-10"
+      "refPrice": 6.7554,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,15 +134,15 @@
       "currency": null,
       "region": null,
       "price": 7.85,
-      "changePct": -0.0,
-      "weekChangePct": 0.04,
-      "monthChangePct": 0.07,
+      "changePct": 0.01,
+      "weekChangePct": 0.05,
+      "monthChangePct": 0.08,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8453,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-10"
+      "refPrice": 7.8455,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -145,16 +151,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.27,
-      "changePct": 0.88,
-      "weekChangePct": 1.11,
-      "monthChangePct": -1.61,
+      "price": 159.2,
+      "changePct": 0.83,
+      "weekChangePct": 1.06,
+      "monthChangePct": -1.65,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 158.64,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-10"
+      "refPrice": 158.9512,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -164,51 +170,25 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": -0.11,
-      "weekChangePct": 0.31,
-      "monthChangePct": 1.22,
+      "changePct": -0.08,
+      "weekChangePct": 0.35,
+      "monthChangePct": 1.25,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8654,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-10"
+      "refPrice": 0.8659,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7405,
+      "price": 0.7404,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-10"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8083,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-10"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2795,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-10"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -219,10 +199,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4480.5,
-      "changePct": 3.22,
-      "weekChangePct": 11.08,
-      "monthChangePct": 9.17,
+      "price": 4361.8,
+      "changePct": 0.49,
+      "weekChangePct": 8.13,
+      "monthChangePct": null,
       "source": "yahoo"
     },
     {
@@ -232,10 +212,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 82.21,
-      "changePct": 5.15,
-      "weekChangePct": 2.33,
-      "monthChangePct": 15.12,
+      "price": 82.13,
+      "changePct": 5.05,
+      "weekChangePct": 2.23,
+      "monthChangePct": null,
       "source": "yahoo"
     },
     {
@@ -245,10 +225,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.65,
-      "changePct": 1.26,
-      "weekChangePct": 2.14,
-      "monthChangePct": 6.74,
+      "price": 6.59,
+      "changePct": 0.37,
+      "weekChangePct": 1.24,
+      "monthChangePct": null,
       "source": "yahoo"
     }
   ],
@@ -260,9 +240,9 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4701.75,
-      "changePct": 3.81,
-      "weekChangePct": 0.14,
+      "price": 4709.1,
+      "changePct": 3.97,
+      "weekChangePct": 0.29,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -273,7 +253,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3581.04,
+      "price": 3587.24,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -286,7 +266,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1739.32,
+      "price": 1740.62,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -507,6 +487,16 @@
   ],
   "finnhubNews": [
     {
+      "id": 8329226,
+      "title": "Oil prices rise, Asia stocks drift amid US-Iran stalemate - Reuters",
+      "summary": "Oil prices rise, Asia stocks drift amid US-Iran stalemate  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPRnpVTlc5WDU3ZUFOMTJjSFRLNGFCWUItblV4clc0UnVXUi05VVBaRkFleHpsdWtmcl9YZDRtN3BkaDhqUy1PTWx1aDhjalNDc09RNGh5eDFYN2FnTGxraUlhRWtFUnl0UTJrbV82Yi1CaFEyNmNwaHlvQVdobElUNEZVaw?oc=5",
+      "publishedAt": "2026-08-11T01:41:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8329127,
       "title": "Gold rises for third straight session, inflation prints in focus - Reuters",
       "summary": "Gold rises for third straight session, inflation prints in focus  Reuters",
@@ -547,16 +537,6 @@
       "related": ""
     },
     {
-      "id": 8324279,
-      "title": "China is balancing Asia's crude oil demand by itself - Reuters",
-      "summary": "China is balancing Asia's crude oil demand by itself  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNN0lBeUJuUi1Nek03cm1rOF9xMFhxS2RNa1NUNkxqQk9UT1dYOENkMHduLUx3ei12d3VQZmxLSlV6cFd3cDZXc05JcnJ3YnRXRjl2b3VMb2M0T1R3OUpVUnhfVWNxY1d0akVsQ1U0V1hkOEE1eUZWN2FySzNXcHRmLXJpNlR2SWlRekRYbkVld1VqNDI5S0RFdWFVUHBJQXF2bl9FMDZJUmotVzlfZlBidUhVTWpRTVMzYWZlTQ?oc=5",
-      "publishedAt": "2026-08-10T22:07:19+00:00",
-      "related": ""
-    },
-    {
       "id": 8329128,
       "title": "North Korea condemns Japan's white paper, calling it 're-invasion paper' - Reuters",
       "summary": "North Korea condemns Japan's white paper, calling it 're-invasion paper'  Reuters",
@@ -564,6 +544,16 @@
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxONC1NamZsbVNNSlRKNTh5ZGwzc3FHVTZ3VjVqek1JdHVGZXV3b1Q4MlFBdC1zM2E3YzZqYmhSejcxVUN0RXNGVktNV0ZiRDIyRUJtcUhBZThZbW9SVVdnb2pxMzFtX0NOdVJ4eGNTMHRFa1dNb1VudWtDeXA3WlY4eWpwdkx4bmpFZ0hGWkgwMU12SGFhcWJyUlF4Y2kxRUpQUTdHb0ZOWlJnZDJ6MTZ5Y0VUVF9CbFpiUHh3S2pxanE3UGNsclN5MDhSRQ?oc=5",
       "publishedAt": "2026-08-10T21:56:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8324279,
+      "title": "China is balancing Asia's crude oil demand by itself - Reuters",
+      "summary": "China is balancing Asia's crude oil demand by itself  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNN0lBeUJuUi1Nek03cm1rOF9xMFhxS2RNa1NUNkxqQk9UT1dYOENkMHduLUx3ei12d3VQZmxLSlV6cFd3cDZXc05JcnJ3YnRXRjl2b3VMb2M0T1R3OUpVUnhfVWNxY1d0akVsQ1U0V1hkOEE1eUZWN2FySzNXcHRmLXJpNlR2SWlRekRYbkVld1VqNDI5S0RFdWFVUHBJQXF2bl9FMDZJUmotVzlfZlBidUhVTWpRTVMzYWZlTQ?oc=5",
+      "publishedAt": "2026-08-10T21:00:26+00:00",
       "related": ""
     },
     {
@@ -577,23 +567,13 @@
       "related": ""
     },
     {
-      "id": 8328918,
-      "title": "OPEC oil output rises further in July led by Gulf producers, Reuters survey shows - Reuters",
-      "summary": "OPEC oil output rises further in July led by Gulf producers, Reuters survey shows  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNamx6ZmttRHhDNkRmaGxMNngyOFpJbkwxcVU4a3JqZFZ0U3ZXSzNmeUlNWkowUHh2Q29FYnhfNVZ3Wm15WUFsd1FjSDJfczk5Sk90bG1zV2I1emtmOGZuUHpNZTF6TXNGSDVEQXVhMjBRSHQ5TkJ2eWljS3lCU24tRGlCeWgwMlhOa0V0SGlLQUZDX0RDOFExS3VacFpzUWJQdFJEMUFfYVNzeWNzUVE2bmZrNTVkN2tBOVBneVR0dlp1SWwyS2JQLQ?oc=5",
-      "publishedAt": "2026-08-10T18:59:25+00:00",
-      "related": ""
-    },
-    {
-      "id": 8329225,
-      "title": "Australian business conditions edge higher in July but confidence stays fragile",
-      "summary": "<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">The NAB survey points to an economy holding up better than feared but still operating under the shadow of elevated uncertai",
+      "id": 8329532,
+      "title": "investingLive Asia-Pacific Financial Market news: Oil and gold stay near highs",
+      "summary": "<ul><li><a href=\"https://investinglive.com/news/singapore-doubles-2026-growth-outlook-to-4-5-5-5-on-tech-cycle-upgrade\" rel=\"follow\">Singapore doubles 2026 growth outlook to 4.5-5.5% on tech cycle upg",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/australian-business-conditions-edge-higher-in-july-but-confidence-stays-fragile/",
-      "publishedAt": "2026-08-11T02:04:23+00:00",
+      "link": "https://investinglive.com/news/investinglive-asia-pacific-financial-market-news-oil-and-gold-stay-near-highs/",
+      "publishedAt": "2026-08-11T03:38:11+00:00",
       "related": ""
     }
   ],
