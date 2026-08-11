@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-11T07:44:16+00:00",
+  "updatedAt": "2026-08-11T08:36:07+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -12,9 +12,9 @@
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 374,
-    "masterLearnUpdatedAt": "2026-08-11T07:38:03+00:00",
-    "masterAvgWinRate": 48.1,
+    "masterLearnRevision": 375,
+    "masterLearnUpdatedAt": "2026-08-11T08:35:43+00:00",
+    "masterAvgWinRate": 46.9,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -105,24 +105,8 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-11T07:44:16+00:00",
+    "updatedAt": "2026-08-11T08:36:07+00:00",
     "tasks": [
-      {
-        "id": "fix-pipeline-market",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · 行情·荐股·模拟盘",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-      },
-      {
-        "id": "fix-pipeline-macro",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · 宏观与跨资产",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-      },
       {
         "id": "shadow-tracking",
         "type": "shadow_track",
@@ -161,12 +145,22 @@
       }
     ],
     "summary": {
-      "total": 6,
-      "high": 2,
-      "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      "total": 4,
+      "high": 0,
+      "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
   },
   "recentLog": [
+    {
+      "at": "2026-08-11T08:35:52+00:00",
+      "type": "master_learn",
+      "revision": 375,
+      "regime": "neutral",
+      "notes": {
+        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
+        "serenity": "近期表现反馈：range↓、momentum↓"
+      }
+    },
     {
       "at": "2026-08-11T07:38:10+00:00",
       "type": "master_learn",
@@ -216,16 +210,6 @@
         "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
       }
-    },
-    {
-      "at": "2026-08-11T00:39:28+00:00",
-      "type": "master_learn",
-      "revision": 369,
-      "regime": "neutral",
-      "notes": {
-        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
-      }
     }
   ],
   "pipelines": [
@@ -234,18 +218,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-11T07:38:22+00:00",
+      "updatedAt": "2026-08-11T08:36:06+00:00",
       "status": "ok",
-      "ageMinutes": 5
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-11T07:38:15+00:00",
+      "updatedAt": "2026-08-11T08:35:58+00:00",
       "status": "ok",
-      "ageMinutes": 6
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -254,7 +238,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-11T07:41:50+00:00",
       "status": "ok",
-      "ageMinutes": 2
+      "ageMinutes": 54
     },
     {
       "id": "wencai",
@@ -263,7 +247,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-11T07:33:01+00:00",
       "status": "ok",
-      "ageMinutes": 11
+      "ageMinutes": 63
     },
     {
       "id": "reports",
@@ -272,7 +256,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-11T12:57:07+08:00",
       "status": "ok",
-      "ageMinutes": 167
+      "ageMinutes": 219
     },
     {
       "id": "backtest",
@@ -281,9 +265,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-09T03:28:40+00:00",
       "status": "ok",
-      "ageMinutes": 3135
+      "ageMinutes": 3187
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "31470164823"
+  "triggeredBy": "Update Market Data",
+  "runId": "31473870009"
 }
