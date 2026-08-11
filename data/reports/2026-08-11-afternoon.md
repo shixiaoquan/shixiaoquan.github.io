@@ -1,0 +1,292 @@
+# 投资决策日报 · 收盘前瞻
+
+**2026年08月11日 17:07（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+
+> 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
+> 行情更新：2026-08-11 16:35 · 宏观：2026-08-11 16:35 · 问财：2026-08-11 15:33
+
+---
+
+## 核心观点
+
+本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
+
+全球跟踪指数平均涨跌 **-0.05%**，综合情绪 **震荡**。指数方向不明，结构分化概率加大，宜精选个股、控制仓位，等待方向选择。
+
+A股问财短线情绪 **偏多**，与全球指数判断对照使用。
+
+战役仓 XRPS 模拟收益率 +8.33%，按网格与月线纪律执行。
+
+战术实验有 **1** 笔 open 持仓，本日重点跟踪止损距离与突破延续性。
+
+---
+
+## 一、宏观与市场情绪
+
+### 1.1 全球指数
+
+跟踪 6 只主要指数：上涨 **1** 只、
+下跌 **5** 只，平均涨跌 **-0.05%**。
+
+**美股** -0.16%（震荡）；**港股** -1.10%（偏弱）；**A股** -0.82%（偏弱）。相对弱势区域：港股、A股，战术配置宜降权。
+
+**波动居前指数：**
+
+- **日经 225** 66,970.22，日涨跌 +2.08%（周 +5.04% / 月 -1.14%）
+- **恒生指数** 25,652.82，日涨跌 -1.10%（周 -0.77% / 月 +5.94%）
+- **上证指数** 3,934.09，日涨跌 -0.82%（周 +2.93% / 月 +0.52%）
+- **纳斯达克** 26,605.36，日涨跌 -0.32%（周 +2.67% / 月 +1.23%）
+
+### 1.2 A股短线情绪
+
+问财统计涨停 **60** 家、跌停 **2** 家，情绪定性 **偏多**，涨跌停比约 **30.0 : 1**。赚钱效应尚可，题材轮动活跃，但需警惕高位分歧。
+
+### 1.3 宏观与跨资产
+
+- **VIX** 15.5（normal）
+- **美10Y收益率** 4.70%
+- **10Y-2Y 利差（FRED）** 0.47%（偏窄）
+- **USDCNH** 6.7500（日 —）
+- **美股行业**：能源 领涨，地产 靠后
+
+**FRED 官方序列**
+- 美10年期国债收益率：4.65（变动 -0.85%，2026-08-07）
+- 10Y-2Y 利差：0.47（变动 +2.17%，2026-08-10）
+- 联邦基金利率：3.63（变动 0.00%，2026-07-01）
+- 美国失业率：4.1（变动 -2.38%，2026-07-01）
+- 美元/人民币(官方)：6.7474（变动 -0.02%，2026-08-07）
+- 美国CPI指数：332.6（变动 +1.83%，2026-06-01）
+
+**Finnhub 宏观要闻**
+- [Gulf shipping traffic via Strait of Hormuz falls to six vessels - Reuters](https://news.google.com/rss/articles/CBMioAFBVV95cUxOY3lVMjZBYTN2WlJSTnRXUVlyRmd5dXYxNnV0ekRtTUg4VEF5cC0yM3NoV1lNNEhoTF9wandNSUNLMEFyeHNnU0w4Z2NuOXhKUzdCMlAtdms2SGxpV0t0WGNlcl9MaTdYSTZVMlh5bGVBM0ZnNUVCcVhKWWF2VU1sdTVadEV6M2s0X0tWWF9wWWhlV3h2dlBSaUFHM2VMNTdy?oc=5)（Reuters）
+- [Oil prices rise, Asia stocks drift on US-Iran stalemate - Reuters](https://news.google.com/rss/articles/CBMigwFBVV95cUxPRnpVTlc5WDU3ZUFOMTJjSFRLNGFCWUItblV4clc0UnVXUi05VVBaRkFleHpsdWtmcl9YZDRtN3BkaDhqUy1PTWx1aDhjalNDc09RNGh5eDFYN2FnTGxraUlhRWtFUnl0UTJrbV82Yi1CaFEyNmNwaHlvQVdobElUNEZVaw?oc=5)（Reuters）
+- [Gold rises for third straight session, inflation prints in focus - Reuters](https://news.google.com/rss/articles/CBMipwFBVV95cUxOQ3pfajk5NldmMDliSlhNU3ZYd1J6UGt3cWM4ZHBzTkxnYTVGbnVWU0ZOVFFqLUk2eFYyQnhxdUxiUFp5Y0lXTnpEOGIwMHBveTR5bzBvZmxjWTA4TmR6OUt0U1ZSd2V0dDhkMlg4TkpFdlFCSEtJN3BXYXJQMFZLZDgyZjR6UTRXeU5fRFZ1MHM1WXpCMEtTOF9CNmptQTJmNzBQN1JyMA?oc=5)（Reuters）
+- [Oil steadies near one-week highs as US-Iran peace deal hopes dim - Reuters](https://news.google.com/rss/articles/CBMiswFBVV95cUxQM0pWdFZzeWRnNk5zclJaZzJnUnhXVnZnNHdFcFRtTlo3T00wd1RVdHF6QmNZRVJBSGNIMm50YW1ob0x4dENzeGFpTDlSNUdvbkZZNXBBLVc0WVFjVVRMUEl3NldGcFNtTXYybWJLVklxYlZnbUkzRVpyeU55b3FFZlhlRmVueEdTTHNGcnVVS05zUnZyWkJ5VkhIcmFwS01KYVNXaHVyeE1yZEhtd3Z4alAwUQ?oc=5)（Reuters）
+- [Trump took secret flight out of Turkey due to Iran threat, the Washington Post reports - Reuters](https://news.google.com/rss/articles/CBMizAFBVV95cUxPREluUlJXa0tGLWNUdk9DbkpRazRWWFZyQjlnblJiaC1xc3N1c2hUOXIwVGgwZXU4dlhfcERmX3MxMUltNFJ2TWVxb19ZbVRjRk00eGVWUlR0cW5jSTl5Y3M2dWhJc1I4NVVNdlV2a2U1MmR5Q2FaYnlhMk10a1lmNFNXQTBQZm5xaklVQUM2NlppTU9zeHV5ck9pTE1UVWU1eTNxZzB3d2pQNzkwQlhRTWZCbDhaRkZXR2pHR1FJYkZYanp2N2VIbmxkc0Y?oc=5)（Reuters）
+
+**财报日历（关注标的）**
+- **ABHBY** 2026-08-18  · EPS预期 —
+- **ACRG** 2026-08-18  · EPS预期 —
+- **AS** 2026-08-18 bmo · EPS预期 0.11
+- **ASII** 2026-08-18  · EPS预期 —
+- **AUNA** 2026-08-18  · EPS预期 0.88
+- **AVBP** 2026-08-18  · EPS预期 -1.01
+- 美债收益率上行，对高估值成长股形成压力。
+- 美股行业轮动：能源 领涨（+4.66%），地产 靠后。
+- FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。
+
+*数据源：Yahoo Finance、Frankfurter (ECB)、FRED (St. Louis Fed)、Finnhub*
+
+### 1.4 本时段研判侧重
+
+尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
+
+---
+
+## 二、战役持仓（XRPS-X 小米滚动仓）
+
+**标的**：小米集团（1810.HK）
+
+**模拟净值**：收益率 +8.33%，仓位 44.5%，持股 18,077 股，均价 23.75。
+
+**阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
+
+**现价参考**：26.66 HKD。
+
+- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +32.50%。
+
+- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +4.40%。
+
+- XRPS-X 运行正常：股数优先、成本优先、核心仓保留。
+
+**长期参照**：上市以来 XRPS 回测收益率 +55.94%，短期净值波动属于策略设计内的正常路径，勿与战术实验混淆。
+
+---
+
+## 三、战术实验（荐股 v1.3）
+
+**全市场扫描**：A股最高 贵州茅台(68.1分) · 港股最高 京东集团(69.7分) · 美股最高 亚马逊(74.4分)
+
+**今日各市场代表标的**（v1.3 强趋势+突破过滤）：
+
+- **亚马逊**（美股）| 建议观察 | 评分 74.4 | 待突破 | 趋势过滤通过 | 止损缓冲 9.2% / 目标空间 33.0% | 决策 52.1
+
+  - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
+
+- **京东集团**（港股）| 弱信号观察 | 评分 69.7 | 待突破 | 趋势过滤未过 | 止损缓冲 6.6% / 目标空间 23.6% | 决策 49.5
+
+  - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
+
+- **贵州茅台**（A股）| 弱信号观察 | 评分 68.1 | 待突破 | 趋势过滤未过 | 止损缓冲 5.1% / 目标空间 18.2% | 决策 49.5
+
+  - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
+
+> **研究员提示**：虽有高分标的入选观察池，但 v1.3 仅对「突破确认」发出 buy 信号；趋势良好但未突破时维持 watch，避免追涨噪音。
+
+
+**战术持仓跟踪**（实验策略，非战役仓）：
+
+- **亚马逊**（美股）| 浮盈 +2.40% | 距止损 10.7% | 距目标 +27.6% | 持有 8 天
+
+
+**候选池前列**（按评分）：
+
+- 亚马逊 74.4分 建议观察 RSI 65.9 RS +10.57%
+
+
+> 战术回测（v1.3.0）当前区间 **0 笔成交**，反映强趋势+突破过滤下信号稀缺，与「少做噪音交易」的设计一致。
+
+---
+
+## 四、投资大师风格荐股
+
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.375）。
+
+*在线学习：市场环境 neutral · 修订 r375*
+
+
+### 沃伦·巴菲特 · 价值投资
+
+*以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
+
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.8 · PEG 0.73 · ROE 20.5%
+
+  - ROE 20.52% — 资本回报优秀，符合巴菲特护城河标准；PE 16.77 — 估值在能力圈合理区间
+
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.7 · ROE 14.0%
+
+  - ROE 14.0% — 盈利能力稳健；PE 14.73 — 估值在能力圈合理区间
+
+
+### 本杰明·格雷厄姆 · 深度价值
+
+*安全边际是投资核心：在价格显著低于内在价值时分批买入，分散持有。*
+
+- **中国平安**（A股）| 匹配 76.5 | 符合风格 · 建议关注 | PE 7.2 · ROE 11.3%
+
+  - PE 7.25 — 深度价值区间，安全边际充足；PB 0.93 — 资产折价，经典格雷厄姆信号
+
+- **招商银行**（A股）| 匹配 73.2 | 符合风格 · 建议关注 | PE 6.8 · PEG 9.74 · ROE 11.9%
+
+  - PE 6.82 — 深度价值区间，安全边际充足；PB 0.87 — 资产折价，经典格雷厄姆信号
+
+
+### 彼得·林奇 · 成长合理价 GARP
+
+*投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
+
+- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 23.1 · PEG 0.28 · ROE 9.2%
+
+  - PEG 0.28 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 82.6% — 成长故事可验证
+
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.8 · PEG 0.73 · ROE 20.5%
+
+  - PEG 0.73 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 22.9% — 成长故事可验证
+
+
+### 查理·芒格 · 优质复利
+
+*以合理价格买入伟大的公司，胜过于以便宜价格买入平庸的公司。*
+
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.8 · PEG 0.73 · ROE 20.5%
+
+  - 净利率 30.61% — 轻资产高毛利特征；低杠杆 — 符合芒格「避免愚蠢」原则
+
+- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 66.2 · PEG 25.56 · ROE 53.9%
+
+  - ROE 53.93% — 优质复利机器，芒格会长期持有；净利率 29.28% — 轻资产高毛利特征
+
+
+### 约翰·邓普顿 · 逆向投资
+
+*在最大悲观时买入，在最大乐观时卖出；关注被错杀的优质资产。*
+
+- **Meta**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.3 · ROE 29.9%
+
+  - 近一月 -11.1% — 市场悲观，邓普顿式逆向机会；PE 22.32 — 悲观中仍有估值支撑
+
+- **五粮液**（A股）| 匹配 91.6 | 符合风格 · 建议关注 | PE 23.1 · PEG 0.28 · ROE 9.2%
+
+  - 近三月 -15.45% — 深度回调，关注基本面是否错杀；价格接近 52 周底部 — 「极度悲观时买入」
+
+
+### 乔治·索罗斯 · 宏观趋势
+
+*反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
+
+- **亚马逊**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.1 · PEG 9.12 · ROE 30.6%
+
+  - 近一月 +13.35% — 趋势强劲，反身性正反馈；相对强度 +11.0% — 跑赢大盘，宏观共振
+
+- **微软**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 27.9 · PEG 0.88 · ROE 34.0%
+
+  - 近一月 +31.41% — 趋势强劲，反身性正反馈；相对强度 +29.06% — 跑赢大盘，宏观共振
+
+
+### 白毛股神 Serenity · 卡脖子 · 瓶颈猎手
+
+*Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
+
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 474.0 · PEG 8.35 · ROE 3.9%
+
+  - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
+
+- **中际旭创**（A股）| 匹配 85.1 | 符合风格 · 建议关注 | PE 66.2 · PEG 25.56 · ROE 53.9%
+
+  - 光模块 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 光模块 — CPO/光互连供应链瓶颈
+
+
+*大师风格荐股为规则化模拟，非真实人物操作建议；权重学习基于历史快照与公开行情，样本不足时变化极小；Serenity 相关内容为对其公开框架的量化近似，勿当作 X 账号买卖信号；仅供研究，不构成投资建议。*
+
+---
+
+## 五、持续进化状态
+
+**系统进化看板**（GitHub Actions 自动维护）
+
+- 影子轨：配对归因 31 对 · 影子胜率 9.7% · 均边际 -0.49%
+
+- 配对归因：31 对 · 影子胜率 9.7% · 均边际 -0.49%
+
+- 战术自适应：门槛 -2 · 中决策分 T+5 胜率 64.8% 良好，门槛 -1; 偏多环境 T+5 胜率 71.9% 良好，门槛 -1
+
+- 队列待办：**影子轨积累中** — 无需操作，继续观察 shadow_reco.json comparison。
+
+---
+
+## 六、资讯与主题线索
+
+- [Yahoo] **Forget Rate Hikes! Fed Chair Kevin Warsh Can Raise Interest Rates Using 2 Nontraditional Methods.**（^GSPC）
+  The Fed chair and his Federal Open Market Committee (FOMC) colleagues can influence lending rates without formally chang…
+- [Yahoo] **3 Dividend-Paying Industrial Stocks to Buy in August**（NVDA）
+  These three companies have seen a lot over the years but still have each been able to increase their dividend payouts fo…
+- [Yahoo] **US Stock Market Today: S&P 500 Futures Edge Higher As Rate Hike Fears Ease**（^GSPC）
+  The Morning Bull - US Market Morning Update Tuesday, Aug, 11 2026 US stock futures are slightly higher this morning, wit…
+- [Yahoo] **Hock Tan Reaffirmed Broadcom's $100 Billion AI Forecast. Six Customers Carry Nearly All of It.**（NVDA）
+  The AI target looks more achievable every quarter -- and almost all of it rests on six buyers.…
+- [Yahoo] **Is Zillow (Z) Stock a Buy After Falling Nearly 13% in 1 Day?**（NVDA）
+  It's also down about 60% over the past year, making the stock more attractive to many.…
+- [Yahoo] **Intel's Foundry Grew 31% Last Quarter and Lost $2.1 Billion Doing It.**（NVDA）
+  The factory arm loses half as much per revenue dollar as it did a year ago -- and almost every one of those dollars is s…
+
+---
+
+## 七、风险提示
+
+1. 本报告基于公开行情与规则化模型，**不构成投资建议**；战术实验与战役 XRPS 为相互独立的两套体系，请勿混仓决策。  
+2. 港股 / 美股存在汇率、流动性及隔夜缺口风险；A股须关注涨跌停制度下的执行偏差。  
+3. 问财等非官方数据源可能延迟或缓存；涨停榜等情绪指标需与实时盘口交叉验证。  
+4. 模拟盘收益不代表未来表现；连阴月加仓逻辑基于历史回测，极端宏观冲击下可能失效。
+5. 大师风格荐股为规则化模拟，非真实人物操作建议；基本面数据可能有延迟或缺失。
+
+---
+
+## 八、本时段关注清单
+
+1. 小米滚动卖出触发：涨 40% @ 35.32
+2. 小米回撤买回触发：回撤 20% @ 25.50
+3. 收盘前：核对战役/战术止损位是否需手动校准（模拟盘仅作纪律参照）
+
+---
+
+*报告 ID：`2026-08-11-afternoon` · 自动生成于 shixiaoquan.win 投资决策工作台*
