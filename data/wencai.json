@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-11T11:54:08+00:00",
+  "updatedAt": "2026-08-11T13:37:11+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 40 条资讯 · 部分沿用缓存",
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "002963.SZ",
@@ -91,16 +91,13 @@
           "changePct": 9.97
         }
       ],
-      "count": 60,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 60
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "002350.SZ",
@@ -115,78 +112,75 @@
           "changePct": -9.99
         }
       ],
-      "count": 2,
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      "count": 2
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "stale",
+      "status": "ok",
       "items": [
-        {
-          "code": "600664.SH",
-          "name": "哈药股份",
-          "price": 8.27,
-          "changePct": 9.97,
-          "rank": "1"
-        },
         {
           "code": "000636.SZ",
           "name": "风华高科",
           "price": 65.85,
           "changePct": 6.73,
-          "rank": "2"
+          "rank": "1"
         },
         {
-          "code": "600721.SH",
-          "name": "百花医药",
-          "price": 12.75,
-          "changePct": 10.01,
-          "rank": "3"
+          "code": "600664.SH",
+          "name": "哈药股份",
+          "price": 8.27,
+          "changePct": 9.97,
+          "rank": "2"
         },
         {
           "code": "001258.SZ",
           "name": "立新能源",
           "price": 15.93,
           "changePct": 10.01,
-          "rank": "4"
-        },
-        {
-          "code": "301308.SZ",
-          "name": "江波龙",
-          "price": 417.5,
-          "changePct": 1.21,
-          "rank": "5"
+          "rank": "3"
         },
         {
           "code": "600667.SH",
           "name": "太极实业",
           "price": 21.2,
           "changePct": 10.02,
-          "rank": "6"
+          "rank": "4"
+        },
+        {
+          "code": "600721.SH",
+          "name": "百花医药",
+          "price": 12.75,
+          "changePct": 10.01,
+          "rank": "5"
         },
         {
           "code": "600206.SH",
           "name": "有研新材",
           "price": 52.65,
           "changePct": 1.19,
-          "rank": "7"
+          "rank": "6"
         },
         {
           "code": "600396.SH",
           "name": "华电辽能",
           "price": 16.8,
           "changePct": -2.38,
+          "rank": "7"
+        },
+        {
+          "code": "301308.SZ",
+          "name": "江波龙",
+          "price": 417.5,
+          "changePct": 1.21,
           "rank": "8"
         },
         {
-          "code": "605179.SH",
-          "name": "一鸣食品",
-          "price": 27.63,
-          "changePct": 9.99,
+          "code": "300308.SZ",
+          "name": "中际旭创",
+          "price": 886.96,
+          "changePct": 2.59,
           "rank": "9"
         },
         {
@@ -196,10 +190,7 @@
           "changePct": -3.19,
           "rank": "10"
         }
-      ],
-      "stale": true,
-      "staleMessage": "沿用上次数据",
-      "error": "'NoneType' object has no attribute 'get'"
+      ]
     },
     {
       "id": "main_flow",
@@ -267,6 +258,13 @@
       "stale": true,
       "staleMessage": "沿用上次数据",
       "error": "'NoneType' object has no attribute 'get'"
+    },
+    {
+      "id": "range",
+      "title": "箱体震荡",
+      "query": "60日内振幅小于15%且今日放量",
+      "status": "empty",
+      "items": []
     }
   ],
   "news": [
@@ -711,11 +709,5 @@
       "category": "利好"
     }
   ],
-  "errors": [
-    "limit_up: 'NoneType' object has no attribute 'get'",
-    "limit_down: 'NoneType' object has no attribute 'get'",
-    "hot: 'NoneType' object has no attribute 'get'",
-    "main_flow: 'NoneType' object has no attribute 'get'",
-    "range: 'NoneType' object has no attribute 'get'"
-  ]
+  "newsStale": true
 }
