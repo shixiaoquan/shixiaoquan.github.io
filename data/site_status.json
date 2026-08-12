@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T15:27:44+00:00",
+  "updatedAt": "2026-08-12T15:42:46+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -12,9 +12,9 @@
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 402,
-    "masterLearnUpdatedAt": "2026-08-12T14:45:14+00:00",
-    "masterAvgWinRate": 41.6,
+    "masterLearnRevision": 403,
+    "masterLearnUpdatedAt": "2026-08-12T15:42:26+00:00",
+    "masterAvgWinRate": 41.3,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -105,16 +105,8 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-12T15:27:44+00:00",
+    "updatedAt": "2026-08-12T15:42:46+00:00",
     "tasks": [
-      {
-        "id": "fix-pipeline-truth",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · Truth Social 镜像",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
-      },
       {
         "id": "shadow-tracking",
         "type": "shadow_track",
@@ -153,12 +145,23 @@
       }
     ],
     "summary": {
-      "total": 5,
-      "high": 1,
-      "topAction": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+      "total": 4,
+      "high": 0,
+      "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
   },
   "recentLog": [
+    {
+      "at": "2026-08-12T15:42:34+00:00",
+      "type": "master_learn",
+      "revision": 403,
+      "regime": "risk_on",
+      "notes": {
+        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
+        "serenity": "近期表现反馈：range↓、momentum↓",
+        "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
+      }
+    },
     {
       "at": "2026-08-12T14:45:31+00:00",
       "type": "master_learn",
@@ -208,16 +211,6 @@
         "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
         "serenity": "近期表现反馈：range↓、momentum↓"
       }
-    },
-    {
-      "at": "2026-08-12T09:22:17+00:00",
-      "type": "master_learn",
-      "revision": 397,
-      "regime": "neutral",
-      "notes": {
-        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
-        "serenity": "近期表现反馈：range↓、momentum↓"
-      }
     }
   ],
   "pipelines": [
@@ -226,18 +219,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-12T14:45:55+00:00",
+      "updatedAt": "2026-08-12T15:42:46+00:00",
       "status": "ok",
-      "ageMinutes": 41
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-12T14:45:45+00:00",
+      "updatedAt": "2026-08-12T15:42:40+00:00",
       "status": "ok",
-      "ageMinutes": 41
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -246,7 +239,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-12T15:13:10+00:00",
       "status": "ok",
-      "ageMinutes": 14
+      "ageMinutes": 29
     },
     {
       "id": "wencai",
@@ -255,7 +248,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-12T15:11:59+00:00",
       "status": "ok",
-      "ageMinutes": 15
+      "ageMinutes": 30
     },
     {
       "id": "reports",
@@ -264,7 +257,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-12T17:18:36+08:00",
       "status": "ok",
-      "ageMinutes": 369
+      "ageMinutes": 384
     },
     {
       "id": "backtest",
@@ -273,9 +266,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-09T03:28:40+00:00",
       "status": "ok",
-      "ageMinutes": 5039
+      "ageMinutes": 5054
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "31612365966"
+  "triggeredBy": "Update Market Data",
+  "runId": "31613707028"
 }
