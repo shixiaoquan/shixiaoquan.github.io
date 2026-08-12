@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T11:25:04+00:00",
+  "updatedAt": "2026-08-12T12:08:19+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,10 +35,10 @@
     }
   ],
   "summary": {
-    "vix": 15.36,
+    "vix": 15.37,
     "vixRegime": "normal",
     "us10yYield": 4.68,
-    "usdCnh": 6.74,
+    "usdCnh": 6.75,
     "usdCnhChangePct": null,
     "sectorLeader": "能源",
     "sectorLaggard": "地产",
@@ -50,10 +56,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.36,
-      "changePct": 0.52,
-      "weekChangePct": -2.85,
-      "monthChangePct": -6.91,
+      "price": 15.37,
+      "changePct": 0.59,
+      "weekChangePct": -2.78,
+      "monthChangePct": null,
       "source": "yahoo"
     }
   ],
@@ -68,7 +74,7 @@
       "price": 4.68,
       "changePct": -0.32,
       "weekChangePct": 1.23,
-      "monthChangePct": 1.63,
+      "monthChangePct": null,
       "source": "yahoo"
     },
     {
@@ -93,7 +99,7 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.74,
+      "price": 6.75,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -108,16 +114,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.73,
-      "changePct": -0.23,
-      "weekChangePct": -0.32,
-      "monthChangePct": -0.7,
+      "price": 6.74,
+      "changePct": -0.07,
+      "weekChangePct": -0.16,
+      "monthChangePct": -0.54,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7453,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-11"
+      "refPrice": 6.7586,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,14 +134,14 @@
       "region": null,
       "price": 7.85,
       "changePct": 0.02,
-      "weekChangePct": 0.06,
-      "monthChangePct": 0.12,
+      "weekChangePct": 0.05,
+      "monthChangePct": 0.11,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8463,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-11"
+      "refPrice": 7.8468,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -144,16 +150,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.13,
-      "changePct": -0.02,
-      "weekChangePct": 0.91,
-      "monthChangePct": -2.03,
+      "price": 159.1,
+      "changePct": -0.04,
+      "weekChangePct": 0.89,
+      "monthChangePct": -2.05,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.2,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-11"
+      "refPrice": 159.2915,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -163,51 +169,25 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": -0.05,
-      "weekChangePct": 0.07,
-      "monthChangePct": 1.37,
+      "changePct": 0.02,
+      "weekChangePct": 0.14,
+      "monthChangePct": 1.44,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8666,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-11"
+      "refPrice": 0.8665,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7408,
+      "price": 0.7404,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-11"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8103,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-11"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2802,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-11"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -218,10 +198,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4467.7,
-      "changePct": 1.93,
-      "weekChangePct": 5.23,
-      "monthChangePct": 10.01,
+      "price": 4473.0,
+      "changePct": 2.05,
+      "weekChangePct": 5.35,
+      "monthChangePct": 10.14,
       "source": "yahoo"
     },
     {
@@ -231,10 +211,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 83.44,
-      "changePct": 0.29,
-      "weekChangePct": 10.93,
-      "monthChangePct": 5.17,
+      "price": 83.72,
+      "changePct": 0.63,
+      "weekChangePct": 11.3,
+      "monthChangePct": 5.52,
       "source": "yahoo"
     },
     {
@@ -245,9 +225,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.68,
-      "changePct": 1.05,
-      "weekChangePct": -0.32,
-      "monthChangePct": 5.55,
+      "changePct": 1.1,
+      "weekChangePct": -0.28,
+      "monthChangePct": 5.6,
       "source": "yahoo"
     }
   ],
@@ -260,8 +240,8 @@
       "currency": "CNY",
       "region": "中国",
       "price": 4690.92,
-      "changePct": 3.57,
-      "weekChangePct": -0.1,
+      "changePct": null,
+      "weekChangePct": null,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -415,7 +395,7 @@
       "price": 119.24,
       "changePct": -0.36,
       "weekChangePct": 0.8,
-      "monthChangePct": null,
+      "monthChangePct": 2.76,
       "source": "yahoo",
       "sector": "可选消费"
     },
@@ -429,7 +409,7 @@
       "price": 111.27,
       "changePct": -0.5,
       "weekChangePct": -0.69,
-      "monthChangePct": -0.29,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "通信"
     },
@@ -443,7 +423,7 @@
       "price": 44.08,
       "changePct": -0.72,
       "weekChangePct": -2.41,
-      "monthChangePct": -1.39,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "地产"
     }
@@ -516,6 +496,16 @@
       "related": ""
     },
     {
+      "id": 8336076,
+      "title": "Wall St futures tick up heading into July inflation data - Reuters",
+      "summary": "Wall St futures tick up heading into July inflation data  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPYklxZWxQWEI4bU5nVHpWUVJkQWo4YmQ5ZWpfTXNWWHBjNlE0d09NNEdtbWMtQldtbndIMzNBU1Z3TldjNEF5YUoxMHJSdHlXak50XzBMYlh4dHh2OWxVckViSjVxYUFCVlBvcnQ4Vk9vLVF0MWhGR3BidXQzOGItYUVjbnNYSk1pdS1XeTZqUGtaVTZzcDRkR1N1V0xkN0o5STBZ?oc=5",
+      "publishedAt": "2026-08-12T10:24:13+00:00",
+      "related": ""
+    },
+    {
       "id": 8335540,
       "title": "European stocks steady ahead of US inflation data; geopolitical risks in focus - Reuters",
       "summary": "European stocks steady ahead of US inflation data; geopolitical risks in focus  Reuters",
@@ -523,6 +513,16 @@
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNcEJrelVuLWNvQVpMQ0FHVXF0aE9vZTZqcklqQUNLSHpCOGxiQkl3Tko1UVJZTHpnVUhUQ0R6RTNWc08yMXRrb2tMNUI1MWpFby1qM1RUWVllYU9NT0x6MzFzQk1tY0U2Q0lCcGhrNUVRYjJtdDVEbVFObndDeFBiVDdmTXdsQW5FV09uRl9aSzFzWVMtVTdkQkFWMFZPdjBzdk1pWA?oc=5",
       "publishedAt": "2026-08-12T09:04:53+00:00",
+      "related": ""
+    },
+    {
+      "id": 8336195,
+      "title": "TKMS sees increased demand from Middle East following Iran war - Reuters",
+      "summary": "TKMS sees increased demand from Middle East following Iran war  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPQ1RWelRIclZrZEZHSldHVXVuZFJkb1FWcmNkZFRJZGV1UTFXa25ncnBqbjB6dk9vRWRRNDI4QzlHU3NvcE5ybjBUdWxEcDFkNGUzZ3JJYU55WUZnNl9NT1FNcWNkSlFNSW9FWktjZ3pYVkd4N3habThScWViVHVtenAxbkFEejdBdmNydjJ2UWxfM25NNlRDMk5jUk11amcwaE5YTldaWjgtbTlaX0cxeDlNdUFweGJoQm1HNw?oc=5",
+      "publishedAt": "2026-08-12T08:23:43+00:00",
       "related": ""
     },
     {
@@ -566,33 +566,13 @@
       "related": ""
     },
     {
-      "id": 8335117,
-      "title": "US military operations killed 153 civilians in 2025, official says, citing Pentagon assessment - Reuters",
-      "summary": "US military operations killed 153 civilians in 2025, official says, citing Pentagon assessment  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNMEtUb1g4Rnk4OS05dUNyRjZlMFFkRnAxYjhhMUhWcWI4bC1GdmJEOTZmd3BQalppUXQ4VDdDZThuMnFmcVI2SDNtdE95N1pId1ZlTGVUQVc0TzJZQWVtc1paZzNKV012d3dXNUlRcEtPWmplNDJUaVhRX2pnWUVZN19xRkYwN3R6NjFuSVJ0RUxpUHdPTHU1d3M0VTRHQnA5aW56aXMzLVgyRG9FRFZ3X1hHRmhxdTltTkp5YnlrYm16ZEI3YWUteGtBaVQ?oc=5",
-      "publishedAt": "2026-08-12T03:34:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8334497,
-      "title": "European stocks steady, oil rises before CPI - Reuters",
-      "summary": "European stocks steady, oil rises before CPI  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQTnAyM2F1aXRKeVZFQU5yVzdLbmplRS1vV28zVXZ0Slo3bmszQjM1enJHU2RlOG5EZWtLYUNmVHdjcHprM19fTnhjUE8tV3VGTFBrelZXM1pOekphNVF1S3EtSTlDcDl5Skw0R19ud3U5NmdhWEk5eVJjV1dudFNhSlhoRQ?oc=5",
-      "publishedAt": "2026-08-12T02:19:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8336069,
-      "title": "India’s CPI rises further to 4.45% in July as food prices accelerate",
-      "summary": "<p class=\"isSelectedEnd\">India’s retail inflation accelerated in July, with the Consumer Price Index rising 4.45% y/y, according to data released by the Ministry of Statistics and Programme Implementa",
+      "id": 8336176,
+      "title": "Iran reportedly maintains that there are no discussions over ceasefire extension as the pact doesn't exist anymore",
+      "summary": "<ul><li>There are no discussions with the US over extending ceasefire agreement</li><li>From Iran's perpsecitve, there is no ceasefire start date and therefore there is nothing to extend</li><li>The U",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/india-s-cpi-rises-further-to-4-45-in-july-as-food-prices-accelerate/",
-      "publishedAt": "2026-08-12T10:54:36+00:00",
+      "link": "https://investinglive.com/news/iran-reportedly-maintains-that-there-are-no-discussions-over-ceasefire-extension-as-the-pact-doesn-t-exist-anymore/",
+      "publishedAt": "2026-08-12T10:57:08+00:00",
       "related": ""
     }
   ],
