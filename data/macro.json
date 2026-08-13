@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-13T15:44:14+00:00",
+  "updatedAt": "2026-08-13T16:37:58+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: HTTP Error 520: <none>",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,17 +35,17 @@
     }
   ],
   "summary": {
-    "vix": 14.65,
+    "vix": 14.71,
     "vixRegime": "normal",
     "us10yYield": 4.64,
     "usdCnh": 6.74,
     "usdCnhChangePct": null,
-    "sectorLeader": "科技",
-    "sectorLaggard": "工业",
+    "sectorLeader": "通信",
+    "sectorLaggard": "材料",
     "yieldSpread10y2y": 0.48,
     "hints": [
       "美债收益率回落，利于风险资产估值修复。",
-      "美股行业轮动：科技 领涨（+1.15%），工业 靠后。",
+      "美股行业轮动：通信 领涨（+1.21%），材料 靠后。",
       "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
@@ -52,9 +58,9 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 14.65,
-      "changePct": 0.69,
-      "weekChangePct": -3.3,
+      "price": 14.71,
+      "changePct": 1.1,
+      "weekChangePct": -2.9,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -68,8 +74,8 @@
       "currency": null,
       "region": null,
       "price": 4.64,
-      "changePct": -0.83,
-      "weekChangePct": -0.58,
+      "changePct": -0.88,
+      "weekChangePct": -0.62,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -81,8 +87,8 @@
       "currency": null,
       "region": null,
       "price": 3.7,
-      "changePct": -0.32,
-      "weekChangePct": -0.99,
+      "changePct": -0.27,
+      "weekChangePct": -0.94,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -110,16 +116,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.74,
-      "changePct": -0.04,
-      "weekChangePct": -0.11,
-      "monthChangePct": -0.41,
+      "price": 6.73,
+      "changePct": -0.18,
+      "weekChangePct": -0.25,
+      "monthChangePct": -0.55,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.743,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-13"
+      "refPrice": 6.7569,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -129,15 +135,15 @@
       "currency": null,
       "region": null,
       "price": 7.85,
-      "changePct": 0.0,
-      "weekChangePct": 0.04,
+      "changePct": 0.01,
+      "weekChangePct": 0.05,
       "monthChangePct": 0.12,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8469,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-13"
+      "refPrice": 7.8474,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.33,
-      "changePct": 0.04,
-      "weekChangePct": 1.1,
-      "monthChangePct": -1.76,
+      "price": 159.46,
+      "changePct": 0.12,
+      "weekChangePct": 1.18,
+      "monthChangePct": -1.68,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.33,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-13"
+      "refPrice": 159.2909,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,51 +171,25 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": -0.06,
-      "weekChangePct": -0.18,
-      "monthChangePct": 0.98,
+      "changePct": -0.11,
+      "weekChangePct": -0.22,
+      "monthChangePct": 0.93,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
       "refPrice": 0.867,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-13"
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7412,
+      "price": 0.7405,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-13"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8126,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-13"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2801,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-13"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,10 +200,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4414.5,
-      "changePct": 0.13,
-      "weekChangePct": 4.07,
-      "monthChangePct": 9.16,
+      "price": 4414.2,
+      "changePct": 0.12,
+      "weekChangePct": 4.06,
+      "monthChangePct": 9.15,
       "source": "yahoo"
     },
     {
@@ -233,10 +213,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 82.52,
-      "changePct": -0.9,
-      "weekChangePct": 6.77,
-      "monthChangePct": 3.67,
+      "price": 82.38,
+      "changePct": -1.07,
+      "weekChangePct": 6.59,
+      "monthChangePct": 3.49,
       "source": "yahoo"
     },
     {
@@ -247,9 +227,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.6,
-      "changePct": 0.09,
-      "weekChangePct": -1.26,
-      "monthChangePct": 4.92,
+      "changePct": 0.06,
+      "weekChangePct": -1.29,
+      "monthChangePct": 4.89,
       "source": "yahoo"
     }
   ],
@@ -296,18 +276,18 @@
   ],
   "sectors": [
     {
-      "symbol": "XLK",
-      "name": "科技",
+      "symbol": "XLC",
+      "name": "通信",
       "category": "sector",
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 191.04,
-      "changePct": 1.15,
-      "weekChangePct": 3.08,
-      "monthChangePct": 5.21,
+      "price": 111.6,
+      "changePct": 1.21,
+      "weekChangePct": 0.38,
+      "monthChangePct": 0.01,
       "source": "yahoo",
-      "sector": "科技"
+      "sector": "通信"
     },
     {
       "symbol": "XLRE",
@@ -316,26 +296,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 45.0,
-      "changePct": 1.15,
-      "weekChangePct": 0.42,
-      "monthChangePct": 0.67,
+      "price": 45.01,
+      "changePct": 1.16,
+      "weekChangePct": 0.44,
+      "monthChangePct": 0.68,
       "source": "yahoo",
       "sector": "地产"
     },
     {
-      "symbol": "XLC",
-      "name": "通信",
+      "symbol": "XLK",
+      "name": "科技",
       "category": "sector",
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 111.43,
-      "changePct": 1.05,
-      "weekChangePct": 0.22,
-      "monthChangePct": -0.14,
+      "price": 191.0,
+      "changePct": 1.13,
+      "weekChangePct": 3.06,
+      "monthChangePct": 5.19,
       "source": "yahoo",
-      "sector": "通信"
+      "sector": "科技"
     },
     {
       "symbol": "XLP",
@@ -344,10 +324,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 85.65,
-      "changePct": 0.67,
-      "weekChangePct": 0.63,
-      "monthChangePct": 2.61,
+      "price": 85.81,
+      "changePct": 0.86,
+      "weekChangePct": 0.82,
+      "monthChangePct": 2.8,
       "source": "yahoo",
       "sector": "必需消费"
     },
@@ -358,10 +338,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 43.99,
-      "changePct": 0.33,
-      "weekChangePct": 1.39,
-      "monthChangePct": -2.73,
+      "price": 43.98,
+      "changePct": 0.32,
+      "weekChangePct": 1.38,
+      "monthChangePct": -2.74,
       "source": "yahoo",
       "sector": "公用事业"
     },
@@ -372,10 +352,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 118.12,
-      "changePct": 0.2,
-      "weekChangePct": 0.02,
-      "monthChangePct": 1.8,
+      "price": 118.07,
+      "changePct": 0.16,
+      "weekChangePct": -0.02,
+      "monthChangePct": 1.75,
       "source": "yahoo",
       "sector": "可选消费"
     },
@@ -386,10 +366,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 168.7,
-      "changePct": 0.15,
-      "weekChangePct": 2.58,
-      "monthChangePct": 6.57,
+      "price": 168.5,
+      "changePct": 0.04,
+      "weekChangePct": 2.46,
+      "monthChangePct": 6.45,
       "source": "yahoo",
       "sector": "健康"
     },
@@ -400,12 +380,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 57.83,
-      "changePct": -0.16,
-      "weekChangePct": 0.03,
-      "monthChangePct": 2.25,
+      "price": 57.92,
+      "changePct": 0.0,
+      "weekChangePct": 0.19,
+      "monthChangePct": 2.4,
       "source": "yahoo",
       "sector": "金融"
+    },
+    {
+      "symbol": "XLI",
+      "name": "工业",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 185.45,
+      "changePct": -0.23,
+      "weekChangePct": 0.37,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "sector": "工业"
     },
     {
       "symbol": "XLE",
@@ -414,10 +408,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 60.92,
-      "changePct": -0.17,
-      "weekChangePct": 4.75,
-      "monthChangePct": 7.83,
+      "price": 60.88,
+      "changePct": -0.25,
+      "weekChangePct": 4.67,
+      "monthChangePct": 7.74,
       "source": "yahoo",
       "sector": "能源"
     },
@@ -434,20 +428,6 @@
       "monthChangePct": 3.61,
       "source": "yahoo",
       "sector": "材料"
-    },
-    {
-      "symbol": "XLI",
-      "name": "工业",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 185.02,
-      "changePct": -0.46,
-      "weekChangePct": 0.14,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "工业"
     }
   ],
   "fred": [
@@ -508,16 +488,6 @@
   ],
   "finnhubNews": [
     {
-      "id": 8341248,
-      "title": "The US says more oil is leaving the Middle East, but is it really? - Reuters",
-      "summary": "The US says more oil is leaving the Middle East, but is it really?  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOcFpiaHV1WkZPRDd0NDNsalc3RURUajFQYWtJdVE1LU4tQTZBWmhDWGl3RnE0bGVfcjk5TzNsNkVoNFQxbXIwa1paaGRnSnFlY1VoaE1uSUQ0RmNxR3h3cmwxdGcyMjhwWC1ncE04OHJSWGFtOVF1bnRCbWlSam01MkdldGFsaVpIcGxnTVFSQ3pUb0FLZ0JaZlJsUHp6NFN6b0tjck4zUDc3QnZBVDk0YTRLU3cycHoydjBRUERR?oc=5",
-      "publishedAt": "2026-08-13T14:02:06+00:00",
-      "related": ""
-    },
-    {
       "id": 8341806,
       "title": "Sweetgreen isn't linked to cyclospora, but many customers still don't want salads: 'I didn't think it would last' this long, CEO says",
       "summary": "Though Sweetgreen has not been linked to the cyclospora outbreak, the fast-casual chain has taken a hit as consumers steer clear of lettuce and fresh produce.",
@@ -529,8 +499,8 @@
     },
     {
       "id": 8341141,
-      "title": "Iran, US make competing claims over control of Strait of Hormuz - Reuters",
-      "summary": "Iran, US make competing claims over control of Strait of Hormuz  Reuters",
+      "title": "Iran, US make competing claims over control of Strait of Hormuz - reuters.com",
+      "summary": "Iran, US make competing claims over control of Strait of Hormuz  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOdnRSa0s5a1NHbzFqLTczc1FydWJqXzd1Nmc4ZEJoWlRheExRdUpFMjdxS2haWDc5cHdmRUNONVEzRjhaZjUyLVNmV0NpcXROSkFwaDBpVlBkOHc1SU52OXptQ1hLRnE1NVNIRHpxUVU5MFgxRTFpYUNFMnNGQXdtbTF3a05qV3gwNEpxaEswd053TXFPbnlSZExIc01hck56MjIyV2d4QQ?oc=5",
@@ -549,8 +519,8 @@
     },
     {
       "id": 8341477,
-      "title": "Iran's state media mock Trump over airplane switch, meme shows him hiding in a catering truck - Reuters",
-      "summary": "Iran's state media mock Trump over airplane switch, meme shows him hiding in a catering truck  Reuters",
+      "title": "Iran's state media mock Trump over airplane switch, meme shows him hiding in a catering truck - reuters.com",
+      "summary": "Iran's state media mock Trump over airplane switch, meme shows him hiding in a catering truck  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPV1FIaHZjdWh5bnZXZU04TlJVazN6cWVJdFRnYnFpOTk3N285VjlpdGJmdjc1MkNkdVIwQmFFWGY1U1V4X2Q1ZU04SmptOUFhS09FNDBtQVVuTVJBUUptZGp0NHZRVlBQWmpXa0xSNVlUdnlqUXVoNnplNUJYbWVhdUFwdGRWM1VKUm5aaWE0akNtY3l1SGdwQTREQ3VNNFNvU0FNN0hFTVRqOFZLVFVxSWx4cDk1VEVwUV8xMzlZSjlibGpaUTlfQUZmMTVKcC02VktHN1dR?oc=5",
@@ -559,8 +529,8 @@
     },
     {
       "id": 8341815,
-      "title": "After US criticism, Israel ties Lebanon withdrawal to Hezbollah disarmament - Reuters",
-      "summary": "After US criticism, Israel ties Lebanon withdrawal to Hezbollah disarmament  Reuters",
+      "title": "After US criticism, Israel ties Lebanon withdrawal to Hezbollah disarmament - reuters.com",
+      "summary": "After US criticism, Israel ties Lebanon withdrawal to Hezbollah disarmament  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxObUJ5VWVuMWJJR0cySXFnVW5lbEFJbWQyeWdOSWRlSFRfRTZzaU5lbXlBbDZObXIzLWY5VXJXSHYtajUyRm9WcTQ2LWEwQ2N5VTc5X0F4ZE0tWWhKNDhkTjFRNjhqR1dZa3loVFFod1JkOS1UQ0d6VWgteGo5MV93YkY1S2cwQmVod1poOEpJTFh3VmtRZzZINWZCQmtCM3hsYnFmUUZBM1V6T0ZQWlZHQ0pkbWhVYktnZnpONmZYWXIwT0U?oc=5",
@@ -569,12 +539,22 @@
     },
     {
       "id": 8341593,
-      "title": "Diesel prices overtake jet fuel in Europe as global shortage widens - Reuters",
-      "summary": "Diesel prices overtake jet fuel in Europe as global shortage widens  Reuters",
+      "title": "Diesel prices overtake jet fuel in Europe as global shortage widens - reuters.com",
+      "summary": "Diesel prices overtake jet fuel in Europe as global shortage widens  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQejlyV0VLYkdZTjh6Z2JGUF8tczNIMGNic1RNSlY4cC13b01ERjV0ZnpmSFNpSHFRSThUUDIzY25KbmpLTVVLMzB1aXJEODJMMUl5QkY3OU95TlR0S215YnJTelNxYy1PT2NKbHdqZ0xidV9lRGRxa3ppekp3aENoRmFleG53RF9XVFFpRmtvNEwwSFJ2WHpxZExaS1FyZDZpdmJoeUtpYjJ0U18wa3FLTUNmYw?oc=5",
       "publishedAt": "2026-08-13T12:12:14+00:00",
+      "related": ""
+    },
+    {
+      "id": 8341248,
+      "title": "The US says more oil is leaving the Middle East, but is it really? - reuters.com",
+      "summary": "The US says more oil is leaving the Middle East, but is it really?  reuters.com",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOcFpiaHV1WkZPRDd0NDNsalc3RURUajFQYWtJdVE1LU4tQTZBWmhDWGl3RnE0bGVfcjk5TzNsNkVoNFQxbXIwa1paaGRnSnFlY1VoaE1uSUQ0RmNxR3h3cmwxdGcyMjhwWC1ncE04OHJSWGFtOVF1bnRCbWlSam01MkdldGFsaVpIcGxnTVFSQ3pUb0FLZ0JaZlJsUHp6NFN6b0tjck4zUDc3QnZBVDk0YTRLU3cycHoydjBRUERR?oc=5",
+      "publishedAt": "2026-08-13T12:00:32+00:00",
       "related": ""
     },
     {
@@ -588,13 +568,13 @@
       "related": ""
     },
     {
-      "id": 8342017,
-      "title": "AUDUSD is ticking to the upside helped by risk-on flows and technical breaks",
-      "summary": "<p class=\"PDq2pG_selectionAnchorContainer\">The AUDUSD moved lower yesterday after the post-CPI run to new highs going back to June 5 stalled and reversed into the close.  The selling pressure carried ",
+      "id": 8342326,
+      "title": "European shares close lower despite the US tech push higher",
+      "summary": "<p>European shares are closing lower on the day, failing to follow the mostly positive tone in U.S. equities. The declines come despite the softer-than-expected U.S. PPI data, which showed headline pr",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/technical-analysis/audusd-is-ticking-to-the-upside-helped-by-risk-on-flows-and-technical-breaks/",
-      "publishedAt": "2026-08-13T14:48:32+00:00",
+      "link": "https://investinglive.com/news/european-shares-close-lower-despite-the-us-tech-push-higher/",
+      "publishedAt": "2026-08-13T16:06:12+00:00",
       "related": ""
     }
   ],
