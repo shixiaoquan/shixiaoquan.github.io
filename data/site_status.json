@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-13T05:16:22+00:00",
+  "updatedAt": "2026-08-13T05:26:38+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -250,7 +250,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-13T05:12:13+00:00",
       "status": "ok",
-      "ageMinutes": 4
+      "ageMinutes": 14
     },
     {
       "id": "macro",
@@ -259,7 +259,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-13T05:12:06+00:00",
       "status": "ok",
-      "ageMinutes": 4
+      "ageMinutes": 14
     },
     {
       "id": "truth",
@@ -267,8 +267,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-13T04:19:40+00:00",
-      "status": "ok",
-      "ageMinutes": 56
+      "status": "stale",
+      "ageMinutes": 66
     },
     {
       "id": "wencai",
@@ -277,16 +277,16 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-13T05:01:27+00:00",
       "status": "ok",
-      "ageMinutes": 14
+      "ageMinutes": 25
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-08-13T11:29:43+08:00",
+      "updatedAt": "2026-08-13T13:26:38+08:00",
       "status": "ok",
-      "ageMinutes": 106
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -295,9 +295,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-09T03:28:40+00:00",
       "status": "ok",
-      "ageMinutes": 5867
+      "ageMinutes": 5877
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "31669728192"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "31670311693"
 }
