@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-13T06:46:39+00:00",
+  "updatedAt": "2026-08-13T06:54:13+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-13T06:46:39+00:00",
+    "updatedAt": "2026-08-13T06:54:13+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
@@ -128,14 +128,6 @@
         }
       },
       {
-        "id": "pipelines-stale",
-        "type": "fix_pipeline",
-        "priority": "medium",
-        "title": "部分流水线数据过期",
-        "reason": "2 条流水线过期",
-        "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
-      },
-      {
         "id": "tactic-tune-active",
         "type": "tactic_tune",
         "priority": "low",
@@ -153,7 +145,7 @@
       }
     ],
     "summary": {
-      "total": 5,
+      "total": 4,
       "high": 0,
       "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
@@ -236,7 +228,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-13T06:46:39+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 7
     },
     {
       "id": "macro",
@@ -245,7 +237,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-13T06:46:31+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 7
     },
     {
       "id": "truth",
@@ -253,8 +245,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-13T05:53:03+00:00",
-      "status": "ok",
-      "ageMinutes": 53
+      "status": "stale",
+      "ageMinutes": 61
     },
     {
       "id": "wencai",
@@ -263,7 +255,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-13T06:41:50+00:00",
       "status": "ok",
-      "ageMinutes": 4
+      "ageMinutes": 12
     },
     {
       "id": "reports",
@@ -272,7 +264,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-13T13:26:38+08:00",
       "status": "ok",
-      "ageMinutes": 80
+      "ageMinutes": 87
     },
     {
       "id": "backtest",
@@ -281,9 +273,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-09T03:28:40+00:00",
       "status": "ok",
-      "ageMinutes": 5957
+      "ageMinutes": 5965
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "31675060776"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "31675572279"
 }
