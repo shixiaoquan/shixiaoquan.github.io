@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-13T08:07:35+00:00",
+  "updatedAt": "2026-08-13T09:31:02+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: HTTP Error 522: <none>",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,16 +29,16 @@
     }
   ],
   "summary": {
-    "vix": 14.67,
+    "vix": 14.68,
     "vixRegime": "normal",
     "us10yYield": 4.68,
-    "usdCnh": 6.75,
+    "usdCnh": 6.74,
     "usdCnhChangePct": null,
     "sectorLeader": "科技",
-    "sectorLaggard": "材料",
+    "sectorLaggard": "通信",
     "yieldSpread10y2y": 0.48,
     "hints": [
-      "美股行业轮动：科技 领涨（+1.49%），材料 靠后。",
+      "美股行业轮动：科技 领涨（+1.49%），通信 靠后。",
       "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。"
     ]
@@ -57,10 +51,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 14.67,
-      "changePct": 0.82,
-      "weekChangePct": -3.17,
-      "monthChangePct": null,
+      "price": 14.68,
+      "changePct": 0.89,
+      "weekChangePct": -3.1,
+      "monthChangePct": -6.32,
       "source": "yahoo"
     }
   ],
@@ -75,7 +69,7 @@
       "price": 4.68,
       "changePct": -0.04,
       "weekChangePct": 1.41,
-      "monthChangePct": null,
+      "monthChangePct": 2.12,
       "source": "yahoo"
     },
     {
@@ -88,7 +82,7 @@
       "price": 3.71,
       "changePct": -0.62,
       "weekChangePct": -0.48,
-      "monthChangePct": null,
+      "monthChangePct": 0.19,
       "source": "yahoo"
     }
   ],
@@ -100,7 +94,7 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.75,
+      "price": 6.74,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -116,15 +110,15 @@
       "currency": null,
       "region": null,
       "price": 6.74,
-      "changePct": 0.0,
-      "weekChangePct": -0.07,
-      "monthChangePct": -0.37,
+      "changePct": -0.04,
+      "weekChangePct": -0.11,
+      "monthChangePct": -0.41,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7569,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7432,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-12"
     },
     {
       "symbol": "USDHKD=X",
@@ -134,15 +128,15 @@
       "currency": null,
       "region": null,
       "price": 7.85,
-      "changePct": -0.0,
+      "changePct": 0.0,
       "weekChangePct": 0.04,
-      "monthChangePct": 0.11,
+      "monthChangePct": 0.12,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8474,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.847,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-12"
     },
     {
       "symbol": "USDJPY=X",
@@ -151,16 +145,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.36,
-      "changePct": 0.06,
-      "weekChangePct": 1.12,
-      "monthChangePct": -1.74,
+      "price": 159.39,
+      "changePct": 0.08,
+      "weekChangePct": 1.14,
+      "monthChangePct": -1.72,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.2909,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 159.09,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-12"
     },
     {
       "symbol": "EURUSD=X",
@@ -170,25 +164,51 @@
       "currency": null,
       "region": null,
       "price": 1.15,
-      "changePct": -0.14,
-      "weekChangePct": -0.26,
-      "monthChangePct": 0.9,
+      "changePct": -0.08,
+      "weekChangePct": -0.2,
+      "monthChangePct": 0.96,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.867,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8662,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-12"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7405,
+      "price": 0.7393,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-12"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8113,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-12"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.279,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-12"
     }
   ],
   "commodities": [
@@ -199,10 +219,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4426.9,
-      "changePct": 0.41,
-      "weekChangePct": 4.36,
-      "monthChangePct": 9.47,
+      "price": 4437.8,
+      "changePct": 0.66,
+      "weekChangePct": 4.62,
+      "monthChangePct": 9.74,
       "source": "yahoo"
     },
     {
@@ -212,10 +232,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 82.1,
-      "changePct": -1.41,
-      "weekChangePct": 6.22,
-      "monthChangePct": 3.14,
+      "price": 81.53,
+      "changePct": -2.09,
+      "weekChangePct": 5.49,
+      "monthChangePct": 2.42,
       "source": "yahoo"
     },
     {
@@ -225,10 +245,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.51,
-      "changePct": -1.31,
-      "weekChangePct": -2.64,
-      "monthChangePct": 3.45,
+      "price": 6.55,
+      "changePct": -0.75,
+      "weekChangePct": -2.09,
+      "monthChangePct": 4.04,
       "source": "yahoo"
     }
   ],
@@ -241,8 +261,8 @@
       "currency": "CNY",
       "region": "中国",
       "price": 4663.95,
-      "changePct": null,
-      "weekChangePct": null,
+      "changePct": 2.98,
+      "weekChangePct": -0.67,
       "monthChangePct": null,
       "source": "yahoo"
     },
@@ -287,20 +307,6 @@
       "monthChangePct": 2.85,
       "source": "yahoo",
       "sector": "科技"
-    },
-    {
-      "symbol": "XLRE",
-      "name": "地产",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 44.49,
-      "changePct": 0.93,
-      "weekChangePct": -1.57,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "地产"
     },
     {
       "symbol": "XLU",
@@ -359,6 +365,20 @@
       "sector": "金融"
     },
     {
+      "symbol": "XLRE",
+      "name": "地产",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 44.49,
+      "changePct": 0.2,
+      "weekChangePct": -1.51,
+      "monthChangePct": -0.47,
+      "source": "yahoo",
+      "sector": "地产"
+    },
+    {
       "symbol": "XLE",
       "name": "能源",
       "category": "sector",
@@ -382,23 +402,9 @@
       "price": 185.88,
       "changePct": 0.1,
       "weekChangePct": -0.25,
-      "monthChangePct": null,
+      "monthChangePct": 3.01,
       "source": "yahoo",
       "sector": "工业"
-    },
-    {
-      "symbol": "XLC",
-      "name": "通信",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 110.27,
-      "changePct": -0.9,
-      "weekChangePct": -0.54,
-      "monthChangePct": null,
-      "source": "yahoo",
-      "sector": "通信"
     },
     {
       "symbol": "XLY",
@@ -410,7 +416,7 @@
       "price": 117.89,
       "changePct": -1.13,
       "weekChangePct": -0.63,
-      "monthChangePct": null,
+      "monthChangePct": 1.72,
       "source": "yahoo",
       "sector": "可选消费"
     },
@@ -424,9 +430,23 @@
       "price": 52.58,
       "changePct": -1.24,
       "weekChangePct": -0.11,
-      "monthChangePct": null,
+      "monthChangePct": 3.83,
       "source": "yahoo",
       "sector": "材料"
+    },
+    {
+      "symbol": "XLC",
+      "name": "通信",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 110.27,
+      "changePct": -1.39,
+      "weekChangePct": -1.58,
+      "monthChangePct": -1.18,
+      "source": "yahoo",
+      "sector": "通信"
     }
   ],
   "fred": [
@@ -497,6 +517,16 @@
       "related": ""
     },
     {
+      "id": 8340606,
+      "title": "Jailed Istanbul mayor Imamoglu joins new opposition party amid political turmoil - Reuters",
+      "summary": "Jailed Istanbul mayor Imamoglu joins new opposition party amid political turmoil  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQbEV3SWIzTHVVZllzRFo2RlNPT2RyMGM4VFJRem9vTGdsbE9YU3VVaEphNjVkZHlWb3J2aVdEQmI2ekY1YlEwb3RHSFUybHotdUxObjhYMktSdmdHSlpJM1hGczZWQ29rSGxZVHdBMGdDX083MFpNVW9HNmdKTGhZcnBQd0hNM3R0Nm9ucG1pR0ozTzNyRF9kOElkeFUzdElPdk95aVpXUEpWcE1LRkZjUWdjWnBLTzU0YUNIY0hwUVI3NkdoV1BlVFBOU2kzQ2s?oc=5",
+      "publishedAt": "2026-08-13T05:47:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8340399,
       "title": "Gold off two-month peak as traders seek inflation cues - Reuters",
       "summary": "Gold off two-month peak as traders seek inflation cues  Reuters",
@@ -507,9 +537,19 @@
       "related": ""
     },
     {
+      "id": 8340607,
+      "title": "Indian benchmarks extend fall on Mideast uncertainty; Tata stocks steady - Reuters",
+      "summary": "Indian benchmarks extend fall on Mideast uncertainty; Tata stocks steady  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxONXVMYU92V04yWnc3ekdtSExYLXlXUFNKcW4wZE9XV2VlSmpMRElsUXJKMUZGRFRKbkZLNWpLNWRfelk0SWhhWUNXaHQzeW81djZMWHE1SUZva0xOT2lsWWdPU0VkdjBScjRlYzBVUVNpVlY0YlpUNXF6dnk3RFpjelZCQnEtTEJySWh1QW5ORjdsbjY2WFdXT0xqYkZhR3dtWkpKMXR0S1VlTEsyWFhwNHpTMk5fb2JPLXc?oc=5",
+      "publishedAt": "2026-08-13T02:42:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8339264,
-      "title": "Oil eases as weaker demand outlook counters Mideast supply concerns - Reuters",
-      "summary": "Oil eases as weaker demand outlook counters Mideast supply concerns  Reuters",
+      "title": "Oil slips on weaker demand outlook and higher US stocks amid supply disruptions - Reuters",
+      "summary": "Oil slips on weaker demand outlook and higher US stocks amid supply disruptions  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNRHRqOVFPR196RlJ0WTVZajZ6NHRpdmhmZ0EtSDMwTDVZVk5mX2JnVm9LVnFDQ2M4c08ybExVeldFQk9BdG9HVldTbnJFRDVjdTc3MF8wZmc4ck41bWd6Wng2SFowYjZrNW1UVzJuMDR4cnBUT0c2TXUteFR0cTFiVVY5bm5Da09NSDI4akNIcFY4NHRBRzkzNXNuZ1luQjNGUHFFdnVhT1RCNGlKMWx4MkgzdzhLdw?oc=5",
@@ -517,23 +557,13 @@
       "related": ""
     },
     {
-      "id": 8337701,
-      "title": "Credible missile threat led to secret aircraft switch for Trump, source says - Reuters",
-      "summary": "Credible missile threat led to secret aircraft switch for Trump, source says  Reuters",
+      "id": 8340605,
+      "title": "Stocks edge up with oil price below $90, dollar at 2-week high, Iran in focus - Reuters",
+      "summary": "Stocks edge up with oil price below $90, dollar at 2-week high, Iran in focus  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOSlRqMEthQzJ3NWM2WVctYUhwMTlFekFyd0o3QVpnUkRoeUxUMGxSSThmVW1QT096QmVNUlRHZkxOUXM5M0tGdXBSRlIwbWFQbHFEdVdaR2lUVkdTaWRybHFZYzRtMk85LUNLMXF4bGFsZU1UVE54SXJsZWFRYnRmNlRoVVhWNUZVNm1OZmdlTHI3RlpYYWtULV9qZWFvVUtVMEl4aFByMDJXRHN0RHpxanJvNGY3cGNKN3Y5QUlncHljV193bEstMGFzTQ?oc=5",
-      "publishedAt": "2026-08-12T23:19:52+00:00",
-      "related": ""
-    },
-    {
-      "id": 8338536,
-      "title": "'If I go, you go, right?': Traveling on the presidential plane—without Trump - Reuters",
-      "summary": "'If I go, you go, right?': Traveling on the presidential plane—without Trump  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPVy1qZERoWkltdjF1bTJRWTZQaTJ6NVI1YVBVcVBQLXhuaFBoZ2o2bW9tNTlMR3VFNDlPSHdTUlZ6WkkzR1RkbXpMV1VYZUJRdk1Tano3emJQSGVVdUtlT3FWMWFrVjg3bFZlbUQzNlZuWDJ6M19pb0pjcDRoWjdoZW1iVk04MGRDd0RRSkZpUVJFaDZxem5JWE5SaXFfMVZBZmxub00xdk11SGZ3TFJuNzItSW9IaDB0dzBlVGp2R014eUZj?oc=5",
-      "publishedAt": "2026-08-12T23:06:07+00:00",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNazlfTWozZlI1am8yV1pmREdVZGswQ1NPWl92dGhIN3lVbWJRaFA2YWhWNDQ4NWwweXZpbmpLOGFmcDlUdDhBSGFyU1piOVBzam1JOEN2RVFDOXdWOFk2LTB1MklsRzRfVmlaR3BTb2ZFNmw2U0hjUnhNLUd3cVV0WElxVQ?oc=5",
+      "publishedAt": "2026-08-13T01:02:00+00:00",
       "related": ""
     },
     {
@@ -547,23 +577,13 @@
       "related": ""
     },
     {
-      "id": 8339161,
-      "title": "Top US refiners see profits soar, step up investor rewards - Reuters",
-      "summary": "Top US refiners see profits soar, step up investor rewards  Reuters",
+      "id": 8338536,
+      "title": "'If I go, you go, right?': Traveling on the presidential plane—without Trump - Reuters",
+      "summary": "'If I go, you go, right?': Traveling on the presidential plane—without Trump  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQX2FVR1ZIejBlNVBEMzQ5S2x1UHpjOHVldkJ1eEU1eVE4QkNGYVU1Z25GZloxaHJWUm1XejJpbHEwTlg4M0FkYkFCbVpSa2hDb3BRYUxpT3FwdlM4Z1psY0RYWWVGYnItQzBlWEpHeTF4Q2dMS2txOUhpQlQzcVgyQU9Ra2lGUVFMTGdMbnRCNWZfLVFybXkxUFlVQzZ6Nko3YlRPa25qZTF0Ny1fYmc?oc=5",
-      "publishedAt": "2026-08-12T20:24:43+00:00",
-      "related": ""
-    },
-    {
-      "id": 8337804,
-      "title": "US budget deficit widens in July on higher outlays, negative tariff receipts - Reuters",
-      "summary": "US budget deficit widens in July on higher outlays, negative tariff receipts  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcUJ0U0RwQ2U2OHRKX1JZX1daaUdjR0ZMZWM5a0x3VndUUzJ0RFRTMTQ4ZHA1blZIYlVNWTZOeTUwa2QxcGQtVGpCRXN0WlJqNW1abl9wMnptY2hTSDA2VHUzNVFBLWVsTnRDYzZYQjBQS2VnZ2VBVVRNVHQwQTJiQ2dxSF92cHlFSENDQ1psZF9rM3plUE5mTzZtUWR0U1d0ZlZ3Z3NZRXBOX2ZQSGZXUTlKNkpHMHZ0amdoUg?oc=5",
-      "publishedAt": "2026-08-12T20:17:29+00:00",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPVy1qZERoWkltdjF1bTJRWTZQaTJ6NVI1YVBVcVBQLXhuaFBoZ2o2bW9tNTlMR3VFNDlPSHdTUlZ6WkkzR1RkbXpMV1VYZUJRdk1Tano3emJQSGVVdUtlT3FWMWFrVjg3bFZlbUQzNlZuWDJ6M19pb0pjcDRoWjdoZW1iVk04MGRDd0RRSkZpUVJFaDZxem5JWE5SaXFfMVZBZmxub00xdk11SGZ3TFJuNzItSW9IaDB0dzBlVGp2R014eUZj?oc=5",
+      "publishedAt": "2026-08-12T21:03:00+00:00",
       "related": ""
     },
     {
