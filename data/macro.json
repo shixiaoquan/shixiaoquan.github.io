@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-14T08:02:01+00:00",
+  "updatedAt": "2026-08-14T09:16:31+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,7 +29,7 @@
     }
   ],
   "summary": {
-    "vix": 14.64,
+    "vix": 14.57,
     "vixRegime": "normal",
     "us10yYield": 4.64,
     "usdCnh": 6.74,
@@ -57,10 +51,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 14.64,
-      "changePct": 0.07,
-      "weekChangePct": -1.74,
-      "monthChangePct": -12.49,
+      "price": 14.57,
+      "changePct": -0.41,
+      "weekChangePct": -2.21,
+      "monthChangePct": -12.91,
       "source": "yahoo"
     }
   ],
@@ -117,14 +111,14 @@
       "region": null,
       "price": 6.74,
       "changePct": -0.03,
-      "weekChangePct": -0.11,
+      "weekChangePct": -0.12,
       "monthChangePct": -0.4,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.757,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.743,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-13"
     },
     {
       "symbol": "USDHKD=X",
@@ -134,15 +128,15 @@
       "currency": null,
       "region": null,
       "price": 7.85,
-      "changePct": 0.01,
+      "changePct": 0.0,
       "weekChangePct": 0.03,
       "monthChangePct": 0.11,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8476,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8469,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-13"
     },
     {
       "symbol": "USDJPY=X",
@@ -151,16 +145,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.18,
-      "changePct": -0.09,
-      "weekChangePct": 0.49,
-      "monthChangePct": -1.78,
+      "price": 159.11,
+      "changePct": -0.14,
+      "weekChangePct": 0.44,
+      "monthChangePct": -1.83,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.3936,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 159.33,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-13"
     },
     {
       "symbol": "EURUSD=X",
@@ -170,25 +164,51 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": 0.23,
-      "weekChangePct": 0.28,
-      "monthChangePct": 0.75,
+      "changePct": 0.24,
+      "weekChangePct": 0.29,
+      "monthChangePct": 0.77,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8671,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.867,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-13"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7413,
+      "price": 0.7412,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-13"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8126,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-13"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2801,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-13"
     }
   ],
   "commodities": [
@@ -199,10 +219,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4398.0,
-      "changePct": 0.79,
-      "weekChangePct": 1.32,
-      "monthChangePct": 10.35,
+      "price": 4403.7,
+      "changePct": 0.92,
+      "weekChangePct": 1.45,
+      "monthChangePct": 10.49,
       "source": "yahoo"
     },
     {
@@ -212,10 +232,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 82.83,
-      "changePct": 1.94,
-      "weekChangePct": 5.95,
-      "monthChangePct": 4.91,
+      "price": 82.47,
+      "changePct": 1.5,
+      "weekChangePct": 5.49,
+      "monthChangePct": 4.46,
       "source": "yahoo"
     },
     {
@@ -225,10 +245,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.59,
-      "changePct": 0.0,
-      "weekChangePct": 0.33,
-      "monthChangePct": 4.71,
+      "price": 6.58,
+      "changePct": -0.22,
+      "weekChangePct": 0.11,
+      "monthChangePct": 4.48,
       "source": "yahoo"
     }
   ],
@@ -283,8 +303,8 @@
       "region": null,
       "price": 112.55,
       "changePct": 2.07,
-      "weekChangePct": 1.23,
-      "monthChangePct": -0.73,
+      "weekChangePct": 1.52,
+      "monthChangePct": 0.99,
       "source": "yahoo",
       "sector": "通信"
     },
@@ -297,8 +317,8 @@
       "region": null,
       "price": 45.12,
       "changePct": 1.42,
-      "weekChangePct": 0.69,
-      "monthChangePct": 1.26,
+      "weekChangePct": -0.18,
+      "monthChangePct": 1.44,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -488,8 +508,8 @@
   "finnhubNews": [
     {
       "id": 8345035,
-      "title": "Hormuz shipping traffic capped amid competing claims from US and Iran - reuters.com",
-      "summary": "Hormuz shipping traffic capped amid competing claims from US and Iran  reuters.com",
+      "title": "Hormuz shipping traffic capped amid competing claims from US and Iran - Reuters",
+      "summary": "Hormuz shipping traffic capped amid competing claims from US and Iran  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPVHN6X2pBMFpxcnFUajQxN1B2MlhZTUVTRlZSYzVkVXp6MENXb2xUai1zRXVTeEhKUVVtSnJabU9yTVd6U05ETV9uRS1FNlVvWjh1dS1vTGd6UjltTXZXU1o0ODlEUWhZNUl6SFF5WGhtNldwbnpNa3lVbEV6SG12RjgtT2V4d2pCVnB4c2UtTEp4S2JOZFY5REVPdUZscnVFaC02akt2dF9rWUhDckZVNmlVRjk?oc=5",
@@ -498,8 +518,8 @@
     },
     {
       "id": 8341248,
-      "title": "The US says more oil is leaving the Middle East, but is it really? - reuters.com",
-      "summary": "The US says more oil is leaving the Middle East, but is it really?  reuters.com",
+      "title": "The US says more oil is leaving the Middle East, but is it really? - Reuters",
+      "summary": "The US says more oil is leaving the Middle East, but is it really?  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOcFpiaHV1WkZPRDd0NDNsalc3RURUajFQYWtJdVE1LU4tQTZBWmhDWGl3RnE0bGVfcjk5TzNsNkVoNFQxbXIwa1paaGRnSnFlY1VoaE1uSUQ0RmNxR3h3cmwxdGcyMjhwWC1ncE04OHJSWGFtOVF1bnRCbWlSam01MkdldGFsaVpIcGxnTVFSQ3pUb0FLZ0JaZlJsUHp6NFN6b0tjck4zUDc3QnZBVDk0YTRLU3cycHoydjBRUERR?oc=5",
@@ -508,8 +528,8 @@
     },
     {
       "id": 8344620,
-      "title": "Asian stocks head for strong weekly gains as US rate hike bets fade - reuters.com",
-      "summary": "Asian stocks head for strong weekly gains as US rate hike bets fade  reuters.com",
+      "title": "Asian stocks head for strong weekly gains as US rate hike bets fade - Reuters",
+      "summary": "Asian stocks head for strong weekly gains as US rate hike bets fade  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE14MHZSdkQ3TzZONVh4dW9nU1B5RlNOZHJSdzN1eVlQV3Eycm14NGZhb2F0QWdneVhPR2VqLWVVR1Bkb3lqTldGa3JVTXR0eGdFVi12UTJVTi1pTWVNVWhHX2tCUUJ1b21hT0dkampGU0Ric1d2WHAyclRfSQ?oc=5",
@@ -518,8 +538,8 @@
     },
     {
       "id": 8345137,
-      "title": "Indian shares slip as US threatens indefinite naval blockade of Iran - reuters.com",
-      "summary": "Indian shares slip as US threatens indefinite naval blockade of Iran  reuters.com",
+      "title": "Indian shares slip as US threatens indefinite naval blockade of Iran - Reuters",
+      "summary": "Indian shares slip as US threatens indefinite naval blockade of Iran  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNWE1Jd01iTWNHTjJIOVNSdG1pVFRlTDVSZVBxY0tYSTdGU0t1T1ZzN3ZPQnYxSGpyeUtxbUhDZG1TVElrcUVrTmVmSnk1a3BCRDJoMUZoSHBjaTdfaURDcERHS2hHU2N5c05lbjJwYzluMFlkU1JnUmtEQjlmbVVIcVZ5QTVXUllxTEFZaXJlSjdKMWV6VV93YTNhSzNELUpSejZZ?oc=5",
@@ -528,8 +548,8 @@
     },
     {
       "id": 8344417,
-      "title": "Oil rises after US threatens indefinite blockade of Iran - reuters.com",
-      "summary": "Oil rises after US threatens indefinite blockade of Iran  reuters.com",
+      "title": "Oil rises after US threatens indefinite blockade of Iran - Reuters",
+      "summary": "Oil rises after US threatens indefinite blockade of Iran  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOeHh3dmRQTVJOaXBOODZqNzdueG9RbzJ0VUZ0TTJ3UGNyaXFfOUJ4c1BsWXdKXzFWY21VZTdaaHpySzhxYXFIYnBVcUpsWDdUUE1od3pKN2psUWI1dS10enVtNzBDX0xBQUpqNmkxVE1xZE1scnFHeS1DQkM4YTRwOE01NXpwU3RWREhIWGFZMlFTcndNQzRWc3NrM0xWa2hwdlMzSE5IeEhqUzVJVFBv?oc=5",
@@ -538,8 +558,8 @@
     },
     {
       "id": 8344316,
-      "title": "Bessent says US to apply measures never seen on Iran - reuters.com",
-      "summary": "Bessent says US to apply measures never seen on Iran  reuters.com",
+      "title": "Bessent says US to apply measures never seen on Iran - Reuters",
+      "summary": "Bessent says US to apply measures never seen on Iran  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNT2p2QW55Tk9jcjF5Ti1OZmlpMGpLTEg0RU92RVEtMzFobXY2TmtNWjFJaUVZMl9RaWxWM09uV2xjVlQ0dnFHcGlEVi1Zc3ZnRHpFMkZ5VExoeTdzSVE0cmYzMVRFQUExRHA2RHNhZFpFMFZnNnIySjh3RTBRSXVtX3ZqVTJjVWhGSmdpTHVmY19QRE9ieWNmaDdaM2hmOHZfRFE?oc=5",
@@ -548,8 +568,8 @@
     },
     {
       "id": 8343796,
-      "title": "Iran war a boon for China's e-trucks, fuelling export surge - reuters.com",
-      "summary": "Iran war a boon for China's e-trucks, fuelling export surge  reuters.com",
+      "title": "Iran war a boon for China's e-trucks, fuelling export surge - Reuters",
+      "summary": "Iran war a boon for China's e-trucks, fuelling export surge  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNVVEwN3ZXeTQ5RmxKUlJScTRsa1FpNGJCaGVfR1dkMDJMVkZnenFHUDcxVjdmbVk2ajJaaWxlTDZ3SkVZd1hLdG9yenk0X0hyb01wMXpxQ1JEbklIR3d1cVdtbVdETXNhRy1NQUhJSVpYa05vOEc4emFqc1R0eUNOWDhCYmlxaThjTm5TaDV2RmZaeWk4VlBINmM0UWVlaV9MSTRZc0xkQTZ4QQ?oc=5",
@@ -558,8 +578,8 @@
     },
     {
       "id": 8343590,
-      "title": "US says it can keep naval blockade on Iran 'indefinitely,' vows more economic pressure - reuters.com",
-      "summary": "US says it can keep naval blockade on Iran 'indefinitely,' vows more economic pressure  reuters.com",
+      "title": "US says it can keep naval blockade on Iran 'indefinitely,' vows more economic pressure - Reuters",
+      "summary": "US says it can keep naval blockade on Iran 'indefinitely,' vows more economic pressure  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPamFTRDhha2lGLW5hTU1KdDZnVjlxd2hEY1lqX3Zfd2NmVlRXZjVWbDNHMXdJem1SX1hsNUpoaF9lWHhYUVFmUWJ0SDBWRG5uOGMzYzI0MFh6ckthOWJNZXNtR0tJVFJFcEMtVjdwZVFpdURyczZ0NTkzMDh1dDJNRWxKQ2htMEpBQ3N2Q25OY19wRWxaYTVCTmJJRWprVFFSMWNITjl4QmUxQVN1MUFnNHRsRWJGYUpHZ1Ywb0Nn?oc=5",
