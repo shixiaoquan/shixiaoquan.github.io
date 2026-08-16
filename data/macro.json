@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T19:47:42+00:00",
+  "updatedAt": "2026-08-16T20:00:04+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -53,7 +59,7 @@
       "price": 14.25,
       "changePct": -2.6,
       "weekChangePct": -4.36,
-      "monthChangePct": -14.82,
+      "monthChangePct": null,
       "source": "yahoo"
     }
   ],
@@ -110,14 +116,14 @@
       "region": null,
       "price": 6.73,
       "changePct": -0.16,
-      "weekChangePct": -0.25,
-      "monthChangePct": -0.53,
+      "weekChangePct": -0.23,
+      "monthChangePct": -0.6,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7413,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-14"
+      "refPrice": 6.7606,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -127,15 +133,15 @@
       "currency": null,
       "region": null,
       "price": 7.85,
-      "changePct": 0.0,
-      "weekChangePct": 0.03,
-      "monthChangePct": 0.1,
+      "changePct": -0.01,
+      "weekChangePct": 0.02,
+      "monthChangePct": 0.08,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8473,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-14"
+      "refPrice": 7.8476,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -144,16 +150,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.26,
+      "price": 159.27,
       "changePct": -0.1,
       "weekChangePct": 0.87,
-      "monthChangePct": -1.92,
+      "monthChangePct": -1.91,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.01,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-14"
+      "refPrice": 159.2258,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -169,45 +175,19 @@
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8645,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-14"
+      "refPrice": 0.8647,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7387,
+      "price": 0.739,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-14"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8118,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-14"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2781,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-14"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -259,8 +239,8 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4665.88,
-      "changePct": null,
+      "price": 4529.1,
+      "changePct": -3.6,
       "weekChangePct": null,
       "monthChangePct": null,
       "source": "yahoo"
@@ -331,7 +311,7 @@
       "price": 52.54,
       "changePct": 0.44,
       "weekChangePct": -0.61,
-      "monthChangePct": null,
+      "monthChangePct": 3.24,
       "source": "yahoo",
       "sector": "材料"
     },
@@ -359,7 +339,7 @@
       "price": 112.95,
       "changePct": 0.36,
       "weekChangePct": 1.53,
-      "monthChangePct": 0.27,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "通信"
     },
@@ -415,7 +395,7 @@
       "price": 118.2,
       "changePct": -0.21,
       "weekChangePct": -1.38,
-      "monthChangePct": 0.73,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "可选消费"
     },
