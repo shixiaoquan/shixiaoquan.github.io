@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T20:01:31+00:00",
+  "updatedAt": "2026-08-16T20:02:12+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -12,8 +12,8 @@
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 455,
-    "masterLearnUpdatedAt": "2026-08-16T19:47:24+00:00",
+    "masterLearnRevision": 456,
+    "masterLearnUpdatedAt": "2026-08-16T19:59:50+00:00",
     "masterAvgWinRate": 24.9,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
@@ -86,15 +86,15 @@
     "shadowAgeDays": 37,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
-    "shadowReason": "配对归因 11 对 · 影子胜率 18.2% · 均边际 -0.04%",
+    "shadowReason": "配对归因 10 对 · 影子胜率 20.0% · 均边际 -0.04%",
     "shadowCandidateParams": {
       "buyScore": 72,
       "breakoutScoreMin": 62,
       "source": "strategy_candidates.bestCandidate"
     },
-    "pairedCount": 11,
-    "pairedShadowWinRate": 18.2,
-    "marketPairedCount": 31,
+    "pairedCount": 10,
+    "pairedShadowWinRate": 20.0,
+    "marketPairedCount": 28,
     "strategyUpgradePending": true,
     "strategyUpgradeHint": "探索候选 buy=72 breakout=62 期望 1.87% — 已写入影子轨，满 4 周后可提 PR",
     "shadowReadyForPR": false,
@@ -105,14 +105,14 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-16T19:48:30+00:00",
+    "updatedAt": "2026-08-16T20:02:12+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
         "type": "shadow_track",
         "priority": "medium",
         "title": "影子轨积累中",
-        "reason": "配对归因 11 对 · 影子胜率 18.2% · 均边际 -0.04%",
+        "reason": "配对归因 10 对 · 影子胜率 20.0% · 均边际 -0.04%",
         "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
       },
       {
@@ -151,6 +151,17 @@
     }
   },
   "recentLog": [
+    {
+      "at": "2026-08-16T19:59:58+00:00",
+      "type": "master_learn",
+      "revision": 456,
+      "regime": "neutral",
+      "notes": {
+        "buffett": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
+        "lynch": "近期表现反馈：sector↓",
+        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓"
+      }
+    },
     {
       "at": "2026-08-16T19:47:34+00:00",
       "type": "master_learn",
@@ -205,17 +216,6 @@
         "lynch": "近期表现反馈：sector↓",
         "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓"
       }
-    },
-    {
-      "at": "2026-08-16T17:48:55+00:00",
-      "type": "master_learn",
-      "revision": 450,
-      "regime": "neutral",
-      "notes": {
-        "buffett": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
-        "lynch": "近期表现反馈：sector↓",
-        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓"
-      }
     }
   ],
   "pipelines": [
@@ -224,27 +224,27 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-16T19:47:50+00:00",
+      "updatedAt": "2026-08-16T20:00:59+00:00",
       "status": "ok",
-      "ageMinutes": 13
+      "ageMinutes": 1
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-16T19:47:42+00:00",
+      "updatedAt": "2026-08-16T20:00:04+00:00",
       "status": "ok",
-      "ageMinutes": 13
+      "ageMinutes": 2
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-08-16T20:01:29+00:00",
+      "updatedAt": "2026-08-16T19:46:53+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 15
     },
     {
       "id": "wencai",
@@ -253,7 +253,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-16T19:30:34+00:00",
       "status": "ok",
-      "ageMinutes": 30
+      "ageMinutes": 31
     },
     {
       "id": "reports",
@@ -262,7 +262,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-16T16:37:32+08:00",
       "status": "ok",
-      "ageMinutes": 683
+      "ageMinutes": 684
     },
     {
       "id": "backtest",
@@ -274,6 +274,6 @@
       "ageMinutes": 1026
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "31969213850"
+  "triggeredBy": "Evolution Follow-up",
+  "runId": "31969301211"
 }
