@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T20:32:15+00:00",
+  "updatedAt": "2026-08-16T20:52:57+00:00",
   "recommendations": {
     "strategy": "v1.3.0 强趋势+突破过滤（各市场 1 只）：Regime 过滤 + 仅突破买入；≥72 突破分、≥65 观察。24h 粘性换仓、止损 ATR、盈亏比 1:3.0。",
     "marketScan": "A股最高 宁德时代(56.6分) · 港股最高 阿里巴巴(39.1分) · 美股最高 微软(75.1分)",
@@ -428,14 +428,14 @@
     ]
   },
   "masterRecommendations": {
-    "version": "v1.2.457",
-    "strategy": "v1.2.457 投资大师风格荐股（在线学习）：每次数据更新根据历史荐股表现与市场环境微调 7 位大师因子权重；当前市场环境 neutral。",
+    "version": "v1.2.458",
+    "strategy": "v1.2.458 投资大师风格荐股（在线学习）：每次数据更新根据历史荐股表现与市场环境微调 7 位大师因子权重；当前市场环境 neutral。",
     "disclaimer": "大师风格荐股为规则化模拟，非真实人物操作建议；权重学习基于历史快照与公开行情，样本不足时变化极小；Serenity 相关内容为对其公开框架的量化近似，勿当作 X 账号买卖信号；仅供研究，不构成投资建议。",
     "learning": {
-      "revision": 457,
+      "revision": 458,
       "regime": "neutral",
-      "updatedAt": "2026-08-16T20:32:15+00:00",
-      "lastUpgrade": "2026-08-16T20:32:15+00:00",
+      "updatedAt": "2026-08-16T20:52:57+00:00",
+      "lastUpgrade": "2026-08-16T20:52:57+00:00",
       "notes": {
         "buffett": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
         "lynch": "近期表现反馈：sector↓",
@@ -459,48 +459,6 @@
         "holdingHorizon": "3–10 年+",
         "picks": [
           {
-            "symbol": "0700.HK",
-            "name": "腾讯控股",
-            "market": "港股",
-            "sector": "互联网",
-            "currency": "HKD",
-            "price": 440.0,
-            "matchScore": 100.0,
-            "signal": "buy",
-            "signalLabel": "符合风格 · 建议关注",
-            "reasons": [
-              "ROE 19.91% — 盈利能力稳健",
-              "PE 14.86 — 估值在能力圈合理区间",
-              "净利率 29.87% — 业务具备定价权",
-              "负债率可控，财务风险较低"
-            ],
-            "factors": {
-              "roe": 10.01,
-              "pe": 12.01,
-              "margins": 8.18,
-              "debt": 6.01,
-              "trend": 10.01,
-              "mcap": 4.0
-            },
-            "plan": {
-              "entry": "围绕 440.0 HKD 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
-              "holding": "持有期 3–10 年+；关注 ROE 与护城河是否恶化。",
-              "risk": "基本面永久性损伤时退出；不因正常波动止损。",
-              "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
-            },
-            "metrics": {
-              "pe": 14.86,
-              "pb": 3.0,
-              "roe": 19.91,
-              "peg": 8.26,
-              "earningsGrowth": 1.8,
-              "profitMargins": 29.87,
-              "monthChangePct": -9.09,
-              "relativeStrength": -12.82,
-              "rangePosition": 0.11
-            }
-          },
-          {
             "symbol": "300750.SZ",
             "name": "宁德时代",
             "market": "A股",
@@ -517,12 +475,12 @@
               "负债率可控，财务风险较低"
             ],
             "factors": {
-              "roe": 18.02,
-              "pe": 12.01,
-              "margins": 8.18,
-              "debt": 6.01,
-              "trend": 8.01,
-              "mcap": 4.0
+              "roe": 17.75,
+              "pe": 11.83,
+              "margins": 8.07,
+              "debt": 5.92,
+              "trend": 7.89,
+              "mcap": 3.94
             },
             "plan": {
               "entry": "围绕 393.93 CNY 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
@@ -541,16 +499,58 @@
               "relativeStrength": 7.62,
               "rangePosition": 0.62
             }
+          },
+          {
+            "symbol": "9992.HK",
+            "name": "泡泡玛特",
+            "market": "港股",
+            "sector": "潮玩零售",
+            "currency": "HKD",
+            "price": 154.1,
+            "matchScore": 100.0,
+            "signal": "buy",
+            "signalLabel": "符合风格 · 建议关注",
+            "reasons": [
+              "ROE 77.6% — 资本回报优秀，符合巴菲特护城河标准",
+              "PE 13.83 — 估值在能力圈合理区间",
+              "净利率 34.42% — 业务具备定价权",
+              "负债率可控，财务风险较低"
+            ],
+            "factors": {
+              "roe": 17.75,
+              "pe": 11.83,
+              "margins": 8.07,
+              "debt": 5.92,
+              "trend": 9.86,
+              "mcap": 3.94
+            },
+            "plan": {
+              "entry": "围绕 154.1 HKD 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
+              "holding": "持有期 3–10 年+；关注 ROE 与护城河是否恶化。",
+              "risk": "基本面永久性损伤时退出；不因正常波动止损。",
+              "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
+            },
+            "metrics": {
+              "pe": 13.83,
+              "pb": 7.92,
+              "roe": 77.6,
+              "peg": 5.1,
+              "earningsGrowth": 2.71,
+              "profitMargins": 34.42,
+              "monthChangePct": -8.33,
+              "relativeStrength": -12.06,
+              "rangePosition": 0.07
+            }
           }
         ],
         "learning": {
-          "revision": 457,
+          "revision": 458,
           "regime": "neutral",
           "samples": 588,
           "winRate": 2.7,
           "avgReturnPct": -5.64,
           "upgradeNote": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
-          "lastUpgrade": "2026-08-16T20:32:15+00:00"
+          "lastUpgrade": "2026-08-16T20:52:57+00:00"
         }
       },
       {
@@ -649,13 +649,13 @@
           }
         ],
         "learning": {
-          "revision": 457,
+          "revision": 458,
           "regime": "neutral",
           "samples": 588,
           "winRate": 25.5,
           "avgReturnPct": -1.37,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-16T20:32:15+00:00"
+          "lastUpgrade": "2026-08-16T20:52:57+00:00"
         }
       },
       {
@@ -731,7 +731,7 @@
               "peg": 34.1,
               "earnings": 24.8,
               "revenue": 9.3,
-              "sector": 4.92
+              "sector": 4.86
             },
             "plan": {
               "entry": "确认 PEG 与盈利增速匹配后，于 393.93 附近建仓；季度财报验证成长逻辑。",
@@ -753,13 +753,13 @@
           }
         ],
         "learning": {
-          "revision": 457,
+          "revision": 458,
           "regime": "neutral",
           "samples": 588,
           "winRate": 12.8,
           "avgReturnPct": -3.34,
           "upgradeNote": "近期表现反馈：sector↓",
-          "lastUpgrade": "2026-08-16T20:32:15+00:00"
+          "lastUpgrade": "2026-08-16T20:52:57+00:00"
         }
       },
       {
@@ -857,13 +857,13 @@
           }
         ],
         "learning": {
-          "revision": 457,
+          "revision": 458,
           "regime": "neutral",
           "samples": 588,
           "winRate": 32.3,
           "avgReturnPct": -2.32,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-16T20:32:15+00:00"
+          "lastUpgrade": "2026-08-16T20:52:57+00:00"
         }
       },
       {
@@ -964,13 +964,13 @@
           }
         ],
         "learning": {
-          "revision": 457,
+          "revision": 458,
           "regime": "neutral",
           "samples": 588,
           "winRate": 23.5,
           "avgReturnPct": -1.61,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-16T20:32:15+00:00"
+          "lastUpgrade": "2026-08-16T20:52:57+00:00"
         }
       },
       {
@@ -995,7 +995,7 @@
             "sector": "软件云计算",
             "currency": "USD",
             "price": 495.4,
-            "matchScore": 97.9,
+            "matchScore": 97.3,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -1005,10 +1005,10 @@
               "高 Beta 放大趋势 — 索罗斯式进攻配置"
             ],
             "factors": {
-              "month": 19.18,
-              "rs": 16.79,
-              "trend": 11.99,
-              "beta": 4.94
+              "month": 18.96,
+              "rs": 16.59,
+              "trend": 11.85,
+              "beta": 4.89
             },
             "plan": {
               "entry": "趋势确认后于 495.4 附近顺势建仓；宏观与相对强度共振时加仓。",
@@ -1035,7 +1035,7 @@
             "sector": "半导体",
             "currency": "USD",
             "price": 225.16,
-            "matchScore": 90.7,
+            "matchScore": 90.2,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -1044,10 +1044,10 @@
               "高 Beta 放大趋势 — 索罗斯式进攻配置"
             ],
             "factors": {
-              "month": 19.18,
-              "rs": 9.59,
-              "trend": 11.99,
-              "beta": 4.94
+              "month": 18.96,
+              "rs": 9.48,
+              "trend": 11.85,
+              "beta": 4.89
             },
             "plan": {
               "entry": "趋势确认后于 225.16 附近顺势建仓；宏观与相对强度共振时加仓。",
@@ -1069,13 +1069,13 @@
           }
         ],
         "learning": {
-          "revision": 457,
+          "revision": 458,
           "regime": "neutral",
           "samples": 588,
           "winRate": 8.7,
           "avgReturnPct": -5.38,
           "upgradeNote": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
-          "lastUpgrade": "2026-08-16T20:32:15+00:00"
+          "lastUpgrade": "2026-08-16T20:52:57+00:00"
         }
       },
       {
@@ -1181,13 +1181,13 @@
           }
         ],
         "learning": {
-          "revision": 457,
+          "revision": 458,
           "regime": "neutral",
           "samples": 588,
           "winRate": 68.7,
           "avgReturnPct": 4.67,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-16T20:32:15+00:00"
+          "lastUpgrade": "2026-08-16T20:52:57+00:00"
         },
         "xHandle": "@aleabitoreddit",
         "platform": "X",
