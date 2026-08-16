@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T20:00:04+00:00",
+  "updatedAt": "2026-08-16T20:32:39+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -87,7 +81,7 @@
       "price": 3.7,
       "changePct": -0.22,
       "weekChangePct": -0.35,
-      "monthChangePct": 0.0,
+      "monthChangePct": null,
       "source": "yahoo"
     }
   ],
@@ -116,14 +110,14 @@
       "region": null,
       "price": 6.73,
       "changePct": -0.16,
-      "weekChangePct": -0.23,
-      "monthChangePct": -0.6,
+      "weekChangePct": -0.25,
+      "monthChangePct": -0.53,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7606,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7413,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-14"
     },
     {
       "symbol": "USDHKD=X",
@@ -133,15 +127,15 @@
       "currency": null,
       "region": null,
       "price": 7.85,
-      "changePct": -0.01,
-      "weekChangePct": 0.02,
-      "monthChangePct": 0.08,
+      "changePct": 0.0,
+      "weekChangePct": 0.03,
+      "monthChangePct": 0.1,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8476,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8473,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-14"
     },
     {
       "symbol": "USDJPY=X",
@@ -152,14 +146,14 @@
       "region": null,
       "price": 159.27,
       "changePct": -0.1,
-      "weekChangePct": 0.87,
+      "weekChangePct": 0.88,
       "monthChangePct": -1.91,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.2258,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 159.01,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-14"
     },
     {
       "symbol": "EURUSD=X",
@@ -175,19 +169,45 @@
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8647,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8645,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-14"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.739,
+      "price": 0.7387,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-14"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8118,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-14"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2781,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-14"
     }
   ],
   "commodities": [
@@ -239,8 +259,8 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4529.1,
-      "changePct": -3.6,
+      "price": 4665.88,
+      "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
       "source": "yahoo"
@@ -311,7 +331,7 @@
       "price": 52.54,
       "changePct": 0.44,
       "weekChangePct": -0.61,
-      "monthChangePct": 3.24,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "材料"
     },
@@ -325,7 +345,7 @@
       "price": 186.51,
       "changePct": 0.39,
       "weekChangePct": 0.72,
-      "monthChangePct": 3.53,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "工业"
     },
@@ -486,6 +506,16 @@
   ],
   "finnhubNews": [
     {
+      "id": 8357672,
+      "title": "Top U.S. commander acknowledges mental health issues on USS Lincoln",
+      "summary": "Cooper's visit and statement come after reports of widespread morale and mental health concerns aboard the Lincoln.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/08/16/top-us-commander-acknowledges-mental-health-issues-on-uss-lincoln.html",
+      "publishedAt": "2026-08-16T19:58:32+00:00",
+      "related": ""
+    },
+    {
       "id": 8356765,
       "title": "Trump's envoys meet mediators, Israel strikes Gaza - Reuters",
       "summary": "Trump's envoys meet mediators, Israel strikes Gaza  Reuters",
@@ -553,16 +583,6 @@
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNRUtLNEdDbkQxTWtlR1o5NHFQWkg3NkI2ZzBzeWZ5bWJsX2k0Ymh1UTEzRlpjTkFYRjQ5R3gtN084LWVoNGFZeXpIaTgwYTl6WnlNSGY0bnpyS1NablA1Y3dWSHJUTThrYzVzUmpVUW9IbGk1X095eDVISEEzaG45Y3N6bS1Db3gzc3RKN012TGVJR2w2aW1oTjhudE0waDRfX0wyajcwdGNCQ1JObzh3U2Z1TWNBdzR3RU9lRVQ0ekRHWHNQb2k0?oc=5",
       "publishedAt": "2026-08-16T11:27:57+00:00",
-      "related": ""
-    },
-    {
-      "id": 8356158,
-      "title": "Ukrainian drones strike Moscow region, killing one - Reuters",
-      "summary": "Ukrainian drones strike Moscow region, killing one  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNYUVQMGdnUEljNGo4eDhSbHFoSUtDZ2FVLU5hTHNmZXUwMFVDTTdneTR3S2owc1pSZjBtcHNtVkZKU25oLXlNbWxENHVhM2F1ZUtnUVVicEMzai1MMVgyZk5JLVJPRjRDUklLc21zcjJycVM5endpS2plUjRHS3FhMmFIa29MUlRjRzRpNDlTdnRLS0JuTUE?oc=5",
-      "publishedAt": "2026-08-16T11:21:14+00:00",
       "related": ""
     },
     {
