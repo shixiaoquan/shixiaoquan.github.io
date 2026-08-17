@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-17T20:43:45+00:00",
+  "updatedAt": "2026-08-17T21:04:11+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -36,7 +42,7 @@
     "usdCnhChangePct": null,
     "sectorLeader": "能源",
     "sectorLaggard": "通信",
-    "yieldSpread10y2y": 0.51,
+    "yieldSpread10y2y": 0.53,
     "hints": [
       "美债收益率上行，对高估值成长股形成压力。",
       "美股行业轮动：能源 领涨（+1.08%），通信 靠后。"
@@ -115,9 +121,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7394,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 6.7487,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,14 +134,14 @@
       "region": null,
       "price": 7.84,
       "changePct": -0.04,
-      "weekChangePct": -0.02,
-      "monthChangePct": 0.04,
+      "weekChangePct": -0.01,
+      "monthChangePct": 0.05,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8453,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 7.8475,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -144,16 +150,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.47,
-      "changePct": 0.03,
-      "weekChangePct": 1.0,
-      "monthChangePct": -1.79,
+      "price": 159.46,
+      "changePct": 0.02,
+      "weekChangePct": 0.99,
+      "monthChangePct": -1.8,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.23,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 159.2045,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -163,51 +169,25 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": 0.41,
-      "weekChangePct": 0.22,
-      "monthChangePct": 1.2,
+      "changePct": 0.42,
+      "weekChangePct": 0.23,
+      "monthChangePct": 1.21,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8626,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 0.8642,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7375,
+      "price": 0.7385,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-17"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8099,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-17"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2764,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-17"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -218,8 +198,8 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4471.8,
-      "changePct": 2.09,
+      "price": 4471.7,
+      "changePct": 2.08,
       "weekChangePct": 2.52,
       "monthChangePct": 11.44,
       "source": "yahoo"
@@ -231,10 +211,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 84.86,
-      "changePct": 2.99,
-      "weekChangePct": 3.32,
-      "monthChangePct": 2.87,
+      "price": 84.93,
+      "changePct": 3.07,
+      "weekChangePct": 3.41,
+      "monthChangePct": 2.96,
       "source": "yahoo"
     },
     {
@@ -386,7 +366,7 @@
       "region": null,
       "price": 44.83,
       "changePct": -0.97,
-      "weekChangePct": 0.97,
+      "weekChangePct": -0.33,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "地产"
@@ -462,9 +442,9 @@
       "seriesId": "T10Y2Y",
       "name": "10Y-2Y 利差",
       "unit": "spread",
-      "price": 0.51,
-      "changePct": 6.25,
-      "observedAt": "2026-08-14",
+      "price": 0.53,
+      "changePct": 3.92,
+      "observedAt": "2026-08-17",
       "source": "fred"
     },
     {
@@ -505,6 +485,26 @@
     }
   ],
   "finnhubNews": [
+    {
+      "id": 8361631,
+      "title": "Trump says Iran won't make deal he thinks is needed, threatens to bomb Oman - Reuters",
+      "summary": "Trump says Iran won't make deal he thinks is needed, threatens to bomb Oman  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQZ3Rmc3puMlE0OGNHd3RFY2dEM3EzbkdKR3pxal9tVm1lWFliOE9Yc1NlVXN6aEx3SXJCSkVWVENjbjBJMWlXLThJdDE3NzF5aTRMbXJYdDNqRkRtYmlRUVhDcW02My04NWR1MXVianVOdDIwZXdsNGJ5a21walB1UjMxV2YyTGpfMFMzdHNZLW1YRjRaZENWZDE5akdRcFVibWlYcV9aTTM4UQ?oc=5",
+      "publishedAt": "2026-08-17T20:18:05+00:00",
+      "related": ""
+    },
+    {
+      "id": 8361947,
+      "title": "Wall Street indexes slip as oil prices rise, retail results awaited - Reuters",
+      "summary": "Wall Street indexes slip as oil prices rise, retail results awaited  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNNmVQMTVLQjc4cmxldlJTQjJiaXFrUFp0cXh6R2xQaGhRS3g2ZGFQbmRwM2pWZTRBQ08yTlhOZHNzVEExVWNVb0tHWmZRU0s5RHhuc3czT19MeXVBeThpejlsZ0puNnJ4UlNCTEg2NjNKYWVObzhDbnJ5UFBaeVFXYjlrZWJnZGhJRHc?oc=5",
+      "publishedAt": "2026-08-17T20:13:32+00:00",
+      "related": ""
+    },
     {
       "id": 8362462,
       "title": "EXCLUSIVE: Trump approval falls to 33%, lowest of his presidency, Reuters/Ipsos poll finds - Reuters",
@@ -556,16 +556,6 @@
       "related": ""
     },
     {
-      "id": 8361947,
-      "title": "Wall Street indexes slip with Iran, retail results in focus - Reuters",
-      "summary": "Wall Street indexes slip with Iran, retail results in focus  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNNmVQMTVLQjc4cmxldlJTQjJiaXFrUFp0cXh6R2xQaGhRS3g2ZGFQbmRwM2pWZTRBQ08yTlhOZHNzVEExVWNVb0tHWmZRU0s5RHhuc3czT19MeXVBeThpejlsZ0puNnJ4UlNCTEg2NjNKYWVObzhDbnJ5UFBaeVFXYjlrZWJnZGhJRHc?oc=5",
-      "publishedAt": "2026-08-17T18:58:56+00:00",
-      "related": ""
-    },
-    {
       "id": 8362458,
       "title": "Disney's new parks boss outlines investment strategy, with superfans at the fore",
       "summary": "Disney Experiences chief Thomas Mazloum is focused on balancing the needs of its most ardent parkgoers with its less frequent visitors.",
@@ -573,16 +563,6 @@
       "category": "general",
       "link": "https://www.cnbc.com/2026/08/17/disney-parks-strategy-superfans-mazloum.html",
       "publishedAt": "2026-08-17T18:50:36+00:00",
-      "related": ""
-    },
-    {
-      "id": 8362459,
-      "title": "Eli Lilly and J&J bounce on new data, as software stocks give up last week's gains",
-      "summary": "Every weekday, the Investing Club releases the Homestretch; an actionable afternoon update just in time for the last hour of trading.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/17/eli-lilly-and-jj-bounce-on-new-data-as-software-gives-up-gains.html",
-      "publishedAt": "2026-08-17T18:42:54+00:00",
       "related": ""
     },
     {
