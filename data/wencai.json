@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-17T14:40:51+00:00",
+  "updatedAt": "2026-08-17T15:36:19+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 38 条资讯",
+  "message": "已更新 5 个市场问句 · 38 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 100,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603110.SH",
@@ -92,7 +92,10 @@
         }
       ],
       "count": 100,
-      "countNote": "100+"
+      "countNote": "100+",
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
@@ -116,31 +119,31 @@
       "status": "ok",
       "items": [
         {
-          "code": "600722.SH",
-          "name": "金牛化工",
-          "price": 11.84,
-          "changePct": 4.96,
-          "rank": "1"
-        },
-        {
           "code": "600667.SH",
           "name": "太极实业",
           "price": 23.86,
           "changePct": 3.97,
-          "rank": "2"
+          "rank": "1"
         },
         {
-          "code": "002081.SZ",
-          "name": "金螳螂",
-          "price": 5.82,
-          "changePct": 10.02,
-          "rank": "3"
+          "code": "600722.SH",
+          "name": "金牛化工",
+          "price": 11.84,
+          "changePct": 4.96,
+          "rank": "2"
         },
         {
           "code": "688825.SH",
           "name": "长鑫科技",
           "price": 61.8,
           "changePct": 12.0,
+          "rank": "3"
+        },
+        {
+          "code": "002081.SZ",
+          "name": "金螳螂",
+          "price": 5.82,
+          "changePct": 10.02,
           "rank": "4"
         },
         {
@@ -151,17 +154,17 @@
           "rank": "5"
         },
         {
-          "code": "600487.SH",
-          "name": "亨通光电",
-          "price": 65.06,
-          "changePct": 3.3,
-          "rank": "6"
-        },
-        {
           "code": "600206.SH",
           "name": "有研新材",
           "price": 55.86,
           "changePct": 10.0,
+          "rank": "6"
+        },
+        {
+          "code": "600487.SH",
+          "name": "亨通光电",
+          "price": 65.06,
+          "changePct": 3.3,
           "rank": "7"
         },
         {
@@ -310,9 +313,9 @@
   ],
   "news": [
     {
-      "id": "wencai:ff9aa4fa2317b277",
-      "title": "华锡有色：广西华锡有色金属股份有限公司2026年半年度报告摘要",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600301_20260818_2GP5.pdf",
+      "id": "wencai:b554d392132a4856",
+      "title": "华锡有色：广西华锡有色金属股份有限公司关于召开2026年半年度业绩说明会的公告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600301_20260818_HMPG.pdf",
       "publisher": "同花顺问财",
       "related": "华锡有色 (600301.SH)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -321,9 +324,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:dac460839d6a8dba",
-      "title": "华锡有色：广西华锡有色金属股份有限公司2026年上半年经营数据公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600301_20260818_5XDA.pdf",
+      "id": "wencai:4996e35c569fca4e",
+      "title": "华锡有色：广西华锡有色金属股份有限公司2026年度“提质增效重回报”专项行动方案半年度评估报告",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600301_20260818_3J04.pdf",
       "publisher": "同花顺问财",
       "related": "华锡有色 (600301.SH)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -332,11 +335,22 @@
       "category": "公告"
     },
     {
-      "id": "wencai:2eee5a71b3f1542a",
-      "title": "华锡有色：广西华锡有色金属股份有限公司董事会秘书工作细则（2026年8月）",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600301_20260818_F6EC.pdf",
+      "id": "wencai:f022930b351fc2bb",
+      "title": "华锡有色：广西华锡有色金属股份有限公司子公司管理制度（2026年8月）",
+      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600301_20260818_R9D1.pdf",
       "publisher": "同花顺问财",
       "related": "华锡有色 (600301.SH)",
+      "publishedAt": "2026-08-17T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
+      "id": "wencai:3818dfc4f76cee5b",
+      "title": "瑜欣电子：北京国枫关于重庆瑜欣平瑞电子股份有限公司2026年限制性股票激励计划调整授予价格及数量相关事项的法律意见书",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476593.PDF",
+      "publisher": "同花顺问财",
+      "related": "瑜欣电子 (301107.SZ)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
       "summary": "公告",
       "source": "wencai",
@@ -354,9 +368,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:1e12b8829bf6acff",
-      "title": "瑜欣电子：第四届董事会第十三次会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477206.PDF",
+      "id": "wencai:3fbe7de0342e66b0",
+      "title": "瑜欣电子：关于调整2026年限制性股票激励计划授予价格及数量的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476592.PDF",
       "publisher": "同花顺问财",
       "related": "瑜欣电子 (301107.SZ)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -365,20 +379,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:23ffc30cf07b536f",
-      "title": "瑜欣电子：2026年半年度报告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477204.PDF",
-      "publisher": "同花顺问财",
-      "related": "瑜欣电子 (301107.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:1c07b0e93e18cab7",
-      "title": "亚太股份：第九届董事会第十次会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476996.PDF",
+      "id": "wencai:7daf297c3e757859",
+      "title": "亚太股份：非经营性资金占用及其他关联资金往来情况表",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476995.PDF",
       "publisher": "同花顺问财",
       "related": "亚太股份 (002284.SZ)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -398,9 +401,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:51e6cc9383d7145",
-      "title": "亚太股份：2026年半年度报告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476994.PDF",
+      "id": "wencai:bcc76269c89a9b1a",
+      "title": "亚太股份：2026年半年度募集资金存放与使用情况专项报告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476997.PDF",
       "publisher": "同花顺问财",
       "related": "亚太股份 (002284.SZ)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -475,9 +478,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:407f1e47b0beaa0b",
-      "title": "光库科技：2026年半年度报告摘要",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477530.PDF",
+      "id": "wencai:21c459f46503e03e",
+      "title": "光库科技：2026年半年度非经营性资金占用及其他关联资金往来情况汇总表",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477532.PDF",
       "publisher": "同花顺问财",
       "related": "光库科技 (300620.SZ)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -486,9 +489,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:6dd5ac2d9622f238",
-      "title": "光库科技：关于使用部分暂时闲置募集资金进行现金管理的进展公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477529.PDF",
+      "id": "wencai:eccd5c750e5c754f",
+      "title": "光库科技：2026年半年度报告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477531.PDF",
       "publisher": "同花顺问财",
       "related": "光库科技 (300620.SZ)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -530,9 +533,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:f043d7984b11c61b",
-      "title": "安凯客车：2026年半年度报告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476694.PDF",
+      "id": "wencai:b519402673e291e2",
+      "title": "安凯客车：关于补选独立董事的公告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476698.PDF",
       "publisher": "同花顺问财",
       "related": "安凯客车 (000868.SZ)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -541,9 +544,9 @@
       "category": "公告"
     },
     {
-      "id": "wencai:8dfd9c7fe75bd482",
-      "title": "安凯客车：第九届董事会第十六次会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476696.PDF",
+      "id": "wencai:5531527980218ffe",
+      "title": "安凯客车：独立董事候选人声明与承诺",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476699.PDF",
       "publisher": "同花顺问财",
       "related": "安凯客车 (000868.SZ)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -607,6 +610,17 @@
       "category": "公告"
     },
     {
+      "id": "wencai:e282cf9134a5b8dd",
+      "title": "劲嘉股份：2026年半年度募集资金存放与使用情况的专项报告",
+      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476864.PDF",
+      "publisher": "同花顺问财",
+      "related": "劲嘉股份 (002191.SZ)",
+      "publishedAt": "2026-08-17T16:00:00+00:00",
+      "summary": "公告",
+      "source": "wencai",
+      "category": "公告"
+    },
+    {
       "id": "wencai:edb24f4c01ab1f93",
       "title": "劲嘉股份：第七届董事会2026年第五次会议决议公告",
       "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476863.PDF",
@@ -621,17 +635,6 @@
       "id": "wencai:959fccf79debe55c",
       "title": "劲嘉股份：2026年半年度报告",
       "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476861.PDF",
-      "publisher": "同花顺问财",
-      "related": "劲嘉股份 (002191.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:216adb618832f1c1",
-      "title": "劲嘉股份：2026年半年度非经营性资金占用及其他关联资金往来情况汇总表",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476862.PDF",
       "publisher": "同花顺问财",
       "related": "劲嘉股份 (002191.SZ)",
       "publishedAt": "2026-08-17T16:00:00+00:00",
@@ -727,5 +730,8 @@
       "source": "wencai",
       "category": "利好"
     }
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'"
   ]
 }
