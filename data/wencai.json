@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-17T08:57:31+00:00",
+  "updatedAt": "2026-08-17T09:54:29+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 8 条资讯 · 部分沿用缓存",
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603110.SH",
@@ -92,7 +92,9 @@
         }
       ],
       "count": 100,
-      "countNote": "100+"
+      "countNote": "100+",
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "limit_down",
@@ -352,8 +354,10 @@
     }
   ],
   "errors": [
+    "limit_down: 'NoneType' object has no attribute 'get'",
     "hot: 'NoneType' object has no attribute 'get'",
     "main_flow: 'NoneType' object has no attribute 'get'",
     "breakout: 'NoneType' object has no attribute 'get'"
-  ]
+  ],
+  "newsStale": true
 }
