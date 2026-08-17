@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-17T10:46:27+00:00",
+  "updatedAt": "2026-08-17T11:36:34+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 35 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 35 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 100,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "stale",
+      "status": "ok",
       "items": [
         {
           "code": "603110.SH",
@@ -92,9 +92,7 @@
         }
       ],
       "count": 100,
-      "countNote": "100+",
-      "stale": true,
-      "staleMessage": "沿用上次数据"
+      "countNote": "100+"
     },
     {
       "id": "limit_down",
@@ -261,62 +259,6 @@
       "stale": true,
       "staleMessage": "沿用上次数据",
       "error": "'NoneType' object has no attribute 'get'"
-    },
-    {
-      "id": "breakout",
-      "title": "突破年线",
-      "query": "突破年线且成交量放大",
-      "status": "ok",
-      "items": [
-        {
-          "code": "000737.SZ",
-          "name": "北方铜业",
-          "price": 14.95,
-          "changePct": 10.01
-        },
-        {
-          "code": "603077.SH",
-          "name": "和邦生物",
-          "price": 2.44,
-          "changePct": 2.95
-        },
-        {
-          "code": "601609.SH",
-          "name": "金田股份",
-          "price": 11.71,
-          "changePct": 6.94
-        },
-        {
-          "code": "300012.SZ",
-          "name": "华测检测",
-          "price": 15.22,
-          "changePct": 8.87
-        },
-        {
-          "code": "600354.SH",
-          "name": "敦煌种业",
-          "price": 6.35,
-          "changePct": 5.48
-        },
-        {
-          "code": "002475.SZ",
-          "name": "立讯精密",
-          "price": 58.84,
-          "changePct": 3.99
-        },
-        {
-          "code": "301127.SZ",
-          "name": "武汉天源",
-          "price": 18.14,
-          "changePct": 19.97
-        },
-        {
-          "code": "002716.SZ",
-          "name": "湖南白银",
-          "price": 9.49,
-          "changePct": 6.63
-        }
-      ]
     }
   ],
   "news": [
@@ -709,6 +651,8 @@
   "errors": [
     "limit_down: 'NoneType' object has no attribute 'get'",
     "hot: 'NoneType' object has no attribute 'get'",
-    "main_flow: 'NoneType' object has no attribute 'get'"
-  ]
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "breakout: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
