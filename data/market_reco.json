@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-17T11:44:50+00:00",
+  "updatedAt": "2026-08-17T12:01:55+00:00",
   "recommendations": {
     "strategy": "v1.3.0 强趋势+突破过滤（各市场 1 只）：Regime 过滤 + 仅突破买入；≥72 突破分、≥65 观察。24h 粘性换仓、止损 ATR、盈亏比 1:3.0。",
     "marketScan": "A股最高 宁德时代(67.0分) · 港股最高 阿里巴巴(57.0分) · 美股最高 微软(75.1分)",
@@ -481,14 +481,14 @@
     ]
   },
   "masterRecommendations": {
-    "version": "v1.2.482",
-    "strategy": "v1.2.482 投资大师风格荐股（在线学习）：每次数据更新根据历史荐股表现与市场环境微调 7 位大师因子权重；当前市场环境 risk_on。",
+    "version": "v1.2.483",
+    "strategy": "v1.2.483 投资大师风格荐股（在线学习）：每次数据更新根据历史荐股表现与市场环境微调 7 位大师因子权重；当前市场环境 risk_on。",
     "disclaimer": "大师风格荐股为规则化模拟，非真实人物操作建议；权重学习基于历史快照与公开行情，样本不足时变化极小；Serenity 相关内容为对其公开框架的量化近似，勿当作 X 账号买卖信号；仅供研究，不构成投资建议。",
     "learning": {
-      "revision": 482,
+      "revision": 483,
       "regime": "risk_on",
-      "updatedAt": "2026-08-17T11:44:50+00:00",
-      "lastUpgrade": "2026-08-17T11:44:50+00:00",
+      "updatedAt": "2026-08-17T12:01:55+00:00",
+      "lastUpgrade": "2026-08-17T12:01:55+00:00",
       "notes": {
         "buffett": "近期表现反馈：roe↓、pe↓、debt↓、trend↓",
         "lynch": "近期表现反馈：sector↓",
@@ -513,13 +513,55 @@
         "holdingHorizon": "3–10 年+",
         "picks": [
           {
+            "symbol": "600519.SS",
+            "name": "贵州茅台",
+            "market": "A股",
+            "sector": "白酒",
+            "currency": "CNY",
+            "price": 1293.09,
+            "matchScore": 89.6,
+            "signal": "buy",
+            "signalLabel": "符合风格 · 建议关注",
+            "reasons": [
+              "ROE 33.0% — 资本回报优秀，符合巴菲特护城河标准",
+              "PE 19.58 — 估值在能力圈合理区间",
+              "净利率 47.86% — 业务具备定价权",
+              "负债率可控，财务风险较低"
+            ],
+            "factors": {
+              "roe": 11.9,
+              "pe": 7.93,
+              "margins": 6.54,
+              "debt": 3.97,
+              "trend": 6.61,
+              "mcap": 2.64
+            },
+            "plan": {
+              "entry": "围绕 1293.09 CNY 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
+              "holding": "持有期 3–10 年+；关注 ROE 与护城河是否恶化。",
+              "risk": "基本面永久性损伤时退出；不因正常波动止损。",
+              "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
+            },
+            "metrics": {
+              "pe": 19.58,
+              "pb": 6.43,
+              "roe": 33.0,
+              "peg": null,
+              "earningsGrowth": -6.7,
+              "profitMargins": 47.86,
+              "monthChangePct": 3.2,
+              "relativeStrength": -2.6,
+              "rangePosition": 0.34
+            }
+          },
+          {
             "symbol": "9992.HK",
             "name": "泡泡玛特",
             "market": "港股",
             "sector": "潮玩零售",
             "currency": "HKD",
             "price": 153.5,
-            "matchScore": 90.2,
+            "matchScore": 89.6,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -529,12 +571,12 @@
               "负债率可控，财务风险较低"
             ],
             "factors": {
-              "roe": 12.13,
-              "pe": 8.09,
+              "roe": 11.9,
+              "pe": 7.93,
               "margins": 6.54,
-              "debt": 4.04,
-              "trend": 6.74,
-              "mcap": 2.7
+              "debt": 3.97,
+              "trend": 6.61,
+              "mcap": 2.64
             },
             "plan": {
               "entry": "围绕 153.5 HKD 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
@@ -550,61 +592,19 @@
               "earningsGrowth": 2.71,
               "profitMargins": 34.42,
               "monthChangePct": -6.17,
-              "relativeStrength": -10.74,
+              "relativeStrength": -9.8,
               "rangePosition": 0.07
-            }
-          },
-          {
-            "symbol": "META",
-            "name": "Meta",
-            "market": "美股",
-            "sector": "社交广告",
-            "currency": "USD",
-            "price": 589.85,
-            "matchScore": 90.2,
-            "signal": "buy",
-            "signalLabel": "符合风格 · 建议关注",
-            "reasons": [
-              "ROE 29.85% — 资本回报优秀，符合巴菲特护城河标准",
-              "PE 22.22 — 估值在能力圈合理区间",
-              "净利率 29.83% — 业务具备定价权",
-              "负债率可控，财务风险较低"
-            ],
-            "factors": {
-              "roe": 12.13,
-              "pe": 8.09,
-              "margins": 6.54,
-              "debt": 4.04,
-              "trend": 6.74,
-              "mcap": 2.7
-            },
-            "plan": {
-              "entry": "围绕 589.85 USD 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
-              "holding": "持有期 3–10 年+；关注 ROE 与护城河是否恶化。",
-              "risk": "基本面永久性损伤时退出；不因正常波动止损。",
-              "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
-            },
-            "metrics": {
-              "pe": 22.22,
-              "pb": 5.75,
-              "roe": 29.85,
-              "peg": null,
-              "earningsGrowth": -13.4,
-              "profitMargins": 29.83,
-              "monthChangePct": -11.24,
-              "relativeStrength": -14.58,
-              "rangePosition": 0.26
             }
           }
         ],
         "learning": {
-          "revision": 482,
+          "revision": 483,
           "regime": "risk_on",
-          "samples": 542,
-          "winRate": 16.8,
+          "samples": 540,
+          "winRate": 16.7,
           "avgReturnPct": -4.73,
           "upgradeNote": "近期表现反馈：roe↓、pe↓、debt↓、trend↓",
-          "lastUpgrade": "2026-08-17T11:44:50+00:00"
+          "lastUpgrade": "2026-08-17T12:01:55+00:00"
         }
       },
       {
@@ -703,13 +703,13 @@
           }
         ],
         "learning": {
-          "revision": 482,
+          "revision": 483,
           "regime": "risk_on",
-          "samples": 542,
-          "winRate": 20.7,
-          "avgReturnPct": -2.1,
+          "samples": 540,
+          "winRate": 20.4,
+          "avgReturnPct": -2.11,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-17T11:44:50+00:00"
+          "lastUpgrade": "2026-08-17T12:01:55+00:00"
         }
       },
       {
@@ -807,13 +807,13 @@
           }
         ],
         "learning": {
-          "revision": 482,
+          "revision": 483,
           "regime": "risk_on",
-          "samples": 542,
+          "samples": 540,
           "winRate": 13.7,
-          "avgReturnPct": -3.55,
+          "avgReturnPct": -3.54,
           "upgradeNote": "近期表现反馈：sector↓",
-          "lastUpgrade": "2026-08-17T11:44:50+00:00"
+          "lastUpgrade": "2026-08-17T12:01:55+00:00"
         }
       },
       {
@@ -864,7 +864,7 @@
               "earningsGrowth": 1.8,
               "profitMargins": 29.87,
               "monthChangePct": -3.29,
-              "relativeStrength": -7.86,
+              "relativeStrength": -6.92,
               "rangePosition": 0.13
             }
           },
@@ -911,13 +911,13 @@
           }
         ],
         "learning": {
-          "revision": 482,
+          "revision": 483,
           "regime": "risk_on",
-          "samples": 542,
+          "samples": 540,
           "winRate": 47.6,
           "avgReturnPct": 0.21,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-17T11:44:50+00:00"
+          "lastUpgrade": "2026-08-17T12:01:55+00:00"
         }
       },
       {
@@ -972,7 +972,7 @@
               "earningsGrowth": -58.1,
               "profitMargins": 7.96,
               "monthChangePct": -3.72,
-              "relativeStrength": -8.29,
+              "relativeStrength": -7.35,
               "rangePosition": 0.12
             }
           },
@@ -1017,13 +1017,13 @@
           }
         ],
         "learning": {
-          "revision": 482,
+          "revision": 483,
           "regime": "risk_on",
-          "samples": 542,
-          "winRate": 22.9,
+          "samples": 540,
+          "winRate": 22.8,
           "avgReturnPct": -2.03,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-17T11:44:50+00:00"
+          "lastUpgrade": "2026-08-17T12:01:55+00:00"
         }
       },
       {
@@ -1121,13 +1121,13 @@
           }
         ],
         "learning": {
-          "revision": 482,
+          "revision": 483,
           "regime": "risk_on",
-          "samples": 542,
+          "samples": 540,
           "winRate": 11.3,
-          "avgReturnPct": -4.89,
+          "avgReturnPct": -4.9,
           "upgradeNote": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
-          "lastUpgrade": "2026-08-17T11:44:50+00:00"
+          "lastUpgrade": "2026-08-17T12:01:55+00:00"
         }
       },
       {
@@ -1234,13 +1234,13 @@
           }
         ],
         "learning": {
-          "revision": 482,
+          "revision": 483,
           "regime": "risk_on",
-          "samples": 542,
-          "winRate": 78.8,
-          "avgReturnPct": 7.92,
+          "samples": 540,
+          "winRate": 79.1,
+          "avgReturnPct": 7.96,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-17T11:44:50+00:00"
+          "lastUpgrade": "2026-08-17T12:01:55+00:00"
         },
         "xHandle": "@aleabitoreddit",
         "platform": "X",
