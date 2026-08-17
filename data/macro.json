@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-17T08:09:16+00:00",
+  "updatedAt": "2026-08-17T08:59:54+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,7 +29,7 @@
     }
   ],
   "summary": {
-    "vix": 14.94,
+    "vix": 14.98,
     "vixRegime": "normal",
     "us10yYield": 4.7,
     "usdCnh": 6.74,
@@ -57,10 +51,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 14.94,
-      "changePct": 4.84,
-      "weekChangePct": -3.36,
-      "monthChangePct": -20.4,
+      "price": 14.98,
+      "changePct": 5.12,
+      "weekChangePct": -3.1,
+      "monthChangePct": -20.19,
       "source": "yahoo"
     }
   ],
@@ -122,9 +116,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7487,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7413,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-14"
     },
     {
       "symbol": "USDHKD=X",
@@ -133,16 +127,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 7.85,
+      "price": 7.84,
       "changePct": -0.03,
-      "weekChangePct": -0.0,
-      "monthChangePct": 0.06,
+      "weekChangePct": 0.0,
+      "monthChangePct": null,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8475,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8473,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-14"
     },
     {
       "symbol": "USDJPY=X",
@@ -151,16 +145,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.97,
-      "changePct": -0.29,
-      "weekChangePct": 0.68,
-      "monthChangePct": -2.1,
+      "price": 159.12,
+      "changePct": -0.19,
+      "weekChangePct": 0.78,
+      "monthChangePct": -2.0,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.2045,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 159.01,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-14"
     },
     {
       "symbol": "EURUSD=X",
@@ -171,24 +165,50 @@
       "region": null,
       "price": 1.16,
       "changePct": 0.63,
-      "weekChangePct": 0.44,
-      "monthChangePct": 1.42,
+      "weekChangePct": 0.67,
+      "monthChangePct": null,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8642,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8645,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-14"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7385,
+      "price": 0.7387,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-14"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8118,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-14"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2781,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-14"
     }
   ],
   "commodities": [
@@ -199,10 +219,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4461.9,
-      "changePct": 1.86,
-      "weekChangePct": 2.29,
-      "monthChangePct": 11.19,
+      "price": 4451.8,
+      "changePct": 1.63,
+      "weekChangePct": 2.06,
+      "monthChangePct": 10.94,
       "source": "yahoo"
     },
     {
@@ -212,10 +232,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 81.99,
-      "changePct": -0.5,
-      "weekChangePct": -0.17,
-      "monthChangePct": -0.61,
+      "price": 82.24,
+      "changePct": -0.19,
+      "weekChangePct": 0.13,
+      "monthChangePct": -0.3,
       "source": "yahoo"
     },
     {
@@ -226,9 +246,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.69,
-      "changePct": 1.33,
-      "weekChangePct": 1.41,
-      "monthChangePct": 7.52,
+      "changePct": 1.32,
+      "weekChangePct": 1.4,
+      "monthChangePct": 7.5,
       "source": "yahoo"
     }
   ],
@@ -339,8 +359,8 @@
       "region": null,
       "price": 112.95,
       "changePct": 0.36,
-      "weekChangePct": 1.59,
-      "monthChangePct": -0.38,
+      "weekChangePct": 1.53,
+      "monthChangePct": 0.27,
       "source": "yahoo",
       "sector": "通信"
     },
@@ -353,8 +373,8 @@
       "region": null,
       "price": 45.27,
       "changePct": 0.33,
-      "weekChangePct": 1.03,
-      "monthChangePct": 1.59,
+      "weekChangePct": 0.64,
+      "monthChangePct": -0.42,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -488,8 +508,8 @@
   "finnhubNews": [
     {
       "id": 8360012,
-      "title": "Kushner to hold talks with Netanyahu after rare meeting with Hamas - Reuters",
-      "summary": "Kushner to hold talks with Netanyahu after rare meeting with Hamas  Reuters",
+      "title": "Kushner to hold talks with Netanyahu after rare meeting with Hamas - reuters.com",
+      "summary": "Kushner to hold talks with Netanyahu after rare meeting with Hamas  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOcEx3MFJPNUM1WXN5SzhvTjJKMjk5aXZHWkxtMlBSaS14RTZpaDZsV3cweGdLdGo3dWJDU1ZCZVlob1NESk1CT0l3OFh6OGRXVFVVLXRtb3d0UGRNMlpkSGFobzk4c1dmZ0dtRUxQcEtVQ0tLVWZZbENQRlRSR0FkNWw4eDNtcTk2bkpRNXEyNDN2OFp6clItN0ZPRWUwbmFVQlZUdEdRVmU2R2NiY2hLTFRTOWJGM1VL?oc=5",
@@ -498,8 +518,8 @@
     },
     {
       "id": 8359495,
-      "title": "Indian shares fall as crude remains at elevated levels - Reuters",
-      "summary": "Indian shares fall as crude remains at elevated levels  Reuters",
+      "title": "Indian shares fall as crude remains at elevated levels - reuters.com",
+      "summary": "Indian shares fall as crude remains at elevated levels  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQQUZOZ3VuQ2NHZWRMbVF4TE5WRlFMeWp5c3N6SlY4T2Y3ajV1YjdjaE9JLU5tTHVlaENLbV81NUxncUdhRWcxQXg1bUVIVlF0cHRJYzQ2RFB1VTRwMlNWRlNQbXpMSUhtMTFFcUtJaUJfRU5GUU9iQkl4QXRqM0dnYk9YS25NUDFBeFo2N0tST1c5elFsMDRXM1pPNnNCUW03eWRPNlFFZ2R1V2M?oc=5",
@@ -518,8 +538,8 @@
     },
     {
       "id": 8358688,
-      "title": "Oil struggles for direction as US-Iran talks stall, Hormuz shipping slows - Reuters",
-      "summary": "Oil struggles for direction as US-Iran talks stall, Hormuz shipping slows  Reuters",
+      "title": "Oil struggles for direction as US-Iran talks stall, Hormuz shipping slows - reuters.com",
+      "summary": "Oil struggles for direction as US-Iran talks stall, Hormuz shipping slows  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPNmNqanA3WXVHU3JvRVRoZnVBYUpwUmRGbkxCYTNHLW9EeTFhbTdFcjFqM2JtZVctcTd6TzhEYnJUekhXQURDRXkzUXNNRlF4OEN3S2VQZ1ZIZ0c5OHo0d3RWdG01Z1o5amVMZFk0cGdUOGV1enVQYVVzTWtQVl9rTHhyM1RaeGxOd0RUNEM5NWJCMW91WFpITmp6TmlKOWF4RUYtMTRBQVpYX0pqZ0Q3UjNKVHIzZGc?oc=5",
@@ -528,8 +548,8 @@
     },
     {
       "id": 8358586,
-      "title": "Shipping slows through Strait of Hormuz after tanker attacks, data shows - Reuters",
-      "summary": "Shipping slows through Strait of Hormuz after tanker attacks, data shows  Reuters",
+      "title": "Shipping slows through Strait of Hormuz after tanker attacks, data shows - reuters.com",
+      "summary": "Shipping slows through Strait of Hormuz after tanker attacks, data shows  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOS011b1NvcmEzQUNzX2dVdzFyUmg1UnpkLXZqNW5nUFFxNGZpaE51amZaZWJDZnNTQi1yZDE2cGxwU09PdzhMWWJiV1lpMk0xSmJmb0dQNVdGN1F3RHBTaVQtRzlsU2Nwa2RER0ZlbngzOWc3aDV2MmMwRmNfZ2xXclpHRzE0RkFzeDZ3MjY2QTAwMlFPSEVTeTRQM0JDQ2VtQjVPQTFPZWxRaXB4YzBTbjBVSXlxQTBoMUE?oc=5",
@@ -538,8 +558,8 @@
     },
     {
       "id": 8358075,
-      "title": "Trump orders Pentagon to cut back military exercises with South Korea - Reuters",
-      "summary": "Trump orders Pentagon to cut back military exercises with South Korea  Reuters",
+      "title": "Trump orders Pentagon to cut back military exercises with South Korea - reuters.com",
+      "summary": "Trump orders Pentagon to cut back military exercises with South Korea  reuters.com",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQaGdQYThHbnV2b3NnalEycy1sZGpyNGNLaGNYODl2TmhhUnNma2ZhMk1MTURNQWxMalB3OUswYk10R2RJZGlBNnJoUkZzRGxGcE8xQklBZnlZYUs1d004Q09uUWdDeV96aFlJc0o2Nzh1aHZvRVBhZTV2SGU4RnZremZXWkw0YUp3SENRTDNFNkFyOWNVS2ROSEpCaVhpSmV2QWhMUGI5aVo3aUc3Z2pkWDBIQ2lRdw?oc=5",
@@ -567,13 +587,13 @@
       "related": ""
     },
     {
-      "id": 8360112,
-      "title": "China stats bureau says July economic activity affected by extreme weather conditions, among other factors",
-      "summary": "<p class=\"text-align-justify\" style=\"text-align: justify;\">The spokesperson of China's statistics bureau is out saying that July economic activity was affected by external uncertainties and also extre",
+      "id": 8360117,
+      "title": "Iran reaffirms that talks have not yet begun with the US",
+      "summary": "<ul><li>No talks have begun with the US</li><li>And they won't because of US violations of memorandum of understanding</li><li>There is no mention of a 60-day deadline in the text of the memorandum of",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/china-stats-bureau-says-july-economic-activity-affected-by-extreme-weather-conditions-among-other-factors/",
-      "publishedAt": "2026-08-17T07:28:41+00:00",
+      "link": "https://investinglive.com/news/iran-reaffirms-that-talks-have-not-yet-begun-with-the-us/",
+      "publishedAt": "2026-08-17T08:09:23+00:00",
       "related": ""
     }
   ],
