@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-17T20:09:35+00:00",
+  "updatedAt": "2026-08-17T20:42:59+00:00",
   "recommendations": {
     "strategy": "v1.3.0 强趋势+突破过滤（各市场 1 只）：Regime 过滤 + 仅突破买入；≥72 突破分、≥65 观察。24h 粘性换仓、止损 ATR、盈亏比 1:3.0。",
     "marketScan": "A股最高 宁德时代(56.6分) · 港股最高 阿里巴巴(45.1分) · 美股最高 微软(78.5分)",
@@ -480,16 +480,16 @@
     ]
   },
   "masterRecommendations": {
-    "version": "v1.2.498",
-    "strategy": "v1.2.498 投资大师风格荐股（在线学习）：每次数据更新根据历史荐股表现与市场环境微调 7 位大师因子权重；当前市场环境 risk_off。",
+    "version": "v1.2.499",
+    "strategy": "v1.2.499 投资大师风格荐股（在线学习）：每次数据更新根据历史荐股表现与市场环境微调 7 位大师因子权重；当前市场环境 risk_off。",
     "disclaimer": "大师风格荐股为规则化模拟，非真实人物操作建议；权重学习基于历史快照与公开行情，样本不足时变化极小；Serenity 相关内容为对其公开框架的量化近似，勿当作 X 账号买卖信号；仅供研究，不构成投资建议。",
     "learning": {
-      "revision": 498,
+      "revision": 499,
       "regime": "risk_off",
-      "updatedAt": "2026-08-17T20:09:35+00:00",
-      "lastUpgrade": "2026-08-17T20:09:35+00:00",
+      "updatedAt": "2026-08-17T20:42:59+00:00",
+      "lastUpgrade": "2026-08-17T20:42:59+00:00",
       "notes": {
-        "buffett": "近期表现反馈：margins↓",
+        "buffett": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
         "lynch": "近期表现反馈：peg↓、earnings↓、sector↓",
         "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
         "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
@@ -518,7 +518,7 @@
             "sector": "潮玩零售",
             "currency": "HKD",
             "price": 154.1,
-            "matchScore": 84.7,
+            "matchScore": 85.1,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -528,12 +528,12 @@
               "负债率可控，财务风险较低"
             ],
             "factors": {
-              "roe": 10.37,
-              "pe": 6.91,
-              "margins": 5.87,
-              "debt": 3.46,
-              "trend": 5.76,
-              "mcap": 2.3
+              "roe": 10.48,
+              "pe": 6.98,
+              "margins": 5.99,
+              "debt": 3.49,
+              "trend": 5.82,
+              "mcap": 2.33
             },
             "plan": {
               "entry": "围绕 154.1 HKD 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
@@ -560,7 +560,7 @@
             "sector": "社交广告",
             "currency": "USD",
             "price": 568.97,
-            "matchScore": 84.7,
+            "matchScore": 85.1,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -570,12 +570,12 @@
               "负债率可控，财务风险较低"
             ],
             "factors": {
-              "roe": 10.37,
-              "pe": 6.91,
-              "margins": 5.87,
-              "debt": 3.46,
-              "trend": 5.76,
-              "mcap": 2.3
+              "roe": 10.48,
+              "pe": 6.98,
+              "margins": 5.99,
+              "debt": 3.49,
+              "trend": 5.82,
+              "mcap": 2.33
             },
             "plan": {
               "entry": "围绕 568.97 USD 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
@@ -597,13 +597,13 @@
           }
         ],
         "learning": {
-          "revision": 498,
+          "revision": 499,
           "regime": "risk_off",
-          "samples": 538,
+          "samples": 536,
           "winRate": 2.8,
           "avgReturnPct": -5.84,
-          "upgradeNote": "近期表现反馈：margins↓",
-          "lastUpgrade": "2026-08-17T20:09:35+00:00"
+          "upgradeNote": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
+          "lastUpgrade": "2026-08-17T20:42:59+00:00"
         }
       },
       {
@@ -628,7 +628,7 @@
             "sector": "保险",
             "currency": "CNY",
             "price": 51.75,
-            "matchScore": 78.2,
+            "matchScore": 80.2,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -638,10 +638,10 @@
               "股息率 5.22% — 提供下行保护垫"
             ],
             "factors": {
-              "pe": 12.83,
-              "pb": 10.49,
-              "range": 7.0,
-              "dividend": 2.92
+              "pe": 13.6,
+              "pb": 11.12,
+              "range": 7.42,
+              "dividend": 3.09
             },
             "plan": {
               "entry": "仅在 51.75 附近或更低、且 PE/PB 维持低位时分批买入；拒绝「便宜但坏」的公司。",
@@ -668,7 +668,7 @@
             "sector": "银行",
             "currency": "CNY",
             "price": 38.46,
-            "matchScore": 74.7,
+            "matchScore": 76.5,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -677,10 +677,10 @@
               "股息率 10.44% — 提供下行保护垫"
             ],
             "factors": {
-              "pe": 12.83,
-              "pb": 10.49,
-              "range": 3.5,
-              "dividend": 2.92
+              "pe": 13.6,
+              "pb": 11.12,
+              "range": 3.71,
+              "dividend": 3.09
             },
             "plan": {
               "entry": "仅在 38.46 附近或更低、且 PE/PB 维持低位时分批买入；拒绝「便宜但坏」的公司。",
@@ -702,13 +702,13 @@
           }
         ],
         "learning": {
-          "revision": 498,
+          "revision": 499,
           "regime": "risk_off",
-          "samples": 538,
-          "winRate": 16.4,
-          "avgReturnPct": -1.91,
+          "samples": 536,
+          "winRate": 16.0,
+          "avgReturnPct": -1.92,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-17T20:09:35+00:00"
+          "lastUpgrade": "2026-08-17T20:42:59+00:00"
         }
       },
       {
@@ -742,8 +742,8 @@
               "营收增速 33.7% — 业务扩张持续"
             ],
             "factors": {
-              "peg": 32.34,
-              "earnings": 23.52,
+              "peg": 32.12,
+              "earnings": 23.36,
               "revenue": 9.3
             },
             "plan": {
@@ -781,10 +781,10 @@
               "新能源 — 林奇偏好的可理解成长行业"
             ],
             "factors": {
-              "peg": 32.34,
-              "earnings": 23.52,
+              "peg": 32.12,
+              "earnings": 23.36,
               "revenue": 9.3,
-              "sector": 5.75
+              "sector": 5.7
             },
             "plan": {
               "entry": "确认 PEG 与盈利增速匹配后，于 393.93 附近建仓；季度财报验证成长逻辑。",
@@ -806,13 +806,13 @@
           }
         ],
         "learning": {
-          "revision": 498,
+          "revision": 499,
           "regime": "risk_off",
-          "samples": 538,
+          "samples": 536,
           "winRate": 9.5,
           "avgReturnPct": -3.37,
           "upgradeNote": "近期表现反馈：peg↓、earnings↓、sector↓",
-          "lastUpgrade": "2026-08-17T20:09:35+00:00"
+          "lastUpgrade": "2026-08-17T20:42:59+00:00"
         }
       },
       {
@@ -910,13 +910,13 @@
           }
         ],
         "learning": {
-          "revision": 498,
+          "revision": 499,
           "regime": "risk_off",
-          "samples": 538,
-          "winRate": 26.6,
-          "avgReturnPct": -3.11,
+          "samples": 536,
+          "winRate": 26.5,
+          "avgReturnPct": -3.13,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-17T20:09:35+00:00"
+          "lastUpgrade": "2026-08-17T20:42:59+00:00"
         }
       },
       {
@@ -1017,13 +1017,13 @@
           }
         ],
         "learning": {
-          "revision": 498,
+          "revision": 499,
           "regime": "risk_off",
-          "samples": 538,
-          "winRate": 15.6,
-          "avgReturnPct": -2.33,
+          "samples": 536,
+          "winRate": 15.7,
+          "avgReturnPct": -2.34,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-17T20:09:35+00:00"
+          "lastUpgrade": "2026-08-17T20:42:59+00:00"
         }
       },
       {
@@ -1048,7 +1048,7 @@
             "sector": "软件云计算",
             "currency": "USD",
             "price": 480.35,
-            "matchScore": 100.0,
+            "matchScore": 99.5,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -1058,10 +1058,10 @@
               "高 Beta 放大趋势 — 索罗斯式进攻配置"
             ],
             "factors": {
-              "month": 21.34,
-              "rs": 18.68,
-              "trend": 13.34,
-              "beta": 5.33
+              "month": 19.82,
+              "rs": 17.35,
+              "trend": 12.39,
+              "beta": 4.95
             },
             "plan": {
               "entry": "趋势确认后于 480.35 附近顺势建仓；宏观与相对强度共振时加仓。",
@@ -1088,7 +1088,7 @@
             "sector": "半导体",
             "currency": "USD",
             "price": 225.01,
-            "matchScore": 100.0,
+            "matchScore": 99.5,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -1098,10 +1098,10 @@
               "高 Beta 放大趋势 — 索罗斯式进攻配置"
             ],
             "factors": {
-              "month": 21.34,
-              "rs": 18.68,
-              "trend": 13.34,
-              "beta": 5.33
+              "month": 19.82,
+              "rs": 17.35,
+              "trend": 12.39,
+              "beta": 4.95
             },
             "plan": {
               "entry": "趋势确认后于 225.01 附近顺势建仓；宏观与相对强度共振时加仓。",
@@ -1123,13 +1123,13 @@
           }
         ],
         "learning": {
-          "revision": 498,
+          "revision": 499,
           "regime": "risk_off",
-          "samples": 538,
+          "samples": 536,
           "winRate": 5.6,
-          "avgReturnPct": -5.91,
+          "avgReturnPct": -5.89,
           "upgradeNote": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
-          "lastUpgrade": "2026-08-17T20:09:35+00:00"
+          "lastUpgrade": "2026-08-17T20:42:59+00:00"
         }
       },
       {
@@ -1235,13 +1235,13 @@
           }
         ],
         "learning": {
-          "revision": 498,
+          "revision": 499,
           "regime": "risk_off",
-          "samples": 538,
-          "winRate": 74.5,
-          "avgReturnPct": 5.21,
+          "samples": 536,
+          "winRate": 74.8,
+          "avgReturnPct": 5.26,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-17T20:09:35+00:00"
+          "lastUpgrade": "2026-08-17T20:42:59+00:00"
         },
         "xHandle": "@aleabitoreddit",
         "platform": "X",
