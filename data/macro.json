@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-17T07:29:56+00:00",
+  "updatedAt": "2026-08-17T08:09:16+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,7 +35,7 @@
     }
   ],
   "summary": {
-    "vix": 14.25,
+    "vix": 14.94,
     "vixRegime": "normal",
     "us10yYield": 4.7,
     "usdCnh": 6.74,
@@ -51,10 +57,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 14.25,
-      "changePct": -2.6,
-      "weekChangePct": -4.36,
-      "monthChangePct": null,
+      "price": 14.94,
+      "changePct": 4.84,
+      "weekChangePct": -3.36,
+      "monthChangePct": -20.4,
       "source": "yahoo"
     }
   ],
@@ -69,7 +75,7 @@
       "price": 4.7,
       "changePct": 1.19,
       "weekChangePct": 0.77,
-      "monthChangePct": null,
+      "monthChangePct": 2.78,
       "source": "yahoo"
     },
     {
@@ -82,7 +88,7 @@
       "price": 3.7,
       "changePct": -0.22,
       "weekChangePct": -0.35,
-      "monthChangePct": null,
+      "monthChangePct": 0.0,
       "source": "yahoo"
     }
   ],
@@ -110,15 +116,15 @@
       "currency": null,
       "region": null,
       "price": 6.74,
-      "changePct": -0.07,
+      "changePct": -0.08,
       "weekChangePct": -0.14,
       "monthChangePct": -0.51,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7413,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-14"
+      "refPrice": 6.7487,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,15 +134,15 @@
       "currency": null,
       "region": null,
       "price": 7.85,
-      "changePct": -0.02,
-      "weekChangePct": 0.0,
+      "changePct": -0.03,
+      "weekChangePct": -0.0,
       "monthChangePct": 0.06,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8473,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-14"
+      "refPrice": 7.8475,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -145,16 +151,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.89,
-      "changePct": -0.34,
-      "weekChangePct": 0.63,
-      "monthChangePct": -2.15,
+      "price": 158.97,
+      "changePct": -0.29,
+      "weekChangePct": 0.68,
+      "monthChangePct": -2.1,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.01,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-14"
+      "refPrice": 159.2045,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -164,51 +170,25 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": 0.7,
-      "weekChangePct": 0.74,
-      "monthChangePct": null,
+      "changePct": 0.63,
+      "weekChangePct": 0.44,
+      "monthChangePct": 1.42,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8645,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-14"
+      "refPrice": 0.8642,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7387,
+      "price": 0.7385,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-14"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8118,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-14"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2781,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-14"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -219,10 +199,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4453.4,
-      "changePct": 1.67,
-      "weekChangePct": 2.1,
-      "monthChangePct": 10.98,
+      "price": 4461.9,
+      "changePct": 1.86,
+      "weekChangePct": 2.29,
+      "monthChangePct": 11.19,
       "source": "yahoo"
     },
     {
@@ -232,10 +212,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 81.63,
-      "changePct": -0.93,
-      "weekChangePct": -0.61,
-      "monthChangePct": -1.04,
+      "price": 81.99,
+      "changePct": -0.5,
+      "weekChangePct": -0.17,
+      "monthChangePct": -0.61,
       "source": "yahoo"
     },
     {
@@ -245,10 +225,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.7,
-      "changePct": 1.49,
-      "weekChangePct": 1.57,
-      "monthChangePct": 7.68,
+      "price": 6.69,
+      "changePct": 1.33,
+      "weekChangePct": 1.41,
+      "monthChangePct": 7.52,
       "source": "yahoo"
     }
   ],
@@ -346,7 +326,7 @@
       "price": 186.51,
       "changePct": 0.39,
       "weekChangePct": 0.72,
-      "monthChangePct": null,
+      "monthChangePct": 3.53,
       "source": "yahoo",
       "sector": "工业"
     },
@@ -359,8 +339,8 @@
       "region": null,
       "price": 112.95,
       "changePct": 0.36,
-      "weekChangePct": 1.53,
-      "monthChangePct": 0.27,
+      "weekChangePct": 1.59,
+      "monthChangePct": -0.38,
       "source": "yahoo",
       "sector": "通信"
     },
@@ -373,8 +353,8 @@
       "region": null,
       "price": 45.27,
       "changePct": 0.33,
-      "weekChangePct": 0.64,
-      "monthChangePct": -0.42,
+      "weekChangePct": 1.03,
+      "monthChangePct": 1.59,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -416,7 +396,7 @@
       "price": 118.2,
       "changePct": -0.21,
       "weekChangePct": -1.38,
-      "monthChangePct": null,
+      "monthChangePct": 0.73,
       "source": "yahoo",
       "sector": "可选消费"
     },
@@ -507,6 +487,16 @@
   ],
   "finnhubNews": [
     {
+      "id": 8360012,
+      "title": "Kushner to hold talks with Netanyahu after rare meeting with Hamas - Reuters",
+      "summary": "Kushner to hold talks with Netanyahu after rare meeting with Hamas  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOcEx3MFJPNUM1WXN5SzhvTjJKMjk5aXZHWkxtMlBSaS14RTZpaDZsV3cweGdLdGo3dWJDU1ZCZVlob1NESk1CT0l3OFh6OGRXVFVVLXRtb3d0UGRNMlpkSGFobzk4c1dmZ0dtRUxQcEtVQ0tLVWZZbENQRlRSR0FkNWw4eDNtcTk2bkpRNXEyNDN2OFp6clItN0ZPRWUwbmFVQlZUdEdRVmU2R2NiY2hLTFRTOWJGM1VL?oc=5",
+      "publishedAt": "2026-08-17T06:17:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8359495,
       "title": "Indian shares fall as crude remains at elevated levels - Reuters",
       "summary": "Indian shares fall as crude remains at elevated levels  Reuters",
@@ -528,8 +518,8 @@
     },
     {
       "id": 8358688,
-      "title": "Oil rises as US-Iran peace talks stall, Hormuz shipping slows - Reuters",
-      "summary": "Oil rises as US-Iran peace talks stall, Hormuz shipping slows  Reuters",
+      "title": "Oil struggles for direction as US-Iran talks stall, Hormuz shipping slows - Reuters",
+      "summary": "Oil struggles for direction as US-Iran talks stall, Hormuz shipping slows  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPNmNqanA3WXVHU3JvRVRoZnVBYUpwUmRGbkxCYTNHLW9EeTFhbTdFcjFqM2JtZVctcTd6TzhEYnJUekhXQURDRXkzUXNNRlF4OEN3S2VQZ1ZIZ0c5OHo0d3RWdG01Z1o5amVMZFk0cGdUOGV1enVQYVVzTWtQVl9rTHhyM1RaeGxOd0RUNEM5NWJCMW91WFpITmp6TmlKOWF4RUYtMTRBQVpYX0pqZ0Q3UjNKVHIzZGc?oc=5",
@@ -577,23 +567,13 @@
       "related": ""
     },
     {
-      "id": 8356765,
-      "title": "Trump's envoys meet mediators, Israel strikes Gaza - Reuters",
-      "summary": "Trump's envoys meet mediators, Israel strikes Gaza  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNQWlULVBMUTk3T05wRS0tNnBRUWFReXlURUhCaTNIZVlRaUtVOHczUm5CTi1YRWlveXN6cC1hWDBKOTJqbUpna3JYZUhzLTVrTnU0bXFWd3JncVNCeUc3NTNING9KeHFSNWpUWWhCNFBGUm1aQzBna3c1OFNtclBMZEY1VERJS0x1elM2ZEVwXzZVeTRzelkyM3ZoWTNGeGRGZkE?oc=5",
-      "publishedAt": "2026-08-16T19:56:03+00:00",
-      "related": ""
-    },
-    {
-      "id": 8359801,
-      "title": "No major US data releases but this week will feature a big test on consumer health",
-      "summary": "<p class=\"text-align-justify\" style=\"text-align: justify;\">The week ahead will not feature any major economic data releases in the US. That unless you want to count the Philly Fed manufacturing index ",
+      "id": 8360112,
+      "title": "China stats bureau says July economic activity affected by extreme weather conditions, among other factors",
+      "summary": "<p class=\"text-align-justify\" style=\"text-align: justify;\">The spokesperson of China's statistics bureau is out saying that July economic activity was affected by external uncertainties and also extre",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/no-major-us-data-releases-but-this-week-will-feature-a-big-test-on-consumer-health/",
-      "publishedAt": "2026-08-17T06:06:21+00:00",
+      "link": "https://investinglive.com/news/china-stats-bureau-says-july-economic-activity-affected-by-extreme-weather-conditions-among-other-factors/",
+      "publishedAt": "2026-08-17T07:28:41+00:00",
       "related": ""
     }
   ],
