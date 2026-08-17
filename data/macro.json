@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-17T18:00:50+00:00",
+  "updatedAt": "2026-08-17T18:52:06+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: HTTP Error 522: <none>",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,7 +29,7 @@
     }
   ],
   "summary": {
-    "vix": 15.22,
+    "vix": 15.17,
     "vixRegime": "normal",
     "us10yYield": 4.72,
     "usdCnh": 6.74,
@@ -45,7 +39,7 @@
     "yieldSpread10y2y": 0.51,
     "hints": [
       "美债收益率上行，对高估值成长股形成压力。",
-      "美股行业轮动：能源 领涨（+1.00%），通信 靠后。"
+      "美股行业轮动：能源 领涨（+1.16%），通信 靠后。"
     ]
   },
   "risk": [
@@ -56,10 +50,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.22,
-      "changePct": 6.81,
-      "weekChangePct": -1.55,
-      "monthChangePct": -18.91,
+      "price": 15.17,
+      "changePct": 6.46,
+      "weekChangePct": -1.88,
+      "monthChangePct": -19.18,
       "source": "yahoo"
     }
   ],
@@ -72,9 +66,9 @@
       "currency": null,
       "region": null,
       "price": 4.72,
-      "changePct": 0.51,
-      "weekChangePct": 0.45,
-      "monthChangePct": 3.94,
+      "changePct": 0.6,
+      "weekChangePct": 0.53,
+      "monthChangePct": 4.03,
       "source": "yahoo"
     },
     {
@@ -85,9 +79,9 @@
       "currency": null,
       "region": null,
       "price": 3.7,
-      "changePct": 0.0,
-      "weekChangePct": -0.56,
-      "monthChangePct": -0.27,
+      "changePct": 0.16,
+      "weekChangePct": -0.4,
+      "monthChangePct": -0.11,
       "source": "yahoo"
     }
   ],
@@ -115,15 +109,15 @@
       "currency": null,
       "region": null,
       "price": 6.73,
-      "changePct": -0.21,
-      "weekChangePct": -0.28,
-      "monthChangePct": -0.65,
+      "changePct": -0.2,
+      "weekChangePct": -0.27,
+      "monthChangePct": -0.64,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7487,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7394,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-17"
     },
     {
       "symbol": "USDHKD=X",
@@ -133,15 +127,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": -0.04,
+      "changePct": -0.03,
       "weekChangePct": -0.01,
       "monthChangePct": 0.05,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8475,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8453,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-17"
     },
     {
       "symbol": "USDJPY=X",
@@ -150,16 +144,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.49,
-      "changePct": 0.04,
-      "weekChangePct": 1.01,
-      "monthChangePct": -1.78,
+      "price": 159.57,
+      "changePct": 0.09,
+      "weekChangePct": 1.07,
+      "monthChangePct": -1.73,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.2045,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 159.23,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-17"
     },
     {
       "symbol": "EURUSD=X",
@@ -169,25 +163,51 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": 0.39,
-      "weekChangePct": 0.21,
-      "monthChangePct": 1.19,
+      "changePct": 0.36,
+      "weekChangePct": 0.18,
+      "monthChangePct": 1.15,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8642,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8626,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-17"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7385,
+      "price": 0.7375,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-17"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8099,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-17"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2764,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-17"
     }
   ],
   "commodities": [
@@ -198,10 +218,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4477.2,
-      "changePct": 2.21,
-      "weekChangePct": 2.65,
-      "monthChangePct": 11.58,
+      "price": 4459.0,
+      "changePct": 1.79,
+      "weekChangePct": 2.23,
+      "monthChangePct": 11.12,
       "source": "yahoo"
     },
     {
@@ -211,10 +231,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 84.23,
-      "changePct": 2.22,
-      "weekChangePct": 2.56,
-      "monthChangePct": 2.11,
+      "price": 84.18,
+      "changePct": 2.16,
+      "weekChangePct": 2.5,
+      "monthChangePct": 2.05,
       "source": "yahoo"
     },
     {
@@ -224,10 +244,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.61,
-      "changePct": 0.12,
-      "weekChangePct": 0.2,
-      "monthChangePct": 6.23,
+      "price": 6.6,
+      "changePct": -0.02,
+      "weekChangePct": 0.05,
+      "monthChangePct": 6.08,
       "source": "yahoo"
     }
   ],
@@ -280,26 +300,12 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 62.53,
-      "changePct": 1.0,
-      "weekChangePct": 3.9,
-      "monthChangePct": 8.4,
+      "price": 62.63,
+      "changePct": 1.16,
+      "weekChangePct": 4.07,
+      "monthChangePct": 8.58,
       "source": "yahoo",
       "sector": "能源"
-    },
-    {
-      "symbol": "XLI",
-      "name": "工业",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 187.18,
-      "changePct": 0.36,
-      "weekChangePct": 1.4,
-      "monthChangePct": 4.33,
-      "source": "yahoo",
-      "sector": "工业"
     },
     {
       "symbol": "XLK",
@@ -308,12 +314,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 190.57,
-      "changePct": 0.29,
-      "weekChangePct": 2.28,
-      "monthChangePct": 8.53,
+      "price": 190.88,
+      "changePct": 0.46,
+      "weekChangePct": 2.45,
+      "monthChangePct": 8.71,
       "source": "yahoo",
       "sector": "科技"
+    },
+    {
+      "symbol": "XLI",
+      "name": "工业",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 186.92,
+      "changePct": 0.22,
+      "weekChangePct": 1.26,
+      "monthChangePct": 4.19,
+      "source": "yahoo",
+      "sector": "工业"
     },
     {
       "symbol": "XLV",
@@ -322,10 +342,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 167.25,
-      "changePct": -0.07,
-      "weekChangePct": -0.71,
-      "monthChangePct": 3.82,
+      "price": 166.97,
+      "changePct": -0.24,
+      "weekChangePct": -0.87,
+      "monthChangePct": 3.65,
       "source": "yahoo",
       "sector": "健康"
     },
@@ -336,10 +356,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 44.19,
-      "changePct": -0.26,
-      "weekChangePct": 2.47,
-      "monthChangePct": -2.16,
+      "price": 44.15,
+      "changePct": -0.36,
+      "weekChangePct": 2.36,
+      "monthChangePct": -2.26,
       "source": "yahoo",
       "sector": "公用事业"
     },
@@ -364,10 +384,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 57.83,
-      "changePct": -0.56,
-      "weekChangePct": 0.04,
-      "monthChangePct": 2.8,
+      "price": 57.77,
+      "changePct": -0.67,
+      "weekChangePct": -0.07,
+      "monthChangePct": 2.68,
       "source": "yahoo",
       "sector": "金融"
     },
@@ -378,10 +398,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 44.92,
-      "changePct": -0.76,
-      "weekChangePct": 1.18,
-      "monthChangePct": -1.09,
+      "price": 44.79,
+      "changePct": -1.06,
+      "weekChangePct": -0.42,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -392,10 +412,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 116.56,
-      "changePct": -1.39,
-      "weekChangePct": -2.6,
-      "monthChangePct": 0.97,
+      "price": 116.76,
+      "changePct": -1.21,
+      "weekChangePct": -2.43,
+      "monthChangePct": 1.15,
       "source": "yahoo",
       "sector": "可选消费"
     },
@@ -406,10 +426,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 84.74,
-      "changePct": -1.57,
-      "weekChangePct": -0.25,
-      "monthChangePct": -0.53,
+      "price": 84.65,
+      "changePct": -1.67,
+      "weekChangePct": -0.35,
+      "monthChangePct": -0.63,
       "source": "yahoo",
       "sector": "必需消费"
     },
@@ -420,10 +440,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 110.7,
-      "changePct": -1.99,
-      "weekChangePct": -1.01,
-      "monthChangePct": 0.05,
+      "price": 110.8,
+      "changePct": -1.9,
+      "weekChangePct": -0.4,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "通信"
     }
@@ -486,6 +506,26 @@
   ],
   "finnhubNews": [
     {
+      "id": 8362252,
+      "title": "Pictures of the Day | August 17, 2026 - Reuters",
+      "summary": "Pictures of the Day | August 17, 2026  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9uVlZfdV8wakFJdkFCV0hYR1BmWWlvTF9vaDNpSlUyVE9uWWtyWlZ5dzltemVWQmdkeXp6YXVIcDE0LXJoeTNaTlBPbTg4RHl4RmdoUTNWb0xHUG1CSGRrV2RQNkY0SmhHaHJ5cldpYmxnS2YtUVVITFVjVHk?oc=5",
+      "publishedAt": "2026-08-17T18:17:52+00:00",
+      "related": ""
+    },
+    {
+      "id": 8361417,
+      "title": "Iran threatens to go on offensive in Strait of Hormuz if diplomacy with US fails - Reuters",
+      "summary": "Iran threatens to go on offensive in Strait of Hormuz if diplomacy with US fails  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOcVl4WFplN0o4aVNSQ0REMXZlRmNzNTk4dURRMV8wUXhVQjNzVkZ0S3R4el9XSnE1MWZfLXc1RlZtZmJITURZRS1NaThGcXBKV0NZY2JXRGU1c093dzM1M0ZLcUtaRERHS1B4QUtXU3pwUk5XVWpSTEtXXzlTQ1BBZU85ZE50NHZQN2hXa1FTODlNRHU5UzhWS0tzMGktMktwMXI3X3pNYmRFMVIzSTlJbzl5SWRQa05qZ0lXWnM1bw?oc=5",
+      "publishedAt": "2026-08-17T18:03:45+00:00",
+      "related": ""
+    },
+    {
       "id": 8362050,
       "title": "FTSE 100 falls for sixth day in a row as consumer stocks weigh - Reuters",
       "summary": "FTSE 100 falls for sixth day in a row as consumer stocks weigh  Reuters",
@@ -526,13 +566,13 @@
       "related": ""
     },
     {
-      "id": 8361417,
-      "title": "Iran threatens to go on offensive in Strait of Hormuz if diplomacy with US fails - Reuters",
-      "summary": "Iran threatens to go on offensive in Strait of Hormuz if diplomacy with US fails  Reuters",
+      "id": 8362253,
+      "title": "Israeli flags on Lebanon road violate UN resolution, UNIFIL says - Reuters",
+      "summary": "Israeli flags on Lebanon road violate UN resolution, UNIFIL says  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOcVl4WFplN0o4aVNSQ0REMXZlRmNzNTk4dURRMV8wUXhVQjNzVkZ0S3R4el9XSnE1MWZfLXc1RlZtZmJITURZRS1NaThGcXBKV0NZY2JXRGU1c093dzM1M0ZLcUtaRERHS1B4QUtXU3pwUk5XVWpSTEtXXzlTQ1BBZU85ZE50NHZQN2hXa1FTODlNRHU5UzhWS0tzMGktMktwMXI3X3pNYmRFMVIzSTlJbzl5SWRQa05qZ0lXWnM1bw?oc=5",
-      "publishedAt": "2026-08-17T15:29:34+00:00",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQdHFhSUE0cmdLNk9NZUN6OVNHb1VTOTVtc3gyZ1d1SzZUbWVQRFVjTng5ZHV0bXZ4cC1UYkhlbGd2REsxdTUxV2hjZEJwZlFBMVA3MDhmR2tuMmRDbThnTVkxTm5ETzBWNFBIQ1F2aHQ4Q2t5SC1RbkE2YWticzhvNi1fbHVTRXpXYUhiRU9qSEFYSm1TQWRROWRrN3F1RUZEVlRFdHJ4OVJReFJNdnhkTXN6NW4?oc=5",
+      "publishedAt": "2026-08-17T15:00:57+00:00",
       "related": ""
     },
     {
@@ -543,26 +583,6 @@
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQZ3Rmc3puMlE0OGNHd3RFY2dEM3EzbkdKR3pxal9tVm1lWFliOE9Yc1NlVXN6aEx3SXJCSkVWVENjbjBJMWlXLThJdDE3NzF5aTRMbXJYdDNqRkRtYmlRUVhDcW02My04NWR1MXVianVOdDIwZXdsNGJ5a21walB1UjMxV2YyTGpfMFMzdHNZLW1YRjRaZENWZDE5akdRcFVibWlYcV9aTTM4UQ?oc=5",
       "publishedAt": "2026-08-17T14:46:05+00:00",
-      "related": ""
-    },
-    {
-      "id": 8361414,
-      "title": "Supreme Court again rejects Trump bid to overturn E. Jean Carroll verdict",
-      "summary": "A spokesperson for Trump's legal team slammed Carroll's case as a witch hunt and a hoax.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/17/trump-supreme-court-e-jean-carroll.html",
-      "publishedAt": "2026-08-17T14:12:08+00:00",
-      "related": ""
-    },
-    {
-      "id": 8361413,
-      "title": "Nvidia backs financing for OpenAI data center in Ohio",
-      "summary": "Technology giants are shelling out billions to scale capacity to meet massive data center demand.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/08/17/nvidia-financing-open-ai-data-center-ohio.html",
-      "publishedAt": "2026-08-17T14:10:16+00:00",
       "related": ""
     },
     {
