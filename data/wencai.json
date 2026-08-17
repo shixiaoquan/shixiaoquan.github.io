@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-17T20:40:01+00:00",
+  "updatedAt": "2026-08-17T21:36:57+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 40 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 40 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 100,
@@ -119,7 +119,7 @@
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688825.SH",
@@ -191,13 +191,16 @@
           "changePct": 0.08,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688825.SH",
@@ -255,63 +258,10 @@
           "changePct": 1.54,
           "flow": 1582956244
         }
-      ]
-    },
-    {
-      "id": "low_pe",
-      "title": "低估值防御",
-      "query": "市盈率低于行业均值且股息率大于3%",
-      "status": "ok",
-      "items": [
-        {
-          "code": "002142.SZ",
-          "name": "宁波银行",
-          "price": 32.19,
-          "changePct": -0.03
-        },
-        {
-          "code": "002293.SZ",
-          "name": "罗莱生活",
-          "price": 11.01,
-          "changePct": -0.54
-        },
-        {
-          "code": "920003.BJ",
-          "name": "中诚咨询",
-          "price": 16.68,
-          "changePct": 1.03
-        },
-        {
-          "code": "600036.SH",
-          "name": "招商银行",
-          "price": 38.2,
-          "changePct": -0.68
-        },
-        {
-          "code": "300908.SZ",
-          "name": "仲景食品",
-          "price": 25.44,
-          "changePct": 0.55
-        },
-        {
-          "code": "001872.SZ",
-          "name": "招商港口",
-          "price": 21.79,
-          "changePct": 2.01
-        },
-        {
-          "code": "601665.SH",
-          "name": "齐鲁银行",
-          "price": 6.34,
-          "changePct": 1.93
-        },
-        {
-          "code": "002404.SZ",
-          "name": "嘉欣丝绸",
-          "price": 6.01,
-          "changePct": 1.86
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -755,5 +705,13 @@
       "source": "wencai",
       "category": "公告"
     }
-  ]
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "low_pe: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
