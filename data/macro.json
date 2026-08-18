@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-18T08:25:03+00:00",
+  "updatedAt": "2026-08-18T09:02:44+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,7 +35,7 @@
     }
   ],
   "summary": {
-    "vix": 16.07,
+    "vix": 15.87,
     "vixRegime": "normal",
     "us10yYield": 4.7,
     "usdCnh": 6.75,
@@ -51,9 +57,9 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 16.07,
-      "changePct": 12.77,
-      "weekChangePct": 3.95,
+      "price": 15.87,
+      "changePct": 11.37,
+      "weekChangePct": 2.65,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -111,14 +117,14 @@
       "region": null,
       "price": 6.74,
       "changePct": -0.01,
-      "weekChangePct": -0.07,
-      "monthChangePct": -0.44,
+      "weekChangePct": -0.08,
+      "monthChangePct": -0.45,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7394,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 6.7531,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,15 +134,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": -0.03,
-      "weekChangePct": -0.01,
-      "monthChangePct": 0.06,
+      "changePct": -0.05,
+      "weekChangePct": -0.03,
+      "monthChangePct": 0.04,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8453,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 7.8451,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -145,16 +151,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.72,
-      "changePct": 0.31,
-      "weekChangePct": 0.36,
-      "monthChangePct": -1.72,
+      "price": 159.67,
+      "changePct": 0.28,
+      "weekChangePct": 0.32,
+      "monthChangePct": -1.75,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.23,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 159.3139,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -164,51 +170,25 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": -0.01,
-      "weekChangePct": 0.23,
-      "monthChangePct": 1.27,
+      "changePct": 0.05,
+      "weekChangePct": 0.29,
+      "monthChangePct": 1.33,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8626,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 0.8631,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7375,
+      "price": 0.7379,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-17"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8099,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-17"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2764,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-17"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -219,10 +199,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4448.5,
+      "price": 4448.3,
       "changePct": 0.69,
       "weekChangePct": 1.49,
-      "monthChangePct": 10.93,
+      "monthChangePct": 10.92,
       "source": "yahoo"
     },
     {
@@ -232,10 +212,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 84.36,
-      "changePct": -0.17,
-      "weekChangePct": 1.39,
-      "monthChangePct": 1.36,
+      "price": 84.21,
+      "changePct": -0.34,
+      "weekChangePct": 1.21,
+      "monthChangePct": 1.18,
       "source": "yahoo"
     },
     {
@@ -246,9 +226,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.53,
-      "changePct": -1.11,
-      "weekChangePct": -1.23,
-      "monthChangePct": 3.68,
+      "changePct": -1.13,
+      "weekChangePct": -1.25,
+      "monthChangePct": 3.66,
       "source": "yahoo"
     }
   ],
@@ -359,7 +339,7 @@
       "region": null,
       "price": 112.95,
       "changePct": 0.36,
-      "weekChangePct": 1.53,
+      "weekChangePct": 1.59,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "通信"
@@ -373,7 +353,7 @@
       "region": null,
       "price": 45.27,
       "changePct": 0.33,
-      "weekChangePct": 0.64,
+      "weekChangePct": 1.03,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "地产"
@@ -587,13 +567,13 @@
       "related": ""
     },
     {
-      "id": 8364310,
-      "title": "investingLive Asia-Pacific market news: Diesel crack hits record $102, gold fell under $4400",
-      "summary": "<ul><li><a href=\"https://investinglive.com/central-banks/indian-rupee-intervention-returns-as-usd-inr-hovers-near-all-time-high\" rel=\"follow\">Indian rupee intervention returns as USD/INR hovers near a",
+      "id": 8365242,
+      "title": "UK labour market shows further signs of cooling in June",
+      "summary": "<p class=\"text-align-justify\" style=\"text-align: justify;\">Just a little catch up on things as we had some technical issues for a couple of hours. Apologies on that.</p><p class=\"text-align-justify\" s",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/investinglive-asia-pacific-market-news-diesel-crack-hits-record-102-gold-fell-under-4400/",
-      "publishedAt": "2026-08-18T03:54:42+00:00",
+      "link": "https://investinglive.com/news/uk-labour-market-shows-further-signs-of-cooling-in-june/",
+      "publishedAt": "2026-08-18T08:22:33+00:00",
       "related": ""
     }
   ],
