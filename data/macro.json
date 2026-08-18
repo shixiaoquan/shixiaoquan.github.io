@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-18T07:09:38+00:00",
+  "updatedAt": "2026-08-18T07:52:58+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,7 +29,7 @@
     }
   ],
   "summary": {
-    "vix": 14.25,
+    "vix": 15.85,
     "vixRegime": "normal",
     "us10yYield": 4.7,
     "usdCnh": 6.75,
@@ -45,7 +39,8 @@
     "yieldSpread10y2y": 0.53,
     "hints": [
       "美债收益率上行，对高估值成长股形成压力。",
-      "美股行业轮动：能源 领涨（+1.39%），健康 靠后。"
+      "美股行业轮动：能源 领涨（+1.39%），健康 靠后。",
+      "黄金强、原油弱 — 偏避险/衰退交易特征。"
     ]
   },
   "risk": [
@@ -56,9 +51,9 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 14.25,
-      "changePct": -2.6,
-      "weekChangePct": -4.36,
+      "price": 15.85,
+      "changePct": 11.23,
+      "weekChangePct": 2.52,
       "monthChangePct": null,
       "source": "yahoo"
     }
@@ -121,9 +116,9 @@
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7531,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7394,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-17"
     },
     {
       "symbol": "USDHKD=X",
@@ -133,15 +128,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": -0.03,
+      "changePct": -0.04,
       "weekChangePct": -0.02,
       "monthChangePct": 0.05,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8451,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8453,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-17"
     },
     {
       "symbol": "USDJPY=X",
@@ -150,16 +145,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.71,
-      "changePct": 0.31,
-      "weekChangePct": 0.35,
-      "monthChangePct": -1.72,
+      "price": 159.7,
+      "changePct": 0.3,
+      "weekChangePct": 0.34,
+      "monthChangePct": -1.73,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.3139,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 159.23,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-17"
     },
     {
       "symbol": "EURUSD=X",
@@ -169,25 +164,51 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": 0.01,
-      "weekChangePct": 0.25,
-      "monthChangePct": 1.29,
+      "changePct": 0.05,
+      "weekChangePct": 0.29,
+      "monthChangePct": 1.33,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8631,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8626,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-17"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7379,
+      "price": 0.7375,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-17"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8099,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-17"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2764,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-17"
     }
   ],
   "commodities": [
@@ -198,10 +219,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4453.7,
-      "changePct": 0.81,
-      "weekChangePct": 1.61,
-      "monthChangePct": 11.06,
+      "price": 4457.5,
+      "changePct": 0.9,
+      "weekChangePct": 1.7,
+      "monthChangePct": 11.15,
       "source": "yahoo"
     },
     {
@@ -211,10 +232,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 85.2,
-      "changePct": 0.83,
-      "weekChangePct": 2.4,
-      "monthChangePct": 2.37,
+      "price": 84.21,
+      "changePct": -0.34,
+      "weekChangePct": 1.21,
+      "monthChangePct": 1.18,
       "source": "yahoo"
     },
     {
@@ -224,10 +245,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.58,
-      "changePct": -0.31,
-      "weekChangePct": -0.43,
-      "monthChangePct": 4.52,
+      "price": 6.56,
+      "changePct": -0.68,
+      "weekChangePct": -0.8,
+      "monthChangePct": 4.13,
       "source": "yahoo"
     }
   ],
@@ -239,7 +260,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4724.85,
+      "price": 4725.81,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -252,7 +273,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3705.6,
+      "price": 3705.56,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -265,7 +286,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1789.8,
+      "price": 1790.87,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -506,6 +527,16 @@
       "related": ""
     },
     {
+      "id": 8364937,
+      "title": "China's fuel exports edge back towards levels before Iran war as Beijing eases curbs - Reuters",
+      "summary": "China's fuel exports edge back towards levels before Iran war as Beijing eases curbs  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNb0FpZnZidUhVbFFYOXB1VkhzYWY5aU1kWE1IXzBfd0FtcEkzTUg2Zm1Xc3FLMUFWc2htT1RPa3RaN3VoWmxMYW9YdEVBUFRZalBwcGxRVVFQVDZKbk5pbTl5OVA0SXJGVnlUeFU4T05IWWNTTWVQeXlmeVNULTgzSEVEUzd0eFJPYzJ6R1JrTUhkWlNVVFdSSjFTWFdGWFItUFJVU0c5Tmc4ZXAzcENrcHBFaC1Wb0Nsc21QdXFvb2ZNbktSOUFFaTYxUDM?oc=5",
+      "publishedAt": "2026-08-18T04:31:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8364417,
       "title": "Vessel struck by unknown projectile in Strait of Hormuz, crew casualty reported, UKMTO says - Reuters",
       "summary": "Vessel struck by unknown projectile in Strait of Hormuz, crew casualty reported, UKMTO says  Reuters",
@@ -547,22 +578,12 @@
     },
     {
       "id": 8363903,
-      "title": "Bond yields jump, oil extends gains as US-Iran ceasefire expires - Reuters",
-      "summary": "Bond yields jump, oil extends gains as US-Iran ceasefire expires  Reuters",
+      "title": "Bond yields rise, oil extends gains as US-Iran ceasefire expires - Reuters",
+      "summary": "Bond yields rise, oil extends gains as US-Iran ceasefire expires  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1IRXVLRUlydV9LUjVfX3hOQ0hKc2d0aE5MS0hqLXBrbTg2QXNhcEc2MnlhOU15dkxXSDV4V2hTM2lCR19Gc3BUWUpJYk0za3VXTTFTYTlDdXk3cjhoa19SdFJxcWk3N01rSGkwSmF3MUlMcm9BU09ZMW5QNA?oc=5",
       "publishedAt": "2026-08-18T01:16:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8363902,
-      "title": "Oil climbs as fading US-Iran peace hopes raise supply risks - Reuters",
-      "summary": "Oil climbs as fading US-Iran peace hopes raise supply risks  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOLWFFMnZIN09zQ01kSjJtOWZDTzJHTk1xazNXM09aamwwLTBjeVRhc3VodGhQNWI4UlFaUFdEaFhNNDhFRzR6emlja2xYSTRhaHdFYzQwcnBWZnpkckpXSU5qUkFWZ0UyS0xzZ0lFbHdQRTFkWHJYY1JLM3gydXlKTllCLUFkclJiTEFTcFNOMTdEME95ekVaUHRtZmgwTmVDSWQzeHVodGtGNHkx?oc=5",
-      "publishedAt": "2026-08-18T01:13:00+00:00",
       "related": ""
     },
     {
