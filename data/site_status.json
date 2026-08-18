@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-08-18T03:06:29+00:00",
+  "updatedAt": "2026-08-18T03:13:32+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 6,
+    "pipelinesStale": 0,
+    "automation": "持续运行中",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 509,
-    "masterLearnUpdatedAt": "2026-08-18T02:19:45+00:00",
-    "masterAvgWinRate": 23.2,
+    "masterLearnRevision": 510,
+    "masterLearnUpdatedAt": "2026-08-18T03:12:55+00:00",
+    "masterAvgWinRate": 23.1,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -81,8 +81,8 @@
     "shadowWinRateT5": 54.8,
     "shadowAvgReturnT5": -0.63,
     "shadowMaturedT5": 126,
-    "shadowWeeks": 5.4,
-    "shadowTradingDays": 32,
+    "shadowWeeks": 5.6,
+    "shadowTradingDays": 33,
     "shadowAgeDays": 38,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-18T02:20:21+00:00",
+    "updatedAt": "2026-08-18T03:13:32+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -168,6 +168,17 @@
   },
   "recentLog": [
     {
+      "at": "2026-08-18T03:13:09+00:00",
+      "type": "master_learn",
+      "revision": 510,
+      "regime": "neutral",
+      "notes": {
+        "buffett": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
+        "lynch": "近期表现反馈：peg↓、earnings↓、sector↓",
+        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓"
+      }
+    },
+    {
       "at": "2026-08-18T02:19:57+00:00",
       "type": "master_learn",
       "revision": 509,
@@ -227,18 +238,6 @@
         "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
         "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
       }
-    },
-    {
-      "at": "2026-08-17T22:49:43+00:00",
-      "type": "master_learn",
-      "revision": 504,
-      "regime": "risk_off",
-      "notes": {
-        "buffett": "近期表现反馈：roe↓、pe↓、debt↓、trend↓",
-        "munger": "近期表现反馈：trend↑",
-        "soros": "近期表现反馈：month↓、rs↓、trend↓、beta↓",
-        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
-      }
     }
   ],
   "pipelines": [
@@ -247,18 +246,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-18T02:20:20+00:00",
-      "status": "stale",
-      "ageMinutes": 46
+      "updatedAt": "2026-08-18T03:13:31+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-18T02:20:10+00:00",
-      "status": "stale",
-      "ageMinutes": 46
+      "updatedAt": "2026-08-18T03:13:22+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -267,7 +266,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-18T02:31:01+00:00",
       "status": "ok",
-      "ageMinutes": 35
+      "ageMinutes": 42
     },
     {
       "id": "wencai",
@@ -276,7 +275,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-18T03:06:03+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 7
     },
     {
       "id": "reports",
@@ -285,7 +284,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-18T10:18:16+08:00",
       "status": "ok",
-      "ageMinutes": 48
+      "ageMinutes": 55
     },
     {
       "id": "backtest",
@@ -294,9 +293,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-16T02:55:22+00:00",
       "status": "ok",
-      "ageMinutes": 2891
+      "ageMinutes": 2898
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "32094212258"
+  "triggeredBy": "Update Market Data",
+  "runId": "32094641644"
 }
