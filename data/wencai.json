@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-18T03:54:28+00:00",
+  "updatedAt": "2026-08-18T04:48:15+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 40 条资讯",
+  "message": "已更新 4 个市场问句 · 16 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 56,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603708.SH",
@@ -91,13 +91,16 @@
           "changePct": 20.0
         }
       ],
-      "count": 56
+      "count": 56,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002951.SZ",
@@ -118,13 +121,16 @@
           "changePct": -10.02
         }
       ],
-      "count": 3
+      "count": 3,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "600206.SH",
@@ -196,13 +202,16 @@
           "changePct": 1.43,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "000725.SZ",
@@ -260,33 +269,10 @@
           "changePct": 5.48,
           "flow": 253656697
         }
-      ]
-    },
-    {
-      "id": "range",
-      "title": "箱体震荡",
-      "query": "60日内振幅小于15%且今日放量",
-      "status": "ok",
-      "items": [
-        {
-          "code": "603566.SH",
-          "name": "普莱柯",
-          "price": 10.52,
-          "changePct": 0.29
-        },
-        {
-          "code": "002758.SZ",
-          "name": "浙农股份",
-          "price": 8.19,
-          "changePct": 2.37
-        },
-        {
-          "code": "600864.SH",
-          "name": "哈投股份",
-          "price": 5.42,
-          "changePct": -3.56
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -465,270 +451,13 @@
       "summary": "利好",
       "source": "wencai",
       "category": "利好"
-    },
-    {
-      "id": "wencai:8a24180a8fe24ebf",
-      "title": "华锡有色：广西华锡有色金属股份有限公司2026年半年度报告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600301_20260818_TK8W.pdf",
-      "publisher": "同花顺问财",
-      "related": "华锡有色 (600301.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:ff9aa4fa2317b277",
-      "title": "华锡有色：广西华锡有色金属股份有限公司2026年半年度报告摘要",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600301_20260818_2GP5.pdf",
-      "publisher": "同花顺问财",
-      "related": "华锡有色 (600301.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:86a91f9d807d1ddb",
-      "title": "华锡有色：广西华锡有色金属股份有限公司2026年半年度募集资金存放与实际使用情况的专项报告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600301_20260818_1Q8H.pdf",
-      "publisher": "同花顺问财",
-      "related": "华锡有色 (600301.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:3818dfc4f76cee5b",
-      "title": "瑜欣电子：北京国枫关于重庆瑜欣平瑞电子股份有限公司2026年限制性股票激励计划调整授予价格及数量相关事项的法律意见书",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476593.PDF",
-      "publisher": "同花顺问财",
-      "related": "瑜欣电子 (301107.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:d4370f9ec7937770",
-      "title": "瑜欣电子：2026年半年度募集资金存放、管理与使用情况的专项报告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477207.PDF",
-      "publisher": "同花顺问财",
-      "related": "瑜欣电子 (301107.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:1e12b8829bf6acff",
-      "title": "瑜欣电子：第四届董事会第十三次会议决议公告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477206.PDF",
-      "publisher": "同花顺问财",
-      "related": "瑜欣电子 (301107.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:7daf297c3e757859",
-      "title": "亚太股份：非经营性资金占用及其他关联资金往来情况表",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476995.PDF",
-      "publisher": "同花顺问财",
-      "related": "亚太股份 (002284.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:9e62248df80766f2",
-      "title": "亚太股份：2026年半年度报告摘要",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476993.PDF",
-      "publisher": "同花顺问财",
-      "related": "亚太股份 (002284.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:bcc76269c89a9b1a",
-      "title": "亚太股份：2026年半年度募集资金存放与使用情况专项报告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476997.PDF",
-      "publisher": "同花顺问财",
-      "related": "亚太股份 (002284.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:6efb775c6646fdd4",
-      "title": "ST瑞贝卡：关于遭受自然灾害影响的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600439_20260818_K6AP.pdf",
-      "publisher": "同花顺问财",
-      "related": "ST瑞贝卡 (600439.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:1c282fea43af8e4d",
-      "title": "林海股份：林海股份有限公司关于国机财务有限责任公司收到《行政处罚决定书》及风险处置结果的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600099_20260818_BUSH.pdf",
-      "publisher": "同花顺问财",
-      "related": "林海股份 (600099.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:246419ff15a731da",
-      "title": "东睦股份：东睦股份2026年第二次临时股东会会议资料",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600114_20260818_IATD.pdf",
-      "publisher": "同花顺问财",
-      "related": "东睦股份 (600114.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:7db02ca83383ef9a",
-      "title": "东睦股份：东睦股份关于公司取得不动产权证书暨新科技项目投资进展的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600114_20260818_CV8O.pdf",
-      "publisher": "同花顺问财",
-      "related": "东睦股份 (600114.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:663f0b7b3f1e6a90",
-      "title": "东睦股份：东睦股份关于召开2026年第二次临时股东会提示性公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/600114_20260818_V51K.pdf",
-      "publisher": "同花顺问财",
-      "related": "东睦股份 (600114.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:3087367480a3f96e",
-      "title": "光库科技：关于珠海华发集团财务有限公司2026年半年度风险持续评估报告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477534.PDF",
-      "publisher": "同花顺问财",
-      "related": "光库科技 (300620.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:21c459f46503e03e",
-      "title": "光库科技：2026年半年度非经营性资金占用及其他关联资金往来情况汇总表",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477532.PDF",
-      "publisher": "同花顺问财",
-      "related": "光库科技 (300620.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:eccd5c750e5c754f",
-      "title": "光库科技：2026年半年度报告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225477531.PDF",
-      "publisher": "同花顺问财",
-      "related": "光库科技 (300620.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:b4e8b22fd66ecc59",
-      "title": "南威软件：关于控股股东部分股份解除质押的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/603636_20260818_7EBD.pdf",
-      "publisher": "同花顺问财",
-      "related": "南威软件 (603636.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:d5929c7802ddcd2f",
-      "title": "江南新材：关于使用部分闲置募集资金进行现金管理到期赎回并注销部分募集资金现金管理产品专用结算账户的公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/603124_20260818_XRWG.pdf",
-      "publisher": "同花顺问财",
-      "related": "江南新材 (603124.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:f043d7984b11c61b",
-      "title": "安凯客车：2026年半年度报告",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476694.PDF",
-      "publisher": "同花顺问财",
-      "related": "安凯客车 (000868.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:7bebaee2ce52c6f5",
-      "title": "安凯客车：独立董事提名人声明与承诺",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476700.PDF",
-      "publisher": "同花顺问财",
-      "related": "安凯客车 (000868.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:c714c7f3e82d4e32",
-      "title": "安凯客车：关于召开2026年第一次临时股东会的通知",
-      "link": "http://static.cninfo.com.cn/finalpage/2026-08-18/1225476697.PDF",
-      "publisher": "同花顺问财",
-      "related": "安凯客车 (000868.SZ)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:46890713b40d7c72",
-      "title": "五洲特纸：五洲特种纸业集团股份有限公司2026年第一次临时股东会会议资料",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/605007_20260818_OEYE.pdf",
-      "publisher": "同花顺问财",
-      "related": "五洲特纸 (605007.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
-    },
-    {
-      "id": "wencai:7a69438854a090f1",
-      "title": "中国核电：中国核电2026年第二次临时股东会决议公告",
-      "link": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/601985_20260818_SRXD.pdf",
-      "publisher": "同花顺问财",
-      "related": "中国核电 (601985.SH)",
-      "publishedAt": "2026-08-17T16:00:00+00:00",
-      "summary": "公告",
-      "source": "wencai",
-      "category": "公告"
     }
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "range: 'NoneType' object has no attribute 'get'"
   ]
 }
