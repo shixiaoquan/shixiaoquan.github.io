@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-18T06:17:36+00:00",
+  "updatedAt": "2026-08-18T07:09:38+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -109,15 +115,15 @@
       "currency": null,
       "region": null,
       "price": 6.74,
-      "changePct": 0.0,
-      "weekChangePct": -0.07,
-      "monthChangePct": -0.44,
+      "changePct": -0.01,
+      "weekChangePct": -0.08,
+      "monthChangePct": -0.45,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7394,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 6.7531,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,14 +134,14 @@
       "region": null,
       "price": 7.84,
       "changePct": -0.03,
-      "weekChangePct": -0.01,
-      "monthChangePct": null,
+      "weekChangePct": -0.02,
+      "monthChangePct": 0.05,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8453,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 7.8451,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -144,16 +150,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.73,
-      "changePct": 0.32,
-      "weekChangePct": 0.36,
-      "monthChangePct": -1.71,
+      "price": 159.71,
+      "changePct": 0.31,
+      "weekChangePct": 0.35,
+      "monthChangePct": -1.72,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.23,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 159.3139,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -163,51 +169,25 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": -0.01,
-      "weekChangePct": 0.23,
-      "monthChangePct": 1.27,
+      "changePct": 0.01,
+      "weekChangePct": 0.25,
+      "monthChangePct": 1.29,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8626,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-17"
+      "refPrice": 0.8631,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7375,
+      "price": 0.7379,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-17"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8099,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-17"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2764,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-17"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -218,10 +198,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4443.8,
-      "changePct": 0.59,
-      "weekChangePct": 1.39,
-      "monthChangePct": 10.81,
+      "price": 4453.7,
+      "changePct": 0.81,
+      "weekChangePct": 1.61,
+      "monthChangePct": 11.06,
       "source": "yahoo"
     },
     {
@@ -231,10 +211,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 85.43,
-      "changePct": 1.1,
-      "weekChangePct": 2.68,
-      "monthChangePct": 2.64,
+      "price": 85.2,
+      "changePct": 0.83,
+      "weekChangePct": 2.4,
+      "monthChangePct": 2.37,
       "source": "yahoo"
     },
     {
@@ -244,10 +224,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.57,
-      "changePct": -0.49,
-      "weekChangePct": -0.61,
-      "monthChangePct": 4.33,
+      "price": 6.58,
+      "changePct": -0.31,
+      "weekChangePct": -0.43,
+      "monthChangePct": 4.52,
       "source": "yahoo"
     }
   ],
@@ -259,7 +239,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4709.93,
+      "price": 4724.85,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -272,7 +252,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3693.12,
+      "price": 3705.6,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -285,7 +265,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1780.33,
+      "price": 1789.8,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -358,7 +338,7 @@
       "region": null,
       "price": 112.95,
       "changePct": 0.36,
-      "weekChangePct": 1.53,
+      "weekChangePct": 1.59,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "通信"
@@ -372,7 +352,7 @@
       "region": null,
       "price": 45.27,
       "changePct": 0.33,
-      "weekChangePct": 0.64,
+      "weekChangePct": 1.03,
       "monthChangePct": null,
       "source": "yahoo",
       "sector": "地产"
@@ -506,6 +486,16 @@
   ],
   "finnhubNews": [
     {
+      "id": 8364833,
+      "title": "The 30-year Treasury yield just hit a 19-year high. Three things could drive it even higher",
+      "summary": "The yield on the 30-year U.S. Treasury has surged to its highest level in 19 years, and some strategists see scope for the move to go further.",
+      "source": "CNBC",
+      "category": "general",
+      "link": "https://www.cnbc.com/2026/08/18/30-year-treasury-yield-three-things-that-could-drive-it-even-higher.html",
+      "publishedAt": "2026-08-18T06:11:52+00:00",
+      "related": ""
+    },
+    {
       "id": 8364632,
       "title": "Morning Bid: Bond investors in revolt as Iran threatens to go 'fully offensive' - Reuters",
       "summary": "Morning Bid: Bond investors in revolt as Iran threatens to go 'fully offensive'  Reuters",
@@ -563,16 +553,6 @@
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1IRXVLRUlydV9LUjVfX3hOQ0hKc2d0aE5MS0hqLXBrbTg2QXNhcEc2MnlhOU15dkxXSDV4V2hTM2lCR19Gc3BUWUpJYk0za3VXTTFTYTlDdXk3cjhoa19SdFJxcWk3N01rSGkwSmF3MUlMcm9BU09ZMW5QNA?oc=5",
       "publishedAt": "2026-08-18T01:16:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8361313,
-      "title": "China surprises oil markets again with a return to stockpiling in July - Reuters",
-      "summary": "China surprises oil markets again with a return to stockpiling in July  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOOWM3eVRJMFNmUjRab1RyZFVmQU12ZUVkbDVIUnpRQ2o3WnhSWlJ2RHhFWXE5bDM0WDFydXd1X3haSFQ5WUFVa1lrcFZGVTlUUjREY0NGNHZ3YWxEWDlxQjdIN3F5QTdPVEk5OURMbW9QQ2d2cDJxSVBYZVpoMU9yUU84Y0JkNFZ6anZ1d0FGaHpmek40WUJKTWxpeVZId2tnc0FxNXlLRmZWQmdLZG43SXdHUlBHc2F3MmlSZEpDVnRaRjRUb1hjWnhvOA?oc=5",
-      "publishedAt": "2026-08-18T01:14:24+00:00",
       "related": ""
     },
     {
