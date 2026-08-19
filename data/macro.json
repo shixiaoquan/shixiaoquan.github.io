@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T01:46:25+00:00",
+  "updatedAt": "2026-08-19T02:44:55+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -32,7 +38,7 @@
     "vix": 15.84,
     "vixRegime": "normal",
     "us10yYield": 4.71,
-    "usdCnh": null,
+    "usdCnh": 6.74,
     "usdCnhChangePct": null,
     "sectorLeader": "能源",
     "sectorLaggard": "科技",
@@ -53,7 +59,7 @@
       "price": 15.84,
       "changePct": 4.28,
       "weekChangePct": 3.66,
-      "monthChangePct": -15.07,
+      "monthChangePct": null,
       "source": "yahoo"
     }
   ],
@@ -87,6 +93,21 @@
   ],
   "fx": [
     {
+      "symbol": "USDCNH=X",
+      "name": "美元/离岸人民币",
+      "category": "fx",
+      "unit": "index",
+      "currency": null,
+      "region": null,
+      "price": 6.74,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "yahoo",
+      "base": "USD",
+      "quote": "CNH"
+    },
+    {
       "symbol": "USDCNY=X",
       "name": "美元/在岸人民币",
       "category": "fx",
@@ -94,15 +115,15 @@
       "currency": null,
       "region": null,
       "price": 6.74,
-      "changePct": 0.04,
-      "weekChangePct": -0.04,
-      "monthChangePct": -0.44,
+      "changePct": 0.02,
+      "weekChangePct": -0.05,
+      "monthChangePct": -0.46,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7423,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-18"
+      "refPrice": 6.7569,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -112,15 +133,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": -0.02,
-      "weekChangePct": -0.05,
+      "changePct": -0.03,
+      "weekChangePct": -0.06,
       "monthChangePct": 0.02,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8437,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-18"
+      "refPrice": 7.8438,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -129,16 +150,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 159.46,
-      "changePct": 0.08,
-      "weekChangePct": 0.12,
-      "monthChangePct": -1.86,
+      "price": 159.3,
+      "changePct": -0.02,
+      "weekChangePct": 0.02,
+      "monthChangePct": -1.96,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.7,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-18"
+      "refPrice": 159.5908,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -148,51 +169,25 @@
       "currency": null,
       "region": null,
       "price": 1.16,
-      "changePct": -0.02,
-      "weekChangePct": 0.32,
-      "monthChangePct": 1.42,
+      "changePct": 0.04,
+      "weekChangePct": 0.38,
+      "monthChangePct": 1.48,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
       "refPrice": 0.8639,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-18"
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7393,
+      "price": 0.7388,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-18"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8125,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-18"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2777,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-18"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -203,10 +198,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4404.5,
-      "changePct": -0.3,
-      "weekChangePct": 0.49,
-      "monthChangePct": 9.83,
+      "price": 4409.9,
+      "changePct": -0.18,
+      "weekChangePct": 0.61,
+      "monthChangePct": 9.96,
       "source": "yahoo"
     },
     {
@@ -216,10 +211,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 84.87,
-      "changePct": 0.44,
-      "weekChangePct": 2.01,
-      "monthChangePct": 1.97,
+      "price": 84.93,
+      "changePct": 0.51,
+      "weekChangePct": 2.08,
+      "monthChangePct": 2.04,
       "source": "yahoo"
     },
     {
@@ -230,9 +225,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.46,
-      "changePct": -2.23,
-      "weekChangePct": -2.34,
-      "monthChangePct": 2.51,
+      "changePct": -2.2,
+      "weekChangePct": -2.31,
+      "monthChangePct": 2.54,
       "source": "yahoo"
     }
   ],
@@ -244,7 +239,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4658.5,
+      "price": 4631.56,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -257,7 +252,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3602.34,
+      "price": 3552.05,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -270,7 +265,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1733.23,
+      "price": 1700.25,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -343,8 +338,8 @@
       "region": null,
       "price": 110.48,
       "changePct": -0.31,
-      "weekChangePct": -1.21,
-      "monthChangePct": null,
+      "weekChangePct": -0.71,
+      "monthChangePct": -0.29,
       "source": "yahoo",
       "sector": "通信"
     },
@@ -385,8 +380,8 @@
       "region": null,
       "price": 44.63,
       "changePct": -0.45,
-      "weekChangePct": 0.52,
-      "monthChangePct": null,
+      "weekChangePct": 1.25,
+      "monthChangePct": -1.33,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -414,7 +409,7 @@
       "price": 183.57,
       "changePct": -1.48,
       "weekChangePct": -1.15,
-      "monthChangePct": 3.06,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "工业"
     },
@@ -491,6 +486,16 @@
   ],
   "finnhubNews": [
     {
+      "id": 8368955,
+      "title": "Oil edges up on uncertainty over exports through Hormuz - Reuters",
+      "summary": "Oil edges up on uncertainty over exports through Hormuz  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOSkdUVWxmeFlpYXd4VjhyeHhvNjBmaVlPbVdFemxvNTJHaExLNWhQbzNXeTN5QkVkWVh4aVU4ODJCWnFGazJnQklMejNuVnpPaHFUN1JEM1lFZ3FZaG96ME00QWdZN1JmYW5fN1lXNmV6dDVZUWxFWlJYc05BaEtzbEpGbXlqSHoxRnB3dTQ2NnZXX0tzRENESXFhRDlGSmxNT01LMWhSWQ?oc=5",
+      "publishedAt": "2026-08-19T00:39:00+00:00",
+      "related": ""
+    },
+    {
       "id": 8365891,
       "title": "Tech selloff weighs down Wall Street as bond yields climb - Reuters",
       "summary": "Tech selloff weighs down Wall Street as bond yields climb  Reuters",
@@ -561,23 +566,13 @@
       "related": ""
     },
     {
-      "id": 8365676,
-      "title": "Hormuz Strait to remain shut until U.S. meets interim deal conditions, Iran says - Reuters",
-      "summary": "Hormuz Strait to remain shut until U.S. meets interim deal conditions, Iran says  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOSENtbzRKbGs1djM0OE56Z0w0ODhCSVBFdHBXeTFqUGo2dzVPZ25GQkhGUTNXQTFtY0tNNDFrTnlSN2ZtQ282M2pSbWZrMncwUGFOcEtyaTB6TXNLNDR4Y0gtMEloYUU2S185bVBjeEpnYTBEUF9peWhzeEV0NVR5TVU3d3psNnc2VHdzYTJ5ZlhUM3dVbXh0SlFQZmhUQl9wbzQ4WG5ETXp4UjZyeWRmV2FyekpaYTFiZ0djY1E5LTY0aXI4WjZn?oc=5",
-      "publishedAt": "2026-08-18T16:23:47+00:00",
-      "related": ""
-    },
-    {
-      "id": 8368535,
-      "title": "Japan June Machine Orders +16.9% y/y (expected +10.8%)",
-      "summary": "<p>Machinery Orders (YoY) (June 2026) +16.9% </p><ul><li>expected +10.8%, prior -1.9%</li></ul><p>Machinery Orders (MoM) +9.7% m/m</p><ul><li>expected +7.8%, prior -12.4%</li></ul>\n                   ",
+      "id": 8369055,
+      "title": "Trump pauses 50% Canada tariffs for 'three day period'",
+      "summary": "<p>Trump pauses the new tariffs that were due at midnight US Eastern time. Says has a tentative deal. </p><p>USD/CAD dropped from around 1.3900 to around 1.3880.</p><p></p><p></p>\n                    ",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/japan-june-machine-orders-16-9-y-y-expected-10-8/",
-      "publishedAt": "2026-08-18T23:50:40+00:00",
+      "link": "https://investinglive.com/news/trump-pauses-50-canada-tariffs-for-three-day-period/",
+      "publishedAt": "2026-08-19T02:19:13+00:00",
       "related": ""
     }
   ],
