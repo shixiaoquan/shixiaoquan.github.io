@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T16:15:17+00:00",
+  "updatedAt": "2026-08-19T16:50:29+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: HTTP Error 522: <none>",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -29,17 +35,17 @@
     }
   ],
   "summary": {
-    "vix": 15.16,
+    "vix": 15.15,
     "vixRegime": "normal",
-    "us10yYield": 4.65,
+    "us10yYield": 4.66,
     "usdCnh": 6.73,
     "usdCnhChangePct": null,
     "sectorLeader": "健康",
-    "sectorLaggard": "工业",
+    "sectorLaggard": "科技",
     "yieldSpread10y2y": 0.52,
     "hints": [
       "美债收益率回落，利于风险资产估值修复。",
-      "美股行业轮动：健康 领涨（+2.87%），工业 靠后。"
+      "美股行业轮动：健康 领涨（+2.72%），科技 靠后。"
     ]
   },
   "risk": [
@@ -50,10 +56,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.16,
-      "changePct": -4.29,
-      "weekChangePct": 4.19,
-      "monthChangePct": -11.09,
+      "price": 15.15,
+      "changePct": -4.36,
+      "weekChangePct": 4.12,
+      "monthChangePct": -11.14,
       "source": "yahoo"
     }
   ],
@@ -65,10 +71,10 @@
       "unit": "yield_pct",
       "currency": null,
       "region": null,
-      "price": 4.65,
-      "changePct": -1.13,
-      "weekChangePct": -0.62,
-      "monthChangePct": 0.54,
+      "price": 4.66,
+      "changePct": -0.93,
+      "weekChangePct": -0.43,
+      "monthChangePct": null,
       "source": "yahoo"
     },
     {
@@ -110,14 +116,14 @@
       "region": null,
       "price": 6.72,
       "changePct": -0.33,
-      "weekChangePct": -0.41,
+      "weekChangePct": -0.44,
       "monthChangePct": -0.81,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7382,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-19"
+      "refPrice": 6.7569,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -128,14 +134,14 @@
       "region": null,
       "price": 7.84,
       "changePct": -0.05,
-      "weekChangePct": -0.08,
-      "monthChangePct": -0.01,
+      "weekChangePct": -0.06,
+      "monthChangePct": 0.0,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8416,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-19"
+      "refPrice": 7.8438,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -144,16 +150,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.41,
-      "changePct": -0.58,
-      "weekChangePct": -0.54,
-      "monthChangePct": -2.51,
+      "price": 158.35,
+      "changePct": -0.62,
+      "weekChangePct": -0.57,
+      "monthChangePct": -2.55,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 159.09,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-19"
+      "refPrice": 159.5908,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -163,51 +169,25 @@
       "currency": null,
       "region": null,
       "price": 1.17,
-      "changePct": 0.79,
-      "weekChangePct": 1.13,
-      "monthChangePct": 2.24,
+      "changePct": 0.78,
+      "weekChangePct": 1.09,
+      "monthChangePct": 2.14,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8617,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-08-19"
+      "refPrice": 0.8639,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7377,
+      "price": 0.7388,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-19"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8102,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-19"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2762,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-08-19"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -218,10 +198,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4552.3,
-      "changePct": 4.27,
-      "weekChangePct": 3.25,
-      "monthChangePct": 11.82,
+      "price": 4553.7,
+      "changePct": 4.3,
+      "weekChangePct": 3.28,
+      "monthChangePct": 11.85,
       "source": "yahoo"
     },
     {
@@ -231,10 +211,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 85.38,
-      "changePct": 0.52,
-      "weekChangePct": 2.53,
-      "monthChangePct": 0.55,
+      "price": 85.49,
+      "changePct": 0.65,
+      "weekChangePct": 2.67,
+      "monthChangePct": 0.68,
       "source": "yahoo"
     },
     {
@@ -245,9 +225,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.5,
-      "changePct": 0.31,
-      "weekChangePct": -1.43,
-      "monthChangePct": -0.13,
+      "changePct": 0.23,
+      "weekChangePct": -1.51,
+      "monthChangePct": -0.21,
       "source": "yahoo"
     }
   ],
@@ -300,10 +280,10 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 174.6,
-      "changePct": 2.87,
-      "weekChangePct": 3.66,
-      "monthChangePct": 8.95,
+      "price": 174.34,
+      "changePct": 2.72,
+      "weekChangePct": 3.5,
+      "monthChangePct": 8.79,
       "source": "yahoo",
       "sector": "健康"
     },
@@ -328,26 +308,12 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 118.58,
-      "changePct": 1.91,
-      "weekChangePct": 0.59,
-      "monthChangePct": 3.23,
+      "price": 118.31,
+      "changePct": 1.68,
+      "weekChangePct": 0.36,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "可选消费"
-    },
-    {
-      "symbol": "XLC",
-      "name": "通信",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 111.96,
-      "changePct": 1.34,
-      "weekChangePct": 1.54,
-      "monthChangePct": 1.05,
-      "source": "yahoo",
-      "sector": "通信"
     },
     {
       "symbol": "XLP",
@@ -356,26 +322,40 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 86.25,
-      "changePct": 0.79,
-      "weekChangePct": 1.38,
-      "monthChangePct": 2.61,
+      "price": 86.58,
+      "changePct": 1.17,
+      "weekChangePct": 1.76,
+      "monthChangePct": 3.0,
       "source": "yahoo",
       "sector": "必需消费"
     },
     {
-      "symbol": "XLF",
-      "name": "金融",
+      "symbol": "XLC",
+      "name": "通信",
       "category": "sector",
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 57.92,
-      "changePct": 0.15,
-      "weekChangePct": 0.01,
-      "monthChangePct": 3.23,
+      "price": 111.64,
+      "changePct": 1.05,
+      "weekChangePct": 1.24,
+      "monthChangePct": null,
       "source": "yahoo",
-      "sector": "金融"
+      "sector": "通信"
+    },
+    {
+      "symbol": "XLRE",
+      "name": "地产",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 44.76,
+      "changePct": 0.28,
+      "weekChangePct": 0.6,
+      "monthChangePct": -0.98,
+      "source": "yahoo",
+      "sector": "地产"
     },
     {
       "symbol": "XLE",
@@ -392,18 +372,18 @@
       "sector": "能源"
     },
     {
-      "symbol": "XLRE",
-      "name": "地产",
+      "symbol": "XLF",
+      "name": "金融",
       "category": "sector",
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 44.68,
-      "changePct": 0.11,
-      "weekChangePct": 0.43,
-      "monthChangePct": -1.22,
+      "price": 57.81,
+      "changePct": -0.06,
+      "weekChangePct": -0.2,
+      "monthChangePct": 3.02,
       "source": "yahoo",
-      "sector": "地产"
+      "sector": "金融"
     },
     {
       "symbol": "XLU",
@@ -412,26 +392,12 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 43.88,
-      "changePct": -0.32,
-      "weekChangePct": 0.09,
-      "monthChangePct": -2.32,
+      "price": 43.99,
+      "changePct": -0.06,
+      "weekChangePct": 0.35,
+      "monthChangePct": -2.06,
       "source": "yahoo",
       "sector": "公用事业"
-    },
-    {
-      "symbol": "XLK",
-      "name": "科技",
-      "category": "sector",
-      "unit": "index",
-      "currency": "USD",
-      "region": null,
-      "price": 184.78,
-      "changePct": -0.45,
-      "weekChangePct": -2.16,
-      "monthChangePct": 2.21,
-      "source": "yahoo",
-      "sector": "科技"
     },
     {
       "symbol": "XLI",
@@ -440,12 +406,26 @@
       "unit": "index",
       "currency": "USD",
       "region": null,
-      "price": 182.63,
-      "changePct": -0.51,
-      "weekChangePct": -1.75,
-      "monthChangePct": 2.22,
+      "price": 182.58,
+      "changePct": -0.54,
+      "weekChangePct": -1.78,
+      "monthChangePct": null,
       "source": "yahoo",
       "sector": "工业"
+    },
+    {
+      "symbol": "XLK",
+      "name": "科技",
+      "category": "sector",
+      "unit": "index",
+      "currency": "USD",
+      "region": null,
+      "price": 184.37,
+      "changePct": -0.67,
+      "weekChangePct": -2.38,
+      "monthChangePct": 1.99,
+      "source": "yahoo",
+      "sector": "科技"
     }
   ],
   "fred": [
