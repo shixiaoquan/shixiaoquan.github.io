@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-19T07:50:40+00:00",
+  "updatedAt": "2026-08-19T08:52:08+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 34 条资讯",
+  "message": "已更新 4 个市场问句 · 34 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 37,
@@ -97,7 +97,7 @@
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002491.SZ",
@@ -173,13 +173,15 @@
         }
       ],
       "count": 100,
-      "countNote": "100+"
+      "countNote": "100+",
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688836.SH",
@@ -251,13 +253,16 @@
           "changePct": 5.16,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "600547.SH",
@@ -315,63 +320,10 @@
           "changePct": 3.15,
           "flow": 239425776
         }
-      ]
-    },
-    {
-      "id": "low_pe",
-      "title": "低估值防御",
-      "query": "市盈率低于行业均值且股息率大于3%",
-      "status": "ok",
-      "items": [
-        {
-          "code": "600036.SH",
-          "name": "招商银行",
-          "price": 39.15,
-          "changePct": 2.25
-        },
-        {
-          "code": "920003.BJ",
-          "name": "中诚咨询",
-          "price": 16.43,
-          "changePct": -3.07
-        },
-        {
-          "code": "603529.SH",
-          "name": "爱玛科技",
-          "price": 20.95,
-          "changePct": 1.55
-        },
-        {
-          "code": "601665.SH",
-          "name": "齐鲁银行",
-          "price": 6.45,
-          "changePct": 0.78
-        },
-        {
-          "code": "600566.SH",
-          "name": "济川药业",
-          "price": 24.84,
-          "changePct": 3.46
-        },
-        {
-          "code": "002091.SZ",
-          "name": "江苏国泰",
-          "price": 7.72,
-          "changePct": -0.77
-        },
-        {
-          "code": "601838.SH",
-          "name": "成都银行",
-          "price": 18.41,
-          "changePct": 2.28
-        },
-        {
-          "code": "601318.SH",
-          "name": "中国平安",
-          "price": 52.08,
-          "changePct": 1.48
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -749,5 +701,11 @@
       "source": "wencai",
       "category": "公告"
     }
-  ]
+  ],
+  "errors": [
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "low_pe: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
