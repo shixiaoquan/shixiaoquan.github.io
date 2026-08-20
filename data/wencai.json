@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-20T13:56:41+00:00",
+  "updatedAt": "2026-08-20T14:51:29+00:00",
   "source": "同花顺问财",
   "status": "ok",
   "message": "已更新 4 个市场问句 · 40 条资讯 · 部分沿用缓存",
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002491.SZ",
@@ -91,13 +91,16 @@
           "changePct": 10.0
         }
       ],
-      "count": 83
+      "count": 83,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "003032.SZ",
@@ -172,13 +175,15 @@
           "changePct": -10.03
         }
       ],
-      "count": 13
+      "count": 13,
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688836.SH",
@@ -250,7 +255,10 @@
           "changePct": 10.03,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
@@ -763,6 +771,8 @@
     }
   ],
   "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
     "main_flow: 'NoneType' object has no attribute 'get'",
     "range: 'NoneType' object has no attribute 'get'"
   ],
