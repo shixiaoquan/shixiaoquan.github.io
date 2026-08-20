@@ -1,19 +1,19 @@
 {
-  "updatedAt": "2026-08-19T23:56:31+00:00",
+  "updatedAt": "2026-08-20T01:11:38+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 585,
-    "masterLearnUpdatedAt": "2026-08-19T23:55:58+00:00",
+    "masterLearnRevision": 586,
+    "masterLearnUpdatedAt": "2026-08-20T01:11:16+00:00",
     "masterAvgWinRate": 29.9,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-19T23:56:31+00:00",
+    "updatedAt": "2026-08-20T01:11:38+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
@@ -151,6 +151,16 @@
     }
   },
   "recentLog": [
+    {
+      "at": "2026-08-20T01:11:25+00:00",
+      "type": "master_learn",
+      "revision": 586,
+      "regime": "neutral",
+      "notes": {
+        "munger": "近期表现反馈：roe↓、margins↓、debt↓、pe↓",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
+      }
+    },
     {
       "at": "2026-08-19T23:56:11+00:00",
       "type": "master_learn",
@@ -200,16 +210,6 @@
         "munger": "近期表现反馈：roe↓、margins↓、debt↓、pe↓",
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
       }
-    },
-    {
-      "at": "2026-08-19T21:56:27+00:00",
-      "type": "master_learn",
-      "revision": 580,
-      "regime": "neutral",
-      "notes": {
-        "munger": "近期表现反馈：roe↓、margins↓、debt↓、pe↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
-      }
     }
   ],
   "pipelines": [
@@ -218,7 +218,7 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-19T23:56:31+00:00",
+      "updatedAt": "2026-08-20T01:11:38+00:00",
       "status": "ok",
       "ageMinutes": 0
     },
@@ -227,7 +227,7 @@
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-19T23:56:22+00:00",
+      "updatedAt": "2026-08-20T01:11:31+00:00",
       "status": "ok",
       "ageMinutes": 0
     },
@@ -237,8 +237,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-19T23:51:35+00:00",
-      "status": "ok",
-      "ageMinutes": 4
+      "status": "stale",
+      "ageMinutes": 80
     },
     {
       "id": "wencai",
@@ -247,7 +247,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-19T23:33:44+00:00",
       "status": "ok",
-      "ageMinutes": 22
+      "ageMinutes": 97
     },
     {
       "id": "reports",
@@ -256,7 +256,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-19T16:47:08+08:00",
       "status": "ok",
-      "ageMinutes": 909
+      "ageMinutes": 984
     },
     {
       "id": "backtest",
@@ -265,9 +265,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-16T02:55:22+00:00",
       "status": "ok",
-      "ageMinutes": 5581
+      "ageMinutes": 5656
     }
   ],
   "triggeredBy": "Update Market Data",
-  "runId": "32315261644"
+  "runId": "32320077243"
 }
