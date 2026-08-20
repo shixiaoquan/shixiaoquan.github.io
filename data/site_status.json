@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-20T18:57:28+00:00",
+  "updatedAt": "2026-08-20T19:05:02+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -225,8 +225,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-20T18:17:16+00:00",
-      "status": "ok",
-      "ageMinutes": 40
+      "status": "stale",
+      "ageMinutes": 47
     },
     {
       "id": "macro",
@@ -234,17 +234,17 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-20T18:17:05+00:00",
-      "status": "ok",
-      "ageMinutes": 40
+      "status": "stale",
+      "ageMinutes": 47
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-08-20T18:15:36+00:00",
+      "updatedAt": "2026-08-20T19:05:00+00:00",
       "status": "ok",
-      "ageMinutes": 41
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -253,7 +253,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-20T18:56:18+00:00",
       "status": "ok",
-      "ageMinutes": 1
+      "ageMinutes": 8
     },
     {
       "id": "reports",
@@ -262,7 +262,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-20T16:48:50+08:00",
       "status": "ok",
-      "ageMinutes": 608
+      "ageMinutes": 616
     },
     {
       "id": "backtest",
@@ -271,9 +271,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-16T02:55:22+00:00",
       "status": "ok",
-      "ageMinutes": 6722
+      "ageMinutes": 6729
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "32405879032"
+  "triggeredBy": "Update Truth Social",
+  "runId": "32406688435"
 }
