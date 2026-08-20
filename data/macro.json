@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-20T09:20:24+00:00",
+  "updatedAt": "2026-08-20T09:55:19+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: HTTP Error 522: <none>",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,7 +29,7 @@
     }
   ],
   "summary": {
-    "vix": 15.17,
+    "vix": 15.2,
     "vixRegime": "normal",
     "us10yYield": 4.65,
     "usdCnh": 6.72,
@@ -57,10 +51,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 15.17,
-      "changePct": 1.88,
-      "weekChangePct": 3.69,
-      "monthChangePct": null,
+      "price": 15.2,
+      "changePct": 2.08,
+      "weekChangePct": 3.9,
+      "monthChangePct": -8.65,
       "source": "yahoo"
     }
   ],
@@ -75,7 +69,7 @@
       "price": 4.65,
       "changePct": -1.13,
       "weekChangePct": -0.62,
-      "monthChangePct": null,
+      "monthChangePct": 0.54,
       "source": "yahoo"
     },
     {
@@ -88,7 +82,7 @@
       "price": 3.7,
       "changePct": -0.13,
       "weekChangePct": -0.19,
-      "monthChangePct": null,
+      "monthChangePct": -0.8,
       "source": "yahoo"
     }
   ],
@@ -116,15 +110,15 @@
       "currency": null,
       "region": null,
       "price": 6.72,
-      "changePct": -0.33,
-      "weekChangePct": -0.36,
-      "monthChangePct": -0.77,
+      "changePct": -0.32,
+      "weekChangePct": -0.33,
+      "monthChangePct": -0.66,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7461,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.7382,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-19"
     },
     {
       "symbol": "USDHKD=X",
@@ -134,15 +128,15 @@
       "currency": null,
       "region": null,
       "price": 7.84,
-      "changePct": -0.0,
-      "weekChangePct": -0.04,
-      "monthChangePct": 0.04,
+      "changePct": 0.0,
+      "weekChangePct": -0.03,
+      "monthChangePct": 0.03,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.841,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8416,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-19"
     },
     {
       "symbol": "USDJPY=X",
@@ -151,16 +145,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.28,
-      "changePct": -0.8,
-      "weekChangePct": -0.66,
-      "monthChangePct": -3.01,
+      "price": 158.34,
+      "changePct": -0.76,
+      "weekChangePct": -0.62,
+      "monthChangePct": -2.97,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 158.5485,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 159.09,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-19"
     },
     {
       "symbol": "EURUSD=X",
@@ -170,25 +164,51 @@
       "currency": null,
       "region": null,
       "price": 1.17,
-      "changePct": 1.12,
-      "weekChangePct": 1.44,
-      "monthChangePct": 2.55,
+      "changePct": 1.14,
+      "weekChangePct": 1.57,
+      "monthChangePct": 2.69,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8584,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8617,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-08-19"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7359,
+      "price": 0.7377,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-19"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8102,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-19"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2762,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-08-19"
     }
   ],
   "commodities": [
@@ -199,10 +219,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4549.3,
-      "changePct": 1.33,
-      "weekChangePct": 4.26,
-      "monthChangePct": 9.7,
+      "price": 4545.3,
+      "changePct": 1.25,
+      "weekChangePct": 4.16,
+      "monthChangePct": 9.61,
       "source": "yahoo"
     },
     {
@@ -212,10 +232,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 86.46,
-      "changePct": 0.73,
-      "weekChangePct": 6.41,
-      "monthChangePct": -0.43,
+      "price": 86.29,
+      "changePct": 0.54,
+      "weekChangePct": 6.2,
+      "monthChangePct": -0.62,
       "source": "yahoo"
     },
     {
@@ -226,9 +246,9 @@
       "currency": "USD",
       "region": null,
       "price": 6.47,
-      "changePct": -0.21,
-      "weekChangePct": -1.8,
-      "monthChangePct": 0.36,
+      "changePct": -0.28,
+      "weekChangePct": -1.87,
+      "monthChangePct": 0.29,
       "source": "yahoo"
     }
   ],
@@ -298,7 +318,7 @@
       "price": 118.59,
       "changePct": 1.92,
       "weekChangePct": 0.59,
-      "monthChangePct": null,
+      "monthChangePct": 3.24,
       "source": "yahoo",
       "sector": "可选消费"
     },
@@ -312,7 +332,7 @@
       "price": 52.52,
       "changePct": 1.43,
       "weekChangePct": -0.11,
-      "monthChangePct": null,
+      "monthChangePct": 4.83,
       "source": "yahoo",
       "sector": "材料"
     },
@@ -340,7 +360,7 @@
       "price": 44.99,
       "changePct": 0.81,
       "weekChangePct": 1.12,
-      "monthChangePct": null,
+      "monthChangePct": -0.53,
       "source": "yahoo",
       "sector": "地产"
     },
@@ -354,7 +374,7 @@
       "price": 111.32,
       "changePct": 0.76,
       "weekChangePct": 0.95,
-      "monthChangePct": null,
+      "monthChangePct": 0.47,
       "source": "yahoo",
       "sector": "通信"
     },
@@ -410,7 +430,7 @@
       "price": 181.95,
       "changePct": -0.88,
       "weekChangePct": -2.11,
-      "monthChangePct": null,
+      "monthChangePct": 1.84,
       "source": "yahoo",
       "sector": "工业"
     },
@@ -487,13 +507,13 @@
   ],
   "finnhubNews": [
     {
-      "id": 8374326,
-      "title": "Trump warns of economic consequences for any country that supports Iran - Reuters",
-      "summary": "Trump warns of economic consequences for any country that supports Iran  Reuters",
+      "id": 8374846,
+      "title": "China boosts imports of Russian crude, stymieing India's refiners - Reuters",
+      "summary": "China boosts imports of Russian crude, stymieing India's refiners  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQc0t6ejR6ZDNSMllnR0lXWC1vV3ZyTXoxUDEyeHRXczFpRWtRbzEyWmdkRVRqWi1oZzJEaEF6UnAxcHItbXZ6Z1hKTzBQV2hPOUVFQml3Wk80T1F2UmFRSzIwakhFR2hKbmp3MFJ6LUFDX1BHV3BKeDZxYXdaT2wwWi1kaU5LbkFaX19IekRKSGNUT0VBc1FQeWVRdUxLd0U3V1I5WjZoMmtIcXZUQnRBczZKcTFZa19zUVE?oc=5",
-      "publishedAt": "2026-08-20T08:24:47+00:00",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPZU9oV2RaZ2RZNW5hZlFqbXFNNmd5RnJkM21hWmo0WVhJX1paTlBWaE50SHhMazFzdHJuVVF2QlpzT1lRZG1VUEdERkdsSXcxTjFmQjd5RXlJeDM1eVR1NHZnd0xlRWJFXzlsbS0tdmpJMlVzeFNrLUk1R25abzR3cUxDYXRCUW1lekg0LU9lWmNzdWFyekI1SFJOdmxJSWVaRS0zT3Z5QzRVNkt3VndialQySlRtbTVKTTdJb3g1T0h2ZXFabXNLMQ?oc=5",
+      "publishedAt": "2026-08-20T08:57:52+00:00",
       "related": ""
     },
     {
@@ -504,16 +524,6 @@
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNbGdaUUMxaVVtb1Zjc0o0dkwwaFhibExzZjBQNEc0emRZYm5LRVpTNm80c3FjYVhhRktwOHFYMzVVNU9GUkRVU1RkQ0ozakdwdEp3dUd4TUZ2a1ZhVFI1Q05jdTY3YXZ0OHduTGJIQV9zT1pxRm1UblpuM2ZCR3RpUkxzNGNzVUhVYlAwSXY3ZzVkWWhMMWpQUlA5ellzOXZVTEdNVUVOM1JReU5ESWYwMWFDVWZFLWk1YktvTWRuUk0tWFBM?oc=5",
       "publishedAt": "2026-08-20T06:40:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8374846,
-      "title": "China boosts imports of Russian crude, stymieing India's refiners - Reuters",
-      "summary": "China boosts imports of Russian crude, stymieing India's refiners  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPZU9oV2RaZ2RZNW5hZlFqbXFNNmd5RnJkM21hWmo0WVhJX1paTlBWaE50SHhMazFzdHJuVVF2QlpzT1lRZG1VUEdERkdsSXcxTjFmQjd5RXlJeDM1eVR1NHZnd0xlRWJFXzlsbS0tdmpJMlVzeFNrLUk1R25abzR3cUxDYXRCUW1lekg0LU9lWmNzdWFyekI1SFJOdmxJSWVaRS0zT3Z5QzRVNkt3VndialQySlRtbTVKTTdJb3g1T0h2ZXFabXNLMQ?oc=5",
-      "publishedAt": "2026-08-20T05:30:07+00:00",
       "related": ""
     },
     {
@@ -534,6 +544,16 @@
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPR2wyclNjWVpvOTM3X0dCUjJNdEhZYkYwOC0taHk5bnNRXzZ2d3R2V092Z0pNTlBiVDdzejJXS0ozSnc1aGRjenhxbXRUY3RsMjgzUV9wSkFlTEJxbk1VbUFvbDZMTjhwTXpzR2lJVndmanZhUDhudjFlMUNVdVptcjlQYXZ1UTczRnVNM3pIUTQzQ3ctcUxwd2VYalFHYXRXdzJHemNSOUE5Vmwzdzd0NFNEcw?oc=5",
       "publishedAt": "2026-08-20T02:58:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8374326,
+      "title": "Trump warns of economic consequences for any country that supports Iran - Reuters",
+      "summary": "Trump warns of economic consequences for any country that supports Iran  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQc0t6ejR6ZDNSMllnR0lXWC1vV3ZyTXoxUDEyeHRXczFpRWtRbzEyWmdkRVRqWi1oZzJEaEF6UnAxcHItbXZ6Z1hKTzBQV2hPOUVFQml3Wk80T1F2UmFRSzIwakhFR2hKbmp3MFJ6LUFDX1BHV3BKeDZxYXdaT2wwWi1kaU5LbkFaX19IekRKSGNUT0VBc1FQeWVRdUxLd0U3V1I5WjZoMmtIcXZUQnRBczZKcTFZa19zUVE?oc=5",
+      "publishedAt": "2026-08-20T02:29:00+00:00",
       "related": ""
     },
     {
