@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-21T17:30:29+00:00",
+  "updatedAt": "2026-08-21T17:31:13+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -105,24 +105,8 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-21T17:30:29+00:00",
+    "updatedAt": "2026-08-21T16:59:18+00:00",
     "tasks": [
-      {
-        "id": "fix-pipeline-market",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · 行情·荐股·模拟盘",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-      },
-      {
-        "id": "fix-pipeline-macro",
-        "type": "fix_pipeline",
-        "priority": "high",
-        "title": "流水线过期 · 宏观与跨资产",
-        "reason": "stale",
-        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-      },
       {
         "id": "shadow-tracking",
         "type": "shadow_track",
@@ -144,6 +128,14 @@
         }
       },
       {
+        "id": "pipelines-stale",
+        "type": "fix_pipeline",
+        "priority": "medium",
+        "title": "部分流水线数据过期",
+        "reason": "2 条流水线过期",
+        "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
+      },
+      {
         "id": "tactic-tune-active",
         "type": "tactic_tune",
         "priority": "low",
@@ -161,9 +153,9 @@
       }
     ],
     "summary": {
-      "total": 6,
-      "high": 2,
-      "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      "total": 5,
+      "high": 0,
+      "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
   },
   "recentLog": [
@@ -236,7 +228,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-21T15:52:37+00:00",
       "status": "stale",
-      "ageMinutes": 97
+      "ageMinutes": 98
     },
     {
       "id": "macro",
@@ -245,16 +237,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-21T15:52:30+00:00",
       "status": "stale",
-      "ageMinutes": 97
+      "ageMinutes": 98
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-08-21T16:55:46+00:00",
+      "updatedAt": "2026-08-21T17:31:12+00:00",
       "status": "ok",
-      "ageMinutes": 34
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -263,7 +255,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-21T16:48:44+00:00",
       "status": "ok",
-      "ageMinutes": 41
+      "ageMinutes": 42
     },
     {
       "id": "reports",
@@ -272,7 +264,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-21T16:50:12+08:00",
       "status": "ok",
-      "ageMinutes": 520
+      "ageMinutes": 521
     },
     {
       "id": "backtest",
@@ -284,6 +276,6 @@
       "ageMinutes": 8075
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "32508476851"
+  "triggeredBy": "Update Truth Social",
+  "runId": "32508495027"
 }
