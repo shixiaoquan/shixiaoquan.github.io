@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T02:37:41+00:00",
+  "updatedAt": "2026-08-23T02:57:30+00:00",
   "tasks": [
     {
       "id": "fix-pipeline-market",
@@ -22,7 +22,7 @@
       "type": "shadow_track",
       "priority": "medium",
       "title": "影子轨积累中",
-      "reason": "配对归因 9 对 · 影子胜率 22.2% · 均边际 -0.05%",
+      "reason": "影子 T+5 50.7%/-0.86% vs 生产 62.2%/0.51% · 140 笔成熟",
       "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
     },
     {
@@ -30,7 +30,7 @@
       "type": "shadow_candidate",
       "priority": "medium",
       "title": "探索参数优于当前 · 已转入影子轨验证",
-      "reason": "探索候选 buy=72 breakout=62 期望 1.87% — 已写入影子轨，满 4 周后可提 PR",
+      "reason": "探索候选 buy=72 breakout=62 期望 1.25% — 已写入影子轨，满 4 周后可提 PR",
       "cursorPrompt": "勿直接改 strategy_config。确认 shadow_reco 满 4 周后再开 PR。",
       "params": {
         "buyScore": 72,
@@ -50,7 +50,7 @@
       "type": "research",
       "priority": "low",
       "title": "A/B 回测：v1.2 宽松优于 v1.3",
-      "reason": "Δ期望 1.84%",
+      "reason": "Δ期望 0.34%",
       "cursorPrompt": "仅研究参考；生产升级仍以影子轨 forward 为准。"
     }
   ],
