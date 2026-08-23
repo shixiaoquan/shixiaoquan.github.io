@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-23T00:01:29+00:00",
+  "updatedAt": "2026-08-23T01:12:17+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-22T23:55:22+00:00",
+    "updatedAt": "2026-08-23T01:12:17+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -236,7 +236,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-21T15:52:37+00:00",
       "status": "stale",
-      "ageMinutes": 1928
+      "ageMinutes": 1999
     },
     {
       "id": "macro",
@@ -245,7 +245,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-21T15:52:30+00:00",
       "status": "stale",
-      "ageMinutes": 1928
+      "ageMinutes": 1999
     },
     {
       "id": "truth",
@@ -253,8 +253,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-23T00:01:28+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 70
     },
     {
       "id": "wencai",
@@ -263,7 +263,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-22T23:32:34+00:00",
       "status": "ok",
-      "ageMinutes": 28
+      "ageMinutes": 99
     },
     {
       "id": "reports",
@@ -272,7 +272,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-22T16:38:09+08:00",
       "status": "ok",
-      "ageMinutes": 923
+      "ageMinutes": 994
     },
     {
       "id": "backtest",
@@ -281,9 +281,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-16T02:55:22+00:00",
       "status": "ok",
-      "ageMinutes": 9906
+      "ageMinutes": 9976
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "32606764350"
+  "triggeredBy": "Update Market Data",
+  "runId": "32609769691"
 }
