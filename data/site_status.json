@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-24T02:07:42+00:00",
+  "updatedAt": "2026-08-24T02:25:31+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -230,7 +230,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-24T02:07:41+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 17
     },
     {
       "id": "macro",
@@ -239,7 +239,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-24T02:07:35+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 17
     },
     {
       "id": "truth",
@@ -247,8 +247,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-24T01:21:07+00:00",
-      "status": "ok",
-      "ageMinutes": 46
+      "status": "stale",
+      "ageMinutes": 64
     },
     {
       "id": "wencai",
@@ -257,16 +257,16 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-24T01:55:05+00:00",
       "status": "ok",
-      "ageMinutes": 12
+      "ageMinutes": 30
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-08-23T16:38:47+08:00",
+      "updatedAt": "2026-08-24T10:25:31+08:00",
       "status": "ok",
-      "ageMinutes": 1048
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -275,9 +275,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-23T02:57:06+00:00",
       "status": "ok",
-      "ageMinutes": 1390
+      "ageMinutes": 1408
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "32681965726"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "32682987804"
 }
