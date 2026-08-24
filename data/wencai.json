@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-24T03:14:14+00:00",
+  "updatedAt": "2026-08-24T04:04:22+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 40 条资讯",
+  "message": "已更新 4 个市场问句 · 40 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 41,
@@ -16,7 +16,7 @@
       "id": "limit_up",
       "title": "今日涨停",
       "query": "今日涨停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "603565.SH",
@@ -91,13 +91,16 @@
           "changePct": 10.0
         }
       ],
-      "count": 41
+      "count": 41,
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
       "title": "今日跌停",
       "query": "今日跌停",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "002631.SZ",
@@ -160,13 +163,15 @@
           "changePct": -9.99
         }
       ],
-      "count": 10
+      "count": 10,
+      "stale": true,
+      "staleMessage": "沿用上次数据"
     },
     {
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688836.SH",
@@ -238,13 +243,16 @@
           "changePct": -7.39,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "601318.SH",
@@ -302,51 +310,10 @@
           "changePct": 0.03,
           "flow": 258974243
         }
-      ]
-    },
-    {
-      "id": "range",
-      "title": "箱体震荡",
-      "query": "60日内振幅小于15%且今日放量",
-      "status": "ok",
-      "items": [
-        {
-          "code": "301223.SZ",
-          "name": "中荣股份",
-          "price": 16.25,
-          "changePct": -1.75
-        },
-        {
-          "code": "603199.SH",
-          "name": "九华旅游",
-          "price": 33.9,
-          "changePct": 1.35
-        },
-        {
-          "code": "000828.SZ",
-          "name": "东莞控股",
-          "price": 10.0,
-          "changePct": 5.37
-        },
-        {
-          "code": "600511.SH",
-          "name": "国药股份",
-          "price": 26.37,
-          "changePct": -0.11
-        },
-        {
-          "code": "000544.SZ",
-          "name": "中原环保",
-          "price": 7.11,
-          "changePct": -1.66
-        },
-        {
-          "code": "920599.BJ",
-          "name": "同力股份",
-          "price": 17.34,
-          "changePct": 2.0
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -790,5 +757,12 @@
       "source": "wencai",
       "category": "公告"
     }
-  ]
+  ],
+  "errors": [
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "range: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
