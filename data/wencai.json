@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-24T09:01:01+00:00",
+  "updatedAt": "2026-08-24T10:00:11+00:00",
   "source": "同花顺问财",
   "status": "ok",
-  "message": "已更新 5 个市场问句 · 40 条资讯 · 部分沿用缓存",
+  "message": "已更新 4 个市场问句 · 40 条资讯 · 部分沿用缓存",
   "cookieUsed": true,
   "sentiment": {
     "limitUp": 48,
@@ -93,7 +93,8 @@
       ],
       "count": 48,
       "stale": true,
-      "staleMessage": "沿用上次数据"
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "limit_down",
@@ -177,7 +178,7 @@
       "id": "hot",
       "title": "人气排行",
       "query": "人气排行",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "688836.SH",
@@ -249,13 +250,16 @@
           "changePct": -2.41,
           "rank": "10"
         }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     },
     {
       "id": "main_flow",
       "title": "主力资金净流入",
       "query": "主力资金净流入",
-      "status": "ok",
+      "status": "stale",
       "items": [
         {
           "code": "601318.SH",
@@ -313,63 +317,10 @@
           "changePct": 1.54,
           "flow": 330664781
         }
-      ]
-    },
-    {
-      "id": "range",
-      "title": "箱体震荡",
-      "query": "60日内振幅小于15%且今日放量",
-      "status": "ok",
-      "items": [
-        {
-          "code": "601838.SH",
-          "name": "成都银行",
-          "price": 18.88,
-          "changePct": 1.23
-        },
-        {
-          "code": "601166.SH",
-          "name": "兴业银行",
-          "price": 18.28,
-          "changePct": 0.99
-        },
-        {
-          "code": "002327.SZ",
-          "name": "富安娜",
-          "price": 6.69,
-          "changePct": 2.14
-        },
-        {
-          "code": "002807.SZ",
-          "name": "江阴银行",
-          "price": 4.05,
-          "changePct": 1.0
-        },
-        {
-          "code": "002511.SZ",
-          "name": "中顺洁柔",
-          "price": 7.04,
-          "changePct": 0.14
-        },
-        {
-          "code": "600941.SH",
-          "name": "中国移动",
-          "price": 97.53,
-          "changePct": 1.33
-        },
-        {
-          "code": "601022.SH",
-          "name": "宁波远洋",
-          "price": 8.45,
-          "changePct": 1.93
-        },
-        {
-          "code": "300470.SZ",
-          "name": "中密控股",
-          "price": 28.3,
-          "changePct": 0.57
-        }
-      ]
+      ],
+      "stale": true,
+      "staleMessage": "沿用上次数据",
+      "error": "'NoneType' object has no attribute 'get'"
     }
   ],
   "news": [
@@ -815,6 +766,11 @@
     }
   ],
   "errors": [
-    "limit_down: 'NoneType' object has no attribute 'get'"
-  ]
+    "limit_up: 'NoneType' object has no attribute 'get'",
+    "limit_down: 'NoneType' object has no attribute 'get'",
+    "hot: 'NoneType' object has no attribute 'get'",
+    "main_flow: 'NoneType' object has no attribute 'get'",
+    "range: 'NoneType' object has no attribute 'get'"
+  ],
+  "newsStale": true
 }
