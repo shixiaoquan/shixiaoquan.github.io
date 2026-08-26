@@ -1,6 +1,22 @@
 {
-  "updatedAt": "2026-08-26T02:06:55+00:00",
+  "updatedAt": "2026-08-26T02:23:16+00:00",
   "tasks": [
+    {
+      "id": "fix-pipeline-market",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · 行情·荐股·模拟盘",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+    },
+    {
+      "id": "fix-pipeline-macro",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · 宏观与跨资产",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+    },
     {
       "id": "shadow-tracking",
       "type": "shadow_track",
@@ -22,14 +38,6 @@
       }
     },
     {
-      "id": "pipelines-stale",
-      "type": "fix_pipeline",
-      "priority": "medium",
-      "title": "部分流水线数据过期",
-      "reason": "2 条流水线过期",
-      "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
-    },
-    {
       "id": "tactic-tune-active",
       "type": "tactic_tune",
       "priority": "low",
@@ -47,8 +55,8 @@
     }
   ],
   "summary": {
-    "total": 5,
-    "high": 0,
-    "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
+    "total": 6,
+    "high": 2,
+    "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
   }
 }
