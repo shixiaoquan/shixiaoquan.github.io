@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-27T22:42:54+00:00",
+  "updatedAt": "2026-08-28T06:22:21+00:00",
   "track": "shadow",
   "productionVersion": "v1.3.0",
   "candidateParams": {
@@ -68,27 +68,28 @@
         "market": "A股",
         "sector": "银行",
         "currency": "CNY",
-        "price": 39.58,
-        "score": 56.6,
+        "price": 39.35,
+        "score": 51.7,
         "signal": "watch",
         "signalLabel": "影子弱信号",
-        "rsi": 58.1,
-        "monthChangePct": -0.2,
-        "relativeStrength": -1.61,
+        "rsi": 55.3,
+        "monthChangePct": -2.96,
+        "relativeStrength": -6.39,
         "reasons": [
           "价格站上 20 日均线",
-          "价格站上 60 日均线"
+          "价格站上 60 日均线",
+          "均线多头排列"
         ],
         "plan": {
-          "entry": "现价 39.58 轻仓试探；回踩 20 日均线 39.08 或 38.30 附近分批加仓",
-          "stopLoss": "跌破 38.28（约 -3.3%，2.5 倍 ATR）坚决止损",
-          "target": "第一目标 44.27（盈亏比 1:3.0），可分批止盈",
+          "entry": "现价 39.35 轻仓试探；回踩 20 日均线 39.07 或 38.29 附近分批加仓",
+          "stopLoss": "跌破 38.09（约 -3.2%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 43.89（盈亏比 1:3.0），可分批止盈",
           "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
         },
-        "stopLossPrice": 38.28,
-        "targetPrice": 44.27,
-        "distToStopPct": 3.3,
-        "distToTargetPct": 11.8,
+        "stopLossPrice": 38.09,
+        "targetPrice": 43.89,
+        "distToStopPct": 3.2,
+        "distToTargetPct": 11.5,
         "regimeOk": true,
         "breakout": false,
         "breakoutLevel": 40.55,
@@ -8748,6 +8749,98 @@
             }
           }
         ]
+      },
+      {
+        "id": "2026-08-28T06:22:21+00:00",
+        "recordedAt": "2026-08-28T06:22:21+00:00",
+        "marketContext": {
+          "mood": "偏多",
+          "regime": "risk_on"
+        },
+        "picks": [
+          {
+            "symbol": "NVDA",
+            "name": "英伟达",
+            "market": "美股",
+            "sector": "半导体",
+            "currency": "USD",
+            "price": 227.98,
+            "score": 83.2,
+            "signal": "buy",
+            "signalLabel": "趋势买入",
+            "rsi": 61.3,
+            "relativeStrength": 15.91,
+            "stopLossPrice": 211.7,
+            "targetPrice": 286.6,
+            "plan": {
+              "entry": "现价 227.98 轻仓试探；回踩 20 日均线 217.21 或 212.86 附近分批加仓",
+              "stopLoss": "跌破 211.70（约 -7.1%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 286.60（盈亏比 1:3.0），可分批止盈",
+              "position": "美股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
+            },
+            "decisionScore": 58.0,
+            "decisionLabel": "中",
+            "decisionComponents": {
+              "macro": {
+                "score": 85.0,
+                "note": "市场偏多"
+              },
+              "wencai": {
+                "score": 55.0,
+                "note": "问财震荡"
+              },
+              "masters": {
+                "score": 40.0,
+                "note": "大师共识 0/7"
+              },
+              "truth": {
+                "score": 55,
+                "note": "舆情热度 0"
+              }
+            }
+          },
+          {
+            "symbol": "600036.SS",
+            "name": "招商银行",
+            "market": "A股",
+            "sector": "银行",
+            "currency": "CNY",
+            "price": 39.35,
+            "score": 51.7,
+            "signal": "watch",
+            "signalLabel": "影子弱信号",
+            "rsi": 55.3,
+            "relativeStrength": -6.39,
+            "stopLossPrice": 38.09,
+            "targetPrice": 43.89,
+            "plan": {
+              "entry": "现价 39.35 轻仓试探；回踩 20 日均线 39.07 或 38.29 附近分批加仓",
+              "stopLoss": "跌破 38.09（约 -3.2%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 43.89（盈亏比 1:3.0），可分批止盈",
+              "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
+            },
+            "decisionScore": 60.6,
+            "decisionLabel": "中",
+            "decisionComponents": {
+              "macro": {
+                "score": 85.0,
+                "note": "市场偏多"
+              },
+              "wencai": {
+                "score": 55.0,
+                "note": "问财震荡"
+              },
+              "masters": {
+                "score": 48.6,
+                "note": "大师共识 2/7"
+              },
+              "truth": {
+                "score": 55,
+                "note": "舆情热度 0"
+              }
+            }
+          }
+        ]
       }
     ]
   },
@@ -8756,10 +8849,10 @@
     "shadowRecords": 67,
     "shadowWeeks": 6.9,
     "shadowTradingDays": 41,
-    "shadowAgeDays": 48,
+    "shadowAgeDays": 49,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
-    "symbolOverlapRecent": 12,
+    "symbolOverlapRecent": 11,
     "prodMaturedT5": 368,
     "shadowMaturedT5": 140,
     "prodWinRateT5": 62.2,
