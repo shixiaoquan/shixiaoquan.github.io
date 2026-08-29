@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-29T21:50:39+00:00",
+  "updatedAt": "2026-08-29T22:35:14+00:00",
   "tasks": [
     {
       "id": "fix-pipeline-market",
@@ -16,6 +16,14 @@
       "title": "流水线过期 · 宏观与跨资产",
       "reason": "stale",
       "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+    },
+    {
+      "id": "fix-pipeline-truth",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · Truth Social 镜像",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
     },
     {
       "id": "shadow-tracking",
@@ -55,8 +63,8 @@
     }
   ],
   "summary": {
-    "total": 6,
-    "high": 2,
+    "total": 7,
+    "high": 3,
     "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
   }
 }
