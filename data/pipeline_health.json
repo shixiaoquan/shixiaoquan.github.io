@@ -1,12 +1,12 @@
 {
-  "checkedAt": "2026-08-30T19:55:21+00:00",
+  "checkedAt": "2026-08-30T22:51:59+00:00",
   "stale": [
     {
       "id": "market",
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-30T18:35:14+00:00",
+      "updatedAt": "2026-08-30T21:31:08+00:00",
       "status": "stale",
       "ageMinutes": 80,
       "reason": "stale"
@@ -16,9 +16,9 @@
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-30T18:35:07+00:00",
+      "updatedAt": "2026-08-30T21:30:59+00:00",
       "status": "stale",
-      "ageMinutes": 80,
+      "ageMinutes": 81,
       "reason": "stale"
     },
     {
@@ -26,23 +26,13 @@
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-08-30T18:45:38+00:00",
+      "updatedAt": "2026-08-30T21:38:43+00:00",
       "status": "stale",
-      "ageMinutes": 69,
+      "ageMinutes": 73,
       "reason": "stale"
-    },
-    {
-      "id": "wencai",
-      "name": "问财自然语言筛选",
-      "schedule": "每小时",
-      "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-08-30T17:25:18+00:00",
-      "status": "ok",
-      "ageMinutes": 150,
-      "reason": "过期 150 分钟（阈值 150）"
     }
   ],
-  "healthyCount": 2,
+  "healthyCount": 3,
   "issueTitle": "[自动] 数据流水线异常",
-  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下数据流水线超过新鲜度阈值：\n\n- **行情·荐股·模拟盘** (`market`): stale · 工作流 `update-market-data.yml`\n- **宏观与跨资产** (`macro`): stale · 工作流 `update-market-data.yml`\n- **Truth Social 镜像** (`truth`): stale · 工作流 `update-truth-social.yml`\n- **问财自然语言筛选** (`wencai`): 过期 150 分钟（阈值 150） · 工作流 `update-wencai-data.yml`\n\n排查建议：\n1. 打开 [Actions](https://github.com/shixiaoquan/shixiaoquan.github.io/actions) 查看失败日志\n2. 检查 Secrets（WENCAI_COOKIE 等）是否过期\n3. 修复后本 Issue 将在下次健康检查通过时自动关闭\n\n<!-- pipeline-health-bot -->"
+  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下数据流水线超过新鲜度阈值：\n\n- **行情·荐股·模拟盘** (`market`): stale · 工作流 `update-market-data.yml`\n- **宏观与跨资产** (`macro`): stale · 工作流 `update-market-data.yml`\n- **Truth Social 镜像** (`truth`): stale · 工作流 `update-truth-social.yml`\n\n排查建议：\n1. 打开 [Actions](https://github.com/shixiaoquan/shixiaoquan.github.io/actions) 查看失败日志\n2. 检查 Secrets（WENCAI_COOKIE 等）是否过期\n3. 修复后本 Issue 将在下次健康检查通过时自动关闭\n\n<!-- pipeline-health-bot -->"
 }
