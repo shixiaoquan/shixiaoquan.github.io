@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-30T21:31:08+00:00",
+  "updatedAt": "2026-08-30T21:31:47+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -86,15 +86,15 @@
     "shadowAgeDays": 51,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
-    "shadowReason": "配对归因 25 对：影子胜率 72.0%，均边际 +0.67% — 可申请升级 PR",
+    "shadowReason": "配对归因 24 对：影子胜率 70.8%，均边际 +0.62% — 可申请升级 PR",
     "shadowCandidateParams": {
       "buyScore": 72,
       "breakoutScoreMin": 62,
       "source": "strategy_candidates.bestCandidate"
     },
-    "pairedCount": 25,
-    "pairedShadowWinRate": 72.0,
-    "marketPairedCount": 37,
+    "pairedCount": 24,
+    "pairedShadowWinRate": 70.8,
+    "marketPairedCount": 34,
     "strategyUpgradePending": true,
     "strategyUpgradeHint": "探索候选 buy=72 breakout=62 期望 1.01% — 已写入影子轨，满 4 周后可提 PR",
     "shadowReadyForPR": true,
@@ -105,14 +105,14 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-30T21:31:08+00:00",
+    "updatedAt": "2026-08-30T21:31:47+00:00",
     "tasks": [
       {
         "id": "shadow-upgrade-pr",
         "type": "strategy_pr",
         "priority": "high",
         "title": "影子轨验证通过 · 可申请升级战术参数",
-        "reason": "配对 T+5 影子 72.0% · 边际 0.67%",
+        "reason": "配对 T+5 影子 70.8% · 边际 0.62%",
         "cursorPrompt": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。",
         "params": {
           "buyScore": 72,
@@ -260,7 +260,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-30T18:45:38+00:00",
       "status": "stale",
-      "ageMinutes": 165
+      "ageMinutes": 166
     },
     {
       "id": "wencai",
@@ -269,7 +269,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-30T21:00:25+00:00",
       "status": "ok",
-      "ageMinutes": 30
+      "ageMinutes": 31
     },
     {
       "id": "reports",
@@ -278,7 +278,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-30T21:44:44+08:00",
       "status": "ok",
-      "ageMinutes": 466
+      "ageMinutes": 467
     },
     {
       "id": "backtest",
@@ -287,9 +287,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-30T07:46:13+00:00",
       "status": "ok",
-      "ageMinutes": 824
+      "ageMinutes": 825
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "33336601318"
+  "triggeredBy": "Evolution Follow-up",
+  "runId": "33336647250"
 }
