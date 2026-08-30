@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-30T10:45:13+00:00",
+  "updatedAt": "2026-08-30T11:37:54+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 2,
-    "pipelinesStale": 4,
-    "automation": "4 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -245,7 +245,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-28T06:22:28+00:00",
       "status": "stale",
-      "ageMinutes": 3142
+      "ageMinutes": 3195
     },
     {
       "id": "macro",
@@ -254,16 +254,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-28T06:22:21+00:00",
       "status": "stale",
-      "ageMinutes": 3142
+      "ageMinutes": 3195
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-08-30T05:56:35+00:00",
-      "status": "stale",
-      "ageMinutes": 288
+      "updatedAt": "2026-08-30T11:36:53+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "wencai",
@@ -272,7 +272,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-30T06:36:30+00:00",
       "status": "stale",
-      "ageMinutes": 248
+      "ageMinutes": 301
     },
     {
       "id": "reports",
@@ -281,7 +281,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-30T17:32:21+08:00",
       "status": "ok",
-      "ageMinutes": 72
+      "ageMinutes": 125
     },
     {
       "id": "backtest",
@@ -290,9 +290,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-30T07:46:13+00:00",
       "status": "ok",
-      "ageMinutes": 179
+      "ageMinutes": 231
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "33307212467"
+  "triggeredBy": "Update Truth Social",
+  "runId": "33309352643"
 }
