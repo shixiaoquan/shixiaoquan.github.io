@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-08-30T12:04:12+00:00",
+  "checkedAt": "2026-08-30T16:52:05+00:00",
   "stale": [
     {
       "id": "market",
@@ -8,7 +8,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-28T06:22:28+00:00",
       "status": "stale",
-      "ageMinutes": 3221,
+      "ageMinutes": 3509,
       "reason": "stale"
     },
     {
@@ -18,7 +18,17 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-28T06:22:21+00:00",
       "status": "stale",
-      "ageMinutes": 3221,
+      "ageMinutes": 3509,
+      "reason": "stale"
+    },
+    {
+      "id": "truth",
+      "name": "Truth Social 镜像",
+      "schedule": "每 10 分钟",
+      "workflow": "update-truth-social.yml",
+      "updatedAt": "2026-08-30T15:28:00+00:00",
+      "status": "stale",
+      "ageMinutes": 84,
       "reason": "stale"
     },
     {
@@ -26,13 +36,13 @@
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-08-30T06:36:30+00:00",
+      "updatedAt": "2026-08-30T12:49:54+00:00",
       "status": "stale",
-      "ageMinutes": 327,
+      "ageMinutes": 242,
       "reason": "stale"
     }
   ],
-  "healthyCount": 3,
+  "healthyCount": 2,
   "issueTitle": "[自动] 数据流水线异常",
-  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下数据流水线超过新鲜度阈值：\n\n- **行情·荐股·模拟盘** (`market`): stale · 工作流 `update-market-data.yml`\n- **宏观与跨资产** (`macro`): stale · 工作流 `update-market-data.yml`\n- **问财自然语言筛选** (`wencai`): stale · 工作流 `update-wencai-data.yml`\n\n排查建议：\n1. 打开 [Actions](https://github.com/shixiaoquan/shixiaoquan.github.io/actions) 查看失败日志\n2. 检查 Secrets（WENCAI_COOKIE 等）是否过期\n3. 修复后本 Issue 将在下次健康检查通过时自动关闭\n\n<!-- pipeline-health-bot -->"
+  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下数据流水线超过新鲜度阈值：\n\n- **行情·荐股·模拟盘** (`market`): stale · 工作流 `update-market-data.yml`\n- **宏观与跨资产** (`macro`): stale · 工作流 `update-market-data.yml`\n- **Truth Social 镜像** (`truth`): stale · 工作流 `update-truth-social.yml`\n- **问财自然语言筛选** (`wencai`): stale · 工作流 `update-wencai-data.yml`\n\n排查建议：\n1. 打开 [Actions](https://github.com/shixiaoquan/shixiaoquan.github.io/actions) 查看失败日志\n2. 检查 Secrets（WENCAI_COOKIE 等）是否过期\n3. 修复后本 Issue 将在下次健康检查通过时自动关闭\n\n<!-- pipeline-health-bot -->"
 }
