@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-30T06:28:25+00:00",
+  "updatedAt": "2026-08-30T06:37:22+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -263,7 +263,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-28T06:22:28+00:00",
       "status": "stale",
-      "ageMinutes": 2885
+      "ageMinutes": 2894
     },
     {
       "id": "macro",
@@ -272,7 +272,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-08-28T06:22:21+00:00",
       "status": "stale",
-      "ageMinutes": 2886
+      "ageMinutes": 2895
     },
     {
       "id": "truth",
@@ -281,16 +281,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-30T05:56:35+00:00",
       "status": "ok",
-      "ageMinutes": 31
+      "ageMinutes": 40
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-08-30T00:16:32+00:00",
-      "status": "stale",
-      "ageMinutes": 371
+      "updatedAt": "2026-08-30T06:36:30+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "reports",
@@ -299,7 +299,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-30T14:28:24+08:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 8
     },
     {
       "id": "backtest",
@@ -308,9 +308,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-23T02:57:06+00:00",
       "status": "ok",
-      "ageMinutes": 10291
+      "ageMinutes": 10300
     }
   ],
-  "triggeredBy": "Generate Investment Report",
-  "runId": "33296956092"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "33297264650"
 }
