@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-30T18:35:14+00:00",
+  "updatedAt": "2026-08-30T18:35:50+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -86,15 +86,15 @@
     "shadowAgeDays": 51,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
-    "shadowReason": "配对归因 26 对：影子胜率 73.1%，均边际 +0.71% — 可申请升级 PR",
+    "shadowReason": "配对归因 25 对：影子胜率 72.0%，均边际 +0.67% — 可申请升级 PR",
     "shadowCandidateParams": {
       "buyScore": 72,
       "breakoutScoreMin": 62,
       "source": "strategy_candidates.bestCandidate"
     },
-    "pairedCount": 26,
-    "pairedShadowWinRate": 73.1,
-    "marketPairedCount": 40,
+    "pairedCount": 25,
+    "pairedShadowWinRate": 72.0,
+    "marketPairedCount": 37,
     "strategyUpgradePending": true,
     "strategyUpgradeHint": "探索候选 buy=72 breakout=62 期望 1.01% — 已写入影子轨，满 4 周后可提 PR",
     "shadowReadyForPR": true,
@@ -105,14 +105,14 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-30T18:35:14+00:00",
+    "updatedAt": "2026-08-30T18:35:50+00:00",
     "tasks": [
       {
         "id": "shadow-upgrade-pr",
         "type": "strategy_pr",
         "priority": "high",
         "title": "影子轨验证通过 · 可申请升级战术参数",
-        "reason": "配对 T+5 影子 73.1% · 边际 0.71%",
+        "reason": "配对 T+5 影子 72.0% · 边际 0.67%",
         "cursorPrompt": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。",
         "params": {
           "buyScore": 72,
@@ -271,7 +271,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-30T17:25:18+00:00",
       "status": "ok",
-      "ageMinutes": 69
+      "ageMinutes": 70
     },
     {
       "id": "reports",
@@ -280,7 +280,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-30T21:44:44+08:00",
       "status": "ok",
-      "ageMinutes": 290
+      "ageMinutes": 291
     },
     {
       "id": "backtest",
@@ -292,6 +292,6 @@
       "ageMinutes": 649
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "33328457303"
+  "triggeredBy": "Evolution Follow-up",
+  "runId": "33328501623"
 }
