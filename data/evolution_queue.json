@@ -1,6 +1,19 @@
 {
-  "updatedAt": "2026-08-30T05:50:18+00:00",
+  "updatedAt": "2026-08-30T07:46:37+00:00",
   "tasks": [
+    {
+      "id": "shadow-upgrade-pr",
+      "type": "strategy_pr",
+      "priority": "high",
+      "title": "影子轨验证通过 · 可申请升级战术参数",
+      "reason": "配对 T+5 影子 73.1% · 边际 0.71%",
+      "cursorPrompt": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。",
+      "params": {
+        "buyScore": 72,
+        "breakoutScoreMin": 62,
+        "source": "strategy_candidates.bestCandidate"
+      }
+    },
     {
       "id": "fix-pipeline-market",
       "type": "fix_pipeline",
@@ -34,31 +47,11 @@
       "cursorPrompt": "检查工作流 update-wencai-data.yml 日志与 Secrets。"
     },
     {
-      "id": "shadow-tracking",
-      "type": "shadow_track",
-      "priority": "medium",
-      "title": "影子轨积累中",
-      "reason": "影子 T+5 50.7%/-0.86% vs 生产 62.2%/0.51% · 140 笔成熟",
-      "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
-    },
-    {
-      "id": "candidate-explore",
-      "type": "shadow_candidate",
-      "priority": "medium",
-      "title": "探索参数优于当前 · 已转入影子轨验证",
-      "reason": "探索候选 buy=72 breakout=62 期望 1.25% — 已写入影子轨，满 4 周后可提 PR",
-      "cursorPrompt": "勿直接改 strategy_config。确认 shadow_reco 满 4 周后再开 PR。",
-      "params": {
-        "buyScore": 72,
-        "breakoutScoreMin": 62
-      }
-    },
-    {
       "id": "tactic-tune-active",
       "type": "tactic_tune",
       "priority": "low",
       "title": "战术门槛自适应调整 -2",
-      "reason": "中决策分 T+5 胜率 64.4% 良好，门槛 -1; 偏多环境 T+5 胜率 72.3% 良好，门槛 -1; 港股 T+5 胜率 64.4% 良好，门槛 -1（市场门槛→-3）; 美股 T+5 胜率 66.2% 良好，门槛 -1（市场门槛→-3）; buy 样本不足，主要依据 watch 池、市场与决策分桶观察",
+      "reason": "中决策分 T+5 胜率 62.4% 良好，门槛 -1; 偏多环境 T+5 胜率 67.2% 良好，门槛 -1; 美股 T+5 胜率 69.8% 良好，门槛 -1（市场门槛→-3）; buy 样本不足，主要依据 watch 池、市场与决策分桶观察",
       "cursorPrompt": "可选：审阅 tactic_tune.json 是否需固化到 strategy_config。"
     },
     {
@@ -71,8 +64,8 @@
     }
   ],
   "summary": {
-    "total": 8,
-    "high": 4,
-    "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
+    "total": 7,
+    "high": 5,
+    "topAction": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。"
   }
 }
