@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-30T05:40:59+00:00",
+  "updatedAt": "2026-08-30T05:50:18+00:00",
   "tasks": [
     {
       "id": "fix-pipeline-market",
@@ -24,6 +24,14 @@
       "title": "流水线过期 · Truth Social 镜像",
       "reason": "stale",
       "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+    },
+    {
+      "id": "fix-pipeline-wencai",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · 问财自然语言筛选",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-wencai-data.yml 日志与 Secrets。"
     },
     {
       "id": "shadow-tracking",
@@ -63,8 +71,8 @@
     }
   ],
   "summary": {
-    "total": 7,
-    "high": 3,
+    "total": 8,
+    "high": 4,
     "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
   }
 }
