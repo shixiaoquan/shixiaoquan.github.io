@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-08-31T07:12:32+00:00",
+  "updatedAt": "2026-08-31T07:40:47+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 758,
-    "masterLearnUpdatedAt": "2026-08-31T01:40:27+00:00",
-    "masterAvgWinRate": 55.2,
+    "masterLearnRevision": 759,
+    "masterLearnUpdatedAt": "2026-08-31T07:40:28+00:00",
+    "masterAvgWinRate": 56.0,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -83,7 +83,7 @@
     "shadowMaturedT5": 155,
     "shadowWeeks": 7.3,
     "shadowTradingDays": 43,
-    "shadowAgeDays": 51,
+    "shadowAgeDays": 52,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
     "shadowReason": "配对归因 24 对：影子胜率 70.8%，均边际 +0.62% — 可申请升级 PR",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-08-31T07:12:32+00:00",
+    "updatedAt": "2026-08-31T07:40:47+00:00",
     "tasks": [
       {
         "id": "shadow-upgrade-pr",
@@ -169,6 +169,18 @@
   },
   "recentLog": [
     {
+      "at": "2026-08-31T07:40:36+00:00",
+      "type": "master_learn",
+      "revision": 759,
+      "regime": "neutral",
+      "notes": {
+        "graham": "近期表现反馈：pe↑、pb↑、range↑、dividend↑",
+        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓",
+        "soros": "近期表现反馈：volume↓",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
+      }
+    },
+    {
       "at": "2026-08-31T01:40:39+00:00",
       "type": "master_learn",
       "revision": 758,
@@ -221,13 +233,6 @@
       "bestExpectancy": 1.01,
       "totalTrades": 19,
       "reason": "探索候选 buy=72 breakout=62 期望 1.01% — 已写入影子轨，满 4 周后可提 PR"
-    },
-    {
-      "at": "2026-08-30T07:46:19+00:00",
-      "type": "shadow_attribution",
-      "newItems": 18,
-      "avgReturnT5": -1.23,
-      "winRateT5": 49.0
     }
   ],
   "pipelines": [
@@ -236,18 +241,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-31T01:40:59+00:00",
-      "status": "stale",
-      "ageMinutes": 331
+      "updatedAt": "2026-08-31T07:40:47+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-08-31T01:40:50+00:00",
-      "status": "stale",
-      "ageMinutes": 331
+      "updatedAt": "2026-08-31T07:40:41+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -256,7 +261,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-08-31T04:15:43+00:00",
       "status": "stale",
-      "ageMinutes": 176
+      "ageMinutes": 205
     },
     {
       "id": "wencai",
@@ -265,7 +270,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-08-31T05:26:18+00:00",
       "status": "ok",
-      "ageMinutes": 106
+      "ageMinutes": 134
     },
     {
       "id": "reports",
@@ -274,7 +279,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-08-31T14:54:12+08:00",
       "status": "ok",
-      "ageMinutes": 18
+      "ageMinutes": 46
     },
     {
       "id": "backtest",
@@ -283,9 +288,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-30T07:46:13+00:00",
       "status": "ok",
-      "ageMinutes": 1406
+      "ageMinutes": 1434
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "33367325874"
+  "triggeredBy": "Update Market Data",
+  "runId": "33369383296"
 }
