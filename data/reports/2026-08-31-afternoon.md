@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年08月31日 14:54（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年08月31日 18:12（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-08-31 09:40 · 宏观：2026-08-31 09:40 · 问财：2026-08-31 13:26
+> 行情更新：2026-08-31 15:40 · 宏观：2026-08-31 15:40 · 问财：2026-08-31 13:26
 
 ---
 
@@ -11,11 +11,11 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **-0.45%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
+全球跟踪指数平均涨跌 **-0.06%**，综合情绪 **震荡**。指数方向不明，结构分化概率加大，宜精选个股、控制仓位，等待方向选择。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
-战役仓 XRPS 模拟收益率 +10.00%，按网格与月线纪律执行。
+战役仓 XRPS 模拟收益率 +9.85%，按网格与月线纪律执行。
 
 战术实验有 **1** 笔 open 持仓，本日重点跟踪止损距离与突破延续性。
 
@@ -26,16 +26,16 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 ### 1.1 全球指数
 
 跟踪 6 只主要指数：上涨 **1** 只、
-下跌 **5** 只，平均涨跌 **-0.45%**。
+下跌 **5** 只，平均涨跌 **-0.06%**。
 
-**美股** -0.26%（震荡）；**港股** +0.07%（震荡）；**A股** -0.11%（震荡）。
+**美股** -0.26%（震荡）；**港股** -0.27%（震荡）；**A股** +0.86%（偏强）。相对强势区域：A股。
 
 **波动居前指数：**
 
-- **日经 225** 65,158.11，日涨跌 -1.88%（周 -0.56% / 月 +5.32%）
+- **上证指数** 3,986.30，日涨跌 +0.86%（周 +2.69% / 月 +4.02%）
 - **纳斯达克** 26,402.42，日涨跌 -0.52%（周 +0.85% / 月 +5.10%）
+- **恒生指数** 25,516.66，日涨跌 -0.27%（周 -0.00% / 月 -1.42%）
 - **标普 500** 7,711.76，日涨跌 -0.25%（周 +0.49% / 月 +3.69%）
-- **上证指数** 3,952.18，日涨跌 -0.11%（周 +1.20% / 月 +3.88%）
 
 ### 1.2 A股短线情绪
 
@@ -43,10 +43,9 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.3 宏观与跨资产
 
-- **VIX** 14.4（normal）
+- **VIX** 15.2（normal）
 - **美10Y收益率** 4.72%
 - **10Y-2Y 利差（FRED）** 0.39%（偏窄）
-- **USDCNH** 6.7300（日 —）
 - **美股行业**：通信 领涨，科技 靠后
 
 **FRED 官方序列**
@@ -58,11 +57,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：332.8（变动 +1.63%，2026-07-01）
 
 **Finnhub 宏观要闻**
-- [Bessent expects new US secondary sanctions weekly, aiming to increase pressure on Iran - Reuters](https://news.google.com/rss/articles/CBMizAFBVV95cUxNdWJLRHJBSlpLeHYxNEtndmNRX19YTG9GWENmSEdTZXRTbnZnUFJITUtYcV83YnlPWmlpbC00WnZic3FMYVowRlA4Zzk5V2NKc2ZSSkxtUXl6N1A2MmdQbTI3cWhqbWxfMXVNekZQWFYwY2hPcENiOXR1N1JjRU4ydTRGTWZoV0U2Ul9KdmVZZ1pBQzVFTnR1MUl5YXRpTV9DWXE1bEtOc0FkVTRpNkFHOV9XZ2JOUGJ2eUQ0WFFqRDdLdlZlWWdQdlpjSHY?oc=5)（Reuters）
-- [Iran's IRGC says it launched attack on two US bases in Jordan - Reuters](https://news.google.com/rss/articles/CBMirAFBVV95cUxOclJRRzlZV2lpOFlsSGdGcE1fUXVlel9CRndnX1NoM3lHcXkya2JMMWdrTEhUcnJyTHY0WDBqeFVoRzJmdEw5TlFXSGY1SVd1NXJERFdHS0IzQkhtRTdNTlJOMlp3RjgwYVVFYjY3NnV6d1c5cEt0UlVmaDJOdFBlT1ZRc0RpTVRVSkliRkU0SWZGYXZFa1JJdzNaOGxqVEFkX0FuV0l5WUNoaEFO?oc=5)（Reuters）
-- [US Treasury's Bessent faces G20 diplomacy test amid tariffs, Iran war, bond turmoil - Reuters](https://news.google.com/rss/articles/CBMixwFBVV95cUxORVlaS1VmZVF5Rjh3RFkwVk40ZGpBSU1LLXM3XzQ1REFxbnl0aHREWXhieU9vUnU0aUdkTWgtNmJrYk9BRDE3aEllamozWFJVMHZ5QTJUS0pkckpwbjFVQ2dxaEhBaWZWZXg3a05ISG1Fb3k4aWV0QmRSbGFiOHdsQ0x6QWZjUUN6b3lsc2c5MEZOc2RCWXZXcERhdkN4NFJGVHBGejVxbTBZWDdvczdJamxDQ3Jib29xS1lzcURfX05MQ1BET25r?oc=5)（Reuters）
-- [Iran is attacking US forces in Jordan, Fox News reports, citing a US source - Reuters](https://news.google.com/rss/articles/CBMivwFBVV95cUxQT3Q5VzJ4c1pXc3pPc1VrUmdQOC1PQmxJaXhsTV9KS1hvVnJGTmt3NUZNUlp3UHRJeEg2QlA3aFRIdHE3VjRCODNSV0NvV2xQbFNyZ1hBYXdYSnNDcDc4TE1fYnYtQ3RxdnNrQXlJVWJCZHdDbm0yWlM4emozcDY0SDFjZGMyeVBGNlFibzhZNUpKQWg2M0ZwTTNCb2I1Um9WbmRhQUo1ajBhWm9tVTcyaDFYYUhMeDdoWVZLSnQtMA?oc=5)（Reuters）
-- [Oil jumps more than 1% after US attack on Iran's Larak island - Reuters](https://news.google.com/rss/articles/CBMirAFBVV95cUxQSGRJUGVDenVxZzdzdXZ4aTJudWV6LS1adkVVMmVUNnc1QnMyNVNsLThHcG44U2p6SWoxYm9LbjJnUGdkZDAzTENhSDR2OW90cWV2aDJNZWpKRllRNUhselE2djRhQlI3ejVmUUl6cFNnVDN1UmU4QXVadDNmQloya3daeWVHSmtGNDh4QWktSk1fenV3czlkbnhwNjJ3VzNXWEhZelFCRTIzaWpR?oc=5)（Reuters）
+- [Iran dismisses Trump's post of attack on key energy hub of Kharg - Reuters](https://news.google.com/rss/articles/CBMiuAFBVV95cUxORVQzSG1hcjZUa3F4dlBHbmczSFliQ3d6ZVgtWjl6RzgtYjE4cGtXNjhpRHhmU0pBb1FSQl9iUHN5b0FUZHFMX0JDSFNONERPQ0c0T2Z6ejBFWE9jUldMUU9sVzJKT1Z0R0JaWGFUaHZUdnNtcVEwclRIZ29vZnpqd1JJOHg1Qmx2cHZ0TVMtVEtjWEdNbE1kZDY4cGxUNlRxYkpsVm1UUnZ3RjE2Z3cwRlQ3WVRWU0hO?oc=5)（Reuters）
+- [Iran’s army says it attacked UAE’s Al Minhad Air Base with drones, state TV reports - Reuters](https://news.google.com/rss/articles/CBMizwFBVV95cUxPZ09ObHphV0lHczYtdENzRzVQNFUtNUhLLU90dF92aTNaZU4yYm4zT1lScGhlekhEM1RVaGVVQUhQZEp2VUtLV19UelcwWnFUWkdkN0dhRUdtYkUtU3FIckVldDU5VnRnSkRaRkRGVkVyWHdBLTZzQUIzX1pMYUZSclpFSTZSOVBFZzlvSGpIWnlwNW84VDhZNm1LTjFDV2pZeG9WajktcllVb2VsVTdTTlhpUXFEVFg1NnJmZ2ZyQzRxakxUdTVzQ3BLOXBnSDA?oc=5)（Reuters）
+- [Morning Bid: Oil climbs as missiles fly in the Gulf - Reuters](https://news.google.com/rss/articles/CBMif0FVX3lxTFBNbU0wNVdySEl6cVlUdjlVZWlFYmp2eDlTU200dDJkTFJZSk5YbnJmenZmRS1LaTVvcC1nVVdjX2NtNDZUNlA3YU1NQUY4QXBnNGVUTnJZVld3MUNfZjIweU0tYXRlZ2lrUldFUGVXNVBSdjl0RHY5aEN1dG50TFk?oc=5)（Reuters）
+- [Indian shares set for cautious start; MSCI rejig, HDFC Bank in focus - Reuters](https://news.google.com/rss/articles/CBMiqwFBVV95cUxQeHhzUmFDRUhTV200UmE3NjFXbDJXVXNKQVlWV2FaN2l1dzUxM1dNZUtZaDJNblc4Q295TWN3S3R5M0xvVXRMZ3oyQzBuWHJkZnczM2dTQy1kQXlLcWRUTG96b19CNm1YbEhvdjdoVk84bnVzV0k1ZGh1T3lJRnZOanlRNjZwVVNkQ282bC1hQkJXWXliUGJsQUVwcVY3SkIyb3dHTjhCSzZQNkk?oc=5)（Reuters）
+- [Trump says Iran's Kharg is being 'blown to smithereens', but gives no details - Reuters](https://news.google.com/rss/articles/CBMitgFBVV95cUxQcG1feHdFUWRFMFNabndpLXB1STE5dmJNVlMyQ3A4djRaZE9UTzVzc2o5WkEtSlR5MWMxZFpfNFJqOUNtTlFpOW1ZVFRTcFhTVmRjTXI1YVhxbmhwYXotdTdibnRJYnpmWjdQejd6WFh3YTBmOGFMaVpqd1gwNFozeUVwSzFCNkdWTVVmQmtNS0ttVWl3YXVVNUhWWmF5RU1RdGRYaF9xMVJNdS1WSUJIbnM5S2Exdw?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **ALMU** 2026-09-07  · EPS预期 -0.08
@@ -87,15 +86,15 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **标的**：小米集团（1810.HK）
 
-**模拟净值**：收益率 +10.00%，仓位 36.6%，持股 14,481 股，均价 23.75。
+**模拟净值**：收益率 +9.85%，仓位 36.5%，持股 14,481 股，均价 23.75。
 
 **阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
 
-**现价参考**：27.82 HKD。
+**现价参考**：27.72 HKD。
 
-- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +27.00%。
+- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +27.40%。
 
-- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +8.30%。
+- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +8.00%。
 
 - XRPS-X 运行正常：股数优先、成本优先、核心仓保留。
 
@@ -105,13 +104,17 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 中国平安(38.8分) · 港股最高 小米集团(37.0分) · 美股最高 英伟达(67.0分)
+**全市场扫描**：A股最高 招商银行(41.3分) · 港股最高 小米集团(46.0分) · 美股最高 英伟达(67.0分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
-- **英伟达**（美股）| 建议观察 | 评分 67.0 | 待突破 | 趋势过滤通过 | 止损缓冲 7.9% / 目标空间 28.4% | 决策 45.5
+- **英伟达**（美股）| 建议观察 | 评分 67.0 | 待突破 | 趋势过滤通过 | 止损缓冲 7.9% / 目标空间 28.4% | 决策 50.5
 
   - 逻辑：价格站上 60 日均线
+
+- **小米集团**（港股）| 弱信号观察 | 评分 46.0 | 待突破 | 趋势过滤未过 | 止损缓冲 9.5% / 目标空间 34.1% | 决策 53.1
+
+  - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
 > **研究员提示**：虽有高分标的入选观察池，但 v1.3 仅对「突破确认」发出 buy 信号；趋势良好但未突破时维持 watch，避免追涨噪音。
 
@@ -132,48 +135,48 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.758）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.759）。
 
-*在线学习：市场环境 risk_off · 修订 r758 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
+*在线学习：市场环境 neutral · 修订 r759*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.2 · PEG 8.44 · ROE 19.9%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.3 · PEG 8.48 · ROE 19.9%
 
-  - ROE 19.91% — 盈利能力稳健；PE 15.2 — 估值在能力圈合理区间
+  - ROE 19.91% — 盈利能力稳健；PE 15.26 — 估值在能力圈合理区间
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.6 · ROE 12.6%
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.5 · ROE 12.6%
 
-  - ROE 12.63% — 盈利能力稳健；PE 19.63 — 估值在能力圈合理区间
+  - ROE 12.63% — 盈利能力稳健；PE 19.51 — 估值在能力圈合理区间
 
 
 ### 本杰明·格雷厄姆 · 深度价值
 
 *安全边际是投资核心：在价格显著低于内在价值时分批买入，分散持有。*
 
-- **招商银行**（A股）| 匹配 80.6 | 符合风格 · 建议关注 | PE 6.9 · PEG 9.84 · ROE 11.9%
-
-  - PE 6.89 — 深度价值区间，安全边际充足；PB 0.88 — 资产折价，经典格雷厄姆信号
-
-- **中国平安**（A股）| 匹配 80.6 | 符合风格 · 建议关注 | PE 6.7 · PEG 0.13 · ROE 13.1%
+- **中国平安**（A股）| 匹配 81.1 | 符合风格 · 建议关注 | PE 6.7 · PEG 0.13 · ROE 13.1%
 
   - PE 6.7 — 深度价值区间，安全边际充足；PB 0.98 — 资产折价，经典格雷厄姆信号
+
+- **招商银行**（A股）| 匹配 76.8 | 符合风格 · 建议关注 | PE 7.0 · PEG 10.04 · ROE 11.9%
+
+  - PE 7.03 — 深度价值区间，安全边际充足；PB 0.89 — 资产折价，经典格雷厄姆信号
 
 
 ### 彼得·林奇 · 成长合理价 GARP
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.0 · PEG 0.27 · ROE 9.2%
+- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 21.9 · PEG 0.27 · ROE 9.2%
 
   - PEG 0.27 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 82.6% — 成长故事可验证
 
-- **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.6 · PEG 0.62 · ROE 24.8%
+- **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.4 · PEG 0.61 · ROE 24.8%
 
-  - PEG 0.62 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
+  - PEG 0.61 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
 
 
 ### 查理·芒格 · 优质复利
@@ -193,13 +196,13 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *在最大悲观时买入，在最大乐观时卖出；关注被错杀的优质资产。*
 
-- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 22.0 · PEG 0.27 · ROE 9.2%
+- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 21.9 · PEG 0.27 · ROE 9.2%
 
-  - 近一月 -8.97% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近一月 -8.63% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.6 · ROE 12.6%
+- **腾讯控股**（港股）| 匹配 97.8 | 符合风格 · 建议关注 | PE 15.3 · PEG 8.48 · ROE 19.9%
 
-  - 近一月 -10.37% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
+  - 价格接近 52 周底部 — 「极度悲观时买入」；PE 15.26 — 悲观中仍有估值支撑
 
 
 ### 乔治·索罗斯 · 宏观趋势
@@ -219,11 +222,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 369.6 · PEG 6.51 · ROE 3.9%
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 380.4 · PEG 6.70 · ROE 3.9%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
-- **中芯国际**（A股）| 匹配 91.9 | 符合风格 · 建议关注 | PE 144.7 · PEG 55.86 · ROE 4.2%
+- **中芯国际**（A股）| 匹配 91.5 | 符合风格 · 建议关注 | PE 147.9 · PEG 57.12 · ROE 4.2%
 
   - 半导体 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 晶圆制造 — AI 算力上游产能瓶颈
 
@@ -250,18 +253,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **Dow Jones Futures Fall, Oil Prices Pop As U.S. Strikes Iran**（^GSPC）
-  Dow Jones futures fell slightly while oil prices bounced as the U.S. struck Iran publicly for the first time in a month.…
-- [Yahoo] **John Ternus to lead Apple into the age of AI**（AAPL）
-  John Ternus takes over as Apple's chief executive on Tuesday, inheriting a company that towers over the smartphone marke…
-- [Yahoo] **1 Top Warren Buffett Stock for Dividend Investors**（AAPL）
-  This tech giant could become a dividend beast over the next decade and beyond.…
-- [Yahoo] **According to BlackRock, Bitcoin Is Still a Great Portfolio Diversifier. So How Much Bitcoin Should You Be Holding in Your Portfolio?**（NVDA）
-  Even if you're bullish on Bitcoin, it still shouldn't take up much of your portfolio.…
-- [Yahoo] **IREN Stock Plunged Last Week. Now Could Be a Good Time to Buy.**（NVDA）
-  Investors have a chance to buy the AI computing supplier at a sizable discount.…
-- [Yahoo] **If You Invested $1,000 In Nvidia Stock at IPO, Here's How Much You'd Have Now**（NVDA）
-  NVIDIA Corp CEO Jensen Huang may not check the price of the stock for the company he runs and co-founded, but millions o…
+- [Yahoo] **The Stock Market Is Uncertain Right Now. History Says That's Actually Good News for Long-Term Investors.**（^GSPC）
+  Despite a double-digit gain for the S&P 500 index in 2026, there are reasons to be a bit cautious.…
+- [Yahoo] **CrowdStrike’s AI Security Rally Faces Its Next Test At Fal.Con 2026: What Investors Should Watch**（NVDA）
+  CrowdStrike will showcase new AI-driven security capabilities at its sold-out Las Vegas conference.…
+- [Yahoo] **Bitcoin Is Having One of Its Best Augusts Ever. Is the Bitcoin Breakout Finally Here?**（NVDA）
+  After a 24% rally in August, Bitcoin could be on track for a recovery in 2026.…
+- [Yahoo] **The S&P 500 Failed to Beat Inflation Only 4 Times in 20 Years. Here's the Pattern.**（^GSPC）
+  Stocks beat inflation 16 of 20 years, but faced above-4% CPI just three times. AI earnings now carry real returns.…
+- [Yahoo] **Analysts Expect AI Capex to Reach $800 Billion in 2026. That Number Could Actually Surpass $1 Trillion. Here Are 2 Stocks That Will Benefit.**（NVDA）
+  AI capital expenditures could be even higher than most analysts expect.…
+- [Yahoo] **Ternus Takes Over as Apple CEO With AAPL Near $320: History Shows Wild First-Year Swings**（AAPL）
+  John Ternus becomes Apple CEO Tuesday as AAPL trades near $320. Past megacap handoffs show first-year swings from -38% t…
 
 ---
 
