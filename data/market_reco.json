@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-31T21:00:58+00:00",
+  "updatedAt": "2026-09-01T00:32:51+00:00",
   "recommendations": {
     "strategy": "v1.3.0 强趋势+突破过滤（各市场 1 只）：Regime 过滤 + 仅突破买入；≥72 突破分、≥65 观察。24h 粘性换仓、止损 ATR、盈亏比 1:3.0。",
     "marketScan": "A股最高 招商银行(38.7分) · 港股最高 小米集团(37.0分) · 美股最高 英伟达(75.0分)",
@@ -25,22 +25,22 @@
         "plan": {
           "entry": "现价 220.78 轻仓试探；回踩 20 日均线 218.75 或 214.38 附近分批加仓",
           "stopLoss": "跌破 203.75（约 -7.7%，2.5 倍 ATR）坚决止损",
-          "target": "第一目标 282.08（盈亏比 1:3.0），可分批止盈",
+          "target": "第一目标 282.07（盈亏比 1:3.0），可分批止盈",
           "position": "美股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
         },
         "stopLossPrice": 203.75,
-        "targetPrice": 282.08,
+        "targetPrice": 282.07,
         "distToStopPct": 7.7,
         "distToTargetPct": 27.8,
         "regimeOk": true,
         "breakout": false,
         "breakoutLevel": 230.47,
-        "decisionScore": 53.1,
-        "decisionLabel": "中",
+        "decisionScore": 48.1,
+        "decisionLabel": "低",
         "decisionComponents": {
           "macro": {
-            "score": 55.0,
-            "note": "市场震荡"
+            "score": 35.0,
+            "note": "市场偏空"
           },
           "wencai": {
             "score": 55.0,
@@ -376,18 +376,19 @@
     ]
   },
   "masterRecommendations": {
-    "version": "v1.2.761",
-    "strategy": "v1.2.761 投资大师风格荐股（在线学习）：每次数据更新根据历史荐股表现与市场环境微调 7 位大师因子权重；当前市场环境 neutral。",
+    "version": "v1.2.762",
+    "strategy": "v1.2.762 投资大师风格荐股（在线学习）：每次数据更新根据历史荐股表现与市场环境微调 7 位大师因子权重；当前市场环境 risk_off。",
     "disclaimer": "大师风格荐股为规则化模拟，非真实人物操作建议；权重学习基于历史快照与公开行情，样本不足时变化极小；Serenity 相关内容为对其公开框架的量化近似，勿当作 X 账号买卖信号；仅供研究，不构成投资建议。",
     "learning": {
-      "revision": 761,
-      "regime": "neutral",
-      "updatedAt": "2026-08-31T21:00:58+00:00",
-      "lastUpgrade": "2026-08-31T21:00:58+00:00",
+      "revision": 762,
+      "regime": "risk_off",
+      "updatedAt": "2026-09-01T00:32:51+00:00",
+      "lastUpgrade": "2026-09-01T00:32:51+00:00",
       "notes": {
         "lynch": "近期表现反馈：sector↓",
         "soros": "近期表现反馈：volume↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
+        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
       }
     },
     "masters": [
@@ -418,7 +419,7 @@
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
               "ROE 19.91% — 盈利能力稳健",
-              "PE 15.26 — 估值在能力圈合理区间",
+              "PE 15.34 — 估值在能力圈合理区间",
               "净利率 29.87% — 业务具备定价权",
               "负债率可控，财务风险较低"
             ],
@@ -437,10 +438,10 @@
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 15.26,
+              "pe": 15.34,
               "pb": 3.08,
               "roe": 19.91,
-              "peg": 8.48,
+              "peg": 8.52,
               "earningsGrowth": 1.8,
               "profitMargins": 29.87,
               "monthChangePct": -3.52,
@@ -460,7 +461,7 @@
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
               "ROE 12.63% — 盈利能力稳健",
-              "PE 19.45 — 估值在能力圈合理区间",
+              "PE 19.59 — 估值在能力圈合理区间",
               "负债率可控，财务风险较低",
               "价格接近 52 周低位 — 优质资产回调机会"
             ],
@@ -478,7 +479,7 @@
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 19.45,
+              "pe": 19.59,
               "pb": 2.26,
               "roe": 12.63,
               "peg": null,
@@ -491,13 +492,13 @@
           }
         ],
         "learning": {
-          "revision": 761,
-          "regime": "neutral",
+          "revision": 762,
+          "regime": "risk_off",
           "samples": 592,
-          "winRate": 66.6,
-          "avgReturnPct": 1.07,
+          "winRate": 66.4,
+          "avgReturnPct": 1.08,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-31T21:00:58+00:00"
+          "lastUpgrade": "2026-09-01T00:32:51+00:00"
         }
       },
       {
@@ -522,19 +523,19 @@
             "sector": "银行",
             "currency": "CNY",
             "price": 39.35,
-            "matchScore": 81.7,
+            "matchScore": 83.9,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
               "PE 7.03 — 深度价值区间，安全边际充足",
-              "PB 0.92 — 资产折价，经典格雷厄姆信号",
-              "股息率 10.21% — 提供下行保护垫"
+              "PB 0.89 — 资产折价，经典格雷厄姆信号",
+              "股息率 10.01% — 提供下行保护垫"
             ],
             "factors": {
-              "pe": 15.82,
-              "pb": 12.94,
-              "range": 4.36,
-              "dividend": 3.59
+              "pe": 16.76,
+              "pb": 13.72,
+              "range": 4.63,
+              "dividend": 3.81
             },
             "plan": {
               "entry": "仅在 39.35 附近或更低、且 PE/PB 维持低位时分批买入；拒绝「便宜但坏」的公司。",
@@ -544,11 +545,11 @@
             },
             "metrics": {
               "pe": 7.03,
-              "pb": 0.92,
-              "roe": 11.92,
-              "peg": 10.04,
-              "earningsGrowth": 0.7,
-              "profitMargins": 50.45,
+              "pb": 0.89,
+              "roe": null,
+              "peg": 1.3,
+              "earningsGrowth": 5.4,
+              "profitMargins": 50.35,
               "monthChangePct": -2.96,
               "relativeStrength": -6.84,
               "rangePosition": 0.48
@@ -561,19 +562,19 @@
             "sector": "保险",
             "currency": "CNY",
             "price": 55.85,
-            "matchScore": 81.7,
+            "matchScore": 83.9,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
               "PE 6.7 — 深度价值区间，安全边际充足",
               "PB 0.98 — 资产折价，经典格雷厄姆信号",
-              "股息率 4.83% — 提供下行保护垫"
+              "股息率 4.84% — 提供下行保护垫"
             ],
             "factors": {
-              "pe": 15.82,
-              "pb": 12.94,
-              "range": 4.36,
-              "dividend": 3.59
+              "pe": 16.76,
+              "pb": 13.72,
+              "range": 4.63,
+              "dividend": 3.81
             },
             "plan": {
               "entry": "仅在 55.85 附近或更低、且 PE/PB 维持低位时分批买入；拒绝「便宜但坏」的公司。",
@@ -595,13 +596,13 @@
           }
         ],
         "learning": {
-          "revision": 761,
-          "regime": "neutral",
+          "revision": 762,
+          "regime": "risk_off",
           "samples": 592,
-          "winRate": 84.1,
-          "avgReturnPct": 3.26,
+          "winRate": 83.8,
+          "avgReturnPct": 3.25,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-31T21:00:58+00:00"
+          "lastUpgrade": "2026-09-01T00:32:51+00:00"
         }
       },
       {
@@ -619,44 +620,6 @@
         ],
         "holdingHorizon": "1–5 年",
         "picks": [
-          {
-            "symbol": "000858.SZ",
-            "name": "五粮液",
-            "market": "A股",
-            "sector": "白酒",
-            "currency": "CNY",
-            "price": 71.51,
-            "matchScore": 100.0,
-            "signal": "buy",
-            "signalLabel": "符合风格 · 建议关注",
-            "reasons": [
-              "PEG 0.27 — 成长相对估值便宜，林奇「十倍股」潜力",
-              "盈利增速 82.6% — 成长故事可验证",
-              "营收增速 33.7% — 业务扩张持续"
-            ],
-            "factors": {
-              "peg": 33.59,
-              "earnings": 24.43,
-              "revenue": 9.17
-            },
-            "plan": {
-              "entry": "确认 PEG 与盈利增速匹配后，于 71.51 附近建仓；季度财报验证成长逻辑。",
-              "holding": "成长故事兑现或 PEG > 2 时考虑获利（1–5 年）。",
-              "risk": "盈利增速断崖式下滑时退出；不因短期回调轻易清仓。",
-              "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
-            },
-            "metrics": {
-              "pe": 21.93,
-              "pb": 2.31,
-              "roe": 9.21,
-              "peg": 0.27,
-              "earningsGrowth": 82.6,
-              "profitMargins": 27.23,
-              "monthChangePct": -8.97,
-              "relativeStrength": -12.85,
-              "rangePosition": 0.02
-            }
-          },
           {
             "symbol": "300750.SZ",
             "name": "宁德时代",
@@ -677,7 +640,7 @@
               "peg": 33.59,
               "earnings": 24.43,
               "revenue": 9.17,
-              "sector": 5.81
+              "sector": 5.76
             },
             "plan": {
               "entry": "确认 PEG 与盈利增速匹配后，于 368.5 附近建仓；季度财报验证成长逻辑。",
@@ -696,16 +659,52 @@
               "relativeStrength": -11.85,
               "rangePosition": 0.41
             }
+          },
+          {
+            "symbol": "601318.SS",
+            "name": "中国平安",
+            "market": "A股",
+            "sector": "保险",
+            "currency": "CNY",
+            "price": 55.85,
+            "matchScore": 100.0,
+            "signal": "buy",
+            "signalLabel": "符合风格 · 建议关注",
+            "reasons": [
+              "PEG 0.13 — 成长相对估值便宜，林奇「十倍股」潜力",
+              "盈利增速 52.6% — 成长故事可验证"
+            ],
+            "factors": {
+              "peg": 33.59,
+              "earnings": 24.43
+            },
+            "plan": {
+              "entry": "确认 PEG 与盈利增速匹配后，于 55.85 附近建仓；季度财报验证成长逻辑。",
+              "holding": "成长故事兑现或 PEG > 2 时考虑获利（1–5 年）。",
+              "risk": "盈利增速断崖式下滑时退出；不因短期回调轻易清仓。",
+              "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
+            },
+            "metrics": {
+              "pe": 6.7,
+              "pb": 0.98,
+              "roe": 13.1,
+              "peg": 0.13,
+              "earningsGrowth": 52.6,
+              "profitMargins": 16.16,
+              "monthChangePct": 0.09,
+              "relativeStrength": -3.79,
+              "rangePosition": 0.32
+            }
           }
         ],
         "learning": {
-          "revision": 761,
-          "regime": "neutral",
+          "revision": 762,
+          "regime": "risk_off",
           "samples": 592,
           "winRate": 12.8,
-          "avgReturnPct": -3.18,
+          "avgReturnPct": -3.16,
           "upgradeNote": "近期表现反馈：sector↓",
-          "lastUpgrade": "2026-08-31T21:00:58+00:00"
+          "lastUpgrade": "2026-09-01T00:32:51+00:00"
         }
       },
       {
@@ -807,13 +806,13 @@
           }
         ],
         "learning": {
-          "revision": 761,
-          "regime": "neutral",
+          "revision": 762,
+          "regime": "risk_off",
           "samples": 592,
           "winRate": 48.3,
-          "avgReturnPct": -1.32,
+          "avgReturnPct": -1.31,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-31T21:00:58+00:00"
+          "lastUpgrade": "2026-09-01T00:32:51+00:00"
         }
       },
       {
@@ -860,10 +859,10 @@
             "metrics": {
               "pe": 21.93,
               "pb": 2.31,
-              "roe": 9.21,
-              "peg": 0.27,
-              "earningsGrowth": 82.6,
-              "profitMargins": 27.23,
+              "roe": 10.13,
+              "peg": 9.41,
+              "earningsGrowth": 2.33,
+              "profitMargins": 28.8,
               "monthChangePct": -8.97,
               "relativeStrength": -12.85,
               "rangePosition": 0.02
@@ -882,7 +881,7 @@
             "reasons": [
               "近一月 -10.37% — 市场悲观，邓普顿式逆向机会",
               "价格接近 52 周底部 — 「极度悲观时买入」",
-              "PE 19.45 — 悲观中仍有估值支撑",
+              "PE 19.59 — 悲观中仍有估值支撑",
               "盈利能力仍在 — 逆向不是接飞刀"
             ],
             "factors": {
@@ -898,7 +897,7 @@
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 19.45,
+              "pe": 19.59,
               "pb": 2.26,
               "roe": 12.63,
               "peg": null,
@@ -911,13 +910,13 @@
           }
         ],
         "learning": {
-          "revision": 761,
-          "regime": "neutral",
+          "revision": 762,
+          "regime": "risk_off",
           "samples": 592,
-          "winRate": 85.0,
+          "winRate": 84.8,
           "avgReturnPct": 2.99,
           "upgradeNote": null,
-          "lastUpgrade": "2026-08-31T21:00:58+00:00"
+          "lastUpgrade": "2026-09-01T00:32:51+00:00"
         }
       },
       {
@@ -952,10 +951,10 @@
               "高 Beta 放大趋势 — 索罗斯式进攻配置"
             ],
             "factors": {
-              "month": 23.31,
-              "rs": 20.4,
-              "trend": 14.57,
-              "beta": 5.83
+              "month": 21.92,
+              "rs": 19.18,
+              "trend": 13.7,
+              "beta": 5.48
             },
             "plan": {
               "entry": "趋势确认后于 507.29 附近顺势建仓；宏观与相对强度共振时加仓。",
@@ -992,10 +991,10 @@
               "高 Beta 放大趋势 — 索罗斯式进攻配置"
             ],
             "factors": {
-              "month": 23.31,
-              "rs": 20.4,
-              "trend": 14.57,
-              "beta": 5.83
+              "month": 21.92,
+              "rs": 19.18,
+              "trend": 13.7,
+              "beta": 5.48
             },
             "plan": {
               "entry": "趋势确认后于 220.78 附近顺势建仓；宏观与相对强度共振时加仓。",
@@ -1004,10 +1003,10 @@
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 27.88,
+              "pe": 27.46,
               "pb": 27.36,
               "roe": 117.21,
-              "peg": 0.22,
+              "peg": 0.21,
               "earningsGrowth": 127.8,
               "profitMargins": 63.66,
               "monthChangePct": 9.98,
@@ -1017,13 +1016,13 @@
           }
         ],
         "learning": {
-          "revision": 761,
-          "regime": "neutral",
+          "revision": 762,
+          "regime": "risk_off",
           "samples": 592,
           "winRate": 56.9,
-          "avgReturnPct": 0.31,
+          "avgReturnPct": 0.35,
           "upgradeNote": "近期表现反馈：volume↓",
-          "lastUpgrade": "2026-08-31T21:00:58+00:00"
+          "lastUpgrade": "2026-09-01T00:32:51+00:00"
         }
       },
       {
@@ -1059,12 +1058,12 @@
               "52 周区间偏低 — 或在机构大规模覆盖前"
             ],
             "factors": {
-              "sector": 34.7,
-              "tag": 20.24,
-              "mcap": 14.43,
-              "growth": 29.34,
+              "sector": 34.34,
+              "tag": 20.03,
+              "mcap": 14.28,
+              "growth": 29.02,
               "range": 15.5,
-              "momentum": 17.24
+              "momentum": 17.06
             },
             "plan": {
               "entry": "在 292.0 CNY 附近建立 conviction 仓位；从终端需求（算力/光互连/机器人）向上游追溯，独立验证瓶颈是否仍不可替代。",
@@ -1093,7 +1092,7 @@
             "sector": "半导体",
             "currency": "CNY",
             "price": 125.88,
-            "matchScore": 90.8,
+            "matchScore": 90.4,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
@@ -1104,12 +1103,12 @@
               "近一月 +2.35% — 重估进行中但未必过热"
             ],
             "factors": {
-              "sector": 31.81,
-              "tag": 20.24,
-              "mcap": -31.75,
-              "growth": 8.38,
+              "sector": 31.48,
+              "tag": 20.03,
+              "mcap": -31.42,
+              "growth": 8.29,
               "range": 15.5,
-              "momentum": 8.62
+              "momentum": 8.53
             },
             "plan": {
               "entry": "在 125.88 CNY 附近建立 conviction 仓位；从终端需求（算力/光互连/机器人）向上游追溯，独立验证瓶颈是否仍不可替代。",
@@ -1118,10 +1117,10 @@
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 147.93,
+              "pe": 146.25,
               "pb": 7.41,
               "roe": 4.2,
-              "peg": 57.12,
+              "peg": 56.47,
               "earningsGrowth": 2.59,
               "profitMargins": 10.03,
               "monthChangePct": 2.35,
@@ -1133,13 +1132,13 @@
           }
         ],
         "learning": {
-          "revision": 761,
-          "regime": "neutral",
+          "revision": 762,
+          "regime": "risk_off",
           "samples": 592,
           "winRate": 18.1,
-          "avgReturnPct": -6.18,
+          "avgReturnPct": -6.16,
           "upgradeNote": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
-          "lastUpgrade": "2026-08-31T21:00:58+00:00"
+          "lastUpgrade": "2026-09-01T00:32:51+00:00"
         },
         "xHandle": "@aleabitoreddit",
         "platform": "X",
