@@ -1,0 +1,291 @@
+# 投资决策日报 · 收盘前瞻
+
+**2026年09月01日 14:11（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+
+> 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
+> 行情更新：2026-09-01 13:35 · 宏观：2026-09-01 13:35 · 问财：2026-09-01 13:01
+
+---
+
+## 核心观点
+
+本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
+
+全球跟踪指数平均涨跌 **-0.52%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
+
+A股问财短线情绪 **偏多**，与全球指数判断对照使用。
+
+战役仓 XRPS 模拟收益率 +9.88%，按网格与月线纪律执行。
+
+战术实验有 **1** 笔 open 持仓，本日重点跟踪止损距离与突破延续性。
+
+---
+
+## 一、宏观与市场情绪
+
+### 1.1 全球指数
+
+跟踪 6 只主要指数：上涨 **1** 只、
+下跌 **5** 只，平均涨跌 **-0.52%**。
+
+**美股** -0.65%（偏弱）；**港股** -1.09%（偏弱）；**A股** +0.08%（震荡）。相对弱势区域：美股、港股，战术配置宜降权。
+
+**波动居前指数：**
+
+- **恒生指数** 25,288.82，日涨跌 -1.09%（周 -0.90% / 月 -2.30%）
+- **道琼斯** 53,185.90，日涨跌 -0.72%（周 -0.17% / 月 +1.87%）
+- **纳斯达克** 26,370.89，日涨跌 -0.64%（周 +0.73% / 月 +4.97%）
+- **标普 500** 7,686.14，日涨跌 -0.58%（周 +0.15% / 月 +3.34%）
+
+### 1.2 A股短线情绪
+
+问财统计涨停 **70** 家、跌停 **4** 家，情绪定性 **偏多**，涨跌停比约 **17.5 : 1**。赚钱效应尚可，题材轮动活跃，但需警惕高位分歧。（部分榜单沿用缓存，盘中宜以实时行情为准）
+
+### 1.3 宏观与跨资产
+
+- **VIX** 14.9（normal）
+- **美10Y收益率** 4.76%
+- **10Y-2Y 利差（FRED）** 0.41%（偏窄）
+- **USDCNH** 6.7200（日 —）
+- **美股行业**：能源 领涨，公用事业 靠后
+
+**FRED 官方序列**
+- 美10年期国债收益率：4.73（变动 +1.28%，2026-08-28）
+- 10Y-2Y 利差：0.41（变动 +5.13%，2026-08-31）
+- 联邦基金利率：3.63（变动 0.00%，2026-07-01）
+- 美国失业率：4.1（变动 -2.38%，2026-07-01）
+- 美元/人民币(官方)：6.726（变动 +0.09%，2026-08-28）
+- 美国CPI指数：332.8（变动 +1.63%，2026-07-01）
+
+**Finnhub 宏观要闻**
+- [Risk-reward outlook for stocks is getting worse as historically tough month kicks off, says Citadel](https://www.cnbc.com/2026/08/31/risk-reward-outlook-for-stocks-is-getting-worse-says-citadel.html)（CNBC）
+- [Lilly taps obesity windfall for more M&A. Plus, Elon Musk remarks pull GE Vernova lower](https://www.cnbc.com/2026/08/31/lilly-taps-obesity-windfall-for-more-ma-plus-elon-musk-remarks-pull-ge-vernova-lower.html)（CNBC）
+- [Mortgage rates surge to the highest since June 2025 as new Middle East attacks push oil prices up](https://www.cnbc.com/2026/08/31/mortgage-rates-surge-middle-east-attacks-oil.html)（CNBC）
+- [Trump reportedly plans to announce new drug pricing deals with nearly a dozen drugmakers](https://www.cnbc.com/2026/08/31/trump-drug-pricing-deals.html)（CNBC）
+- [Waiting for homebuying to get more affordable? Here's what to expect in 2027](https://www.cnbc.com/2026/08/31/what-homebuyers-can-expect-in-2027.html)（CNBC）
+
+**财报日历（关注标的）**
+- **ABM** 2026-09-08  · EPS预期 1.02
+- **ADSE** 2026-09-08  · EPS预期 —
+- **AEF** 2026-09-08  · EPS预期 —
+- **ALZN** 2026-09-08  · EPS预期 -0.68
+- **ANIX** 2026-09-08  · EPS预期 -0.09
+- **AVO** 2026-09-08  · EPS预期 0.12
+- 美债收益率上行，对高估值成长股形成压力。
+- 美股行业轮动：能源 领涨（+2.04%），公用事业 靠后。
+- FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。
+
+*数据源：Yahoo Finance、Frankfurter (ECB)、FRED (St. Louis Fed)、Finnhub*
+
+### 1.4 本时段研判侧重
+
+尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
+
+---
+
+## 二、战役持仓（XRPS-X 小米滚动仓）
+
+**标的**：小米集团（1810.HK）
+
+**模拟净值**：收益率 +9.88%，仓位 36.6%，持股 14,481 股，均价 23.75。
+
+**阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
+
+**现价参考**：27.74 HKD。
+
+- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +27.30%。
+
+- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +8.10%。
+
+- XRPS-X 运行正常：股数优先、成本优先、核心仓保留。
+
+**长期参照**：上市以来 XRPS 回测收益率 +57.35%，短期净值波动属于策略设计内的正常路径，勿与战术实验混淆。
+
+---
+
+## 三、战术实验（荐股 v1.3）
+
+**全市场扫描**：A股最高 中国平安(42.0分) · 港股最高 小米集团(52.0分) · 美股最高 英伟达(70.0分)
+
+**今日各市场代表标的**（v1.3 强趋势+突破过滤）：
+
+- **英伟达**（美股）| 建议观察 | 评分 70.0 | 待突破 | 趋势过滤通过 | 止损缓冲 7.7% / 目标空间 27.8% | 决策 48.1
+
+  - 逻辑：价格站上 20 日均线；价格站上 60 日均线
+
+- **小米集团**（港股）| 弱信号观察 | 评分 52.0 | 待突破 | 趋势过滤未过 | 止损缓冲 9.6% / 目标空间 34.6% | 决策 48.1
+
+  - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
+
+> **研究员提示**：虽有高分标的入选观察池，但 v1.3 仅对「突破确认」发出 buy 信号；趋势良好但未突破时维持 watch，避免追涨噪音。
+
+
+**战术持仓跟踪**（实验策略，非战役仓）：
+
+- **亚马逊**（美股）| 浮盈 -4.35% | 距止损 4.4% | 距目标 +36.6% | 持有 29 天 ⚠️ 接近止损
+
+
+**候选池前列**（按评分）：
+
+- 英伟达 70.0分 建议观察 RSI 54.6 RS +4.92%
+
+
+> 战术回测（v1.3.0）当前区间 **0 笔成交**，反映强趋势+突破过滤下信号稀缺，与「少做噪音交易」的设计一致。
+
+---
+
+## 四、投资大师风格荐股
+
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.763）。
+
+*在线学习：市场环境 risk_off · 修订 r763 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
+
+
+### 沃伦·巴菲特 · 价值投资
+
+*以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
+
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.9 · PEG 8.27 · ROE 19.9%
+
+  - ROE 19.91% — 盈利能力稳健；PE 14.89 — 估值在能力圈合理区间
+
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.5 · ROE 12.6%
+
+  - ROE 12.63% — 盈利能力稳健；PE 19.54 — 估值在能力圈合理区间
+
+
+### 本杰明·格雷厄姆 · 深度价值
+
+*安全边际是投资核心：在价格显著低于内在价值时分批买入，分散持有。*
+
+- **中国平安**（A股）| 匹配 87.2 | 符合风格 · 建议关注 | PE 6.9 · PEG 0.13 · ROE 13.1%
+
+  - PE 6.87 — 深度价值区间，安全边际充足；PB 1.01 — 资产折价，经典格雷厄姆信号
+
+- **招商银行**（A股）| 匹配 82.2 | 符合风格 · 建议关注 | PE 7.0 · PEG 1.30
+
+  - PE 7.03 — 深度价值区间，安全边际充足；PB 0.91 — 资产折价，经典格雷厄姆信号
+
+
+### 彼得·林奇 · 成长合理价 GARP
+
+*投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
+
+- **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.3 · PEG 0.61 · ROE 24.8%
+
+  - PEG 0.61 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
+
+- **中国平安**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 6.9 · PEG 0.13 · ROE 13.1%
+
+  - PEG 0.13 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 52.6% — 成长故事可验证
+
+
+### 查理·芒格 · 优质复利
+
+*以合理价格买入伟大的公司，胜过于以便宜价格买入平庸的公司。*
+
+- **谷歌**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 17.4 · PEG 5.92 · ROE 48.7%
+
+  - ROE 48.68% — 优质复利机器，芒格会长期持有；净利率 54.77% — 轻资产高毛利特征
+
+- **微软**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 28.6 · PEG 0.90 · ROE 34.0%
+
+  - ROE 34.04% — 优质复利机器，芒格会长期持有；净利率 40.3% — 轻资产高毛利特征
+
+
+### 约翰·邓普顿 · 逆向投资
+
+*在最大悲观时买入，在最大乐观时卖出；关注被错杀的优质资产。*
+
+- **五粮液**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 21.3 · PEG 9.14 · ROE 10.1%
+
+  - 近一月 -8.07% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
+
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.9 · PEG 8.27 · ROE 19.9%
+
+  - 近一月 -9.91% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
+
+
+### 乔治·索罗斯 · 宏观趋势
+
+*反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
+
+- **微软**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 28.6 · PEG 0.90 · ROE 34.0%
+
+  - 近一月 +9.37% — 趋势强劲，反身性正反馈；相对强度 +6.03% — 跑赢大盘，宏观共振
+
+- **英伟达**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 27.9 · PEG 0.22 · ROE 117.2%
+
+  - 近一月 +9.98% — 趋势强劲，反身性正反馈；相对强度 +6.64% — 跑赢大盘，宏观共振
+
+
+### 白毛股神 Serenity · 卡脖子 · 瓶颈猎手
+
+*Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
+
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 372.3 · PEG 6.55 · ROE 3.9%
+
+  - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
+
+- **中芯国际**（A股）| 匹配 98.5 | 符合风格 · 建议关注 | PE 143.8 · PEG 55.51 · ROE 4.2%
+
+  - 半导体 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 晶圆制造 — AI 算力上游产能瓶颈
+
+
+*大师风格荐股为规则化模拟，非真实人物操作建议；权重学习基于历史快照与公开行情，样本不足时变化极小；Serenity 相关内容为对其公开框架的量化近似，勿当作 X 账号买卖信号；仅供研究，不构成投资建议。*
+
+---
+
+## 五、持续进化状态
+
+**系统进化看板**（GitHub Actions 自动维护）
+
+- 影子轨：配对归因 24 对：影子胜率 70.8%，均边际 +0.62% — 可申请升级 PR
+
+- 配对归因：24 对 · 影子胜率 70.8% · 均边际 0.62%
+
+- 战术自适应：门槛 -2 · 中决策分 T+5 胜率 62.4% 良好，门槛 -1; 偏多环境 T+5 胜率 67.2% 良好，门槛 -1
+
+- 队列待办：**影子轨验证通过 · 可申请升级战术参数** — 影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。
+
+> **提示**：影子轨验证通过，可请 Cursor 按 EVOLUTION_PLAYBOOK 开策略升级 PR。
+
+---
+
+## 六、资讯与主题线索
+
+- [Yahoo] **Cathie Wood's Ark Has Delivered Just a 13.8% Annualized Return Since 2014, Roughly Matching the S&P 500. Should You Trust Her Bold Predictions for 2030?**（^GSPC）
+  Cathie Wood and Ark Invest have set some big targets for 2030. How should investors view them?…
+- [Yahoo] **Can't Decide Between Investing in Rare-Earth Materials and Nuclear Energy? This Under-the-Radar Stock Provides Exposure to Both Industries.**（NVDA）
+  There aren't many companies that provide nuclear energy exposure and rare-earth exposure in one fell swoop -- but this o…
+- [Yahoo] **Apple’s new CEO inherits a fortune and an AI question**（AAPL）
+  John Ternus takes with a balance sheet that looks nothing like Big Tech’s, and that may turn out to be the whole point.…
+- [Yahoo] **If You'd Invested $5,000 in the Vanguard S&P 500 ETF (VOO) a Decade Ago, Here's What You'd Have Today**（^GSPC）
+  Investing in the S&P 500 is a great way to participate in the growth of the U.S. economy.…
+- [Yahoo] **Nvidia's Rubin CPX Back From the Dead? Ming-Chi Kuo Says AI Chip Back With Major Redesign**（NVDA）
+  Nvidia Corp’s (NASDAQ:NVDA) Rubin CPX appeared to have disappeared from the company’s AI roadmap earlier this year. Now,…
+- [Yahoo] **Dell Reports Tuesday, and Its Server Margin Is Where the AI Memory Bill Finally Reaches the Stock**（NVDA）
+  Chip designers have spent weeks describing what soaring memory prices are doing to their margins. On Tuesday, the compan…
+
+---
+
+## 七、风险提示
+
+1. 本报告基于公开行情与规则化模型，**不构成投资建议**；战术实验与战役 XRPS 为相互独立的两套体系，请勿混仓决策。  
+2. 港股 / 美股存在汇率、流动性及隔夜缺口风险；A股须关注涨跌停制度下的执行偏差。  
+3. 问财等非官方数据源可能延迟或缓存；涨停榜等情绪指标需与实时盘口交叉验证。  
+4. 模拟盘收益不代表未来表现；连阴月加仓逻辑基于历史回测，极端宏观冲击下可能失效。
+5. 大师风格荐股为规则化模拟，非真实人物操作建议；基本面数据可能有延迟或缺失。
+
+---
+
+## 八、本时段关注清单
+
+1. 小米滚动卖出触发：涨 40% @ 35.32
+2. 小米回撤买回触发：回撤 20% @ 25.50
+3. ⚠️ 亚马逊 距止损仅 4.4%
+4. 收盘前：核对战役/战术止损位是否需手动校准（模拟盘仅作纪律参照）
+
+---
+
+*报告 ID：`2026-09-01-afternoon` · 自动生成于 shixiaoquan.win 投资决策工作台*
