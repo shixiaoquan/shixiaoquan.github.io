@@ -1,28 +1,18 @@
 {
-  "checkedAt": "2026-09-01T22:42:00+00:00",
+  "checkedAt": "2026-09-02T01:09:57+00:00",
   "stale": [
     {
-      "id": "market",
-      "name": "行情·荐股·模拟盘",
-      "schedule": "每 5 分钟",
-      "workflow": "update-market-data.yml",
-      "updatedAt": "2026-09-01T21:12:58+00:00",
+      "id": "truth",
+      "name": "Truth Social 镜像",
+      "schedule": "每 10 分钟",
+      "workflow": "update-truth-social.yml",
+      "updatedAt": "2026-09-01T23:59:39+00:00",
       "status": "stale",
-      "ageMinutes": 89,
-      "reason": "stale"
-    },
-    {
-      "id": "macro",
-      "name": "宏观与跨资产",
-      "schedule": "每 5 分钟",
-      "workflow": "update-market-data.yml",
-      "updatedAt": "2026-09-01T21:12:48+00:00",
-      "status": "stale",
-      "ageMinutes": 89,
+      "ageMinutes": 70,
       "reason": "stale"
     }
   ],
-  "healthyCount": 4,
+  "healthyCount": 5,
   "issueTitle": "[自动] 数据流水线异常",
-  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下数据流水线超过新鲜度阈值：\n\n- **行情·荐股·模拟盘** (`market`): stale · 工作流 `update-market-data.yml`\n- **宏观与跨资产** (`macro`): stale · 工作流 `update-market-data.yml`\n\n排查建议：\n1. 打开 [Actions](https://github.com/shixiaoquan/shixiaoquan.github.io/actions) 查看失败日志\n2. 检查 Secrets（WENCAI_COOKIE 等）是否过期\n3. 修复后本 Issue 将在下次健康检查通过时自动关闭\n\n<!-- pipeline-health-bot -->"
+  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下数据流水线超过新鲜度阈值：\n\n- **Truth Social 镜像** (`truth`): stale · 工作流 `update-truth-social.yml`\n\n排查建议：\n1. 打开 [Actions](https://github.com/shixiaoquan/shixiaoquan.github.io/actions) 查看失败日志\n2. 检查 Secrets（WENCAI_COOKIE 等）是否过期\n3. 修复后本 Issue 将在下次健康检查通过时自动关闭\n\n<!-- pipeline-health-bot -->"
 }
