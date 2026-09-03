@@ -1,7 +1,28 @@
 {
-  "checkedAt": "2026-09-03T01:15:56+00:00",
-  "stale": [],
-  "healthyCount": 6,
+  "checkedAt": "2026-09-03T06:01:46+00:00",
+  "stale": [
+    {
+      "id": "market",
+      "name": "行情·荐股·模拟盘",
+      "schedule": "每 5 分钟",
+      "workflow": "update-market-data.yml",
+      "updatedAt": "2026-09-03T05:13:29+00:00",
+      "status": "stale",
+      "ageMinutes": 48,
+      "reason": "stale"
+    },
+    {
+      "id": "macro",
+      "name": "宏观与跨资产",
+      "schedule": "每 5 分钟",
+      "workflow": "update-market-data.yml",
+      "updatedAt": "2026-09-03T05:13:18+00:00",
+      "status": "stale",
+      "ageMinutes": 48,
+      "reason": "stale"
+    }
+  ],
+  "healthyCount": 4,
   "issueTitle": "[自动] 数据流水线异常",
-  "issueBody": ""
+  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下数据流水线超过新鲜度阈值：\n\n- **行情·荐股·模拟盘** (`market`): stale · 工作流 `update-market-data.yml`\n- **宏观与跨资产** (`macro`): stale · 工作流 `update-market-data.yml`\n\n排查建议：\n1. 打开 [Actions](https://github.com/shixiaoquan/shixiaoquan.github.io/actions) 查看失败日志\n2. 检查 Secrets（WENCAI_COOKIE 等）是否过期\n3. 修复后本 Issue 将在下次健康检查通过时自动关闭\n\n<!-- pipeline-health-bot -->"
 }

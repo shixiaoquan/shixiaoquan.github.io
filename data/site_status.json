@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-03T05:38:11+00:00",
+  "updatedAt": "2026-09-03T06:01:46+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-09-03T05:13:30+00:00",
+    "updatedAt": "2026-09-03T06:01:46+00:00",
     "tasks": [
       {
         "id": "shadow-upgrade-pr",
@@ -119,14 +119,6 @@
           "breakoutScoreMin": 62,
           "source": "strategy_candidates.bestCandidate"
         }
-      },
-      {
-        "id": "pipelines-stale",
-        "type": "fix_pipeline",
-        "priority": "medium",
-        "title": "部分流水线数据过期",
-        "reason": "2 条流水线过期",
-        "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
       },
       {
         "id": "tactic-tune-active",
@@ -146,7 +138,7 @@
       }
     ],
     "summary": {
-      "total": 4,
+      "total": 3,
       "high": 1,
       "topAction": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。"
     }
@@ -228,8 +220,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-03T05:13:29+00:00",
-      "status": "ok",
-      "ageMinutes": 24
+      "status": "stale",
+      "ageMinutes": 48
     },
     {
       "id": "macro",
@@ -237,8 +229,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-03T05:13:18+00:00",
-      "status": "ok",
-      "ageMinutes": 24
+      "status": "stale",
+      "ageMinutes": 48
     },
     {
       "id": "truth",
@@ -247,7 +239,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-09-03T05:01:48+00:00",
       "status": "ok",
-      "ageMinutes": 36
+      "ageMinutes": 59
     },
     {
       "id": "wencai",
@@ -256,7 +248,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-09-03T04:17:47+00:00",
       "status": "ok",
-      "ageMinutes": 80
+      "ageMinutes": 103
     },
     {
       "id": "reports",
@@ -265,7 +257,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-03T13:38:11+08:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 23
     },
     {
       "id": "backtest",
@@ -274,9 +266,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-30T07:46:13+00:00",
       "status": "ok",
-      "ageMinutes": 5631
+      "ageMinutes": 5655
     }
   ],
-  "triggeredBy": "Generate Investment Report",
-  "runId": "33719655544"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "33721350700"
 }
