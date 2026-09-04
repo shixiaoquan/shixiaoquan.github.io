@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-09-04T04:49:58+00:00",
+  "checkedAt": "2026-09-04T09:47:49+00:00",
   "actionable": [
     {
       "id": "shadow-upgrade-pr",
@@ -15,22 +15,6 @@
       }
     },
     {
-      "id": "fix-pipeline-market",
-      "type": "fix_pipeline",
-      "priority": "high",
-      "title": "流水线过期 · 行情·荐股·模拟盘",
-      "reason": "stale",
-      "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-    },
-    {
-      "id": "fix-pipeline-macro",
-      "type": "fix_pipeline",
-      "priority": "high",
-      "title": "流水线过期 · 宏观与跨资产",
-      "reason": "stale",
-      "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
-    },
-    {
       "id": "fix-pipeline-truth",
       "type": "fix_pipeline",
       "priority": "high",
@@ -40,5 +24,5 @@
     }
   ],
   "issueTitle": "[自动] 进化队列高优任务待审阅",
-  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下进化任务需要 Cursor / 人工审阅：\n\n- **影子轨验证通过 · 可申请升级战术参数** (`shadow-upgrade-pr`)\n  - 配对 T+5 影子 70.8% · 边际 0.62%\n  - Cursor：`影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。`\n- **流水线过期 · 行情·荐股·模拟盘** (`fix-pipeline-market`)\n  - stale\n  - Cursor：`检查工作流 update-market-data.yml 日志与 Secrets。`\n- **流水线过期 · 宏观与跨资产** (`fix-pipeline-macro`)\n  - stale\n  - Cursor：`检查工作流 update-market-data.yml 日志与 Secrets。`\n- **流水线过期 · Truth Social 镜像** (`fix-pipeline-truth`)\n  - stale\n  - Cursor：`检查工作流 update-truth-social.yml 日志与 Secrets。`\n\n处理建议：\n1. 阅读 `data/evolution_queue.json` 与 `data/shadow_reco.json`\n2. 按 `.github/EVOLUTION_PLAYBOOK.md` 开 PR 或修复流水线\n3. 任务完成后本 Issue 将在下次检查通过时自动关闭\n\n<!-- evolution-queue-bot -->"
+  "issueBody": "此 Issue 由 `continuous-evolution` 工作流自动创建。\n\n以下进化任务需要 Cursor / 人工审阅：\n\n- **影子轨验证通过 · 可申请升级战术参数** (`shadow-upgrade-pr`)\n  - 配对 T+5 影子 70.8% · 边际 0.62%\n  - Cursor：`影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。`\n- **流水线过期 · Truth Social 镜像** (`fix-pipeline-truth`)\n  - stale\n  - Cursor：`检查工作流 update-truth-social.yml 日志与 Secrets。`\n\n处理建议：\n1. 阅读 `data/evolution_queue.json` 与 `data/shadow_reco.json`\n2. 按 `.github/EVOLUTION_PLAYBOOK.md` 开 PR 或修复流水线\n3. 任务完成后本 Issue 将在下次检查通过时自动关闭\n\n<!-- evolution-queue-bot -->"
 }
