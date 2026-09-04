@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T09:47:49+00:00",
+  "updatedAt": "2026-09-04T13:30:50+00:00",
   "tasks": [
     {
       "id": "shadow-upgrade-pr",
@@ -15,12 +15,12 @@
       }
     },
     {
-      "id": "fix-pipeline-truth",
+      "id": "pipelines-stale",
       "type": "fix_pipeline",
-      "priority": "high",
-      "title": "流水线过期 · Truth Social 镜像",
-      "reason": "stale",
-      "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+      "priority": "medium",
+      "title": "部分流水线数据过期",
+      "reason": "4 条流水线过期",
+      "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
     },
     {
       "id": "tactic-tune-active",
@@ -41,7 +41,7 @@
   ],
   "summary": {
     "total": 4,
-    "high": 2,
+    "high": 1,
     "topAction": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。"
   }
 }
