@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T17:41:45+00:00",
+  "updatedAt": "2026-09-04T19:25:14+00:00",
   "tasks": [
     {
       "id": "shadow-upgrade-pr",
@@ -31,6 +31,14 @@
       "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
     },
     {
+      "id": "fix-pipeline-wencai",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · 问财自然语言筛选",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-wencai-data.yml 日志与 Secrets。"
+    },
+    {
       "id": "tactic-tune-active",
       "type": "tactic_tune",
       "priority": "low",
@@ -48,8 +56,8 @@
     }
   ],
   "summary": {
-    "total": 5,
-    "high": 3,
+    "total": 6,
+    "high": 4,
     "topAction": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。"
   }
 }
