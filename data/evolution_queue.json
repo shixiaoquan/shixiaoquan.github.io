@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T14:26:33+00:00",
+  "updatedAt": "2026-09-04T17:00:31+00:00",
   "tasks": [
     {
       "id": "shadow-upgrade-pr",
@@ -15,12 +15,20 @@
       }
     },
     {
-      "id": "pipelines-stale",
+      "id": "fix-pipeline-market",
       "type": "fix_pipeline",
-      "priority": "medium",
-      "title": "部分流水线数据过期",
-      "reason": "2 条流水线过期",
-      "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
+      "priority": "high",
+      "title": "流水线过期 · 行情·荐股·模拟盘",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+    },
+    {
+      "id": "fix-pipeline-macro",
+      "type": "fix_pipeline",
+      "priority": "high",
+      "title": "流水线过期 · 宏观与跨资产",
+      "reason": "stale",
+      "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
     },
     {
       "id": "tactic-tune-active",
@@ -40,8 +48,8 @@
     }
   ],
   "summary": {
-    "total": 4,
-    "high": 1,
+    "total": 5,
+    "high": 3,
     "topAction": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。"
   }
 }
