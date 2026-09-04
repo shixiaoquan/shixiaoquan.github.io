@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T21:25:38+00:00",
+  "updatedAt": "2026-09-04T21:38:33+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-09-04T20:53:57+00:00",
+    "updatedAt": "2026-09-04T21:38:33+00:00",
     "tasks": [
       {
         "id": "shadow-upgrade-pr",
@@ -137,6 +137,14 @@
         "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
       },
       {
+        "id": "fix-pipeline-truth",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · Truth Social 镜像",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+      },
+      {
         "id": "fix-pipeline-wencai",
         "type": "fix_pipeline",
         "priority": "high",
@@ -162,8 +170,8 @@
       }
     ],
     "summary": {
-      "total": 6,
-      "high": 4,
+      "total": 7,
+      "high": 5,
       "topAction": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。"
     }
   },
@@ -249,7 +257,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-04T13:30:49+00:00",
       "status": "stale",
-      "ageMinutes": 474
+      "ageMinutes": 487
     },
     {
       "id": "macro",
@@ -258,7 +266,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-04T13:30:05+00:00",
       "status": "stale",
-      "ageMinutes": 475
+      "ageMinutes": 488
     },
     {
       "id": "truth",
@@ -267,7 +275,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-09-04T19:35:37+00:00",
       "status": "stale",
-      "ageMinutes": 110
+      "ageMinutes": 122
     },
     {
       "id": "wencai",
@@ -276,7 +284,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-09-04T21:24:34+00:00",
       "status": "ok",
-      "ageMinutes": 1
+      "ageMinutes": 13
     },
     {
       "id": "reports",
@@ -285,7 +293,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-04T20:39:36+08:00",
       "status": "ok",
-      "ageMinutes": 526
+      "ageMinutes": 538
     },
     {
       "id": "backtest",
@@ -294,9 +302,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-30T07:46:13+00:00",
       "status": "ok",
-      "ageMinutes": 8019
+      "ageMinutes": 8032
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "33920920827"
+  "triggeredBy": "Update Market Data",
+  "runId": "33921997322"
 }
