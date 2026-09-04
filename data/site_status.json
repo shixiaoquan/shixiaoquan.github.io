@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-04T13:30:50+00:00",
+  "updatedAt": "2026-09-04T13:42:09+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -233,7 +233,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-04T13:30:49+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 11
     },
     {
       "id": "macro",
@@ -242,16 +242,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-04T13:30:05+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 12
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-09-04T09:23:54+00:00",
-      "status": "stale",
-      "ageMinutes": 246
+      "updatedAt": "2026-09-04T13:41:28+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -260,7 +260,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-09-04T09:34:10+00:00",
       "status": "stale",
-      "ageMinutes": 236
+      "ageMinutes": 247
     },
     {
       "id": "reports",
@@ -269,7 +269,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-04T20:39:36+08:00",
       "status": "ok",
-      "ageMinutes": 51
+      "ageMinutes": 62
     },
     {
       "id": "backtest",
@@ -278,9 +278,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-08-30T07:46:13+00:00",
       "status": "ok",
-      "ageMinutes": 7544
+      "ageMinutes": 7555
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "33878328166"
+  "triggeredBy": "Update Truth Social",
+  "runId": "33879441929"
 }
