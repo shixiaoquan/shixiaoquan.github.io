@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-06T22:25:32+00:00",
+  "updatedAt": "2026-09-06T23:00:56+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-09-06T22:25:32+00:00",
+    "updatedAt": "2026-09-06T23:00:56+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-truth",
@@ -224,7 +224,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-06T22:24:55+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 36
     },
     {
       "id": "macro",
@@ -233,7 +233,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-06T22:24:47+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 36
     },
     {
       "id": "truth",
@@ -241,8 +241,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-09-06T21:42:14+00:00",
-      "status": "ok",
-      "ageMinutes": 43
+      "status": "stale",
+      "ageMinutes": 78
     },
     {
       "id": "wencai",
@@ -251,7 +251,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-09-06T21:17:29+00:00",
       "status": "ok",
-      "ageMinutes": 68
+      "ageMinutes": 103
     },
     {
       "id": "reports",
@@ -260,7 +260,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-06T20:04:54+08:00",
       "status": "ok",
-      "ageMinutes": 620
+      "ageMinutes": 656
     },
     {
       "id": "backtest",
@@ -269,9 +269,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-09-06T06:46:23+00:00",
       "status": "ok",
-      "ageMinutes": 939
+      "ageMinutes": 974
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "34063955147"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "34065635676"
 }
