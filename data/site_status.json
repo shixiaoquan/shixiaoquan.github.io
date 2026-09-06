@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-06T16:25:48+00:00",
+  "updatedAt": "2026-09-06T17:00:09+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -237,7 +237,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-06T16:25:10+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 34
     },
     {
       "id": "macro",
@@ -246,7 +246,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-06T16:24:58+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 35
     },
     {
       "id": "truth",
@@ -254,17 +254,17 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-09-06T15:39:10+00:00",
-      "status": "ok",
-      "ageMinutes": 46
+      "status": "stale",
+      "ageMinutes": 80
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-09-06T14:08:00+00:00",
+      "updatedAt": "2026-09-06T16:59:02+00:00",
       "status": "ok",
-      "ageMinutes": 137
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -273,7 +273,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-06T20:04:54+08:00",
       "status": "ok",
-      "ageMinutes": 260
+      "ageMinutes": 295
     },
     {
       "id": "backtest",
@@ -282,9 +282,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-09-06T06:46:23+00:00",
       "status": "ok",
-      "ageMinutes": 579
+      "ageMinutes": 613
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "34045381165"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "34047133758"
 }
