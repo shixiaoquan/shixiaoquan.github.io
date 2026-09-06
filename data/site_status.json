@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-06T06:10:44+00:00",
+  "updatedAt": "2026-09-06T06:46:46+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -18,10 +18,10 @@
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
-    "backtestUpdatedAt": "2026-08-30T07:46:12+00:00",
+    "backtestUpdatedAt": "2026-09-06T06:46:22+00:00",
     "backtestWinRate": null,
-    "recoAvgReturnT5": -0.1,
-    "recoWinRateT5": 60.3,
+    "recoAvgReturnT5": -0.04,
+    "recoWinRateT5": 60.0,
     "recoDecisionBuckets": {
       "未知": {
         "avgT5": 0.42,
@@ -29,31 +29,31 @@
         "winRate": 37.5
       },
       "中": {
-        "avgT5": -0.05,
-        "count": 250,
-        "winRate": 62.4
+        "avgT5": 0.05,
+        "count": 281,
+        "winRate": 61.9
       },
       "低": {
-        "avgT5": -0.38,
-        "count": 118,
-        "winRate": 63.6
+        "avgT5": -0.39,
+        "count": 127,
+        "winRate": 63.0
       }
     },
     "recoMarketBuckets": {
       "美股": {
-        "avgT5": -0.15,
-        "count": 159,
-        "winRate": 69.8
+        "avgT5": 0.31,
+        "count": 176,
+        "winRate": 72.7
       },
       "A股": {
-        "avgT5": 0.37,
-        "count": 145,
-        "winRate": 54.5
+        "avgT5": 0.41,
+        "count": 151,
+        "winRate": 56.3
       },
       "港股": {
-        "avgT5": -0.68,
-        "count": 104,
-        "winRate": 53.8
+        "avgT5": -1.12,
+        "count": 121,
+        "winRate": 46.3
       }
     },
     "recoRegimeBuckets": {
@@ -63,41 +63,41 @@
         "winRate": 57.7
       },
       "risk_off": {
-        "avgT5": -0.62,
-        "count": 79,
-        "winRate": 67.1
+        "avgT5": -0.56,
+        "count": 86,
+        "winRate": 66.3
       },
       "neutral": {
-        "avgT5": -2.8,
-        "count": 60,
-        "winRate": 53.3
+        "avgT5": -1.67,
+        "count": 81,
+        "winRate": 55.6
       },
       "risk_on": {
-        "avgT5": -0.78,
-        "count": 61,
-        "winRate": 67.2
+        "avgT5": -0.79,
+        "count": 73,
+        "winRate": 64.4
       }
     },
-    "shadowWinRateT5": 49.0,
-    "shadowAvgReturnT5": -1.23,
-    "shadowMaturedT5": 155,
+    "shadowWinRateT5": 50.9,
+    "shadowAvgReturnT5": -1.03,
+    "shadowMaturedT5": 165,
     "shadowWeeks": 8.0,
     "shadowTradingDays": 48,
-    "shadowAgeDays": 56,
+    "shadowAgeDays": 58,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
-    "shadowReason": "配对归因 24 对：影子胜率 70.8%，均边际 +0.62% — 可申请升级 PR",
+    "shadowReason": "配对归因 16 对 · 影子胜率 0.0% · 均边际 -0.15%",
     "shadowCandidateParams": {
-      "buyScore": 72,
+      "buyScore": 75,
       "breakoutScoreMin": 62,
       "source": "strategy_candidates.bestCandidate"
     },
-    "pairedCount": 24,
-    "pairedShadowWinRate": 70.8,
-    "marketPairedCount": 34,
+    "pairedCount": 16,
+    "pairedShadowWinRate": 0.0,
+    "marketPairedCount": 16,
     "strategyUpgradePending": true,
-    "strategyUpgradeHint": "探索候选 buy=72 breakout=62 期望 1.01% — 已写入影子轨，满 4 周后可提 PR",
-    "shadowReadyForPR": true,
+    "strategyUpgradeHint": "探索候选 buy=75 breakout=62 期望 -0.02% — 已写入影子轨，满 4 周后可提 PR",
+    "shadowReadyForPR": false,
     "tacticTuneByMarket": {
       "A股": -2,
       "港股": -2,
@@ -105,21 +105,8 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-09-06T06:10:44+00:00",
+    "updatedAt": "2026-09-06T06:46:45+00:00",
     "tasks": [
-      {
-        "id": "shadow-upgrade-pr",
-        "type": "strategy_pr",
-        "priority": "high",
-        "title": "影子轨验证通过 · 可申请升级战术参数",
-        "reason": "配对 T+5 影子 70.8% · 边际 0.62%",
-        "cursorPrompt": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。",
-        "params": {
-          "buyScore": 72,
-          "breakoutScoreMin": 62,
-          "source": "strategy_candidates.bestCandidate"
-        }
-      },
       {
         "id": "fix-pipeline-market",
         "type": "fix_pipeline",
@@ -145,29 +132,64 @@
         "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
       },
       {
+        "id": "shadow-tracking",
+        "type": "shadow_track",
+        "priority": "medium",
+        "title": "影子轨积累中",
+        "reason": "配对归因 16 对 · 影子胜率 0.0% · 均边际 -0.15%",
+        "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
+      },
+      {
+        "id": "candidate-explore",
+        "type": "shadow_candidate",
+        "priority": "medium",
+        "title": "探索参数优于当前 · 已转入影子轨验证",
+        "reason": "探索候选 buy=75 breakout=62 期望 -0.02% — 已写入影子轨，满 4 周后可提 PR",
+        "cursorPrompt": "勿直接改 strategy_config。确认 shadow_reco 满 4 周后再开 PR。",
+        "params": {
+          "buyScore": 75,
+          "breakoutScoreMin": 62
+        }
+      },
+      {
         "id": "tactic-tune-active",
         "type": "tactic_tune",
         "priority": "low",
         "title": "战术门槛自适应调整 -2",
-        "reason": "中决策分 T+5 胜率 62.4% 良好，门槛 -1; 偏多环境 T+5 胜率 67.2% 良好，门槛 -1; 美股 T+5 胜率 69.8% 良好，门槛 -1（市场门槛→-3）; buy 样本不足，主要依据 watch 池、市场与决策分桶观察",
+        "reason": "中决策分 T+5 胜率 61.9% 良好，门槛 -1; 偏多环境 T+5 胜率 64.4% 良好，门槛 -1; 美股 T+5 胜率 72.7% 良好，门槛 -1（市场门槛→-3）; buy 样本不足，主要依据 watch 池、市场与决策分桶观察",
         "cursorPrompt": "可选：审阅 tactic_tune.json 是否需固化到 strategy_config。"
-      },
-      {
-        "id": "paper-ab-hint",
-        "type": "research",
-        "priority": "low",
-        "title": "A/B 回测：v1.2 宽松优于 v1.3",
-        "reason": "Δ期望 0.34%",
-        "cursorPrompt": "仅研究参考；生产升级仍以影子轨 forward 为准。"
       }
     ],
     "summary": {
       "total": 6,
-      "high": 4,
-      "topAction": "影子轨已满 4 周且优于生产。请更新 strategy_config.py：BUY_SCORE=72, BREAKOUT_SCORE_MIN=62，追加 strategy_versions.json 记录并开 PR。"
+      "high": 3,
+      "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
     }
   },
   "recentLog": [
+    {
+      "at": "2026-09-06T06:46:38+00:00",
+      "type": "param_sweep",
+      "recommendUpgrade": false,
+      "currentExpectancy": -0.46,
+      "bestExpectancy": -0.02,
+      "totalTrades": 20,
+      "reason": "探索候选 buy=75 breakout=62 期望 -0.02% — 已写入影子轨，满 4 周后可提 PR"
+    },
+    {
+      "at": "2026-09-06T06:46:28+00:00",
+      "type": "shadow_attribution",
+      "newItems": 12,
+      "avgReturnT5": -1.03,
+      "winRateT5": 50.9
+    },
+    {
+      "at": "2026-09-06T06:46:27+00:00",
+      "type": "reco_attribution",
+      "newItems": 40,
+      "avgReturnT5": -0.04,
+      "winRateT5": 60.0
+    },
     {
       "at": "2026-09-04T13:29:55+00:00",
       "type": "master_learn",
@@ -206,39 +228,6 @@
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
         "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
       }
-    },
-    {
-      "at": "2026-09-04T00:21:13+00:00",
-      "type": "master_learn",
-      "revision": 783,
-      "regime": "risk_on",
-      "notes": {
-        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
-        "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
-      }
-    },
-    {
-      "at": "2026-09-03T22:34:16+00:00",
-      "type": "master_learn",
-      "revision": 782,
-      "regime": "neutral",
-      "notes": {
-        "graham": "近期表现反馈：pe↑、pb↑、range↑、dividend↑",
-        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
-      }
-    },
-    {
-      "at": "2026-09-03T20:09:47+00:00",
-      "type": "master_learn",
-      "revision": 781,
-      "regime": "neutral",
-      "notes": {
-        "graham": "近期表现反馈：pe↑、pb↑、range↑、dividend↑",
-        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
-      }
     }
   ],
   "pipelines": [
@@ -249,7 +238,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-04T13:30:49+00:00",
       "status": "stale",
-      "ageMinutes": 2439
+      "ageMinutes": 2475
     },
     {
       "id": "macro",
@@ -258,7 +247,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-04T13:30:05+00:00",
       "status": "stale",
-      "ageMinutes": 2440
+      "ageMinutes": 2476
     },
     {
       "id": "truth",
@@ -267,7 +256,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-09-06T04:23:35+00:00",
       "status": "stale",
-      "ageMinutes": 107
+      "ageMinutes": 143
     },
     {
       "id": "wencai",
@@ -276,7 +265,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-09-06T05:54:58+00:00",
       "status": "ok",
-      "ageMinutes": 15
+      "ageMinutes": 51
     },
     {
       "id": "reports",
@@ -285,18 +274,18 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-06T13:45:59+08:00",
       "status": "ok",
-      "ageMinutes": 24
+      "ageMinutes": 60
     },
     {
       "id": "backtest",
       "name": "策略周度回测",
       "schedule": "每周日",
       "workflow": "weekly-backtest.yml",
-      "updatedAt": "2026-08-30T07:46:13+00:00",
+      "updatedAt": "2026-09-06T06:46:23+00:00",
       "status": "ok",
-      "ageMinutes": 9984
+      "ageMinutes": 0
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "34015776912"
+  "triggeredBy": "Weekly Backtest",
+  "runId": "34017350692"
 }

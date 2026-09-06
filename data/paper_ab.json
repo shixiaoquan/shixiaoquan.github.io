@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-30T07:46:32+00:00",
-  "leader": "v1.2_relaxed",
+  "updatedAt": "2026-09-06T06:46:39+00:00",
+  "leader": "v1.3_production",
   "variants": {
     "v1.3_production": {
       "id": "v1.3_production",
@@ -37,17 +37,41 @@
       "label": "v1.2 对照（放宽过滤）",
       "period": "2y",
       "metrics": {
-        "totalTrades": 17,
-        "winRate": 29.4,
-        "profitFactor": 1.39,
-        "expectancy": 0.34,
-        "avgWin": 4.09,
-        "avgLoss": -1.22,
-        "maxDrawdown": -10.6,
-        "sharpe": 0.16,
-        "annualReturn": 4.24
+        "totalTrades": 19,
+        "winRate": 36.8,
+        "profitFactor": 0.92,
+        "expectancy": -0.1,
+        "avgWin": 3.19,
+        "avgLoss": -2.02,
+        "maxDrawdown": -19.01,
+        "sharpe": -0.04,
+        "annualReturn": -3.81
       },
       "recentTrades": [
+        {
+          "symbol": "AAPL",
+          "market": "美股",
+          "entryDate": "2026-09-01",
+          "exitDate": "2026-09-04",
+          "entryPrice": 325.13,
+          "exitPrice": 319.97,
+          "returnPct": -1.59,
+          "reason": "expiry",
+          "score": 80.7,
+          "win": false
+        },
+        {
+          "symbol": "NVDA",
+          "market": "美股",
+          "entryDate": "2026-09-03",
+          "exitDate": "2026-09-04",
+          "entryPrice": 228.45,
+          "exitPrice": 230.36,
+          "returnPct": 0.84,
+          "reason": "expiry",
+          "score": 75.6,
+          "win": true
+        },
         {
           "symbol": "AAPL",
           "market": "美股",
@@ -83,36 +107,12 @@
           "reason": "trail",
           "score": 93.3,
           "win": false
-        },
-        {
-          "symbol": "NVDA",
-          "market": "美股",
-          "entryDate": "2026-04-22",
-          "exitDate": "2026-04-24",
-          "entryPrice": 202.26,
-          "exitPrice": 202.26,
-          "returnPct": -0.0,
-          "reason": "trail",
-          "score": 76.8,
-          "win": false
-        },
-        {
-          "symbol": "600519.SS",
-          "market": "A股",
-          "entryDate": "2026-02-04",
-          "exitDate": "2026-02-05",
-          "entryPrice": 1489.74,
-          "exitPrice": 1489.74,
-          "returnPct": -0.0,
-          "reason": "trail",
-          "score": 76.4,
-          "win": false
         }
       ]
     }
   },
   "delta": {
-    "expectancy": 0.34,
-    "winRate": 29.4
+    "expectancy": -0.1,
+    "winRate": 36.8
   }
 }
