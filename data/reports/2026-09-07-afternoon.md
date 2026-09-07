@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年09月07日 16:42（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年09月07日 22:10（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-09-07 12:38 · 宏观：2026-09-07 12:38 · 问财：2026-09-07 12:30
+> 行情更新：2026-09-07 17:43 · 宏观：2026-09-07 17:44 · 问财：2026-09-07 18:12
 
 ---
 
@@ -11,11 +11,11 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **-0.08%**，综合情绪 **震荡**。指数方向不明，结构分化概率加大，宜精选个股、控制仓位，等待方向选择。
+全球跟踪指数平均涨跌 **+0.01%**，综合情绪 **震荡**。指数方向不明，结构分化概率加大，宜精选个股、控制仓位，等待方向选择。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
-战役仓 XRPS 模拟收益率 +9.27%，按网格与月线纪律执行。
+战役仓 XRPS 模拟收益率 +9.53%，按网格与月线纪律执行。
 
 战术实验有 **1** 笔 open 持仓，本日重点跟踪止损距离与突破延续性。
 
@@ -25,15 +25,15 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.1 全球指数
 
-跟踪 6 只主要指数：上涨 **1** 只、
-下跌 **5** 只，平均涨跌 **-0.08%**。
+跟踪 6 只主要指数：上涨 **2** 只、
+下跌 **4** 只，平均涨跌 **+0.01%**。
 
-**美股** -0.39%（偏弱）；**港股** -0.97%（偏弱）；**A股** -0.24%（震荡）。相对弱势区域：美股、港股，战术配置宜降权。
+**美股** -0.39%（偏弱）；**港股** -0.93%（偏弱）；**A股** +0.07%（震荡）。相对弱势区域：美股、港股，战术配置宜降权。
 
 **波动居前指数：**
 
-- **日经 225** 66,264.10，日涨跌 +1.91%（周 -0.07% / 月 +0.88%）
-- **恒生指数** 25,402.73，日涨跌 -0.97%（周 -0.64% / 月 -1.03%）
+- **日经 225** 66,399.84，日涨跌 +2.12%（周 +0.13% / 月 +1.09%）
+- **恒生指数** 25,413.12，日涨跌 -0.93%（周 -0.60% / 月 -0.99%）
 - **道琼斯** 53,414.25，日涨跌 -0.51%（周 -0.27% / 月 -0.87%）
 - **标普 500** 7,718.60，日涨跌 -0.38%（周 +0.09% / 月 +0.11%）
 
@@ -43,7 +43,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.3 宏观与跨资产
 
-- **VIX** 14.5（normal）
+- **VIX** 15.1（normal）
 - **美10Y收益率** 4.78%
 - **10Y-2Y 利差（FRED）** 0.41%（偏窄）
 - **USDCNH** 6.7100（日 —）
@@ -58,11 +58,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：332.8（变动 +1.63%，2026-07-01）
 
 **Finnhub 宏观要闻**
-- [Asia tech shares rally, others hesitant as oil rises - Reuters](https://news.google.com/rss/articles/CBMigwFBVV95cUxQa0pobHhGSWlxLVNZa2htLURrNldPaHUyOGVyQXVBeGtJOWJDUXpqMXFSTDBCaHNkeFI5Q0Y2NUdFNlJoWUZlVGQwR2pGZk5oc1R5TzFLbUdFMU1aY3NGTXVhOGFTeFZOenRpbUlNc0ZiTjQtMnNaRVUtTVNrWEpLeGprbw?oc=5)（Reuters）
-- [Ship fuel shortage looms as refiners strained by war favour other products - Reuters](https://news.google.com/rss/articles/CBMiwAFBVV95cUxQcjJsRnYxdWplZmMxWnZxd2JBRjdaR2YtV0VrMEJCNmFTUjF1U1oyaVhiZk5XZ2Rvc1lXVEdhQjd0bWxxZ1R6Sl9Eckl0S3NXSXpjbGZ5QjJ6dnVkbG9tc2RtRl8tNy1heW1RVHh1VlZ2ZUVtQnJTREdYRlJsRFo5VjRoNUhRTEV2c0dwd01fNWphVkg4LW9oeExqdm1jQW9nRFdGYm16WTRkUjkxUmpaN2NPdDZpUVl2Tk1KQ0xZZWY?oc=5)（Reuters）
-- [Oil extends gains after US and Iran strike ships - Reuters](https://news.google.com/rss/articles/CBMinAFBVV95cUxNN2l5blJOWGZlTWtiTzJFdl80Vm9jb3QxSHp5YUpRR0l6THd2RmZ6cDd2OUtFakRhYkRXbWdSdUxUU0tYSVl1YTRTS1RzYTVQem1OOVFDR01ZRXNEeDBuWEwweHd0RDZnS1B0dE1PbFhXb3JMWjNGY1JLMHpvUkpGRDE0ZUtXZk10akVNOUhSVklQYjdHZ1JCS25ReUc?oc=5)（Reuters）
-- [Hormuz traffic dips to lowest since May after US, Iranian strikes on ships - Reuters](https://news.google.com/rss/articles/CBMivgFBVV95cUxNX1Yzd0xQX3FmaWVJVjdQREFrMWR1ZEZfaHlPNmpTY1FJRFRNYmN0YWVTSHB6NVNvTnJ5R0VYaS1RLXg5TUh5cjEzMmFzV0Nyb0FWUmRZSXlBMUlSQjRZbGFzQll1X0kzcXdBdnVsT25ncEhNY2Z3ME5IQTMzSk9TZEdDbGx5RFh2VEJjMzdKMy1uUlBPbWZ0NWgyLTh3cmU0cTA1bTE1Rnh0cWhpd1dKaWZlTDhQeGJKVWxJeHVB?oc=5)（Reuters）
-- [Israeli strike kills a man and his daughter in Gaza, medics say - Reuters](https://news.google.com/rss/articles/CBMiowFBVV95cUxNWXNmc1lpWkNYV0VUaVR4bDNpWTNMcTQ1VkFPYk5tZGFHbzk3Q3pOX0JtRW9Gc01kVnJ4RjRRVVl2aVpfSU1jN1JtelYxZUNIZV9Qb3M1U3J5Y0FMdkN6SV9sd3dPckdaWFFMWktOejFtUldxdUFDd0tMbjBzRzE5R0ZsQ1pPMG1ZNHJWTXQwNWVTT05PNmNFMElJbGVLenhLbEJ3?oc=5)（Reuters）
+- [UAE builds alternative trade, energy routes after Iran attacks, official says - Reuters](https://news.google.com/rss/articles/CBMiyAFBVV95cUxNX2k1aEFKNWUzaXRzZXlkTVZNb3MyOTZoSjBoa2N5Zmtpd1Z2VVRWbV9JcnNHN0hkS1ZPRXEyb1UxdGMzN1pFNUFCUmpPVTNvQndsa3c1TzBwNEVvVXNLVXZjNGVnbzF6TUdGS2N5SVdLT2k2Nlk1TmREb0ZlTVp1cGlLRzJTMWJqLTN4VVRiY2s1emV6YldrQnJHQWRmZFBKRUdDalJjb1lFM1NxaHI2eDdWWFN1R0tydFJYOUh3Z0phb0paZUNRMw?oc=5)（Reuters）
+- [Iran says to announce new restricted zone in the Gulf in the coming days - Reuters](https://news.google.com/rss/articles/CBMirgFBVV95cUxQM292TDh2Uk9IeUlEeFNFY1UyeFM3OFZzd2w1S013bEtmVnhXYmdfT0ptV1ZfTlRTRXBLVzFZdmZ6T0d2cVdkZHAtbmhFTjlHUmJRQkRVZDhwMGJZZUM2MEpBS041SmhGcEhWZTlQemFBcjRaNkwyWkhhUlNFc1dNZEVyQ1R0YzFnRm5ZNHd3VU5NV01EeWZVZjJrUW5VWGF2X2R1U0xzSFEwbE9iY1E?oc=5)（Reuters）
+- [Morning Bid: Diesel the real spoiler for US inflation doves - Reuters](https://news.google.com/rss/articles/CBMif0FVX3lxTFBkVEpMZWxDcWdjVkVYRGdtakVZSGxsWVZfR2N5eFR4UTBRTzZWTmxMZXF3REFZeHBkelU2YXJQb21JZEtGNVNqQld1eTYxV3VpLXFzT1VEVEtQVUNxa3VQTW5mdE1OQ2JocmNrdW80bktWQWxfY2w2SmoxV2dfOWs?oc=5)（Reuters）
+- [Indian central bank likely intervened to support rupee, traders say - Reuters](https://news.google.com/rss/articles/CBMisAFBVV95cUxOQkppSlJtNjIzeHN6TVJMam0yMGZSSGhrVFlnTDhqY2pIeHpmdS13RGc0bUQ0TUQwQjdaRHJyalp0bE9JN01oR2xPLUlzU0R4NDhvSHgwVHNPbWZjcEF0QU1IdFVtajhHS2ZwdzVuSENObEo3dkVtcHZGQ3RXZVY1ejdHOVlFSlE3SlJ1Q1VOQ0NFRTdwU0JNNlQ4dHBsWjd6ZER5cm5CYjlEbUdUUU5JRw?oc=5)（Reuters）
+- [COMMENTARY: China's crude oil imports stayed weak in August. Can this continue? - Reuters](https://news.google.com/rss/articles/CBMiygFBVV95cUxQNjJvZmc3M0wteXQ1VzNhSUZHY3p4eGl4UjNUWC1BYi16ajFCbzZYUlBfV0tQajNaSVFvWVRWTmY5WlhpT1hPb0JwRUF4OHY2NG96bl9xTVppUTFyZUN3clpMLTJfNnRhenNsTVVuUXlXZmxxMDV6R00tQk1MWVBkOTlUdi1uOUxuV1l2WnZaODZESnNLWVdzM0RxSFlQZTF5ZWhiUkZtSExpWmQ5cGZ1M0dnTTdjNjNRR3hqV21pT3lOMlZlZEJRQ0lB?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **BRRE** 2026-09-14  · EPS预期 —
@@ -86,17 +86,17 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **标的**：小米集团（1810.HK）
 
-**模拟净值**：收益率 +9.27%，仓位 36.2%，持股 14,481 股，均价 23.75。
+**模拟净值**：收益率 +9.53%，仓位 36.4%，持股 14,481 股，均价 23.75。
 
 **月线状态**：连续 **1** 个月收跌，上月 -1.22%，近两月累计 +22.21%，近三月累计 -3.83%。我们判断当前仍处于 XRPS「股数积累」逻辑占优的阶段，浮亏不应成为削减核心仓的理由。
 
 **阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
 
-**现价参考**：27.32 HKD。
+**现价参考**：27.50 HKD。
 
-- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +29.30%。
+- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +28.40%。
 
-- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +6.70%。
+- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +7.30%。
 
 - XRPS-X 运行正常：股数优先、成本优先、核心仓保留。
 
@@ -106,7 +106,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 中国平安(72.2分) · 港股最高 小米集团(35.3分) · 美股最高 英伟达(75.4分)
+**全市场扫描**：A股最高 中国平安(67.1分) · 港股最高 小米集团(44.4分) · 美股最高 英伟达(75.4分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
@@ -114,7 +114,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线
 
-- **中国平安**（A股）| 弱信号观察 | 评分 72.2 | 待突破 | 趋势过滤未过 | 止损缓冲 5.5% / 目标空间 19.8% | 决策 54.6
+- **中国平安**（A股）| 弱信号观察 | 评分 67.1 | 待突破 | 趋势过滤未过 | 止损缓冲 5.6% / 目标空间 20.0% | 决策 54.6
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
@@ -139,31 +139,31 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.792）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.793）。
 
-*在线学习：市场环境 neutral · 修订 r792*
+*在线学习：市场环境 neutral · 修订 r793*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.8 · PEG 8.22 · ROE 19.9%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.8 · PEG 8.20 · ROE 19.9%
 
-  - ROE 19.91% — 盈利能力稳健；PE 14.8 — 估值在能力圈合理区间
+  - ROE 19.91% — 盈利能力稳健；PE 14.76 — 估值在能力圈合理区间
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.2 · ROE 12.6%
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.4 · ROE 12.6%
 
-  - ROE 12.63% — 盈利能力稳健；PE 19.24 — 估值在能力圈合理区间
+  - ROE 12.63% — 盈利能力稳健；PE 19.37 — 估值在能力圈合理区间
 
 
 ### 本杰明·格雷厄姆 · 深度价值
 
 *安全边际是投资核心：在价格显著低于内在价值时分批买入，分散持有。*
 
-- **招商银行**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 7.1 · PEG 1.25 · ROE 11.5%
+- **招商银行**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 7.1 · PEG 1.24 · ROE 11.5%
 
-  - PE 7.11 — 深度价值区间，安全边际充足；PB 0.91 — 资产折价，经典格雷厄姆信号
+  - PE 7.09 — 深度价值区间，安全边际充足；PB 0.9 — 资产折价，经典格雷厄姆信号
 
 - **中国平安**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 6.8 · PEG 0.13 · ROE 13.1%
 
@@ -200,13 +200,13 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *在最大悲观时买入，在最大乐观时卖出；关注被错杀的优质资产。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.8 · PEG 8.22 · ROE 19.9%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.8 · PEG 8.20 · ROE 19.9%
 
-  - 近一月 -8.19% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近一月 -8.44% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
 
 - **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.6 · PEG 0.58 · ROE 24.8%
 
-  - 近一月 -9.86% — 市场悲观，邓普顿式逆向机会；PE 18.6 — 悲观中仍有估值支撑
+  - 近一月 -9.95% — 市场悲观，邓普顿式逆向机会；PE 18.58 — 悲观中仍有估值支撑
 
 
 ### 乔治·索罗斯 · 宏观趋势
@@ -217,20 +217,20 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 相对强度 +5.08% — 跑赢大盘，宏观共振；均线多头排列 — 趋势交易确认
 
-- **招商银行**（A股）| 匹配 84.3 | 符合风格 · 建议关注 | PE 7.1 · PEG 1.25 · ROE 11.5%
+- **招商银行**（A股）| 匹配 84.3 | 符合风格 · 建议关注 | PE 7.1 · PEG 1.24 · ROE 11.5%
 
-  - 相对强度 +6.6% — 跑赢大盘，宏观共振；均线多头排列 — 趋势交易确认
+  - 相对强度 +6.04% — 跑赢大盘，宏观共振；均线多头排列 — 趋势交易确认
 
 
 ### 白毛股神 Serenity · 卡脖子 · 瓶颈猎手
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 381.2 · PEG 23.97 · ROE 4.0%
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 378.1 · PEG 23.78 · ROE 4.0%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
-- **AMD**（美股）| 匹配 83.1 | 符合风格 · 建议关注 | PE 121.8 · PEG 76.62 · ROE 10.2%
+- **AMD**（美股）| 匹配 82.7 | 符合风格 · 建议关注 | PE 121.8 · PEG 76.62 · ROE 10.2%
 
   - 半导体 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · GPU/CPU — 算力供应链关键环节
 
@@ -255,18 +255,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **Is the Stock Market Open Today? Here Are the Trading Hours for Labor Day.**（^GSPC）
-  September is notoriously tough on the stock market, but investors might be able to exhale now that Labor Day is here.…
-- [Yahoo] **Asian shares are mixed as chipmaker shares rally in Tokyo and Seoul**（000001.SS）
-  Asian shares were trading mixed on Monday, with benchmarks in Tokyo and Seoul leading gains thanks to buying of computer…
-- [Yahoo] **Nvidia’s $99 Billion Portfolio Is Turning Intel and CoreWeave Into an AI Stress Test**（NVDA）
-  Nvidia disclosed roughly $99 billion of public and private equity investments as of July 26, plus about $25 billion of a…
-- [Yahoo] **History Says What Nvidia's Last Big Acquisition Became. Hugging Face Will Cost Nearly Twice as Much.**（NVDA）
-  The last big acquisition now anchors a $31 billion business line. The next one runs at more than $150 million a year.…
-- [Yahoo] **Dow Jones Futures Fall With Iran, Apple, Inflation In Focus; Nvidia, Micron, Sandisk Flash Buy Signals**（^GSPC）
-  Dow Jones futures: The U.S. and Iran exchanged attacks. Nvidia, Micron, Sandisk are buys, but for how long? Apple, infla…
-- [Yahoo] **Prediction: Data Center Passes 70% of AMD's Revenue in 2027, Before the Helios Ramp Is Finished**（NVDA）
-  One segment doubled last quarter while everything else combined grew 8%. If rates anywhere close to those hold, 70% arri…
+- [Yahoo] **Where Will Tesla Be in 5 Years?**（^GSPC）
+  After lagging the market in the past five years, investors hope Tesla can get in the fast lane and produce winning retur…
+- [Yahoo] **A Once-in-a-Decade Opportunity: 1 Magnificent S&P 500 Stock Down 41% to Buy Right Now**（^GSPC）
+  Tyler Technologies has yet to recover from the tumble it took when "SaaSpocalypse" fears swamped the software sector.…
+- [Yahoo] **Rocket Lab's Neutron Just Slipped Again. Here's the Only Date That Still Matters for Shareholders.**（NVDA）
+  Neutron can wait. What investors really want to see is Rocket Lab finalize its most important merger.…
+- [Yahoo] **There Are Only a Handful of S&P 500 Stocks That Yield Over 5%. Here's My Top Pick to Buy in September.**（^GSPC）
+  Income investors now have another compelling option as the number of high-yielding blue chips gets smaller.…
+- [Yahoo] **Billionaire Bill Ackman Sells Alphabet Stock and Buys a Mega-Cap Stock Down 42% From Its High**（NVDA）
+  Money manager Bill Ackman recently added Netflix stock to his portfolio.…
+- [Yahoo] **If the Fed Hikes Interest Rates This Month, History Says This Is the Smartest ETF to Buy Right Now**（NVDA）
+  If interest rates rise, writing a prescription today for the State Street Health Care Select Sector SPDR ETF is a smart …
 
 ---
 
