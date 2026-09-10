@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年09月10日 16:28（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年09月10日 20:51（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-09-10 13:07 · 宏观：2026-09-10 13:08 · 问财：2026-09-10 12:34
+> 行情更新：2026-09-10 17:40 · 宏观：2026-09-10 17:40 · 问财：2026-09-10 17:39
 
 ---
 
@@ -11,7 +11,7 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **-0.64%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
+全球跟踪指数平均涨跌 **-0.57%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
@@ -25,14 +25,14 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.1 全球指数
 
-跟踪 6 只主要指数：上涨 **0** 只、
-下跌 **6** 只，平均涨跌 **-0.64%**。
+跟踪 6 只主要指数：上涨 **1** 只、
+下跌 **5** 只，平均涨跌 **-0.57%**。
 
-**美股** -0.63%（偏弱）；**港股** -1.29%（偏弱）；**A股** -0.35%（偏弱）。相对弱势区域：美股、港股、A股，战术配置宜降权。
+**美股** -0.63%（偏弱）；**港股** -1.27%（偏弱）；**A股** -0.43%（偏弱）。相对弱势区域：美股、港股、A股，战术配置宜降权。
 
 **波动居前指数：**
 
-- **恒生指数** 24,949.52，日涨跌 -1.29%（周 -1.05% / 月 -1.93%）
+- **恒生指数** 24,954.47，日涨跌 -1.27%（周 -1.03% / 月 -1.91%）
 - **道琼斯** 52,380.66，日涨跌 -0.77%（周 -0.73% / 月 -2.96%）
 - **纳斯达克** 26,253.34，日涨跌 -0.64%（周 +0.59% / 月 -1.32%）
 - **标普 500** 7,636.36，日涨跌 -0.48%（周 +0.06% / 月 -1.51%）
@@ -58,11 +58,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：332.8（变动 +1.63%，2026-07-01）
 
 **Finnhub 宏观要闻**
-- [Trump says activity seen at Iran's Pickaxe Mountain, urges Tehran 'not to get cute' - Reuters](https://news.google.com/rss/articles/CBMitgFBVV95cUxQd2tWN0QxamFYdDVZNTZaaGFfa09OdmlPSVdBdWZYeElkZVgzeEZSTE5BdDR0R1pzR24yLU5CTXdqZVZmTUZHNlRIazNCdldxSXRTLUthV0lTS2NvRHRuWjVFTHp5UUtTRGFRZ2twWlYzdGlXQ1JmWnRrLS1UT1NaZjdYajEwcExlczVLWU55VVRSQjhsQm9aQTA4SnhrUE1SMmJaRUttMEs5T1B0OXAwR0NxZngtZw?oc=5)（Reuters）
-- [Multiple US military aircraft suffered damage in overnight strikes on Jordan air base, CBS says - Reuters](https://news.google.com/rss/articles/CBMiuwFBVV95cUxOYThzMWZWYWVaeVkzaGR4Z3AxbHpidm9CMTFNSTVKWmNvVGZoRkg5MjJRV1RvdW9wWWtWS3R6V1dNWmFQUEl1Y0Q4dWdYY19EMUk3RkE4aUlsYVRLbkxmemVJM1gxVzlSNGs5a24wbjg5dWxBZ2tRallJTTV0UExCUFZXWGxYZXhsZHA4clFtT2JPa3IxbHpnVnZnU2RMTnpsZDVLU0RMYW9RM0x6TlY5aUtXRU9tZzJRZ0hV?oc=5)（Reuters）
-- [Brent holds above $100 as tanker attacks deepen supply fear - Reuters](https://news.google.com/rss/articles/CBMiqwFBVV95cUxPVTlKVk5vOWlpYndFb2Flck9IczhtU2k5X1I3a0tlMjA2dkRmMEJncVFZdWctZW9wX05NaU9vUzNwMU5ld3UycklJMjhHaHB3WDdZVF81Z0t1WWNZak8tTFFwdDZtTHZvUnozMnVpUmtEanVsN2ZxM1A2QkxZS3IydDByTlQtd3RFYThzVnlwVmR0eGMyT1RQQldPZVp4VE1oSm5TcHBXVTd1dXM?oc=5)（Reuters）
-- [Trump advisers warn Iran conflict may last through end of his term, WSJ reports - Reuters](https://news.google.com/rss/articles/CBMivAFBVV95cUxQRmcwY05mYjdLTzdPZ3BZemVsRWcwMFBUWnNHcndpVmFQc3pNNkZzczFEQ2dFMDdxeEVUUzJBb3JhdWh3RG45RzhTcjBXbjg3aFhUZTVkM1RfZ251a3l0amdVbUQtQ1A5LTNLRUZfOUJHUl9lYWM2QXFWMDhTRExBZkRPaUJQb0NWMDJiOGpPYnRxblFPbjZ4cWZ6QzhpejgyWS1IM0RhZ2NYWXpmWEcyUFBLN2tleUF4a2FzaA?oc=5)（Reuters）
-- [Iran likely to reverse-engineer captured US underwater drone - Reuters](https://news.google.com/rss/articles/CBMisAFBVV95cUxOSVJXWnFxd25USERSYUk0Nmt5N1RFUzMxbllBa2NqNkJGUVplYkFJVEJYRThSdkxCa3NhNDVLdV8wRGE5VGpGVlhhVzRKdUpOeHExUXRONFprbmtaTDZNaEhuZGZEdGhta3FrQ1FBZDAwSXQ0TV9wMWxGMExaT2FURVpsa0d5WjdwakhhT1ZOVDhzRGwwS0tUUmxxVUk3R2NrcGdlRGVDNjZCcS0xZTQ0cw?oc=5)（Reuters）
+- [Trump touts $5,000 payout if Republicans win as Vance waits in wings - Reuters](https://news.google.com/rss/articles/CBMiqAFBVV95cUxObTBDWU8wZ01YSnowWGVWbUFZQ0ozZlZaSzRYWFhuaUdxajB6T05JS29iX180anZIUWdKUUE4SjZGdzN1cmc3Tmx2bjMtT0Z4TE55bGQ1NjYxUThlU21OTnZvbVJxeTNXVjZZcXJrdG1pQzRMTnVqeGUzcVY5aGluV1V0YTh0UlN1eVBScUZTajd4S0tCaFNEWGltbE9jRHk5eS1rTFVkRHg?oc=5)（Reuters）
+- [Trump says Iran war to end after US midterm elections, threatens to attack Pickaxe Mountain - Reuters](https://news.google.com/rss/articles/CBMiyAFBVV95cUxQX1VBYmFiQnhuQWRpWDFRNjQ3ZzBFUTEzUmxneFZQTmtfOHducTVIZlU3LXFwRjVSbS1EYTNjMVY1dGlzODdfblBPSzFqWm90bWhfeFBUVVlDdjN2YUFoS1VNekY4U1VHcW1WTXQzS1ZTYjI2YzZ1OFFaZzJMZm9DTEpWY25jMlJsOHNUYklSbkR3Z2pNc1ZUcUNhN3VnWHdIV2U5RklKVldodktsWE5rczRlMVFfZzJZV3VJSzlhdEpRV1VzLXc2Sw?oc=5)（Reuters）
+- [EXCLUSIVE: How a billion-dollar sanctions dodge kept Chinese goods flowing to Iran - Reuters](https://news.google.com/rss/articles/CBMivgFBVV95cUxPQXdBWlltZS1pUU8wZnFqc21wUDExNGZub0prbEtxYTNwS2J3UU91eTQ4aXZTUGNwWjdGZGxVZUNiY2dHbXVNbl9tNE4zSlVqVDJaZFlmMkZ6Slo3RndJczlqMTlsYlVGOEEteGNreDFjR0JabWhJaTNCTHNtUUozWDFVSm56QldwaXFjbnBQZWlxdGtsVFdmcDFDTHNjMzBaN2NkNlNzUGV0MXhZR3hBdmFUMV9LLU9ZYWxBTW5n?oc=5)（Reuters）
+- [Trump's Iran campaign echoes the post-9/11 'forever wars' - Reuters](https://news.google.com/rss/articles/CBMilgFBVV95cUxOY3RtVWR6NUtkY0Z0YjY4dEluTGdFb3FsaGFyMFJNd0xucTFzQlJDQ2FZOTlHbFp1OVoyT2tySHdHZklrZll6MWF5VVRxVGJKMXJpOXYza2dMaTJCUk14WWZLLUt1QU5fQjUyVkZhdTFnajkwdEpVam4wbi1pQ283bUMwRzBJN3pkSWFyLWdOLVRZZ080Nnc?oc=5)（Reuters）
+- [Yemen's Houthis close in on stranglehold over strategic Bab el-Mandeb Strait - Reuters](https://news.google.com/rss/articles/CBMixgFBVV95cUxNSUNHSEc4V2xmVVpPcmx6cE1GaF85MVB3Tnl5ZzdyWVBlYy0zcnNzOTQ1R2ZyNFdzbmp6c2xodVlOallDQTAyeUFodEUwa0dkOFFCN3ZIcmg0V3Iyc0NiUGczTklDSzhUOGNkUUd5ZWlRME5LRGhBdHFvSDdVUm9WdjZacC0zcFdkM0xZY09LUHFDR3lua1ZXMW1GN0NxT21CTFRYNkFOVGRNMzFsTjJXS1hnejFfVTdUZHBvMEJoMmJGU2xLQnc?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **ESP** 2026-09-17  · EPS预期 0.97
@@ -107,7 +107,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 招商银行(62.3分) · 港股最高 泡泡玛特(23.8分) · 美股最高 AMD(82.1分)
+**全市场扫描**：A股最高 中国平安(67.6分) · 港股最高 小米集团(28.0分) · 美股最高 AMD(82.1分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
@@ -115,7 +115,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **招商银行**（A股）| 弱信号观察 | 评分 62.3 | 待突破 | 趋势过滤未过 | 止损缓冲 4.1% / 目标空间 14.9% | 决策 48.1
+- **中国平安**（A股）| 弱信号观察 | 评分 67.6 | 待突破 | 趋势过滤未过 | 止损缓冲 5.6% / 目标空间 20.0% | 决策 47.1
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
@@ -144,18 +144,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.812）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.813）。
 
-*在线学习：市场环境 risk_off · 修订 r812 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
+*在线学习：市场环境 risk_off · 修订 r813 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.3 · PEG 7.96 · ROE 19.9%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.3 · PEG 7.95 · ROE 19.9%
 
-  - ROE 19.91% — 盈利能力稳健；PE 14.34 — 估值在能力圈合理区间
+  - ROE 19.91% — 盈利能力稳健；PE 14.32 — 估值在能力圈合理区间
 
 - **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.2 · ROE 12.6%
 
@@ -168,22 +168,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - **招商银行**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 7.2 · PEG 1.26 · ROE 11.5%
 
-  - PE 7.16 — 深度价值区间，安全边际充足；PB 0.91 — 资产折价，经典格雷厄姆信号
+  - PE 7.18 — 深度价值区间，安全边际充足；PB 0.92 — 资产折价，经典格雷厄姆信号
 
-- **中国平安**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 6.6 · PEG 0.13 · ROE 13.1%
+- **中国平安**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 6.7 · PEG 0.13 · ROE 13.1%
 
-  - PE 6.63 — 深度价值区间，安全边际充足；PB 0.97 — 资产折价，经典格雷厄姆信号
+  - PE 6.67 — 深度价值区间，安全边际充足；PB 0.98 — 资产折价，经典格雷厄姆信号
 
 
 ### 彼得·林奇 · 成长合理价 GARP
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.1 · PEG 0.57 · ROE 24.8%
+- **宁德时代**（A股）| 匹配 99.4 | 符合风格 · 建议关注 | PE 18.1 · PEG 0.57 · ROE 24.8%
 
   - PEG 0.57 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
 
-- **微软**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 27.5 · PEG 0.87 · ROE 34.0%
+- **微软**（美股）| 匹配 99.4 | 符合风格 · 建议关注 | PE 27.5 · PEG 0.87 · ROE 34.0%
 
   - PEG 0.87 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.7% — 成长故事可验证
 
@@ -207,22 +207,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.1 · PEG 0.57 · ROE 24.8%
 
-  - 近一月 -13.77% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近一月 -14.18% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
 
-- **京东集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 17.9 · PEG 0.84 · ROE 6.8%
+- **美团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.4 · ROE -21.8%
 
-  - 近一月 -14.31% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近一月 -18.44% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
 
 
 ### 乔治·索罗斯 · 宏观趋势
 
 *反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
 
-- **Meta**（美股）| 匹配 75.7 | 符合风格 · 建议关注 | PE 23.1 · ROE 29.9%
+- **Meta**（美股）| 匹配 74.1 | 符合风格 · 建议关注 | PE 23.1 · ROE 29.9%
 
   - 近一月 +9.88% — 趋势强劲，反身性正反馈；相对强度 +11.39% — 跑赢大盘，宏观共振
 
-- **AMD**（美股）| 匹配 72.4 | 符合风格 · 建议关注 | PE 128.3 · PEG 80.72 · ROE 10.2%
+- **AMD**（美股）| 匹配 70.7 | 部分符合 · 观察等待 | PE 128.3 · PEG 80.72 · ROE 10.2%
 
   - 近一月 +10.98% — 趋势强劲，反身性正反馈；相对强度 +12.49% — 跑赢大盘，宏观共振
 
@@ -231,7 +231,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 367.4 · PEG 23.10 · ROE 4.0%
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 365.5 · PEG 22.99 · ROE 4.0%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
@@ -254,24 +254,24 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - 战术自适应：门槛 -2 · 中决策分 T+5 胜率 61.9% 良好，门槛 -1; 偏多环境 T+5 胜率 64.4% 良好，门槛 -1
 
-- 队列待办：**流水线过期 · Truth Social 镜像** — 检查工作流 update-truth-social.yml 日志与 Secrets。
+- 队列待办：**流水线过期 · 行情·荐股·模拟盘** — 检查工作流 update-market-data.yml 日志与 Secrets。
 
 ---
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **Can New Era Energy & Digital Become the Next Nebius Group?**（NVDA）
-  A high-potential 8.4-gigawatt pipeline is colliding with financial realities.…
-- [Yahoo] **Asian shares fall and oil prices hold steady above $100 a barrel**（000001.SS）
-  Asian shares skidded Thursday following a retreat on Wall Street as the price of crude oil again traded above $100 a bar…
-- [Yahoo] **Nvidia plans major expansion of data centre capacity in Australia to meet AI demand**（NVDA）
-  SYDNEY, Sept 10 () - Nvidia said on Thursday it was planning an expansion of data ‌centre computing capacity in Australi…
-- [Yahoo] **Dow Jones Futures Rise After Oil Prices, Yields Hit Stocks; Inflation Data Due.**（^GSPC）
-  Oil prices and Treasury yields weighed on the indexes, But Meta, AMD were winners. Apple unveiled its foldable iPhone. I…
-- [Yahoo] **Broadcom Is 26% Below Its High. What $10,000 Bought a Decade Ago, and When the Gains Landed.**（NVDA）
-  Twenty-two times the money in 10 years -- with nearly nine-tenths of the gain packed into the last four of them.…
-- [Yahoo] **Why Jersey Mike's Stock Jumped Today**（NVDA）
-  This sub-fueled growth story is just getting started.…
+- [Yahoo] **U.S. Futures Rise as Markets Watch Iran Conflict, Oracle and Adobe Earnings: Dow Jones, S&P, Nasdaq, Wall Street**（^GSPC）
+  U. S. stock futures moved higher on Thursday as investors monitored developments in the U.…
+- [Yahoo] **2 Trillion-Dollar Companies Poised to Become Wall Street's Next Stock-Split Stocks**（NVDA）
+  A “Magnificent Seven” member that’s never split, and an AI powerhouse that hasn’t split in over a quarter-century, are t…
+- [Yahoo] **This Unstoppable Warren Buffett ETF Would Have Quadupled Your Money Over the Last Decade**（^GSPC）
+  It's still a great option for the retail investor.…
+- [Yahoo] **‘Conventional Wisdom Isn’t Wise’: Ramsey Tells Retirees to Dump Bonds, The Numbers Back Him Up**（^GSPC）
+  Dave Ramsey told retirees to ditch bonds on live radio, and a close look at the actual Treasury yields and withdrawal ma…
+- [Yahoo] **Cathie Wood Continues to Buy the Dip on Crypto. Here Are 3 Crypto Investments That Need to Be on Your Radar.**（NVDA）
+  Cathie Wood is buying shares of the companies that capture tolls from their crypto platforms.…
+- [Yahoo] **Know the Risks of Pre-IPO Funds and Potential Fraud**（NVDA）
+  These transactions carry significant risk, and some are outright scams designed to steal your money.…
 
 ---
 
