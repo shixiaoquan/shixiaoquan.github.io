@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年09月17日 16:59（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年09月17日 21:19（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-09-17 13:31 · 宏观：2026-09-17 13:31 · 问财：2026-09-17 14:07
+> 行情更新：2026-09-17 18:21 · 宏观：2026-09-17 18:21 · 问财：2026-09-17 19:35
 
 ---
 
@@ -11,11 +11,11 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **-0.40%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
+全球跟踪指数平均涨跌 **-0.36%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
-战役仓 XRPS 模拟收益率 +7.28%，按网格与月线纪律执行。
+战役仓 XRPS 模拟收益率 +7.57%，按网格与月线纪律执行。
 
 战术端暂无 buy 突破信号，建议以观察为主。
 
@@ -26,16 +26,16 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 ### 1.1 全球指数
 
 跟踪 6 只主要指数：上涨 **1** 只、
-下跌 **5** 只，平均涨跌 **-0.40%**。
+下跌 **5** 只，平均涨跌 **-0.36%**。
 
-**美股** -0.56%（偏弱）；**港股** -0.76%（偏弱）；**A股** -0.25%（震荡）。相对弱势区域：美股、港股，战术配置宜降权。
+**美股** -0.56%（偏弱）；**港股** -0.44%（偏弱）；**A股** -0.41%（偏弱）。相对弱势区域：美股、港股、A股，战术配置宜降权。
 
 **波动居前指数：**
 
 - **道琼斯** 51,461.90，日涨跌 -1.21%（周 -1.75% / 月 -3.74%）
-- **恒生指数** 24,525.97，日涨跌 -0.76%（周 -1.72% / 月 -3.80%）
 - **标普 500** 7,551.81，日涨跌 -0.45%（周 -1.11% / 月 -2.50%）
-- **日经 225** 64,101.05，日涨跌 +0.28%（周 -1.79% / 月 -1.88%）
+- **恒生指数** 24,604.29，日涨跌 -0.44%（周 -1.40% / 月 -3.49%）
+- **上证指数** 3,875.60，日涨跌 -0.41%（周 -1.49% / 月 -0.48%）
 
 ### 1.2 A股短线情绪
 
@@ -43,7 +43,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.3 宏观与跨资产
 
-- **VIX** 17.7（normal）
+- **VIX** 16.0（normal）
 - **美10Y收益率** 5.01%
 - **10Y-2Y 利差（FRED）** 0.27%（偏窄）
 - **USDCNH** 6.7100（日 —）
@@ -58,11 +58,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：334.1（变动 +1.16%，2026-08-01）
 
 **Finnhub 宏观要闻**
-- [Bank of England set to defy Fed’s rate-hike lead, despite rising inflation](https://www.cnbc.com/2026/09/17/bank-of-england-interest-rate-decision-fed-rate-hike-uk-inflation.html)（CNBC）
-- [Trump hopes Iran war nearing end as Houthi-Saudi fighting escalates - Reuters](https://news.google.com/rss/articles/CBMiugFBVV95cUxPdUdfN2t1cTlMdHJXa1FQN0ZiU1M1dklpd2llNGtrTW1ndEEwSjZqc2VNcjY0VkFOQXFmLVUzNXFYUHdQTUU1Tm1leURSclhSajZPS29nZng3Sl83eUs2clpyMS1XbW0tNXpnbDdDc25SMVB6cHYtMWY2aFdYRzZsSEtPS1FBSHpQSGp6dFF6NV9mSkJBbXM4UnNWSDYyRzJjc0RtMkZod3l0Q0ZYSzljc3JPYmVFMlVZUGc?oc=5)（Reuters）
-- [US allies fret over how Trump might play his Taiwan hand with Xi - Reuters](https://news.google.com/rss/articles/CBMisgFBVV95cUxQY3hVM1dFSVFMbUpibXh4OWtYdWFBRnNkN0JhREtSNFZ0R2hVMnN1T0lUTHlneVdReE1kd1YzSENaY2xpWXh5SGVjY09qSXNack9RQkN2VFBYQUxCcE5sUExGNzJxRDJzRXYzX0pZU3NTX3RNOTZ0WEZWZ01oSUp2dHh3SkNZSERMc0tFempuV3RSaXF6OXlGaUhCZGNUZlRvMEhaRWRKcUVMSVN6aVJRcmZ3?oc=5)（Reuters）
-- [Impoverished by war in Iran, Afghan migrants return to Taliban rule - Reuters](https://news.google.com/rss/articles/CBMitgFBVV95cUxQbUtnR01KbXZwRU1yS09FNXhXdnFRaXRXR1YyaWwyOWFvYWl1VC1MbVJFb1dvVWgxNGVFR0xKV3pCQkNycmVDaUJpVjFLYmt4MTVhSmR5dXRlVU54MWFRTG9LY2V4a1g3d2cyblNlVkU2MjNUTWJXaEY0MFNpNG9uZ3dWMWFEZ0ZIZ1dGMFdQby1jd1A5RzZ2TXNsQlJzdEFER2ZjRHE2SWstblhoVFRWWVhGcXFMZw?oc=5)（Reuters）
-- [Trump says 'hopefully we are towards end' of Iran war - Reuters](https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNVZBS2JnVTZ6bnkwemhVOGRlX2puQkR2RHNnZnpLaHRzcHMxNktCNGwtNkU2ZTJaTzRMSFZzYXRzeHVnanUtaTNIdjVZTm5wVjd5bm9iMHNndXFwRzFOSmh3QWI0T3lqU3MwVE9UenMwNWZWYURMWm1ZOHNDTzVBVmlZVjBHT0F6cEJoRE5BYTVqRVFnM3N3cjZZU3RKWFJSeGZLVUhUVkVQZW9tb0FhRThfSEpmcVZM?oc=5)（Reuters）
+- [Euro area inflation nudges up in August to 3.2% as energy prices jump](https://investinglive.com/news/euro-area-inflation-nudges-up-in-august-to-3-2-as-energy-prices-jump/)（Forexlive）
 
 **财报日历（关注标的）**
 - **AFB** 2026-09-24  · EPS预期 —
@@ -86,17 +82,17 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **标的**：小米集团（1810.HK）
 
-**模拟净值**：收益率 +7.28%，仓位 35.0%，持股 14,481 股，均价 23.75。
+**模拟净值**：收益率 +7.57%，仓位 35.2%，持股 14,481 股，均价 23.75。
 
 **月线状态**：连续 **1** 个月收跌，上月 -1.22%，近两月累计 +22.21%，近三月累计 -3.83%。我们判断当前仍处于 XRPS「股数积累」逻辑占优的阶段，浮亏不应成为削减核心仓的理由。
 
 **阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
 
-**现价参考**：25.94 HKD。
+**现价参考**：26.14 HKD。
 
-- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +36.20%。
+- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +35.10%。
 
-- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +1.70%。
+- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +2.40%。
 
 - XRPS-X 运行正常：股数优先、成本优先、核心仓保留。
 
@@ -106,7 +102,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 招商银行(47.9分) · 港股最高 泡泡玛特(19.1分) · 美股最高 苹果(71.0分)
+**全市场扫描**：A股最高 招商银行(56.1分) · 港股最高 泡泡玛特(19.1分) · 美股最高 苹果(71.0分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
@@ -114,9 +110,9 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **招商银行**（A股）| 弱信号观察 | 评分 47.9 | 待突破 | 趋势过滤未过 | 止损缓冲 4.5% / 目标空间 16.1% | 决策 48.1
+- **招商银行**（A股）| 弱信号观察 | 评分 56.1 | 待突破 | 趋势过滤未过 | 止损缓冲 4.5% / 目标空间 16.1% | 决策 48.1
 
-  - 逻辑：价格站上 60 日均线；均线多头排列
+  - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
 > **研究员提示**：虽有高分标的入选观察池，但 v1.3 仅对「突破确认」发出 buy 信号；趋势良好但未突破时维持 watch，避免追涨噪音。
 
@@ -130,22 +126,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.845）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.846）。
 
-*在线学习：市场环境 risk_off · 修订 r845 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
+*在线学习：市场环境 risk_off · 修订 r846 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.4 · PEG 8.01 · ROE 19.9%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.3 · PEG 7.96 · ROE 19.9%
 
-  - ROE 19.91% — 盈利能力稳健；PE 14.41 — 估值在能力圈合理区间
+  - ROE 19.91% — 盈利能力稳健；PE 14.33 — 估值在能力圈合理区间
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.1 · ROE 12.6%
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.3 · ROE 12.6%
 
-  - ROE 12.63% — 盈利能力稳健；PE 18.14 — 估值在能力圈合理区间
+  - ROE 12.63% — 盈利能力稳健；PE 18.28 — 估值在能力圈合理区间
 
 
 ### 本杰明·格雷厄姆 · 深度价值
@@ -158,18 +154,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - **中国平安**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 6.4 · PEG 0.12 · ROE 13.1%
 
-  - PE 6.41 — 深度价值区间，安全边际充足；PB 0.94 — 资产折价，经典格雷厄姆信号
+  - PE 6.4 — 深度价值区间，安全边际充足；PB 0.94 — 资产折价，经典格雷厄姆信号
 
 
 ### 彼得·林奇 · 成长合理价 GARP
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **宁德时代**（A股）| 匹配 75.0 | 符合风格 · 建议关注 | PE 16.4 · PEG 0.51 · ROE 24.8%
+- **宁德时代**（A股）| 匹配 74.5 | 符合风格 · 建议关注 | PE 16.2 · PEG 0.51 · ROE 24.8%
 
   - PEG 0.51 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
 
-- **微软**（美股）| 匹配 75.0 | 符合风格 · 建议关注 | PE 27.7 · PEG 0.87 · ROE 34.0%
+- **微软**（美股）| 匹配 74.5 | 符合风格 · 建议关注 | PE 27.7 · PEG 0.87 · ROE 34.0%
 
   - PEG 0.87 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.7% — 成长故事可验证
 
@@ -178,7 +174,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *以合理价格买入伟大的公司，胜过于以便宜价格买入平庸的公司。*
 
-- **谷歌**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 17.3 · PEG 5.88 · ROE 48.7%
+- **谷歌**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 17.2 · PEG 5.85 · ROE 48.7%
 
   - ROE 48.68% — 优质复利机器，芒格会长期持有；净利率 54.77% — 轻资产高毛利特征
 
@@ -191,13 +187,13 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *在最大悲观时买入，在最大乐观时卖出；关注被错杀的优质资产。*
 
-- **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.4 · PEG 0.51 · ROE 24.8%
+- **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.2 · PEG 0.51 · ROE 24.8%
 
-  - 近一月 -21.23% — 市场悲观，邓普顿式逆向机会；近三月 -22.92% — 深度回调，关注基本面是否错杀
+  - 近一月 -21.77% — 市场悲观，邓普顿式逆向机会；近三月 -23.46% — 深度回调，关注基本面是否错杀
 
 - **美团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.1 · ROE -21.8%
 
-  - 近一月 -16.14% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近一月 -16.26% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
 
 
 ### 乔治·索罗斯 · 宏观趋势
@@ -208,7 +204,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 近一月 +18.34% — 趋势强劲，反身性正反馈；相对强度 +20.84% — 跑赢大盘，宏观共振
 
-- **苹果**（美股）| 匹配 67.0 | 部分符合 · 观察等待 | PE 38.0 · PEG 1.33 · ROE 148.8%
+- **苹果**（美股）| 匹配 67.0 | 部分符合 · 观察等待 | PE 38.2 · PEG 1.33 · ROE 148.8%
 
   - 近一月 +8.78% — 趋势强劲，反身性正反馈；相对强度 +11.28% — 跑赢大盘，宏观共振
 
@@ -217,7 +213,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 373.5 · PEG 23.49 · ROE 4.0%
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 372.6 · PEG 23.43 · ROE 4.0%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
@@ -246,18 +242,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **Asian stocks are mixed after Wall Street slips following Fed's rate hike decision**（000001.SS）
-  Asian shares were mixed on Thursday after Wall Street closed lower following the Federal Reserve’s interest rate hike de…
-- [Yahoo] **If the Pace of AI Is Slowed, Investors Can Turn to Quantum Computing. 4 Quantum Stocks to Buy Now.**（NVDA）
-  These four quantum stocks are leading the way in the space.…
-- [Yahoo] **Salesforce Unveils AIforce, Expands Agentforce at Dreamforce**（NVDA）
-  Salesforce (NYSE:CRM) used its Dreamforce keynote to outline an expanded artificial intelligence strategy centered on “A…
-- [Yahoo] **Snowflake Surging to All-Time Highs**（NVDA）
-  Snowflake stock is surging toward all-time highs after reporting its latest quarterly earnings.…
-- [Yahoo] **China's Huawei sets 2027 launch for new AI chips as it targets Nvidia**（NVDA）
-  By Che Pan, Casey Hall and Eduardo Baptista SHANGHAI/BEIJING Sept 17 (Reuters) - Huawei Technologies will launch two new…
-- [Yahoo] **The Competition's Response to Tesla Robotaxi Day**（NVDA）
-  Tesla hosted a robotaxi day nearly two years after the robotaxi was first announced.…
+- [Yahoo] **Should You Avoid Wendy's Stock, Even After a 66% Decline?**（^GSPC）
+  Wendy's new CEO laid out his vision to improve results.…
+- [Yahoo] **Berkshire Hathaway Has 30.6% of Its Portfolio in These 2 Magnificent AI Stocks. Here's Why That's a Signal Worth Watching.**（AAPL）
+  Berkshire Hathaway is known for holding stable, boring stocks, but it still has significant exposure to AI companies.…
+- [Yahoo] **Dow Jones Futures Rise After Hawkish Fed, Warsh Hit Stocks, Trump Fumes; AMD, Bloom Energy Eye Buy Points**（^GSPC）
+  The S&P 500 fell on the Fed rate hike and hawkish Warsh comments, But AMD, Bloom Energy flirted with buy signals.…
+- [Yahoo] **Bond Market Sell-Off: Is It Really Safe to Invest Right Now?**（NVDA）
+  Bond investors are dumping government bonds and sending yields higher.…
+- [Yahoo] **What Would It Actually Take to Move Visa's Take Rate?**（NVDA）
+  After all, this is awfully modest; it doesn't even reach 0.3%.…
+- [Yahoo] **Stock Futures Surge as Wall Street Buys the Dip Following Fed Selloff**（^GSPC）
+  Stocks were on track to open higher on Thursday as oil prices retreated and investors got over the worst of their worrie…
 
 ---
 
