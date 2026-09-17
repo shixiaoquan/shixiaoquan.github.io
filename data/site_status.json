@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-17T08:59:26+00:00",
+  "updatedAt": "2026-09-17T10:06:18+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 2,
-    "pipelinesStale": 4,
-    "automation": "4 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -231,7 +231,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-17T05:31:30+00:00",
       "status": "stale",
-      "ageMinutes": 207
+      "ageMinutes": 274
     },
     {
       "id": "macro",
@@ -240,16 +240,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-17T05:31:23+00:00",
       "status": "stale",
-      "ageMinutes": 208
+      "ageMinutes": 274
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-09-17T05:13:39+00:00",
-      "status": "stale",
-      "ageMinutes": 225
+      "updatedAt": "2026-09-17T10:05:17+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "wencai",
@@ -258,7 +258,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-09-17T06:07:06+00:00",
       "status": "stale",
-      "ageMinutes": 172
+      "ageMinutes": 239
     },
     {
       "id": "reports",
@@ -267,7 +267,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-17T16:59:26+08:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 66
     },
     {
       "id": "backtest",
@@ -276,9 +276,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-09-13T07:05:27+00:00",
       "status": "ok",
-      "ageMinutes": 5873
+      "ageMinutes": 5940
     }
   ],
-  "triggeredBy": "Generate Investment Report",
-  "runId": "35202571158"
+  "triggeredBy": "Update Truth Social",
+  "runId": "35208571001"
 }
