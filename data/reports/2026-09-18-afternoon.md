@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年09月18日 16:34（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年09月18日 20:53（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-09-18 12:43 · 宏观：2026-09-18 12:43 · 问财：2026-09-18 12:36
+> 行情更新：2026-09-18 17:13 · 宏观：2026-09-18 17:14 · 问财：2026-09-18 17:41
 
 ---
 
@@ -11,11 +11,11 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **+1.14%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
+全球跟踪指数平均涨跌 **+1.06%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
-战役仓 XRPS 模拟收益率 +7.65%，按网格与月线纪律执行。
+战役仓 XRPS 模拟收益率 +7.94%，按网格与月线纪律执行。
 
 战术端暂无 buy 突破信号，建议以观察为主。
 
@@ -26,16 +26,16 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 ### 1.1 全球指数
 
 跟踪 6 只主要指数：上涨 **6** 只、
-下跌 **0** 只，平均涨跌 **+1.14%**。
+下跌 **0** 只，平均涨跌 **+1.06%**。
 
-**美股** +1.15%（偏强）；**港股** +0.67%（偏强）；**A股** +1.04%（偏强）。相对强势区域：美股、港股、A股。
+**美股** +1.15%（偏强）；**港股** +0.60%（偏强）；**A股** +0.94%（偏强）。相对强势区域：美股、港股、A股。
 
 **波动居前指数：**
 
 - **纳斯达克** 26,418.30，日涨跌 +1.69%（周 +1.29% / 月 +0.49%）
-- **日经 225** 65,203.54，日涨跌 +1.66%（周 +1.86% / 月 -1.53%）
+- **日经 225** 65,018.95，日涨跌 +1.38%（周 +1.57% / 月 -1.81%）
 - **标普 500** 7,637.76，日涨跌 +1.14%（周 +0.61% / 月 -0.70%）
-- **上证指数** 3,916.07，日涨跌 +1.04%（周 +0.72% / 月 +0.32%）
+- **上证指数** 3,911.87，日涨跌 +0.94%（周 +0.61% / 月 +0.21%）
 
 ### 1.2 A股短线情绪
 
@@ -43,10 +43,10 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.3 宏观与跨资产
 
-- **VIX** 15.4（normal）
+- **VIX** 15.2（normal）
 - **美10Y收益率** 4.95%
 - **10Y-2Y 利差（FRED）** 0.27%（偏窄）
-- **USDCNH** 6.6900（日 —）
+- **USDCNH** 6.7000（日 —）
 - **美股行业**：科技 领涨，通信 靠后
 
 **FRED 官方序列**
@@ -58,21 +58,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：334.1（变动 +1.16%，2026-08-01）
 
 **Finnhub 宏观要闻**
-- [Explainer: How Yemen's Houthis went from a small mountain militia to a big regional threat - Reuters](https://news.google.com/rss/articles/CBMivAFBVV95cUxNcGthY0luQlRSdV83a2g1VktUVlRKMVJCeXVjME5lNEU3MUNocU55OUhIQXhoRThxT0ZiVlUyMkM1ZENVVlowLWNaX0p5bFpjVnpfMDhPTl9EYU01MV94Y19fOE91Ym9oQS1XdENUbGotVjVRcjNsZzFGbnJDQi13Z0tSSEhMYlBiZ2pSallYMkRBb2F0Q24xT0ZpcnRUdzR0OEJLTUo4NEZtazJidEl5N3ItbkhFZmdpWVM5Mw?oc=5)（Reuters）
-- [US to allow Iranian leaders to attend UN General Assembly - Reuters](https://news.google.com/rss/articles/CBMivAFBVV95cUxQMlRxdXlUU25MV1Q5ZThqV29lYjBpb1Y0V2MwV3RqZFNoR25hS2ZUX0VpR0hENmZIMlRPWWxGS1p1WUJmNktPZ0ZMWE8xSGRQYmFOUHkwamNjVTFhZFdpSkUxUEhROGl4Y0Y4X05kcTM5QmxqRXVnRm9hSzNCWGZza2RNX1JqYmJiLUJ3UUFFeHFlZVNQQ2QxbzEtbkF5MzlKSktFV3ZUaEdMdTdOdy1rMU9CYWxlRG81SlM0Zg?oc=5)（Reuters）
-- [What will Trump and Xi discuss in Washington next week? - Reuters](https://news.google.com/rss/articles/CBMimwFBVV95cUxQOHdmMERXdzJrTFFzNkJOSXZhblo3Tkp1YXctZHBVQU9jdHR0TTZhUmFiYjVMRmsxaGhhbHFEMUdMd2daWVJzcnU0NUZGQTd0bGk0WjBIa0xWRkdGaHRWa2doWU11dGlTRW44ZFRhdmhFYm1ad3NDVV9ndTZQd1VoWXdUcXB1N0JZZ1FGWkJ0b2plUHJTVGk3dnowWQ?oc=5)（Reuters）
-- [Ocean container shipping rates could test record highs as Iran war fuel spike drives rise, analysts say - Reuters](https://news.google.com/rss/articles/CBMixAFBVV95cUxONGltbnJEV1l0NXJDNFMxbFBtMUpYQkJWSGFlU2FRaHpNZ0xzNHhDSVJDbWt2Zy13YUNwZEJySUZUWHFEQi1XczZHWlI2dmZNMHZUTHVrR2tJUWpIanZtUFlXVTJEaXFIZTdGWDdQandreldIUm1URGRFZGxuVXhYX1FRcm8teGdSRmpGR1I4QnJ4SGJ6bF9UaGFGdXRadGZlY3o0TDItMm1ac0M4RTZsY2dkY3BQUUgzbzdycktRbmpjTDJy?oc=5)（Reuters）
-- [JP Morgan says it has no clear oil market endgame as Iran conflict drags on - Reuters](https://news.google.com/rss/articles/CBMivgFBVV95cUxOSzYzNHdWWVhKTktiSDh6Vi0yOTdmYWZpUlBtUlAwWFNNZjNCdnNkdkxmUWFsUEFuZUl3LWRmTzd4UEdBRVFlODRqenMwUlVya1dNMjY0VkozQVo5VTJNMF9uc1lWRnZlU0pTczdHejBmX2pzWEZiWDhXaWpMZ3FvMm1YS09vVVJKdWo0bWJ1eFZwem5seElGMEFqbjhVQk5zZ1NtblRiT0NFS0dGYUVvQVlhLWtack9OdzROdGxn?oc=5)（Reuters）
+- [As Iran war grinds on, Trump to face skeptical world leaders at UN - Reuters](https://news.google.com/rss/articles/CBMiqwFBVV95cUxORFROaUxKT0xTODBaOWZaNkx1anVfanoxaFVwYm5QQnlNY1QwZXEyaEY3QnR6QmNDMHlJX3gwWU5WRWN6VmdjdkxLSmEyX3dZeW9pVmJ2d3lEeVlPWVFQeDNwa2V5bnE0b3h0OGRIWmdMTUw4aDQ5UUZHX192bmcwNTNUeEJIU2YySU8yM3FxX3lCTFlJX1Y3bHRrd3g4MS1nNk5LNkJEZmlWREk?oc=5)（Reuters）
+- [China's August refined fuel exports exceed pre-Iran war levels, jet fuel exports hit record high - Reuters](https://news.google.com/rss/articles/CBMiygFBVV95cUxPQnFaY2NnUy01cTdSa0g0N05CaHpYcGF3QjBfSGpLMlhRWllYQWVmT0EtOE81bUVBbVBEMlNBODFDdHdHd3o2SHpFdFhWUWlQRXdEbDgyTFY4TlZjT3hvRi1mMFo4TWZrZTg3UWhiRTNMTTd1QXNReEdsYnlFNlNLYnZqVGgyN3NBTlNzN2pBSWdQQjI1VkdRWlBfVjlBN1RiMzRwN0dKREVnSnUwLWc1NW9rQ2NKWDJxNUxmNzFaeEs2VWc1R3JpN1FB?oc=5)（Reuters）
+- [Shipping traffic via Strait of Hormuz stays below 10-day average, data shows - Reuters](https://news.google.com/rss/articles/CBMixAFBVV95cUxNNUxiUzdsYTJRdFoyOG1oY0FHU0daRGxzTzhwQVhiYXg1ZUpEVDM4Rk1td01IZEV2Z0VDVVlTY0hHTElnTnZ1cnNuMWxDWUZCWjNhYmpZVkN1bFAyZ1RtT0xQVko0OExlUm9wc3lFNjZNNnU1eE1DcjlmTkZQY2ZuWkFvUGEwTnNZOVhqdmh1dlRsZk1nd3I3emo1dnRybG51Z09xMTR4a3lPak9WbDFsd25qTVEtSFVVTmpKZkZ0OUlFYXpT?oc=5)（Reuters）
+- [South Korea's Lee says will not deploy military to get involved in Middle East conflict - Reuters](https://news.google.com/rss/articles/CBMi0AFBVV95cUxNcHVWWW80X2pnalBXQzRpRlpIQnNiNGt0V1o3Q01OME0tSjg2X0ltaENaUjBXZ2NUWVFnLVRQUTNvRzBHdUh3am9SNExYc3RuQmtxdjkyeGNnMzRvOGdFeUxyTG83bUlEU2NJQ3FCb3ZhR1hjRFEzal84X0pDUW9KWUMtVElRYmI1VWljLTN3ZnNJNkNMLVVyR25DUWI0SmMwQkpqQzRGRUlnMFlSS0RObkRTaTBCRzVwZDN0QjJLUlNDTU96ZDhPb2RSWWtXNEcz?oc=5)（Reuters）
+- [Oil prices fall 2% on easing fears over Saudi supply disruption - Reuters](https://news.google.com/rss/articles/CBMipAFBVV95cUxQeDVrUGNRTzdTOG1wQ1ljY2w0Y002MjMxSVNvM2RrLTBhM3B1dEJVS1B6bnJWTjhydS1BUHpfTVFtbHh2QkdMdFU1ZVo3MDJtQ01kbldpa0lfWFM0QXFWbmVsN1RqcjcxMHczN3JGSHItelVZMzQtYklTN1kwVlJxLU5RVzAwc3BEQV9iVFI1N0xhRXluaGZxN0NrWkxFMDk5Q0pYZw?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **FGPR** 2026-09-25  · EPS预期 —
 - **TBN** 2026-09-25  · EPS预期 -0.17
 - **UEC** 2026-09-25 amc · EPS预期 -0.05
 - **AFB** 2026-09-24  · EPS预期 —
-- **BSET** 2026-09-24  · EPS预期 0.13
 - **BTOC** 2026-09-24  · EPS预期 —
+- **BXMT** 2026-09-24 bmo · EPS预期 0.26
 - 美债收益率回落，利于风险资产估值修复。
 - 美股行业轮动：科技 领涨（+2.25%），通信 靠后。
+- 黄金强、原油弱 — 偏避险/衰退交易特征。
 - FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。
 
 *数据源：Yahoo Finance、Frankfurter (ECB)、FRED (St. Louis Fed)、Finnhub*
@@ -87,17 +88,17 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **标的**：小米集团（1810.HK）
 
-**模拟净值**：收益率 +7.65%，仓位 35.2%，持股 14,481 股，均价 23.75。
+**模拟净值**：收益率 +7.94%，仓位 35.4%，持股 14,481 股，均价 23.75。
 
 **月线状态**：连续 **1** 个月收跌，上月 -1.22%，近两月累计 +22.21%，近三月累计 -3.83%。我们判断当前仍处于 XRPS「股数积累」逻辑占优的阶段，浮亏不应成为削减核心仓的理由。
 
 **阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
 
-**现价参考**：26.20 HKD。
+**现价参考**：26.40 HKD。
 
-- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +34.80%。
+- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +33.80%。
 
-- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +2.70%。
+- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +3.40%。
 
 - XRPS-X 运行正常：股数优先、成本优先、核心仓保留。
 
@@ -107,7 +108,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 招商银行(44.8分) · 港股最高 泡泡玛特(36.0分) · 美股最高 苹果(78.3分)
+**全市场扫描**：A股最高 招商银行(44.7分) · 港股最高 泡泡玛特(36.1分) · 美股最高 苹果(78.3分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
@@ -138,22 +139,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.851）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.852）。
 
-*在线学习：市场环境 risk_on · 修订 r851 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
+*在线学习：市场环境 risk_on · 修订 r852 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.3 · PEG 7.95 · ROE 19.9%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.1 · PEG 7.83 · ROE 19.9%
 
-  - ROE 19.91% — 盈利能力稳健；PE 14.31 — 估值在能力圈合理区间
+  - ROE 19.91% — 盈利能力稳健；PE 14.09 — 估值在能力圈合理区间
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.4 · ROE 12.6%
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.6 · ROE 12.6%
 
-  - ROE 12.63% — 盈利能力稳健；PE 18.45 — 估值在能力圈合理区间
+  - ROE 12.63% — 盈利能力稳健；PE 18.59 — 估值在能力圈合理区间
 
 
 ### 本杰明·格雷厄姆 · 深度价值
@@ -164,7 +165,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - PE 6.41 — 深度价值区间，安全边际充足；PB 0.94 — 资产折价，经典格雷厄姆信号
 
-- **京东集团**（港股）| 匹配 98.5 | 符合风格 · 建议关注 | PE 17.8 · PEG 0.84 · ROE 6.8%
+- **京东集团**（港股）| 匹配 95.3 | 符合风格 · 建议关注 | PE 17.8 · PEG 0.84 · ROE 6.8%
 
   - PE 17.83 — 低于市场平均，具备安全边际；PB 1.09 — 资产折价，经典格雷厄姆信号
 
@@ -173,11 +174,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **宁德时代**（A股）| 匹配 78.1 | 符合风格 · 建议关注 | PE 16.1 · PEG 0.51 · ROE 24.8%
+- **宁德时代**（A股）| 匹配 78.8 | 符合风格 · 建议关注 | PE 16.1 · PEG 0.51 · ROE 24.8%
 
   - PEG 0.51 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
 
-- **微软**（美股）| 匹配 78.1 | 符合风格 · 建议关注 | PE 27.3 · PEG 0.86 · ROE 34.0%
+- **微软**（美股）| 匹配 78.8 | 符合风格 · 建议关注 | PE 27.3 · PEG 0.86 · ROE 34.0%
 
   - PEG 0.86 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.7% — 成长故事可验证
 
@@ -201,7 +202,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.1 · PEG 0.51 · ROE 24.8%
 
-  - 近一月 -21.64% — 市场悲观，邓普顿式逆向机会；近三月 -22.67% — 深度回调，关注基本面是否错杀
+  - 近一月 -21.57% — 市场悲观，邓普顿式逆向机会；近三月 -22.6% — 深度回调，关注基本面是否错杀
 
 - **美团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.1 · ROE -21.8%
 
@@ -212,11 +213,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
 
-- **AMD**（美股）| 匹配 85.4 | 符合风格 · 建议关注 | PE 131.7 · PEG 82.81 · ROE 10.2%
+- **AMD**（美股）| 匹配 88.7 | 符合风格 · 建议关注 | PE 131.7 · PEG 82.81 · ROE 10.2%
 
   - 近一月 +12.53% — 趋势强劲，反身性正反馈；相对强度 +13.23% — 跑赢大盘，宏观共振
 
-- **Meta**（美股）| 匹配 80.5 | 符合风格 · 建议关注 | PE 25.4 · ROE 29.9%
+- **Meta**（美股）| 匹配 83.4 | 符合风格 · 建议关注 | PE 25.4 · ROE 29.9%
 
   - 近一月 +25.5% — 趋势强劲，反身性正反馈；相对强度 +26.2% — 跑赢大盘，宏观共振
 
@@ -225,7 +226,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 378.1 · PEG 23.78 · ROE 4.0%
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 377.2 · PEG 23.72 · ROE 4.0%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
@@ -248,24 +249,24 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - 战术自适应：门槛 -2 · 中决策分 T+5 胜率 61.7% 良好，门槛 -1; 偏多环境 T+5 胜率 61.1% 良好，门槛 -1
 
-- 队列待办：**影子轨积累中** — 无需操作，继续观察 shadow_reco.json comparison。
+- 队列待办：**流水线过期 · 行情·荐股·模拟盘** — 检查工作流 update-market-data.yml 日志与 Secrets。
 
 ---
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **GQRE vs HAUZ: Global Real Estate ETF Showdown**（^GSPC）
-  GQRE delivers higher returns and yield but costs more to own, while HAUZ offers international diversification with a roc…
-- [Yahoo] **Sandisk Unveiled an $14 Billion Buyback and Warren Buffett Has Something to Say About It**（NVDA）
-  Sandisk announced a $14 billion share buyback during its fiscal fourth-quarter earnings.…
-- [Yahoo] **Better Dividend King to Buy and Hold: Johnson & Johnson or Kenvue?**（NVDA）
-  One healthcare dividend payer carries legal risk, the other faces a buyout. Here's which one actually deserves your mone…
-- [Yahoo] **Early Uber Investor Sees ‘All Car Companies’ Joining Robotaxi Gold Rush — Lucid And Baidu Take It Global**（NVDA）
-  Lucid’s European push comes amid Uber’s commitment to deploy at least 35,000 Lucid robotaxis equipped with Nuro tech.…
-- [Yahoo] **Where Will CRISPR Therapeutics Be in 10 Years if Gene Editing Fulfills Its Promise?**（NVDA）
-  With a medicine on the market and plenty of projects in the pipeline, this company's trajectory could be very positive f…
-- [Yahoo] **Berkshire Hathaway (BRK.A) Moved Today, What Is Drawing Fresh Attention?**（AAPL）
-  Berkshire Hathaway (BRK.A) is back in focus after Greg Abel, now running the operation, exited the Domino’s Pizza positi…
+- [Yahoo] **BioNTech Threw in the Towel on Its Colorectal Cancer Vaccine Trial. Should Investors Be Worried?**（NVDA）
+  BioNTech's recent pipeline setback is a real cause of concern. But investors shouldn't panic.…
+- [Yahoo] **Nvidia vs. Broadcom: Whose AI Revenue Actually Grows Faster From Here?**（NVDA）
+  Broadcom has higher AI revenue growth projections, but Nvidia's larger and more diversified business could make its grow…
+- [Yahoo] **Prediction: This Will Be Palantir's Stock Price 1 Year From Now (Hint: It's a Bigger Move Than You Think)**（NVDA）
+  Palantir stock is flat on the year, but meaningful upside could be on the horizon.…
+- [Yahoo] **1 Bank Stock Worth Investigating and 2 We Avoid**（^GSPC）
+  Banks play a critical role in the financial system, providing everything from commercial loans to wealth management and …
+- [Yahoo] **1 Industrials Stock with Exciting Potential and 2 We Brush Off**（^GSPC）
+  Whether you see them or not, industrials businesses play a crucial part in our daily activities. But they are at the whi…
+- [Yahoo] **1 Brilliant Dividend ETF to Generate Passive Income While Barely Lifting a Finger**（NVDA）
+  Use this ETF to generate thousands of dollars in dividends annually.…
 
 ---
 
