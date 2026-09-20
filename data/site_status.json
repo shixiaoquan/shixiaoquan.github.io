@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T18:42:38+00:00",
+  "updatedAt": "2026-09-20T18:45:26+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -230,7 +230,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-20T18:42:02+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 3
     },
     {
       "id": "macro",
@@ -239,7 +239,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-20T18:41:55+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 3
     },
     {
       "id": "truth",
@@ -247,17 +247,17 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-09-20T17:42:47+00:00",
-      "status": "ok",
-      "ageMinutes": 59
+      "status": "stale",
+      "ageMinutes": 62
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-09-20T16:00:18+00:00",
-      "status": "stale",
-      "ageMinutes": 162
+      "updatedAt": "2026-09-20T18:44:15+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -266,7 +266,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-20T20:59:47+08:00",
       "status": "ok",
-      "ageMinutes": 342
+      "ageMinutes": 345
     },
     {
       "id": "backtest",
@@ -275,9 +275,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-09-20T07:22:14+00:00",
       "status": "ok",
-      "ageMinutes": 680
+      "ageMinutes": 683
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "35529911925"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "35529994200"
 }
