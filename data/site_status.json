@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-20T16:02:22+00:00",
+  "updatedAt": "2026-09-20T16:03:01+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -86,15 +86,15 @@
     "shadowAgeDays": 71,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
-    "shadowReason": "配对归因 26 对 · 影子胜率 23.1% · 均边际 -0.0%",
+    "shadowReason": "配对归因 23 对 · 影子胜率 21.7% · 均边际 -0.0%",
     "shadowCandidateParams": {
       "buyScore": 75,
       "breakoutScoreMin": 62,
       "source": "strategy_candidates.bestCandidate"
     },
-    "pairedCount": 26,
-    "pairedShadowWinRate": 23.1,
-    "marketPairedCount": 40,
+    "pairedCount": 23,
+    "pairedShadowWinRate": 21.7,
+    "marketPairedCount": 37,
     "strategyUpgradePending": true,
     "strategyUpgradeHint": "探索候选 buy=75 breakout=62 期望 0.14% — 已写入影子轨，满 4 周后可提 PR",
     "shadowReadyForPR": false,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-09-20T16:02:22+00:00",
+    "updatedAt": "2026-09-20T16:03:01+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -136,7 +136,7 @@
         "type": "shadow_track",
         "priority": "medium",
         "title": "影子轨积累中",
-        "reason": "配对归因 26 对 · 影子胜率 23.1% · 均边际 -0.0%",
+        "reason": "配对归因 23 对 · 影子胜率 21.7% · 均边际 -0.0%",
         "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
       },
       {
@@ -249,16 +249,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-09-20T14:43:43+00:00",
       "status": "stale",
-      "ageMinutes": 78
+      "ageMinutes": 79
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-09-20T11:16:01+00:00",
-      "status": "stale",
-      "ageMinutes": 286
+      "updatedAt": "2026-09-20T16:00:18+00:00",
+      "status": "ok",
+      "ageMinutes": 2
     },
     {
       "id": "reports",
@@ -267,7 +267,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-20T20:59:47+08:00",
       "status": "ok",
-      "ageMinutes": 182
+      "ageMinutes": 183
     },
     {
       "id": "backtest",
@@ -279,6 +279,6 @@
       "ageMinutes": 520
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "35521300003"
+  "triggeredBy": "Evolution Follow-up",
+  "runId": "35521443943"
 }
