@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-20T05:59:38+00:00",
+  "updatedAt": "2026-09-20T06:00:04+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -226,7 +226,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-18T13:38:58+00:00",
       "status": "stale",
-      "ageMinutes": 2420
+      "ageMinutes": 2421
     },
     {
       "id": "macro",
@@ -235,16 +235,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-18T13:38:49+00:00",
       "status": "stale",
-      "ageMinutes": 2420
+      "ageMinutes": 2421
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-09-20T05:59:12+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "updatedAt": "2026-09-20T00:57:34+00:00",
+      "status": "stale",
+      "ageMinutes": 302
     },
     {
       "id": "wencai",
@@ -260,9 +260,9 @@
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-09-19T20:25:52+08:00",
+      "updatedAt": "2026-09-20T14:00:04+08:00",
       "status": "ok",
-      "ageMinutes": 1053
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -274,6 +274,6 @@
       "ageMinutes": 10014
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "35493025422"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "35493054100"
 }
