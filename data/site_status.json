@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-22T08:52:18+00:00",
+  "updatedAt": "2026-09-22T09:55:09+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 2,
-    "pipelinesStale": 4,
-    "automation": "4 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -237,7 +237,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-22T05:30:46+00:00",
       "status": "stale",
-      "ageMinutes": 201
+      "ageMinutes": 264
     },
     {
       "id": "macro",
@@ -246,7 +246,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-22T05:30:40+00:00",
       "status": "stale",
-      "ageMinutes": 201
+      "ageMinutes": 264
     },
     {
       "id": "truth",
@@ -255,16 +255,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-09-22T07:25:37+00:00",
       "status": "stale",
-      "ageMinutes": 86
+      "ageMinutes": 149
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-09-22T04:47:50+00:00",
-      "status": "stale",
-      "ageMinutes": 244
+      "updatedAt": "2026-09-22T09:53:49+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -273,7 +273,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-22T16:52:18+08:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 62
     },
     {
       "id": "backtest",
@@ -282,9 +282,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-09-20T07:22:14+00:00",
       "status": "ok",
-      "ageMinutes": 2970
+      "ageMinutes": 3032
     }
   ],
-  "triggeredBy": "Generate Investment Report",
-  "runId": "35707129764"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "35712922782"
 }
