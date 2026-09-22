@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年09月22日 16:52（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年09月22日 21:19（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-09-22 13:30 · 宏观：2026-09-22 13:30 · 问财：2026-09-22 12:47
+> 行情更新：2026-09-22 18:15 · 宏观：2026-09-22 18:16 · 问财：2026-09-22 17:53
 
 ---
 
@@ -11,11 +11,11 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **+1.05%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
+全球跟踪指数平均涨跌 **+1.01%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
-战役仓 XRPS 模拟收益率 +9.68%，按网格与月线纪律执行。
+战役仓 XRPS 模拟收益率 +9.10%，按网格与月线纪律执行。
 
 战术端暂无 buy 突破信号，建议以观察为主。
 
@@ -26,9 +26,9 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 ### 1.1 全球指数
 
 跟踪 6 只主要指数：上涨 **6** 只、
-下跌 **0** 只，平均涨跌 **+1.05%**。
+下跌 **0** 只，平均涨跌 **+1.01%**。
 
-**美股** +1.49%（偏强）；**港股** +0.30%（震荡）；**A股** +0.15%（震荡）。相对强势区域：美股。
+**美股** +1.49%（偏强）；**港股** +0.18%（震荡）；**A股** +0.06%（震荡）。相对强势区域：美股。
 
 **波动居前指数：**
 
@@ -43,7 +43,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.3 宏观与跨资产
 
-- **VIX** 14.9（normal）
+- **VIX** 14.8（normal）
 - **美10Y收益率** 4.96%
 - **10Y-2Y 利差（FRED）** 0.20%（偏窄）
 - **USDCNH** 6.7000（日 —）
@@ -58,11 +58,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：334.1（变动 +1.16%，2026-08-01）
 
 **Finnhub 宏观要闻**
+- [Trump set for whirlwind UN meetings with wars in Iran, Ukraine on agenda - Reuters](https://news.google.com/rss/articles/CBMisgFBVV95cUxOOFdkQk9aWHdzT0hrcFhDNDZPSmlwQVBUUm12TGd4SUVPUURUMVo4Y3I0WHZBSTIxdjdKTWZ4WkF3cVUzUnlrWmNrbTA5T21UN3R0Z0JnekdrZm5ReC1ZS2JmUWVQRXRVNzhaYmNucDI5YVh6d2JxeHp5Yi00Y3p2d0loRTY5YXNiWGRHTlJZb1ZiX1paMVh3UU1XVThfUXR2NHF3T0pod3BBS3VpU3AyTDB3?oc=5)（Reuters）
 - [Oil rises amid worries of growing Iran-U.S. tensions after Bessent issues Iranian airline shutdown warning](https://www.cnbc.com/2026/09/22/oil-iran-us-bessent-un-crude.html)（CNBC）
-- [Oil rises slightly ahead of potential US-Iran talks - Reuters](https://news.google.com/rss/articles/CBMiogFBVV95cUxPMzJ5LUNVMlYtZzRwaGc4MDRoSlpkWFJpVkZnUWlIR2dhbHlqc3ltYXpEQTd2SmhDWlhydUFqMkpMQ2FrZkk0NzlUYWwwR0R2SDBKcWMxaklPcV9FNGpvN2tYOExMb1kzMzZFTGJrNHpvY1FvSElhUDBBSDgxakxoUTlJOXVncjJJbXQyZy15bHFkUzViQlhlTHpMeUNpa2lxN0E?oc=5)（Reuters）
+- [Alibaba deepens AI push with new chip, bigger model; shares jump 5% - Reuters](https://news.google.com/rss/articles/CBMi1gFBVV95cUxPUlcybzdOMWxNcmJHT1ZvUHFRTkczZzRNbHpkeUM1QjVxak5WMVdfTldrMWRtaTdHd1FvZkUwbGN4NmhwdUFSdmJxdVBVTGZxNFBWMUNqQXU3dlJzM1VXOHZsYmliZmxBRl90eFF6dEFZWl9BQTJTdkdxaDBSMGVrSXBJUkFVQkx1RTFOcktHZDQ4blo4VFh0amtSRmYxU2YxeGdQdUhFa25DeDBjSllsaVBsUVQ3X3VYdnRKMTAxN1BzZFQzUUpGSVI3TXZBZmRuTlhjejFB?oc=5)（Reuters）
 - [G7 foreign ministers call on Iran to stop arming Houthis - Reuters](https://news.google.com/rss/articles/CBMiowFBVV95cUxQS01wSTFweHdPbVI1QkNWSXlpQzMxd1FsX0lCcnBpNlQ4dFFVeDdTLWkxNmJNWEdBUi1iZ3VYQ0JjbGdIeGY4Q0ZZXzB6NW9fdVpkSXpLSzdvSzBKNHVBZDNVVGJJV1ZDZXNYMGpwVW9fMklhN0hjMVRia3FNcGFITkVrd1QyTVc4SWI3VXpyelRzbG5uTVZjZkNEZ1lETnpObGs4?oc=5)（Reuters）
-- [Indian shares likely to open higher on easing oil prices, bond yields - Reuters](https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQXlPVWFzejJKbzBBSVA5ZFhMbUdTZ0VVS1RZVXBpMlJRZC1Lak9aNmdldDEwdVZ1RGlPMjlUUFdFSGdocFlTbVpjLTFLcXJsN2VqTFhVZ1d0YmYwLTBUNG9tUHVmWEs2Q1E3em4za29OcHo3MFk2Q0twV3M5WFB4Q2ppeW9LVnd3SzJ2SHhLN1N6MTI4YVU0dDBuS0htU3R5SW9maHVnR2NDUFlManVqYTRidGZiYzVv?oc=5)（Reuters）
-- [Two Republican Senate candidates call for swift end to Iran war, diverging from Trump - Reuters](https://news.google.com/rss/articles/CBMiuAFBVV95cUxQRlhKcGFudk9RbFRaSkdnYmpiTEtqVlNjb3dxMVdMbHFxWVM5U3pGRHdJWG5GSFVjLXBTOTRiTXJiX3JHMW14UnRMTFBZLW4zWlR4MkNWbFhYcTBnYWllTUEyT1liNzRVTVFSTDM4NUxnQTBMd0ZoZUFOcmFDZWRna3ktaVdhWVdPNzNNLV8ydEFib3g0RXhYRDNtcDNwR0hncUtIeVN5bjJRa196Y19VOUVWQjR1SGc2?oc=5)（Reuters）
+- [Indian shares edge higher on easing oil prices, bond yields; IT caps gains - Reuters](https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQXlPVWFzejJKbzBBSVA5ZFhMbUdTZ0VVS1RZVXBpMlJRZC1Lak9aNmdldDEwdVZ1RGlPMjlUUFdFSGdocFlTbVpjLTFLcXJsN2VqTFhVZ1d0YmYwLTBUNG9tUHVmWEs2Q1E3em4za29OcHo3MFk2Q0twV3M5WFB4Q2ppeW9LVnd3SzJ2SHhLN1N6MTI4YVU0dDBuS0htU3R5SW9maHVnR2NDUFlManVqYTRidGZiYzVv?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **BTM** 2026-09-29  · EPS预期 -0.45
@@ -87,17 +87,17 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **标的**：小米集团（1810.HK）
 
-**模拟净值**：收益率 +9.68%，仓位 36.4%，持股 14,481 股，均价 23.75。
+**模拟净值**：收益率 +9.10%，仓位 36.1%，持股 14,481 股，均价 23.75。
 
 **月线状态**：连续 **1** 个月收跌，上月 -1.22%，近两月累计 +22.21%，近三月累计 -3.83%。我们判断当前仍处于 XRPS「股数积累」逻辑占优的阶段，浮亏不应成为削减核心仓的理由。
 
 **阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
 
-**现价参考**：27.60 HKD。
+**现价参考**：27.20 HKD。
 
-- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +28.00%。
+- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +29.90%。
 
-- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +7.60%。
+- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +6.20%。
 
 - XRPS-X 运行正常：股数优先、成本优先、核心仓保留。
 
@@ -107,7 +107,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 中际旭创(50.0分) · 港股最高 腾讯控股(64.8分) · 美股最高 苹果(85.1分)
+**全市场扫描**：A股最高 招商银行(52.4分) · 港股最高 阿里巴巴(57.8分) · 美股最高 苹果(85.1分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
@@ -115,13 +115,13 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **腾讯控股**（港股）| 弱信号观察 | 评分 64.8 | 待突破 | 趋势过滤未过 | 止损缓冲 6.5% / 目标空间 23.6% | 决策 59.6
+- **阿里巴巴**（港股）| 弱信号观察 | 评分 57.8 | 待突破 | 趋势过滤未过 | 止损缓冲 7.4% / 目标空间 26.7% | 决策 57.0
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线
 
-- **中际旭创**（A股）| 弱信号观察 | 评分 50.0 | 待突破 | 趋势过滤未过 | 止损缓冲 11.0% / 目标空间 39.6% | 决策 62.1
+- **招商银行**（A股）| 弱信号观察 | 评分 52.4 | 待突破 | 趋势过滤未过 | 止损缓冲 4.2% / 目标空间 15.1% | 决策 60.6
 
-  - 逻辑：价格站上 20 日均线
+  - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
 > **研究员提示**：虽有高分标的入选观察池，但 v1.3 仅对「突破确认」发出 buy 信号；趋势良好但未突破时维持 watch，避免追涨噪音。
 
@@ -148,22 +148,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.864）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.865）。
 
-*在线学习：市场环境 risk_on · 修订 r864 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
+*在线学习：市场环境 risk_on · 修订 r865 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.3 · PEG 8.51 · ROE 19.9%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.2 · PEG 8.42 · ROE 19.9%
 
-  - ROE 19.91% — 盈利能力稳健；PE 15.32 — 估值在能力圈合理区间
+  - ROE 19.91% — 盈利能力稳健；PE 15.15 — 估值在能力圈合理区间
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.3 · ROE 12.6%
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 19.0 · ROE 12.6%
 
-  - ROE 12.63% — 盈利能力稳健；PE 19.3 — 估值在能力圈合理区间
+  - ROE 12.63% — 盈利能力稳健；PE 19.02 — 估值在能力圈合理区间
 
 
 ### 本杰明·格雷厄姆 · 深度价值
@@ -172,22 +172,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - **中国平安**（A股）| 匹配 76.3 | 符合风格 · 建议关注 | PE 6.5 · PEG 0.12 · ROE 13.1%
 
-  - PE 6.5 — 深度价值区间，安全边际充足；PB 0.95 — 资产折价，经典格雷厄姆信号
+  - PE 6.54 — 深度价值区间，安全边际充足；PB 0.96 — 资产折价，经典格雷厄姆信号
 
-- **招商银行**（A股）| 匹配 69.8 | 部分符合 · 观察等待 | PE 7.0 · PEG 1.23 · ROE 11.5%
+- **招商银行**（A股）| 匹配 69.8 | 部分符合 · 观察等待 | PE 7.0 · PEG 1.24 · ROE 11.5%
 
-  - PE 7.03 — 深度价值区间，安全边际充足；PB 0.9 — 资产折价，经典格雷厄姆信号
+  - PE 7.05 — 深度价值区间，安全边际充足；PB 0.9 — 资产折价，经典格雷厄姆信号
 
 
 ### 彼得·林奇 · 成长合理价 GARP
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **宁德时代**（A股）| 匹配 91.2 | 符合风格 · 建议关注 | PE 16.6 · PEG 0.52 · ROE 24.8%
+- **宁德时代**（A股）| 匹配 92.8 | 符合风格 · 建议关注 | PE 16.3 · PEG 0.51 · ROE 24.8%
 
-  - PEG 0.52 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
+  - PEG 0.51 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
 
-- **微软**（美股）| 匹配 91.2 | 符合风格 · 建议关注 | PE 27.9 · PEG 0.88 · ROE 34.0%
+- **微软**（美股）| 匹配 92.8 | 符合风格 · 建议关注 | PE 27.9 · PEG 0.88 · ROE 34.0%
 
   - PEG 0.88 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.7% — 成长故事可验证
 
@@ -209,37 +209,37 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *在最大悲观时买入，在最大乐观时卖出；关注被错杀的优质资产。*
 
-- **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.6 · PEG 0.52 · ROE 24.8%
+- **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 16.3 · PEG 0.51 · ROE 24.8%
 
-  - 近一月 -20.98% — 市场悲观，邓普顿式逆向机会；近三月 -21.62% — 深度回调，关注基本面是否错杀
+  - 近一月 -21.46% — 市场悲观，邓普顿式逆向机会；近三月 -22.11% — 深度回调，关注基本面是否错杀
 
 - **美团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 15.2 · ROE -21.8%
 
-  - 近一月 -11.19% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
+  - 近一月 -11.49% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
 
 
 ### 乔治·索罗斯 · 宏观趋势
 
 *反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
 
-- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 51.8 · PEG 22.82 · ROE 64.6%
-
-  - 近一月 +8.71% — 趋势强劲，反身性正反馈；相对强度 +6.81% — 跑赢大盘，宏观共振
-
 - **苹果**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 38.9 · PEG 1.36 · ROE 148.8%
 
   - 近一月 +8.89% — 趋势强劲，反身性正反馈；相对强度 +7.27% — 跑赢大盘，宏观共振
+
+- **AMD**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 157.0 · PEG 98.75 · ROE 10.2%
+
+  - 近一月 +31.11% — 趋势强劲，反身性正反馈；相对强度 +29.49% — 跑赢大盘，宏观共振
 
 
 ### 白毛股神 Serenity · 卡脖子 · 瓶颈猎手
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 372.4 · PEG 23.42 · ROE 4.0%
+- **绿的谐波**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 370.4 · PEG 23.30 · ROE 4.0%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
-- **中际旭创**（A股）| 匹配 95.4 | 符合风格 · 建议关注 | PE 51.8 · PEG 22.82 · ROE 64.6%
+- **中际旭创**（A股）| 匹配 95.4 | 符合风格 · 建议关注 | PE 50.8 · PEG 22.38 · ROE 64.6%
 
   - 光模块 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 光模块 — CPO/光互连供应链瓶颈
 
@@ -264,18 +264,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **AMD joins trillion-dollar chipmaker club as AI demand surges**（NVDA）
-  AMD has become the latest trillion-dollar company, as the AI investment boom sends its shares soaring and data-centre de…
-- [Yahoo] **Meta Stock Is Still Too Cheap**（AAPL）
-  Wall Street is finally recognizing the potential of Muse.…
-- [Yahoo] **BABA Stock Spikes Overnight: Alibaba Takes On Nvidia With China's Most Powerful AI Chip Yet**（NVDA）
-  China’s AI hardware push is gaining momentum as domestic chipmakers race to close the gap with Nvidia.…
-- [Yahoo] **Is STMicroelectronics (ENXTPA:STMPA) Doubling Down On Automotive Imaging To Sharpen Its Competitive Edge?**（NVDA）
-  In September 2026, STMicroelectronics introduced the ST SafeSense VD56GA, a compact 1.1 MP infrared automotive image sen…
-- [Yahoo] **CoreWeave (CRWV) Rolls Out Rubin Clusters And AI Storage For Agentic AI**（NVDA）
-  CoreWeave (NasdaqGS:CRWV) has introduced multi-rack NVIDIA Vera Rubin NVL72 clusters designed to run training and infere…
-- [Yahoo] **Meta Jumps 11% As Muse Shines and Investors Show an Appetite for Advancing AI**（AAPL）
-  Meta stock surged 11% Monday after Wells Fargo raised its price target, citing early demand for the Muse AI assistant.…
+- [Yahoo] **3 No-Brainer Cybersecurity Stocks to Buy With $1,000 Right Now**（NVDA）
+  Security spending keeps climbing as data breach costs hit record highs.…
+- [Yahoo] **Bull of the Day: NVIDIA Corp. (NVDA)**（NVDA）
+  Are you a believer again?…
+- [Yahoo] **Nike vs. PepsiCo: Which Consumer Goods Dividend Stock Is the Better Buy for a Lifetime of Passive Income?**（NVDA）
+  Which of these high-yield dividend stocks is the better play for ultra-long-term passive income right now?…
+- [Yahoo] **2 Cannabis Stocks That Are Quietly Trouncing the Market in 2026**（^GSPC）
+  Trulieve and Cronos are turning stronger results into market-beating gains.…
+- [Yahoo] **Why Muse really just added billions to Meta's market cap and to Mark Zuckerberg's net worth**（AAPL）
+  Why Muse is the new darling of Meta investors.…
+- [Yahoo] **Should You Invest $1,000 in SCHD Right Now?**（^GSPC）
+  The Schwab U.S. Dividend Equity ETF (SCHD) is up 23% year to date. The gains might not be done.…
 
 ---
 
