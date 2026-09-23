@@ -674,6 +674,13 @@ def main() -> None:
         print(f"shadow_reco skip: {exc}")
 
     try:
+        from hk01810_box import run as run_hk01810_box
+
+        run_hk01810_box()
+    except Exception as exc:
+        print(f"hk01810_box skip: {exc}")
+
+    try:
         from build_evolution_queue import build_queue
 
         build_queue()

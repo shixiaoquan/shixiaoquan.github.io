@@ -1,0 +1,268 @@
+/* HK01810 箱体短线策略页 */
+
+.hkbox-hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.4));
+}
+
+.hkbox-hero__eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hkbox-hero__title {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.hkbox-hero__meta {
+  margin: 0.4rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.hkbox-hero__quote {
+  text-align: right;
+}
+
+.hkbox-hero__price {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.hkbox-hero__price span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.hkbox-hero__change {
+  margin: 0.2rem 0 0;
+  font-size: 1rem;
+}
+
+.hkbox-hero__change.change--up {
+  color: var(--up);
+}
+
+.hkbox-hero__change.change--down {
+  color: var(--down);
+}
+
+.hkbox-hero__asof {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.hkbox-advice {
+  margin-bottom: 1.25rem;
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.hkbox-advice--buy {
+  border-color: rgba(52, 211, 153, 0.45);
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.hkbox-advice--sell {
+  border-color: rgba(248, 113, 113, 0.45);
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.hkbox-advice--danger {
+  border-color: rgba(248, 113, 113, 0.7);
+  background: rgba(248, 113, 113, 0.14);
+}
+
+.hkbox-advice--warn {
+  border-color: rgba(251, 191, 36, 0.45);
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.hkbox-advice--neutral {
+  border-color: var(--border);
+}
+
+.hkbox-advice__kicker {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.hkbox-advice__label {
+  margin: 0.25rem 0 0.6rem;
+  font-size: 1.45rem;
+}
+
+.hkbox-advice__title {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+}
+
+.hkbox-advice__detail {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.hkbox-advice__split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.hkbox-advice__split article {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid var(--border);
+}
+
+.hkbox-advice__split h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.hkbox-advice__split p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.hkbox-panel {
+  margin-bottom: 1.25rem;
+}
+
+.hkbox-ruler {
+  padding: 0.5rem 0.25rem 0.25rem;
+}
+
+.hkbox-ruler__track {
+  position: relative;
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 18% 1fr 18%;
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.hkbox-ruler__buy {
+  background: rgba(52, 211, 153, 0.45);
+}
+
+.hkbox-ruler__mid {
+  background: rgba(148, 163, 184, 0.22);
+}
+
+.hkbox-ruler__sell {
+  background: rgba(248, 113, 113, 0.45);
+}
+
+.hkbox-ruler__marker {
+  position: absolute;
+  top: -3px;
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.55);
+}
+
+.hkbox-ruler__marker--p0 { left: 0%; }
+.hkbox-ruler__marker--p5 { left: 5%; }
+.hkbox-ruler__marker--p10 { left: 10%; }
+.hkbox-ruler__marker--p15 { left: 15%; }
+.hkbox-ruler__marker--p20 { left: 20%; }
+.hkbox-ruler__marker--p25 { left: 25%; }
+.hkbox-ruler__marker--p30 { left: 30%; }
+.hkbox-ruler__marker--p35 { left: 35%; }
+.hkbox-ruler__marker--p40 { left: 40%; }
+.hkbox-ruler__marker--p45 { left: 45%; }
+.hkbox-ruler__marker--p50 { left: 50%; }
+.hkbox-ruler__marker--p55 { left: 55%; }
+.hkbox-ruler__marker--p60 { left: 60%; }
+.hkbox-ruler__marker--p65 { left: 65%; }
+.hkbox-ruler__marker--p70 { left: 70%; }
+.hkbox-ruler__marker--p75 { left: 75%; }
+.hkbox-ruler__marker--p80 { left: 80%; }
+.hkbox-ruler__marker--p85 { left: 85%; }
+.hkbox-ruler__marker--p90 { left: 90%; }
+.hkbox-ruler__marker--p95 { left: 95%; }
+.hkbox-ruler__marker--p100 { left: calc(100% - 4px); }
+
+.hkbox-ruler__labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.55rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.hkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.hkbox-rules {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.hkbox-row--active td {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hkbox-cockpit__price {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.hkbox-cockpit__action {
+  margin: 0.35rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.hkbox-cockpit__hint {
+  margin: 0.25rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 820px) {
+  .hkbox-hero {
+    flex-direction: column;
+  }
+
+  .hkbox-hero__quote {
+    text-align: left;
+  }
+
+  .hkbox-advice__split,
+  .hkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}

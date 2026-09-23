@@ -21,6 +21,7 @@ from decision_score import score_pick  # noqa: E402
 from market_regime import detect_market_regime, regime_label  # noqa: E402
 from paired_attribution import build_paired_attribution, _summarize_pairs  # noqa: E402
 from shadow_reco import _calendar_weeks  # noqa: E402
+from hk01810_box import decide as hk01810_decide  # noqa: E402
 from validate_data import main as validate_main  # noqa: E402
 
 
@@ -148,6 +149,25 @@ class BackfillTests(unittest.TestCase):
         backfill_decision_labels(items, records)
         self.assertEqual(items["r1:MSFT"]["decisionLabel"], "高")
         self.assertEqual(items["r1:MSFT"]["decisionScore"], 72)
+
+
+class Hk01810BoxTests(unittest.TestCase):
+    def test_mid_box_wait(self):
+        advice = hk01810_decide(26.18)
+        self.assertEqual(advice["action"], "wait")
+        self.assertFalse(advice["operate"])
+
+    def test_buy_and_sell_zones(self):
+        self.assertEqual(hk01810_decide(25.7)["action"], "buy")
+        self.assertEqual(hk01810_decide(25.7)["zoneId"], "t1")
+        self.assertEqual(hk01810_decide(23.5)["zoneId"], "t2")
+        self.assertEqual(hk01810_decide(22.0)["zoneId"], "t3")
+        self.assertEqual(hk01810_decide(28.5)["action"], "sell")
+        self.assertEqual(hk01810_decide(29.05)["zoneId"], "s2")
+
+    def test_invalidation_and_breakout(self):
+        self.assertEqual(hk01810_decide(21.2)["action"], "exit")
+        self.assertEqual(hk01810_decide(29.5)["action"], "breakout_up")
 
 
 class ValidateDataTests(unittest.TestCase):
