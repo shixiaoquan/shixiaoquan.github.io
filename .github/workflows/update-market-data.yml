@@ -34,6 +34,7 @@ jobs:
         run: |
           python scripts/fetch_data.py
           python scripts/fetch_macro.py
+          python scripts/hk01810_box.py || true
 
       - name: Light refresh (market closed)
         if: steps.cal.outputs.intensity == 'closed' && github.event_name != 'workflow_dispatch'
