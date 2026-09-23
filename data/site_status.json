@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-23T20:18:48+00:00",
+  "updatedAt": "2026-09-23T20:29:34+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -228,7 +228,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-23T17:26:15+00:00",
       "status": "stale",
-      "ageMinutes": 172
+      "ageMinutes": 183
     },
     {
       "id": "macro",
@@ -237,16 +237,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-09-23T17:26:07+00:00",
       "status": "stale",
-      "ageMinutes": 172
+      "ageMinutes": 183
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-09-23T17:12:46+00:00",
-      "status": "stale",
-      "ageMinutes": 186
+      "updatedAt": "2026-09-23T20:29:07+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -255,7 +255,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-09-23T20:17:46+00:00",
       "status": "ok",
-      "ageMinutes": 1
+      "ageMinutes": 11
     },
     {
       "id": "reports",
@@ -264,7 +264,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-23T21:33:17+08:00",
       "status": "ok",
-      "ageMinutes": 405
+      "ageMinutes": 416
     },
     {
       "id": "backtest",
@@ -273,9 +273,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-09-20T07:22:14+00:00",
       "status": "ok",
-      "ageMinutes": 5096
+      "ageMinutes": 5107
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "35914916949"
+  "triggeredBy": "Update Truth Social",
+  "runId": "35916190963"
 }
