@@ -211,6 +211,25 @@ function calcReturn(recoPrice, currentPrice) {
   return Number((((currentPrice - recoPrice) / recoPrice) * 100).toFixed(2));
 }
 
+function scrollTabIntoView(tabId) {
+  const tabs = document.getElementById("main-tabs");
+  if (!tabs) return;
+  const btn = tabs.querySelector(`.tabs__btn[data-tab="${tabId}"]`);
+  if (!btn) return;
+  const prefersReduced =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  try {
+    btn.scrollIntoView({
+      behavior: prefersReduced ? "auto" : "smooth",
+      inline: "nearest",
+      block: "nearest",
+    });
+  } catch (_) {
+    btn.scrollIntoView(false);
+  }
+}
+
 function switchTab(tabId, options = {}) {
   const { updateRoute = true, replaceRoute = false, fromRoute = false } = options;
   if (!VALID_TABS.has(tabId)) tabId = DEFAULT_TAB;
@@ -226,6 +245,8 @@ function switchTab(tabId, options = {}) {
     panel.classList.toggle("tab-panel--active", show);
     panel.hidden = !show;
   });
+
+  scrollTabIntoView(tabId);
 
   if (tabId === "reco" && !fromRoute) {
     switchRecoMode(DEFAULT_RECO_MODE, { updateRoute: false });
