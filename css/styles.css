@@ -64,11 +64,15 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-padding-inline: 8px;
 }
 
 .tabs__btn {
-  flex: 1;
-  min-width: 72px;
+  flex: 0 0 auto;
+  min-width: max-content;
   border: none;
   background: transparent;
   color: var(--text-muted);
@@ -1658,7 +1662,6 @@ a:hover {
   }
 
   .tabs__btn {
-    min-width: 64px;
     padding: 8px 12px;
     font-size: 0.84rem;
   }
