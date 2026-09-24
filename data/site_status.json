@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-09-24T10:17:01+00:00",
+  "updatedAt": "2026-09-24T11:57:55+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 877,
-    "masterLearnUpdatedAt": "2026-09-24T06:17:03+00:00",
-    "masterAvgWinRate": 35.9,
+    "masterLearnRevision": 878,
+    "masterLearnUpdatedAt": "2026-09-24T11:57:23+00:00",
+    "masterAvgWinRate": 36.5,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -83,7 +83,7 @@
     "shadowMaturedT5": 190,
     "shadowWeeks": 10.4,
     "shadowTradingDays": 63,
-    "shadowAgeDays": 72,
+    "shadowAgeDays": 73,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
     "shadowReason": "配对归因 17 对 · 影子胜率 23.5% · 均边际 0.1%",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-09-24T10:17:01+00:00",
+    "updatedAt": "2026-09-24T11:57:55+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -168,6 +168,18 @@
   },
   "recentLog": [
     {
+      "at": "2026-09-24T11:57:34+00:00",
+      "type": "master_learn",
+      "revision": 878,
+      "regime": "risk_off",
+      "notes": {
+        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓",
+        "templeton": "近期表现反馈：quarter↓",
+        "soros": "近期表现反馈：volume↑",
+        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
+      }
+    },
+    {
       "at": "2026-09-24T06:17:08+00:00",
       "type": "master_learn",
       "revision": 877,
@@ -216,17 +228,6 @@
       "notes": {
         "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓"
       }
-    },
-    {
-      "at": "2026-09-23T12:32:33+00:00",
-      "type": "master_learn",
-      "revision": 872,
-      "regime": "risk_on",
-      "notes": {
-        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓",
-        "templeton": "近期表现反馈：quarter↓",
-        "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
-      }
     }
   ],
   "pipelines": [
@@ -235,18 +236,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-09-24T06:17:21+00:00",
-      "status": "stale",
-      "ageMinutes": 239
+      "updatedAt": "2026-09-24T11:57:54+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-09-24T06:17:14+00:00",
-      "status": "stale",
-      "ageMinutes": 239
+      "updatedAt": "2026-09-24T11:57:46+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -255,7 +256,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-09-24T06:32:11+00:00",
       "status": "stale",
-      "ageMinutes": 224
+      "ageMinutes": 325
     },
     {
       "id": "wencai",
@@ -264,7 +265,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-09-24T09:56:26+00:00",
       "status": "ok",
-      "ageMinutes": 20
+      "ageMinutes": 121
     },
     {
       "id": "reports",
@@ -273,7 +274,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-09-24T16:49:23+08:00",
       "status": "ok",
-      "ageMinutes": 87
+      "ageMinutes": 188
     },
     {
       "id": "backtest",
@@ -282,9 +283,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-09-20T07:22:14+00:00",
       "status": "ok",
-      "ageMinutes": 5934
+      "ageMinutes": 6035
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "35986266349"
+  "triggeredBy": "Update Market Data",
+  "runId": "35996013642"
 }
