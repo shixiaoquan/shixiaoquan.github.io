@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年09月25日 14:03（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年09月25日 17:10（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-09-25 09:32 · 宏观：2026-09-25 09:32 · 问财：2026-09-25 09:26
+> 行情更新：2026-09-25 14:33 · 宏观：2026-09-25 14:33 · 问财：2026-09-25 15:43
 
 ---
 
@@ -11,11 +11,11 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **-0.13%**，综合情绪 **震荡**。指数方向不明，结构分化概率加大，宜精选个股、控制仓位，等待方向选择。
+全球跟踪指数平均涨跌 **-0.26%**，综合情绪 **震荡**。指数方向不明，结构分化概率加大，宜精选个股、控制仓位，等待方向选择。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
-战役仓 XRPS 模拟收益率 +8.20%，按网格与月线纪律执行。
+战役仓 XRPS 模拟收益率 +7.04%，按网格与月线纪律执行。
 
 战术端暂无 buy 突破信号，建议以观察为主。
 
@@ -26,16 +26,16 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 ### 1.1 全球指数
 
 跟踪 6 只主要指数：上涨 **2** 只、
-下跌 **4** 只，平均涨跌 **-0.13%**。
+下跌 **4** 只，平均涨跌 **-0.26%**。
 
-**美股** -0.11%（震荡）；**港股** -0.29%（震荡）；**A股** -1.22%（偏弱）。相对弱势区域：A股，战术配置宜降权。
+**美股** -0.11%（震荡）；**港股** -1.32%（偏弱）；**A股** -1.22%（偏弱）。相对弱势区域：港股、A股，战术配置宜降权。
 
 **波动居前指数：**
 
+- **恒生指数** 24,435.28，日涨跌 -1.32%（周 -0.69% / 月 -4.75%）
+- **日经 225** 66,350.62，日涨跌 +1.28%（周 +4.52% / 月 +1.26%）
 - **上证指数** 3,888.37，日涨跌 -1.22%（周 -0.08% / 月 -0.03%）
-- **日经 225** 66,202.32，日涨跌 +1.05%（周 +4.28% / 月 +1.03%）
 - **道琼斯** 51,349.98，日涨跌 -0.31%（周 -0.22% / 月 -3.87%）
-- **恒生指数** 24,761.13，日涨跌 -0.29%（周 +0.19% / 月 -2.94%）
 
 ### 1.2 A股短线情绪
 
@@ -46,7 +46,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - **VIX** 15.7（normal）
 - **美10Y收益率** 5.16%
 - **10Y-2Y 利差（FRED）** 0.31%（偏窄）
-- **USDCNH** 6.7100（日 —）
+- **USDCNH** 6.7200（日 —）
 - **美股行业**：通信 领涨，材料 靠后
 
 **FRED 官方序列**
@@ -58,11 +58,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：334.1（变动 +1.16%，2026-08-01）
 
 **Finnhub 宏观要闻**
+- [Allies unite behind Saudi Arabia as Houthis step up attacks - Reuters](https://news.google.com/rss/articles/CBMirwFBVV95cUxOSktoVFV5TmFoZFFlNGJOdHNQbl9ZNWVfOFVvRTN2UXpLMlBhSnZ6ZVZLdFNlRU5CR3RjaHYxWDJRclcyb1lrVzh1WG83MWtmcjRyVnpRdTZIcTdtY01WRlFaVXZ5aWFBSXgzdk9LdzZNdmlQWHJlUmJuci1TSFI1bWRtYXJwYWdEYjBVMHJlVnpYbndpR1lQbllKNkphM0t1SmhXaXNYQmVncDFVOHFJ?oc=5)（Reuters）
+- [Oil prices fall as markets look to Iran truce, but remain wary of attacks on oil facilities - Reuters](https://news.google.com/rss/articles/CBMixAFBVV95cUxQV3EzX3oydnQxRk5Ld1BKbk82ek14ZVdyLVpTdldjdEpqeDJfTVZ2Q0F1TnhvaWlhR1p0Z3hScDV0S2Z1UFR5OXhKSWk3NmtqTzd0SkJfa2RLRFpOOUlEcE5mR1d4Z21Td2FCQVZqNHV1eDloQkplT1NHaHhyTDlqOG5DYlFFdnRERThxNU0yX29LcTRyal9pMHQ4ZzNoU0VKZkdHN2hFYjhCZUpZZ3d2am11SDJYYVBiN0JxWVBtczNRYkh1?oc=5)（Reuters）
+- [Russian, Iranian foreign ministers say only diplomatic solution to conflict around Iran - Reuters](https://news.google.com/rss/articles/CBMizAFBVV95cUxNVWhvaDZsMTZLcDdLUWxBV0twQ1d1NWFUdHduZWhmUlp6NW01ODFLQVJDZjVQcEtydk5VR1FKMUo4YU9wNHY3bGRQdGRFUFhLT1FGMWNkWVMyQkVZZjQ5ZEJpalVkWjA2RXJoaG5QSkJHLTZ2MVJOMTBFWm1NcW1Hamh0ejBTdU42c1BxTS0tdXJYTFBNRXdJNFZSN0xLU0RYUGFDcXBfeFdRQ3ViUGVSd2I3b0ZQb0lneEdlNm1ZVXBrN1lmekhCajBXemg?oc=5)（Reuters）
+- [Saudi Grand Mufti tells troops to be ready to sacrifice their lives fighting Houthis - Reuters](https://news.google.com/rss/articles/CBMizAFBVV95cUxPTXZJVk41ZE5xYUdhR0dIQjd0eVNzaWlmNVd3VmNNZTEyc2dZOWlnZm1nYW9xU19UNTNia0ZLaDUya2xYcXpYRW1tcUJVa0phSUlfOU82SXJHZjc1WHJTUFV5MkNRZUJ0LXFOSG8zRUswZGtJbHktVkZPeGJKd1lUMVBldUlwbGlXOW5qYm1VbnhJVU9QQ0x3Z1ZtNVpjMTVRNXZOZTJvbHZyNjZINzBYc3hvYVpWRndIbldwWjBCUDhJMnhyWVNmTkhxVUU?oc=5)（Reuters）
 - [Iran's president says it is up to US to choose if it wants to end Iran war - Reuters](https://news.google.com/rss/articles/CBMiugFBVV95cUxOb21pSm1ydXhYbXJ1SFNldm9vNm5nS0t3bmhGczZBS1Vfd3QwMTRJcnExUUY5cXh1OEZ4aDVSbDE2eFAtYk03Y0RfS1VROXZSV21mWkNwRUdjYWxqa2dzNVpVbWVxNGxEalNZc01qa3JVa1FGd3JVbXY4Ujdtb1dQcWFFdlVEUngyZng4WTlMZjhEa2dJVGY5OHhqNXFpZGxxVlFWLWl5d3FtNGV4aXdpYWVYaWQtMFI0dmc?oc=5)（Reuters）
-- [Police arrest actors, politicians protesting against Netanyahu outside UN - Reuters](https://news.google.com/rss/articles/CBMixAFBVV95cUxQdi02SWlPdy1EOUxsSWhEQnJzcjl0T2NjWXhqd1ZybnlBU1hWcm5WN0ljNi1IbzJkRTY5YW56WEVRRUQ2MXZzQ0l5cTNOUlM1aTBqU3F3M2N6LUl0c1pQcmh6RmlGNmtxenVwaDVqNzI3SmJNZ0JZb2tMVDVNMWVPV2QzWTV1eTZXX2RyLUoxallrbHJPTjkyeGtQdWhJdjZfQmtjM05QNnJlUzhMOXdfay1RWXZTTGRHeDdVdl9PSUpJYTZ3?oc=5)（Reuters）
-- [S&P 500 ends marginally lower as investors focus on US-Iran war - Reuters](https://news.google.com/rss/articles/CBMisgFBVV95cUxNdkxPUUdXbDkwcTdtbC1yM0NWMldPb2lpeExQRVh2SVFWQUl4Q3haSlp4U04yU1BoanNVeWF5bTIwbWJRQXVEQkIwMm0taFZ4eDJ3dUVjOTVuSWhEMVRZNV9vdUNab01CS1o4aUpoQVE5TmFqV1BMTFVaZVJzVEFES3Y4S1BLZFQ1TDFtR2dLZklJRkdFN3hTaENjVDhSc05sT1BVZ09idlU1ZGkwdTZLRi1n?oc=5)（Reuters）
-- [History shows financial calamities occur when rates rise rapidly like this: 'Something always breaks'](https://www.cnbc.com/2026/09/24/history-shows-financial-calamities-occur-when-rates-rise-rapidly-like-this-something-always-breaks.html)（CNBC）
-- [US Senate rejects Democratic-led resolution to curb Trump's Iran war powers - Reuters](https://news.google.com/rss/articles/CBMivgFBVV95cUxNMU45a3FvODBzSXpndWg1QUVuQzlqUmVJWjZEWUFXNWltVUx0Sm4zbDE1X3lFSnFYd2hQeGotT1YtejB1NU9lZDJKcnJjeEZqNkJtZkQ0anhFUG92V3pWLXlyQzhIalFwTzRuVnVvd3BGQ2tfYTJ3RUxMRlhlWTdTUFE3MnAzMUxmallxcE9SZU5ldmxJeE1fYnhyT0c5eG9lVXVydVg2TFhnbnFJYUFsOE56U194eTltTnc2bGFR?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **BABB** 2026-10-02  · EPS预期 —
@@ -73,6 +73,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - **AYI** 2026-10-01 bmo · EPS预期 5.72
 - 美债收益率上行，对高估值成长股形成压力。
 - 美股行业轮动：通信 领涨（+1.27%），材料 靠后。
+- 黄金强、原油弱 — 偏避险/衰退交易特征。
 - FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。
 
 *数据源：Yahoo Finance、Frankfurter (ECB)、FRED (St. Louis Fed)、Finnhub*
@@ -87,17 +88,17 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **标的**：小米集团（1810.HK）
 
-**模拟净值**：收益率 +8.20%，仓位 35.6%，持股 14,481 股，均价 23.75。
+**模拟净值**：收益率 +7.04%，仓位 34.9%，持股 14,481 股，均价 23.75。
 
 **月线状态**：连续 **1** 个月收跌，上月 -1.22%，近两月累计 +22.21%，近三月累计 -3.83%。我们判断当前仍处于 XRPS「股数积累」逻辑占优的阶段，浮亏不应成为削减核心仓的理由。
 
 **阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
 
-**现价参考**：26.58 HKD。
+**现价参考**：25.78 HKD。
 
-- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +32.90%。
+- 下一档**滚动卖出**（涨 40%）：触发价 **35.32**，距现价 +37.00%。
 
-- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +4.10%。
+- 下一档**回撤买回**（回撤 20%）：触发价 **25.50**，距现价 +1.10%。
 
 - XRPS-X 运行正常：股数优先、成本优先、核心仓保留。
 
@@ -107,17 +108,13 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 中际旭创(46.3分) · 港股最高 腾讯控股(46.7分) · 美股最高 苹果(87.4分)
+**全市场扫描**：A股最高 中际旭创(46.3分) · 港股最高 腾讯控股(32.5分) · 美股最高 苹果(87.4分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
 - **Meta**（美股）| 趋势达标待突破 | 评分 85.0 | 已突破 | 趋势过滤通过 | 止损缓冲 9.1% / 目标空间 32.7% | 决策 54.6
 
   - 逻辑：突破 40 日平台且放量；价格站上 20 日均线；价格站上 60 日均线
-
-- **腾讯控股**（港股）| 弱信号观察 | 评分 46.7 | 待突破 | 趋势过滤未过 | 止损缓冲 6.7% / 目标空间 24.0% | 决策 52.1
-
-  - 逻辑：价格站上 20 日均线
 
 - **中际旭创**（A股）| 弱信号观察 | 评分 46.3 | 待突破 | 趋势过滤未过 | 止损缓冲 12.1% / 目标空间 43.5% | 决策 52.1
 
@@ -146,22 +143,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.882）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.883）。
 
-*在线学习：市场环境 neutral · 修订 r882*
+*在线学习：市场环境 neutral · 修订 r883*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.5 · PEG 8.03 · ROE 19.9%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 14.6 · PEG 8.12 · ROE 19.9%
 
-  - ROE 19.91% — 盈利能力稳健；PE 14.46 — 估值在能力圈合理区间
+  - ROE 19.91% — 盈利能力稳健；PE 14.62 — 估值在能力圈合理区间
 
-- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.3 · ROE 12.6%
+- **小米集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 17.8 · ROE 12.6%
 
-  - ROE 12.63% — 盈利能力稳健；PE 18.33 — 估值在能力圈合理区间
+  - ROE 12.63% — 盈利能力稳健；PE 17.78 — 估值在能力圈合理区间
 
 
 ### 本杰明·格雷厄姆 · 深度价值
@@ -174,18 +171,18 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - **京东集团**（港股）| 匹配 74.0 | 符合风格 · 建议关注 | PE 17.5 · PEG 0.82 · ROE 6.8%
 
-  - PE 17.54 — 低于市场平均，具备安全边际；PB 1.08 — 资产折价，经典格雷厄姆信号
+  - PE 17.46 — 低于市场平均，具备安全边际；PB 1.07 — 资产折价，经典格雷厄姆信号
 
 
 ### 彼得·林奇 · 成长合理价 GARP
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **宁德时代**（A股）| 匹配 90.5 | 符合风格 · 建议关注 | PE 16.1 · PEG 0.51 · ROE 24.8%
+- **宁德时代**（A股）| 匹配 89.7 | 符合风格 · 建议关注 | PE 16.1 · PEG 0.51 · ROE 24.8%
 
   - PEG 0.51 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
 
-- **微软**（美股）| 匹配 90.5 | 符合风格 · 建议关注 | PE 27.7 · PEG 0.87 · ROE 34.0%
+- **微软**（美股）| 匹配 89.7 | 符合风格 · 建议关注 | PE 27.7 · PEG 0.87 · ROE 34.0%
 
   - PEG 0.87 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.7% — 成长故事可验证
 
@@ -198,7 +195,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - ROE 48.68% — 优质复利机器，芒格会长期持有；净利率 54.77% — 轻资产高毛利特征
 
-- **Meta**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 29.3 · ROE 29.9%
+- **Meta**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 28.0 · ROE 29.9%
 
   - ROE 29.85% — 优质复利机器，芒格会长期持有；净利率 29.83% — 轻资产高毛利特征
 
@@ -211,9 +208,9 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 近一月 -22.56% — 市场悲观，邓普顿式逆向机会；近三月 -26.71% — 深度回调，关注基本面是否错杀
 
-- **小米集团**（港股）| 匹配 97.8 | 符合风格 · 建议关注 | PE 18.3 · ROE 12.6%
+- **京东集团**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 17.5 · PEG 0.82 · ROE 6.8%
 
-  - 价格接近 52 周底部 — 「极度悲观时买入」；PE 18.33 — 悲观中仍有估值支撑
+  - 近一月 -8.12% — 市场悲观，邓普顿式逆向机会；价格接近 52 周底部 — 「极度悲观时买入」
 
 
 ### 乔治·索罗斯 · 宏观趋势
@@ -224,7 +221,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 近一月 +31.32% — 趋势强劲，反身性正反馈；相对强度 +30.65% — 跑赢大盘，宏观共振
 
-- **Meta**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 29.3 · ROE 29.9%
+- **Meta**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 28.0 · ROE 29.9%
 
   - 近一月 +36.51% — 趋势强劲，反身性正反馈；相对强度 +35.84% — 跑赢大盘，宏观共振
 
@@ -237,7 +234,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
-- **中际旭创**（A股）| 匹配 95.4 | 符合风格 · 建议关注 | PE 50.5 · PEG 22.25 · ROE 64.6%
+- **中际旭创**（A股）| 匹配 95.4 | 符合风格 · 建议关注 | PE 49.0 · PEG 21.59 · ROE 64.6%
 
   - 光模块 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 光模块 — CPO/光互连供应链瓶颈
 
@@ -256,24 +253,24 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - 战术自适应：门槛 +0 · 港股 T+5 胜率 42.4% 偏低，门槛 +1（市场门槛→+1）; 美股 T+5 胜率 69.2% 良好，门槛 -1（市场门槛→-1）
 
-- 队列待办：**流水线过期 · 行情·荐股·模拟盘** — 检查工作流 update-market-data.yml 日志与 Secrets。
+- 队列待办：**流水线过期 · Truth Social 镜像** — 检查工作流 update-truth-social.yml 日志与 Secrets。
 
 ---
 
 ## 六、资讯与主题线索
 
-- [Yahoo] **Dow Jones Futures: Market Rally Resilient As Yields, Oil Prices Keep Rising; Tesla Touts Semi**（^GSPC）
-  The stock market rallied to close mixed even as yields and oil prices kept rising. Taiwan Semi is a buy. A Tesla Semi ev…
-- [Yahoo] **Should You Sell Your Coeur Mining Stock Now?**（^GSPC）
-  You own Coeur Mining (CDE), and on September 23 the stock fell 5.7% while the S&P 500 slipped 0.7%. The worry is whether…
-- [Yahoo] **Bloom Energy's Backlog Is 5 Times This Year's Expected Revenue. Here's How Fast It Can Actually Build.**（NVDA）
-  A $20 billion order book sounds like years of growth already locked in. So how quickly can the factory turn it into reve…
-- [Yahoo] **Prediction: Here's What a $10,000 Investment in Archer Aviation Will Be Worth in 5 Years**（NVDA）
-  Archer's stock could do well if the company can stay on track with its milestones.…
-- [Yahoo] **Titans of Tech Attend State Dinner Honoring China’s Xi**（AAPL）
-  Amazon’s Jeff Bezos, Meta’s Mark Zuckerberg and Nvidia’s Jensen Huang were among the dozens of CEOs invited to President…
-- [Yahoo] **How IonQ’s On‑Prem Quantum System At NVIDIA (NVDA) Has Changed Its Investment Story**（NVDA）
-  In recent days, IonQ announced it will deploy its Superion 256 quantum computer as the first on‑premise system at NVIDIA…
+- [Yahoo] **The Math Doesn't Lie: What Oklo's Stock Sales Actually Cost Investors**（NVDA）
+  Oklo could change the way we use nuclear energy. But getting there hasn't been cheap.…
+- [Yahoo] **Stocktwits Passport Portfolio: QQQ Weekly Rally Leaves SPY, DIA And Asia In The Dust**（^IXIC）
+  The tech-heavy Nasdaq index surged past its American and Asian counterparts as AI stayed in focus this week.…
+- [Yahoo] **Do Cloudflare’s (NET) New AI Crawler Controls Quietly Strengthen Its Data-Moat Narrative?**（AAPL）
+  In September 2026, Cloudflare, Inc. launched new AI crawling controls, including a “Disallow AI Training” setting and an…
+- [Yahoo] **Meet the 6 Categories That Drove Costco’s 19.5% Digitally Enabled Sales Comps in Its Latest Quarter.**（NVDA）
+  The growth figure was high, given how little the company hypes that channel.…
+- [Yahoo] **Costco Just Showed Why It's a Better Buy Than Walmart**（NVDA）
+  Costco delivered another strong earnings report, even as rivals like Walmart are seeing slowing revenue growth.…
+- [Yahoo] **4 No-Brainer ETFs I'm Buying if the Stock Market Crashes in 2026**（^GSPC）
+  These fast-growing ETFs will likely be trading at attractive valuations after a market pullback.…
 
 ---
 
