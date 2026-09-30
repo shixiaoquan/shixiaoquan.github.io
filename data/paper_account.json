@@ -3,17 +3,17 @@
   "strategyCode": "XRPS-X",
   "strategyName": "小米滚动仓交易系统",
   "initialCash": 1000000.0,
-  "cash": 697108.92,
+  "cash": 591310.28,
   "coreShares": 14239.2189,
-  "rollingShares": 242.223,
-  "totalShares": 14481.4419,
-  "avgCost": 23.7528,
-  "rollingAvgCost": 25.2286,
-  "equity": 1062041.26,
-  "returnPct": 6.2,
-  "positionPct": 34.4,
-  "coreValue": 358828.32,
-  "rollingValue": 6104.02,
+  "rollingShares": 4487.7545,
+  "totalShares": 18726.9734,
+  "avgCost": 24.095,
+  "rollingAvgCost": 24.9367,
+  "equity": 1057986.46,
+  "returnPct": 5.8,
+  "positionPct": 44.1,
+  "coreValue": 354841.33,
+  "rollingValue": 111834.84,
   "focusSymbol": "1810.HK",
   "focusName": "小米集团",
   "focusHkCode": "01810",
@@ -23,7 +23,8 @@
     "sell_25"
   ],
   "triggeredBuyLevels": [
-    "buy_10"
+    "buy_10",
+    "buy_20"
   ],
   "monthlyState": {
     "consecutiveDownMonths": 1,
@@ -485,6 +486,17 @@
       "pnlPct": 10.27,
       "reason": "单月涨20%减滚动仓",
       "time": "2026-08-31T01:40:59+00:00"
+    },
+    {
+      "type": "buy",
+      "bucket": "rolling",
+      "symbol": "1810.HK",
+      "name": "小米集团",
+      "price": 24.92,
+      "shares": 4245.5315,
+      "amount": 105798.64,
+      "reason": "回撤20%买回",
+      "time": "2026-09-30T02:01:51+00:00"
     }
   ],
   "equityCurve": [
@@ -862,10 +874,15 @@
       "time": "2026-09-29T01:20:52+00:00",
       "equity": 1067544.2,
       "shares": 14481.4419
+    },
+    {
+      "time": "2026-09-30T02:01:51+00:00",
+      "equity": 1057986.46,
+      "shares": 18726.9734
     }
   ],
-  "updatedAt": "2026-09-29T23:01:42+00:00",
-  "lastProcessedDate": "2026-09-29",
-  "lastPrice": 25.2,
+  "updatedAt": "2026-09-30T02:01:51+00:00",
+  "lastProcessedDate": "2026-09-30",
+  "lastPrice": 24.92,
   "xrpsInitialized": true
 }
