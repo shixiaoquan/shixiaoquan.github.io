@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年10月01日 15:07（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年10月01日 18:32（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-10-01 10:20 · 宏观：2026-10-01 10:21 · 问财：2026-10-01 10:04
+> 行情更新：2026-10-01 17:07 · 宏观：2026-10-01 17:07 · 问财：2026-10-01 16:49
 
 ---
 
@@ -11,7 +11,7 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **+0.35%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
+全球跟踪指数平均涨跌 **+0.52%**，综合情绪 **偏多**。风险偏好有所修复，战术端可适度提高对突破信号的响应灵敏度，但仍需严守单笔止损。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
@@ -26,13 +26,13 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 ### 1.1 全球指数
 
 跟踪 6 只主要指数：上涨 **4** 只、
-下跌 **2** 只，平均涨跌 **+0.35%**。
+下跌 **2** 只，平均涨跌 **+0.52%**。
 
 **美股** -0.29%（震荡）；**港股** +0.37%（偏强）；**A股** +0.31%（偏强）。相对强势区域：港股、A股。
 
 **波动居前指数：**
 
-- **日经 225** 68,275.69，日涨跌 +2.28%（周 +4.22% / 月 +2.82%）
+- **日经 225** 68,956.72，日涨跌 +3.30%（周 +5.25% / 月 +3.84%）
 - **道琼斯** 50,906.05，日涨跌 -0.86%（周 -1.18% / 月 -4.29%）
 - **恒生指数** 24,613.27，日涨跌 +0.37%（周 -0.89% / 月 -2.83%）
 - **上证指数** 3,842.20，日涨跌 +0.31%（周 -2.78% / 月 -3.61%）
@@ -43,10 +43,10 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.3 宏观与跨资产
 
-- **VIX** 16.3（normal）
+- **VIX** 16.9（normal）
 - **美10Y收益率** 5.29%
 - **10Y-2Y 利差（FRED）** 0.41%（偏窄）
-- **USDCNH** 6.7100（日 —）
+- **USDCNH** 6.7200（日 —）
 - **美股行业**：科技 领涨，必需消费 靠后
 
 **FRED 官方序列**
@@ -58,11 +58,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：334.1（变动 +1.16%，2026-08-01）
 
 **Finnhub 宏观要闻**
-- [Oil prices barely changed as investors assess US-Iran peace talks and Gulf exports - Reuters](https://news.google.com/rss/articles/CBMixgFBVV95cUxOcGNFYVVqQ0xkMTkyblJkMU5mMnJ6Y1RhTEhBWjJyWEhDaXdCVzg3aF9pWTFYdVkyN3d5WmpIRDdHQ283dUJhVlV4WTJzSEMwTy1uZkhwS2NNNndEZlhJY2lGTHgtRng1TjQ0XzRWdUNnUjRPQ2ZoaDg2UlJ1cTgtRGZHbTNVcUVFenI1SlIxREdDbWJJX25kWFY2ZWxxVzRyOFl3SGZzbjZUWEk2NklWOUR2UzEwanpPSzU1TnJyXzVveDRoX2c?oc=5)（Reuters）
-- [Passengers foil bid to crash Dubai-Tel Aviv flight, Israel says, after co-pilot stabs pilot - Reuters](https://news.google.com/rss/articles/CBMixAFBVV95cUxOWnpLNmZJUXN6UzQ0RlhKSFhxT2xYMWZ1R1VwYVdZX3ZuZWFTYUZyV1VYTVhralA5Y0ROVjlNVl9XOGpTSWhEcGM3UE01WVA3clNKcm5KdDZ2dUY1U3FyODdsWkkzSWs2VW5NZUJWQXFYQ0dxamNudlljZl92REs3SnFXSEUzTEswdjh4NnRia2VWZGd2TGE2SmZ6VDBQTXpiRDM0SDZSZ29ubUZUd3Zsa0E4LTBoRmxpSDRjd0JkcmhYbkNV?oc=5)（Reuters）
-- [Israel to ramp up pilot checks after flydubai scare - Reuters](https://news.google.com/rss/articles/CBMipAFBVV95cUxOX1J1a0RUdFZlOHpZY3RrM0FDaWVyamd4Rk5hUHZ4aVpMZHFwd0NpS1RYaGthT0NkOXNKRUlnam9PelFpUGM5V1RTN2hvMzY5X0EwWUlDa2xLUUp6SlNBRktQWE1JSERza004ellOTTFMaXR0N293VDl1WGxWRnd6eXVsN3BlZ1RwMkRNa1VJM05qc3RqS2k3OU15M1RrVEpTbnFwaA?oc=5)（Reuters）
-- [Why Jim Cramer isn't buying more Boeing despite its huge Navy contract win](https://www.cnbc.com/2026/09/30/why-jim-cramer-isnt-buying-more-boeing-despite-its-huge-navy-contract-win-.html)（CNBC）
-- [Wall Street is closing out a strong quarter. Plus, Lilly's mixed obesity drug trial data](https://www.cnbc.com/2026/09/30/wall-streets-strong-quarter-plus-lillys-mixed-obesity-drug-trial-data.html)（CNBC）
+- [Flydubai passengers welcomed with cheers at Israeli airport - Reuters](https://news.google.com/rss/articles/CBMiowFBVV95cUxOa0k4LW4yczB4OG83TDBJOHk4OGxveF9hYTBTaDVWTldUaW9xeVJWX3BWbjJQVGU4akl2bExnRWtWMG9YVjJSa2NRQWFPOVhSam1GM3dqYXRlS291MHJZX0lpOVFmOHRMOGVscXVXRWpCeUNrMVVDeXl5MDJsWmRYbEVfZEdXcGhHTGFNRGM5Wlg1ME9kc2ZJbEpuc3hwU1B3cGFR?oc=5)（Reuters）
+- [Three oil tankers hit by projectiles in Hormuz strait on Tuesday, Marisks says - Reuters](https://news.google.com/rss/articles/CBMiwAFBVV95cUxNMGxqUHRGWUpFZWo3eVZkQ1NnR2NZM05rLWhoWHNOOE5IaGhwSjk4QlNXRi16Q1BGYVlMc2VPWUh6dm55bHluMjg5WGxvY0dfcmdNcDJIaGc5UjFwaXVpZlFTd21VZDU5dkdpZUtteEtQVll0M09hVHRPMG4wZU56UlNMMjIxREx3dmJZOVNFZjE3R0ZrQ3Q0R0VaazBjWk9LcS1UOWR2S1BfRmc2M1FIeU1Qa3liNHZRcFJINWtYQ1c?oc=5)（Reuters）
+- [Netanyahu says Israel will get to the 'root' of co-pilot in foiled bid to crash flydubai flight - Reuters](https://news.google.com/rss/articles/CBMiywFBVV95cUxPU2FsbDhfazlDOEhsVF9mZ0ZCMDdDdlNOYURfSWxTV2ZkVm8tckN0dmo1Q0QtUEtxQmJpQUZKTWVjNzBJZzdKSHkzWTVuaFJsY2U2a2xhWlRXbERyNXBkZms1VExTeEdDSFRuT0hJbmxTSE94bjN0dnRic1Jjd1BITXlRT0k4TnNpazlpOXVFY3pjM2tJNzZkT1BIXzBNU1lJbEJoZjdpdEgwQUZhLTNSS2FjN19CSENnWkRzVGZ0dmN5RmRIcmZhS0NjYw?oc=5)（Reuters）
+- [India shares open lower as foreign outflows dent risk sentiment - reuters.com](https://news.google.com/rss/articles/CBMitAFBVV95cUxOa2lpSGdlN0dhOTM3eUw3MlQtN183dHZydW95WXVWM2MyTEFaeTlvRUllR29aLWJxT3dvdVNmNlpzTGVldkpIMFNScVVhVEJ5TTU5TDhoVTZZWlpXbENCUHlKMWx3MmJ4bWkyU1E1OGF6Sk9YakxYcHRyM0tWdnlrX0NpQktmLU90VkRRVG5FQXdPZ3c3dFV0N0xndUdrTl9lY0xKZUJsNmY4LS1BYndDNENRZC0?oc=5)（Reuters）
+- [Oil steadies as Gulf exports recover, US-Iran diplomacy in focus - Reuters](https://news.google.com/rss/articles/CBMixgFBVV95cUxOcGNFYVVqQ0xkMTkyblJkMU5mMnJ6Y1RhTEhBWjJyWEhDaXdCVzg3aF9pWTFYdVkyN3d5WmpIRDdHQ283dUJhVlV4WTJzSEMwTy1uZkhwS2NNNndEZlhJY2lGTHgtRng1TjQ0XzRWdUNnUjRPQ2ZoaDg2UlJ1cTgtRGZHbTNVcUVFenI1SlIxREdDbWJJX25kWFY2ZWxxVzRyOFl3SGZzbjZUWEk2NklWOUR2UzEwanpPSzU1TnJyXzVveDRoX2c?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **AMBK** 2026-10-08  · EPS预期 —
@@ -73,6 +73,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - **CYDY** 2026-10-08  · EPS预期 —
 - 美债收益率上行，对高估值成长股形成压力。
 - 美股行业轮动：科技 领涨（+0.64%），必需消费 靠后。
+- 原油强、黄金弱 — 偏再通胀/增长预期。
 - FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。
 
 *数据源：Yahoo Finance、Frankfurter (ECB)、FRED (St. Louis Fed)、Finnhub*
@@ -144,9 +145,9 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.902）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.903）。
 
-*在线学习：市场环境 risk_on · 修订 r902 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
+*在线学习：市场环境 risk_on · 修订 r903 · 市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94*
 
 
 ### 沃伦·巴菲特 · 价值投资
@@ -166,11 +167,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *安全边际是投资核心：在价格显著低于内在价值时分批买入，分散持有。*
 
-- **中国平安**（A股）| 匹配 86.5 | 符合风格 · 建议关注 | PE 6.4 · PEG 0.12 · ROE 13.1%
+- **中国平安**（A股）| 匹配 84.0 | 符合风格 · 建议关注 | PE 6.4 · PEG 0.12 · ROE 13.1%
 
   - PE 6.4 — 深度价值区间，安全边际充足；PB 0.94 — 资产折价，经典格雷厄姆信号
 
-- **京东集团**（港股）| 匹配 79.2 | 符合风格 · 建议关注 | PE 17.7 · PEG 0.83 · ROE 6.8%
+- **京东集团**（港股）| 匹配 77.1 | 符合风格 · 建议关注 | PE 17.7 · PEG 0.83 · ROE 6.8%
 
   - PE 17.71 — 低于市场平均，具备安全边际；PB 1.09 — 资产折价，经典格雷厄姆信号
 
@@ -179,24 +180,24 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *投资你了解的公司；以 PEG 衡量成长是否被合理定价，偏好业绩可验证的成长股。*
 
-- **宁德时代**（A股）| 匹配 79.1 | 符合风格 · 建议关注 | PE 15.5 · PEG 0.49 · ROE 24.8%
+- **宁德时代**（A股）| 匹配 80.1 | 符合风格 · 建议关注 | PE 15.5 · PEG 0.49 · ROE 24.8%
 
   - PEG 0.49 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.8% — 成长故事可验证
 
-- **微软**（美股）| 匹配 79.1 | 符合风格 · 建议关注 | PE 28.5 · PEG 0.90 · ROE 34.0%
+- **微软**（美股）| 匹配 80.1 | 符合风格 · 建议关注 | PE 28.3 · PEG 0.89 · ROE 34.0%
 
-  - PEG 0.9 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.7% — 成长故事可验证
+  - PEG 0.89 — 成长相对估值便宜，林奇「十倍股」潜力；盈利增速 31.7% — 成长故事可验证
 
 
 ### 查理·芒格 · 优质复利
 
 *以合理价格买入伟大的公司，胜过于以便宜价格买入平庸的公司。*
 
-- **谷歌**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 17.3 · PEG 5.87 · ROE 48.7%
+- **谷歌**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 17.1 · PEG 5.81 · ROE 48.7%
 
   - ROE 48.68% — 优质复利机器，芒格会长期持有；净利率 54.77% — 轻资产高毛利特征
 
-- **Meta**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 27.3 · ROE 29.9%
+- **Meta**（美股）| 匹配 81.4 | 符合风格 · 建议关注 | PE 26.5 · ROE 29.9%
 
   - ROE 29.85% — 优质复利机器，芒格会长期持有；净利率 29.83% — 轻资产高毛利特征
 
@@ -218,11 +219,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
 
-- **AMD**（美股）| 匹配 97.4 | 符合风格 · 建议关注 | PE 154.9 · PEG 97.41 · ROE 10.2%
+- **AMD**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 154.9 · PEG 97.41 · ROE 10.2%
 
   - 近一月 +29.96% — 趋势强劲，反身性正反馈；相对强度 +30.41% — 跑赢大盘，宏观共振
 
-- **Meta**（美股）| 匹配 97.4 | 符合风格 · 建议关注 | PE 27.3 · ROE 29.9%
+- **Meta**（美股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 26.5 · ROE 29.9%
 
   - 近一月 +26.8% — 趋势强劲，反身性正反馈；相对强度 +27.25% — 跑赢大盘，宏观共振
 
@@ -254,24 +255,24 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 - 战术自适应：门槛 +0 · 港股 T+5 胜率 42.4% 偏低，门槛 +1（市场门槛→+1）; 美股 T+5 胜率 66.7% 良好，门槛 -1（市场门槛→-1）
 
-- 队列待办：**影子轨积累中** — 无需操作，继续观察 shadow_reco.json comparison。
+- 队列待办：**流水线过期 · 行情·荐股·模拟盘** — 检查工作流 update-market-data.yml 日志与 Secrets。
 
 ---
 
 ## 六、资讯与主题线索
 
+- [Yahoo] **Jim Cramer Says 'Buy' Apple Stock Because of iPhone Duo, Not On Smart Home Device Buzz: Calls the $1,999 Foldable 'Amazing'**（AAPL）
+  On Wednesday, Jim Cramer asked investors to buy Apple Inc. (NASDAQ:AAPL) for its "AMAZING" iPhone Duo. Cupertino shares …
+- [Yahoo] **Bank Stocks Are Beaten Down. The Case for Buying Now.**（^GSPC）
+  The outlook for bank stocks can’t get much worse, and that’s exactly why they look appealing. The ETF, home to investmen…
+- [Yahoo] **Meta reportedly calls its AI data centers ‘pilot models’ — its research tax credits jumped from $700M to $3.9B**（NVDA）
+  The company appears to have netted the most from that credit among all publicly traded companies.…
 - [Yahoo] **Forget Waiting Three Months for SPY’s Dividend. Invesco’s High-Dividend Fund Pays Every Month**（NVDA）
   Monthly bills don't care about quarterly dividend schedules, and one S&P 500 ETF built its entire identity around solvin…
 - [Yahoo] **Tech CEOs Privately Questioned Amodei for Sounding AI Alarm Bells**（NVDA）
   Nvidia CEO Jensen Huang was among the executives at Tuesday’s White House event who called out the Anthropic leader for …
 - [Yahoo] **Micron Reports Another Dazzling Quarter. The Bears Remain Unconvinced.**（^GSPC）
   For the fourth quarter, analysts project sales growth of 354% to $51 billion, and an eye-popping gross margin of 85%, al…
-- [Yahoo] **In AI Race, Software Is Now Winning Alongside Chips**（NVDA）
-  Services like Meta’s Muse AI just increase demand for chips. But they’re also a big win for software…
-- [Yahoo] **Apple Predicted To Sell 6 Million iPhone Duo Handsets This Year**（AAPL）
-  Apple is poised to sell 6 million units of the iPhone Duo, its first folding-screen smartphone, Counterpoint Research sa…
-- [Yahoo] **Stock Market Today: Dow Knocked Down, Nasdaq Pares Gain; Micron Holds Firm After Earnings Soar**（^GSPC）
-  Stock Market Today: The Dow Jones index rises Wednesday on surprise inflation data. Micron earnings are due after the cl…
 
 ---
 
