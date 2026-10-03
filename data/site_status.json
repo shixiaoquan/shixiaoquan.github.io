@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-03T21:35:54+00:00",
+  "updatedAt": "2026-10-03T22:07:38+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -257,7 +257,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-02T12:51:26+00:00",
       "status": "stale",
-      "ageMinutes": 1964
+      "ageMinutes": 1996
     },
     {
       "id": "macro",
@@ -266,16 +266,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-02T12:51:19+00:00",
       "status": "stale",
-      "ageMinutes": 1964
+      "ageMinutes": 1996
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-10-03T19:03:42+00:00",
-      "status": "stale",
-      "ageMinutes": 152
+      "updatedAt": "2026-10-03T22:06:37+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "wencai",
@@ -284,7 +284,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-03T19:49:50+00:00",
       "status": "ok",
-      "ageMinutes": 106
+      "ageMinutes": 137
     },
     {
       "id": "reports",
@@ -293,7 +293,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-03T21:15:31+08:00",
       "status": "ok",
-      "ageMinutes": 500
+      "ageMinutes": 532
     },
     {
       "id": "backtest",
@@ -302,9 +302,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-09-27T07:29:43+00:00",
       "status": "ok",
-      "ageMinutes": 9486
+      "ageMinutes": 9517
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "37155635254"
+  "triggeredBy": "Update Truth Social",
+  "runId": "37157296580"
 }
