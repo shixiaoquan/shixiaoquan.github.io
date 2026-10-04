@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-04T02:34:13+00:00",
+  "updatedAt": "2026-10-04T06:18:27+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-04T01:44:53+00:00",
+    "updatedAt": "2026-10-04T06:18:27+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -130,6 +130,14 @@
         "title": "流水线过期 · Truth Social 镜像",
         "reason": "stale",
         "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+      },
+      {
+        "id": "fix-pipeline-wencai",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · 问财自然语言筛选",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-wencai-data.yml 日志与 Secrets。"
       },
       {
         "id": "shadow-tracking",
@@ -161,8 +169,8 @@
       }
     ],
     "summary": {
-      "total": 6,
-      "high": 3,
+      "total": 7,
+      "high": 4,
       "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
     }
   },
@@ -257,7 +265,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-02T12:51:26+00:00",
       "status": "stale",
-      "ageMinutes": 2262
+      "ageMinutes": 2487
     },
     {
       "id": "macro",
@@ -266,7 +274,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-02T12:51:19+00:00",
       "status": "stale",
-      "ageMinutes": 2262
+      "ageMinutes": 2487
     },
     {
       "id": "truth",
@@ -275,7 +283,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-04T00:35:21+00:00",
       "status": "stale",
-      "ageMinutes": 118
+      "ageMinutes": 343
     },
     {
       "id": "wencai",
@@ -283,8 +291,8 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-04T02:33:03+00:00",
-      "status": "ok",
-      "ageMinutes": 1
+      "status": "stale",
+      "ageMinutes": 225
     },
     {
       "id": "reports",
@@ -293,7 +301,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-03T21:15:31+08:00",
       "status": "ok",
-      "ageMinutes": 798
+      "ageMinutes": 1022
     },
     {
       "id": "backtest",
@@ -302,9 +310,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-09-27T07:29:43+00:00",
       "status": "ok",
-      "ageMinutes": 9784
+      "ageMinutes": 10008
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "37171372951"
+  "triggeredBy": "Update Market Data",
+  "runId": "37182398886"
 }
