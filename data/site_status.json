@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-10-06T00:47:07+00:00",
+  "updatedAt": "2026-10-06T02:33:34+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 915,
-    "masterLearnUpdatedAt": "2026-10-05T22:49:48+00:00",
-    "masterAvgWinRate": 34.4,
+    "masterLearnRevision": 916,
+    "masterLearnUpdatedAt": "2026-10-06T02:33:02+00:00",
+    "masterAvgWinRate": 35.1,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-05T22:50:11+00:00",
+    "updatedAt": "2026-10-06T02:33:34+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -176,6 +176,20 @@
   },
   "recentLog": [
     {
+      "at": "2026-10-06T02:33:14+00:00",
+      "type": "master_learn",
+      "revision": 916,
+      "regime": "risk_on",
+      "notes": {
+        "buffett": "近期表现反馈：roe↓、pe↓、debt↓、trend↓",
+        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓",
+        "templeton": "近期表现反馈：quarter↓",
+        "soros": "近期表现反馈：beta↑、volume↑",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、range↓",
+        "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
+      }
+    },
+    {
       "at": "2026-10-05T22:49:56+00:00",
       "type": "master_learn",
       "revision": 915,
@@ -240,19 +254,6 @@
         "soros": "近期表现反馈：volume↑",
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、range↓"
       }
-    },
-    {
-      "at": "2026-10-04T20:01:25+00:00",
-      "type": "master_learn",
-      "revision": 910,
-      "regime": "neutral",
-      "notes": {
-        "buffett": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
-        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓",
-        "templeton": "近期表现反馈：quarter↓",
-        "soros": "近期表现反馈：volume↑",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、range↓"
-      }
     }
   ],
   "pipelines": [
@@ -261,18 +262,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-10-05T22:50:11+00:00",
-      "status": "stale",
-      "ageMinutes": 116
+      "updatedAt": "2026-10-06T02:33:33+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-10-05T22:50:03+00:00",
-      "status": "stale",
-      "ageMinutes": 117
+      "updatedAt": "2026-10-06T02:33:24+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -280,8 +281,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-06T00:00:20+00:00",
-      "status": "ok",
-      "ageMinutes": 46
+      "status": "stale",
+      "ageMinutes": 153
     },
     {
       "id": "wencai",
@@ -290,7 +291,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-06T00:46:12+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 107
     },
     {
       "id": "reports",
@@ -299,7 +300,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-06T01:03:07+08:00",
       "status": "ok",
-      "ageMinutes": 464
+      "ageMinutes": 570
     },
     {
       "id": "backtest",
@@ -308,9 +309,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-04T07:41:04+00:00",
       "status": "ok",
-      "ageMinutes": 2466
+      "ageMinutes": 2572
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "37395681968"
+  "triggeredBy": "Update Market Data",
+  "runId": "37404635114"
 }
