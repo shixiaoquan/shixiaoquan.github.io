@@ -1,7 +1,7 @@
 {
   "version": 1,
   "rulesVersion": "1.0.0",
-  "updatedAt": "2026-10-08T22:20:28+00:00",
+  "updatedAt": "2026-10-09T02:19:06+00:00",
   "symbol": "1810.HK",
   "symbolAlias": "HK01810",
   "name": "小米集团-W",
@@ -58,25 +58,17 @@
     }
   ],
   "quote": {
-    "price": 23.66,
-    "previousClose": 23.94,
-    "change": -0.28,
-    "changePct": -1.17,
-    "dayOpen": 24.08,
-    "dayHigh": 24.56,
-    "dayLow": 23.58,
-    "volume": 97457649,
-    "avgVolume20": 104734163,
-    "asOf": "2026-10-08",
+    "price": 25.22,
+    "previousClose": 23.66,
+    "change": 1.56,
+    "changePct": 6.59,
+    "dayOpen": 23.84,
+    "dayHigh": 25.26,
+    "dayLow": 23.78,
+    "volume": 60411333,
+    "avgVolume20": 100321579,
+    "asOf": "2026-10-09",
     "recentBars": [
-      {
-        "date": "2026-09-10",
-        "open": 26.04,
-        "high": 26.4,
-        "low": 25.68,
-        "close": 25.92,
-        "volume": 148663013
-      },
       {
         "date": "2026-09-11",
         "open": 25.66,
@@ -228,20 +220,28 @@
         "low": 23.58,
         "close": 23.66,
         "volume": 97457649
+      },
+      {
+        "date": "2026-10-09",
+        "open": 23.84,
+        "high": 25.26,
+        "low": 23.78,
+        "close": 25.22,
+        "volume": 60411333
       }
     ]
   },
   "positionInBox": 0.0,
   "advice": {
-    "action": "buy",
-    "actionLabel": "买入第2份",
-    "tone": "buy",
-    "operate": true,
-    "title": "进入买区 23.00–24.00",
-    "detail": "现价 23.66。按收盘价确认后买入第2份（1/3）。每手 200 股。收盘跌破 21.30 全部止损。",
-    "emptyAdvice": "买入第2份（1/3）",
-    "holdingAdvice": "若尚未买过该档，可加第2份",
-    "zoneId": "t2"
+    "action": "wait",
+    "actionLabel": "等待买区",
+    "tone": "neutral",
+    "operate": false,
+    "title": "现价 25.22 低于日常箱下沿",
+    "detail": "尚未进入第2份买区 23.00–24.00。收盘跌破 21.30 则清仓逻辑启动。",
+    "emptyAdvice": "等待进入 23.00–24.00",
+    "holdingAdvice": "持有观察；不在空白区加仓",
+    "zoneId": "gap_t1_t2"
   },
   "error": null
 }

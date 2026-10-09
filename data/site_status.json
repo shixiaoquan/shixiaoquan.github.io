@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-10-09T00:19:41+00:00",
+  "updatedAt": "2026-10-09T02:19:07+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 928,
-    "masterLearnUpdatedAt": "2026-10-08T22:20:03+00:00",
-    "masterAvgWinRate": 34.9,
+    "masterLearnRevision": 929,
+    "masterLearnUpdatedAt": "2026-10-09T02:18:40+00:00",
+    "masterAvgWinRate": 38.3,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-08T22:20:29+00:00",
+    "updatedAt": "2026-10-09T02:19:07+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -167,6 +167,20 @@
     }
   },
   "recentLog": [
+    {
+      "at": "2026-10-09T02:18:51+00:00",
+      "type": "master_learn",
+      "revision": 929,
+      "regime": "risk_off",
+      "notes": {
+        "buffett": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
+        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓",
+        "templeton": "近期表现反馈：quarter↓",
+        "soros": "近期表现反馈：volume↑",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
+        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
+      }
+    },
     {
       "at": "2026-10-08T22:20:14+00:00",
       "type": "master_learn",
@@ -235,19 +249,6 @@
         "soros": "近期表现反馈：month↑、rs↑、trend↑、beta↑",
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、range↓"
       }
-    },
-    {
-      "at": "2026-10-07T19:29:35+00:00",
-      "type": "master_learn",
-      "revision": 923,
-      "regime": "neutral",
-      "notes": {
-        "buffett": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
-        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓",
-        "templeton": "近期表现反馈：quarter↓",
-        "soros": "近期表现反馈：month↑、rs↑、trend↑、beta↑",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、range↓"
-      }
     }
   ],
   "pipelines": [
@@ -256,18 +257,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-10-08T22:20:28+00:00",
-      "status": "stale",
-      "ageMinutes": 119
+      "updatedAt": "2026-10-09T02:19:06+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-10-08T22:20:20+00:00",
-      "status": "stale",
-      "ageMinutes": 119
+      "updatedAt": "2026-10-09T02:18:58+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -275,8 +276,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-09T00:10:51+00:00",
-      "status": "ok",
-      "ageMinutes": 8
+      "status": "stale",
+      "ageMinutes": 128
     },
     {
       "id": "wencai",
@@ -285,7 +286,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-09T00:18:38+00:00",
       "status": "ok",
-      "ageMinutes": 1
+      "ageMinutes": 120
     },
     {
       "id": "reports",
@@ -294,7 +295,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-08T23:29:22+08:00",
       "status": "ok",
-      "ageMinutes": 530
+      "ageMinutes": 649
     },
     {
       "id": "backtest",
@@ -303,9 +304,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-04T07:41:04+00:00",
       "status": "ok",
-      "ageMinutes": 6758
+      "ageMinutes": 6878
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "37864071491"
+  "triggeredBy": "Update Market Data",
+  "runId": "37873924042"
 }
