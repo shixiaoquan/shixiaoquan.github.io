@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T07:41:22+00:00",
+  "updatedAt": "2026-10-11T08:11:54+00:00",
   "leader": "v1.3_production",
   "variants": {
     "v1.3_production": {
@@ -37,17 +37,29 @@
       "label": "v1.2 对照（放宽过滤）",
       "period": "2y",
       "metrics": {
-        "totalTrades": 16,
-        "winRate": 31.2,
-        "profitFactor": 0.79,
-        "expectancy": -0.35,
-        "avgWin": 4.09,
-        "avgLoss": -2.37,
-        "maxDrawdown": -20.46,
-        "sharpe": -0.14,
-        "annualReturn": -7.27
+        "totalTrades": 17,
+        "winRate": 29.4,
+        "profitFactor": 0.75,
+        "expectancy": -0.44,
+        "avgWin": 4.55,
+        "avgLoss": -2.52,
+        "maxDrawdown": -23.77,
+        "sharpe": -0.17,
+        "annualReturn": -9.34
       },
       "recentTrades": [
+        {
+          "symbol": "NVDA",
+          "market": "美股",
+          "entryDate": "2026-10-06",
+          "exitDate": "2026-10-09",
+          "entryPrice": 239.24,
+          "exitPrice": 229.28,
+          "returnPct": -4.16,
+          "reason": "expiry",
+          "score": 76.0,
+          "win": false
+        },
         {
           "symbol": "NVDA",
           "market": "美股",
@@ -95,24 +107,12 @@
           "reason": "trail",
           "score": 79.7,
           "win": true
-        },
-        {
-          "symbol": "NVDA",
-          "market": "美股",
-          "entryDate": "2026-05-18",
-          "exitDate": "2026-06-02",
-          "entryPrice": 221.81,
-          "exitPrice": 221.81,
-          "returnPct": -0.0,
-          "reason": "trail",
-          "score": 93.3,
-          "win": false
         }
       ]
     }
   },
   "delta": {
-    "expectancy": -0.35,
-    "winRate": 31.2
+    "expectancy": -0.44,
+    "winRate": 29.4
   }
 }
