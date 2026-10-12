@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-12T02:25:28+00:00",
+  "updatedAt": "2026-10-12T09:34:27+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,14 +10,8 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
-      "status": "error: The read operation timed out",
-      "items": 0
-    },
-    {
-      "id": "exchangerate-api",
-      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 5
+      "items": 7
     },
     {
       "id": "fred",
@@ -35,7 +29,7 @@
     }
   ],
   "summary": {
-    "vix": 14.84,
+    "vix": 15.44,
     "vixRegime": "normal",
     "us10yYield": 5.24,
     "usdCnh": 6.69,
@@ -45,7 +39,7 @@
     "yieldSpread10y2y": 0.44,
     "hints": [
       "美股行业轮动：地产 领涨（+1.86%），通信 靠后。",
-      "黄金强、原油弱 — 偏避险/衰退交易特征。",
+      "原油强、黄金弱 — 偏再通胀/增长预期。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。",
       "FRED：失业率边际上升，就业市场边际走弱。"
     ]
@@ -58,10 +52,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 14.84,
-      "changePct": -3.7,
-      "weekChangePct": -3.07,
-      "monthChangePct": -16.82,
+      "price": 15.44,
+      "changePct": 4.04,
+      "weekChangePct": -0.52,
+      "monthChangePct": null,
       "source": "yahoo"
     }
   ],
@@ -116,16 +110,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.69,
-      "changePct": -0.14,
-      "weekChangePct": -0.18,
+      "price": 6.68,
+      "changePct": -0.31,
+      "weekChangePct": -0.35,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.7003,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 6.6921,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-10-09"
     },
     {
       "symbol": "USDHKD=X",
@@ -135,15 +129,15 @@
       "currency": null,
       "region": null,
       "price": 7.85,
-      "changePct": -0.01,
+      "changePct": -0.0,
       "weekChangePct": 0.0,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.848,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 7.8476,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-10-09"
     },
     {
       "symbol": "USDJPY=X",
@@ -152,16 +146,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.19,
-      "changePct": 0.08,
-      "weekChangePct": 0.29,
+      "price": 158.49,
+      "changePct": 0.27,
+      "weekChangePct": 0.48,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 158.2301,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 158.25,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-10-09"
     },
     {
       "symbol": "EURUSD=X",
@@ -171,25 +165,51 @@
       "currency": null,
       "region": null,
       "price": 1.12,
-      "changePct": 0.02,
-      "weekChangePct": -0.34,
+      "changePct": -0.19,
+      "weekChangePct": -0.56,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8926,
-      "refSource": "exchangerate-api",
-      "refNote": "open.er-api.com"
+      "refPrice": 0.8924,
+      "refSource": "frankfurter",
+      "refNote": "ECB 参考 2026-10-09"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7556,
+      "price": 0.7564,
       "changePct": null,
-      "source": "exchangerate-api",
-      "note": "open.er-api.com"
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-10-09"
+    },
+    {
+      "symbol": "USDCHF",
+      "name": "美元/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "price": 0.8311,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-10-09"
+    },
+    {
+      "symbol": "USDSGD",
+      "name": "美元/SGD",
+      "base": "USD",
+      "quote": "SGD",
+      "price": 1.2804,
+      "changePct": null,
+      "weekChangePct": null,
+      "monthChangePct": null,
+      "source": "frankfurter",
+      "note": "ECB 参考 2026-10-09"
     }
   ],
   "commodities": [
@@ -200,10 +220,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4237.6,
-      "changePct": 0.51,
-      "weekChangePct": 1.94,
-      "monthChangePct": -3.89,
+      "price": 4200.9,
+      "changePct": -0.37,
+      "weekChangePct": 1.06,
+      "monthChangePct": null,
       "source": "yahoo"
     },
     {
@@ -213,10 +233,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 90.06,
-      "changePct": -1.95,
-      "weekChangePct": 0.7,
-      "monthChangePct": -9.99,
+      "price": 92.42,
+      "changePct": 0.62,
+      "weekChangePct": 3.34,
+      "monthChangePct": null,
       "source": "yahoo"
     },
     {
@@ -226,10 +246,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.74,
-      "changePct": 1.46,
-      "weekChangePct": 2.34,
-      "monthChangePct": 4.17,
+      "price": 6.77,
+      "changePct": 1.85,
+      "weekChangePct": 2.73,
+      "monthChangePct": null,
       "source": "yahoo"
     }
   ],
@@ -241,7 +261,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4305.59,
+      "price": 4287.98,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -254,7 +274,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 2997.7,
+      "price": 2963.82,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -267,7 +287,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1434.16,
+      "price": 1426.72,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -488,13 +508,73 @@
   ],
   "finnhubNews": [
     {
+      "id": 8609302,
+      "title": "Top oil executives dropped from event schedule after Riyadh attacks - Reuters",
+      "summary": "Top oil executives dropped from event schedule after Riyadh attacks  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxObWQtMDRPN05hVWltQzRWWGdZLUVfT3lnZXNrVDBteWp6NWJfZEFBaEgzZEVVaGRUaXJuTVhSTXNBV29fcUFvZVcxV19yRnU1Sk9zM3p5MWcwYkNsaDI0bV9DeW9tc3NQamVDb3ZZeFpGb0hPRGk1N1gyMW9QU3VidVlZMVhZZlF0RWdMZy1KcFJIbDlDXzN6c0xHajFhWHVmckI0SVZuU3lFZTVKc3hWNEZ6eTZrYkk?oc=5",
+      "publishedAt": "2026-10-12T08:44:46+00:00",
+      "related": ""
+    },
+    {
+      "id": 8609301,
+      "title": "COMMENTARY: Middle East LNG industry remains hostage of Iran war - Reuters",
+      "summary": "COMMENTARY: Middle East LNG industry remains hostage of Iran war  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQLXNhN1pHTVFkMDM2M21lOXNtYnpXRzRvOEtkVU9pdG1YSXo2Q0M4eVNreElGaFI3RlZZV3FQZXBDZmYtTDYwNVJrbFZOY2VOZWFOR3l2TFpORElhZDhrUWxCRXM1RXpKbGowTVdsS3N0VUIwRFhJOF9wcFhlT1JvRE95dF9BNWluc25GZG1fMm9Gem9NVHN5SlJfNHFXdnprMkxwcktuTjFqOHBYb29lUXpLTE56MjRmbnp6OGU2MzNDNk0?oc=5",
+      "publishedAt": "2026-10-12T06:00:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8608982,
+      "title": "COMMENTARY: The oil market's center of gravity is moving east - Reuters",
+      "summary": "COMMENTARY: The oil market's center of gravity is moving east  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPbjYxNmhnSlJibVVZcGVOSld5YWc3c1NMeXVEcTNwN3pWclpSR0xKUHhObVdLempqUV9NSkM0VkhyZEY3Z2cyNFVNSEl0bkU4UmRVeXJVZ2x2MlRqMTltZ0N3a1hIejZmOVZlaXA5czc1X2k0OThSWnY2bjZsMXpLQmNfTk9uNnNoNDE3R3ZSb3dNV1lwd3hfQmhnYV9ZNVZDVGRVRnRPV052SEpyZ2xr?oc=5",
+      "publishedAt": "2026-10-12T06:00:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8609083,
+      "title": "Turkey, Pakistan, Egypt, Saudi Arabia condemn Houthi attacks on Riyadh airport - Reuters",
+      "summary": "Turkey, Pakistan, Egypt, Saudi Arabia condemn Houthi attacks on Riyadh airport  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMF95Nm5HV1pQeTVrX1hkaU52bkVfQUNCcjlMMVVUazlFalZpd3dnTVdvOTAxMWdZMk1wU1hfNHkyYXBVY2ZnbnVUa0N2Nm9uOTVTYVQzeGphOExkTWtoRElvUzBqMS1PWkpOQ1VpZy1VN0tUQ2hmYzV5WG1uRVFBb00yb3RjZDZ6andza0lBak9HVXl2QVFZeWk4NXVpc0d4OTVnX2FSY203allXNVlLa1lENGI1bnFLWG1IQVZlS0NyYjZWTUE?oc=5",
+      "publishedAt": "2026-10-12T05:11:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8608067,
+      "title": "Dollar steady near 18-month high as Mideast conflict, US inflation in focus - Reuters",
+      "summary": "Dollar steady near 18-month high as Mideast conflict, US inflation in focus  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNZnNEOHo2NzVEYW5MOEcybTVjN2xsbXBOSkdScUFqckU4R0VES0JjaGNnSE1RbkJWWEI5SnpuOWxBNTNUVHhqUEtGdjRPdmtHZ0hYOWl1VkZYQXJoWDI5WFJ6MER1OWlvVVVVWFdXb3JFZklJQUNQNjJ5NUpObkVSMkh3ZTZ1NWpRXzcwbFBwb1lFSkYzYktRd3FtTjIwRW9wZElFU0lRNkZvTnZlWk5fb2VuNGFlaXFxd0dxSkN1OTE0Zw?oc=5",
+      "publishedAt": "2026-10-12T01:51:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8607966,
+      "title": "UK's Healey can't risk a 'steady as you go' budget, think tank warns - Reuters",
+      "summary": "UK's Healey can't risk a 'steady as you go' budget, think tank warns  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPLW9TSG82WkRMWVJZdG1sV3BydWhLX3czSDlYNHk4WURTYXRiOEwwZUw3eVVTTUh3VlplanRkcEJaTTNtZEw5eGd2YXg1enZ4UFdNQnc1NXlUQTk1NWNsTjFWRjV0SUZuSnZnZ0RTMXNQTFIxSmhCUlI1WENTQU4zRHllcWQzSXNhZjhIZnlocjFXSVlTdG84VWVFMGkzdlg0cUVKMWlBOFZERm1rYlhON1ZpNjQ?oc=5",
+      "publishedAt": "2026-10-11T23:07:43+00:00",
+      "related": ""
+    },
+    {
       "id": 8607556,
       "title": "FAA tells US airlines to exercise caution in Saudi Arabia flights, citing safety risks - Reuters",
       "summary": "FAA tells US airlines to exercise caution in Saudi Arabia flights, citing safety risks  Reuters",
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPZEo2X2hOdlFVcmxza3ZQRmsxQnJlQ3JHbTN3WGZLWGhYRllIS2lOR0hUYkJwQWtJbkJFUTFWUzdiS005ZkgxR2pDY0dqQnQweGZ3Qm1qMHN3aUhCVzZxSzlyTVltbGVudkFvc2xaZFRBSzRZaFJQUlRQZWp4UlVrckxzcW9QUWlMaDN1ZjZ0UklUc1dWTi1yTjB5eFJYX19zeWdJX3lfTmZFTUh5OGZwb0Z3NnVIY1cxOE0tR1RvSE1pLUhkXzdEYV9GZUQtdw?oc=5",
-      "publishedAt": "2026-10-11T22:12:34+00:00",
+      "publishedAt": "2026-10-11T22:12:00+00:00",
       "related": ""
     },
     {
@@ -504,77 +584,17 @@
       "source": "Reuters",
       "category": "general",
       "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQVW9SNC1teWppNnU5SXVIWGFNR1NyOEZQUzVXcVB5ZjlPU0pUcjBMUXl4dHVsMWd6c1BRbXBvQ3Z2bjllbVhuUWxLR2ZJUGwwUmpqcHB1S3otYklkalI3bHhqMmhLOTZVTFhQam51WHlmZFF5Y1YzSy1ZQUlPTmpiRjZ3TVZ4Y0lBWEpxejRNLUZ0dDBVNURTbENWVWNXZ3pPVzZ4MVFIZldMUUFZQW8zNHllMmR6UnlVZnQweEsybUVDTFUzYzVIYUUtVjJGczA?oc=5",
-      "publishedAt": "2026-10-11T21:15:57+00:00",
+      "publishedAt": "2026-10-11T21:13:00+00:00",
       "related": ""
     },
     {
-      "id": 8606941,
-      "title": "Trump announces Ukraine energy ceasefire with Russia, surprising Zelenskiy - Reuters",
-      "summary": "Trump announces Ukraine energy ceasefire with Russia, surprising Zelenskiy  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPTEo5WEZxUk5OcWNWU1Z1Z0g4SGlFQmxKckFxbS05WFd6UUxDNE0xa0NZRzZoR004Tms3azQ3aTVfUVIwNXlTU1ljcW9HLTREUGZBVVFiWlpVWXI3V1c3Zmt2UEJ2ME43azRMb0Vlei1iQUNPbzk4bV94bkRGTzBmREMydnBCRzVSclBoVkhrWkx4TFJ2YWdsRS1COGVOWU9pRDJqSUFNRk1pUnpQM2dlQ3o0eGpYSHYzbWdDX3dtQWtYT2Zz?oc=5",
-      "publishedAt": "2026-10-11T21:10:20+00:00",
-      "related": ""
-    },
-    {
-      "id": 8606640,
-      "title": "Here are the 6 big things we're watching in the stock market this week",
-      "summary": "Earnings season ramps up this week, with four Club holdings set to report. Two main inflation reports are also out.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/investingclub/2026/10/11/here-are-the-6-big-things-were-watching-in-the-stock-market-this-week.html",
-      "publishedAt": "2026-10-11T19:46:05+00:00",
-      "related": ""
-    },
-    {
-      "id": 8606942,
-      "title": "Indian national injured in Riyadh airport attack dies, embassy says - Reuters",
-      "summary": "Indian national injured in Riyadh airport attack dies, embassy says  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQdUdmYkdkbzVhY0FyLUxyT0k2Z2pOMHJVLTZsd3B5TEpEb1NVUmZ5U1drLTk1MnpoWk5VR1hpUFhpdTd5ZnE0bE1oQmVGQU4wWGlBakZvNGlfQWpjSUlxTE5MVGhodC1tYTQ2UV9ZREdxVnZnOTJQaFVfaHBDdHEyc0VXWG1GTE9JM2RJLS1fYm1NTXQ1NU5tRFZLY2YtOWFpZjhObGNTUTBTUnVUU2JNZw?oc=5",
-      "publishedAt": "2026-10-11T17:12:14+00:00",
-      "related": ""
-    },
-    {
-      "id": 8607041,
-      "title": "Iran says US response to its proposal to reopen Hormuz was 'insufficient' - Reuters",
-      "summary": "Iran says US response to its proposal to reopen Hormuz was 'insufficient'  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOaDM4RVFjdmpFdUszUHFFbm5tWGM1R21NMEI2aFNqN2NOUGZPZzVPQ3d6QnUwY3VkWm96Q0tXQVFfTFF6c21hYzgzQWwyQVhJam0zZW45cGNuc282RkYzVEIyOEJlTkljM0l5MkdTRHRzRE1rdExZV2o4aFBiTURQMXd0UlFsTVlLdVlwVDZJcGpBNWZkb0RhalloX21XclFXTWJnN3pTSzZPNy1tS1o0SDNjLVlmZ2ZkVldj?oc=5",
-      "publishedAt": "2026-10-11T17:11:12+00:00",
-      "related": ""
-    },
-    {
-      "id": 8605728,
-      "title": "Strike reported on Yemeni Sanaa airport, Houthi-run TV says - Reuters",
-      "summary": "Strike reported on Yemeni Sanaa airport, Houthi-run TV says  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOb2hZZTRZLXk2amlHSS1zWkYtUmkzdy1EUWRFZ3lRUzRLX2hOMkxkLXBSR1hnVmd1UkNrN0NpNXNneXgwcGJ2ZzgwRFRRUVo5QS1xSWlENjhWN1M0MGR5eFpPOVZQT0dMUGRWcTQ1YTN3aHhpTjZVVGVqSldfcDN3SFZTQTJSMTUyX1psaXpyb2VKTVU0OGIzeFViOXZGVnRGb0lvTDNVdERoX0tHaHc?oc=5",
-      "publishedAt": "2026-10-11T13:43:15+00:00",
-      "related": ""
-    },
-    {
-      "id": 8604616,
-      "title": "Most Gulf stocks in red after attack on Riyadh airport - Reuters",
-      "summary": "Most Gulf stocks in red after attack on Riyadh airport  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOOEliNzFKYlR3T0NNakk4TWxXWGJ0UlJfQ0JLdFVIRnlESENoRW4zdjNSWW02UjFJOFozRmlZdVZ2ZlFaOTFSdEc5RGd6QWVVaFFMNi1QRTdMSVg2dFQxaHROcjhjbnI4ekhnZUZVbXlmYVBQaDZ3TG1pcFQ5RnFaVXpfYUxWRG1acC1mYnR6d3ZtdXpxbTBBUFJkcU9ock1wbXc?oc=5",
-      "publishedAt": "2026-10-11T13:19:13+00:00",
-      "related": ""
-    },
-    {
-      "id": 8607656,
-      "title": "MUFG: US CPI seen at 3.6%, core must surprise to revive an October Fed hike",
-      "summary": "<p dir=\"ltr\">MUFG’s framing underlines that energy is almost the entire story behind rising US headline inflation since the Iran conflict began, keeping crude prices tightly linked to Fed expectations",
+      "id": 8608881,
+      "title": "What are the main events for today?",
+      "summary": "<p>EUROPEAN SESSION</p><p>In the European session, we don't have anything on the agenda today, so the price action might remain mostly rangebound as traders await the US CPI report on Wednesday and fu",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/mufg-us-cpi-seen-at-3-6-core-must-surprise-to-revive-an-october-fed-hike/",
-      "publishedAt": "2026-10-12T00:30:21+00:00",
+      "link": "https://investinglive.com/news/what-are-the-main-events-for-today-61/",
+      "publishedAt": "2026-10-12T06:28:00+00:00",
       "related": ""
     }
   ],
