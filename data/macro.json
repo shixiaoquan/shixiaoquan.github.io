@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-11T23:11:52+00:00",
+  "updatedAt": "2026-10-12T02:25:28+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -10,8 +10,14 @@
     {
       "id": "frankfurter",
       "name": "Frankfurter (ECB)",
+      "status": "error: The read operation timed out",
+      "items": 0
+    },
+    {
+      "id": "exchangerate-api",
+      "name": "ExchangeRate-API",
       "status": "ok",
-      "items": 7
+      "items": 5
     },
     {
       "id": "fred",
@@ -39,7 +45,7 @@
     "yieldSpread10y2y": 0.44,
     "hints": [
       "美股行业轮动：地产 领涨（+1.86%），通信 靠后。",
-      "原油强、黄金弱 — 偏再通胀/增长预期。",
+      "黄金强、原油弱 — 偏避险/衰退交易特征。",
       "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。",
       "FRED：失业率边际上升，就业市场边际走弱。"
     ]
@@ -110,16 +116,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.68,
-      "changePct": -0.28,
-      "weekChangePct": -0.32,
+      "price": 6.69,
+      "changePct": -0.14,
+      "weekChangePct": -0.18,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
-      "refPrice": 6.6921,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-10-09"
+      "refPrice": 6.7003,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDHKD=X",
@@ -129,15 +135,15 @@
       "currency": null,
       "region": null,
       "price": 7.85,
-      "changePct": -0.0,
+      "changePct": -0.01,
       "weekChangePct": 0.0,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
-      "refPrice": 7.8476,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-10-09"
+      "refPrice": 7.848,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDJPY=X",
@@ -146,16 +152,16 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.25,
-      "changePct": 0.12,
-      "weekChangePct": 0.33,
+      "price": 158.19,
+      "changePct": 0.08,
+      "weekChangePct": 0.29,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
-      "refPrice": 158.25,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-10-09"
+      "refPrice": 158.2301,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "EURUSD=X",
@@ -165,51 +171,25 @@
       "currency": null,
       "region": null,
       "price": 1.12,
-      "changePct": -0.09,
-      "weekChangePct": -0.46,
+      "changePct": 0.02,
+      "weekChangePct": -0.34,
       "monthChangePct": null,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
-      "refPrice": 0.8924,
-      "refSource": "frankfurter",
-      "refNote": "ECB 参考 2026-10-09"
+      "refPrice": 0.8926,
+      "refSource": "exchangerate-api",
+      "refNote": "open.er-api.com"
     },
     {
       "symbol": "USDGBP",
       "name": "美元/GBP",
       "base": "USD",
       "quote": "GBP",
-      "price": 0.7564,
+      "price": 0.7556,
       "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-10-09"
-    },
-    {
-      "symbol": "USDCHF",
-      "name": "美元/CHF",
-      "base": "USD",
-      "quote": "CHF",
-      "price": 0.8311,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-10-09"
-    },
-    {
-      "symbol": "USDSGD",
-      "name": "美元/SGD",
-      "base": "USD",
-      "quote": "SGD",
-      "price": 1.2804,
-      "changePct": null,
-      "weekChangePct": null,
-      "monthChangePct": null,
-      "source": "frankfurter",
-      "note": "ECB 参考 2026-10-09"
+      "source": "exchangerate-api",
+      "note": "open.er-api.com"
     }
   ],
   "commodities": [
@@ -220,10 +200,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4210.1,
-      "changePct": -0.15,
-      "weekChangePct": 1.28,
-      "monthChangePct": -4.51,
+      "price": 4237.6,
+      "changePct": 0.51,
+      "weekChangePct": 1.94,
+      "monthChangePct": -3.89,
       "source": "yahoo"
     },
     {
@@ -233,10 +213,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 92.42,
-      "changePct": 0.62,
-      "weekChangePct": 3.34,
-      "monthChangePct": -7.63,
+      "price": 90.06,
+      "changePct": -1.95,
+      "weekChangePct": 0.7,
+      "monthChangePct": -9.99,
       "source": "yahoo"
     },
     {
@@ -246,10 +226,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.7,
-      "changePct": 0.84,
-      "weekChangePct": 1.72,
-      "monthChangePct": 3.54,
+      "price": 6.74,
+      "changePct": 1.46,
+      "weekChangePct": 2.34,
+      "monthChangePct": 4.17,
       "source": "yahoo"
     }
   ],
@@ -261,7 +241,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4317.25,
+      "price": 4305.59,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -274,7 +254,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 3043.33,
+      "price": 2997.7,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -287,7 +267,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1457.27,
+      "price": 1434.16,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -508,13 +488,23 @@
   ],
   "finnhubNews": [
     {
-      "id": 8604919,
-      "title": "Saudi Arabia reports injuries in new attack at Riyadh airport, day after strike kills 13 - Reuters",
-      "summary": "Saudi Arabia reports injuries in new attack at Riyadh airport, day after strike kills 13  Reuters",
+      "id": 8607556,
+      "title": "FAA tells US airlines to exercise caution in Saudi Arabia flights, citing safety risks - Reuters",
+      "summary": "FAA tells US airlines to exercise caution in Saudi Arabia flights, citing safety risks  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQSEo0VkFTZkY2VzMzeFV0OVRVbWN4aHFzaXFjV0FBN05uaEFONHhQVTN2a3JJM09NdFBzY1R3MnRrUFZOeFZfUDItOUd1NkxiT3dfOWduTHJKTlBzSGsyN3VCYTNkWG1ZTWlZMUpzbDdrc1dOZUs3VDRwa0lHN21tNnFNdFhQYUxoNmdfN1Zyb3FMRm04RzRVei0zY3FKN0FoY2JYTGFodjYtemdITVpKVXk3NlR2QXFIMU9YMnUtX004QW1GZ0UzZA?oc=5",
-      "publishedAt": "2026-10-11T22:45:41+00:00",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPZEo2X2hOdlFVcmxza3ZQRmsxQnJlQ3JHbTN3WGZLWGhYRllIS2lOR0hUYkJwQWtJbkJFUTFWUzdiS005ZkgxR2pDY0dqQnQweGZ3Qm1qMHN3aUhCVzZxSzlyTVltbGVudkFvc2xaZFRBSzRZaFJQUlRQZWp4UlVrckxzcW9QUWlMaDN1ZjZ0UklUc1dWTi1yTjB5eFJYX19zeWdJX3lfTmZFTUh5OGZwb0Z3NnVIY1cxOE0tR1RvSE1pLUhkXzdEYV9GZUQtdw?oc=5",
+      "publishedAt": "2026-10-11T22:12:34+00:00",
+      "related": ""
+    },
+    {
+      "id": 8607246,
+      "title": "Saudi, Iranian foreign ministers discuss regional tensions, state news agency says - Reuters",
+      "summary": "Saudi, Iranian foreign ministers discuss regional tensions, state news agency says  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQVW9SNC1teWppNnU5SXVIWGFNR1NyOEZQUzVXcVB5ZjlPU0pUcjBMUXl4dHVsMWd6c1BRbXBvQ3Z2bjllbVhuUWxLR2ZJUGwwUmpqcHB1S3otYklkalI3bHhqMmhLOTZVTFhQam51WHlmZFF5Y1YzSy1ZQUlPTmpiRjZ3TVZ4Y0lBWEpxejRNLUZ0dDBVNURTbENWVWNXZ3pPVzZ4MVFIZldMUUFZQW8zNHllMmR6UnlVZnQweEsybUVDTFUzYzVIYUUtVjJGczA?oc=5",
+      "publishedAt": "2026-10-11T21:15:57+00:00",
       "related": ""
     },
     {
@@ -578,96 +568,86 @@
       "related": ""
     },
     {
-      "id": 8605224,
-      "title": "I’m a psychologist who studies couples: The No. 1 way to end a fight before it escalates—it works ‘almost immediately’",
-      "summary": "\"In my experience, nothing de-escalates a conflict faster,\" says psychologist Mark Travers. Why a \"partial yield\" works, and how to use it.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/make-it/2026/10/11/psychologist-couples-end-fight-before-escalates-partial-yield.html",
-      "publishedAt": "2026-10-11T12:48:01+00:00",
-      "related": ""
-    },
-    {
-      "id": 8607244,
-      "title": "Preview: RBA minutes and jobs data headline Australia’s week ahead, with unemployment seen at 4.6%",
-      "summary": "<p dir=\"ltr\">For the Australian dollar and front-end rates, the minutes carry more weight than usual because Bullock’s post-meeting tone was softer than the decision itself. A record that leans toward",
+      "id": 8607656,
+      "title": "MUFG: US CPI seen at 3.6%, core must surprise to revive an October Fed hike",
+      "summary": "<p dir=\"ltr\">MUFG’s framing underlines that energy is almost the entire story behind rising US headline inflation since the Iran conflict began, keeping crude prices tightly linked to Fed expectations",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/preview-rba-minutes-and-jobs-data-headline-australia-s-week-ahead-with-unemployment-seen-at-4-6/",
-      "publishedAt": "2026-10-11T22:36:43+00:00",
+      "link": "https://investinglive.com/news/mufg-us-cpi-seen-at-3-6-core-must-surprise-to-revive-an-october-fed-hike/",
+      "publishedAt": "2026-10-12T00:30:21+00:00",
       "related": ""
     }
   ],
   "earningsCalendar": [
     {
-      "symbol": "BOTJ",
-      "date": "2026-10-16",
+      "symbol": "AUSI",
+      "date": "2026-10-19",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
     },
     {
-      "symbol": "CCBC",
-      "date": "2026-10-16",
+      "symbol": "BCPC",
+      "date": "2026-10-19",
+      "hour": "",
+      "epsEstimate": 1.5198,
+      "revenueEstimate": 295034663
+    },
+    {
+      "symbol": "BKHA",
+      "date": "2026-10-19",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
     },
     {
-      "symbol": "CCFN",
-      "date": "2026-10-16",
+      "symbol": "BMXI",
+      "date": "2026-10-19",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
     },
     {
-      "symbol": "CFG",
-      "date": "2026-10-16",
-      "hour": "bmo",
-      "epsEstimate": 1.4016,
-      "revenueEstimate": 2359457970
+      "symbol": "BOF",
+      "date": "2026-10-19",
+      "hour": "",
+      "epsEstimate": -0.1818,
+      "revenueEstimate": 1767500
     },
     {
-      "symbol": "CLPS",
-      "date": "2026-10-16",
+      "symbol": "BOKF",
+      "date": "2026-10-19",
+      "hour": "",
+      "epsEstimate": 2.5799,
+      "revenueEstimate": 583865340
+    },
+    {
+      "symbol": "CCK",
+      "date": "2026-10-19",
+      "hour": "",
+      "epsEstimate": 2.28,
+      "revenueEstimate": 3478320607
+    },
+    {
+      "symbol": "CCNB",
+      "date": "2026-10-19",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
     },
     {
-      "symbol": "DOGZ",
-      "date": "2026-10-16",
+      "symbol": "CLF",
+      "date": "2026-10-19",
+      "hour": "amc",
+      "epsEstimate": 0.2325,
+      "revenueEstimate": 5777012271
+    },
+    {
+      "symbol": "CSHX",
+      "date": "2026-10-19",
       "hour": "",
       "epsEstimate": null,
       "revenueEstimate": null
-    },
-    {
-      "symbol": "EEFT",
-      "date": "2026-10-16",
-      "hour": "",
-      "epsEstimate": 3.8237,
-      "revenueEstimate": 1220855085
-    },
-    {
-      "symbol": "GBFH",
-      "date": "2026-10-16",
-      "hour": "",
-      "epsEstimate": 0.442,
-      "revenueEstimate": 13405860
-    },
-    {
-      "symbol": "JUVF",
-      "date": "2026-10-16",
-      "hour": "",
-      "epsEstimate": null,
-      "revenueEstimate": null
-    },
-    {
-      "symbol": "MTB",
-      "date": "2026-10-16",
-      "hour": "bmo",
-      "epsEstimate": 5.0006,
-      "revenueEstimate": 2556245491
     }
   ]
 }

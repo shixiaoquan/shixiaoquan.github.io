@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-11T23:11:51+00:00",
+  "updatedAt": "2026-10-12T02:25:24+00:00",
   "track": "shadow",
   "productionVersion": "v1.3.0",
   "candidateParams": {
@@ -68,30 +68,31 @@
         "market": "A股",
         "sector": "银行",
         "currency": "CNY",
-        "price": 41.42,
-        "score": 68.0,
+        "price": 42.25,
+        "score": 72.2,
         "signal": "watch",
         "signalLabel": "建议观察",
-        "rsi": 58.9,
-        "monthChangePct": 1.35,
-        "relativeStrength": 5.52,
+        "rsi": 65.6,
+        "monthChangePct": 2.87,
+        "relativeStrength": 6.37,
         "reasons": [
           "价格站上 20 日均线",
-          "价格站上 60 日均线"
+          "价格站上 60 日均线",
+          "均线多头排列"
         ],
         "plan": {
-          "entry": "现价 41.42 轻仓试探；回踩 20 日均线 41.07 或 40.24 附近分批加仓",
-          "stopLoss": "跌破 39.75（约 -4.0%，2.5 倍 ATR）坚决止损",
-          "target": "第一目标 47.44（盈亏比 1:3.0），可分批止盈",
+          "entry": "现价 42.25 轻仓试探；回踩 20 日均线 41.09 或 40.27 附近分批加仓",
+          "stopLoss": "跌破 40.53（约 -4.1%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 48.44（盈亏比 1:3.0），可分批止盈",
           "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
         },
-        "stopLossPrice": 39.75,
-        "targetPrice": 47.44,
-        "distToStopPct": 4.0,
-        "distToTargetPct": 14.5,
+        "stopLossPrice": 40.53,
+        "targetPrice": 48.44,
+        "distToStopPct": 4.1,
+        "distToTargetPct": 14.7,
         "regimeOk": true,
         "breakout": false,
-        "breakoutLevel": 41.83,
+        "breakoutLevel": 42.09,
         "decisionScore": 60.6,
         "decisionLabel": "中",
         "decisionComponents": {
@@ -112,145 +113,62 @@
             "note": "舆情热度 0"
           }
         }
+      },
+      {
+        "symbol": "9988.HK",
+        "name": "阿里巴巴",
+        "market": "港股",
+        "sector": "电商云计算",
+        "currency": "HKD",
+        "price": 109.2,
+        "score": 42.6,
+        "signal": "watch",
+        "signalLabel": "影子弱信号",
+        "rsi": 50.8,
+        "monthChangePct": 2.15,
+        "relativeStrength": 5.86,
+        "reasons": [
+          "价格站上 20 日均线"
+        ],
+        "plan": {
+          "entry": "现价 109.20 轻仓试探；回踩 20 日均线 107.68 或 105.53 附近分批加仓",
+          "stopLoss": "跌破 100.06（约 -8.4%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 142.11（盈亏比 1:3.0），可分批止盈",
+          "position": "港股标的建议仓位 ≤ 总资金 23.8%（单笔风险 2.0%）；三市场分散配置"
+        },
+        "stopLossPrice": 100.06,
+        "targetPrice": 142.11,
+        "distToStopPct": 8.4,
+        "distToTargetPct": 30.1,
+        "regimeOk": false,
+        "breakout": false,
+        "breakoutLevel": 129.8,
+        "decisionScore": 57.0,
+        "decisionLabel": "中",
+        "decisionComponents": {
+          "macro": {
+            "score": 85.0,
+            "note": "市场偏多"
+          },
+          "wencai": {
+            "score": 55.0,
+            "note": "问财震荡"
+          },
+          "masters": {
+            "score": 40.0,
+            "note": "大师共识 0/7"
+          },
+          "truth": {
+            "score": 50,
+            "note": "舆情热度 0"
+          }
+        }
       }
     ],
     "disclaimer": "影子荐股仅供 forward 验证，不可直接跟单。"
   },
   "history": {
     "records": [
-      {
-        "id": "2026-07-15T08:39:51+00:00",
-        "recordedAt": "2026-07-15T08:39:51+00:00",
-        "marketContext": {
-          "mood": "偏多",
-          "regime": "risk_on"
-        },
-        "picks": [
-          {
-            "symbol": "AAPL",
-            "name": "苹果",
-            "market": "美股",
-            "sector": "消费电子",
-            "currency": "USD",
-            "price": 317.31,
-            "score": 82.0,
-            "signal": "buy",
-            "signalLabel": "趋势买入",
-            "rsi": 64.2,
-            "relativeStrength": 7.08,
-            "stopLossPrice": 294.5,
-            "targetPrice": 399.42,
-            "plan": {
-              "entry": "现价 317.31 轻仓试探；回踩 20 日均线 299.19 或 293.20 附近分批加仓",
-              "stopLoss": "跌破 294.50（约 -7.2%，2.5 倍 ATR）坚决止损",
-              "target": "第一目标 399.42（盈亏比 1:3.0），可分批止盈",
-              "position": "美股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
-            },
-            "decisionScore": 57.6,
-            "decisionLabel": "中",
-            "decisionComponents": {
-              "macro": {
-                "score": 73.0,
-                "note": "市场偏多"
-              },
-              "wencai": {
-                "score": 55.0,
-                "note": "问财震荡"
-              },
-              "masters": {
-                "score": 48.6,
-                "note": "大师共识 2/7"
-              },
-              "truth": {
-                "score": 55,
-                "note": "舆情热度 0"
-              }
-            }
-          },
-          {
-            "symbol": "688981.SS",
-            "name": "中芯国际",
-            "market": "A股",
-            "sector": "半导体",
-            "currency": "CNY",
-            "price": 153.64,
-            "score": 96.0,
-            "signal": "watch",
-            "signalLabel": "建议观察",
-            "rsi": 53.8,
-            "relativeStrength": 18.5,
-            "stopLossPrice": 121.28,
-            "targetPrice": 270.12,
-            "plan": {
-              "entry": "现价 153.64 轻仓试探；回踩 20 日均线 151.21 或 148.19 附近分批加仓",
-              "stopLoss": "跌破 121.28（约 -21.1%，2.5 倍 ATR）坚决止损",
-              "target": "第一目标 270.12（盈亏比 1:3.0），可分批止盈",
-              "position": "A股标的建议仓位 ≤ 总资金 9.5%（单笔风险 2.0%）；三市场分散配置"
-            },
-            "decisionScore": 55.0,
-            "decisionLabel": "中",
-            "decisionComponents": {
-              "macro": {
-                "score": 73.0,
-                "note": "市场偏多"
-              },
-              "wencai": {
-                "score": 55.0,
-                "note": "问财震荡"
-              },
-              "masters": {
-                "score": 40.0,
-                "note": "大师共识 0/7"
-              },
-              "truth": {
-                "score": 55,
-                "note": "舆情热度 0"
-              }
-            }
-          },
-          {
-            "symbol": "3690.HK",
-            "name": "美团",
-            "market": "港股",
-            "sector": "本地生活",
-            "currency": "HKD",
-            "price": 83.4,
-            "score": 48.5,
-            "signal": "watch",
-            "signalLabel": "影子弱信号",
-            "rsi": 63.7,
-            "relativeStrength": 5.94,
-            "stopLossPrice": 72.99,
-            "targetPrice": 120.88,
-            "plan": {
-              "entry": "现价 83.40 轻仓试探；回踩 20 日均线 73.59 或 72.12 附近分批加仓",
-              "stopLoss": "跌破 72.99（约 -12.5%，2.5 倍 ATR）坚决止损",
-              "target": "第一目标 120.88（盈亏比 1:3.0），可分批止盈",
-              "position": "港股标的建议仓位 ≤ 总资金 16.0%（单笔风险 2.0%）；三市场分散配置"
-            },
-            "decisionScore": 54.0,
-            "decisionLabel": "中",
-            "decisionComponents": {
-              "macro": {
-                "score": 73.0,
-                "note": "市场偏多"
-              },
-              "wencai": {
-                "score": 55.0,
-                "note": "问财震荡"
-              },
-              "masters": {
-                "score": 40.0,
-                "note": "大师共识 0/7"
-              },
-              "truth": {
-                "score": 50,
-                "note": "舆情热度 0"
-              }
-            }
-          }
-        ]
-      },
       {
         "id": "2026-07-15T14:06:11+00:00",
         "recordedAt": "2026-07-15T14:06:11+00:00",
@@ -9609,6 +9527,139 @@
             }
           }
         ]
+      },
+      {
+        "id": "2026-10-12T02:25:24+00:00",
+        "recordedAt": "2026-10-12T02:25:24+00:00",
+        "marketContext": {
+          "mood": "偏多",
+          "regime": "risk_on"
+        },
+        "picks": [
+          {
+            "symbol": "MSFT",
+            "name": "微软",
+            "market": "美股",
+            "sector": "软件云计算",
+            "currency": "USD",
+            "price": 535.07,
+            "score": 83.0,
+            "signal": "buy",
+            "signalLabel": "趋势买入",
+            "rsi": 67.5,
+            "relativeStrength": 6.37,
+            "stopLossPrice": 503.27,
+            "targetPrice": 649.54,
+            "plan": {
+              "entry": "现价 535.07 轻仓试探；回踩 20 日均线 510.10 或 499.90 附近分批加仓",
+              "stopLoss": "跌破 503.27（约 -5.9%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 649.54（盈亏比 1:3.0），可分批止盈",
+              "position": "美股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
+            },
+            "decisionScore": 59.6,
+            "decisionLabel": "中",
+            "decisionComponents": {
+              "macro": {
+                "score": 85.0,
+                "note": "市场偏多"
+              },
+              "wencai": {
+                "score": 55.0,
+                "note": "问财震荡"
+              },
+              "masters": {
+                "score": 48.6,
+                "note": "大师共识 2/7"
+              },
+              "truth": {
+                "score": 50,
+                "note": "舆情热度 0"
+              }
+            }
+          },
+          {
+            "symbol": "600036.SS",
+            "name": "招商银行",
+            "market": "A股",
+            "sector": "银行",
+            "currency": "CNY",
+            "price": 42.25,
+            "score": 72.2,
+            "signal": "watch",
+            "signalLabel": "建议观察",
+            "rsi": 65.6,
+            "relativeStrength": 6.37,
+            "stopLossPrice": 40.53,
+            "targetPrice": 48.44,
+            "plan": {
+              "entry": "现价 42.25 轻仓试探；回踩 20 日均线 41.09 或 40.27 附近分批加仓",
+              "stopLoss": "跌破 40.53（约 -4.1%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 48.44（盈亏比 1:3.0），可分批止盈",
+              "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
+            },
+            "decisionScore": 60.6,
+            "decisionLabel": "中",
+            "decisionComponents": {
+              "macro": {
+                "score": 85.0,
+                "note": "市场偏多"
+              },
+              "wencai": {
+                "score": 55.0,
+                "note": "问财震荡"
+              },
+              "masters": {
+                "score": 48.6,
+                "note": "大师共识 2/7"
+              },
+              "truth": {
+                "score": 55,
+                "note": "舆情热度 0"
+              }
+            }
+          },
+          {
+            "symbol": "9988.HK",
+            "name": "阿里巴巴",
+            "market": "港股",
+            "sector": "电商云计算",
+            "currency": "HKD",
+            "price": 109.2,
+            "score": 42.6,
+            "signal": "watch",
+            "signalLabel": "影子弱信号",
+            "rsi": 50.8,
+            "relativeStrength": 5.86,
+            "stopLossPrice": 100.06,
+            "targetPrice": 142.11,
+            "plan": {
+              "entry": "现价 109.20 轻仓试探；回踩 20 日均线 107.68 或 105.53 附近分批加仓",
+              "stopLoss": "跌破 100.06（约 -8.4%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 142.11（盈亏比 1:3.0），可分批止盈",
+              "position": "港股标的建议仓位 ≤ 总资金 23.8%（单笔风险 2.0%）；三市场分散配置"
+            },
+            "decisionScore": 57.0,
+            "decisionLabel": "中",
+            "decisionComponents": {
+              "macro": {
+                "score": 85.0,
+                "note": "市场偏多"
+              },
+              "wencai": {
+                "score": 55.0,
+                "note": "问财震荡"
+              },
+              "masters": {
+                "score": 40.0,
+                "note": "大师共识 0/7"
+              },
+              "truth": {
+                "score": 50,
+                "note": "舆情热度 0"
+              }
+            }
+          }
+        ]
       }
     ]
   },
@@ -9620,7 +9671,7 @@
     "shadowAgeDays": 88,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
-    "symbolOverlapRecent": 16,
+    "symbolOverlapRecent": 17,
     "prodMaturedT5": 648,
     "shadowMaturedT5": 223,
     "prodWinRateT5": 52.8,
