@@ -1,7 +1,7 @@
 {
   "version": 1,
   "rulesVersion": "1.0.0",
-  "updatedAt": "2026-10-12T19:17:49+00:00",
+  "updatedAt": "2026-10-13T01:26:44+00:00",
   "symbol": "1810.HK",
   "symbolAlias": "HK01810",
   "name": "小米集团-W",
@@ -58,25 +58,17 @@
     }
   ],
   "quote": {
-    "price": NaN,
-    "previousClose": 25.96,
+    "price": 24.8,
+    "previousClose": NaN,
     "change": NaN,
     "changePct": NaN,
     "dayOpen": 25.8,
     "dayHigh": 25.84,
     "dayLow": 24.3,
-    "volume": 182808010,
-    "avgVolume20": 113545163,
-    "asOf": "2026-10-12",
+    "volume": 182756210,
+    "avgVolume20": 117171220,
+    "asOf": "2026-10-13",
     "recentBars": [
-      {
-        "date": "2026-09-14",
-        "open": 26.42,
-        "high": 27.34,
-        "low": 26.42,
-        "close": 27.16,
-        "volume": 110183277
-      },
       {
         "date": "2026-09-15",
         "open": 27.12,
@@ -227,21 +219,29 @@
         "high": 25.84,
         "low": 24.3,
         "close": NaN,
-        "volume": 182808010
+        "volume": 182756210
+      },
+      {
+        "date": "2026-10-13",
+        "open": 25.8,
+        "high": 25.84,
+        "low": 24.3,
+        "close": 24.8,
+        "volume": 182756210
       }
     ]
   },
-  "positionInBox": 1.0,
+  "positionInBox": 0.0,
   "advice": {
     "action": "wait",
-    "actionLabel": "观望",
+    "actionLabel": "等待买区",
     "tone": "neutral",
     "operate": false,
-    "title": "现价 nan",
-    "detail": "未落入买卖区。",
-    "emptyAdvice": "观望",
-    "holdingAdvice": "持有观察",
-    "zoneId": null
+    "title": "现价 24.80 低于日常箱下沿",
+    "detail": "尚未进入第2份买区 23.00–24.00。收盘跌破 21.30 则清仓逻辑启动。",
+    "emptyAdvice": "等待进入 23.00–24.00",
+    "holdingAdvice": "持有观察；不在空白区加仓",
+    "zoneId": "gap_t1_t2"
   },
   "error": null
 }
