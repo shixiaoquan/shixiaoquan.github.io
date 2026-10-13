@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-13T21:01:25+00:00",
+  "updatedAt": "2026-10-13T22:43:13+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 5,
-    "pipelinesStale": 1,
-    "automation": "1 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -257,8 +257,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-13T21:01:25+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 101
     },
     {
       "id": "macro",
@@ -266,8 +266,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-13T21:00:56+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 102
     },
     {
       "id": "truth",
@@ -275,17 +275,17 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-13T20:32:02+00:00",
-      "status": "ok",
-      "ageMinutes": 29
+      "status": "stale",
+      "ageMinutes": 131
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-10-13T18:13:11+00:00",
-      "status": "stale",
-      "ageMinutes": 168
+      "updatedAt": "2026-10-13T22:42:09+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -294,7 +294,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-13T23:50:02+08:00",
       "status": "ok",
-      "ageMinutes": 311
+      "ageMinutes": 413
     },
     {
       "id": "backtest",
@@ -303,9 +303,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-11T08:11:31+00:00",
       "status": "ok",
-      "ageMinutes": 3649
+      "ageMinutes": 3751
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "38467224836"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "38479482582"
 }
