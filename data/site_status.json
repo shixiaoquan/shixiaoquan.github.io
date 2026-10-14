@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-10-14T14:37:59+00:00",
+  "updatedAt": "2026-10-14T15:03:01+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 6,
+    "pipelinesStale": 0,
+    "automation": "持续运行中",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 942,
-    "masterLearnUpdatedAt": "2026-10-14T10:03:18+00:00",
-    "masterAvgWinRate": 41.5,
+    "masterLearnRevision": 943,
+    "masterLearnUpdatedAt": "2026-10-14T15:02:18+00:00",
+    "masterAvgWinRate": 40.9,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-14T13:54:06+00:00",
+    "updatedAt": "2026-10-14T15:03:01+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -167,6 +167,20 @@
     }
   },
   "recentLog": [
+    {
+      "at": "2026-10-14T15:02:34+00:00",
+      "type": "master_learn",
+      "revision": 943,
+      "regime": "risk_off",
+      "notes": {
+        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓",
+        "munger": "近期表现反馈：roe↑、margins↑、debt↑、pe↑",
+        "templeton": "近期表现反馈：quarter↓",
+        "soros": "近期表现反馈：volume↑",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
+        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
+      }
+    },
     {
       "at": "2026-10-14T10:03:28+00:00",
       "type": "master_learn",
@@ -235,20 +249,6 @@
         "soros": "近期表现反馈：month↑、rs↑、trend↑、beta↑",
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
       }
-    },
-    {
-      "at": "2026-10-13T08:09:02+00:00",
-      "type": "master_learn",
-      "revision": 937,
-      "regime": "neutral",
-      "notes": {
-        "buffett": "近期表现反馈：roe↓、pe↓、debt↓、trend↓",
-        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓",
-        "munger": "近期表现反馈：roe↑、margins↑、debt↑、pe↑",
-        "templeton": "近期表现反馈：quarter↓",
-        "soros": "近期表现反馈：month↑、rs↑、trend↑、beta↑",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓"
-      }
     }
   ],
   "pipelines": [
@@ -257,18 +257,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-10-14T10:03:44+00:00",
-      "status": "stale",
-      "ageMinutes": 274
+      "updatedAt": "2026-10-14T15:03:00+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-10-14T10:03:35+00:00",
-      "status": "stale",
-      "ageMinutes": 274
+      "updatedAt": "2026-10-14T15:02:49+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -277,7 +277,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-14T14:37:04+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 25
     },
     {
       "id": "wencai",
@@ -286,7 +286,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-14T13:39:02+00:00",
       "status": "ok",
-      "ageMinutes": 58
+      "ageMinutes": 83
     },
     {
       "id": "reports",
@@ -295,7 +295,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-14T21:34:24+08:00",
       "status": "ok",
-      "ageMinutes": 63
+      "ageMinutes": 88
     },
     {
       "id": "backtest",
@@ -304,9 +304,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-11T08:11:31+00:00",
       "status": "ok",
-      "ageMinutes": 4706
+      "ageMinutes": 4731
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "38582039254"
+  "triggeredBy": "Update Market Data",
+  "runId": "38585749580"
 }
