@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-16T03:33:13+00:00",
+  "updatedAt": "2026-10-16T05:43:25+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 5,
-    "pipelinesStale": 1,
-    "automation": "1 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -256,8 +256,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T03:17:18+00:00",
-      "status": "ok",
-      "ageMinutes": 15
+      "status": "stale",
+      "ageMinutes": 146
     },
     {
       "id": "macro",
@@ -265,8 +265,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T03:17:05+00:00",
-      "status": "ok",
-      "ageMinutes": 16
+      "status": "stale",
+      "ageMinutes": 146
     },
     {
       "id": "truth",
@@ -274,8 +274,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-16T03:33:10+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 130
     },
     {
       "id": "wencai",
@@ -284,16 +284,16 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-16T00:21:09+00:00",
       "status": "stale",
-      "ageMinutes": 192
+      "ageMinutes": 322
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-10-15T21:17:52+08:00",
+      "updatedAt": "2026-10-16T13:43:25+08:00",
       "status": "ok",
-      "ageMinutes": 855
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -302,9 +302,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-11T08:11:31+00:00",
       "status": "ok",
-      "ageMinutes": 6921
+      "ageMinutes": 7051
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "38846052640"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "38857218450"
 }
