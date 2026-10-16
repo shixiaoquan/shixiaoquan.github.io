@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-16T03:17:18+00:00",
+  "updatedAt": "2026-10-16T03:33:13+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -257,7 +257,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T03:17:18+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 15
     },
     {
       "id": "macro",
@@ -266,16 +266,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T03:17:05+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 16
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-10-15T23:55:07+00:00",
-      "status": "stale",
-      "ageMinutes": 202
+      "updatedAt": "2026-10-16T03:33:10+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -284,7 +284,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-16T00:21:09+00:00",
       "status": "stale",
-      "ageMinutes": 176
+      "ageMinutes": 192
     },
     {
       "id": "reports",
@@ -293,7 +293,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-15T21:17:52+08:00",
       "status": "ok",
-      "ageMinutes": 839
+      "ageMinutes": 855
     },
     {
       "id": "backtest",
@@ -302,9 +302,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-11T08:11:31+00:00",
       "status": "ok",
-      "ageMinutes": 6905
+      "ageMinutes": 6921
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "38844681810"
+  "triggeredBy": "Update Truth Social",
+  "runId": "38846052640"
 }
