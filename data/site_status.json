@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-17T17:22:56+00:00",
+  "updatedAt": "2026-10-17T18:27:48+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -249,7 +249,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T13:21:19+00:00",
       "status": "stale",
-      "ageMinutes": 1681
+      "ageMinutes": 1746
     },
     {
       "id": "macro",
@@ -258,7 +258,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T13:21:07+00:00",
       "status": "stale",
-      "ageMinutes": 1681
+      "ageMinutes": 1746
     },
     {
       "id": "truth",
@@ -266,17 +266,17 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-17T16:21:57+00:00",
-      "status": "ok",
-      "ageMinutes": 60
+      "status": "stale",
+      "ageMinutes": 125
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-10-17T15:28:16+00:00",
+      "updatedAt": "2026-10-17T18:26:27+00:00",
       "status": "ok",
-      "ageMinutes": 114
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -285,7 +285,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-17T20:05:28+08:00",
       "status": "ok",
-      "ageMinutes": 317
+      "ageMinutes": 382
     },
     {
       "id": "backtest",
@@ -294,9 +294,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-11T08:11:31+00:00",
       "status": "ok",
-      "ageMinutes": 9191
+      "ageMinutes": 9256
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "39053472676"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "39058060782"
 }
