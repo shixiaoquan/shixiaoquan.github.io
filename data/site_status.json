@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-17T19:34:36+00:00",
+  "updatedAt": "2026-10-17T20:55:39+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-17T19:34:36+00:00",
+    "updatedAt": "2026-10-17T20:55:39+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -249,7 +249,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T13:21:19+00:00",
       "status": "stale",
-      "ageMinutes": 1813
+      "ageMinutes": 1894
     },
     {
       "id": "macro",
@@ -258,7 +258,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T13:21:07+00:00",
       "status": "stale",
-      "ageMinutes": 1813
+      "ageMinutes": 1894
     },
     {
       "id": "truth",
@@ -266,8 +266,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-17T18:43:25+00:00",
-      "status": "ok",
-      "ageMinutes": 51
+      "status": "stale",
+      "ageMinutes": 132
     },
     {
       "id": "wencai",
@@ -276,7 +276,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-17T18:26:27+00:00",
       "status": "ok",
-      "ageMinutes": 68
+      "ageMinutes": 149
     },
     {
       "id": "reports",
@@ -285,7 +285,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-17T20:05:28+08:00",
       "status": "ok",
-      "ageMinutes": 449
+      "ageMinutes": 530
     },
     {
       "id": "backtest",
@@ -294,9 +294,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-11T08:11:31+00:00",
       "status": "ok",
-      "ageMinutes": 9323
+      "ageMinutes": 9404
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "39063035274"
+  "triggeredBy": "Update Market Data",
+  "runId": "39068740653"
 }
