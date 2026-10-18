@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T19:00:38+00:00",
+  "updatedAt": "2026-10-18T19:01:19+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -94,7 +94,7 @@
     },
     "pairedCount": 16,
     "pairedShadowWinRate": 37.5,
-    "marketPairedCount": 27,
+    "marketPairedCount": 25,
     "strategyUpgradePending": false,
     "strategyUpgradeHint": "hold",
     "shadowReadyForPR": false,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-18T19:00:38+00:00",
+    "updatedAt": "2026-10-18T19:01:19+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
@@ -114,6 +114,14 @@
         "title": "影子轨积累中",
         "reason": "配对归因 16 对 · 影子胜率 37.5% · 均边际 0.25%",
         "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
+      },
+      {
+        "id": "pipelines-stale",
+        "type": "fix_pipeline",
+        "priority": "medium",
+        "title": "部分流水线数据过期",
+        "reason": "1 条流水线过期",
+        "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
       },
       {
         "id": "tactic-tune-active",
@@ -125,7 +133,7 @@
       }
     ],
     "summary": {
-      "total": 2,
+      "total": 3,
       "high": 0,
       "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
@@ -220,7 +228,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-18T17:07:01+00:00",
       "status": "stale",
-      "ageMinutes": 113
+      "ageMinutes": 114
     },
     {
       "id": "wencai",
@@ -229,7 +237,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-18T17:19:11+00:00",
       "status": "ok",
-      "ageMinutes": 101
+      "ageMinutes": 102
     },
     {
       "id": "reports",
@@ -250,6 +258,6 @@
       "ageMinutes": 727
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "39156699232"
+  "triggeredBy": "Evolution Follow-up",
+  "runId": "39156777366"
 }
