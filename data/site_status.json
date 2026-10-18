@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-18T13:30:29+00:00",
+  "updatedAt": "2026-10-18T13:50:47+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 2,
-    "pipelinesStale": 4,
-    "automation": "4 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -229,7 +229,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T13:21:19+00:00",
       "status": "stale",
-      "ageMinutes": 2889
+      "ageMinutes": 2909
     },
     {
       "id": "macro",
@@ -238,16 +238,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T13:21:07+00:00",
       "status": "stale",
-      "ageMinutes": 2889
+      "ageMinutes": 2909
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-10-18T09:56:26+00:00",
-      "status": "stale",
-      "ageMinutes": 214
+      "updatedAt": "2026-10-18T13:50:43+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -256,7 +256,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-18T09:31:34+00:00",
       "status": "stale",
-      "ageMinutes": 238
+      "ageMinutes": 259
     },
     {
       "id": "reports",
@@ -265,7 +265,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-18T20:33:22+08:00",
       "status": "ok",
-      "ageMinutes": 57
+      "ageMinutes": 77
     },
     {
       "id": "backtest",
@@ -274,9 +274,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-18T06:53:24+00:00",
       "status": "ok",
-      "ageMinutes": 397
+      "ageMinutes": 417
     }
   ],
-  "triggeredBy": "Evolution Follow-up",
-  "runId": "39131799220"
+  "triggeredBy": "Update Truth Social",
+  "runId": "39133306229"
 }
