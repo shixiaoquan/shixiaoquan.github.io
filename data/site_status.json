@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-18T21:40:53+00:00",
+  "updatedAt": "2026-10-18T22:30:08+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-18T21:24:31+00:00",
+    "updatedAt": "2026-10-18T22:30:08+00:00",
     "tasks": [
       {
         "id": "shadow-tracking",
@@ -114,14 +114,6 @@
         "title": "影子轨积累中",
         "reason": "配对归因 16 对 · 影子胜率 37.5% · 均边际 0.25%",
         "cursorPrompt": "无需操作，继续观察 shadow_reco.json comparison。"
-      },
-      {
-        "id": "pipelines-stale",
-        "type": "fix_pipeline",
-        "priority": "medium",
-        "title": "部分流水线数据过期",
-        "reason": "3 条流水线过期",
-        "cursorPrompt": "阅读 data/site_status.json pipelines 并修复对应 Actions。"
       },
       {
         "id": "tactic-tune-active",
@@ -133,7 +125,7 @@
       }
     ],
     "summary": {
-      "total": 3,
+      "total": 2,
       "high": 0,
       "topAction": "无需操作，继续观察 shadow_reco.json comparison。"
     }
@@ -208,8 +200,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-18T21:24:30+00:00",
-      "status": "ok",
-      "ageMinutes": 16
+      "status": "stale",
+      "ageMinutes": 65
     },
     {
       "id": "macro",
@@ -217,8 +209,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-18T21:24:19+00:00",
-      "status": "ok",
-      "ageMinutes": 16
+      "status": "stale",
+      "ageMinutes": 65
     },
     {
       "id": "truth",
@@ -227,7 +219,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-18T21:40:51+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 49
     },
     {
       "id": "wencai",
@@ -236,7 +228,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-18T20:35:38+00:00",
       "status": "ok",
-      "ageMinutes": 65
+      "ageMinutes": 114
     },
     {
       "id": "reports",
@@ -245,7 +237,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-18T20:33:22+08:00",
       "status": "ok",
-      "ageMinutes": 547
+      "ageMinutes": 596
     },
     {
       "id": "backtest",
@@ -254,9 +246,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-18T06:53:24+00:00",
       "status": "ok",
-      "ageMinutes": 887
+      "ageMinutes": 936
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "39168885097"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "39172461851"
 }
