@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-18T06:53:48+00:00",
+  "updatedAt": "2026-10-18T06:54:26+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -81,9 +81,9 @@
     "shadowWinRateT5": 49.8,
     "shadowAvgReturnT5": -0.87,
     "shadowMaturedT5": 233,
-    "shadowWeeks": 13.3,
+    "shadowWeeks": 13.4,
     "shadowTradingDays": 80,
-    "shadowAgeDays": 94,
+    "shadowAgeDays": 93,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
     "shadowReason": "配对归因 17 对 · 影子胜率 41.2% · 均边际 0.62%",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-18T06:53:48+00:00",
+    "updatedAt": "2026-10-18T06:54:26+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -229,7 +229,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T13:21:19+00:00",
       "status": "stale",
-      "ageMinutes": 2492
+      "ageMinutes": 2493
     },
     {
       "id": "macro",
@@ -238,7 +238,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-16T13:21:07+00:00",
       "status": "stale",
-      "ageMinutes": 2492
+      "ageMinutes": 2493
     },
     {
       "id": "truth",
@@ -247,7 +247,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-18T05:43:13+00:00",
       "status": "stale",
-      "ageMinutes": 70
+      "ageMinutes": 71
     },
     {
       "id": "wencai",
@@ -255,8 +255,8 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-18T04:23:10+00:00",
-      "status": "ok",
-      "ageMinutes": 150
+      "status": "stale",
+      "ageMinutes": 151
     },
     {
       "id": "reports",
@@ -274,9 +274,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-18T06:53:24+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 1
     }
   ],
-  "triggeredBy": "Weekly Backtest",
-  "runId": "39105610586"
+  "triggeredBy": "Evolution Follow-up",
+  "runId": "39105668507"
 }
