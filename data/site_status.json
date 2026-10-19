@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-19T01:50:41+00:00",
+  "updatedAt": "2026-10-19T04:59:54+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-19T01:32:11+00:00",
+    "updatedAt": "2026-10-19T04:59:54+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -228,8 +228,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-19T01:32:10+00:00",
-      "status": "ok",
-      "ageMinutes": 18
+      "status": "stale",
+      "ageMinutes": 207
     },
     {
       "id": "macro",
@@ -237,8 +237,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-19T01:32:01+00:00",
-      "status": "ok",
-      "ageMinutes": 18
+      "status": "stale",
+      "ageMinutes": 207
     },
     {
       "id": "truth",
@@ -246,8 +246,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-19T01:50:39+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 189
     },
     {
       "id": "wencai",
@@ -255,8 +255,8 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-19T01:10:02+00:00",
-      "status": "ok",
-      "ageMinutes": 40
+      "status": "stale",
+      "ageMinutes": 229
     },
     {
       "id": "reports",
@@ -265,7 +265,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-18T20:33:22+08:00",
       "status": "ok",
-      "ageMinutes": 797
+      "ageMinutes": 986
     },
     {
       "id": "backtest",
@@ -274,9 +274,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-18T06:53:24+00:00",
       "status": "ok",
-      "ageMinutes": 1137
+      "ageMinutes": 1326
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "39187152515"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "39202227034"
 }
