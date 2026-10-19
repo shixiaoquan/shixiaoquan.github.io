@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-10-19T19:17:31+00:00",
+  "updatedAt": "2026-10-19T19:48:06+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 962,
-    "masterLearnUpdatedAt": "2026-10-19T14:00:28+00:00",
-    "masterAvgWinRate": 37.1,
+    "masterLearnRevision": 963,
+    "masterLearnUpdatedAt": "2026-10-19T19:47:18+00:00",
+    "masterAvgWinRate": 40.2,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -83,7 +83,7 @@
     "shadowMaturedT5": 233,
     "shadowWeeks": 13.4,
     "shadowTradingDays": 80,
-    "shadowAgeDays": 93,
+    "shadowAgeDays": 94,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
     "shadowReason": "配对归因 16 对 · 影子胜率 37.5% · 均边际 0.25%",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-19T17:36:59+00:00",
+    "updatedAt": "2026-10-19T19:48:06+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -163,6 +163,19 @@
     }
   },
   "recentLog": [
+    {
+      "at": "2026-10-19T19:47:31+00:00",
+      "type": "master_learn",
+      "revision": 963,
+      "regime": "risk_on",
+      "notes": {
+        "buffett": "近期表现反馈：margins↓",
+        "lynch": "近期表现反馈：revenue↓",
+        "templeton": "近期表现反馈：quarter↓",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
+        "_regime": "市场环境(risk_on)：soros×1.08、lynch×1.06、serenity×1.08、graham×0.94"
+      }
+    },
     {
       "at": "2026-10-19T14:00:39+00:00",
       "type": "master_learn",
@@ -227,19 +240,6 @@
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
         "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
       }
-    },
-    {
-      "at": "2026-10-18T19:00:18+00:00",
-      "type": "master_learn",
-      "revision": 957,
-      "regime": "risk_off",
-      "notes": {
-        "buffett": "近期表现反馈：margins↓",
-        "lynch": "近期表现反馈：peg↓、earnings↓、revenue↓、sector↓",
-        "templeton": "近期表现反馈：quarter↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
-        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
-      }
     }
   ],
   "pipelines": [
@@ -248,18 +248,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-10-19T14:01:15+00:00",
-      "status": "stale",
-      "ageMinutes": 316
+      "updatedAt": "2026-10-19T19:48:06+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-10-19T14:00:45+00:00",
-      "status": "stale",
-      "ageMinutes": 316
+      "updatedAt": "2026-10-19T19:47:43+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -268,7 +268,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-19T14:52:40+00:00",
       "status": "stale",
-      "ageMinutes": 264
+      "ageMinutes": 295
     },
     {
       "id": "wencai",
@@ -277,7 +277,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-19T19:16:28+00:00",
       "status": "ok",
-      "ageMinutes": 1
+      "ageMinutes": 31
     },
     {
       "id": "reports",
@@ -286,7 +286,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-19T23:28:49+08:00",
       "status": "ok",
-      "ageMinutes": 228
+      "ageMinutes": 259
     },
     {
       "id": "backtest",
@@ -295,9 +295,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-18T06:53:24+00:00",
       "status": "ok",
-      "ageMinutes": 2184
+      "ageMinutes": 2214
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "39309514026"
+  "triggeredBy": "Update Market Data",
+  "runId": "39313821154"
 }
