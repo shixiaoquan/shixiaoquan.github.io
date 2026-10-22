@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T01:57:57+00:00",
+  "updatedAt": "2026-10-22T07:20:31+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -16,8 +16,8 @@
     {
       "id": "fred",
       "name": "FRED (St. Louis Fed)",
-      "status": "error",
-      "items": 0,
+      "status": "ok",
+      "items": 6,
       "cookieUsed": true
     },
     {
@@ -32,14 +32,17 @@
     "vix": 16.68,
     "vixRegime": "normal",
     "us10yYield": 5.15,
-    "usdCnh": 6.68,
+    "usdCnh": 6.67,
     "usdCnhChangePct": null,
     "sectorLeader": "科技",
     "sectorLaggard": "通信",
-    "yieldSpread10y2y": null,
+    "yieldSpread10y2y": 0.32,
     "hints": [
       "美债收益率上行，对高估值成长股形成压力。",
-      "美股行业轮动：科技 领涨（+1.67%），通信 靠后。"
+      "美股行业轮动：科技 领涨（+1.67%），通信 靠后。",
+      "原油强、黄金弱 — 偏再通胀/增长预期。",
+      "FRED：10Y-2Y 利差偏窄，宏观流动性预期趋紧。",
+      "FRED：失业率边际上升，就业市场边际走弱。"
     ]
   },
   "risk": [
@@ -93,7 +96,7 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 6.68,
+      "price": 6.67,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -109,9 +112,9 @@
       "currency": null,
       "region": null,
       "price": 6.67,
-      "changePct": -0.05,
-      "weekChangePct": -0.27,
-      "monthChangePct": -0.37,
+      "changePct": -0.08,
+      "weekChangePct": -0.3,
+      "monthChangePct": -0.4,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
@@ -126,10 +129,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 7.85,
-      "changePct": -0.03,
-      "weekChangePct": -0.02,
-      "monthChangePct": 0.04,
+      "price": 7.84,
+      "changePct": -0.1,
+      "weekChangePct": -0.09,
+      "monthChangePct": -0.03,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
@@ -144,10 +147,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 158.08,
-      "changePct": -0.12,
-      "weekChangePct": 0.08,
-      "monthChangePct": 0.39,
+      "price": 157.05,
+      "changePct": -0.77,
+      "weekChangePct": -0.58,
+      "monthChangePct": -0.26,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
@@ -163,9 +166,9 @@
       "currency": null,
       "region": null,
       "price": 1.12,
-      "changePct": 0.05,
-      "weekChangePct": 0.33,
-      "monthChangePct": -1.88,
+      "changePct": 0.19,
+      "weekChangePct": 0.48,
+      "monthChangePct": -1.74,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
@@ -218,10 +221,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4129.3,
-      "changePct": -0.32,
-      "weekChangePct": 0.52,
-      "monthChangePct": -5.65,
+      "price": 4112.7,
+      "changePct": -0.9,
+      "weekChangePct": -1.38,
+      "monthChangePct": -4.76,
       "source": "yahoo"
     },
     {
@@ -231,10 +234,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 98.15,
-      "changePct": -3.58,
-      "weekChangePct": 3.22,
-      "monthChangePct": 3.76,
+      "price": 99.38,
+      "changePct": 2.3,
+      "weekChangePct": 1.44,
+      "monthChangePct": 7.83,
       "source": "yahoo"
     },
     {
@@ -244,10 +247,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.53,
-      "changePct": -0.56,
-      "weekChangePct": -1.23,
-      "monthChangePct": -3.4,
+      "price": 6.44,
+      "changePct": -1.6,
+      "weekChangePct": -1.13,
+      "monthChangePct": -3.59,
       "source": "yahoo"
     }
   ],
@@ -259,7 +262,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4066.37,
+      "price": 4036.3,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -272,7 +275,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 2652.54,
+      "price": 2576.9,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -285,7 +288,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1334.23,
+      "price": 1305.87,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -448,8 +451,103 @@
       "sector": "通信"
     }
   ],
-  "fred": [],
+  "fred": [
+    {
+      "seriesId": "DGS10",
+      "name": "美10年期国债收益率",
+      "unit": "pct",
+      "price": 5.12,
+      "changePct": -0.58,
+      "observedAt": "2026-10-20",
+      "source": "fred"
+    },
+    {
+      "seriesId": "T10Y2Y",
+      "name": "10Y-2Y 利差",
+      "unit": "spread",
+      "price": 0.32,
+      "changePct": -3.03,
+      "observedAt": "2026-10-21",
+      "source": "fred"
+    },
+    {
+      "seriesId": "FEDFUNDS",
+      "name": "联邦基金利率",
+      "unit": "pct",
+      "price": 3.75,
+      "changePct": 3.31,
+      "observedAt": "2026-09-01",
+      "source": "fred"
+    },
+    {
+      "seriesId": "UNRATE",
+      "name": "美国失业率",
+      "unit": "pct",
+      "price": 4.2,
+      "changePct": 2.44,
+      "observedAt": "2026-09-01",
+      "source": "fred"
+    },
+    {
+      "seriesId": "DEXCHUS",
+      "name": "美元/人民币(官方)",
+      "unit": "rate",
+      "price": 6.6861,
+      "changePct": -0.07,
+      "observedAt": "2026-10-16",
+      "source": "fred"
+    },
+    {
+      "seriesId": "CPIAUCSL",
+      "name": "美国CPI指数",
+      "unit": "index",
+      "price": 336.3,
+      "changePct": 1.17,
+      "observedAt": "2026-09-01",
+      "source": "fred"
+    }
+  ],
   "finnhubNews": [
+    {
+      "id": 8656278,
+      "title": "Iran's IRGC Navy says seven vessels hit, warns US of wider response - Reuters",
+      "summary": "Iran's IRGC Navy says seven vessels hit, warns US of wider response  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNcjlJZ1lSN1BZWFJWdDlKUWh3LWRselVrNHpobGthcDVzdnZ6bjJfM1dZcTJONUtTdURHc0ZaQkk0cUhzTlp0NVZocWlTNEhIWTB4TkN6VVZPMHdfN2ZsYXVmY2NISEN6dnRERW01T2dXbXNsb2dMNHl1UFdiTW1LVzJsZU1KYThwVDZ5OHdvYzZQMEZ6djduOERMNEI4YVVVTDFqVHBNZlpOcmJiNnppOVNJVjVzbUU?oc=5",
+      "publishedAt": "2026-10-22T04:40:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8656280,
+      "title": "DeepSeek wrapping up $15 billion fundraising to fuel AI race - Reuters",
+      "summary": "DeepSeek wrapping up $15 billion fundraising to fuel AI race  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOQkI4b1B0WkYzUnhGdTF6b0VTRnBCWjRxelF3Q2g4VlRjTzNUOFFTZUhrM3VHSWs2M1VpWkZqN0FleF9JREgzdXpEWFNHM0VvSXhhNm5pdHRXZkRrNUR0UGFJVUMzRjNDWWRwZ0ZtOEsyMm93VU82Rno1R3FxQTNxMllyeWh2YnJRY19hUjZMbExjank3YUg5anFYdjRHRUdnSlN3cFMwMU9TLVBDSldIYUpUdy1vYTdtS3RHTnphNU1KYTdtYWVzNFFR?oc=5",
+      "publishedAt": "2026-10-22T02:46:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8656380,
+      "title": "Dip in the dollar takes a breather with Fed in focus - Reuters",
+      "summary": "Dip in the dollar takes a breather with Fed in focus  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPeE9SaFExZHZyS2plVTA2NHNkbDFpcGpBSVVhc3J2NmZrRmtMRW1uY0FUU0JDMGtFQncxcnB3bUlFY21oa3V2VTZtOWsxcEVrWFhfOWZOd2oxY09XaWtpQ2ltWnE2NFFTYmg0OVNhaHJLVFdocG9NdGh1N3hjVzRPZUJlVW8wRFU3N24zR0tZbjk2bkNGVFhXaE1qbw?oc=5",
+      "publishedAt": "2026-10-22T02:10:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8656175,
+      "title": "Bank of Korea holds rates as expected after back-to-back hikes - Reuters",
+      "summary": "Bank of Korea holds rates as expected after back-to-back hikes  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQMzRuNnZCZUpPMFJ1WldoWm9JSVNjVmxUNUpsdDk5dlBhbTZIS1FPUmRPNlNlTjdkdFJVVjVUS0JrZzJPZHJmTjVMZG9CWGFoY3pyM0JVdUVOQVBGeHJ2U2RXWUNLTUZsVWs0TGMxbWFtcHZ4OWxiLUM1QjRaZzUwemU3aFRZNFY3LWlrY25oaVYycWw3M19jdnBERlFHQ2Y5ckoyMnl0UklxOFFlVVctNg?oc=5",
+      "publishedAt": "2026-10-22T00:54:00+00:00",
+      "related": ""
+    },
     {
       "id": 8655352,
       "title": "Oil rises as US orders diplomats to leave Saudi Arabia amid escalating tensions - Reuters",
@@ -461,13 +559,23 @@
       "related": ""
     },
     {
-      "id": 8652836,
-      "title": "Putin agrees to resume 3-way peace talks with Ukraine and US - Reuters",
-      "summary": "Putin agrees to resume 3-way peace talks with Ukraine and US  Reuters",
+      "id": 8655968,
+      "title": "China, Djibouti say all countries should enjoy freedom of navigation in Red Sea - Reuters",
+      "summary": "China, Djibouti say all countries should enjoy freedom of navigation in Red Sea  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOQXZaYTY5blYzZWJWYkJaQnI2M2RSSGJUcnpzSF9OMldoZjZxckRDRzhyb2JReEVNbEE5bjdZcUZlNzJ2b0YzQkRIZjltamVxVHVSaElldGhNUmlFZzdmZHpPOFBOSDNhbFV0NEdpYXBBN0w3VjlHV0JkSVQ3NG1hMHJMay14MWNuNDdQTldXaVE2Z205bjFkN05lVUh4TkloZWFvSm5FcGp0aS1nQ2JKcmNGTHB1NDhqdWJCaEM2NnoyRUE?oc=5",
-      "publishedAt": "2026-10-21T22:25:11+00:00",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNS3l2ZmtzUVhITGFNRFEzdmNhN3NLUkZJcTdoZHpXYklPc2NYYU4zN1lTandfbnFqZllHR2FnamxwbTBpd1k5R0xnSG0tYktwWDJMbGZqMl9fbHlnN3Vjb1oxQWJBYjJNdHFrSEJ5Mm1iU1R4MV9VSG80UHZEWG1uMzRrckxUVDE2SlJpdU5nSmktaVJpdkhrN2VIb1hHSlpxQ1RMSFd5Tk8xNFVOUEhqdTJtbWYzYU9MNnV0Sg?oc=5",
+      "publishedAt": "2026-10-21T23:57:00+00:00",
+      "related": ""
+    },
+    {
+      "id": 8655663,
+      "title": "From groceries to home loans, high oil prices permeate daily life - Reuters",
+      "summary": "From groceries to home loans, high oil prices permeate daily life  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPam52bzA3TTBVZjZQOC1ISHZJal8xZmcyc3hYZVJEYXpTZ1VUWHBvUVBQZDlKUUlwSFIwWFYtMUxucy1lS1ZRRDZEaW0tZmd5WndsSnNDNVUycTJVYWUyaFVVNDJIZnlfb0tMNGY5dW9BNkU1R0lVOWY0czhfN3pxcUhzejl5SUdLaGlMWFpjWnhWekJ4TWxzM3E2YXo3VVZzbGdCdi1CblkyTzRP?oc=5",
+      "publishedAt": "2026-10-21T23:04:00+00:00",
       "related": ""
     },
     {
@@ -481,63 +589,13 @@
       "related": ""
     },
     {
-      "id": 8654419,
-      "title": "Southwest Airlines cuts 2026 profit forecast on higher fuel",
-      "summary": "Southwest Airlines became the third major U.S. airline this month to cut its 2026 profit forecast due to higher fuel prices.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/10/21/southwest-airlines-luv-3q-2026-earnings.html",
-      "publishedAt": "2026-10-21T20:36:43+00:00",
-      "related": ""
-    },
-    {
-      "id": 8654109,
-      "title": "SpaceX gives the AI trade a shot in the arm. What it means for our stocks",
-      "summary": "SpaceX indicated there's been no slowdown in demand for AI computing.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/investingclub/2026/10/21/spacex-gives-the-ai-trade-a-shot-in-the-arm-what-it-means-for-our-stocks-.html",
-      "publishedAt": "2026-10-21T19:01:23+00:00",
-      "related": ""
-    },
-    {
-      "id": 8654110,
-      "title": "EXCLUSIVE: US orders diplomats to depart Saudi Arabia amid Houthi strikes - Reuters",
-      "summary": "EXCLUSIVE: US orders diplomats to depart Saudi Arabia amid Houthi strikes  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxONDg0WFNBeGFxeHpUVUsya2RYd0k3XzF6bXU3eGpZVnh2T25MWHVsQzVrbE9PNEdaWnpfN1dmRmtxajMtbl8yZ29EWUxYaXAxcnkxcFN1NEVDLVE3bUtkR0NwZDVPN2haVXFERXRUeHRnQ2QyVDhVdjBNa2FIUFVDOWFicGJOQVVWR0JFMnZSM0NLV09nZHk5UzA2LTgtbmFEVnlYZDI1Uk9ic1hyLTZ0Z2NKbWI5QWgtWWE3ZzV4eE11bmpCcGstTFAzQnVGUQ?oc=5",
-      "publishedAt": "2026-10-21T18:58:00+00:00",
-      "related": ""
-    },
-    {
-      "id": 8654108,
-      "title": "Apple's iPhone Duo in short supply — plus, the 2 stocks fueling an AI rebound",
-      "summary": "Every weekday, the Investing Club releases the Homestretch; an actionable afternoon update just in time for the last hour of trading.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/investingclub/2026/10/21/apples-iphone-duo-in-short-supply-plus-2-stocks-fueling-an-ai-rebound.html",
-      "publishedAt": "2026-10-21T18:45:28+00:00",
-      "related": ""
-    },
-    {
-      "id": 8654315,
-      "title": "US sanctions Greece-, Panama-based law firm over aid to Iranian shipping - Reuters",
-      "summary": "US sanctions Greece-, Panama-based law firm over aid to Iranian shipping  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPZFh4ZEdDSDhEcmZJWFR1VDVOUDVaYTR6aURwNjEzRnpsVGV4aTl1RFR3LVZpa1ZRZW5DY1ByTnBXZmk3RVl4VHRZM0x6UGRnUWp1dUJJUWItY3lYU3dmZ1RBYU1OLTdjc3JXOVB3V09mM051WGM1dEJsaW1WQXRmd3BmVXRaRUZMNzR4bkVBY3RTNWt1aXYxcGdWZVdUMy0xNUNzMlpJMkpyR0RaQVdKbUNENzFIdw?oc=5",
-      "publishedAt": "2026-10-21T18:37:59+00:00",
-      "related": ""
-    },
-    {
-      "id": 8655241,
-      "title": "New Zealand inflation slows to 3.7% in Q3, below forecasts, keeping RBNZ hike on track",
-      "summary": "<p dir=\"ltr\">The miss was too small to shift the policy outlook. Markets still price an October 28 hike as near certain and a cumulative 50 basis points of tightening by the end of February. The kiwi’",
+      "id": 8656479,
+      "title": "Chart of the day: Gold price falls below $4,100 as sellers threaten another breakdown",
+      "summary": "<p class=\"text-align-justify\" style=\"text-align: justify;\">Uh oh. Gold is starting to find itself in a bit of a pickle again in trading this week, with price now falling below $4,100 today as sellers ",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/new-zealand-inflation-slows-to-3-7-in-q3-below-forecasts-keeping-rbnz-hike-on-track/",
-      "publishedAt": "2026-10-21T23:23:17+00:00",
+      "link": "https://investinglive.com/technical-analysis/chart-of-the-day-gold-price-falls-below-4-100-as-sellers-threaten-another-breakdown/",
+      "publishedAt": "2026-10-22T05:18:04+00:00",
       "related": ""
     }
   ],
