@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-23T01:02:14+00:00",
+  "updatedAt": "2026-10-23T01:28:04+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -244,7 +244,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-23T00:01:45+00:00",
       "status": "stale",
-      "ageMinutes": 60
+      "ageMinutes": 86
     },
     {
       "id": "macro",
@@ -253,7 +253,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-23T00:01:08+00:00",
       "status": "stale",
-      "ageMinutes": 61
+      "ageMinutes": 86
     },
     {
       "id": "truth",
@@ -262,16 +262,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-23T01:01:18+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 26
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-10-22T22:17:16+00:00",
-      "status": "stale",
-      "ageMinutes": 164
+      "updatedAt": "2026-10-23T01:26:56+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -280,7 +280,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-22T21:41:10+08:00",
       "status": "ok",
-      "ageMinutes": 681
+      "ageMinutes": 706
     },
     {
       "id": "backtest",
@@ -289,9 +289,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-18T06:53:24+00:00",
       "status": "ok",
-      "ageMinutes": 6848
+      "ageMinutes": 6874
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "39881525874"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "39883995238"
 }
