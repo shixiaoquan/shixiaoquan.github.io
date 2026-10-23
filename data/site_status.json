@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-23T13:17:36+00:00",
+  "updatedAt": "2026-10-23T13:22:08+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 2,
-    "pipelinesStale": 4,
-    "automation": "4 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -245,7 +245,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-23T09:32:24+00:00",
       "status": "stale",
-      "ageMinutes": 225
+      "ageMinutes": 229
     },
     {
       "id": "macro",
@@ -254,7 +254,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-23T09:32:15+00:00",
       "status": "stale",
-      "ageMinutes": 225
+      "ageMinutes": 229
     },
     {
       "id": "truth",
@@ -263,16 +263,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-23T11:31:51+00:00",
       "status": "stale",
-      "ageMinutes": 105
+      "ageMinutes": 110
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-10-23T07:24:49+00:00",
-      "status": "stale",
-      "ageMinutes": 352
+      "updatedAt": "2026-10-23T13:21:03+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -281,7 +281,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-23T21:17:36+08:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 4
     },
     {
       "id": "backtest",
@@ -290,9 +290,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-18T06:53:24+00:00",
       "status": "ok",
-      "ageMinutes": 7584
+      "ageMinutes": 7588
     }
   ],
-  "triggeredBy": "Generate Investment Report",
-  "runId": "39959928663"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "39960380734"
 }
