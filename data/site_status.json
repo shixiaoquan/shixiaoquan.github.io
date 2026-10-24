@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T21:01:06+00:00",
+  "updatedAt": "2026-10-24T21:29:14+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-24T21:01:06+00:00",
+    "updatedAt": "2026-10-24T21:29:14+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -122,6 +122,14 @@
         "title": "流水线过期 · 宏观与跨资产",
         "reason": "stale",
         "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      },
+      {
+        "id": "fix-pipeline-truth",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · Truth Social 镜像",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
       },
       {
         "id": "shadow-tracking",
@@ -141,8 +149,8 @@
       }
     ],
     "summary": {
-      "total": 4,
-      "high": 2,
+      "total": 5,
+      "high": 3,
       "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
     }
   },
@@ -237,7 +245,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-23T14:23:09+00:00",
       "status": "stale",
-      "ageMinutes": 1837
+      "ageMinutes": 1866
     },
     {
       "id": "macro",
@@ -246,7 +254,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-23T14:23:00+00:00",
       "status": "stale",
-      "ageMinutes": 1838
+      "ageMinutes": 1866
     },
     {
       "id": "truth",
@@ -255,7 +263,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-24T19:41:01+00:00",
       "status": "stale",
-      "ageMinutes": 80
+      "ageMinutes": 108
     },
     {
       "id": "wencai",
@@ -264,7 +272,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-24T20:42:44+00:00",
       "status": "ok",
-      "ageMinutes": 18
+      "ageMinutes": 46
     },
     {
       "id": "reports",
@@ -273,7 +281,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-24T20:35:50+08:00",
       "status": "ok",
-      "ageMinutes": 505
+      "ageMinutes": 533
     },
     {
       "id": "backtest",
@@ -282,9 +290,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-18T06:53:24+00:00",
       "status": "ok",
-      "ageMinutes": 9487
+      "ageMinutes": 9515
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "40132325696"
+  "triggeredBy": "Update Market Data",
+  "runId": "40134398655"
 }
