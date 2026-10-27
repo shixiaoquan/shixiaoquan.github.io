@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-27T09:24:48+00:00",
+  "updatedAt": "2026-10-27T10:44:27+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-10-27T07:59:35+00:00",
+    "updatedAt": "2026-10-27T10:44:27+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -262,7 +262,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-27T07:59:34+00:00",
       "status": "stale",
-      "ageMinutes": 85
+      "ageMinutes": 164
     },
     {
       "id": "macro",
@@ -271,7 +271,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-27T07:59:24+00:00",
       "status": "stale",
-      "ageMinutes": 85
+      "ageMinutes": 165
     },
     {
       "id": "truth",
@@ -280,7 +280,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-27T06:02:25+00:00",
       "status": "stale",
-      "ageMinutes": 202
+      "ageMinutes": 282
     },
     {
       "id": "wencai",
@@ -288,8 +288,8 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-27T07:44:53+00:00",
-      "status": "ok",
-      "ageMinutes": 99
+      "status": "stale",
+      "ageMinutes": 179
     },
     {
       "id": "reports",
@@ -298,7 +298,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-10-27T17:24:48+08:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 79
     },
     {
       "id": "backtest",
@@ -307,9 +307,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-25T07:12:07+00:00",
       "status": "ok",
-      "ageMinutes": 3012
+      "ageMinutes": 3092
     }
   ],
-  "triggeredBy": "Generate Investment Report",
-  "runId": "40480524872"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "40490765352"
 }
