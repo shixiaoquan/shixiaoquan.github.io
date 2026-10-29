@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-29T00:07:34+00:00",
+  "updatedAt": "2026-10-29T05:40:51+00:00",
   "track": "shadow",
   "productionVersion": "v1.3.0",
   "candidateParams": {
@@ -11,33 +11,85 @@
     "strategy": "影子轨 buy≥75 breakout≥62（候选参数，非生产）",
     "picks": [
       {
-        "symbol": "AAPL",
-        "name": "苹果",
-        "market": "美股",
-        "sector": "消费电子",
-        "currency": "USD",
-        "price": 347.1,
-        "score": 75.8,
-        "signal": "buy",
-        "signalLabel": "趋势买入",
-        "rsi": 61.1,
-        "monthChangePct": 2.57,
-        "relativeStrength": 1.79,
+        "symbol": "600036.SS",
+        "name": "招商银行",
+        "market": "A股",
+        "sector": "银行",
+        "currency": "CNY",
+        "price": 42.86,
+        "score": 76.0,
+        "signal": "watch",
+        "signalLabel": "建议观察",
+        "rsi": 59.1,
+        "monthChangePct": 5.0,
+        "relativeStrength": 12.05,
         "reasons": [
           "价格站上 20 日均线",
           "价格站上 60 日均线",
           "均线多头排列"
         ],
         "plan": {
-          "entry": "现价 347.10 轻仓试探；回踩 20 日均线 340.07 或 333.27 附近分批加仓",
-          "stopLoss": "跌破 331.20（约 -4.6%，2.5 倍 ATR）坚决止损",
-          "target": "第一目标 404.33（盈亏比 1:3.0），可分批止盈",
+          "entry": "现价 42.86 轻仓试探；回踩 20 日均线 42.07 或 41.23 附近分批加仓",
+          "stopLoss": "跌破 40.68（约 -5.1%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 50.70（盈亏比 1:3.0），可分批止盈",
+          "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
+        },
+        "stopLossPrice": 40.68,
+        "targetPrice": 50.7,
+        "distToStopPct": 5.1,
+        "distToTargetPct": 18.3,
+        "regimeOk": true,
+        "breakout": false,
+        "breakoutLevel": 43.16,
+        "decisionScore": 55.6,
+        "decisionLabel": "中",
+        "decisionComponents": {
+          "macro": {
+            "score": 55.0,
+            "note": "市场震荡"
+          },
+          "wencai": {
+            "score": 55.0,
+            "note": "问财震荡"
+          },
+          "masters": {
+            "score": 57.1,
+            "note": "大师共识 4/7"
+          },
+          "truth": {
+            "score": 55,
+            "note": "舆情热度 0"
+          }
+        }
+      },
+      {
+        "symbol": "AAPL",
+        "name": "苹果",
+        "market": "美股",
+        "sector": "消费电子",
+        "currency": "USD",
+        "price": 343.83,
+        "score": 70.8,
+        "signal": "watch",
+        "signalLabel": "建议观察",
+        "rsi": 56.1,
+        "monthChangePct": 4.38,
+        "relativeStrength": 3.6,
+        "reasons": [
+          "价格站上 20 日均线",
+          "价格站上 60 日均线",
+          "均线多头排列"
+        ],
+        "plan": {
+          "entry": "现价 343.83 轻仓试探；回踩 20 日均线 340.61 或 333.79 附近分批加仓",
+          "stopLoss": "跌破 328.29（约 -4.5%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 399.77（盈亏比 1:3.0），可分批止盈",
           "position": "美股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
         },
-        "stopLossPrice": 331.2,
-        "targetPrice": 404.33,
-        "distToStopPct": 4.6,
-        "distToTargetPct": 16.5,
+        "stopLossPrice": 328.29,
+        "targetPrice": 399.77,
+        "distToStopPct": 4.5,
+        "distToTargetPct": 16.3,
         "regimeOk": true,
         "breakout": false,
         "breakoutLevel": 351.73,
@@ -63,36 +115,34 @@
         }
       },
       {
-        "symbol": "600036.SS",
-        "name": "招商银行",
-        "market": "A股",
-        "sector": "银行",
-        "currency": "CNY",
-        "price": 42.13,
-        "score": 76.2,
+        "symbol": "1810.HK",
+        "name": "小米集团",
+        "market": "港股",
+        "sector": "消费电子",
+        "currency": "HKD",
+        "price": 25.92,
+        "score": 40.3,
         "signal": "watch",
-        "signalLabel": "建议观察",
-        "rsi": 53.4,
-        "monthChangePct": 2.66,
-        "relativeStrength": 8.52,
+        "signalLabel": "影子弱信号",
+        "rsi": 49.3,
+        "monthChangePct": 0.23,
+        "relativeStrength": 5.87,
         "reasons": [
-          "价格站上 20 日均线",
-          "价格站上 60 日均线",
-          "均线多头排列"
+          "价格站上 20 日均线"
         ],
         "plan": {
-          "entry": "现价 42.13 轻仓试探；回踩 20 日均线 41.96 或 41.12 附近分批加仓",
-          "stopLoss": "跌破 39.97（约 -5.1%，2.5 倍 ATR）坚决止损",
-          "target": "第一目标 49.90（盈亏比 1:3.0），可分批止盈",
-          "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
+          "entry": "现价 25.92 轻仓试探；回踩 20 日均线 25.57 或 25.06 附近分批加仓",
+          "stopLoss": "跌破 22.72（约 -12.3%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 37.44（盈亏比 1:3.0），可分批止盈",
+          "position": "港股标的建议仓位 ≤ 总资金 16.3%（单笔风险 2.0%）；三市场分散配置"
         },
-        "stopLossPrice": 39.97,
-        "targetPrice": 49.9,
-        "distToStopPct": 5.1,
-        "distToTargetPct": 18.4,
-        "regimeOk": true,
+        "stopLossPrice": 22.72,
+        "targetPrice": 37.44,
+        "distToStopPct": 12.3,
+        "distToTargetPct": 44.4,
+        "regimeOk": false,
         "breakout": false,
-        "breakoutLevel": 43.16,
+        "breakoutLevel": 28.76,
         "decisionScore": 53.1,
         "decisionLabel": "中",
         "decisionComponents": {
@@ -9274,31 +9324,72 @@
         ]
       },
       {
-        "id": "2026-10-29T00:07:34+00:00",
-        "recordedAt": "2026-10-29T00:07:34+00:00",
+        "id": "2026-10-29T05:40:51+00:00",
+        "recordedAt": "2026-10-29T05:40:51+00:00",
         "marketContext": {
           "mood": "震荡",
           "regime": "neutral"
         },
         "picks": [
           {
+            "symbol": "600036.SS",
+            "name": "招商银行",
+            "market": "A股",
+            "sector": "银行",
+            "currency": "CNY",
+            "price": 42.86,
+            "score": 76.0,
+            "signal": "watch",
+            "signalLabel": "建议观察",
+            "rsi": 59.1,
+            "relativeStrength": 12.05,
+            "stopLossPrice": 40.68,
+            "targetPrice": 50.7,
+            "plan": {
+              "entry": "现价 42.86 轻仓试探；回踩 20 日均线 42.07 或 41.23 附近分批加仓",
+              "stopLoss": "跌破 40.68（约 -5.1%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 50.70（盈亏比 1:3.0），可分批止盈",
+              "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
+            },
+            "decisionScore": 55.6,
+            "decisionLabel": "中",
+            "decisionComponents": {
+              "macro": {
+                "score": 55.0,
+                "note": "市场震荡"
+              },
+              "wencai": {
+                "score": 55.0,
+                "note": "问财震荡"
+              },
+              "masters": {
+                "score": 57.1,
+                "note": "大师共识 4/7"
+              },
+              "truth": {
+                "score": 55,
+                "note": "舆情热度 0"
+              }
+            }
+          },
+          {
             "symbol": "AAPL",
             "name": "苹果",
             "market": "美股",
             "sector": "消费电子",
             "currency": "USD",
-            "price": 347.1,
-            "score": 75.8,
-            "signal": "buy",
-            "signalLabel": "趋势买入",
-            "rsi": 61.1,
-            "relativeStrength": 1.79,
-            "stopLossPrice": 331.2,
-            "targetPrice": 404.33,
+            "price": 343.83,
+            "score": 70.8,
+            "signal": "watch",
+            "signalLabel": "建议观察",
+            "rsi": 56.1,
+            "relativeStrength": 3.6,
+            "stopLossPrice": 328.29,
+            "targetPrice": 399.77,
             "plan": {
-              "entry": "现价 347.10 轻仓试探；回踩 20 日均线 340.07 或 333.27 附近分批加仓",
-              "stopLoss": "跌破 331.20（约 -4.6%，2.5 倍 ATR）坚决止损",
-              "target": "第一目标 404.33（盈亏比 1:3.0），可分批止盈",
+              "entry": "现价 343.83 轻仓试探；回踩 20 日均线 340.61 或 333.79 附近分批加仓",
+              "stopLoss": "跌破 328.29（约 -4.5%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 399.77（盈亏比 1:3.0），可分批止盈",
               "position": "美股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
             },
             "decisionScore": 50.5,
@@ -9323,24 +9414,24 @@
             }
           },
           {
-            "symbol": "600036.SS",
-            "name": "招商银行",
-            "market": "A股",
-            "sector": "银行",
-            "currency": "CNY",
-            "price": 42.13,
-            "score": 76.2,
+            "symbol": "1810.HK",
+            "name": "小米集团",
+            "market": "港股",
+            "sector": "消费电子",
+            "currency": "HKD",
+            "price": 25.92,
+            "score": 40.3,
             "signal": "watch",
-            "signalLabel": "建议观察",
-            "rsi": 53.4,
-            "relativeStrength": 8.52,
-            "stopLossPrice": 39.97,
-            "targetPrice": 49.9,
+            "signalLabel": "影子弱信号",
+            "rsi": 49.3,
+            "relativeStrength": 5.87,
+            "stopLossPrice": 22.72,
+            "targetPrice": 37.44,
             "plan": {
-              "entry": "现价 42.13 轻仓试探；回踩 20 日均线 41.96 或 41.12 附近分批加仓",
-              "stopLoss": "跌破 39.97（约 -5.1%，2.5 倍 ATR）坚决止损",
-              "target": "第一目标 49.90（盈亏比 1:3.0），可分批止盈",
-              "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
+              "entry": "现价 25.92 轻仓试探；回踩 20 日均线 25.57 或 25.06 附近分批加仓",
+              "stopLoss": "跌破 22.72（约 -12.3%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 37.44（盈亏比 1:3.0），可分批止盈",
+              "position": "港股标的建议仓位 ≤ 总资金 16.3%（单笔风险 2.0%）；三市场分散配置"
             },
             "decisionScore": 53.1,
             "decisionLabel": "中",
@@ -9372,7 +9463,7 @@
     "shadowRecords": 80,
     "shadowWeeks": 13.3,
     "shadowTradingDays": 80,
-    "shadowAgeDays": 93,
+    "shadowAgeDays": 92,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
     "symbolOverlapRecent": 19,
