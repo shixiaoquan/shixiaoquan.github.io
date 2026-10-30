@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-29T21:59:52+00:00",
+  "updatedAt": "2026-10-30T01:50:31+00:00",
   "sources": [
     {
       "id": "yahoo",
@@ -16,8 +16,8 @@
     {
       "id": "fred",
       "name": "FRED (St. Louis Fed)",
-      "status": "partial",
-      "items": 3,
+      "status": "ok",
+      "items": 6,
       "cookieUsed": true
     },
     {
@@ -112,9 +112,9 @@
       "currency": null,
       "region": null,
       "price": 6.66,
-      "changePct": -0.11,
-      "weekChangePct": -0.26,
-      "monthChangePct": -0.63,
+      "changePct": -0.1,
+      "weekChangePct": -0.28,
+      "monthChangePct": -0.67,
       "source": "yahoo",
       "base": "USD",
       "quote": "CNY",
@@ -129,10 +129,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 7.85,
-      "changePct": 0.01,
-      "weekChangePct": -0.01,
-      "monthChangePct": -0.01,
+      "price": 7.84,
+      "changePct": -0.0,
+      "weekChangePct": 0.11,
+      "monthChangePct": -0.02,
       "source": "yahoo",
       "base": "USD",
       "quote": "HKD",
@@ -147,10 +147,10 @@
       "unit": "index",
       "currency": null,
       "region": null,
-      "price": 157.65,
-      "changePct": -0.22,
-      "weekChangePct": -0.3,
-      "monthChangePct": 0.16,
+      "price": 157.38,
+      "changePct": -0.29,
+      "weekChangePct": 0.57,
+      "monthChangePct": -0.11,
       "source": "yahoo",
       "base": "USD",
       "quote": "JPY",
@@ -166,9 +166,9 @@
       "currency": null,
       "region": null,
       "price": 1.12,
-      "changePct": 0.46,
-      "weekChangePct": -0.48,
-      "monthChangePct": -1.41,
+      "changePct": 0.4,
+      "weekChangePct": -0.18,
+      "monthChangePct": -1.12,
       "source": "yahoo",
       "base": "EUR",
       "quote": "USD",
@@ -221,10 +221,10 @@
       "unit": "USD/oz",
       "currency": "USD",
       "region": null,
-      "price": 4033.3,
-      "changePct": -0.45,
-      "weekChangePct": -0.67,
-      "monthChangePct": -3.66,
+      "price": 4014.7,
+      "changePct": -0.91,
+      "weekChangePct": -1.13,
+      "monthChangePct": -4.11,
       "source": "yahoo"
     },
     {
@@ -234,10 +234,10 @@
       "unit": "USD/bbl",
       "currency": "USD",
       "region": null,
-      "price": 102.86,
-      "changePct": 0.08,
-      "weekChangePct": 3.41,
-      "monthChangePct": 13.76,
+      "price": 104.1,
+      "changePct": 1.28,
+      "weekChangePct": 4.65,
+      "monthChangePct": 15.13,
       "source": "yahoo"
     },
     {
@@ -247,10 +247,10 @@
       "unit": "USD/lb",
       "currency": "USD",
       "region": null,
-      "price": 6.59,
-      "changePct": -0.78,
-      "weekChangePct": 3.57,
-      "monthChangePct": 0.47,
+      "price": 6.58,
+      "changePct": -0.98,
+      "weekChangePct": 3.36,
+      "monthChangePct": 0.27,
       "source": "yahoo"
     }
   ],
@@ -262,7 +262,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 4041.84,
+      "price": 3995.48,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -275,7 +275,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 2517.59,
+      "price": 2457.12,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -288,7 +288,7 @@
       "unit": "index",
       "currency": "CNY",
       "region": "中国",
-      "price": 1228.09,
+      "price": 1200.55,
       "changePct": null,
       "weekChangePct": null,
       "monthChangePct": null,
@@ -453,12 +453,30 @@
   ],
   "fred": [
     {
+      "seriesId": "DGS10",
+      "name": "美10年期国债收益率",
+      "unit": "pct",
+      "price": 5.05,
+      "changePct": 1.2,
+      "observedAt": "2026-10-28",
+      "source": "fred"
+    },
+    {
       "seriesId": "T10Y2Y",
       "name": "10Y-2Y 利差",
       "unit": "spread",
       "price": 0.37,
       "changePct": -2.63,
       "observedAt": "2026-10-29",
+      "source": "fred"
+    },
+    {
+      "seriesId": "FEDFUNDS",
+      "name": "联邦基金利率",
+      "unit": "pct",
+      "price": 3.75,
+      "changePct": 3.31,
+      "observedAt": "2026-09-01",
       "source": "fred"
     },
     {
@@ -478,9 +496,38 @@
       "changePct": -0.06,
       "observedAt": "2026-10-23",
       "source": "fred"
+    },
+    {
+      "seriesId": "CPIAUCSL",
+      "name": "美国CPI指数",
+      "unit": "index",
+      "price": 336.3,
+      "changePct": 1.17,
+      "observedAt": "2026-09-01",
+      "source": "fred"
     }
   ],
   "finnhubNews": [
+    {
+      "id": 8690967,
+      "title": "Animal welfare-focused farm group targets Republicans in rural races - Reuters",
+      "summary": "Animal welfare-focused farm group targets Republicans in rural races  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNeFh1UFhvY1FYOW5PdDFOT0V3MERDRm9EUWNmb2ZrYlN6Rk5XbE1mOHN4UW5QUURWQ1JFY0doSG5icl9La1Bwc3NXMVFnZjFZTlpGdkp6M1BhcVBZVDk4eC10YlBYbFE4V3I1UnZYbHpMTVNONjJYY0FKWmZvSlhBZWRESGlpR2pmMFh3cHk5M1NwakZNTDVLQUxSY1ZKamtkOTBncEcxYWZmSlFneEJOSHB1ZzFIWHFqSFVjcTV2VzUyQQ?oc=5",
+      "publishedAt": "2026-10-29T21:43:50+00:00",
+      "related": ""
+    },
+    {
+      "id": 8692374,
+      "title": "Vance outreach to Iran related to medical supplies, says Trump - Reuters",
+      "summary": "Vance outreach to Iran related to medical supplies, says Trump  Reuters",
+      "source": "Reuters",
+      "category": "general",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPQm9INjQwOFV2OFBtTHNrV0F6RnF1Z0NmMHJyT1lJMVJBNm4xNm10VzYtdGF3Zl93aUVxNklqNnpld3VXbHFfRTRZWW9MekFMeXJqcHdWc2pJV2xtYXBiRWE3YmFEbGZIa1dGUVRMbVktYXp5Z3dsenJjZFNORjlJaUdGYjVZQ0E0UEt2VFJVUFBxb1NTMjJTRENRSjN5OTFRaXNpLVFKc1ZGR2xzekE?oc=5",
+      "publishedAt": "2026-10-29T20:49:22+00:00",
+      "related": ""
+    },
     {
       "id": 8692909,
       "title": "Yemen's hospitals buckle as fighting escalates - Reuters",
@@ -532,116 +579,96 @@
       "related": ""
     },
     {
-      "id": 8690967,
-      "title": "Farmer-funded attack ads targeting Republicans air across rural America - Reuters",
-      "summary": "Farmer-funded attack ads targeting Republicans air across rural America  Reuters",
+      "id": 8693537,
+      "title": "Senior US general fired, accused of leaking classified information - Reuters",
+      "summary": "Senior US general fired, accused of leaking classified information  Reuters",
       "source": "Reuters",
       "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNeFh1UFhvY1FYOW5PdDFOT0V3MERDRm9EUWNmb2ZrYlN6Rk5XbE1mOHN4UW5QUURWQ1JFY0doSG5icl9La1Bwc3NXMVFnZjFZTlpGdkp6M1BhcVBZVDk4eC10YlBYbFE4V3I1UnZYbHpMTVNONjJYY0FKWmZvSlhBZWRESGlpR2pmMFh3cHk5M1NwakZNTDVLQUxSY1ZKamtkOTBncEcxYWZmSlFneEJOSHB1ZzFIWHFqSFVjcTV2VzUyQQ?oc=5",
-      "publishedAt": "2026-10-29T18:17:45+00:00",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxORlFfOG1ZdV9STERPRzJZR1dTMFQ0MzhzLWtkUkhXSEFlYm9WOEx1Y2lXMDRKRnpvOF91TWp2a2x5UFhvOVEwTUNtZDQ4TEZvY21GVlZEWTJvT2V3V2JyVGp1WVoxVEIxTVlvX2FScG1vd0o0eko4MkxjeHliaXd0Yzh1ZXJWRlpiNVRoUHFEaXM0WU5Ec1ZsYXhPNzYzWEV2X1RMSVhBdTFJN0ZfdHhMVjc3V3JzUQ?oc=5",
+      "publishedAt": "2026-10-29T17:29:03+00:00",
       "related": ""
     },
     {
-      "id": 8692375,
-      "title": "Netanyahu, at risk of losing power, steps up attacks on Israel's Arab parties - Reuters",
-      "summary": "Netanyahu, at risk of losing power, steps up attacks on Israel's Arab parties  Reuters",
-      "source": "Reuters",
-      "category": "general",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNdTdkdmZXbFBHWno1WERBemlBX0tpX0lLaDlVUExXWGh6ZjlWSzBZYWYwc3RZTG1vb0ptREw5Nk8tcDFLVGJ0UmU0MzBEVW9hRnFHRWZiOU5SakNDQjEwYUp0aVFZcjc2clhraFNSZ09iLW5Md3V6MkpaSXZBcnoxdUJOVVZBLTJoQThnc0RvZkVEdFZ6WEJlakNwQXlFak5peWhfQ2h6dFdoV2traHgtZU1FN253Z0l0LU9V?oc=5",
-      "publishedAt": "2026-10-29T17:09:53+00:00",
-      "related": ""
-    },
-    {
-      "id": 8692371,
-      "title": "Aon CEO warns AI data center insurance risks could threaten financing",
-      "summary": "Aon CEO Greg Case said concentration risk at AI data centers could constrain insurance capacity and alter financing for new projects.",
-      "source": "CNBC",
-      "category": "general",
-      "link": "https://www.cnbc.com/2026/10/29/aon-ai-data-center-insurance-financing.html",
-      "publishedAt": "2026-10-29T17:03:23+00:00",
-      "related": ""
-    },
-    {
-      "id": 8693323,
-      "title": "investingLive Americas market news wrap: ECB holds, sources report says December hike",
-      "summary": "<ul><li><a href=\"https://investinglive.com/news/iran-s-ghalibaf-progress-can-only-be-achieved-once-the-seven-conditions-have-been-agreed-upon\" rel=\"follow\">Iran's Ghalibaf: Progress can only be achiev",
+      "id": 8694160,
+      "title": "Japan September factory output beats forecasts, but retail sales disappoint ahead of BoJ",
+      "summary": "<p dir=\"ltr\">The data give the BoJ evidence on both sides, so the reaction in the yen and Japanese government bonds is likely to be modest ahead of the policy decision and Outlook Report later in the ",
       "source": "Forexlive",
       "category": "forex",
-      "link": "https://investinglive.com/news/investinglive-americas-market-news-wrap-ecb-holds-sources-report-says-december-hike/",
-      "publishedAt": "2026-10-29T20:14:14+00:00",
+      "link": "https://investinglive.com/news/japan-september-factory-output-beats-forecasts-but-retail-sales-disappoint-ahead-of-boj/",
+      "publishedAt": "2026-10-30T00:05:53+00:00",
       "related": ""
     }
   ],
   "earningsCalendar": [
     {
-      "symbol": "AAOI",
-      "date": "2026-11-05",
-      "hour": "",
-      "epsEstimate": 0.1462,
-      "revenueEstimate": 273471588
-    },
-    {
-      "symbol": "AAP",
-      "date": "2026-11-05",
-      "hour": "",
-      "epsEstimate": 0.7818,
-      "revenueEstimate": 2065403651
-    },
-    {
-      "symbol": "ABLT",
-      "date": "2026-11-05",
-      "hour": "",
-      "epsEstimate": null,
-      "revenueEstimate": null
-    },
-    {
-      "symbol": "ABNB",
-      "date": "2026-11-05",
-      "hour": "amc",
-      "epsEstimate": 2.9104,
-      "revenueEstimate": 4843151790
-    },
-    {
-      "symbol": "ABX",
-      "date": "2026-11-05",
-      "hour": "",
-      "epsEstimate": 0.2786,
-      "revenueEstimate": 73986681
-    },
-    {
-      "symbol": "AC",
-      "date": "2026-11-05",
-      "hour": "",
-      "epsEstimate": null,
-      "revenueEstimate": null
-    },
-    {
-      "symbol": "ACDC",
-      "date": "2026-11-05",
-      "hour": "",
-      "epsEstimate": -0.2642,
-      "revenueEstimate": 559352700
-    },
-    {
-      "symbol": "ACH",
-      "date": "2026-11-05",
+      "symbol": "ACRE",
+      "date": "2026-11-06",
       "hour": "bmo",
-      "epsEstimate": -0.0101,
-      "revenueEstimate": 623551780
+      "epsEstimate": 0.0561,
+      "revenueEstimate": 13578750
     },
     {
-      "symbol": "ACHV",
-      "date": "2026-11-05",
+      "symbol": "ALMU",
+      "date": "2026-11-06",
       "hour": "",
-      "epsEstimate": -0.2042,
-      "revenueEstimate": 0
+      "epsEstimate": -0.1326,
+      "revenueEstimate": 535500
     },
     {
-      "symbol": "ACIW",
-      "date": "2026-11-05",
+      "symbol": "AMR",
+      "date": "2026-11-06",
+      "hour": "bmo",
+      "epsEstimate": -1.5017,
+      "revenueEstimate": 555546864
+    },
+    {
+      "symbol": "ANIK",
+      "date": "2026-11-06",
       "hour": "",
-      "epsEstimate": 0.3733,
-      "revenueEstimate": 430348608
+      "epsEstimate": 0.0612,
+      "revenueEstimate": 30024210
+    },
+    {
+      "symbol": "ATMU",
+      "date": "2026-11-06",
+      "hour": "",
+      "epsEstimate": 0.7509,
+      "revenueEstimate": 511113840
+    },
+    {
+      "symbol": "AUUD",
+      "date": "2026-11-06",
+      "hour": "",
+      "epsEstimate": -0.6426,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "AWX",
+      "date": "2026-11-06",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "BAM",
+      "date": "2026-11-06",
+      "hour": "bmo",
+      "epsEstimate": 0.4714,
+      "revenueEstimate": 1586605182
+    },
+    {
+      "symbol": "BDVB",
+      "date": "2026-11-06",
+      "hour": "",
+      "epsEstimate": null,
+      "revenueEstimate": null
+    },
+    {
+      "symbol": "BEN",
+      "date": "2026-11-06",
+      "hour": "amc",
+      "epsEstimate": 0.7771,
+      "revenueEstimate": 1879380730
     }
   ]
 }
