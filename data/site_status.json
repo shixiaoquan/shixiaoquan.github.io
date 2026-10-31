@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-31T02:28:31+00:00",
+  "updatedAt": "2026-10-31T06:52:56+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -255,7 +255,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-30T14:35:43+00:00",
       "status": "stale",
-      "ageMinutes": 712
+      "ageMinutes": 977
     },
     {
       "id": "macro",
@@ -264,7 +264,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-10-30T14:35:33+00:00",
       "status": "stale",
-      "ageMinutes": 712
+      "ageMinutes": 977
     },
     {
       "id": "truth",
@@ -272,8 +272,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-10-31T01:52:51+00:00",
-      "status": "ok",
-      "ageMinutes": 35
+      "status": "stale",
+      "ageMinutes": 300
     },
     {
       "id": "wencai",
@@ -281,17 +281,17 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-10-31T00:42:50+00:00",
-      "status": "ok",
-      "ageMinutes": 105
+      "status": "stale",
+      "ageMinutes": 370
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-10-30T22:58:34+08:00",
+      "updatedAt": "2026-10-31T14:52:56+08:00",
       "status": "ok",
-      "ageMinutes": 689
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -300,9 +300,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-10-25T07:12:07+00:00",
       "status": "ok",
-      "ageMinutes": 8356
+      "ageMinutes": 8620
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "41160134775"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "41178334331"
 }
