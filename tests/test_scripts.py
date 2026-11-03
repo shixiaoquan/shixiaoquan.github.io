@@ -24,8 +24,11 @@ from paired_attribution import build_paired_attribution, _summarize_pairs  # noq
 from shadow_reco import _calendar_weeks  # noqa: E402
 from hk01810_box import decide as hk01810_decide  # noqa: E402
 from validate_data import main as validate_main  # noqa: E402
+from xiaomi_radar import build_radar  # noqa: E402
 from xiaomi_trader import (  # noqa: E402
+    build_catalyst_gate,
     build_payload,
+    build_position_gate,
     build_valuation_gate,
     expand_calendar,
     implied_pe,
@@ -250,12 +253,66 @@ class XiaomiTraderTests(unittest.TestCase):
         self.assertLess(base_pe, 40)
         gates = {row["id"]: row for row in payload["checklist"]["gates"]}
         self.assertEqual(gates["valuation"]["status"], "block")
-        self.assertEqual(gates["catalyst"]["status"], "caution")
-        self.assertEqual(gates["position"]["status"], "caution")
+        self.assertEqual(gates["catalyst"]["status"], "block")
+        self.assertEqual(gates["position"]["status"], "block")
         self.assertEqual(gates["exit"]["status"], "caution")
+        self.assertIn("不新开多", payload["stance"]["headline"])
+        self.assertIn("加仓", "".join(payload["stance"]["forbidden"]))
+        self.assertTrue(payload["indicators"]["phone"]["placeholder"])
+        self.assertTrue(payload["indicators"]["iotMargin"]["placeholder"])
+        self.assertFalse(payload["indicators"]["phone"]["available"])
+        self.assertGreaterEqual(len(payload["weeklyReview"]["rows"]), 4)
         self.assertNotIn("trades", payload["publicSim"])
         self.assertEqual(payload["calendar"]["next"]["date"], "2026-11-24")
         self.assertFalse(payload["checklist"]["readyToOpen"])
+
+    def test_valuation_uses_multiple_not_only_box(self):
+        blocked, _ = build_valuation_gate(
+            25.7, {"action": "buy", "actionLabel": "买入第1份"}, 25.2
+        )
+        self.assertEqual(blocked, "block")
+        opened, summary = build_valuation_gate(
+            25.7, {"action": "buy", "actionLabel": "买入第1份"}, 18
+        )
+        self.assertEqual(opened, "pass")
+        self.assertIn("买区", summary)
+
+    def test_position_above_add_ceiling_blocks_add_narrative(self):
+        status, summary = build_position_gate(
+            {"positionPct": 47.4, "equityHkd": 1_000_000, "cashHkd": 200_000},
+            0.84,
+            {"addCeilingPct": 40, "maxPositionPct": 80},
+        )
+        self.assertEqual(status, "block")
+        self.assertIn("加仓", summary)
+
+    def test_catalyst_blocks_into_an_unwritten_print(self):
+        calendar = expand_calendar(
+            [{"id": "q3", "kind": "earnings", "title": "三季报", "date": "2026-11-24"}],
+            date(2026, 11, 3),
+            60,
+        )
+        blocked, _ = build_catalyst_gate(calendar, human_note="", block_within_days=21)
+        self.assertEqual(blocked, "block")
+        noted, _ = build_catalyst_gate(
+            calendar, human_note="赌的是交付，不是利润", block_within_days=21
+        )
+        self.assertEqual(noted, "caution")
+
+    def test_radar_clusters_require_source_date_confidence(self):
+        inbox = json.loads((ROOT / "data" / "xiaomi_radar_inbox.json").read_text(encoding="utf-8"))
+        radar = build_radar(inbox, as_of=date(2026, 11, 3))
+        self.assertGreaterEqual(len(radar["clusters"]), 3)
+        flat = {row["id"]: row for row in radar["items"]}
+        self.assertEqual(flat["h1-profit"]["confidence"], "high")
+        self.assertFalse(flat["h1-profit"]["stale"])
+        self.assertTrue(flat["skynomad"]["stale"])
+        self.assertIn("source", flat["oct-deliveries"])
+        self.assertEqual(flat["oct-deliveries"]["date"], "2026-11-01")
+        self.assertEqual(flat["phone-asp-gap"]["clusterId"], "data-gaps")
+        dropped = build_radar({"items": [{"title": "无来源"}]}, as_of=date(2026, 11, 3))
+        self.assertEqual(dropped["feed"]["dropped"], 1)
+        self.assertEqual(dropped["items"], [])
 
 
 class ValidateDataTests(unittest.TestCase):

@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "disclaimer": "仅供研究参考，不构成投资建议。",
+  "staleAfterDays": 21,
+  "clusters": {
+    "auto-demand": {
+      "title": "汽车需求",
+      "pillar": "汽车",
+      "summary": "交付是当前能核对的领先指标。下限和锁单都还不是收入。"
+    },
+    "profit-pressure": {
+      "title": "利润与成本",
+      "pillar": "手机 × AIoT",
+      "summary": "最新官方利润仍是上半年。成本只有方向，没有新的价格指数。"
+    },
+    "calendar": {
+      "title": "日历",
+      "pillar": "日历",
+      "summary": "硬日期优先于叙事。"
+    },
+    "data-gaps": {
+      "title": "数据缺口",
+      "pillar": "数据",
+      "summary": "没有数的格子保持空白，避免用预览填洞。"
+    }
+  },
+  "items": [
+    {
+      "id": "oct-deliveries",
+      "clusterId": "auto-demand",
+      "pillar": "汽车",
+      "tone": "strength",
+      "confidence": "high",
+      "date": "2026-11-01",
+      "title": "10 月交付下限超过 5 万",
+      "detail": "公司 11 月 1 日称 10 月交付超过 5 万辆，为 2026 年单月下限的高点，并结束 8 月、9 月的同比下滑。精确数仍未锁定。",
+      "source": "公司披露 / 公开报道",
+      "evergreen": false
+    },
+    {
+      "id": "fy-target-gap",
+      "clusterId": "auto-demand",
+      "pillar": "汽车",
+      "tone": "watch",
+      "confidence": "medium",
+      "date": "2026-11-01",
+      "title": "55 万辆目标还差最后两个月",
+      "detail": "按公开汇编，前 10 个月下限约 33.6 万辆，大约是 55 万辆引述目标的六成。这是完成度，不是公司确认的累计。",
+      "source": "公开报道汇编",
+      "evergreen": false
+    },
+    {
+      "id": "skynomad",
+      "clusterId": "auto-demand",
+      "pillar": "产品",
+      "tone": "watch",
+      "confidence": "medium",
+      "date": "2026-09-07",
+      "title": "Sky Nomad 已开始交付",
+      "detail": "2026-09-07 发布。公开报道称 9 月交付 12,444 辆，30 日锁单超过 7 万。锁单不是收入。",
+      "source": "公开报道",
+      "evergreen": false
+    },
+    {
+      "id": "h1-profit",
+      "clusterId": "profit-pressure",
+      "pillar": "手机 × AIoT",
+      "tone": "pressure",
+      "confidence": "high",
+      "date": "2026-08-18",
+      "title": "上半年经调整净利润同比 -42.8%",
+      "detail": "2026 年上半年收入 2,080.6 亿元，同比 -8.4%；经调整净利润 122.9 亿元。中报把内存涨价、竞争和地缘写成逆风。三季报出来前，这仍是最新官方利润。",
+      "source": "2026 中期业绩公告",
+      "sourceUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081801014.pdf",
+      "evergreen": true
+    },
+    {
+      "id": "h1-auto-revenue",
+      "clusterId": "auto-demand",
+      "pillar": "汽车",
+      "tone": "strength",
+      "confidence": "high",
+      "date": "2026-08-18",
+      "title": "汽车及新业务上半年收入 447.6 亿元",
+      "detail": "智能电动汽车、AI 及其他新业务上半年收入同比约 +12.3%，占收入约 21.5%。这是半年收入，不是 10 月交付。",
+      "source": "2026 中期报告",
+      "sourceUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0923/2026092300296.pdf",
+      "evergreen": true
+    },
+    {
+      "id": "memory-cost",
+      "clusterId": "profit-pressure",
+      "pillar": "成本",
+      "tone": "pressure",
+      "confidence": "medium",
+      "date": "2026-08-18",
+      "title": "内存涨价被写进中报，但没有价格指数",
+      "detail": "公司把关键零部件（含内存）涨价写成毛利和利润压力。本雷达没有独立存储报价，不能把这句话换成一个成本百分比。",
+      "source": "2026 中期报告",
+      "evergreen": true
+    },
+    {
+      "id": "q3-board",
+      "clusterId": "calendar",
+      "pillar": "日历",
+      "tone": "watch",
+      "confidence": "high",
+      "date": "2026-10-23",
+      "title": "11 月 24 日董事会审议三季报",
+      "detail": "港交所公告：董事会于 2026-11-24 审议截至 9 月 30 日止三个月及九个月未经审核业绩。",
+      "source": "港交所披露易",
+      "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1023/2026102301169.pdf",
+      "evergreen": false
+    },
+    {
+      "id": "phone-asp-gap",
+      "clusterId": "data-gaps",
+      "pillar": "手机",
+      "tone": "watch",
+      "confidence": "low",
+      "date": "2026-11-03",
+      "title": "手机出货和 ASP 不在本数据包里",
+      "detail": "行情文件和中报摘录没有可刷新的出货量或 ASP 序列。领先指标面板因此留空，不用卖方预览填数。",
+      "source": "本仓库数据缺口",
+      "evergreen": true
+    }
+  ]
+}

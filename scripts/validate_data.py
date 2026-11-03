@@ -134,6 +134,18 @@ def check_xiaomi_trader() -> None:
     label = (data.get("scenarios") or {}).get("assumptionLabel") or ""
     if "假设" not in label:
         ERRORS.append("xiaomi_trader 情景未标明为假设")
+    for key in ("stance", "indicators", "weeklyReview", "riskLimits"):
+        if key not in data:
+            ERRORS.append(f"xiaomi_trader 缺少 {key}")
+    stance = data.get("stance") or {}
+    if stance and "不" not in str(stance.get("headline") or "") and stance.get("tone") == "block":
+        ERRORS.append("xiaomi_trader 拦住时立场标题没有说不")
+    weekly_rows = (data.get("weeklyReview") or {}).get("rows")
+    if data.get("weeklyReview") is not None and not isinstance(weekly_rows, list):
+        ERRORS.append("xiaomi_trader.weeklyReview.rows 不是列表")
+    iot = ((data.get("indicators") or {}).get("iotMargin")) or {}
+    if data.get("indicators") and not iot.get("placeholder"):
+        ERRORS.append("xiaomi_trader IoT 毛利率必须标明占位，除非种子改成已披露")
 
     radar = _load(DATA_DIR / "xiaomi_radar.json")
     if not radar:
@@ -141,6 +153,23 @@ def check_xiaomi_trader() -> None:
         return
     if not isinstance(radar.get("items"), list):
         ERRORS.append("xiaomi_radar.items 不是列表")
+    clusters = radar.get("clusters")
+    if not isinstance(clusters, list) or not clusters:
+        ERRORS.append("xiaomi_radar.clusters 缺失")
+        return
+    for cluster in clusters:
+        if not isinstance(cluster, dict):
+            ERRORS.append("xiaomi_radar 簇不是对象")
+            continue
+        for item in cluster.get("items") or []:
+            if not isinstance(item, dict):
+                continue
+            if not item.get("source"):
+                ERRORS.append(f"xiaomi_radar {item.get('id')} 缺少 source")
+            if item.get("confidence") not in {"high", "medium", "low"}:
+                ERRORS.append(f"xiaomi_radar {item.get('id')} confidence 无效")
+            if "date" not in item:
+                ERRORS.append(f"xiaomi_radar {item.get('id')} 缺少 date")
 
 
 def check_reco_history() -> None:
