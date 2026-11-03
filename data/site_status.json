@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T06:40:07+00:00",
+  "updatedAt": "2026-11-03T07:28:42+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-11-03T06:40:07+00:00",
+    "updatedAt": "2026-11-03T07:28:41+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -130,6 +130,14 @@
         "title": "流水线过期 · Truth Social 镜像",
         "reason": "stale",
         "cursorPrompt": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+      },
+      {
+        "id": "fix-pipeline-wencai",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · 问财自然语言筛选",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-wencai-data.yml 日志与 Secrets。"
       },
       {
         "id": "shadow-tracking",
@@ -161,8 +169,8 @@
       }
     ],
     "summary": {
-      "total": 6,
-      "high": 3,
+      "total": 7,
+      "high": 4,
       "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
     }
   },
@@ -249,7 +257,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-03T01:18:10+00:00",
       "status": "stale",
-      "ageMinutes": 321
+      "ageMinutes": 370
     },
     {
       "id": "macro",
@@ -258,7 +266,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-03T01:18:03+00:00",
       "status": "stale",
-      "ageMinutes": 322
+      "ageMinutes": 370
     },
     {
       "id": "truth",
@@ -267,7 +275,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-03T01:20:11+00:00",
       "status": "stale",
-      "ageMinutes": 319
+      "ageMinutes": 368
     },
     {
       "id": "wencai",
@@ -276,7 +284,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-03T00:57:18+00:00",
       "status": "stale",
-      "ageMinutes": 342
+      "ageMinutes": 391
     },
     {
       "id": "reports",
@@ -285,7 +293,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-03T02:08:18+08:00",
       "status": "ok",
-      "ageMinutes": 751
+      "ageMinutes": 800
     },
     {
       "id": "backtest",
@@ -294,9 +302,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-01T08:36:51+00:00",
       "status": "ok",
-      "ageMinutes": 2763
+      "ageMinutes": 2811
     }
   ],
   "triggeredBy": "Continuous Evolution",
-  "runId": "41591284164"
+  "runId": "41596532639"
 }
