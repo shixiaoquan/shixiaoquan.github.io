@@ -35,6 +35,7 @@ jobs:
           python scripts/fetch_data.py
           python scripts/fetch_macro.py
           python scripts/hk01810_box.py || true
+          python scripts/xiaomi_radar.py || true
           python scripts/xiaomi_trader.py || true
 
       - name: Light refresh (market closed)
@@ -43,6 +44,7 @@ jobs:
           python scripts/tactic_tune.py || true
           python scripts/build_evolution_queue.py
           python scripts/build_site_status.py
+          python scripts/xiaomi_radar.py || true
           python scripts/xiaomi_trader.py || true
 
       - name: Tactic tune from attribution

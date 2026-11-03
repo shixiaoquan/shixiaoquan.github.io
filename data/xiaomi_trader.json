@@ -1,10 +1,27 @@
 {
-  "version": 1,
+  "version": 2,
   "generatedBy": "scripts/xiaomi_trader.py",
-  "updatedAt": "2026-11-03T10:46:45+08:00",
+  "updatedAt": "2026-11-03T11:00:17+08:00",
   "symbol": "1810.HK",
   "name": "小米集团-W",
   "disclaimer": "仅供研究参考，不构成投资建议。",
+  "stance": {
+    "tone": "block",
+    "headline": "不新开多。催化、估值、仓位把门拦住了。",
+    "allowed": [
+      "更新假设对照",
+      "等交付或三季报改写事实",
+      "价格回到加仓线和买区再重算四门"
+    ],
+    "forbidden": [
+      "把交付好转写成现在加仓",
+      "用情景倍数代替已披露业绩",
+      "在 IoT 毛利率空着时谈论毛利率改善"
+    ],
+    "researchHeadline": "手机与 AIoT 利润仍弱，汽车交付是当前主线",
+    "researchBody": "2026 年上半年收入 2,080.6 亿元、同比 -8.4%，经调整净利润 122.9 亿元、同比 -42.8%。公司在中报里把逆风写成地缘、内存涨价和竞争。同期智能电动汽车、AI 及其他新业务收入 447.6 亿元，同比约 +12.3%。11 月 1 日公司称 10 月交付超过 5 万辆，结束连续两个月同比下滑；全年 55 万辆目标仍要求最后两个月显著放量。下面的情景是围绕这些事实做的假设，不是业绩预测。",
+    "researchLabel": "研究叙事。它描述业务，不能覆盖上面的立场。"
+  },
   "narrative": {
     "headline": "手机与 AIoT 利润仍弱，汽车交付是当前主线",
     "body": "2026 年上半年收入 2,080.6 亿元、同比 -8.4%，经调整净利润 122.9 亿元、同比 -42.8%。公司在中报里把逆风写成地缘、内存涨价和竞争。同期智能电动汽车、AI 及其他新业务收入 447.6 亿元，同比约 +12.3%。11 月 1 日公司称 10 月交付超过 5 万辆，结束连续两个月同比下滑；全年 55 万辆目标仍要求最后两个月显著放量。下面的情景是围绕这些事实做的假设，不是业绩预测。"
@@ -45,8 +62,194 @@
     "cnyPerHkd": 0.8471,
     "fxNote": "USDCNY 6.6500；USDHKD 7.8500",
     "marketCapCnyYi": 6210.6,
-    "multipleNote": "隐含倍数 = 人民币市值 / 该情景经调整净利润。市值用箱体文件里的价格 × 上表股数。不是目标价。"
+    "multipleNote": "隐含倍数 = 人民币市值 / 该情景经调整净利润。市值用箱体文件里的价格 × 上表股数。不是目标价。",
+    "h1RunRateProfitYi": 245.8,
+    "h1RunRatePe": 25.3,
+    "maxBasePeToAdd": 22.0,
+    "richBasePe": 30.0,
+    "historyNote": "本站没有多年 PE 数据库。历史对照只用已披露上半年经调整净利润年化，不用荐股因子里的 pe 分数。"
   },
+  "riskLimits": {
+    "maxPositionPct": 80.0,
+    "addCeilingPct": 40.0,
+    "minCashPct": 10.0,
+    "maxBasePeToAdd": 22.0,
+    "richBasePe": 30.0,
+    "limitsNote": "80% 和 10% 来自 XRPS-X 公开规则（总仓上限、现金底线）。40% 和 22 倍是这块交易台自己的加仓线，不是真实账户的指令。",
+    "fundamentalStops": [
+      "三季报经调整净利润明显差于「上半年年化」这条基准假设",
+      "11 月和 12 月交付仍停在 10 月下限附近，全年 55 万辆这条引述目标就不再被叙事引用",
+      "收盘跌破箱体底部后，研究叙事也不再讨论箱体内买点"
+    ],
+    "boxBottom": 21.3
+  },
+  "indicators": {
+    "autoMonthly": {
+      "label": "汽车月交付",
+      "unit": "辆",
+      "source": "1–9 月为公开汇编的交付数；10 月是公司 2026-11-01 披露的下限，不是精确值。",
+      "fyTarget": 550000,
+      "points": [
+        {
+          "period": "2026-01",
+          "value": 39002,
+          "quality": "reported"
+        },
+        {
+          "period": "2026-02",
+          "value": 20414,
+          "quality": "reported"
+        },
+        {
+          "period": "2026-03",
+          "value": 21440,
+          "quality": "reported"
+        },
+        {
+          "period": "2026-04",
+          "value": 36702,
+          "quality": "reported"
+        },
+        {
+          "period": "2026-05",
+          "value": 32759,
+          "quality": "reported"
+        },
+        {
+          "period": "2026-06",
+          "value": 34738,
+          "quality": "reported"
+        },
+        {
+          "period": "2026-07",
+          "value": 31267,
+          "quality": "reported"
+        },
+        {
+          "period": "2026-08",
+          "value": 30153,
+          "quality": "reported"
+        },
+        {
+          "period": "2026-09",
+          "value": 40015,
+          "quality": "reported"
+        },
+        {
+          "period": "2026-10",
+          "value": 50000,
+          "quality": "lower_bound"
+        }
+      ],
+      "latest": {
+        "period": "2026-10",
+        "value": 50000,
+        "quality": "lower_bound"
+      },
+      "reportedAverage": 31832
+    },
+    "phone": {
+      "id": "phone",
+      "label": "手机出货 / ASP",
+      "available": false,
+      "placeholder": true,
+      "relatedRevenueYi": 1633.0,
+      "relatedLabel": "手机 × AIoT 上半年收入",
+      "note": "现有行情和中报摘录没有出货量或 ASP。只保留手机×AIoT 收入 1,633.0 亿元。不要把卖方预览写进这格。"
+    },
+    "memoryCost": {
+      "id": "memory-cost",
+      "label": "存储与成本",
+      "placeholder": false,
+      "value": null,
+      "note": "2026 中期报告把内存等关键零部件涨价写成毛利和经调整净利润的逆风。这里没有独立价格指数，所以不给百分比。"
+    },
+    "iotMargin": {
+      "id": "iot-margin",
+      "label": "IoT 毛利率",
+      "placeholder": true,
+      "value": null,
+      "note": "占位。中报给的是手机×AIoT 合并收入，本种子没有 IoT 单独毛利率。空着的时候，叙事里不许出现 IoT 毛利率改善。"
+    },
+    "groupGrossMargin": {
+      "id": "group-gross-margin",
+      "label": "集团毛利率",
+      "placeholder": false,
+      "valuePct": 20.9,
+      "priorValuePct": 22.7,
+      "note": "由中报毛利 434.2 亿元 / 收入 2,080.6 亿元算出，约 20.9%，上年同期约 22.7%。这是集团口径，不是 IoT。"
+    }
+  },
+  "weeklyReview": {
+    "title": "本周假设对照",
+    "weekOf": "2026-11-02",
+    "asOf": "2026-11-03",
+    "rows": [
+      {
+        "id": "oct-delivery",
+        "topic": "10 月交付",
+        "assumption": "交付能结束 8 月、9 月的同比下滑。",
+        "actual": "公司 11 月 1 日称超过 5 万辆，结束连续两个月同比下滑。精确数未出。",
+        "verdict": "met",
+        "source": "公司披露",
+        "asOf": "2026-11-01"
+      },
+      {
+        "id": "profit",
+        "topic": "利润",
+        "assumption": "基准情景假设下半年经调整净利润接近上半年，而不是已经修复。",
+        "actual": "最新官方数仍是上半年 122.9 亿元、同比 -42.8%。三季报尚未公布。",
+        "verdict": "pending",
+        "source": "2026 中期业绩公告",
+        "asOf": "2026-08-18"
+      },
+      {
+        "id": "fy-target",
+        "topic": "全年交付目标",
+        "assumption": "叙事可以继续引用 55 万辆，只要剩余两个月看得见放量路径。",
+        "actual": "前 10 个月公开汇编下限约 33.6 万辆，大约六成。路径还没被 11 月数字证实。",
+        "verdict": "behind",
+        "source": "公开报道汇编",
+        "asOf": "2026-11-01"
+      },
+      {
+        "id": "memory",
+        "topic": "存储成本",
+        "assumption": "内存涨价会在中报之后被新的公司数据改写。",
+        "actual": "中报确认涨价是逆风。之后没有新的公司成本数字，领先指标保持定性。",
+        "verdict": "pending",
+        "source": "2026 中期报告",
+        "asOf": "2026-08-18"
+      },
+      {
+        "id": "iot-margin",
+        "topic": "IoT 毛利率",
+        "assumption": "没有分部毛利率之前，不把它写进多头叙事。",
+        "actual": "仍然空着。集团毛利率约 20.9%，不能当成 IoT 毛利率。",
+        "verdict": "pending",
+        "source": "本看板占位",
+        "asOf": "2026-11-03"
+      }
+    ],
+    "counts": {
+      "met": 1,
+      "missed": 0,
+      "pending": 3,
+      "behind": 1,
+      "mixed": 0
+    },
+    "note": "实际栏只写已经公开的事实。没公布的保持待验证，不用预览填上。"
+  },
+  "links": [
+    {
+      "href": "#paper",
+      "label": "XRPS 模拟盘"
+    },
+    {
+      "href": "#hk01810",
+      "label": "HK01810 箱体"
+    }
+  ],
   "box": {
     "price": 28.5,
     "asOf": "2026-11-03",
@@ -210,9 +413,9 @@
       {
         "id": "catalyst",
         "label": "催化",
-        "status": "caution",
-        "statusLabel": "需人工",
-        "summary": "21 天后是业绩窗口：2026 年第三季度业绩董事会审核（2026-11-24）。催化门不自动通过。先写清赌的是交付、利润还是预期差，以及看不到时怎么走。",
+        "status": "block",
+        "statusLabel": "自动拦住",
+        "summary": "21 天后是业绩窗口：2026 年第三季度业绩董事会审核（2026-11-24）。催化要写清赌的是交付、利润还是预期差。窗口内没有写下赌注，叙事不得写成现在加仓。",
         "humanPrompt": "这笔要验证的催化是什么？证据是哪一份公告或哪一个交付数？最晚哪一天必须看到？没有窗口就不开。",
         "humanNote": ""
       },
@@ -221,16 +424,16 @@
         "label": "估值",
         "status": "block",
         "statusLabel": "自动拦住",
-        "summary": "现价 28.50 港元，箱体建议「卖出2份」。按基准情景经调整净利润，现价约 25.2 倍（假设，不是目标价）。估值门：此处不新开多。",
+        "summary": "现价 28.50 港元。基准情景 25.2 倍，高于加仓线 22 倍。相对上半年经调整净利润年化约 25.3 倍，这不是多年历史估值带。箱体建议「卖出2份」，价格位置也不支持新开多。估值门拦住，不新开多。",
         "humanPrompt": "你愿意为基准情景的经调整净利润付多少倍？现价高于这个倍数时，写明为什么仍然要买，或者直接不做。",
         "humanNote": ""
       },
       {
         "id": "position",
         "label": "仓位",
-        "status": "caution",
-        "statusLabel": "需人工",
-        "summary": "股价在日常箱子里的位置约 84%。XRPS 公开模拟盘仓位 47.4% （权益约 1,125,029 港元，现金约 591,310 港元）。这不是真实持仓。真实仓位未手写确认前，仓位门不通过。",
+        "status": "block",
+        "statusLabel": "自动拦住",
+        "summary": "股价在日常箱子里的位置约 84%。XRPS 公开模拟盘仓位 47.4% （权益约 1,125,029 港元，现金约 591,310 港元）。交易台加仓线 40%，XRPS 总仓上限 80%。这不是真实持仓。模拟盘已经不低于加仓线，叙事不得再写成加仓。",
         "humanPrompt": "真实账户计划用多少仓位？写在本地笔记里，不要把真实持仓放进这个公开仓库。未写上限视为此门未过。",
         "humanNote": ""
       },
@@ -239,23 +442,24 @@
         "label": "退出",
         "status": "caution",
         "statusLabel": "需人工",
-        "summary": "箱体退出已写明：空仓「空仓不新开多单」；持仓「卖出2份（2/3）」。收盘跌破 21.30 按箱体规则清仓。规则存在不等于这笔已经设好退出。人工备注空着时，此门仍算未过。",
+        "summary": "基本面退出：三季报经调整净利润明显差于「上半年年化」这条基准假设；11 月和 12 月交付仍停在 10 月下限附近，全年 55 万辆这条引述目标就不再被叙事引用；收盘跌破箱体底部后，研究叙事也不再讨论箱体内买点。箱体：空仓「空仓不新开多单」，持仓「卖出2份（2/3）」。收盘跌破 21.30 按箱体清仓。退出要同时看业绩和价格。人工备注空着时，此门仍算未过。",
         "humanPrompt": "写下这笔的失效条件：价格、时间、基本面哪一条先到就走。箱体规则只是默认模板。",
         "humanNote": ""
       }
     ],
     "counts": {
       "pass": 0,
-      "caution": 3,
-      "block": 1,
+      "caution": 1,
+      "block": 3,
       "open": 0
     },
     "readyToOpen": false,
-    "editHint": "人工判断写在 data/xiaomi_trader_seed.json 的 checklist.gates[].humanNote，再运行 scripts/xiaomi_trader.py。公开页面不保存浏览器里的临时修改。"
+    "editHint": "四门决定页首立场。人工判断写在 data/xiaomi_trader_seed.json 的 checklist.gates[].humanNote，再运行 scripts/xiaomi_trader.py。公开页面不保存浏览器里的临时修改。"
   },
   "radar": {
     "href": "data/xiaomi_radar.json",
-    "itemCount": 6,
+    "itemCount": 8,
+    "clusterCount": 4,
     "error": null
   },
   "seedFile": "data/xiaomi_trader_seed.json"

@@ -69,6 +69,7 @@ python scripts/paired_attribution.py
 python scripts/build_evolution_queue.py
 python scripts/build_site_status.py
 python scripts/hk01810_box.py
+python scripts/xiaomi_radar.py
 python scripts/xiaomi_trader.py
 python scripts/validate_data.py
 python -m unittest discover -s tests -p "test_*.py" -v
@@ -78,10 +79,11 @@ python -m unittest discover -s tests -p "test_*.py" -v
 
 和 XRPS 滚动仓、HK01810 箱体并列，不替代二者。页面在 `#xiaomi`。
 
-- 人工维护 `data/xiaomi_trader_seed.json`：日历、情景假设、四道开仓门的人工备注
-- 人工维护 `data/xiaomi_radar.json`：业务雷达样本。没有新闻爬虫
-- `python scripts/xiaomi_trader.py` 读种子、箱体现价、宏观汇率和公开模拟盘，写出 `data/xiaomi_trader.json`
-- `update-market-data` 在交易日拉数和休市轻量刷新时都会跑这个脚本。它不访问外网
+- 人工维护 `data/xiaomi_trader_seed.json`：日历、情景假设、领先指标、风险限度、周复盘、四道门的人工备注
+- 策展收件箱 `data/xiaomi_radar_inbox.json`：每条要有 source、date、confidence（high/medium/low）。`python scripts/xiaomi_radar.py` 聚成 `data/xiaomi_radar.json` 的 clusters。没有爬虫；新事实追加到收件箱即可
+- `python scripts/xiaomi_trader.py` 会先重算雷达，再读种子、箱体现价、宏观汇率和公开模拟盘，写出 `data/xiaomi_trader.json`
+- 页首立场由四门决定，研究叙事不能覆盖它。估值同时看基准情景倍数和箱体，不是只看卖区
+- `update-market-data` 在交易日拉数和休市轻量刷新时跑雷达脚本和交易员脚本。两者都不访问外网
 - 情景是假设，不是业绩预测。页内声明：仅供研究参考，不构成投资建议。模拟盘不是真实持仓
 
 ## Cursor 协作
