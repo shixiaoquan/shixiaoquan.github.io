@@ -107,6 +107,47 @@ function xmEventCard(event) {
     </li>`;
 }
 
+function xmShort(text, limit) {
+  const clean = String(text || "").replace(/\s+/g, " ").trim();
+  if (!clean) return "";
+  if (clean.length <= limit) return clean;
+  return `${clean.slice(0, limit)}…`;
+}
+
+function xmStep(value, max) {
+  if (value == null || !max || Number.isNaN(Number(value)) || Number(max) <= 0) return 0;
+  return Math.max(0, Math.min(20, Math.round((Number(value) / Number(max)) * 20))) * 5;
+}
+
+function xmChangeClass(value) {
+  if (value == null || Number.isNaN(Number(value)) || Number(value) === 0) return "";
+  return Number(value) > 0 ? "change change--up" : "change change--down";
+}
+
+function xmGateGlance(gate) {
+  const note = String(gate.humanNote || "").trim();
+  if (note) return xmShort(note.split("。")[0], 78);
+  return xmShort(String(gate.summary || "").split("。")[0], 56);
+}
+
+function xmRadarCluster(cluster, { folded }) {
+  const conf = ["high", "medium", "low"].includes(cluster.confidence) ? cluster.confidence : "low";
+  const head = `
+    <div class="xm-cluster__head">
+      <h3 class="xm-cluster__title">${xmEscape(cluster.title || cluster.pillar || "簇")}</h3>
+      <p class="xm-conf--${conf}">置信 ${xmEscape(cluster.confidenceLabel || conf)} · ${cluster.staleCount ? `${cluster.staleCount} 条过期` : "在窗口内"}</p>
+    </div>
+    <p class="xm-note">${xmEscape(cluster.summary || "")}</p>
+    <ul class="xm-radar">${(cluster.items || []).map(xmRadarItem).join("")}</ul>`;
+  if (!folded) return `<section class="xm-cluster">${head}</section>`;
+  const count = (cluster.items || []).length;
+  return `
+    <details class="xm-cluster xm-cluster--gap">
+      <summary>${xmEscape(cluster.title || "数据缺口")} · ${count} 条 · 默认收起</summary>
+      ${head}
+    </details>`;
+}
+
 function xmRadarClusters(radar) {
   const clusters = (radar && radar.clusters) || [];
   if (!clusters.length) {
@@ -114,20 +155,13 @@ function xmRadarClusters(radar) {
     if (!items.length) return "";
     return `<ul class="xm-radar">${items.map(xmRadarItem).join("")}</ul>`;
   }
-  return clusters
-    .map((cluster) => {
-      const conf = ["high", "medium", "low"].includes(cluster.confidence) ? cluster.confidence : "low";
-      return `
-        <section class="xm-cluster">
-          <div class="xm-cluster__head">
-            <h3 class="xm-cluster__title">${xmEscape(cluster.title || cluster.pillar || "簇")}</h3>
-            <p class="xm-conf--${conf}">置信 ${xmEscape(cluster.confidenceLabel || conf)} · ${cluster.staleCount ? `${cluster.staleCount} 条过期` : "在窗口内"}</p>
-          </div>
-          <p class="xm-note">${xmEscape(cluster.summary || "")}</p>
-          <ul class="xm-radar">${(cluster.items || []).map(xmRadarItem).join("")}</ul>
-        </section>`;
-    })
-    .join("");
+  const ordered = [...clusters].sort((a, b) => {
+    const ag = a.id === "data-gaps" ? 1 : 0;
+    const bg = b.id === "data-gaps" ? 1 : 0;
+    if (ag !== bg) return ag - bg;
+    return String(b.latestDate || "").localeCompare(String(a.latestDate || ""));
+  });
+  return ordered.map((cluster) => xmRadarCluster(cluster, { folded: cluster.id === "data-gaps" })).join("");
 }
 
 function xmRadarItem(item) {
@@ -147,9 +181,227 @@ function xmRadarItem(item) {
     </li>`;
 }
 
+const XM_PIP = { pass: "过", caution: "核", block: "拦", open: "空" };
+const XM_TICK = "#94a3b8";
+const XM_GRID = "rgba(148,163,184,0.12)";
+let xmChartBag = [];
+
+function xmDropCharts() {
+  xmChartBag.forEach((chart) => {
+    try {
+      chart.destroy();
+    } catch (err) {
+      /* 画布已经卸掉 */
+    }
+  });
+  xmChartBag = [];
+}
+
+function xmMountChart(canvasId, config) {
+  if (typeof Chart !== "function") return false;
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return false;
+  xmChartBag.push(new Chart(canvas, config));
+  return true;
+}
+
+function xmAxis(indexAxis) {
+  const value = {
+    beginAtZero: true,
+    ticks: { color: XM_TICK },
+    grid: { color: XM_GRID },
+  };
+  const category = { ticks: { color: XM_TICK }, grid: { display: false } };
+  return indexAxis === "y" ? { x: value, y: category } : { x: category, y: value };
+}
+
+function xmChartBase(indexAxis) {
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    indexAxis,
+    scales: xmAxis(indexAxis),
+    plugins: {
+      legend: { display: false },
+    },
+  };
+}
+
+function xmPeRows(scenarios, valuation) {
+  const rows = [];
+  (scenarios.items || []).forEach((row) => {
+    if (row.impliedPe == null) return;
+    rows.push({ label: row.label || row.id, pe: Number(row.impliedPe), kind: row.id });
+  });
+  if (valuation.h1RunRatePe != null) {
+    rows.push({ label: "上半年年化", pe: Number(valuation.h1RunRatePe), kind: "history" });
+  }
+  if (valuation.maxBasePeToAdd != null) {
+    rows.push({ label: "加仓线", pe: Number(valuation.maxBasePeToAdd), kind: "add" });
+  }
+  if (valuation.richBasePe != null) {
+    rows.push({ label: "贵价线", pe: Number(valuation.richBasePe), kind: "rich" });
+  }
+  return rows;
+}
+
+function xmPeColor(kind) {
+  if (kind === "bull") return "#34d399";
+  if (kind === "base") return "#38bdf8";
+  if (kind === "bear") return "#f87171";
+  if (kind === "add") return "#fbbf24";
+  if (kind === "rich") return "#fb7185";
+  return "#94a3b8";
+}
+
+function xmMountDeskCharts(trader) {
+  const indicators = trader.indicators || {};
+  const points = (indicators.autoMonthly && indicators.autoMonthly.points) || [];
+  if (points.length) {
+    xmMountChart("xm-delivery-chart", {
+      type: "bar",
+      data: {
+        labels: points.map((point) => String(point.period || "").slice(5)),
+        datasets: [
+          {
+            data: points.map((point) => point.value),
+            backgroundColor: points.map((point) =>
+              point.quality === "lower_bound" ? "#fbbf24" : "#38bdf8"
+            ),
+            borderWidth: 0,
+            borderRadius: 4,
+          },
+        ],
+      },
+      options: {
+        ...xmChartBase("x"),
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const point = points[ctx.dataIndex] || {};
+                const bound = point.quality === "lower_bound" ? "（下限）" : "";
+                return `${xmInt(ctx.parsed.y)} 辆${bound}`;
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  const peRows = xmPeRows(trader.scenarios || {}, trader.valuation || {});
+  if (peRows.length) {
+    xmMountChart("xm-pe-chart", {
+      type: "bar",
+      data: {
+        labels: peRows.map((row) => row.label),
+        datasets: [
+          {
+            data: peRows.map((row) => row.pe),
+            backgroundColor: peRows.map((row) => xmPeColor(row.kind)),
+            borderWidth: 0,
+            borderRadius: 4,
+          },
+        ],
+      },
+      options: {
+        ...xmChartBase("y"),
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: (ctx) => `${xmNum(ctx.parsed.x, 1)} 倍` },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            suggestedMax: 35,
+            ticks: { color: XM_TICK, callback: (value) => `${value}x` },
+            grid: { color: XM_GRID },
+          },
+          y: { ticks: { color: XM_TICK }, grid: { display: false } },
+        },
+      },
+    });
+  }
+
+  const limits = trader.riskLimits || {};
+  const sim = trader.publicSim;
+  const bars = [];
+  if (sim && sim.positionPct != null) {
+    const hot = limits.addCeilingPct != null && sim.positionPct >= limits.addCeilingPct;
+    bars.push({ label: "模拟仓", value: sim.positionPct, color: hot ? "#f87171" : "#34d399" });
+  }
+  if (limits.addCeilingPct != null) {
+    bars.push({ label: "加仓线", value: limits.addCeilingPct, color: "#fbbf24" });
+  }
+  if (limits.maxPositionPct != null) {
+    bars.push({ label: "总仓上限", value: limits.maxPositionPct, color: "#64748b" });
+  }
+  if (bars.length) {
+    xmMountChart("xm-position-chart", {
+      type: "bar",
+      data: {
+        labels: bars.map((row) => row.label),
+        datasets: [
+          {
+            data: bars.map((row) => row.value),
+            backgroundColor: bars.map((row) => row.color),
+            borderWidth: 0,
+            borderRadius: 4,
+          },
+        ],
+      },
+      options: {
+        ...xmChartBase("y"),
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: (ctx) => `${xmNum(ctx.parsed.x, 1)}%` },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            suggestedMax: limits.maxPositionPct || 100,
+            ticks: { color: XM_TICK, callback: (value) => `${value}%` },
+            grid: { color: XM_GRID },
+          },
+          y: { ticks: { color: XM_TICK }, grid: { display: false } },
+        },
+      },
+    });
+  }
+
+  requestAnimationFrame(() => {
+    xmChartBag.forEach((chart) => {
+      try {
+        chart.resize();
+      } catch (err) {
+        /* 隐藏页签里先画，切过来再量一次 */
+      }
+    });
+  });
+}
+
+function xmMissChip(label) {
+  return `<span class="xm-miss">${xmEscape(label)}<span class="xm-miss__tag">未接入</span></span>`;
+}
+
+function xmMeter(value, max, hot, markValue) {
+  const step = xmStep(value, max);
+  const tone = hot ? "xm-meter--hot" : "xm-meter--ok";
+  const mark =
+    markValue == null ? "" : `<div class="xm-meter__mark xm-mark-${xmStep(markValue, max)}"></div>`;
+  return `<div class="xm-meter ${tone}" aria-hidden="true"><div class="xm-meter__fill xm-fill-${step}"></div>${mark}</div>`;
+}
+
 function renderXiaomiTrader(trader, radar, marketData) {
   const root = document.getElementById("xiaomi-trader-root");
   if (!root) return;
+  xmDropCharts();
   if (!trader) {
     root.innerHTML = `
       <p class="xm-disclaimer">仅供研究参考，不构成投资建议。</p>
@@ -221,7 +473,6 @@ function renderXiaomiTrader(trader, radar, marketData) {
           <td>${xmNum(row.adjustedNetProfitYi, 0)}</td>
           <td>${row.impliedPe == null ? "—" : `${xmNum(row.impliedPe, 1)} 倍`}</td>
           <td>${xmEscape(versus)}</td>
-          <td>${xmEscape(row.narrative)}</td>
         </tr>`;
     })
     .join("");
@@ -270,110 +521,127 @@ function renderXiaomiTrader(trader, radar, marketData) {
   const stops = (limits.fundamentalStops || []).map((item) => `<li>${xmEscape(item)}</li>`).join("");
   const anchorUrl = xmLink(anchor.sourceUrl, "中期业绩公告");
   const radarBody = xmRadarClusters(radar);
+  const boxPct = box.positionInBox == null ? null : Math.round(Number(box.positionInBox) * 100);
+  const posPct = sim && sim.positionPct != null ? Number(sim.positionPct) : null;
+  const addPct = limits.addCeilingPct != null ? Number(limits.addCeilingPct) : null;
+  const maxPct = limits.maxPositionPct != null ? Number(limits.maxPositionPct) : null;
+  const aboveAdd = posPct != null && addPct != null && posPct >= addPct;
+  const next = calendar.next || null;
+  const chartsOn = typeof Chart === "function";
+  const boxLevels = box.levels || {};
+  const changePct = box.changePct;
+  const missChips = [
+    !phone.available ? xmMissChip(phone.label || "手机出货 / ASP") : "",
+    memory.value == null ? xmMissChip("存储价格指数") : "",
+    iot.placeholder || iot.value == null ? xmMissChip(iot.label || "IoT 毛利率") : "",
+  ]
+    .filter(Boolean)
+    .join("");
+  const grossChip =
+    gross.valuePct == null
+      ? xmMissChip(gross.label || "集团毛利率")
+      : `<span class="xm-live">${xmEscape(gross.label || "集团毛利率")}<strong>${xmNum(gross.valuePct, 1)}%</strong><span class="xm-miss__tag">上年 ${xmNum(gross.priorValuePct, 1)}%</span></span>`;
+  const narratives = (scenarios.items || [])
+    .map((row) => `<li><strong>${xmEscape(row.label)}</strong> ${xmEscape(row.narrative || "")}</li>`)
+    .join("");
+  const matrix = gates
+    .map((gate) => {
+      const status = XM_STATUSES.has(gate.status) ? gate.status : "open";
+      return `
+        <article class="xm-matrix__row ${xmStatusClass(gate.status)}">
+          <span class="xm-pip">${XM_PIP[status] || "空"}</span>
+          <div>
+            <p class="xm-matrix__line"><strong>${xmEscape(gate.label)}</strong> <span>${xmEscape(gate.statusLabel || "")}</span> ${xmEscape(xmGateGlance(gate))}</p>
+            <details>
+              <summary>依据</summary>
+              <p>${xmEscape(gate.summary || "")}</p>
+              <p class="xm-note">要写的判断：${xmEscape(gate.humanPrompt || "")}</p>
+              <p class="xm-note">${gate.humanNote ? `交易员：${xmEscape(gate.humanNote)}` : "备注仍空。空备注不能把拦住改成通过。"}</p>
+            </details>
+          </div>
+        </article>`;
+    })
+    .join("");
+  const basePe = ((scenarios.items || []).find((row) => row.id === "base") || {}).impliedPe;
+
+  const deliveryFallback = points
+    .map((point) => `${xmEscape(String(point.period || "").slice(5))} ${xmInt(point.value)}${point.quality === "lower_bound" ? " 下限" : ""}`)
+    .join(" · ");
+  const peFallback = xmPeRows(scenarios, valuation)
+    .map((row) => `${xmEscape(row.label)} ${xmNum(row.pe, 1)} 倍`)
+    .join(" · ");
 
   root.innerHTML = `
-    <header class="xm-hero">
-      <div>
-        <p class="xm-hero__eyebrow">Xiaomi desk · 1810.HK</p>
-        <h2 class="xm-hero__title">${xmEscape(trader.name || "小米集团")}</h2>
-        <p class="xm-desk-links">${xmHashLinks(trader.links)}</p>
+    <header class="xm-desk">
+      <div class="xm-desk__top">
+        <div>
+          <p class="xm-hero__eyebrow">Xiaomi desk · 1810.HK</p>
+          <h2 class="xm-hero__title">${xmEscape(trader.name || "小米集团")}</h2>
+          <p class="xm-desk-links">${xmHashLinks(trader.links)}</p>
+        </div>
+        <p class="xm-stance-badge xm-stance-badge--${tone}" aria-live="polite">${xmEscape(stance.headline || "四门未计算")}</p>
       </div>
-      <div class="xm-hero__aside">
-        <p class="xm-hero__price">${xmNum(price, 2)} <span>港元</span></p>
-        <p class="xm-hero__meta">看板快照 · 箱体 ${xmEscape((box.advice || {}).actionLabel || "—")}</p>
-        <p class="xm-hero__asof">${xmEscape(updated)}</p>
-        ${drift}
+      <div class="xm-kpis">
+        <article class="xm-kpi">
+          <p class="xm-kpi__label">最新价</p>
+          <p class="xm-kpi__value">${xmNum(price, 2)} <span>港元</span></p>
+          <p class="xm-kpi__sub"><span class="${xmChangeClass(changePct)}">${changePct == null ? "—" : xmPct(changePct)}</span> · ${xmEscape((box.advice || {}).actionLabel || "—")}</p>
+          ${drift}
+        </article>
+        <article class="xm-kpi">
+          <p class="xm-kpi__label">箱体位置</p>
+          <p class="xm-kpi__value">${boxPct == null ? "—" : `${boxPct}%`}</p>
+          ${xmMeter(box.positionInBox, 1, false)}
+          <p class="xm-kpi__sub">${xmNum(boxLevels.boxLow, 2)} – ${xmNum(boxLevels.boxHigh, 2)}</p>
+        </article>
+        <article class="xm-kpi">
+          <p class="xm-kpi__label">模拟仓 / 加仓线</p>
+          <p class="xm-kpi__value">${posPct == null ? "—" : `${xmNum(posPct, 1)}%`} <span>/ ${addPct == null ? "—" : `${xmNum(addPct, 0)}%`}</span></p>
+          ${xmMeter(posPct, maxPct || 100, aboveAdd, addPct)}
+          <p class="xm-kpi__sub">${aboveAdd ? "已过加仓线" : posPct == null ? "模拟盘未接入" : "低于加仓线"} · 上限 ${maxPct == null ? "—" : `${xmNum(maxPct, 0)}%`}</p>
+        </article>
+        <article class="xm-kpi">
+          <p class="xm-kpi__label">下一催化</p>
+          <p class="xm-kpi__value">${next ? xmEscape(next.countdownLabel || "—") : "—"}</p>
+          <p class="xm-kpi__sub">${next ? `${xmEscape(next.title)} · ${xmEscape(next.date || "")}` : "60 天内无已写窗口"}</p>
+        </article>
       </div>
+      <p class="xm-hero__asof">快照 ${xmEscape(updated)}</p>
+      <details class="xm-fold">
+        <summary>允许与不许写进行动</summary>
+        <div class="xm-fold__body">
+          <p class="xm-kicker">允许</p>
+          ${xmList(stance.allowed)}
+          <p class="xm-kicker">不许写进行动</p>
+          ${xmList(stance.forbidden)}
+        </div>
+      </details>
     </header>
-    <p class="xm-disclaimer">${xmEscape(trader.disclaimer || "仅供研究参考，不构成投资建议。")} 情景是假设，不是预测。XRPS 模拟盘不是真实持仓。</p>
-
-    <section class="xm-stance xm-stance--${tone}" aria-live="polite">
-      <p class="xm-stance__kicker">交易台立场 · 由四门生成，不是研究标题</p>
-      <h3 class="xm-stance__headline">${xmEscape(stance.headline || "四门未计算")}</h3>
-      <div class="xm-chips">${chips}</div>
-      <p class="xm-kicker">允许</p>
-      ${xmList(stance.allowed)}
-      <p class="xm-kicker">不许写进行动</p>
-      ${xmList(stance.forbidden)}
-    </section>
-
-    <section class="xm-research">
-      <p class="xm-kicker">${xmEscape(stance.researchLabel || "研究叙事")}</p>
-      <h3>${xmEscape(stance.researchHeadline || "")}</h3>
-      <p class="xm-note">${xmEscape(stance.researchBody || "")}</p>
-    </section>
-
-    <section class="panel panel--wide xm-section">
-      <div class="panel__head">
-        <h2>领先指标</h2>
-        <p>只有带来源的数进图。没有的格子保持占位。</p>
-      </div>
-      <h3 class="xm-subtitle">${xmEscape((indicators.autoMonthly || {}).label || "汽车月交付")}</h3>
-      <div class="xm-bars">${bars}</div>
-      <p class="xm-table-note">${xmEscape((indicators.autoMonthly || {}).source || "")} 黄色柱是下限，不是精确值。已公布月份均值 ${xmInt((indicators.autoMonthly || {}).reportedAverage)} 辆。</p>
-      <div class="xm-facts">
-        <article class="xm-fact-card ${phone.placeholder ? "xm-placeholder" : ""}">
-          <p class="xm-kicker">${xmEscape(phone.label || "手机")} ${phone.placeholder ? "· 占位" : ""}</p>
-          <p><strong>${phone.available ? xmNum(phone.value, 1) : "无出货 / 无 ASP"}</strong></p>
-          <p class="xm-fact">${xmEscape(phone.relatedLabel || "")} ${phone.relatedRevenueYi != null ? `${xmNum(phone.relatedRevenueYi, 1)} 亿元` : ""}</p>
-          <p class="xm-fact">${xmEscape(phone.note || "")}</p>
-        </article>
-        <article class="xm-fact-card">
-          <p class="xm-kicker">${xmEscape(memory.label || "存储与成本")}</p>
-          <p><strong>无价格指数</strong></p>
-          <p class="xm-fact">${xmEscape(memory.note || "")}</p>
-        </article>
-        <article class="xm-fact-card ${iot.placeholder ? "xm-placeholder" : ""}">
-          <p class="xm-kicker">${xmEscape(iot.label || "IoT 毛利率")} · 占位</p>
-          <p><strong>—</strong></p>
-          <p class="xm-fact">${xmEscape(iot.note || "")}</p>
-        </article>
-        <article class="xm-fact-card">
-          <p class="xm-kicker">${xmEscape(gross.label || "集团毛利率")}</p>
-          <p><strong>${xmNum(gross.valuePct, 1)}%</strong></p>
-          <p class="xm-fact">上年同期约 ${xmNum(gross.priorValuePct, 1)}%。${xmEscape(gross.note || "")}</p>
-        </article>
-      </div>
-    </section>
+    <p class="xm-disclaimer xm-disclaimer--desk">${xmEscape(trader.disclaimer || "仅供研究参考，不构成投资建议。")} 情景是假设，不是预测。XRPS 模拟盘不是真实持仓。</p>
 
     <section class="panel panel--wide xm-section">
       <div class="panel__head">
         <h2>估值与仓位</h2>
-        <p>${xmEscape(scenarios.assumptionLabel || "情景假设")} · 加仓线 ${xmNum(valuation.maxBasePeToAdd, 0)} 倍 · 贵价线 ${xmNum(valuation.richBasePe, 0)} 倍</p>
+        <p>加仓线 ${xmNum(valuation.maxBasePeToAdd, 0)} 倍 · 基准 ${basePe == null ? "—" : `${xmNum(basePe, 1)} 倍`} · 贵价线 ${xmNum(valuation.richBasePe, 0)} 倍 · ${xmEscape(scenarios.assumptionLabel || "情景假设")}</p>
       </div>
-      <div class="xm-split">
+      <div class="xm-charts">
         <div>
-          <div class="xm-facts">
-            <article class="xm-fact-card">
-              <p class="xm-kicker">上半年年化倍数</p>
-              <p><strong>${valuation.h1RunRatePe == null ? "—" : `${xmNum(valuation.h1RunRatePe, 1)} 倍`}</strong></p>
-              <p class="xm-fact">经调整净利润年化 ${xmNum(valuation.h1RunRateProfitYi, 1)} 亿元</p>
-            </article>
-            <article class="xm-fact-card">
-              <p class="xm-kicker">现价市值</p>
-              <p><strong>${xmNum(valuation.marketCapCnyYi, 0)}</strong> 亿元</p>
-              <p class="xm-fact">${xmEscape(valuation.fxNote || "")}</p>
-            </article>
-            <article class="xm-fact-card">
-              <p class="xm-kicker">模拟盘仓位</p>
-              <p><strong>${sim ? `${xmNum(sim.positionPct, 1)}%` : "—"}</strong></p>
-              <p class="xm-fact">加仓线 ${xmNum(limits.addCeilingPct, 0)}% · XRPS 上限 ${xmNum(limits.maxPositionPct, 0)}% · 现金底线 ${xmNum(limits.minCashPct, 0)}%</p>
-            </article>
-            <article class="xm-fact-card">
-              <p class="xm-kicker">箱体底部</p>
-              <p><strong>${xmNum(limits.boxBottom, 2)}</strong></p>
-              <p class="xm-fact">箱内位置 ${box.positionInBox == null ? "—" : `${Math.round(box.positionInBox * 100)}%`} · ${xmEscape((box.advice || {}).actionLabel || "—")}</p>
-            </article>
-          </div>
-          <p class="xm-table-note">${xmEscape(valuation.historyNote || "")} ${xmEscape(limits.limitsNote || "")}</p>
-          <p class="xm-table-note">已披露：收入 ${xmNum(anchor.revenueYi, 1)} 亿元（${xmPct(anchor.revenueYoyPct)}），经调整净利润 ${xmNum(anchor.adjustedNetProfitYi, 1)} 亿元（${xmPct(anchor.adjustedNetProfitYoyPct)}），IFRS 净利润 ${xmNum(anchor.ifrsNetProfitYi, 1)} 亿元。${anchorUrl}</p>
+          <p class="xm-kicker">情景倍数对照</p>
+          ${chartsOn ? `<div class="xm-chart xm-chart--pe"><canvas id="xm-pe-chart" aria-label="情景市盈率对照"></canvas></div>` : `<p class="xm-table-note">${peFallback}</p>`}
+          <p class="xm-legend"><span class="xm-swatch xm-swatch--bull"></span>乐观 <span class="xm-swatch xm-swatch--base"></span>基准 <span class="xm-swatch xm-swatch--bear"></span>悲观 <span class="xm-swatch xm-swatch--add"></span>加仓线 <span class="xm-swatch xm-swatch--rich"></span>贵价线 <span class="xm-swatch xm-swatch--history"></span>上半年年化</p>
         </div>
         <div>
-          <p class="xm-kicker">风险限度</p>
-          <ul class="xm-rule-list">${stops}</ul>
-          <p class="xm-desk-links">${xmHashLinks(trader.links)}</p>
+          <p class="xm-kicker">仓位进度</p>
+          ${chartsOn ? `<div class="xm-chart xm-chart--pe"><canvas id="xm-position-chart" aria-label="模拟仓位相对加仓线"></canvas></div>` : `<p class="xm-table-note">模拟仓 ${posPct == null ? "—" : `${xmNum(posPct, 1)}%`} · 加仓线 ${addPct == null ? "—" : `${xmNum(addPct, 0)}%`} · 上限 ${maxPct == null ? "—" : `${xmNum(maxPct, 0)}%`}</p>`}
+          <p class="xm-table-note">${aboveAdd ? "红条表示模拟仓已经不低于加仓线。" : "绿条表示模拟仓还在加仓线下方。"}这不是真实持仓。</p>
         </div>
       </div>
+      <p class="xm-statline">
+        <span>上半年年化 <strong>${valuation.h1RunRatePe == null ? "—" : `${xmNum(valuation.h1RunRatePe, 1)} 倍`}</strong></span>
+        <span>年化利润 <strong>${xmNum(valuation.h1RunRateProfitYi, 1)}</strong> 亿元</span>
+        <span>市值 <strong>${xmNum(valuation.marketCapCnyYi, 0)}</strong> 亿元</span>
+        <span>现金底线 <strong>${xmNum(limits.minCashPct, 0)}%</strong></span>
+      </p>
       <div class="table-wrap">
         <table class="data-table xm-scenarios">
           <thead>
@@ -383,13 +651,65 @@ function renderXiaomiTrader(trader, radar, marketData) {
               <th>经调整净利润（亿元）</th>
               <th>现价倍数</th>
               <th>相对加仓线</th>
-              <th>叙事（假设）</th>
             </tr>
           </thead>
           <tbody>${scenarioRows}</tbody>
         </table>
       </div>
-      <p class="xm-table-note">${xmEscape(valuation.multipleNote || "")}</p>
+      <details class="xm-fold">
+        <summary>情景假设全文</summary>
+        <ul class="xm-rule-list">${narratives}</ul>
+      </details>
+      <details class="xm-fold">
+        <summary>风险限度与已披露锚</summary>
+        <ul class="xm-rule-list">${stops}</ul>
+        <p class="xm-table-note">${xmEscape(valuation.historyNote || "")} ${xmEscape(limits.limitsNote || "")} ${xmEscape(valuation.fxNote || "")}</p>
+        <p class="xm-table-note">已披露：收入 ${xmNum(anchor.revenueYi, 1)} 亿元（${xmPct(anchor.revenueYoyPct)}），经调整净利润 ${xmNum(anchor.adjustedNetProfitYi, 1)} 亿元（${xmPct(anchor.adjustedNetProfitYoyPct)}），IFRS 净利润 ${xmNum(anchor.ifrsNetProfitYi, 1)} 亿元。${anchorUrl}</p>
+        <p class="xm-table-note">${xmEscape(valuation.multipleNote || "")}</p>
+      </details>
+    </section>
+
+    <section class="panel panel--wide xm-section">
+      <div class="panel__head">
+        <h2>开仓四门</h2>
+        <p>通过 ${counts.pass || 0} · 需人工 ${(counts.caution || 0) + (counts.open || 0)} · 拦住 ${counts.block || 0}。拦住的门改写页首立场。</p>
+      </div>
+      <div class="xm-chips xm-chips--desk">${chips}</div>
+      <div class="xm-matrix">${matrix}</div>
+      <details class="xm-fold">
+        <summary>备注写在种子文件</summary>
+        <p class="xm-table-note">${xmEscape(checklist.editHint || "")}</p>
+      </details>
+    </section>
+
+    <section class="panel panel--wide xm-section">
+      <div class="panel__head">
+        <h2>领先指标</h2>
+        <p>有数才进图。没接入的指标只留一枚芯片。</p>
+      </div>
+      <h3 class="xm-subtitle">${xmEscape((indicators.autoMonthly || {}).label || "汽车月交付")}</h3>
+      ${chartsOn ? `<div class="xm-chart"><canvas id="xm-delivery-chart" aria-label="汽车月交付"></canvas></div>` : `<p class="xm-table-note">${deliveryFallback}</p>`}
+      <p class="xm-table-note">${xmEscape((indicators.autoMonthly || {}).source || "")} 黄柱是下限，不是精确值。已公布月份均值 ${xmInt((indicators.autoMonthly || {}).reportedAverage)} 辆。</p>
+      <div class="xm-chip-row">${missChips}${grossChip}</div>
+      <p class="xm-table-note">${phone.relatedRevenueYi != null ? `${xmEscape(phone.relatedLabel || "手机 × AIoT")} ${xmNum(phone.relatedRevenueYi, 1)} 亿元，不是出货量。` : ""} ${memory.value == null ? xmEscape(memory.note || "") : ""}</p>
+    </section>
+
+    <section class="panel panel--wide xm-section">
+      <div class="panel__head">
+        <h2>业务雷达</h2>
+        <p>策展条目，带来源和日期。数据缺口默认收起。没有爬虫。</p>
+      </div>
+      ${radarBody || `<p class="empty">${xmEscape((trader.radar || {}).error || "雷达还没生成。")}</p>`}
+      <p class="xm-table-note">${xmEscape((radar && radar.disclaimer) || "仅供研究参考，不构成投资建议。")}</p>
+    </section>
+
+    <section class="panel panel--wide xm-section">
+      <div class="panel__head">
+        <h2>日历</h2>
+        <p>未来 ${calendar.horizonDays || 60} 天 · 基准日 ${xmEscape(calendar.asOf || "—")}</p>
+      </div>
+      <ul class="xm-list">${upcoming}</ul>
+      ${undated ? `<h3 class="xm-subtitle">日期未定</h3><ul class="xm-list">${undated}</ul>` : ""}
     </section>
 
     <section class="panel panel--wide xm-section">
@@ -406,38 +726,15 @@ function renderXiaomiTrader(trader, radar, marketData) {
       <p class="xm-table-note">${xmEscape(weekly.note || "")}</p>
     </section>
 
-    <section class="panel panel--wide xm-section">
-      <div class="panel__head">
-        <h2>日历</h2>
-        <p>未来 ${calendar.horizonDays || 60} 天 · 基准日 ${xmEscape(calendar.asOf || "—")}</p>
+    <details class="xm-fold xm-fold--research">
+      <summary>研究叙事 · ${xmEscape(stance.researchHeadline || "展开")}</summary>
+      <div class="xm-fold__body">
+        <p class="xm-note">${xmEscape(stance.researchLabel || "")}</p>
+        <p class="xm-note">${xmEscape(stance.researchBody || "")}</p>
       </div>
-      ${
-        calendar.next
-          ? `<div class="xm-next"><div><p class="xm-kicker">下一窗口</p><p class="xm-next__title">${xmEscape(calendar.next.title)}</p></div><p class="xm-next__count">${xmEscape(calendar.next.countdownLabel || "—")}</p></div>`
-          : ""
-      }
-      <ul class="xm-list">${upcoming}</ul>
-      ${undated ? `<h3 class="xm-subtitle">日期未定</h3><ul class="xm-list">${undated}</ul>` : ""}
-    </section>
-
-    <section class="panel panel--wide xm-section">
-      <div class="panel__head">
-        <h2>开仓四门</h2>
-        <p>通过 ${counts.pass || 0} · 需人工 ${(counts.caution || 0) + (counts.open || 0)} · 拦住 ${counts.block || 0}。拦住的门会改写页首立场。</p>
-      </div>
-      <div class="xm-gates">${gateCards}</div>
-      <p class="xm-table-note">${xmEscape(checklist.editHint || "")}</p>
-    </section>
-
-    <section class="panel panel--wide xm-section">
-      <div class="panel__head">
-        <h2>业务雷达</h2>
-        <p>策展收件箱聚成簇。每条有来源、日期和置信。${radar && radar.feed ? xmEscape(radar.feed.note || "") : "没有爬虫。"}</p>
-      </div>
-      ${radarBody || `<p class="empty">${xmEscape((trader.radar || {}).error || "雷达还没生成。")}</p>`}
-      <p class="xm-table-note">${xmEscape((radar && radar.disclaimer) || "仅供研究参考，不构成投资建议。")}</p>
-    </section>
+    </details>
   `;
+  xmMountDeskCharts(trader);
   renderCockpitXiaomi(trader);
 }
 
@@ -455,11 +752,25 @@ function renderCockpitXiaomi(trader) {
     el.innerHTML = `<p class="empty">看板数据未加载</p>`;
     return;
   }
-  const stance = trader.stance || {};
+  const price = trader.valuation?.priceHkd;
+  const pos = trader.publicSim?.positionPct;
+  const change = trader.box?.changePct;
   const next = trader.calendar?.next;
+  const gates = trader.checklist?.gates || [];
+  const chips = gates
+    .map((gate) => {
+      const status = XM_STATUSES.has(gate.status) ? gate.status : "open";
+      return `<span class="xm-chip xm-chip--${status}">${xmEscape(gate.label)} ${xmEscape(gate.statusLabel || "")}</span>`;
+    })
+    .join("");
   el.innerHTML = `
-    <p class="xm-cockpit__next">${xmEscape(stance.headline || "立场未计算")}</p>
-    <p class="xm-cockpit__title">${xmEscape(next ? `${next.countdownLabel} · ${next.title}` : "未来 60 天无已写窗口")}</p>
+    <div class="xm-cockpit__top">
+      <p class="xm-cockpit__price">${xmNum(price, 2)} <span>港元</span></p>
+      <p class="xm-cockpit__pos">模拟仓 ${pos == null ? "—" : `${xmNum(pos, 1)}%`}</p>
+    </div>
+    ${change == null ? "" : `<p class="xm-cockpit__change ${xmChangeClass(change)}">${xmPct(change)}</p>`}
+    <div class="xm-chips">${chips}</div>
+    <p class="xm-cockpit__title">${next ? `${xmEscape(next.countdownLabel)} · ${xmEscape(next.title)}` : "未来 60 天无已写窗口"}</p>
     <p class="xm-cockpit__hint">仅供研究参考，不构成投资建议</p>
   `;
 }

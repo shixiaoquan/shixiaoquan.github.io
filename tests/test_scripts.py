@@ -253,9 +253,11 @@ class XiaomiTraderTests(unittest.TestCase):
         self.assertLess(base_pe, 40)
         gates = {row["id"]: row for row in payload["checklist"]["gates"]}
         self.assertEqual(gates["valuation"]["status"], "block")
-        self.assertEqual(gates["catalyst"]["status"], "block")
+        self.assertEqual(gates["catalyst"]["status"], "caution")
+        self.assertTrue(gates["catalyst"]["humanNote"].strip())
         self.assertEqual(gates["position"]["status"], "block")
-        self.assertEqual(gates["exit"]["status"], "caution")
+        self.assertEqual(gates["exit"]["status"], "pass")
+        self.assertIn("箱体底部", gates["exit"]["humanNote"])
         self.assertIn("不新开多", payload["stance"]["headline"])
         self.assertIn("加仓", "".join(payload["stance"]["forbidden"]))
         self.assertTrue(payload["indicators"]["phone"]["placeholder"])
@@ -299,6 +301,34 @@ class XiaomiTraderTests(unittest.TestCase):
         )
         self.assertEqual(noted, "caution")
 
+    def test_blank_notes_keep_catalyst_blocked_and_exit_unpassed(self):
+        seed = json.loads((ROOT / "data" / "xiaomi_trader_seed.json").read_text(encoding="utf-8"))
+        for gate in seed["checklist"]["gates"]:
+            gate["humanNote"] = ""
+        box = {
+            "quote": {"price": 28.5, "asOf": "2026-11-03"},
+            "levels": {"boxLow": 25.44, "boxHigh": 29.1, "bottom": 21.3},
+        }
+        macro = {
+            "fx": [
+                {"symbol": "USDCNY=X", "price": 6.65},
+                {"symbol": "USDHKD=X", "price": 7.85},
+            ]
+        }
+        paper = {"strategyCode": "XRPS-X", "positionPct": 47.4, "equity": 1_000_000, "cash": 200_000}
+        payload = build_payload(
+            seed,
+            box=box,
+            macro=macro,
+            paper=paper,
+            radar={"items": []},
+            as_of=date(2026, 11, 3),
+        )
+        gates = {row["id"]: row for row in payload["checklist"]["gates"]}
+        self.assertEqual(gates["catalyst"]["status"], "block")
+        self.assertEqual(gates["exit"]["status"], "caution")
+        self.assertEqual(gates["exit"]["humanNote"], "")
+
     def test_radar_clusters_require_source_date_confidence(self):
         inbox = json.loads((ROOT / "data" / "xiaomi_radar_inbox.json").read_text(encoding="utf-8"))
         radar = build_radar(inbox, as_of=date(2026, 11, 3))
@@ -310,6 +340,11 @@ class XiaomiTraderTests(unittest.TestCase):
         self.assertIn("source", flat["oct-deliveries"])
         self.assertEqual(flat["oct-deliveries"]["date"], "2026-11-01")
         self.assertEqual(flat["phone-asp-gap"]["clusterId"], "data-gaps")
+        self.assertNotEqual(radar["clusters"][0]["id"], "data-gaps")
+        self.assertEqual(radar["clusters"][-1]["id"], "data-gaps")
+        self.assertTrue(str(flat["oct-deliveries"].get("sourceUrl") or "").startswith("https://"))
+        self.assertEqual(flat["buyback-oct28"]["confidence"], "high")
+        self.assertTrue(str(flat["buyback-oct28"].get("sourceUrl") or "").startswith("https://"))
         dropped = build_radar({"items": [{"title": "无来源"}]}, as_of=date(2026, 11, 3))
         self.assertEqual(dropped["feed"]["dropped"], 1)
         self.assertEqual(dropped["items"], [])

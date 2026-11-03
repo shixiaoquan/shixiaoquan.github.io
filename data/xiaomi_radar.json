@@ -1,7 +1,7 @@
 {
   "version": 2,
   "generatedBy": "scripts/xiaomi_radar.py",
-  "updatedAt": "2026-11-03T11:00:17+08:00",
+  "updatedAt": "2026-11-03T11:14:20+08:00",
   "asOf": "2026-11-03",
   "disclaimer": "仅供研究参考，不构成投资建议。",
   "feed": {
@@ -12,35 +12,6 @@
     "note": "把带 source、date、confidence 的条目追加到收件箱后运行 scripts/xiaomi_radar.py。没有爬虫。"
   },
   "clusters": [
-    {
-      "id": "data-gaps",
-      "title": "数据缺口",
-      "pillar": "数据",
-      "summary": "没有数的格子保持空白，避免用预览填洞。",
-      "confidence": "low",
-      "confidenceLabel": "低",
-      "latestDate": "2026-11-03",
-      "staleCount": 0,
-      "items": [
-        {
-          "id": "phone-asp-gap",
-          "clusterId": "data-gaps",
-          "pillar": "手机",
-          "tone": "watch",
-          "toneLabel": "观察",
-          "title": "手机出货和 ASP 不在本数据包里",
-          "detail": "行情文件和中报摘录没有可刷新的出货量或 ASP 序列。领先指标面板因此留空，不用卖方预览填数。",
-          "source": "本仓库数据缺口",
-          "sourceUrl": null,
-          "date": "2026-11-03",
-          "confidence": "low",
-          "confidenceLabel": "低",
-          "evergreen": true,
-          "stale": false,
-          "ageDays": 0
-        }
-      ]
-    },
     {
       "id": "auto-demand",
       "title": "汽车需求",
@@ -59,8 +30,8 @@
           "toneLabel": "强项",
           "title": "10 月交付下限超过 5 万",
           "detail": "公司 11 月 1 日称 10 月交付超过 5 万辆，为 2026 年单月下限的高点，并结束 8 月、9 月的同比下滑。精确数仍未锁定。",
-          "source": "公司披露 / 公开报道",
-          "sourceUrl": null,
+          "source": "小米汽车（新浪转载）",
+          "sourceUrl": "https://finance.sina.com.cn/roll/2026-11-01/doc-inixeuac3251721.shtml",
           "date": "2026-11-01",
           "confidence": "high",
           "confidenceLabel": "高",
@@ -76,8 +47,8 @@
           "toneLabel": "观察",
           "title": "55 万辆目标还差最后两个月",
           "detail": "按公开汇编，前 10 个月下限约 33.6 万辆，大约是 55 万辆引述目标的六成。这是完成度，不是公司确认的累计。",
-          "source": "公开报道汇编",
-          "sourceUrl": null,
+          "source": "CnEVPost 汇编",
+          "sourceUrl": "https://cnevpost.com/2026/11/01/xiaomi-auto-delivers-over-50000-oct-2026/",
           "date": "2026-11-01",
           "confidence": "medium",
           "confidenceLabel": "中",
@@ -93,8 +64,8 @@
           "toneLabel": "观察",
           "title": "Sky Nomad 已开始交付",
           "detail": "2026-09-07 发布。公开报道称 9 月交付 12,444 辆，30 日锁单超过 7 万。锁单不是收入。",
-          "source": "公开报道",
-          "sourceUrl": null,
+          "source": "CnEVPost",
+          "sourceUrl": "https://cnevpost.com/2026/11/01/xiaomi-auto-delivers-over-50000-oct-2026/",
           "date": "2026-09-07",
           "confidence": "medium",
           "confidenceLabel": "中",
@@ -118,6 +89,35 @@
           "evergreen": true,
           "stale": false,
           "ageDays": 77
+        }
+      ]
+    },
+    {
+      "id": "capital",
+      "title": "资本动作",
+      "pillar": "回购",
+      "summary": "回购只说明公司在买自己的股票，不改四门，也不当作业绩。",
+      "confidence": "high",
+      "confidenceLabel": "高",
+      "latestDate": "2026-10-28",
+      "staleCount": 0,
+      "items": [
+        {
+          "id": "buyback-oct28",
+          "clusterId": "capital",
+          "pillar": "回购",
+          "tone": "watch",
+          "toneLabel": "观察",
+          "title": "10 月 28 日回购 195.14 万股，拟注销",
+          "detail": "港交所翌日披露报表：2026-10-28 于联交所回购 1,951,400 股 B 类股份，每股 25.56–25.66 港元，付出总额 49,998,770.8 港元，拟注销。这是资本动作，不是业绩，也不改四门。",
+          "source": "港交所翌日披露报表",
+          "sourceUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/1028/2026102801008_c.pdf",
+          "date": "2026-10-28",
+          "confidence": "high",
+          "confidenceLabel": "高",
+          "evergreen": false,
+          "stale": false,
+          "ageDays": 6
         }
       ]
     },
@@ -169,7 +169,7 @@
           "title": "内存涨价被写进中报，但没有价格指数",
           "detail": "公司把关键零部件（含内存）涨价写成毛利和利润压力。本雷达没有独立存储报价，不能把这句话换成一个成本百分比。",
           "source": "2026 中期报告",
-          "sourceUrl": null,
+          "sourceUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0923/2026092300296.pdf",
           "date": "2026-08-18",
           "confidence": "medium",
           "confidenceLabel": "中",
@@ -195,26 +195,38 @@
           "ageDays": 77
         }
       ]
+    },
+    {
+      "id": "data-gaps",
+      "title": "数据缺口",
+      "pillar": "数据",
+      "summary": "没有数的格子保持空白，避免用预览填洞。这簇默认收在后面。",
+      "confidence": "low",
+      "confidenceLabel": "低",
+      "latestDate": "2026-08-18",
+      "staleCount": 0,
+      "items": [
+        {
+          "id": "phone-asp-gap",
+          "clusterId": "data-gaps",
+          "pillar": "手机",
+          "tone": "watch",
+          "toneLabel": "观察",
+          "title": "手机出货和 ASP 不在本数据包里",
+          "detail": "行情文件和中报摘录没有可刷新的出货量或 ASP 序列。领先指标面板因此留空，不用卖方预览填数。",
+          "source": "本仓库数据缺口",
+          "sourceUrl": null,
+          "date": "2026-08-18",
+          "confidence": "low",
+          "confidenceLabel": "低",
+          "evergreen": true,
+          "stale": false,
+          "ageDays": 77
+        }
+      ]
     }
   ],
   "items": [
-    {
-      "id": "phone-asp-gap",
-      "clusterId": "data-gaps",
-      "pillar": "手机",
-      "tone": "watch",
-      "toneLabel": "观察",
-      "title": "手机出货和 ASP 不在本数据包里",
-      "detail": "行情文件和中报摘录没有可刷新的出货量或 ASP 序列。领先指标面板因此留空，不用卖方预览填数。",
-      "source": "本仓库数据缺口",
-      "sourceUrl": null,
-      "date": "2026-11-03",
-      "confidence": "low",
-      "confidenceLabel": "低",
-      "evergreen": true,
-      "stale": false,
-      "ageDays": 0
-    },
     {
       "id": "oct-deliveries",
       "clusterId": "auto-demand",
@@ -223,8 +235,8 @@
       "toneLabel": "强项",
       "title": "10 月交付下限超过 5 万",
       "detail": "公司 11 月 1 日称 10 月交付超过 5 万辆，为 2026 年单月下限的高点，并结束 8 月、9 月的同比下滑。精确数仍未锁定。",
-      "source": "公司披露 / 公开报道",
-      "sourceUrl": null,
+      "source": "小米汽车（新浪转载）",
+      "sourceUrl": "https://finance.sina.com.cn/roll/2026-11-01/doc-inixeuac3251721.shtml",
       "date": "2026-11-01",
       "confidence": "high",
       "confidenceLabel": "高",
@@ -240,14 +252,31 @@
       "toneLabel": "观察",
       "title": "55 万辆目标还差最后两个月",
       "detail": "按公开汇编，前 10 个月下限约 33.6 万辆，大约是 55 万辆引述目标的六成。这是完成度，不是公司确认的累计。",
-      "source": "公开报道汇编",
-      "sourceUrl": null,
+      "source": "CnEVPost 汇编",
+      "sourceUrl": "https://cnevpost.com/2026/11/01/xiaomi-auto-delivers-over-50000-oct-2026/",
       "date": "2026-11-01",
       "confidence": "medium",
       "confidenceLabel": "中",
       "evergreen": false,
       "stale": false,
       "ageDays": 2
+    },
+    {
+      "id": "buyback-oct28",
+      "clusterId": "capital",
+      "pillar": "回购",
+      "tone": "watch",
+      "toneLabel": "观察",
+      "title": "10 月 28 日回购 195.14 万股，拟注销",
+      "detail": "港交所翌日披露报表：2026-10-28 于联交所回购 1,951,400 股 B 类股份，每股 25.56–25.66 港元，付出总额 49,998,770.8 港元，拟注销。这是资本动作，不是业绩，也不改四门。",
+      "source": "港交所翌日披露报表",
+      "sourceUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/1028/2026102801008_c.pdf",
+      "date": "2026-10-28",
+      "confidence": "high",
+      "confidenceLabel": "高",
+      "evergreen": false,
+      "stale": false,
+      "ageDays": 6
     },
     {
       "id": "q3-board",
@@ -274,14 +303,31 @@
       "toneLabel": "观察",
       "title": "Sky Nomad 已开始交付",
       "detail": "2026-09-07 发布。公开报道称 9 月交付 12,444 辆，30 日锁单超过 7 万。锁单不是收入。",
-      "source": "公开报道",
-      "sourceUrl": null,
+      "source": "CnEVPost",
+      "sourceUrl": "https://cnevpost.com/2026/11/01/xiaomi-auto-delivers-over-50000-oct-2026/",
       "date": "2026-09-07",
       "confidence": "medium",
       "confidenceLabel": "中",
       "evergreen": false,
       "stale": true,
       "ageDays": 57
+    },
+    {
+      "id": "phone-asp-gap",
+      "clusterId": "data-gaps",
+      "pillar": "手机",
+      "tone": "watch",
+      "toneLabel": "观察",
+      "title": "手机出货和 ASP 不在本数据包里",
+      "detail": "行情文件和中报摘录没有可刷新的出货量或 ASP 序列。领先指标面板因此留空，不用卖方预览填数。",
+      "source": "本仓库数据缺口",
+      "sourceUrl": null,
+      "date": "2026-08-18",
+      "confidence": "low",
+      "confidenceLabel": "低",
+      "evergreen": true,
+      "stale": false,
+      "ageDays": 77
     },
     {
       "id": "memory-cost",
@@ -292,7 +338,7 @@
       "title": "内存涨价被写进中报，但没有价格指数",
       "detail": "公司把关键零部件（含内存）涨价写成毛利和利润压力。本雷达没有独立存储报价，不能把这句话换成一个成本百分比。",
       "source": "2026 中期报告",
-      "sourceUrl": null,
+      "sourceUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0923/2026092300296.pdf",
       "date": "2026-08-18",
       "confidence": "medium",
       "confidenceLabel": "中",
