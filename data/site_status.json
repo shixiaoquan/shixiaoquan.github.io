@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-11-03T21:43:35+00:00",
+  "updatedAt": "2026-11-03T21:45:30+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 1020,
-    "masterLearnUpdatedAt": "2026-11-03T21:42:46+00:00",
-    "masterAvgWinRate": 33.1,
+    "masterLearnRevision": 1019,
+    "masterLearnUpdatedAt": "2026-11-03T16:04:53+00:00",
+    "masterAvgWinRate": 32.9,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-11-03T21:43:35+00:00",
+    "updatedAt": "2026-11-03T17:57:31+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -168,18 +168,6 @@
   },
   "recentLog": [
     {
-      "at": "2026-11-03T21:43:05+00:00",
-      "type": "master_learn",
-      "revision": 1020,
-      "regime": "risk_off",
-      "notes": {
-        "buffett": "近期表现反馈：margins↓",
-        "templeton": "近期表现反馈：month↓、range↓、pe↓、roe↓",
-        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
-        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
-      }
-    },
-    {
       "at": "2026-11-03T16:05:06+00:00",
       "type": "master_learn",
       "revision": 1019,
@@ -238,6 +226,18 @@
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
         "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
       }
+    },
+    {
+      "at": "2026-11-02T01:50:59+00:00",
+      "type": "master_learn",
+      "revision": 1014,
+      "regime": "risk_off",
+      "notes": {
+        "buffett": "近期表现反馈：margins↓",
+        "templeton": "近期表现反馈：month↓、range↓、pe↓、roe↓",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
+        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
+      }
     }
   ],
   "pipelines": [
@@ -246,18 +246,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-03T21:43:34+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "updatedAt": "2026-11-03T16:05:58+00:00",
+      "status": "stale",
+      "ageMinutes": 339
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-03T21:43:21+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "updatedAt": "2026-11-03T16:05:17+00:00",
+      "status": "stale",
+      "ageMinutes": 340
     },
     {
       "id": "truth",
@@ -266,16 +266,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-03T16:10:54+00:00",
       "status": "stale",
-      "ageMinutes": 332
+      "ageMinutes": 334
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-11-03T16:09:20+00:00",
-      "status": "stale",
-      "ageMinutes": 334
+      "updatedAt": "2026-11-03T21:44:29+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -284,7 +284,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-04T00:02:33+08:00",
       "status": "ok",
-      "ageMinutes": 341
+      "ageMinutes": 342
     },
     {
       "id": "backtest",
@@ -293,9 +293,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-01T08:36:51+00:00",
       "status": "ok",
-      "ageMinutes": 3666
+      "ageMinutes": 3668
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "41724180447"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "41724228819"
 }
