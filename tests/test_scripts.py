@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import sys
 import unittest
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -23,6 +24,12 @@ from paired_attribution import build_paired_attribution, _summarize_pairs  # noq
 from shadow_reco import _calendar_weeks  # noqa: E402
 from hk01810_box import decide as hk01810_decide  # noqa: E402
 from validate_data import main as validate_main  # noqa: E402
+from xiaomi_trader import (  # noqa: E402
+    build_payload,
+    build_valuation_gate,
+    expand_calendar,
+    implied_pe,
+)
 
 
 class DecisionScoreTests(unittest.TestCase):
@@ -168,6 +175,87 @@ class Hk01810BoxTests(unittest.TestCase):
     def test_invalidation_and_breakout(self):
         self.assertEqual(hk01810_decide(21.2)["action"], "exit")
         self.assertEqual(hk01810_decide(29.5)["action"], "breakout_up")
+
+
+class XiaomiTraderTests(unittest.TestCase):
+    def test_calendar_windows_from_nov_3(self):
+        events = [
+            {"id": "q3", "kind": "earnings", "title": "三季报", "date": "2026-11-24"},
+            {
+                "id": "m",
+                "kind": "delivery",
+                "title": "汽车月度交付",
+                "recurrence": "monthly",
+                "dayOfMonth": 1,
+            },
+            {"id": "u", "kind": "data", "title": "待定", "date": None},
+        ]
+        calendar = expand_calendar(events, date(2026, 11, 3), 60)
+        by_date = {row["date"]: row for row in calendar["upcoming"]}
+        self.assertEqual(by_date["2026-11-24"]["daysUntil"], 21)
+        self.assertTrue(by_date["2026-11-24"]["within30"])
+        self.assertEqual(by_date["2026-12-01"]["daysUntil"], 28)
+        self.assertEqual(by_date["2027-01-01"]["daysUntil"], 59)
+        self.assertFalse(by_date["2027-01-01"]["within30"])
+        self.assertNotIn("2026-11-01", by_date)
+        self.assertEqual(len(calendar["undated"]), 1)
+
+    def test_monthly_clamps_short_month(self):
+        events = [
+            {"id": "m", "kind": "delivery", "title": "交付", "recurrence": "monthly", "dayOfMonth": 31}
+        ]
+        calendar = expand_calendar(events, date(2026, 1, 31), 60)
+        dates = [row["date"] for row in calendar["upcoming"]]
+        self.assertIn("2026-02-28", dates)
+        self.assertIn("2026-03-31", dates)
+
+    def test_sell_zone_blocks_new_long(self):
+        status, summary = build_valuation_gate(
+            28.5, {"action": "sell", "actionLabel": "卖出2份"}, 25.2
+        )
+        self.assertEqual(status, "block")
+        self.assertIn("不新开多", summary)
+
+    def test_missing_price_has_no_multiple(self):
+        self.assertIsNone(implied_pe(None, 246))
+
+    def test_payload_labels_assumptions_and_four_gates(self):
+        seed = json.loads((ROOT / "data" / "xiaomi_trader_seed.json").read_text(encoding="utf-8"))
+        box = {
+            "quote": {"price": 28.5, "asOf": "2026-11-03"},
+            "levels": {"boxLow": 25.44, "boxHigh": 29.1, "bottom": 21.3},
+        }
+        macro = {
+            "fx": [
+                {"symbol": "USDCNY=X", "price": 6.65},
+                {"symbol": "USDHKD=X", "price": 7.85},
+            ]
+        }
+        paper = {"strategyCode": "XRPS-X", "positionPct": 47.4, "equity": 1_000_000, "cash": 200_000}
+        payload = build_payload(
+            seed,
+            box=box,
+            macro=macro,
+            paper=paper,
+            radar={"items": []},
+            as_of=date(2026, 11, 3),
+        )
+        self.assertIn("不构成投资建议", payload["disclaimer"])
+        self.assertEqual([row["id"] for row in payload["scenarios"]["items"]], ["bull", "base", "bear"])
+        self.assertIn("假设", payload["scenarios"]["assumptionLabel"])
+        self.assertEqual(payload["scenarios"]["items"][1]["profitMetric"], "adjusted_net_profit")
+        base_pe = payload["scenarios"]["items"][1]["impliedPe"]
+        self.assertIsNotNone(base_pe)
+        self.assertGreater(base_pe, 15)
+        self.assertLess(base_pe, 40)
+        gates = {row["id"]: row for row in payload["checklist"]["gates"]}
+        self.assertEqual(gates["valuation"]["status"], "block")
+        self.assertEqual(gates["catalyst"]["status"], "caution")
+        self.assertEqual(gates["position"]["status"], "caution")
+        self.assertEqual(gates["exit"]["status"], "caution")
+        self.assertNotIn("trades", payload["publicSim"])
+        self.assertEqual(payload["calendar"]["next"]["date"], "2026-11-24")
+        self.assertFalse(payload["checklist"]["readyToOpen"])
 
 
 class ValidateDataTests(unittest.TestCase):

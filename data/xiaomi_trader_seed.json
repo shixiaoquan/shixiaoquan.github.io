@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "symbol": "1810.HK",
+  "name": "小米集团-W",
+  "disclaimer": "仅供研究参考，不构成投资建议。",
+  "narrative": {
+    "headline": "手机与 AIoT 利润仍弱，汽车交付是当前主线",
+    "body": "2026 年上半年收入 2,080.6 亿元、同比 -8.4%，经调整净利润 122.9 亿元、同比 -42.8%。公司在中报里把逆风写成地缘、内存涨价和竞争。同期智能电动汽车、AI 及其他新业务收入 447.6 亿元，同比约 +12.3%。11 月 1 日公司称 10 月交付超过 5 万辆，结束连续两个月同比下滑；全年 55 万辆目标仍要求最后两个月显著放量。下面的情景是围绕这些事实做的假设，不是业绩预测。"
+  },
+  "valuationBasis": {
+    "shares": 25723924000,
+    "sharesAsOf": "2026-06-30",
+    "sharesNote": "2026 中期报告：截至 2026-06-30 止六个月加权平均已发行普通股 25,723,924 千股。回购会使期末股本偏离这个数，倍数只作情景对照。"
+  },
+  "anchor": {
+    "periodLabel": "2026 年上半年（截至 6 月 30 日）",
+    "source": "小米集团 2026 中期业绩公告（2026-08-18）与 2026 中期报告",
+    "sourceUrl": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081801014.pdf",
+    "revenueYi": 2080.6,
+    "revenueYoyPct": -8.4,
+    "ifrsNetProfitYi": 142.0,
+    "ifrsNetProfitYoyPct": -37.6,
+    "adjustedNetProfitYi": 122.9,
+    "adjustedNetProfitYoyPct": -42.8,
+    "profitMetric": "adjusted_net_profit",
+    "profitMetricLabel": "经调整净利润（Non-IFRS）",
+    "profitNote": "情景表使用经调整净利润。同期 IFRS 净利润为 142.0 亿元，更高的部分主要来自公允价值变动等调整项，不把投资公允价值当成经营利润。",
+    "smartphoneAiotRevenueYi": 1633.0,
+    "evNewInitiativesRevenueYi": 447.6,
+    "evNewInitiativesYoyPct": 12.3
+  },
+  "autoDelivery": {
+    "fyTarget": 550000,
+    "fyTargetNote": "公开报道引述的 2026 年交付目标，以公司最新表述为准。",
+    "octoberLowerBound": 50000,
+    "octoberAnnouncedOn": "2026-11-01",
+    "septemberUnits": 40015,
+    "ytdLowerBoundThroughOctober": 336490,
+    "ytdNote": "前 10 个月累计是公开汇编下限（10 月按超过 5 万计入），不是公司给出的精确累计。",
+    "skyNomad": "Sky Nomad 于 2026-09-07 发布。公开报道称 9 月交付 12,444 辆，30 日锁单超过 7 万。"
+  },
+  "calendar": {
+    "horizonDays": 60,
+    "events": [
+      {
+        "id": "q3-2026-board",
+        "kind": "earnings",
+        "title": "2026 年第三季度业绩董事会审核",
+        "date": "2026-11-24",
+        "source": "港交所披露易 2026-10-23《董事会会议日期》",
+        "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1023/2026102301169.pdf",
+        "note": "董事会将于 2026-11-24 审议并批准截至 2026-09-30 止三个月及九个月未经审核综合业绩。业绩通常在该日或紧随其后公布，以公司公告为准。"
+      },
+      {
+        "id": "auto-delivery-monthly",
+        "kind": "delivery",
+        "title": "汽车月度交付",
+        "recurrence": "monthly",
+        "dayOfMonth": 1,
+        "source": "交付披露节奏（人工维护）",
+        "note": "按次月 1 日前后的惯例展开，不是公司承诺的公告时刻。遇周末或休市可能顺延。10 月交付已于 2026-11-01 披露为超过 5 万，精确分车型仍看中汽协。"
+      },
+      {
+        "id": "skynomad-q3-check",
+        "kind": "product",
+        "title": "Sky Nomad 爬坡，对照三季报汽车收入",
+        "date": "2026-11-24",
+        "source": "产品已于 2026-09-07 发布；本条把观察日对齐董事会审核日，不是新的发布日",
+        "note": "看三季报里智能电动汽车收入和毛利是否跟上交付，而不是把锁单直接当成收入。"
+      },
+      {
+        "id": "cpca-oct-2026",
+        "kind": "data",
+        "title": "中汽协 10 月交付精确数",
+        "date": null,
+        "source": "公司 11 月 1 日只给出超过 5 万的下限",
+        "note": "日期未锁定。精确数和分车型出来之前，不要把下限写成全年目标已经兑现。"
+      }
+    ]
+  },
+  "scenarios": {
+    "horizon": "2026 全年",
+    "profitMetric": "adjusted_net_profit",
+    "profitMetricLabel": "经调整净利润（Non-IFRS）",
+    "assumptionLabel": "情景假设，不是业绩预测",
+    "items": [
+      {
+        "id": "bull",
+        "label": "乐观",
+        "revenueYi": 4500,
+        "adjustedNetProfitYi": 320,
+        "narrative": "假设 11–12 月交付明显抬升，Sky Nomad 放量覆盖 SU7 / YU7 走弱，内存成本压力在下半年缓和，经调整净利润修复快于收入。这不是目标价，也不是卖方预测。"
+      },
+      {
+        "id": "base",
+        "label": "基准",
+        "revenueYi": 4160,
+        "adjustedNetProfitYi": 246,
+        "narrative": "假设下半年收入和经调整净利润都接近上半年已实现的水平：消费电子维持量价压力，汽车交付维持高位但利润率不跳升。接近「上半年年化」，用来对照现价，不是预测中枢。"
+      },
+      {
+        "id": "bear",
+        "label": "悲观",
+        "revenueYi": 3800,
+        "adjustedNetProfitYi": 170,
+        "narrative": "假设手机与 IoT 继续下滑，汽车全年交付远离 55 万辆，内存成本和投入把下半年经调整净利润压到明显低于上半年。"
+      }
+    ]
+  },
+  "checklist": {
+    "gates": [
+      {
+        "id": "catalyst",
+        "humanPrompt": "这笔要验证的催化是什么？证据是哪一份公告或哪一个交付数？最晚哪一天必须看到？没有窗口就不开。",
+        "humanNote": ""
+      },
+      {
+        "id": "valuation",
+        "humanPrompt": "你愿意为基准情景的经调整净利润付多少倍？现价高于这个倍数时，写明为什么仍然要买，或者直接不做。",
+        "humanNote": ""
+      },
+      {
+        "id": "position",
+        "humanPrompt": "真实账户计划用多少仓位？写在本地笔记里，不要把真实持仓放进这个公开仓库。未写上限视为此门未过。",
+        "humanNote": ""
+      },
+      {
+        "id": "exit",
+        "humanPrompt": "写下这笔的失效条件：价格、时间、基本面哪一条先到就走。箱体规则只是默认模板。",
+        "humanNote": ""
+      }
+    ]
+  }
+}

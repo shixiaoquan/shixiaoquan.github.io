@@ -101,6 +101,48 @@ def check_evolution_queue() -> None:
         ERRORS.append("evolution_queue 缺少 tasks")
 
 
+def check_xiaomi_trader() -> None:
+    data = _load(DATA_DIR / "xiaomi_trader.json")
+    if not data:
+        WARNINGS.append("xiaomi_trader.json 未生成")
+        return
+    for key in ("disclaimer", "calendar", "scenarios", "checklist"):
+        if key not in data:
+            ERRORS.append(f"xiaomi_trader 缺少 {key}")
+    disclaimer = data.get("disclaimer") or ""
+    if "不构成投资建议" not in disclaimer:
+        ERRORS.append("xiaomi_trader disclaimer 缺少「不构成投资建议」")
+    upcoming = (data.get("calendar") or {}).get("upcoming")
+    if not isinstance(upcoming, list):
+        ERRORS.append("xiaomi_trader.calendar.upcoming 不是列表")
+    scenario_ids = [
+        row.get("id")
+        for row in (data.get("scenarios") or {}).get("items") or []
+        if isinstance(row, dict)
+    ]
+    for scenario_id in ("bull", "base", "bear"):
+        if scenario_id not in scenario_ids:
+            ERRORS.append(f"xiaomi_trader 缺少情景 {scenario_id}")
+    gate_ids = [
+        row.get("id")
+        for row in (data.get("checklist") or {}).get("gates") or []
+        if isinstance(row, dict)
+    ]
+    for gate_id in ("catalyst", "valuation", "position", "exit"):
+        if gate_id not in gate_ids:
+            ERRORS.append(f"xiaomi_trader 缺少开仓门 {gate_id}")
+    label = (data.get("scenarios") or {}).get("assumptionLabel") or ""
+    if "假设" not in label:
+        ERRORS.append("xiaomi_trader 情景未标明为假设")
+
+    radar = _load(DATA_DIR / "xiaomi_radar.json")
+    if not radar:
+        WARNINGS.append("xiaomi_radar.json 缺失")
+        return
+    if not isinstance(radar.get("items"), list):
+        ERRORS.append("xiaomi_radar.items 不是列表")
+
+
 def check_reco_history() -> None:
     data = _load(DATA_DIR / "reco_history_recent.json")
     if not data:
@@ -121,6 +163,7 @@ def main() -> int:
     check_shadow()
     check_evolution_queue()
     check_reco_history()
+    check_xiaomi_trader()
 
     for w in WARNINGS:
         print(f"WARN: {w}")

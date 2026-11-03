@@ -64,7 +64,7 @@ let historyDisplayLimit = HISTORY_DISPLAY_LIMIT;
 let lastRecoHistoryStamp = null;
 let aiSearchTimer = null;
 
-const VALID_TABS = new Set(["cockpit", "reports", "market", "reco", "lab", "paper", "hk01810", "ai", "truth"]);
+const VALID_TABS = new Set(["cockpit", "reports", "market", "reco", "lab", "paper", "hk01810", "xiaomi", "ai", "truth"]);
 const TAB_ALIASES = { review: "paper", news: "cockpit" };
 const DEFAULT_TAB = "cockpit";
 const VALID_RECO_MODES = new Set(["tactical", "masters"]);
@@ -286,6 +286,9 @@ function switchTab(tabId, options = {}) {
   }
   if (tabId === "hk01810" && typeof refreshHk01810Box === "function") {
     refreshHk01810Box(marketData);
+  }
+  if (tabId === "xiaomi" && typeof refreshXiaomiTrader === "function") {
+    refreshXiaomiTrader(marketData);
   }
   ensureTabData(tabId);
 }
@@ -1196,6 +1199,9 @@ async function ensureTabData(tabId) {
   }
   if (tabId === "hk01810" && typeof refreshHk01810Box === "function") {
     await refreshHk01810Box(marketData);
+  }
+  if (tabId === "xiaomi" && typeof refreshXiaomiTrader === "function") {
+    await refreshXiaomiTrader(marketData);
   }
 }
 
@@ -3414,6 +3420,9 @@ function applyData(data) {
   } else if (typeof renderCockpitHk01810 === "function") {
     renderCockpitHk01810(null, data);
   }
+  if (typeof refreshXiaomiTrader === "function") {
+    refreshXiaomiTrader(data);
+  }
 }
 
 async function fetchMarketData() {
@@ -3508,6 +3517,7 @@ async function init() {
     refreshTradingData(),
     refreshSiteStatus(),
     typeof refreshHk01810Box === "function" ? refreshHk01810Box() : Promise.resolve(),
+    typeof refreshXiaomiTrader === "function" ? refreshXiaomiTrader() : Promise.resolve(),
   ]);
 
   await ensureTabData(initialLocation.tab);
@@ -3520,6 +3530,9 @@ async function init() {
     PollScheduler.register(refreshTradingData);
     PollScheduler.register(() => {
       if (typeof refreshHk01810Box === "function") refreshHk01810Box(marketData);
+    });
+    PollScheduler.register(() => {
+      if (typeof refreshXiaomiTrader === "function") refreshXiaomiTrader(marketData);
     });
     PollScheduler.register(() => {
       if (tabBundles.paper) {

@@ -681,6 +681,13 @@ def main() -> None:
         print(f"hk01810_box skip: {exc}")
 
     try:
+        from xiaomi_trader import run as run_xiaomi_trader
+
+        run_xiaomi_trader()
+    except Exception as exc:
+        print(f"xiaomi_trader skip: {exc}")
+
+    try:
         from build_evolution_queue import build_queue
 
         build_queue()

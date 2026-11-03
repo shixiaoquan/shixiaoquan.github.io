@@ -29,7 +29,7 @@
 
 | 工作流 | 频率 | 产出 | 说明 |
 |--------|------|------|------|
-| `update-market-data.yml` | 5min（交易日历降频） | `market_core.json` / `market_reco.json` 等 | 含决策分、影子轨、进化队列 |
+| `update-market-data.yml` | 5min（交易日历降频） | `market_core.json` / `market_reco.json` / `xiaomi_trader.json` 等 | 含决策分、影子轨、进化队列、小米交易员看板 |
 | `update-truth-social.yml` | 10min | `trump_truth.json` | Telegram RSS 降级 |
 | `update-wencai-data.yml` | 每小时 | `wencai.json` | 需 `WENCAI_COOKIE` |
 | `generate-investment-report.yml` | UTC 1/4/8 | `data/reports/*.md` | 含进化状态章节 |
@@ -68,9 +68,21 @@ python scripts/reco_attribution.py
 python scripts/paired_attribution.py
 python scripts/build_evolution_queue.py
 python scripts/build_site_status.py
+python scripts/hk01810_box.py
+python scripts/xiaomi_trader.py
 python scripts/validate_data.py
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
+
+## 小米交易员看板
+
+和 XRPS 滚动仓、HK01810 箱体并列，不替代二者。页面在 `#xiaomi`。
+
+- 人工维护 `data/xiaomi_trader_seed.json`：日历、情景假设、四道开仓门的人工备注
+- 人工维护 `data/xiaomi_radar.json`：业务雷达样本。没有新闻爬虫
+- `python scripts/xiaomi_trader.py` 读种子、箱体现价、宏观汇率和公开模拟盘，写出 `data/xiaomi_trader.json`
+- `update-market-data` 在交易日拉数和休市轻量刷新时都会跑这个脚本。它不访问外网
+- 情景是假设，不是业绩预测。页内声明：仅供研究参考，不构成投资建议。模拟盘不是真实持仓
 
 ## Cursor 协作
 
