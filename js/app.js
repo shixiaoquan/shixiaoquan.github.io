@@ -56,7 +56,7 @@ let currentReportId = null;
 let macroData = null;
 let quoteMap = {};
 let quoteChangeMap = {};
-let activeTab = "cockpit";
+let activeTab = "xiaomi";
 let recoMode = "tactical";
 let suppressTabRoute = false;
 const tabBundles = { paper: false, ai: false, reports: false };
@@ -64,9 +64,20 @@ let historyDisplayLimit = HISTORY_DISPLAY_LIMIT;
 let lastRecoHistoryStamp = null;
 let aiSearchTimer = null;
 
-const VALID_TABS = new Set(["cockpit", "reports", "market", "reco", "lab", "paper", "hk01810", "xiaomi", "ai", "truth"]);
-const TAB_ALIASES = { review: "paper", news: "cockpit" };
-const DEFAULT_TAB = "cockpit";
+const VALID_TABS = new Set(["xiaomi", "ai"]);
+const TAB_ALIASES = {
+  review: "xiaomi",
+  news: "xiaomi",
+  cockpit: "xiaomi",
+  reports: "xiaomi",
+  market: "xiaomi",
+  reco: "xiaomi",
+  lab: "xiaomi",
+  paper: "xiaomi",
+  hk01810: "xiaomi",
+  truth: "xiaomi",
+};
+const DEFAULT_TAB = "xiaomi";
 const VALID_RECO_MODES = new Set(["tactical", "masters"]);
 const DEFAULT_RECO_MODE = "tactical";
 
@@ -101,9 +112,8 @@ function tabFromLocation() {
 }
 
 function buildRouteHash(tabId, mode = DEFAULT_RECO_MODE) {
-  if (tabId === DEFAULT_TAB) return "";
-  if (tabId === "reco" && mode === "masters") return "#reco/masters";
-  return `#${tabId}`;
+  // Always keep an explicit hash so landing and share links stay on #xiaomi / #ai.
+  return tabId === "ai" ? "#ai" : "#xiaomi";
 }
 
 function syncTabRoute(tabId, replace = false) {
@@ -3505,10 +3515,9 @@ async function init() {
   const initialLocation = parseLocationHash();
   suppressTabRoute = true;
   switchTab(initialLocation.tab, { updateRoute: false, fromRoute: true });
-  if (initialLocation.tab === "reco") {
-    switchRecoMode(initialLocation.recoMode, { updateRoute: false });
-  }
   suppressTabRoute = false;
+  // Normalize bare / old hashes onto #xiaomi or #ai.
+  syncTabRoute(activeTab, true);
 
   await Promise.all([
     refreshData(),
@@ -3559,7 +3568,6 @@ async function init() {
   const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 2500));
   scheduleIdle(() => {
     ensureTabData("ai");
-    ensureTabData("reports");
   });
 
   if (typeof initTruthModule === "function") {
