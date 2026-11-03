@@ -145,7 +145,11 @@ def build_radar(inbox: dict | None, *, as_of: date | None = None) -> dict:
                 "items": members,
             }
         )
-    clusters.sort(key=lambda row: (row.get("latestDate") or "", row["id"]), reverse=True)
+    regular = [row for row in clusters if row["id"] != "data-gaps"]
+    gaps = [row for row in clusters if row["id"] == "data-gaps"]
+    regular.sort(key=lambda row: (row.get("latestDate") or "", row["id"]), reverse=True)
+    gaps.sort(key=lambda row: row["id"])
+    clusters = regular + gaps
 
     flat = sorted(normalized, key=lambda row: (row.get("date") or "", row["id"]), reverse=True)
     now = datetime.now(HK_TZ).isoformat(timespec="seconds")
