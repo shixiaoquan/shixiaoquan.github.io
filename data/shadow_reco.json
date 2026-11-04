@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T08:02:22+00:00",
+  "updatedAt": "2026-11-04T16:11:19+00:00",
   "track": "shadow",
   "productionVersion": "v1.3.0",
   "candidateParams": {
@@ -11,37 +11,89 @@
     "strategy": "影子轨 buy≥75 breakout≥62（候选参数，非生产）",
     "picks": [
       {
-        "symbol": "600519.SS",
-        "name": "贵州茅台",
+        "symbol": "AMZN",
+        "name": "亚马逊",
+        "market": "美股",
+        "sector": "电商云计算",
+        "currency": "USD",
+        "price": 266.58,
+        "score": 86.8,
+        "signal": "buy",
+        "signalLabel": "突破买入",
+        "rsi": 60.2,
+        "monthChangePct": 4.02,
+        "relativeStrength": 5.22,
+        "reasons": [
+          "突破 40 日平台且放量",
+          "价格站上 20 日均线",
+          "价格站上 60 日均线"
+        ],
+        "plan": {
+          "entry": "现价 266.58 轻仓试探；回踩 20 日均线 254.16 或 249.07 附近分批加仓",
+          "stopLoss": "跌破 243.24（约 -8.8%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 350.62（盈亏比 1:3.0），可分批止盈",
+          "position": "美股标的建议仓位 ≤ 总资金 22.7%（单笔风险 2.0%）；三市场分散配置"
+        },
+        "stopLossPrice": 243.24,
+        "targetPrice": 350.62,
+        "distToStopPct": 8.8,
+        "distToTargetPct": 31.5,
+        "regimeOk": true,
+        "breakout": true,
+        "breakoutLevel": 265.34,
+        "decisionScore": 57.0,
+        "decisionLabel": "中",
+        "decisionComponents": {
+          "macro": {
+            "score": 85.0,
+            "note": "市场偏多"
+          },
+          "wencai": {
+            "score": 55.0,
+            "note": "问财震荡"
+          },
+          "masters": {
+            "score": 40.0,
+            "note": "大师共识 0/7"
+          },
+          "truth": {
+            "score": 50,
+            "note": "舆情热度 0"
+          }
+        }
+      },
+      {
+        "symbol": "600036.SS",
+        "name": "招商银行",
         "market": "A股",
-        "sector": "白酒",
+        "sector": "银行",
         "currency": "CNY",
-        "price": 1446.44,
-        "score": 85.8,
+        "price": 42.69,
+        "score": 78.2,
         "signal": "watch",
         "signalLabel": "建议观察",
-        "rsi": 69.8,
-        "monthChangePct": 17.07,
-        "relativeStrength": 20.66,
+        "rsi": 55.1,
+        "monthChangePct": 5.04,
+        "relativeStrength": 12.25,
         "reasons": [
           "价格站上 20 日均线",
           "价格站上 60 日均线",
           "均线多头排列"
         ],
         "plan": {
-          "entry": "现价 1446.44 轻仓试探；回踩 20 日均线 1338.89 或 1312.12 附近分批加仓",
-          "stopLoss": "跌破 1366.17（约 -5.5%，2.5 倍 ATR）坚决止损",
-          "target": "第一目标 1735.40（盈亏比 1:3.0），可分批止盈",
+          "entry": "现价 42.69 轻仓试探；回踩 20 日均线 42.46 或 41.61 附近分批加仓",
+          "stopLoss": "跌破 40.25（约 -5.7%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 51.48（盈亏比 1:3.0），可分批止盈",
           "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
         },
-        "stopLossPrice": 1366.17,
-        "targetPrice": 1735.4,
-        "distToStopPct": 5.5,
-        "distToTargetPct": 20.0,
+        "stopLossPrice": 40.25,
+        "targetPrice": 51.48,
+        "distToStopPct": 5.7,
+        "distToTargetPct": 20.6,
         "regimeOk": true,
         "breakout": false,
-        "breakoutLevel": 1480.0,
-        "decisionScore": 62.1,
+        "breakoutLevel": 44.01,
+        "decisionScore": 63.1,
         "decisionLabel": "中",
         "decisionComponents": {
           "macro": {
@@ -57,7 +109,7 @@
             "note": "大师共识 4/7"
           },
           "truth": {
-            "score": 50,
+            "score": 55,
             "note": "舆情热度 0"
           }
         }
@@ -68,30 +120,30 @@
         "market": "港股",
         "sector": "消费电子",
         "currency": "HKD",
-        "price": 28.74,
-        "score": 58.8,
+        "price": 28.6,
+        "score": 57.4,
         "signal": "watch",
         "signalLabel": "影子弱信号",
-        "rsi": 63.2,
-        "monthChangePct": 20.35,
-        "relativeStrength": 20.73,
+        "rsi": 62.6,
+        "monthChangePct": 17.99,
+        "relativeStrength": 22.41,
         "reasons": [
           "价格站上 20 日均线",
           "价格站上 60 日均线"
         ],
         "plan": {
-          "entry": "现价 28.74 轻仓试探；回踩 20 日均线 26.27 或 25.75 附近分批加仓",
-          "stopLoss": "跌破 25.84（约 -10.1%，2.5 倍 ATR）坚决止损",
-          "target": "第一目标 39.18（盈亏比 1:3.0），可分批止盈",
-          "position": "港股标的建议仓位 ≤ 总资金 19.8%（单笔风险 2.0%）；三市场分散配置"
+          "entry": "现价 28.60 轻仓试探；回踩 20 日均线 26.05 或 25.53 附近分批加仓",
+          "stopLoss": "跌破 25.53（约 -10.7%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 39.66（盈亏比 1:3.0），可分批止盈",
+          "position": "港股标的建议仓位 ≤ 总资金 18.7%（单笔风险 2.0%）；三市场分散配置"
         },
-        "stopLossPrice": 25.84,
-        "targetPrice": 39.18,
-        "distToStopPct": 10.1,
-        "distToTargetPct": 36.3,
+        "stopLossPrice": 25.53,
+        "targetPrice": 39.66,
+        "distToStopPct": 10.7,
+        "distToTargetPct": 38.7,
         "regimeOk": false,
         "breakout": false,
-        "breakoutLevel": 28.92,
+        "breakoutLevel": 28.76,
         "decisionScore": 60.6,
         "decisionLabel": "中",
         "decisionComponents": {
@@ -109,56 +161,6 @@
           },
           "truth": {
             "score": 55,
-            "note": "舆情热度 0"
-          }
-        }
-      },
-      {
-        "symbol": "MSFT",
-        "name": "微软",
-        "market": "美股",
-        "sector": "软件云计算",
-        "currency": "USD",
-        "price": 520.99,
-        "score": 53.8,
-        "signal": "watch",
-        "signalLabel": "影子弱信号",
-        "rsi": 49.4,
-        "monthChangePct": -0.8,
-        "relativeStrength": 1.19,
-        "reasons": [
-          "价格站上 60 日均线"
-        ],
-        "plan": {
-          "entry": "现价 520.99 轻仓试探；回踩 20 日均线 529.66 或 519.07 附近分批加仓",
-          "stopLoss": "跌破 488.47（约 -6.2%，2.5 倍 ATR）坚决止损",
-          "target": "第一目标 638.06（盈亏比 1:3.0），可分批止盈",
-          "position": "美股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
-        },
-        "stopLossPrice": 488.47,
-        "targetPrice": 638.06,
-        "distToStopPct": 6.2,
-        "distToTargetPct": 22.5,
-        "regimeOk": true,
-        "breakout": false,
-        "breakoutLevel": 551.15,
-        "decisionScore": 62.1,
-        "decisionLabel": "中",
-        "decisionComponents": {
-          "macro": {
-            "score": 85.0,
-            "note": "市场偏多"
-          },
-          "wencai": {
-            "score": 55.0,
-            "note": "问财震荡"
-          },
-          "masters": {
-            "score": 57.1,
-            "note": "大师共识 4/7"
-          },
-          "truth": {
-            "score": 50,
             "note": "舆情热度 0"
           }
         }
@@ -9282,34 +9284,75 @@
         ]
       },
       {
-        "id": "2026-11-04T08:02:22+00:00",
-        "recordedAt": "2026-11-04T08:02:22+00:00",
+        "id": "2026-11-04T16:11:19+00:00",
+        "recordedAt": "2026-11-04T16:11:19+00:00",
         "marketContext": {
           "mood": "偏多",
           "regime": "risk_off"
         },
         "picks": [
           {
-            "symbol": "600519.SS",
-            "name": "贵州茅台",
+            "symbol": "AMZN",
+            "name": "亚马逊",
+            "market": "美股",
+            "sector": "电商云计算",
+            "currency": "USD",
+            "price": 266.58,
+            "score": 86.8,
+            "signal": "buy",
+            "signalLabel": "突破买入",
+            "rsi": 60.2,
+            "relativeStrength": 5.22,
+            "stopLossPrice": 243.24,
+            "targetPrice": 350.62,
+            "plan": {
+              "entry": "现价 266.58 轻仓试探；回踩 20 日均线 254.16 或 249.07 附近分批加仓",
+              "stopLoss": "跌破 243.24（约 -8.8%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 350.62（盈亏比 1:3.0），可分批止盈",
+              "position": "美股标的建议仓位 ≤ 总资金 22.7%（单笔风险 2.0%）；三市场分散配置"
+            },
+            "decisionScore": 57.0,
+            "decisionLabel": "中",
+            "decisionComponents": {
+              "macro": {
+                "score": 85.0,
+                "note": "市场偏多"
+              },
+              "wencai": {
+                "score": 55.0,
+                "note": "问财震荡"
+              },
+              "masters": {
+                "score": 40.0,
+                "note": "大师共识 0/7"
+              },
+              "truth": {
+                "score": 50,
+                "note": "舆情热度 0"
+              }
+            }
+          },
+          {
+            "symbol": "600036.SS",
+            "name": "招商银行",
             "market": "A股",
-            "sector": "白酒",
+            "sector": "银行",
             "currency": "CNY",
-            "price": 1446.44,
-            "score": 85.8,
+            "price": 42.69,
+            "score": 78.2,
             "signal": "watch",
             "signalLabel": "建议观察",
-            "rsi": 69.8,
-            "relativeStrength": 20.66,
-            "stopLossPrice": 1366.17,
-            "targetPrice": 1735.4,
+            "rsi": 55.1,
+            "relativeStrength": 12.25,
+            "stopLossPrice": 40.25,
+            "targetPrice": 51.48,
             "plan": {
-              "entry": "现价 1446.44 轻仓试探；回踩 20 日均线 1338.89 或 1312.12 附近分批加仓",
-              "stopLoss": "跌破 1366.17（约 -5.5%，2.5 倍 ATR）坚决止损",
-              "target": "第一目标 1735.40（盈亏比 1:3.0），可分批止盈",
+              "entry": "现价 42.69 轻仓试探；回踩 20 日均线 42.46 或 41.61 附近分批加仓",
+              "stopLoss": "跌破 40.25（约 -5.7%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 51.48（盈亏比 1:3.0），可分批止盈",
               "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
             },
-            "decisionScore": 62.1,
+            "decisionScore": 63.1,
             "decisionLabel": "中",
             "decisionComponents": {
               "macro": {
@@ -9325,7 +9368,7 @@
                 "note": "大师共识 4/7"
               },
               "truth": {
-                "score": 50,
+                "score": 55,
                 "note": "舆情热度 0"
               }
             }
@@ -9336,19 +9379,19 @@
             "market": "港股",
             "sector": "消费电子",
             "currency": "HKD",
-            "price": 28.74,
-            "score": 58.8,
+            "price": 28.6,
+            "score": 57.4,
             "signal": "watch",
             "signalLabel": "影子弱信号",
-            "rsi": 63.2,
-            "relativeStrength": 20.73,
-            "stopLossPrice": 25.84,
-            "targetPrice": 39.18,
+            "rsi": 62.6,
+            "relativeStrength": 22.41,
+            "stopLossPrice": 25.53,
+            "targetPrice": 39.66,
             "plan": {
-              "entry": "现价 28.74 轻仓试探；回踩 20 日均线 26.27 或 25.75 附近分批加仓",
-              "stopLoss": "跌破 25.84（约 -10.1%，2.5 倍 ATR）坚决止损",
-              "target": "第一目标 39.18（盈亏比 1:3.0），可分批止盈",
-              "position": "港股标的建议仓位 ≤ 总资金 19.8%（单笔风险 2.0%）；三市场分散配置"
+              "entry": "现价 28.60 轻仓试探；回踩 20 日均线 26.05 或 25.53 附近分批加仓",
+              "stopLoss": "跌破 25.53（约 -10.7%，2.5 倍 ATR）坚决止损",
+              "target": "第一目标 39.66（盈亏比 1:3.0），可分批止盈",
+              "position": "港股标的建议仓位 ≤ 总资金 18.7%（单笔风险 2.0%）；三市场分散配置"
             },
             "decisionScore": 60.6,
             "decisionLabel": "中",
@@ -9370,47 +9413,6 @@
                 "note": "舆情热度 0"
               }
             }
-          },
-          {
-            "symbol": "MSFT",
-            "name": "微软",
-            "market": "美股",
-            "sector": "软件云计算",
-            "currency": "USD",
-            "price": 520.99,
-            "score": 53.8,
-            "signal": "watch",
-            "signalLabel": "影子弱信号",
-            "rsi": 49.4,
-            "relativeStrength": 1.19,
-            "stopLossPrice": 488.47,
-            "targetPrice": 638.06,
-            "plan": {
-              "entry": "现价 520.99 轻仓试探；回踩 20 日均线 529.66 或 519.07 附近分批加仓",
-              "stopLoss": "跌破 488.47（约 -6.2%，2.5 倍 ATR）坚决止损",
-              "target": "第一目标 638.06（盈亏比 1:3.0），可分批止盈",
-              "position": "美股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
-            },
-            "decisionScore": 62.1,
-            "decisionLabel": "中",
-            "decisionComponents": {
-              "macro": {
-                "score": 85.0,
-                "note": "市场偏多"
-              },
-              "wencai": {
-                "score": 55.0,
-                "note": "问财震荡"
-              },
-              "masters": {
-                "score": 57.1,
-                "note": "大师共识 4/7"
-              },
-              "truth": {
-                "score": 50,
-                "note": "舆情热度 0"
-              }
-            }
           }
         ]
       }
@@ -9424,7 +9426,7 @@
     "shadowAgeDays": 92,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
-    "symbolOverlapRecent": 19,
+    "symbolOverlapRecent": 18,
     "prodMaturedT5": 768,
     "shadowMaturedT5": 258,
     "prodWinRateT5": 51.3,
