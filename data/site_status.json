@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-05T22:53:00+00:00",
+  "updatedAt": "2026-11-06T00:27:28+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 6,
-    "pipelinesStale": 0,
-    "automation": "持续运行中",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-11-05T22:43:25+00:00",
+    "updatedAt": "2026-11-06T00:27:28+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -251,8 +251,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-05T22:43:25+00:00",
-      "status": "ok",
-      "ageMinutes": 9
+      "status": "stale",
+      "ageMinutes": 104
     },
     {
       "id": "macro",
@@ -260,8 +260,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-05T22:43:17+00:00",
-      "status": "ok",
-      "ageMinutes": 9
+      "status": "stale",
+      "ageMinutes": 104
     },
     {
       "id": "truth",
@@ -269,8 +269,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-05T22:52:23+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 95
     },
     {
       "id": "wencai",
@@ -279,7 +279,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-05T22:39:35+00:00",
       "status": "ok",
-      "ageMinutes": 13
+      "ageMinutes": 107
     },
     {
       "id": "reports",
@@ -288,7 +288,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-06T00:22:12+08:00",
       "status": "ok",
-      "ageMinutes": 390
+      "ageMinutes": 485
     },
     {
       "id": "backtest",
@@ -297,9 +297,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-01T08:36:51+00:00",
       "status": "ok",
-      "ageMinutes": 6616
+      "ageMinutes": 6710
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "42125046545"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "42136897052"
 }
