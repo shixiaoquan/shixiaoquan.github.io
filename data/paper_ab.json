@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T08:37:10+00:00",
+  "updatedAt": "2026-11-08T08:29:08+00:00",
   "leader": "v1.3_production",
   "variants": {
     "v1.3_production": {
@@ -37,17 +37,29 @@
       "label": "v1.2 对照（放宽过滤）",
       "period": "2y",
       "metrics": {
-        "totalTrades": 16,
-        "winRate": 31.2,
-        "profitFactor": 0.72,
-        "expectancy": -0.64,
-        "avgWin": 5.37,
-        "avgLoss": -3.37,
-        "maxDrawdown": -22.26,
-        "sharpe": -0.2,
-        "annualReturn": -12.65
+        "totalTrades": 18,
+        "winRate": 22.2,
+        "profitFactor": 0.13,
+        "expectancy": -2.09,
+        "avgWin": 1.4,
+        "avgLoss": -3.09,
+        "maxDrawdown": -33.34,
+        "sharpe": -1.33,
+        "annualReturn": -32.34
       },
       "recentTrades": [
+        {
+          "symbol": "1810.HK",
+          "market": "港股",
+          "entryDate": "2026-11-05",
+          "exitDate": "2026-11-06",
+          "entryPrice": 31.3,
+          "exitPrice": 30.38,
+          "returnPct": -2.94,
+          "reason": "expiry",
+          "score": 84.3,
+          "win": false
+        },
         {
           "symbol": "NVDA",
           "market": "美股",
@@ -95,24 +107,12 @@
           "reason": "trail",
           "score": 81.5,
           "win": true
-        },
-        {
-          "symbol": "AAPL",
-          "market": "美股",
-          "entryDate": "2026-05-06",
-          "exitDate": "2026-06-09",
-          "entryPrice": 287.0,
-          "exitPrice": 296.55,
-          "returnPct": 3.33,
-          "reason": "trail",
-          "score": 79.7,
-          "win": true
         }
       ]
     }
   },
   "delta": {
-    "expectancy": -0.64,
-    "winRate": 31.2
+    "expectancy": -2.09,
+    "winRate": 22.2
   }
 }
