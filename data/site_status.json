@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-11T16:00:33+00:00",
+  "updatedAt": "2026-11-11T16:06:48+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 2,
-    "pipelinesStale": 4,
-    "automation": "4 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -239,7 +239,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-11T10:54:24+00:00",
       "status": "stale",
-      "ageMinutes": 306
+      "ageMinutes": 312
     },
     {
       "id": "macro",
@@ -248,16 +248,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-11T10:54:16+00:00",
       "status": "stale",
-      "ageMinutes": 306
+      "ageMinutes": 312
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-11-11T08:05:50+00:00",
-      "status": "stale",
-      "ageMinutes": 474
+      "updatedAt": "2026-11-11T16:06:32+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -266,7 +266,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-11T10:47:33+00:00",
       "status": "stale",
-      "ageMinutes": 313
+      "ageMinutes": 319
     },
     {
       "id": "reports",
@@ -275,7 +275,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-12T00:00:33+08:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 6
     },
     {
       "id": "backtest",
@@ -284,9 +284,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-08T08:28:52+00:00",
       "status": "ok",
-      "ageMinutes": 4771
+      "ageMinutes": 4777
     }
   ],
-  "triggeredBy": "Generate Investment Report",
-  "runId": "43053927516"
+  "triggeredBy": "Update Truth Social",
+  "runId": "43054921024"
 }
