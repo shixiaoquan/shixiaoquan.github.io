@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-11T22:07:45+00:00",
+  "updatedAt": "2026-11-11T22:40:09+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 2,
-    "pipelinesStale": 4,
-    "automation": "4 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -239,7 +239,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-11T18:18:48+00:00",
       "status": "stale",
-      "ageMinutes": 228
+      "ageMinutes": 261
     },
     {
       "id": "macro",
@@ -248,16 +248,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-11T18:18:38+00:00",
       "status": "stale",
-      "ageMinutes": 229
+      "ageMinutes": 261
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-11-11T16:06:32+00:00",
-      "status": "stale",
-      "ageMinutes": 361
+      "updatedAt": "2026-11-11T22:40:06+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -266,7 +266,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-11T18:38:40+00:00",
       "status": "stale",
-      "ageMinutes": 209
+      "ageMinutes": 241
     },
     {
       "id": "reports",
@@ -275,7 +275,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-12T00:00:33+08:00",
       "status": "ok",
-      "ageMinutes": 367
+      "ageMinutes": 399
     },
     {
       "id": "backtest",
@@ -284,9 +284,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-08T08:28:52+00:00",
       "status": "ok",
-      "ageMinutes": 5138
+      "ageMinutes": 5171
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "43109048658"
+  "triggeredBy": "Update Truth Social",
+  "runId": "43113613747"
 }
