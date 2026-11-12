@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-12T19:11:48+00:00",
+  "updatedAt": "2026-11-12T20:13:00+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 3,
+    "pipelinesStale": 3,
+    "automation": "3 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-11-12T16:21:14+00:00",
+    "updatedAt": "2026-11-12T20:13:00+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -233,7 +233,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-12T16:21:14+00:00",
       "status": "stale",
-      "ageMinutes": 170
+      "ageMinutes": 231
     },
     {
       "id": "macro",
@@ -242,7 +242,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-12T16:21:04+00:00",
       "status": "stale",
-      "ageMinutes": 170
+      "ageMinutes": 231
     },
     {
       "id": "truth",
@@ -250,8 +250,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-12T19:11:42+00:00",
-      "status": "ok",
-      "ageMinutes": 0
+      "status": "stale",
+      "ageMinutes": 61
     },
     {
       "id": "wencai",
@@ -260,7 +260,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-12T18:13:06+00:00",
       "status": "ok",
-      "ageMinutes": 58
+      "ageMinutes": 119
     },
     {
       "id": "reports",
@@ -269,7 +269,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-13T00:43:54+08:00",
       "status": "ok",
-      "ageMinutes": 147
+      "ageMinutes": 209
     },
     {
       "id": "backtest",
@@ -278,9 +278,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-08T08:28:52+00:00",
       "status": "ok",
-      "ageMinutes": 6402
+      "ageMinutes": 6464
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "43287578976"
+  "triggeredBy": "Continuous Evolution",
+  "runId": "43297980033"
 }
