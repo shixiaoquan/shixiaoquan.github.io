@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-13T21:32:53+00:00",
+  "updatedAt": "2026-11-13T21:57:48+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -239,7 +239,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-13T10:01:54+00:00",
       "status": "stale",
-      "ageMinutes": 690
+      "ageMinutes": 715
     },
     {
       "id": "macro",
@@ -248,7 +248,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-13T10:01:48+00:00",
       "status": "stale",
-      "ageMinutes": 691
+      "ageMinutes": 716
     },
     {
       "id": "truth",
@@ -257,16 +257,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-13T21:32:50+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 24
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-11-13T15:18:39+00:00",
-      "status": "stale",
-      "ageMinutes": 374
+      "updatedAt": "2026-11-13T21:56:44+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -275,7 +275,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-14T00:04:22+08:00",
       "status": "ok",
-      "ageMinutes": 328
+      "ageMinutes": 353
     },
     {
       "id": "backtest",
@@ -284,9 +284,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-08T08:28:52+00:00",
       "status": "ok",
-      "ageMinutes": 7984
+      "ageMinutes": 8008
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "43511591555"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "43515039657"
 }
