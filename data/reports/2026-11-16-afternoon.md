@@ -1,9 +1,9 @@
 # 投资决策日报 · 收盘前瞻
 
-**2026年11月16日 15:50（北京时间）** · 午后至收盘策略 · 隔夜风险预案
+**2026年11月16日 20:10（北京时间）** · 午后至收盘策略 · 隔夜风险预案
 
 > 数据来源：Yahoo Finance · Frankfurter(ECB) · FRED · Finnhub · 同花顺问财 · 量化策略引擎  
-> 行情更新：2026-11-16 11:07 · 宏观：2026-11-16 11:07 · 问财：2026-11-16 09:57
+> 行情更新：2026-11-16 19:03 · 宏观：2026-11-16 19:03 · 问财：2026-11-16 17:32
 
 ---
 
@@ -11,11 +11,11 @@
 
 本报告为**收盘前瞻**，尾盘仓位管理、止损/止盈距离、次日开盘前需跟踪的变量。
 
-全球跟踪指数平均涨跌 **-0.43%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
+全球跟踪指数平均涨跌 **-0.67%**，综合情绪 **偏空**。风险厌恶情绪抬升，战术新开仓宜降频或观望；战役仓按网格纪律执行，避免情绪化减仓。
 
 A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
-战役仓 XRPS 模拟收益率 +13.66%，按网格与月线纪律执行。
+战役仓 XRPS 模拟收益率 +13.59%，按网格与月线纪律执行。
 
 战术端暂无 buy 突破信号，建议以观察为主。
 
@@ -26,16 +26,16 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 ### 1.1 全球指数
 
 跟踪 6 只主要指数：上涨 **2** 只、
-下跌 **4** 只，平均涨跌 **-0.43%**。
+下跌 **4** 只，平均涨跌 **-0.67%**。
 
-**美股** -0.40%（偏弱）；**港股** +0.88%（偏强）；**A股** -0.68%（偏弱）。相对强势区域：港股。相对弱势区域：美股、A股，战术配置宜降权。
+**美股** -0.40%（偏弱）；**港股** +0.49%（偏强）；**A股** -0.87%（偏弱）。相对强势区域：港股。相对弱势区域：美股、A股，战术配置宜降权。
 
 **波动居前指数：**
 
-- **日经 225** 60,182.50，日涨跌 -1.57%（周 +2.39% / 月 -6.59%）
+- **日经 225** 59,662.02，日涨跌 -2.42%（周 +1.51% / 月 -7.39%）
 - **纳斯达克** 25,136.27，日涨跌 -0.91%（周 +2.27% / 月 -5.90%）
-- **恒生指数** 23,846.44，日涨跌 +0.88%（周 -2.46% / 月 -0.90%）
-- **上证指数** 3,609.56，日涨跌 -0.68%（周 -1.40% / 月 -2.87%）
+- **上证指数** 3,602.57，日涨跌 -0.87%（周 -1.59% / 月 -3.06%）
+- **恒生指数** 23,753.84，日涨跌 +0.49%（周 -2.84% / 月 -1.28%）
 
 ### 1.2 A股短线情绪
 
@@ -43,7 +43,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ### 1.3 宏观与跨资产
 
-- **VIX** 19.3（elevated）
+- **VIX** 20.0（elevated）
 - **美10Y收益率** 5.15%
 - **10Y-2Y 利差（FRED）** 0.27%（偏窄）
 - **USDCNH** 6.6700（日 —）
@@ -58,11 +58,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 - 美国CPI指数：337.5（变动 +1.05%，2026-10-01）
 
 **Finnhub 宏观要闻**
-- [UK property asking prices fall more than usual in November, Rightmove says - Reuters](https://news.google.com/rss/articles/CBMitgFBVV95cUxPZVVDbnhGak85WnFOLVNnV3NCYl91OENJenlTSUF1MzQ0bEJ4ekR2TU9jX19jSHhmR3hqVko5RVNFVW9fU1JSNUhxR3VzLTQ0ejRSbEdkWlZCU0htZUdKaXZVQzdiR2JWS0c2eDZWemhOQjdGV1ZfbWp3MDZ3ZVhrdDdYSGpUNjZkcnBDNkdlZXJSZ2VZdExmRmlRd2gtVWk3ak1QelFEeVRyX3VlVUotNWgyVVVRZw?oc=5)（Reuters）
-- [Anti-Houthi forces retreat in Yemen as Iran strikes Bahrain - Reuters](https://news.google.com/rss/articles/CBMiqwFBVV95cUxOdTFBcWR1YzJhai1UdGgzMHpvdm40VExxeXFqM0NtbU9YVmNSNXpNeDlXTGllRXFtczhIUzVsaFFWdVV5TGxESWdneGlXbER1Qlg2b2VhQ2lqMmxVaEd4U01nZmNXcFY2bmNhSTdIN0VycE84MWJDRXdZOGxMRGo0U1k1UjhiamFNQ1JIQmp1MUdxNlZGRm1UanBvaENxR3V2N25NdFVOaWpXX1E?oc=5)（Reuters）
-- [Yemen's Houthis say they launched ballistic missiles towards Riyadh airport, financial centre - Reuters](https://news.google.com/rss/articles/CBMixwFBVV95cUxOZ2NSdXVjeDlTU0lLeTAtMGs5RmdHaW0wTVhVbzUwempOYUdlNVB3NXprMGZqYksyVjhLUU1OV250QlczemJOT2tXcVFIZEJYb0dwblVCblExbnFmZkVyeGZnZ0NJY3Z3a3NTcmxUQ21tR0ZsQVdhTTNRNWJaZW5pOEk4RDNEMXN3aExOaEE0QVNzaXV3UTM3ZjlNa2hDenRtajR2aGVGT3RQR0NOSnY1VHQ3czdCSkJWSUgxaFFYNThEUlBBMVpn?oc=5)（Reuters）
-- [Battle for young male voters intensifies after US midterm rebuke of Republicans - Reuters](https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUXZuc1Exa0s2dzJKQ3U1bkdxd01NelRtemI0SnpSVHZNQ2Z1bGM3MlpLQ29pZ1ZRNHJLWS1OQTM5bFJySnBKUUNLSXlNeDNvUlJ2Um00ZVZFaU13bW5rSTFwWHJINlJFSkd4UHNPUVk2Y1A0dWQ4cE5VeU5tRjVtZHlXZEt2c1VPeU9tNEl4N2RZWjRCRmpPMm92NjU0VVhiLTZTQXQ4cFY2YnZld3d0OFVwRnFxRkpP?oc=5)（Reuters）
-- [3 big things we're watching in the stock market in the week ahead](https://www.cnbc.com/investingclub/2026/11/15/3-big-things-were-watching-in-the-stock-market-in-the-week-ahead.html)（CNBC）
+- [COMMENTARY: War-torn present clouds Saudi Arabia's post-oil future - Reuters](https://news.google.com/rss/articles/CBMivwFBVV95cUxQek1oaDQwcHhPSlhNTmNsZDhJc1dSQ1BwODVvWDBsdlhpUUxfVUJnUUdlQnNmTUFtYWlhblk4N1c1YWJFdEVqNmIzYjZSWTFsSjRXc1FhRzRIME90alJDb2pMeHlzbjVjWWdYb2FUbGIza3NkWmhLOFE4WHhOeXdhaHh6NjhtS0pENGtzc1RUMmVIZ0t2cnJ2WHA1alNwMzgzWEVZR3RnU0ZJMFVxcWNOWUdwOFRlRXhhQllPZmd6MA?oc=5)（Reuters）
+- [For investors, a truly safe haven is hard to find - Reuters](https://news.google.com/rss/articles/CBMikgFBVV95cUxQLWhsZ01HeXgxX09FRFotT2JPWlJrSkdGOG9lblVxR1ExM2lPTkh1MExjU2Vfci01ZzI0NzlGSVFXTjBHcUhBdDJ1cVJneU9PNUUxaldjbHRZZndFRFRJYmluVDN0NHlxNUJoVXFWWTdzRG9ScTlITURqMi1wLXN0dFl6ZktNUkVxcVpjVlBhbDYwUQ?oc=5)（Reuters）
+- [Oil falls as recovering Middle East exports bolster surplus outlook - Reuters](https://news.google.com/rss/articles/CBMipAFBVV95cUxNSXlabl9ocWtiOEZLcnc2SGNVSEh2bjltWURkWU1RSDVTejZWMEtNYTR4QW9sT19DQy05SVhHVmphTEtIQXdtVzlUS25Vdk1oS0hjdWZ0MHpUb01NQUp4dzlBcE55anIwR0hKVmhCUDRsT3V3ek9jTURVYkcySDNBM1B0RmJ3emdUaHpPVWpENENfZ2JGRHB3MlJuekVfUWlFa2lfUQ?oc=5)（Reuters）
+- [Stocks dip as caution sets in before Nvidia earnings, Anthropic IPO - Reuters](https://news.google.com/rss/articles/CBMigwFBVV95cUxPa3g3MVMxZ2lSN1ZpTmpaWkdYR25ZdDZ4M3BELXQ3ZC1PZDhtNTVjYmpQdHlJZUFtLWxiUkFLbXhUVHM0OHNScEUyTWFHUU5MMmZYb0EyVW51dXd1OWJFak1NbVFwazhlVzBIcHB3TENzRG1IZ2FvVFlpS0xubFBadXlPYw?oc=5)（Reuters）
+- [US-Iran deal uncertainty to weigh on rupee and bonds; Fed, RBI rate paths eyed - Reuters](https://news.google.com/rss/articles/CBMitAFBVV95cUxNMVNxZjdMUWpxX0k5UFljV1NLWVhkTW5lMnE0SVVsRjlVNml3N1BCWmt2NTgwV0RGZkNYam1yQ1N3MXRjUHJLME5jZmY0dERCNGo4Rl9rZjdKZldwajhnbmlTQ25PRzE4WndhUEFoS29fZmFDWVczMUZfRFRRa21MektCU0luRGJiNllsTnZiRmZHVUN1R0kwTlJsM2dCN2hlYzJyOXk0bUZRX29XajFHRkhubzk?oc=5)（Reuters）
 
 **财报日历（关注标的）**
 - **A** 2026-11-23 amc · EPS预期 1.76
@@ -87,15 +87,15 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 **标的**：小米集团（1810.HK）
 
-**模拟净值**：收益率 +13.66%，仓位 48.0%，持股 18,727 股，均价 24.09。
+**模拟净值**：收益率 +13.59%，仓位 47.9%，持股 18,727 股，均价 24.09。
 
 **阶段判断**：滚动做 T 期——上涨分批卖、回撤分批买，利润来自波动而非单边预测。
 
-**现价参考**：29.12 HKD。
+**现价参考**：29.08 HKD。
 
-- 下一档**滚动卖出**（涨 40%）：触发价 **34.91**，距现价 +19.90%。
+- 下一档**滚动卖出**（涨 40%）：触发价 **34.91**，距现价 +20.00%。
 
-- 下一档**回撤买回**（回撤 10%）：触发价 **28.17**，距现价 +3.30%。
+- 下一档**回撤买回**（回撤 10%）：触发价 **28.17**，距现价 +3.10%。
 
 - XRPS-X 运行正常：股数优先、成本优先、核心仓保留。
 
@@ -105,11 +105,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 三、战术实验（荐股 v1.3）
 
-**全市场扫描**：A股最高 中国平安(54.4分) · 港股最高 小米集团(70.5分) · 美股最高 苹果(68.1分)
+**全市场扫描**：A股最高 中国平安(55.7分) · 港股最高 小米集团(70.3分) · 美股最高 苹果(68.1分)
 
 **今日各市场代表标的**（v1.3 强趋势+突破过滤）：
 
-- **小米集团**（港股）| 弱信号观察 | 评分 70.5 | 待突破 | 趋势过滤未过 | 止损缓冲 10.6% / 目标空间 38.3% | 决策 45.5
+- **小米集团**（港股）| 弱信号观察 | 评分 70.3 | 待突破 | 趋势过滤未过 | 止损缓冲 10.7% / 目标空间 38.4% | 决策 45.5
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
@@ -117,7 +117,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线；均线多头排列
 
-- **中国平安**（A股）| 弱信号观察 | 评分 54.4 | 待突破 | 趋势过滤未过 | 止损缓冲 4.5% / 目标空间 16.1% | 决策 47.1
+- **中国平安**（A股）| 弱信号观察 | 评分 55.7 | 待突破 | 趋势过滤未过 | 止损缓冲 4.6% / 目标空间 16.5% | 决策 47.1
 
   - 逻辑：价格站上 20 日均线；价格站上 60 日均线
 
@@ -133,35 +133,35 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 ## 四、投资大师风格荐股
 
-基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.1044）。
+基于候选池基本面与价格特征，模拟 **7** 位投资大师选股框架（v1.2.1045）。
 
-*在线学习：市场环境 risk_off · 修订 r1044 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
+*在线学习：市场环境 risk_off · 修订 r1045 · 市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94*
 
 
 ### 沃伦·巴菲特 · 价值投资
 
 *以合理价格买入具有宽阔护城河、稳定盈利能力的优质企业，长期持有。*
 
-- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 13.8 · PEG 7.69 · ROE 19.9%
+- **腾讯控股**（港股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 13.7 · PEG 7.63 · ROE 19.9%
 
-  - ROE 19.91% — 盈利能力稳健；PE 13.83 — 估值在能力圈合理区间
+  - ROE 19.91% — 盈利能力稳健；PE 13.74 — 估值在能力圈合理区间
 
-- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.6 · PEG 11.14 · ROE 44.1%
+- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 17.8 · PEG 10.67 · ROE 44.1%
 
-  - ROE 44.15% — 资本回报优秀，符合巴菲特护城河标准；PE 18.6 — 估值在能力圈合理区间
+  - ROE 44.15% — 资本回报优秀，符合巴菲特护城河标准；PE 17.82 — 估值在能力圈合理区间
 
 
 ### 本杰明·格雷厄姆 · 深度价值
 
 *安全边际是投资核心：在价格显著低于内在价值时分批买入，分散持有。*
 
-- **招商银行**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 7.4 · PEG 2.31 · ROE 11.5%
+- **招商银行**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 7.4 · PEG 2.32 · ROE 11.5%
 
-  - PE 7.4 — 深度价值区间，安全边际充足；PB 0.92 — 资产折价，经典格雷厄姆信号
+  - PE 7.43 — 深度价值区间，安全边际充足；PB 0.93 — 资产折价，经典格雷厄姆信号
 
 - **中国平安**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 10.9 · ROE 8.6%
 
-  - PE 10.87 — 深度价值区间，安全边际充足；PB 0.94 — 资产折价，经典格雷厄姆信号
+  - PE 10.95 — 深度价值区间，安全边际充足；PB 0.95 — 资产折价，经典格雷厄姆信号
 
 
 ### 彼得·林奇 · 成长合理价 GARP
@@ -181,7 +181,7 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *以合理价格买入伟大的公司，胜过于以便宜价格买入平庸的公司。*
 
-- **贵州茅台**（A股）| 匹配 81.0 | 符合风格 · 建议关注 | PE 21.9 · PEG 5.48 · ROE 31.2%
+- **贵州茅台**（A股）| 匹配 81.0 | 符合风格 · 建议关注 | PE 22.1 · PEG 5.54 · ROE 31.2%
 
   - ROE 31.18% — 优质复利机器，芒格会长期持有；净利率 47.95% — 轻资产高毛利特征
 
@@ -194,22 +194,22 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *在最大悲观时买入，在最大乐观时卖出；关注被错杀的优质资产。*
 
-- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 18.6 · PEG 11.14 · ROE 44.1%
+- **中际旭创**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 17.8 · PEG 10.67 · ROE 44.1%
 
-  - 近一月 -36.35% — 市场悲观，邓普顿式逆向机会；近三月 -53.57% — 深度回调，关注基本面是否错杀
+  - 近一月 -38.96% — 市场悲观，邓普顿式逆向机会；近三月 -55.47% — 深度回调，关注基本面是否错杀
 
 - **宁德时代**（A股）| 匹配 100.0 | 符合风格 · 建议关注 | PE 12.5 · PEG 0.96 · ROE 24.4%
 
-  - 近一月 -12.82% — 市场悲观，邓普顿式逆向机会；近三月 -37.55% — 深度回调，关注基本面是否错杀
+  - 近一月 -13.18% — 市场悲观，邓普顿式逆向机会；近三月 -37.8% — 深度回调，关注基本面是否错杀
 
 
 ### 乔治·索罗斯 · 宏观趋势
 
 *反身性理论：趋势与认知相互强化；在宏观拐点与趋势确认时果断行动。*
 
-- **贵州茅台**（A股）| 匹配 67.0 | 部分符合 · 观察等待 | PE 21.9 · PEG 5.48 · ROE 31.2%
+- **贵州茅台**（A股）| 匹配 67.0 | 部分符合 · 观察等待 | PE 22.1 · PEG 5.54 · ROE 31.2%
 
-  - 近一月 +8.28% — 趋势强劲，反身性正反馈；相对强度 +11.15% — 跑赢大盘，宏观共振
+  - 近一月 +9.4% — 趋势强劲，反身性正反馈；相对强度 +12.46% — 跑赢大盘，宏观共振
 
 - **亚马逊**（美股）| 匹配 65.9 | 部分符合 · 观察等待 | PE 21.6 · ROE 27.4%
 
@@ -220,11 +220,11 @@ A股问财短线情绪 **偏多**，与全球指数判断对照使用。
 
 *Own the bottleneck, not the brand — 不买 AI/机器人终端龙头，寻找供应链中绕不过、短期内无法替代的上游稀缺环节（紫苏叶理论）。*
 
-- **绿的谐波**（A股）| 匹配 96.7 | 符合风格 · 建议关注 | PE 323.2 · PEG 11.11 · ROE 4.4%
+- **绿的谐波**（A股）| 匹配 95.3 | 符合风格 · 建议关注 | PE 312.1 · PEG 10.72 · ROE 4.4%
 
   - 精密减速器 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 精密减速器 — 人形机器人卡脖子环节
 
-- **中芯国际**（A股）| 匹配 76.5 | 符合风格 · 建议关注 | PE 116.6 · PEG 1.51 · ROE 4.7%
+- **中芯国际**（A股）| 匹配 75.6 | 符合风格 · 建议关注 | PE 117.0 · PEG 1.52 · ROE 4.7%
 
   - 半导体 — AI/机器人供应链瓶颈相关环节；紫苏叶环节 · 晶圆制造 — AI 算力上游产能瓶颈
 
