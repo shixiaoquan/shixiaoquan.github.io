@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-11-16T09:58:31+00:00",
+  "updatedAt": "2026-11-16T11:03:55+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 1044,
-    "masterLearnUpdatedAt": "2026-11-16T03:07:18+00:00",
-    "masterAvgWinRate": 40.2,
+    "masterLearnRevision": 1045,
+    "masterLearnUpdatedAt": "2026-11-16T11:03:33+00:00",
+    "masterAvgWinRate": 40.4,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -81,9 +81,9 @@
     "shadowWinRateT5": 48.1,
     "shadowAvgReturnT5": -0.65,
     "shadowMaturedT5": 285,
-    "shadowWeeks": 13.3,
+    "shadowWeeks": 13.6,
     "shadowTradingDays": 80,
-    "shadowAgeDays": 95,
+    "shadowAgeDays": 94,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
     "shadowReason": "配对归因 25 对 · 影子胜率 24.0% · 均边际 0.12%",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-11-16T09:58:31+00:00",
+    "updatedAt": "2026-11-16T11:03:55+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -147,6 +147,18 @@
     }
   },
   "recentLog": [
+    {
+      "at": "2026-11-16T11:03:40+00:00",
+      "type": "master_learn",
+      "revision": 1045,
+      "regime": "risk_off",
+      "notes": {
+        "buffett": "近期表现反馈：margins↓",
+        "templeton": "近期表现反馈：month↓、range↓、pe↓、roe↓",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
+        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
+      }
+    },
     {
       "at": "2026-11-16T03:07:26+00:00",
       "type": "master_learn",
@@ -198,13 +210,6 @@
       "newItems": 18,
       "avgReturnT5": -0.65,
       "winRateT5": 48.1
-    },
-    {
-      "at": "2026-11-15T08:44:32+00:00",
-      "type": "reco_attribution",
-      "newItems": 40,
-      "avgReturnT5": -0.39,
-      "winRateT5": 50.4
     }
   ],
   "pipelines": [
@@ -213,18 +218,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-16T03:07:40+00:00",
-      "status": "stale",
-      "ageMinutes": 410
+      "updatedAt": "2026-11-16T11:03:55+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-16T03:07:32+00:00",
-      "status": "stale",
-      "ageMinutes": 410
+      "updatedAt": "2026-11-16T11:03:46+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -232,8 +237,8 @@
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-16T09:25:15+00:00",
-      "status": "ok",
-      "ageMinutes": 33
+      "status": "stale",
+      "ageMinutes": 98
     },
     {
       "id": "wencai",
@@ -242,7 +247,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-16T09:32:05+00:00",
       "status": "ok",
-      "ageMinutes": 26
+      "ageMinutes": 91
     },
     {
       "id": "reports",
@@ -251,7 +256,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-16T15:50:53+08:00",
       "status": "ok",
-      "ageMinutes": 127
+      "ageMinutes": 193
     },
     {
       "id": "backtest",
@@ -260,9 +265,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-15T08:44:28+00:00",
       "status": "ok",
-      "ageMinutes": 1514
+      "ageMinutes": 1579
     }
   ],
-  "triggeredBy": "Continuous Evolution",
-  "runId": "43844553112"
+  "triggeredBy": "Update Market Data",
+  "runId": "43854281148"
 }

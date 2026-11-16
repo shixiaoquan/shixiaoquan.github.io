@@ -1,7 +1,7 @@
 {
   "version": 1,
   "rulesVersion": "1.0.0",
-  "updatedAt": "2026-11-16T03:07:39+00:00",
+  "updatedAt": "2026-11-16T11:03:53+00:00",
   "symbol": "1810.HK",
   "symbolAlias": "HK01810",
   "name": "小米集团-W",
@@ -58,15 +58,15 @@
     }
   ],
   "quote": {
-    "price": 29.12,
+    "price": 29.08,
     "previousClose": 28.86,
-    "change": 0.26,
-    "changePct": 0.9,
+    "change": 0.22,
+    "changePct": 0.76,
     "dayOpen": 29.0,
-    "dayHigh": 29.44,
+    "dayHigh": 29.46,
     "dayLow": 28.7,
-    "volume": 41045948,
-    "avgVolume20": 163575177,
+    "volume": 93529433,
+    "avgVolume20": 166199351,
     "asOf": "2026-11-16",
     "recentBars": [
       {
@@ -224,24 +224,24 @@
       {
         "date": "2026-11-16",
         "open": 29.0,
-        "high": 29.44,
+        "high": 29.46,
         "low": 28.7,
-        "close": 29.12,
-        "volume": 41045948
+        "close": 29.08,
+        "volume": 93529433
       }
     ]
   },
-  "positionInBox": 1.0,
+  "positionInBox": 0.995,
   "advice": {
-    "action": "breakout_up",
-    "actionLabel": "向上突破 · 不追",
-    "tone": "warn",
-    "operate": false,
-    "title": "收盘价 29.12 站上箱顶 29.10",
-    "detail": "日常箱子向上打开。按规则空仓不追高。测量目标约 32.76；若跌回 28.50 下方视为假突破。",
-    "emptyAdvice": "继续空仓，不在更高位置追",
-    "holdingAdvice": "按突破规则另议；本策略默认已在上沿卖完",
-    "zoneId": "breakout"
+    "action": "sell",
+    "actionLabel": "卖出尾仓",
+    "tone": "sell",
+    "operate": true,
+    "title": "进入卖区 29.00–29.10",
+    "detail": "现价 29.08。只卖已持有股份；卖完空仓，等下一次买区。",
+    "emptyAdvice": "空仓不新开多单",
+    "holdingAdvice": "卖出尾仓（1/3）",
+    "zoneId": "s2"
   },
   "error": null
 }
