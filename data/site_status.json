@@ -1,20 +1,20 @@
 {
-  "updatedAt": "2026-11-17T02:38:53+00:00",
+  "updatedAt": "2026-11-17T03:29:14+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
   "evolution": {
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
-    "masterLearnRevision": 1046,
-    "masterLearnUpdatedAt": "2026-11-16T20:56:58+00:00",
-    "masterAvgWinRate": 35.9,
+    "masterLearnRevision": 1047,
+    "masterLearnUpdatedAt": "2026-11-17T03:28:50+00:00",
+    "masterAvgWinRate": 34.2,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -83,7 +83,7 @@
     "shadowMaturedT5": 285,
     "shadowWeeks": 13.6,
     "shadowTradingDays": 80,
-    "shadowAgeDays": 94,
+    "shadowAgeDays": 95,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
     "shadowReason": "配对归因 25 对 · 影子胜率 24.0% · 均边际 0.12%",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-11-16T20:57:28+00:00",
+    "updatedAt": "2026-11-17T03:29:14+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -147,6 +147,18 @@
     }
   },
   "recentLog": [
+    {
+      "at": "2026-11-17T03:28:59+00:00",
+      "type": "master_learn",
+      "revision": 1047,
+      "regime": "risk_off",
+      "notes": {
+        "buffett": "近期表现反馈：margins↓",
+        "templeton": "近期表现反馈：month↓、range↓、pe↓、roe↓",
+        "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
+        "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
+      }
+    },
     {
       "at": "2026-11-16T20:57:09+00:00",
       "type": "master_learn",
@@ -206,15 +218,6 @@
         "serenity": "近期表现反馈：sector↓、tag↓、mcap↓、growth↓",
         "_regime": "市场环境(risk_off)：graham×1.06、templeton×1.08、buffett×1.04、soros×0.94"
       }
-    },
-    {
-      "at": "2026-11-15T08:44:41+00:00",
-      "type": "param_sweep",
-      "recommendUpgrade": false,
-      "currentExpectancy": -1.37,
-      "bestExpectancy": -1.37,
-      "totalTrades": 17,
-      "reason": "hold"
     }
   ],
   "pipelines": [
@@ -223,18 +226,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-16T20:57:27+00:00",
-      "status": "stale",
-      "ageMinutes": 341
+      "updatedAt": "2026-11-17T03:29:14+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-16T20:57:16+00:00",
-      "status": "stale",
-      "ageMinutes": 341
+      "updatedAt": "2026-11-17T03:29:05+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -243,7 +246,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-17T02:38:51+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 50
     },
     {
       "id": "wencai",
@@ -252,7 +255,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-16T20:22:16+00:00",
       "status": "stale",
-      "ageMinutes": 376
+      "ageMinutes": 426
     },
     {
       "id": "reports",
@@ -261,7 +264,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-17T02:17:02+08:00",
       "status": "ok",
-      "ageMinutes": 501
+      "ageMinutes": 552
     },
     {
       "id": "backtest",
@@ -270,9 +273,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-15T08:44:28+00:00",
       "status": "ok",
-      "ageMinutes": 2514
+      "ageMinutes": 2564
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "44004471136"
+  "triggeredBy": "Update Market Data",
+  "runId": "44010451790"
 }
