@@ -1,7 +1,7 @@
 {
   "version": 1,
   "rulesVersion": "1.0.0",
-  "updatedAt": "2026-11-17T21:08:30+00:00",
+  "updatedAt": "2026-11-18T02:53:15+00:00",
   "symbol": "1810.HK",
   "symbolAlias": "HK01810",
   "name": "小米集团-W",
@@ -58,25 +58,17 @@
     }
   ],
   "quote": {
-    "price": NaN,
-    "previousClose": 29.08,
-    "change": NaN,
-    "changePct": NaN,
-    "dayOpen": 29.08,
-    "dayHigh": 30.52,
-    "dayLow": 28.46,
-    "volume": 166780713,
-    "avgVolume20": 169229406,
-    "asOf": "2026-11-17",
+    "price": 29.68,
+    "previousClose": 29.7,
+    "change": -0.02,
+    "changePct": -0.07,
+    "dayOpen": 29.92,
+    "dayHigh": 30.1,
+    "dayLow": 29.52,
+    "volume": 36644743,
+    "avgVolume20": 163838461,
+    "asOf": "2026-11-18",
     "recentBars": [
-      {
-        "date": "2026-10-21",
-        "open": 27.28,
-        "high": 27.76,
-        "low": 26.54,
-        "close": 26.8,
-        "volume": 144463851
-      },
       {
         "date": "2026-10-22",
         "open": 26.6,
@@ -226,22 +218,30 @@
         "open": 29.08,
         "high": 30.52,
         "low": 28.46,
-        "close": NaN,
-        "volume": 166780713
+        "close": 29.7,
+        "volume": 166780913
+      },
+      {
+        "date": "2026-11-18",
+        "open": 29.92,
+        "high": 30.1,
+        "low": 29.52,
+        "close": 29.68,
+        "volume": 36644743
       }
     ]
   },
   "positionInBox": 1.0,
   "advice": {
-    "action": "wait",
-    "actionLabel": "观望",
-    "tone": "neutral",
+    "action": "breakout_up",
+    "actionLabel": "向上突破 · 不追",
+    "tone": "warn",
     "operate": false,
-    "title": "现价 nan",
-    "detail": "未落入买卖区。",
-    "emptyAdvice": "观望",
-    "holdingAdvice": "持有观察",
-    "zoneId": null
+    "title": "收盘价 29.68 站上箱顶 29.10",
+    "detail": "日常箱子向上打开。按规则空仓不追高。测量目标约 32.76；若跌回 28.50 下方视为假突破。",
+    "emptyAdvice": "继续空仓，不在更高位置追",
+    "holdingAdvice": "按突破规则另议；本策略默认已在上沿卖完",
+    "zoneId": "breakout"
   },
   "error": null
 }
