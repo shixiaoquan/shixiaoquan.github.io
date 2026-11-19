@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-19T08:37:48+00:00",
+  "updatedAt": "2026-11-19T08:52:20+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -13,8 +13,8 @@
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
     "masterLearnRevision": 1052,
-    "masterLearnUpdatedAt": "2026-11-19T01:15:06+00:00",
-    "masterAvgWinRate": 30.3,
+    "masterLearnUpdatedAt": "2026-11-19T08:52:04+00:00",
+    "masterAvgWinRate": 33.0,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -83,7 +83,7 @@
     "shadowMaturedT5": 285,
     "shadowWeeks": 13.4,
     "shadowTradingDays": 80,
-    "shadowAgeDays": 94,
+    "shadowAgeDays": 93,
     "daysUntilFirstMature": 0,
     "attributionStalled": false,
     "shadowReason": "配对归因 25 对 · 影子胜率 24.0% · 均边际 0.12%",
@@ -105,7 +105,7 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-11-19T03:43:21+00:00",
+    "updatedAt": "2026-11-19T08:52:20+00:00",
     "tasks": [
       {
         "id": "fix-pipeline-market",
@@ -234,18 +234,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-19T01:15:30+00:00",
-      "status": "stale",
-      "ageMinutes": 442
+      "updatedAt": "2026-11-19T08:52:19+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-19T01:15:22+00:00",
-      "status": "stale",
-      "ageMinutes": 442
+      "updatedAt": "2026-11-19T08:52:13+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -254,7 +254,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-19T08:37:47+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 14
     },
     {
       "id": "wencai",
@@ -263,7 +263,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-19T03:19:22+00:00",
       "status": "stale",
-      "ageMinutes": 318
+      "ageMinutes": 332
     },
     {
       "id": "reports",
@@ -272,7 +272,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-19T16:36:35+08:00",
       "status": "ok",
-      "ageMinutes": 1
+      "ageMinutes": 15
     },
     {
       "id": "backtest",
@@ -281,9 +281,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-15T08:44:28+00:00",
       "status": "ok",
-      "ageMinutes": 5753
+      "ageMinutes": 5767
     }
   ],
-  "triggeredBy": "Update Truth Social",
-  "runId": "44489174183"
+  "triggeredBy": "Update Market Data",
+  "runId": "44491219186"
 }
