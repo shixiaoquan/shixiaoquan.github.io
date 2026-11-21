@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-21T22:27:54+00:00",
+  "updatedAt": "2026-11-21T23:09:11+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -236,7 +236,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-20T14:23:54+00:00",
       "status": "stale",
-      "ageMinutes": 1924
+      "ageMinutes": 1965
     },
     {
       "id": "macro",
@@ -245,7 +245,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-20T14:23:47+00:00",
       "status": "stale",
-      "ageMinutes": 1924
+      "ageMinutes": 1965
     },
     {
       "id": "truth",
@@ -254,16 +254,16 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-21T22:24:37+00:00",
       "status": "ok",
-      "ageMinutes": 3
+      "ageMinutes": 44
     },
     {
       "id": "wencai",
       "name": "问财自然语言筛选",
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
-      "updatedAt": "2026-11-21T17:25:36+00:00",
-      "status": "stale",
-      "ageMinutes": 302
+      "updatedAt": "2026-11-21T23:08:10+00:00",
+      "status": "ok",
+      "ageMinutes": 1
     },
     {
       "id": "reports",
@@ -272,7 +272,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-22T00:01:55+08:00",
       "status": "ok",
-      "ageMinutes": 385
+      "ageMinutes": 427
     },
     {
       "id": "backtest",
@@ -281,9 +281,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-15T08:44:28+00:00",
       "status": "ok",
-      "ageMinutes": 9463
+      "ageMinutes": 9504
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "44956843380"
+  "triggeredBy": "Update Wencai Data",
+  "runId": "44960233414"
 }
