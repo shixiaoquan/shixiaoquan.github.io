@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-22T22:52:41+00:00",
+  "updatedAt": "2026-11-22T23:20:34+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 4,
-    "pipelinesStale": 2,
-    "automation": "2 条流水线过期",
+    "pipelinesHealthy": 5,
+    "pipelinesStale": 1,
+    "automation": "1 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -243,7 +243,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-22T22:52:41+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 27
     },
     {
       "id": "macro",
@@ -252,16 +252,16 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-22T22:52:34+00:00",
       "status": "ok",
-      "ageMinutes": 0
+      "ageMinutes": 28
     },
     {
       "id": "truth",
       "name": "Truth Social 镜像",
       "schedule": "每 10 分钟",
       "workflow": "update-truth-social.yml",
-      "updatedAt": "2026-11-22T17:53:35+00:00",
-      "status": "stale",
-      "ageMinutes": 299
+      "updatedAt": "2026-11-22T23:20:25+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "wencai",
@@ -270,7 +270,7 @@
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-22T18:28:34+00:00",
       "status": "stale",
-      "ageMinutes": 264
+      "ageMinutes": 292
     },
     {
       "id": "reports",
@@ -279,7 +279,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-23T00:08:53+08:00",
       "status": "ok",
-      "ageMinutes": 403
+      "ageMinutes": 431
     },
     {
       "id": "backtest",
@@ -288,9 +288,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-22T09:14:00+00:00",
       "status": "ok",
-      "ageMinutes": 818
+      "ageMinutes": 846
     }
   ],
-  "triggeredBy": "Update Market Data",
-  "runId": "45080076028"
+  "triggeredBy": "Update Truth Social",
+  "runId": "45082676721"
 }
