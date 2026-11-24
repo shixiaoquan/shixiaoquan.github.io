@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-24T15:48:19+00:00",
+  "updatedAt": "2026-11-24T19:27:38+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -227,7 +227,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-24T10:50:11+00:00",
       "status": "stale",
-      "ageMinutes": 298
+      "ageMinutes": 517
     },
     {
       "id": "macro",
@@ -236,7 +236,7 @@
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-24T10:50:02+00:00",
       "status": "stale",
-      "ageMinutes": 298
+      "ageMinutes": 517
     },
     {
       "id": "truth",
@@ -245,7 +245,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-24T11:37:45+00:00",
       "status": "stale",
-      "ageMinutes": 250
+      "ageMinutes": 469
     },
     {
       "id": "wencai",
@@ -253,17 +253,17 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-24T15:47:10+00:00",
-      "status": "ok",
-      "ageMinutes": 1
+      "status": "stale",
+      "ageMinutes": 220
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-11-24T22:22:38+08:00",
+      "updatedAt": "2026-11-25T03:27:38+08:00",
       "status": "ok",
-      "ageMinutes": 85
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -272,9 +272,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-22T09:14:00+00:00",
       "status": "ok",
-      "ageMinutes": 3274
+      "ageMinutes": 3493
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "45429431826"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "45470362931"
 }
