@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-25T19:54:45+00:00",
+  "updatedAt": "2026-11-25T22:52:41+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 3,
-    "pipelinesStale": 3,
-    "automation": "3 条流水线过期",
+    "pipelinesHealthy": 4,
+    "pipelinesStale": 2,
+    "automation": "2 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -13,8 +13,8 @@
     "strategyVersion": "v1.3.0",
     "strategyName": "三市场趋势策略（强趋势+突破过滤）",
     "masterLearnRevision": 1052,
-    "masterLearnUpdatedAt": "2026-11-25T13:52:26+00:00",
-    "masterAvgWinRate": 26.4,
+    "masterLearnUpdatedAt": "2026-11-25T22:52:17+00:00",
+    "masterAvgWinRate": 24.7,
     "recoHistoryRecords": 80,
     "strategyCatalogCount": 4,
     "currentPaperSystem": "XRPS-X-1.0",
@@ -105,8 +105,24 @@
     }
   },
   "evolutionQueue": {
-    "updatedAt": "2026-11-25T14:43:53+00:00",
+    "updatedAt": "2026-11-25T22:52:41+00:00",
     "tasks": [
+      {
+        "id": "fix-pipeline-market",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · 行情·荐股·模拟盘",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      },
+      {
+        "id": "fix-pipeline-macro",
+        "type": "fix_pipeline",
+        "priority": "high",
+        "title": "流水线过期 · 宏观与跨资产",
+        "reason": "stale",
+        "cursorPrompt": "检查工作流 update-market-data.yml 日志与 Secrets。"
+      },
       {
         "id": "fix-pipeline-truth",
         "type": "fix_pipeline",
@@ -153,9 +169,9 @@
       }
     ],
     "summary": {
-      "total": 5,
-      "high": 2,
-      "topAction": "检查工作流 update-truth-social.yml 日志与 Secrets。"
+      "total": 7,
+      "high": 4,
+      "topAction": "检查工作流 update-market-data.yml 日志与 Secrets。"
     }
   },
   "recentLog": [
@@ -225,18 +241,18 @@
       "name": "行情·荐股·模拟盘",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-25T13:52:55+00:00",
-      "status": "stale",
-      "ageMinutes": 361
+      "updatedAt": "2026-11-25T22:52:41+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "macro",
       "name": "宏观与跨资产",
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
-      "updatedAt": "2026-11-25T13:52:45+00:00",
-      "status": "stale",
-      "ageMinutes": 362
+      "updatedAt": "2026-11-25T22:52:31+00:00",
+      "status": "ok",
+      "ageMinutes": 0
     },
     {
       "id": "truth",
@@ -245,7 +261,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-25T14:55:29+00:00",
       "status": "stale",
-      "ageMinutes": 299
+      "ageMinutes": 477
     },
     {
       "id": "wencai",
@@ -253,8 +269,8 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-25T19:53:40+00:00",
-      "status": "ok",
-      "ageMinutes": 1
+      "status": "stale",
+      "ageMinutes": 179
     },
     {
       "id": "reports",
@@ -263,7 +279,7 @@
       "workflow": "generate-investment-report.yml",
       "updatedAt": "2026-11-26T02:34:59+08:00",
       "status": "ok",
-      "ageMinutes": 79
+      "ageMinutes": 257
     },
     {
       "id": "backtest",
@@ -272,9 +288,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-22T09:14:00+00:00",
       "status": "ok",
-      "ageMinutes": 4960
+      "ageMinutes": 5138
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "45689564642"
+  "triggeredBy": "Update Market Data",
+  "runId": "45716778309"
 }
