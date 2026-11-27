@@ -1,58 +1,58 @@
 {
-  "updatedAt": "2026-11-26T23:09:31+00:00",
+  "updatedAt": "2026-11-27T05:01:24+00:00",
   "recommendations": {
     "strategy": "v1.3.0 强趋势+突破过滤（各市场 1 只）：Regime 过滤 + 仅突破买入；≥72 突破分、≥65 观察。24h 粘性换仓、止损 ATR、盈亏比 1:3.0。",
-    "marketScan": "A股最高 中国平安(68.7分) · 港股最高 京东集团(28.8分) · 美股最高 苹果(60.5分)",
+    "marketScan": "A股最高 中芯国际(73.5分) · 港股最高 京东集团(32.5分) · 美股最高 苹果(60.5分)",
     "disclaimer": "战术实验策略，仅供研究；非 XRPS 战役持仓。请分散配置、严格执行止损。",
     "picks": [
       {
-        "symbol": "601318.SS",
-        "name": "中国平安",
+        "symbol": "688981.SS",
+        "name": "中芯国际",
         "market": "A股",
-        "sector": "保险",
+        "sector": "半导体",
         "currency": "CNY",
-        "price": 54.58,
-        "score": 68.7,
+        "price": 121.5,
+        "score": 73.5,
         "signal": "watch",
         "signalLabel": "弱信号观察",
-        "rsi": 54.4,
-        "monthChangePct": 4.34,
-        "relativeStrength": 10.32,
+        "rsi": 57.9,
+        "monthChangePct": 20.3,
+        "relativeStrength": 25.59,
         "reasons": [
           "价格站上 20 日均线",
           "价格站上 60 日均线",
           "均线多头排列"
         ],
         "plan": {
-          "entry": "现价 54.58 轻仓试探；回踩 20 日均线 54.22 或 53.14 附近分批加仓",
-          "stopLoss": "跌破 52.05（约 -4.6%，2.5 倍 ATR）坚决止损",
-          "target": "第一目标 63.70（盈亏比 1:3.0），可分批止盈",
-          "position": "A股标的建议仓位 ≤ 总资金 25%（单笔风险 2.0%）；三市场分散配置"
+          "entry": "现价 121.50 轻仓试探；回踩 20 日均线 113.71 或 111.43 附近分批加仓",
+          "stopLoss": "跌破 105.43（约 -13.2%，2.5 倍 ATR）坚决止损",
+          "target": "第一目标 179.35（盈亏比 1:3.0），可分批止盈",
+          "position": "A股标的建议仓位 ≤ 总资金 15.2%（单笔风险 2.0%）；三市场分散配置"
         },
-        "stopLossPrice": 52.05,
-        "targetPrice": 63.7,
-        "distToStopPct": 4.6,
-        "distToTargetPct": 16.7,
+        "stopLossPrice": 105.43,
+        "targetPrice": 179.35,
+        "distToStopPct": 13.2,
+        "distToTargetPct": 47.6,
         "regimeOk": false,
         "breakout": false,
-        "breakoutLevel": 55.46,
-        "decisionScore": 47.1,
-        "decisionLabel": "低",
+        "breakoutLevel": 127.85,
+        "decisionScore": 65.1,
+        "decisionLabel": "中",
         "decisionComponents": {
           "macro": {
-            "score": 35.0,
-            "note": "市场偏空"
+            "score": 93.0,
+            "note": "市场偏多"
           },
           "wencai": {
             "score": 55.0,
             "note": "问财震荡"
           },
           "masters": {
-            "score": 48.6,
-            "note": "大师共识 2/7"
+            "score": 57.1,
+            "note": "大师共识 4/7"
           },
           "truth": {
-            "score": 50,
+            "score": 55,
             "note": "舆情热度 0"
           }
         }
@@ -88,12 +88,12 @@
         "regimeOk": false,
         "breakout": false,
         "breakoutLevel": 360.83,
-        "decisionScore": 45.5,
-        "decisionLabel": "低",
+        "decisionScore": 60.0,
+        "decisionLabel": "中",
         "decisionComponents": {
           "macro": {
-            "score": 35.0,
-            "note": "市场偏空"
+            "score": 93.0,
+            "note": "市场偏多"
           },
           "wencai": {
             "score": 55.0,
@@ -112,49 +112,34 @@
     ],
     "candidateScan": [
       {
-        "symbol": "601318.SS",
-        "name": "中国平安",
+        "symbol": "688981.SS",
+        "name": "中芯国际",
         "market": "A股",
-        "score": 68.7,
+        "score": 73.5,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 54.58,
-        "rsi": 54.4,
-        "relativeStrength": 10.32,
+        "price": 121.5,
+        "rsi": 57.9,
+        "relativeStrength": 25.59,
         "regimeOk": false,
         "breakout": false,
-        "distToStopPct": 4.6,
-        "distToTargetPct": 16.7
+        "distToStopPct": 13.2,
+        "distToTargetPct": 47.6
       },
       {
         "symbol": "600519.SS",
         "name": "贵州茅台",
         "market": "A股",
-        "score": 68.0,
+        "score": 60.6,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 1469.0,
-        "rsi": 60.6,
-        "relativeStrength": 16.37,
+        "price": 1454.69,
+        "rsi": 57.1,
+        "relativeStrength": 12.73,
         "regimeOk": false,
         "breakout": false,
-        "distToStopPct": 5.7,
-        "distToTargetPct": 20.7
-      },
-      {
-        "symbol": "688981.SS",
-        "name": "中芯国际",
-        "market": "A股",
-        "score": 63.0,
-        "signal": "hold",
-        "signalLabel": "暂不参与",
-        "price": 116.5,
-        "rsi": 53.2,
-        "relativeStrength": 20.2,
-        "regimeOk": false,
-        "breakout": false,
-        "distToStopPct": 13.2,
-        "distToTargetPct": 47.7
+        "distToStopPct": 5.8,
+        "distToTargetPct": 20.9
       },
       {
         "symbol": "AAPL",
@@ -172,64 +157,79 @@
         "distToTargetPct": 20.3
       },
       {
-        "symbol": "600036.SS",
-        "name": "招商银行",
+        "symbol": "601318.SS",
+        "name": "中国平安",
         "market": "A股",
-        "score": 60.4,
+        "score": 33.1,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 43.38,
-        "rsi": 55.5,
-        "relativeStrength": 8.95,
+        "price": 53.69,
+        "rsi": 48.3,
+        "relativeStrength": 6.21,
         "regimeOk": false,
         "breakout": false,
-        "distToStopPct": 4.3,
-        "distToTargetPct": 15.5
+        "distToStopPct": 4.9,
+        "distToTargetPct": 17.5
       },
       {
         "symbol": "9618.HK",
         "name": "京东集团",
         "market": "港股",
-        "score": 28.8,
+        "score": 32.5,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 100.8,
-        "rsi": 44.5,
-        "relativeStrength": 6.07,
+        "price": 103.1,
+        "rsi": 49.5,
+        "relativeStrength": 7.56,
         "regimeOk": false,
         "breakout": false,
-        "distToStopPct": 8.9,
-        "distToTargetPct": 32.0
-      },
-      {
-        "symbol": "1810.HK",
-        "name": "小米集团",
-        "market": "港股",
-        "score": 26.6,
-        "signal": "hold",
-        "signalLabel": "暂不参与",
-        "price": 26.6,
-        "rsi": 41.5,
-        "relativeStrength": 9.2,
-        "regimeOk": false,
-        "breakout": false,
-        "distToStopPct": 12.0,
-        "distToTargetPct": 43.2
+        "distToStopPct": 8.7,
+        "distToTargetPct": 31.5
       },
       {
         "symbol": "9992.HK",
         "name": "泡泡玛特",
         "market": "港股",
-        "score": 23.8,
+        "score": 32.0,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 138.1,
-        "rsi": 43.0,
-        "relativeStrength": 11.03,
+        "price": 140.6,
+        "rsi": 48.6,
+        "relativeStrength": 12.19,
         "regimeOk": false,
         "breakout": false,
         "distToStopPct": 6.4,
-        "distToTargetPct": 22.9
+        "distToTargetPct": 23.1
+      },
+      {
+        "symbol": "600036.SS",
+        "name": "招商银行",
+        "market": "A股",
+        "score": 31.9,
+        "signal": "hold",
+        "signalLabel": "暂不参与",
+        "price": 42.32,
+        "rsi": 44.8,
+        "relativeStrength": 3.85,
+        "regimeOk": false,
+        "breakout": false,
+        "distToStopPct": 4.7,
+        "distToTargetPct": 16.8
+      },
+      {
+        "symbol": "1810.HK",
+        "name": "小米集团",
+        "market": "港股",
+        "score": 28.1,
+        "signal": "hold",
+        "signalLabel": "暂不参与",
+        "price": 26.98,
+        "rsi": 44.3,
+        "relativeStrength": 8.0,
+        "regimeOk": false,
+        "breakout": false,
+        "distToStopPct": 11.7,
+        "distToTargetPct": 42.1
       },
       {
         "symbol": "AMZN",
@@ -247,19 +247,19 @@
         "distToTargetPct": 38.5
       },
       {
-        "symbol": "000858.SZ",
-        "name": "五粮液",
+        "symbol": "300308.SZ",
+        "name": "中际旭创",
         "market": "A股",
-        "score": 17.0,
+        "score": 15.0,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 71.2,
-        "rsi": 40.1,
-        "relativeStrength": 4.32,
+        "price": 466.58,
+        "rsi": 44.8,
+        "relativeStrength": -14.55,
         "regimeOk": false,
         "breakout": false,
-        "distToStopPct": 4.7,
-        "distToTargetPct": 16.9
+        "distToStopPct": 22.6,
+        "distToTargetPct": 81.4
       },
       {
         "symbol": "META",
@@ -275,6 +275,36 @@
         "breakout": false,
         "distToStopPct": 10.0,
         "distToTargetPct": 35.9
+      },
+      {
+        "symbol": "3690.HK",
+        "name": "美团",
+        "market": "港股",
+        "score": 12.0,
+        "signal": "hold",
+        "signalLabel": "暂不参与",
+        "price": 65.75,
+        "rsi": 40.9,
+        "relativeStrength": -2.05,
+        "regimeOk": false,
+        "breakout": false,
+        "distToStopPct": 12.2,
+        "distToTargetPct": 44.0
+      },
+      {
+        "symbol": "000858.SZ",
+        "name": "五粮液",
+        "market": "A股",
+        "score": 10.0,
+        "signal": "hold",
+        "signalLabel": "暂不参与",
+        "price": 70.99,
+        "rsi": 39.1,
+        "relativeStrength": 3.51,
+        "regimeOk": false,
+        "breakout": false,
+        "distToStopPct": 4.7,
+        "distToTargetPct": 16.8
       },
       {
         "symbol": "MSFT",
@@ -298,28 +328,13 @@
         "score": 0,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 204.22,
-        "rsi": 24.1,
-        "relativeStrength": -4.9,
+        "price": 203.98,
+        "rsi": 24.0,
+        "relativeStrength": -5.66,
         "regimeOk": false,
         "breakout": false,
-        "distToStopPct": 10.2,
-        "distToTargetPct": 36.8
-      },
-      {
-        "symbol": "300308.SZ",
-        "name": "中际旭创",
-        "market": "A股",
-        "score": 0.0,
-        "signal": "hold",
-        "signalLabel": "暂不参与",
-        "price": 430.18,
-        "rsi": 38.7,
-        "relativeStrength": -26.41,
-        "regimeOk": false,
-        "breakout": false,
-        "distToStopPct": 24.9,
-        "distToTargetPct": 89.6
+        "distToStopPct": 9.8,
+        "distToTargetPct": 35.2
       },
       {
         "symbol": "688017.SS",
@@ -328,13 +343,13 @@
         "score": 0,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 227.54,
-        "rsi": 38.0,
-        "relativeStrength": -16.09,
+        "price": 236.01,
+        "rsi": 41.2,
+        "relativeStrength": -10.72,
         "regimeOk": false,
         "breakout": false,
-        "distToStopPct": 21.2,
-        "distToTargetPct": 76.4
+        "distToStopPct": 19.9,
+        "distToTargetPct": 71.5
       },
       {
         "symbol": "0700.HK",
@@ -343,13 +358,13 @@
         "score": 0,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 341.0,
-        "rsi": 27.9,
-        "relativeStrength": -6.65,
+        "price": 345.6,
+        "rsi": 31.4,
+        "relativeStrength": -5.53,
         "regimeOk": false,
         "breakout": false,
-        "distToStopPct": 9.4,
-        "distToTargetPct": 33.7
+        "distToStopPct": 8.9,
+        "distToTargetPct": 32.1
       },
       {
         "symbol": "9988.HK",
@@ -358,28 +373,13 @@
         "score": 0,
         "signal": "hold",
         "signalLabel": "暂不参与",
-        "price": 82.5,
-        "rsi": 31.9,
-        "relativeStrength": -11.21,
+        "price": 85.4,
+        "rsi": 38.2,
+        "relativeStrength": -8.19,
         "regimeOk": false,
         "breakout": false,
-        "distToStopPct": 12.2,
-        "distToTargetPct": 44.0
-      },
-      {
-        "symbol": "3690.HK",
-        "name": "美团",
-        "market": "港股",
-        "score": 0.0,
-        "signal": "hold",
-        "signalLabel": "暂不参与",
-        "price": 62.7,
-        "rsi": 32.4,
-        "relativeStrength": -6.57,
-        "regimeOk": false,
-        "breakout": false,
-        "distToStopPct": 13.9,
-        "distToTargetPct": 50.0
+        "distToStopPct": 11.7,
+        "distToTargetPct": 42.0
       },
       {
         "symbol": "NVDA",
@@ -435,7 +435,7 @@
     "learning": {
       "revision": 1052,
       "regime": "risk_off",
-      "updatedAt": "2026-11-26T23:09:31+00:00",
+      "updatedAt": "2026-11-27T05:01:24+00:00",
       "lastUpgrade": "2026-11-18T19:13:45+00:00",
       "notes": {
         "buffett": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
@@ -465,13 +465,13 @@
             "market": "港股",
             "sector": "互联网",
             "currency": "HKD",
-            "price": 341.0,
+            "price": 345.6,
             "matchScore": 100.0,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
               "ROE 18.89% — 盈利能力稳健",
-              "PE 12.0 — 估值在能力圈合理区间",
+              "PE 12.16 — 估值在能力圈合理区间",
               "净利率 29.39% — 业务具备定价权",
               "负债率可控，财务风险较低"
             ],
@@ -484,21 +484,21 @@
               "mcap": 6.2
             },
             "plan": {
-              "entry": "围绕 341.0 HKD 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
+              "entry": "围绕 345.6 HKD 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
               "holding": "持有期 3–10 年+；关注 ROE 与护城河是否恶化。",
               "risk": "基本面永久性损伤时退出；不因正常波动止损。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 12.0,
-              "pb": 2.16,
+              "pe": 12.16,
+              "pb": 2.19,
               "roe": 18.89,
-              "peg": 4.8,
+              "peg": 4.87,
               "earningsGrowth": 2.5,
               "profitMargins": 29.39,
-              "monthChangePct": -12.02,
-              "relativeStrength": -7.35,
-              "rangePosition": 0.03
+              "monthChangePct": -8.47,
+              "relativeStrength": -6.11,
+              "rangePosition": 0.04
             }
           },
           {
@@ -507,13 +507,13 @@
             "market": "A股",
             "sector": "光模块",
             "currency": "CNY",
-            "price": 430.18,
+            "price": 466.58,
             "matchScore": 100.0,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
               "ROE 44.15% — 资本回报优秀，符合巴菲特护城河标准",
-              "PE 18.74 — 估值在能力圈合理区间",
+              "PE 19.33 — 估值在能力圈合理区间",
               "净利率 31.29% — 业务具备定价权",
               "负债率可控，财务风险较低"
             ],
@@ -526,21 +526,21 @@
               "mcap": 6.2
             },
             "plan": {
-              "entry": "围绕 430.18 CNY 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
+              "entry": "围绕 466.58 CNY 分批建仓，优先在回调至年线附近加仓；不追短线热点。",
               "holding": "持有期 3–10 年+；关注 ROE 与护城河是否恶化。",
               "risk": "基本面永久性损伤时退出；不因正常波动止损。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 18.74,
-              "pb": 5.37,
+              "pe": 19.33,
+              "pb": 5.82,
               "roe": 44.15,
-              "peg": 11.22,
+              "peg": 11.57,
               "earningsGrowth": 1.67,
               "profitMargins": 31.29,
-              "monthChangePct": -32.39,
-              "relativeStrength": -27.68,
-              "rangePosition": 0.05
+              "monthChangePct": -19.84,
+              "relativeStrength": -15.33,
+              "rangePosition": 0.09
             }
           }
         ],
@@ -548,8 +548,8 @@
           "revision": 1052,
           "regime": "risk_off",
           "samples": 596,
-          "winRate": 25.8,
-          "avgReturnPct": -9.05,
+          "winRate": 33.2,
+          "avgReturnPct": -7.67,
           "upgradeNote": "近期表现反馈：roe↓、pe↓、margins↓、debt↓",
           "lastUpgrade": "2026-11-18T19:13:45+00:00"
         }
@@ -575,14 +575,14 @@
             "market": "A股",
             "sector": "新能源",
             "currency": "CNY",
-            "price": 204.22,
+            "price": 203.98,
             "matchScore": 100.0,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
-              "PE 10.61 — 深度价值区间，安全边际充足",
+              "PE 10.6 — 深度价值区间，安全边际充足",
               "价格处于 52 周区间下沿 — 悲观定价带来安全边际",
-              "股息率 68.0% — 提供下行保护垫"
+              "股息率 69.0% — 提供下行保护垫"
             ],
             "factors": {
               "pe": 34.1,
@@ -590,20 +590,20 @@
               "dividend": 7.75
             },
             "plan": {
-              "entry": "仅在 204.22 附近或更低、且 PE/PB 维持低位时分批买入；拒绝「便宜但坏」的公司。",
+              "entry": "仅在 203.98 附近或更低、且 PE/PB 维持低位时分批买入；拒绝「便宜但坏」的公司。",
               "holding": "持有至估值修复至合理区间（1–3 年）。",
               "risk": "负债恶化或盈利持续下滑时减仓；分散持有降低单一风险。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 10.61,
-              "pb": 2.43,
+              "pe": 10.6,
+              "pb": 2.42,
               "roe": 24.41,
               "peg": 0.82,
               "earningsGrowth": 13.0,
               "profitMargins": 15.05,
-              "monthChangePct": -10.88,
-              "relativeStrength": -6.17,
+              "monthChangePct": -10.95,
+              "relativeStrength": -6.44,
               "rangePosition": 0.01
             }
           },
@@ -613,14 +613,14 @@
             "market": "A股",
             "sector": "银行",
             "currency": "CNY",
-            "price": 43.38,
+            "price": 42.32,
             "matchScore": 100.0,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
-              "PE 7.4 — 深度价值区间，安全边际充足",
-              "PB 0.93 — 资产折价，经典格雷厄姆信号",
-              "股息率 4.67% — 提供下行保护垫"
+              "PE 7.22 — 深度价值区间，安全边际充足",
+              "PB 0.9 — 资产折价，经典格雷厄姆信号",
+              "股息率 4.65% — 提供下行保护垫"
             ],
             "factors": {
               "pe": 34.1,
@@ -628,21 +628,21 @@
               "dividend": 7.75
             },
             "plan": {
-              "entry": "仅在 43.38 附近或更低、且 PE/PB 维持低位时分批买入；拒绝「便宜但坏」的公司。",
+              "entry": "仅在 42.32 附近或更低、且 PE/PB 维持低位时分批买入；拒绝「便宜但坏」的公司。",
               "holding": "持有至估值修复至合理区间（1–3 年）。",
               "risk": "负债恶化或盈利持续下滑时减仓；分散持有降低单一风险。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 7.4,
-              "pb": 0.93,
+              "pe": 7.22,
+              "pb": 0.9,
               "roe": 11.54,
-              "peg": 2.31,
+              "peg": 2.26,
               "earningsGrowth": 3.2,
               "profitMargins": 50.77,
-              "monthChangePct": 2.97,
-              "relativeStrength": 7.68,
-              "rangePosition": 0.91
+              "monthChangePct": -1.44,
+              "relativeStrength": 3.07,
+              "rangePosition": 0.79
             }
           }
         ],
@@ -650,8 +650,8 @@
           "revision": 1052,
           "regime": "risk_off",
           "samples": 596,
-          "winRate": 73.5,
-          "avgReturnPct": 1.55,
+          "winRate": 50.2,
+          "avgReturnPct": -0.07,
           "upgradeNote": null,
           "lastUpgrade": "2026-11-18T19:13:45+00:00"
         }
@@ -756,8 +756,8 @@
           "revision": 1052,
           "regime": "risk_off",
           "samples": 596,
-          "winRate": 1.8,
-          "avgReturnPct": -16.56,
+          "winRate": 2.0,
+          "avgReturnPct": -16.57,
           "upgradeNote": null,
           "lastUpgrade": "2026-11-18T19:13:45+00:00"
         }
@@ -783,7 +783,7 @@
             "market": "A股",
             "sector": "白酒",
             "currency": "CNY",
-            "price": 1469.0,
+            "price": 1454.69,
             "matchScore": 81.0,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
@@ -801,21 +801,21 @@
               "trend": 3.3
             },
             "plan": {
-              "entry": "以 1469.0 为参考价，在优质复利逻辑未变前提下长期持有；好公司少动。",
+              "entry": "以 1454.69 为参考价，在优质复利逻辑未变前提下长期持有；好公司少动。",
               "holding": "5 年+；与伟大企业共同成长。",
               "risk": "商业模式被颠覆或管理层重大失误时退出。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 22.37,
-              "pb": 6.77,
+              "pe": 22.24,
+              "pb": 6.71,
               "roe": 31.18,
-              "peg": 5.59,
+              "peg": 5.56,
               "earningsGrowth": 4.0,
               "profitMargins": 47.95,
-              "monthChangePct": 10.39,
-              "relativeStrength": 15.1,
-              "rangePosition": 0.76
+              "monthChangePct": 7.44,
+              "relativeStrength": 11.95,
+              "rangePosition": 0.73
             }
           },
           {
@@ -864,8 +864,8 @@
           "revision": 1052,
           "regime": "risk_off",
           "samples": 596,
-          "winRate": 16.8,
-          "avgReturnPct": -10.22,
+          "winRate": 15.4,
+          "avgReturnPct": -10.34,
           "upgradeNote": null,
           "lastUpgrade": "2026-11-18T19:13:45+00:00"
         }
@@ -891,15 +891,15 @@
             "market": "港股",
             "sector": "互联网",
             "currency": "HKD",
-            "price": 341.0,
+            "price": 345.6,
             "matchScore": 100.0,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
-              "近一月 -12.02% — 市场悲观，邓普顿式逆向机会",
-              "近三月 -22.85% — 深度回调，关注基本面是否错杀",
+              "近一月 -8.47% — 市场悲观，邓普顿式逆向机会",
+              "近三月 -22.41% — 深度回调，关注基本面是否错杀",
               "价格接近 52 周底部 — 「极度悲观时买入」",
-              "PE 12.0 — 悲观中仍有估值支撑"
+              "PE 12.16 — 悲观中仍有估值支撑"
             ],
             "factors": {
               "month": 24.8,
@@ -909,21 +909,21 @@
               "roe": 9.3
             },
             "plan": {
-              "entry": "市场极度悲观、价格 341.0 处于低位区间时逆向买入；需确认基本面未实质性恶化。",
+              "entry": "市场极度悲观、价格 345.6 处于低位区间时逆向买入；需确认基本面未实质性恶化。",
               "holding": "等待情绪修复（2–5 年）；耐心是关键。",
               "risk": "若逆向逻辑被证伪（基本面崩塌），果断止损。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 12.0,
-              "pb": 2.16,
+              "pe": 12.16,
+              "pb": 2.19,
               "roe": 18.89,
-              "peg": 4.8,
+              "peg": 4.87,
               "earningsGrowth": 2.5,
               "profitMargins": 29.39,
-              "monthChangePct": -12.02,
-              "relativeStrength": -7.35,
-              "rangePosition": 0.03
+              "monthChangePct": -8.47,
+              "relativeStrength": -6.11,
+              "rangePosition": 0.04
             }
           },
           {
@@ -932,15 +932,15 @@
             "market": "A股",
             "sector": "光模块",
             "currency": "CNY",
-            "price": 430.18,
+            "price": 466.58,
             "matchScore": 100.0,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
             "reasons": [
-              "近一月 -32.39% — 市场悲观，邓普顿式逆向机会",
-              "近三月 -51.89% — 深度回调，关注基本面是否错杀",
+              "近一月 -19.84% — 市场悲观，邓普顿式逆向机会",
+              "近三月 -48.32% — 深度回调，关注基本面是否错杀",
               "价格接近 52 周底部 — 「极度悲观时买入」",
-              "PE 18.74 — 悲观中仍有估值支撑"
+              "PE 19.33 — 悲观中仍有估值支撑"
             ],
             "factors": {
               "month": 24.8,
@@ -950,21 +950,21 @@
               "roe": 9.3
             },
             "plan": {
-              "entry": "市场极度悲观、价格 430.18 处于低位区间时逆向买入；需确认基本面未实质性恶化。",
+              "entry": "市场极度悲观、价格 466.58 处于低位区间时逆向买入；需确认基本面未实质性恶化。",
               "holding": "等待情绪修复（2–5 年）；耐心是关键。",
               "risk": "若逆向逻辑被证伪（基本面崩塌），果断止损。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 18.74,
-              "pb": 5.37,
+              "pe": 19.33,
+              "pb": 5.82,
               "roe": 44.15,
-              "peg": 11.22,
+              "peg": 11.57,
               "earningsGrowth": 1.67,
               "profitMargins": 31.29,
-              "monthChangePct": -32.39,
-              "relativeStrength": -27.68,
-              "rangePosition": 0.05
+              "monthChangePct": -19.84,
+              "relativeStrength": -15.33,
+              "rangePosition": 0.09
             }
           }
         ],
@@ -972,8 +972,8 @@
           "revision": 1052,
           "regime": "risk_off",
           "samples": 596,
-          "winRate": 13.6,
-          "avgReturnPct": -19.93,
+          "winRate": 17.3,
+          "avgReturnPct": -17.6,
           "upgradeNote": "近期表现反馈：month↓、range↓、pe↓、roe↓",
           "lastUpgrade": "2026-11-18T19:13:45+00:00"
         }
@@ -994,18 +994,18 @@
         "holdingHorizon": "数周–数月",
         "picks": [
           {
-            "symbol": "600519.SS",
-            "name": "贵州茅台",
+            "symbol": "688981.SS",
+            "name": "中芯国际",
             "market": "A股",
-            "sector": "白酒",
+            "sector": "半导体",
             "currency": "CNY",
-            "price": 1469.0,
+            "price": 121.5,
             "matchScore": 67.0,
             "signal": "watch",
             "signalLabel": "部分符合 · 观察等待",
             "reasons": [
-              "近一月 +10.39% — 趋势强劲，反身性正反馈",
-              "相对强度 +15.1% — 跑赢大盘，宏观共振",
+              "近一月 +20.3% — 趋势强劲，反身性正反馈",
+              "相对强度 +24.81% — 跑赢大盘，宏观共振",
               "均线多头排列 — 趋势交易确认"
             ],
             "factors": {
@@ -1014,35 +1014,35 @@
               "trend": 5.5
             },
             "plan": {
-              "entry": "趋势确认后于 1469.0 附近顺势建仓；宏观与相对强度共振时加仓。",
+              "entry": "趋势确认后于 121.5 附近顺势建仓；宏观与相对强度共振时加仓。",
               "holding": "短中期趋势交易（数周–数月）；趋势破坏即减仓。",
               "risk": "跌破关键均线或相对强度转负时严格止损；反身性逆转要快。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 22.37,
-              "pb": 6.77,
-              "roe": 31.18,
-              "peg": 5.59,
-              "earningsGrowth": 4.0,
-              "profitMargins": 47.95,
-              "monthChangePct": 10.39,
-              "relativeStrength": 15.1,
-              "rangePosition": 0.76
+              "pe": 133.52,
+              "pb": 6.02,
+              "roe": 4.7,
+              "peg": 1.73,
+              "earningsGrowth": 77.1,
+              "profitMargins": 10.98,
+              "monthChangePct": 20.3,
+              "relativeStrength": 24.81,
+              "rangePosition": 0.36
             }
           },
           {
-            "symbol": "601318.SS",
-            "name": "中国平安",
+            "symbol": "600519.SS",
+            "name": "贵州茅台",
             "market": "A股",
-            "sector": "保险",
+            "sector": "白酒",
             "currency": "CNY",
-            "price": 54.58,
+            "price": 1454.69,
             "matchScore": 63.7,
             "signal": "watch",
             "signalLabel": "部分符合 · 观察等待",
             "reasons": [
-              "相对强度 +9.05% — 跑赢大盘，宏观共振",
+              "相对强度 +11.95% — 跑赢大盘，宏观共振",
               "均线多头排列 — 趋势交易确认"
             ],
             "factors": {
@@ -1051,21 +1051,21 @@
               "trend": 5.5
             },
             "plan": {
-              "entry": "趋势确认后于 54.58 附近顺势建仓；宏观与相对强度共振时加仓。",
+              "entry": "趋势确认后于 1454.69 附近顺势建仓；宏观与相对强度共振时加仓。",
               "holding": "短中期趋势交易（数周–数月）；趋势破坏即减仓。",
               "risk": "跌破关键均线或相对强度转负时严格止损；反身性逆转要快。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 11.0,
-              "pb": 0.95,
-              "roe": 8.55,
-              "peg": null,
-              "earningsGrowth": -93.5,
-              "profitMargins": 10.9,
-              "monthChangePct": 4.34,
-              "relativeStrength": 9.05,
-              "rangePosition": 0.27
+              "pe": 22.24,
+              "pb": 6.71,
+              "roe": 31.18,
+              "peg": 5.56,
+              "earningsGrowth": 4.0,
+              "profitMargins": 47.95,
+              "monthChangePct": 7.44,
+              "relativeStrength": 11.95,
+              "rangePosition": 0.73
             }
           }
         ],
@@ -1073,8 +1073,8 @@
           "revision": 1052,
           "regime": "risk_off",
           "samples": 596,
-          "winRate": 33.1,
-          "avgReturnPct": -10.72,
+          "winRate": 26.3,
+          "avgReturnPct": -10.93,
           "upgradeNote": null,
           "lastUpgrade": "2026-11-18T19:13:45+00:00"
         }
@@ -1100,7 +1100,7 @@
             "market": "A股",
             "sector": "精密减速器",
             "currency": "CNY",
-            "price": 227.54,
+            "price": 236.01,
             "matchScore": 82.0,
             "signal": "buy",
             "signalLabel": "符合风格 · 建议关注",
@@ -1119,22 +1119,22 @@
               "range": 5.51
             },
             "plan": {
-              "entry": "在 227.54 CNY 附近建立 conviction 仓位；从终端需求（算力/光互连/机器人）向上游追溯，独立验证瓶颈是否仍不可替代。",
+              "entry": "在 236.01 CNY 附近建立 conviction 仓位；从终端需求（算力/光互连/机器人）向上游追溯，独立验证瓶颈是否仍不可替代。",
               "holding": "6–18 个月；等待供应链重估、扩产瓶颈确认或并购催化，接受小盘科技股的较大波动。",
               "risk": "证伪点：技术路线变更、客户找到替代供应商、瓶颈环节扩产后稀缺性消失；不因 X/社交热度末段追高。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 267.69,
-              "pb": 11.53,
+              "pe": 277.66,
+              "pb": 11.96,
               "roe": 4.38,
-              "peg": 9.2,
+              "peg": 9.54,
               "earningsGrowth": 29.1,
               "profitMargins": 20.24,
-              "monthChangePct": -22.07,
-              "relativeStrength": -17.36,
-              "rangePosition": 0.24,
-              "marketCapB": 41.7,
+              "monthChangePct": -16.01,
+              "relativeStrength": -11.5,
+              "rangePosition": 0.26,
+              "marketCapB": 43.3,
               "bottleneckLayer": "精密减速器"
             }
           },
@@ -1144,42 +1144,42 @@
             "market": "A股",
             "sector": "半导体",
             "currency": "CNY",
-            "price": 116.5,
-            "matchScore": 71.3,
+            "price": 121.5,
+            "matchScore": 63.5,
             "signal": "watch",
             "signalLabel": "部分符合 · 观察等待",
             "reasons": [
               "半导体 — AI/机器人供应链瓶颈相关环节",
               "紫苏叶环节 · 晶圆制造 — AI 算力上游产能瓶颈",
-              "大盘蓝筹 — 非典型卡脖子小盘标的",
+              "超大盘龙头 — 「买瓶颈不买品牌」框架下降权",
               "盈利增速 77.1% — 瓶颈环节需求释放",
               "52 周区间偏低 — 或在机构大规模覆盖前"
             ],
             "factors": {
               "sector": 12.28,
               "tag": 7.81,
-              "mcap": -7.81,
+              "mcap": -12.28,
               "growth": 8.93,
               "range": 5.51,
-              "momentum": 6.6
+              "momentum": 3.3
             },
             "plan": {
-              "entry": "在 116.5 CNY 附近建立 conviction 仓位；从终端需求（算力/光互连/机器人）向上游追溯，独立验证瓶颈是否仍不可替代。",
+              "entry": "在 121.5 CNY 附近建立 conviction 仓位；从终端需求（算力/光互连/机器人）向上游追溯，独立验证瓶颈是否仍不可替代。",
               "holding": "6–18 个月；等待供应链重估、扩产瓶颈确认或并购催化，接受小盘科技股的较大波动。",
               "risk": "证伪点：技术路线变更、客户找到替代供应商、瓶颈环节扩产后稀缺性消失；不因 X/社交热度末段追高。",
               "position": "单大师风格内建议 1–2 只核心标的；与战术策略、XRPS 战役仓独立配置。"
             },
             "metrics": {
-              "pe": 133.91,
-              "pb": 5.77,
+              "pe": 133.52,
+              "pb": 6.02,
               "roe": 4.7,
-              "peg": 1.74,
+              "peg": 1.73,
               "earningsGrowth": 77.1,
               "profitMargins": 10.98,
-              "monthChangePct": 14.22,
-              "relativeStrength": 18.93,
-              "rangePosition": 0.3,
-              "marketCapB": 997.5,
+              "monthChangePct": 20.3,
+              "relativeStrength": 24.81,
+              "rangePosition": 0.36,
+              "marketCapB": 1040.3,
               "bottleneckLayer": "晶圆制造"
             }
           }
@@ -1188,8 +1188,8 @@
           "revision": 1052,
           "regime": "risk_off",
           "samples": 596,
-          "winRate": 5.7,
-          "avgReturnPct": -22.17,
+          "winRate": 7.6,
+          "avgReturnPct": -18.67,
           "upgradeNote": null,
           "lastUpgrade": "2026-11-18T19:13:45+00:00"
         },
