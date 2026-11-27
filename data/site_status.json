@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-27T14:59:11+00:00",
+  "updatedAt": "2026-11-27T18:02:05+00:00",
   "mode": "github-actions",
   "summary": {
     "pipelinesTotal": 6,
-    "pipelinesHealthy": 5,
-    "pipelinesStale": 1,
-    "automation": "1 条流水线过期",
+    "pipelinesHealthy": 2,
+    "pipelinesStale": 4,
+    "automation": "4 条流水线过期",
     "deploy": "GitHub Pages · master 推送即发布",
     "resources": "零增量成本：GitHub Actions + 现有 Secrets + Cursor PR"
   },
@@ -242,8 +242,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-27T14:55:19+00:00",
-      "status": "ok",
-      "ageMinutes": 3
+      "status": "stale",
+      "ageMinutes": 186
     },
     {
       "id": "macro",
@@ -251,8 +251,8 @@
       "schedule": "每 5 分钟",
       "workflow": "update-market-data.yml",
       "updatedAt": "2026-11-27T14:55:11+00:00",
-      "status": "ok",
-      "ageMinutes": 4
+      "status": "stale",
+      "ageMinutes": 186
     },
     {
       "id": "truth",
@@ -261,7 +261,7 @@
       "workflow": "update-truth-social.yml",
       "updatedAt": "2026-11-27T08:06:19+00:00",
       "status": "stale",
-      "ageMinutes": 412
+      "ageMinutes": 595
     },
     {
       "id": "wencai",
@@ -269,17 +269,17 @@
       "schedule": "每小时",
       "workflow": "update-wencai-data.yml",
       "updatedAt": "2026-11-27T14:58:11+00:00",
-      "status": "ok",
-      "ageMinutes": 1
+      "status": "stale",
+      "ageMinutes": 183
     },
     {
       "id": "reports",
       "name": "投资决策研报",
       "schedule": "09:00 / 12:00 / 16:00 北京时间",
       "workflow": "generate-investment-report.yml",
-      "updatedAt": "2026-11-27T21:16:43+08:00",
+      "updatedAt": "2026-11-28T02:02:05+08:00",
       "status": "ok",
-      "ageMinutes": 102
+      "ageMinutes": 0
     },
     {
       "id": "backtest",
@@ -288,9 +288,9 @@
       "workflow": "weekly-backtest.yml",
       "updatedAt": "2026-11-22T09:14:00+00:00",
       "status": "ok",
-      "ageMinutes": 7545
+      "ageMinutes": 7728
     }
   ],
-  "triggeredBy": "Update Wencai Data",
-  "runId": "46020579635"
+  "triggeredBy": "Generate Investment Report",
+  "runId": "46046323671"
 }
